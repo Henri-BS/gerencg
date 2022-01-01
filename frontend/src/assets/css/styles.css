@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100;0,300;0,500;1,100&display=swap');
 :root{
     --color-primary: #246266;
+    --color-sec: #00020D
 }
 
 html, body {
