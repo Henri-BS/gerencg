@@ -9,7 +9,7 @@ function App() {
     <>
       <NavBar />
       <div className="container">
-        <h1 className="text-primary py-3">Receitas</h1>
+        <h1 className="text-primary py-3">Categorias</h1>
 
         <div className="row px-3">
           <div className="col-sm-6">
@@ -17,7 +17,7 @@ function App() {
             <BarChart />
           </div>
           <div className="col-sm-6">
-            <h5 className="text-center text-secondary">Rentabilidade</h5>
+            <h5 className="text-center text-secondary">Mais Rentáveis</h5>
             <DonutChart />
           </div>
         </div>
