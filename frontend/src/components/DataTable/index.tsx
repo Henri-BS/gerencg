@@ -8,9 +8,9 @@ const DataTable = () => {
                     <tr>
                         <th>Data de Resgistro</th>
                         <th>Categoria</th>
-                        <th>Produtos Novos</th>
+                        <th>Produtos Adicionados</th>
                         <th>Produtos Removidos</th>
-                        <th>Rentabilidade</th>
+                        <th>Valor Atual</th>
                     </tr>
                 </thead>
                 <tbody>
