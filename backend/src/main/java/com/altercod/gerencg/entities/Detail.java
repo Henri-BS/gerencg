@@ -37,7 +37,6 @@ public class Detail {
 	public Detail(){}
 	
 	public Detail(Long id, Integer prod_adc, Integer prod_remov, Double upd_val, LocalDate date, Category category) {
-		super();
 		this.id = id;
 		this.prod_adc = prod_adc;
 		this.prod_remov = prod_remov;
