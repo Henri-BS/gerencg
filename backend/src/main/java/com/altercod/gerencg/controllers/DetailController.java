@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.altercod.gerencg.dto.CategoryFlowDTO;
 import com.altercod.gerencg.dto.CategoryValueDTO;
 import com.altercod.gerencg.dto.DetailDTO;
 import com.altercod.gerencg.service.DetailService;
@@ -28,9 +29,15 @@ public class DetailController {
 	 	return ResponseEntity.ok(list);
 	}
 	
-	@GetMapping(value = "/values-by-categories")
+	@GetMapping(value = "/value-of-categorie")
 	public ResponseEntity<List<CategoryValueDTO>> valueGroupedByCategory(){
 		List<CategoryValueDTO> list = service.valueGroupedByCategory();
+		return ResponseEntity.ok(list);
+	}
+	
+	@GetMapping(value = "/flow-of-categorie")
+	public ResponseEntity<List<CategoryFlowDTO>> flowGroupedByCategory(){
+		List<CategoryFlowDTO> list = service.flowGroupedByCategory();
 		return ResponseEntity.ok(list);
 	}
 }
