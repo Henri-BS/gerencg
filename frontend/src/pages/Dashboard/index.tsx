@@ -13,11 +13,11 @@ const Dashboard = () => {
   
           <div className="row px-3">
             <div className="col-sm-6">
-              <h5 className="text-center text-secondary">Fluxo de Movimemnto (%)</h5>
+              <h5 className="text-center text-secondary">Fluxo de Movimento (%)</h5>
               <BarChart />
             </div>
             <div className="col-sm-6">
-              <h5 className="text-center text-secondary">Categorias mais Influentes</h5>
+              <h5 className="text-center text-secondary">Principais Categorias</h5>
               <DonutChart />
             </div>
           </div>

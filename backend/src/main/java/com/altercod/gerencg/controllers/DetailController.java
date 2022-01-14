@@ -29,13 +29,13 @@ public class DetailController {
 	 	return ResponseEntity.ok(list);
 	}
 	
-	@GetMapping(value = "/value-of-categorie")
+	@GetMapping(value = "/value-of-category")
 	public ResponseEntity<List<CategoryValueDTO>> valueGroupedByCategory(){
 		List<CategoryValueDTO> list = service.valueGroupedByCategory();
 		return ResponseEntity.ok(list);
 	}
 	
-	@GetMapping(value = "/flow-of-categorie")
+	@GetMapping(value = "/flow-of-category")
 	public ResponseEntity<List<CategoryFlowDTO>> flowGroupedByCategory(){
 		List<CategoryFlowDTO> list = service.flowGroupedByCategory();
 		return ResponseEntity.ok(list);

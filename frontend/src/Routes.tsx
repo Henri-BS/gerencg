@@ -12,9 +12,7 @@ const Routes = () => {
                 <Route path="/dashboard">
                     <Dashboard />
                 </Route>
-                
             </Switch>
-
         </BrowserRouter>
     );
 }
