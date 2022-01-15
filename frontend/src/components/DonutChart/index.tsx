@@ -1,3 +1,4 @@
+//Gráfico referente a categoria com o histórico de valor mais relevante
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts'
