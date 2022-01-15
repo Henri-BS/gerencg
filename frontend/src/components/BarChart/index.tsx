@@ -1,35 +1,74 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts'
+import { FlowCategory } from 'types/details';
+import { round } from 'utils/format';
+import { BASE_URL } from 'utils/requests';
+
+type SeriesData = {
+    name: string;
+    data: number[];
+}
+
+type ChartData = {
+    labels: {
+        categories: string[];
+    };
+    series: SeriesData[];
+}
 
 const BarChart = () => {
-    
-    const options = {
-        plotOptions: {
-        bar: {
-            horizontal: true,
-        }
-        },
-    };
 
-    const mockData = {
+    const [chartData, setChartData] = useState<ChartData>({
         labels: {
-            categories: ['Alimenticios', 'Higiene e Cosmeticos', 'Eletrônicos', 'Papelaria e Escolar', 'Brinquedos']
+            categories: []
         },
-        series:[
+        series: [
             {
-                name: '% de Custo',
-                data: [43, 67.1, 67.7, 45.6, 71.1]
+                name: "",
+                data: []
             }
         ]
+    });
+
+    useEffect(() => {
+
+        axios.get(`${BASE_URL}/details/flow-of-category`)
+            .then(response => {
+                const data = response.data as FlowCategory[];
+                const myLabels = data.map(x => x.categoryName);
+                const mySeries = data.map(x => round(100.0 * x.prod_adc / x.prod_remov, 1));
+
+                setChartData({
+                    labels: {
+                        categories: myLabels
+                    },
+                    series: [
+                        {
+                            name: "% Fluxo",
+                            data: mySeries
+                        }
+                    ]
+                });
+            });
+    }, []);
+
+    const options = {
+        plotOptions: {
+            bar: {
+                horizontal: true,
+            }
+        },
     };
 
     return (
-        <Chart 
-        options={{...options, xaxis: mockData.labels}}
-        series={mockData.series}
-        type="bar"
-        height="240"
+        <Chart
+            options={{ ...options, xaxis: chartData.labels }}
+            series={chartData.series}
+            type="bar"
+            height="240"
         />
-        
+
     );
 }
 
