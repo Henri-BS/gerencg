@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts'
-import { CategoryValue } from 'types/details';
+import { CategoryValue } from 'types/detail';
 import { BASE_URL } from 'utils/requests';
 
 type ChartData = {

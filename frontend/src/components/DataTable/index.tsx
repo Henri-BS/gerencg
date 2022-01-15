@@ -1,6 +1,26 @@
-
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { DetailPage } from "types/detail";
+import { formatLocalDate } from "utils/format";
+import { BASE_URL } from "utils/requests";
 
 const DataTable = () => {
+
+    const [page, setPage] = useState <DetailPage>({
+        first: true,
+        last: true,
+        number: 0,
+        totalElements: 0,
+        totalPages: 0
+    });
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/details?page=0&size=20&sort=date,desc`)
+        .then(response => {
+            setPage(response.data);
+        });
+    },[]);
+
     return (
         <div className="table-responsive">
             <table className="table table-striped table-sm">
@@ -14,94 +34,15 @@ const DataTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>01/01/2022</td>
-                        <td>Alimentícios</td>
-                        <td>34</td>
-                        <td>25</td>
-                        <td>15017.00</td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <td>01/01/2022</td>
-                        <td>Brinquedos</td>
-                        <td>34</td>
-                        <td>25</td>
-                        <td>15017.00</td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <td>01/01/2022</td>
-                        <td>Cosméticos e Higiene</td>
-                        <td>34</td>
-                        <td>25</td>
-                        <td>15017.00</td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <td>01/01/2022</td>
-                        <td>Cozinha</td>
-                        <td>34</td>
-                        <td>25</td>
-                        <td>15017.00</td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <td>01/01/2022</td>
-                        <td>Eletônicos</td>
-                        <td>34</td>
-                        <td>25</td>
-                        <td>15017.00</td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <td>01/01/2022</td>
-                        <td>Limpeza</td>
-                        <td>34</td>
-                        <td>25</td>
-                        <td>15017.00</td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <td>01/01/2022</td>
-                        <td>Tecidos e Acessórios</td>
-                        <td>34</td>
-                        <td>25</td>
-                        <td>15017.00</td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <td>01/01/2022</td>
-                        <td>Utencílios</td>
-                        <td>34</td>
-                        <td>25</td>
-                        <td>15017.00</td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <td>01/01/2022</td>
-                        <td>Ferramentas</td>
-                        <td>34</td>
-                        <td>25</td>
-                        <td>15017.00</td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <td>01/01/2022</td>
-                        <td>Outros</td>
-                        <td>34</td>
-                        <td>25</td>
-                        <td>15017.00</td>
-                    </tr>
+                    {page.content?.map(item => (
+                        <tr key={item.id}>
+                        <td>{formatLocalDate(item.date, "dd/MM/yyyy")}</td>
+                        <td>{item.category.name}</td>
+                        <td>{item.prod_adc}</td>
+                        <td>{item.prod_remov}</td>
+                        <td>{item.upd_val}</td>
+                    </tr> 
+                    ))}
                 </tbody>
             </table>
         </div>
