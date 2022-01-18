@@ -1,6 +1,5 @@
 package com.altercod.gerencg.controllers;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +18,14 @@ import com.altercod.gerencg.service.DetailService;
 @RestController
 @RequestMapping(value = "/details")
 public class DetailController {
-
+	
 	@Autowired
 	private DetailService service;
 	
 	@GetMapping
 	public ResponseEntity<Page<DetailDTO>> findAll(Pageable pageable){
 		Page<DetailDTO> list = service.findAll(pageable);
-	 	return ResponseEntity.ok(list);
+		return ResponseEntity.ok(list);
 	}
 	
 	@GetMapping(value = "/value-of-category")
@@ -40,4 +39,5 @@ public class DetailController {
 		List<CategoryFlowDTO> list = service.flowGroupedByCategory();
 		return ResponseEntity.ok(list);
 	}
+	
 }

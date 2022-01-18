@@ -17,28 +17,27 @@ import com.altercod.gerencg.repositories.DetailRepository;
 
 @Service
 public class DetailService {
-
+	
 	@Autowired
 	private DetailRepository repository;
-
+	
 	@Autowired
 	private CategoryRepository ctrepository;
 	
 	@Transactional(readOnly = true)
-	public Page<DetailDTO> findAll(Pageable pageable) {
+	public Page<DetailDTO> findAll(Pageable pageable){
 		ctrepository.findAll();
 		Page<Detail> result = repository.findAll(pageable);
 		return result.map(x -> new DetailDTO(x));
 	}
+	
 	@Transactional(readOnly = true)
-	public 	List<CategoryValueDTO> valueGroupedByCategory(){
+	public List<CategoryValueDTO> valueGroupedByCategory(){
 		return repository.valueGroupedByCategory();
 	}
 	
 	@Transactional(readOnly = true)
-	public 	List<CategoryFlowDTO> flowGroupedByCategory(){
+	public List<CategoryFlowDTO> flowGroupedByCategory(){
 		return repository.flowGroupedByCategory();
 	}
-	
-	
 }

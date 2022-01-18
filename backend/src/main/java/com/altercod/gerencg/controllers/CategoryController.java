@@ -13,8 +13,8 @@ import com.altercod.gerencg.service.CategoryService;
 
 @RestController
 @RequestMapping(value = "/categories")
-public class CategoryController {
-
+public class CategoryController{
+	
 	@Autowired
 	private CategoryService service;
 	

@@ -38,7 +38,6 @@ const DonutChart = () => {
             type="donut"
             height="240"
         />
-
     );
 }
 
