@@ -1,6 +1,7 @@
 import Footer from "components/Footer";
 import NavBar from "components/NavBar";
 import { Link } from "react-router-dom";
+import "./styles.css"
 
 const Home = () => {
     return (
@@ -11,8 +12,7 @@ const Home = () => {
             <h1 className="display-4">Gerenciar Categorias </h1>
         <p className="lead">Analise o desempenho de cada categoria</p>
         <hr/>
-        <p>Dashboard para a visualização de informações sobre cada categoria</p>
-            <Link className="btn btn-primary btn-lg" to="/dashboard"> Dashboard </Link>
+            <Link className="gerencg-btn" to="/dashboard"> Dashboard </Link>
           
             </div>
         </div>

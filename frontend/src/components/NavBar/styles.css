@@ -1,0 +1,21 @@
+
+.navbar {
+    background: rgb(21, 41, 43);
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 80px;
+}
+.navbar-logo {
+    color: #fff;
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+

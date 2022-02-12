@@ -1,0 +1,24 @@
+:root{
+--color-primary: #154f55;
+}
+
+
+.gerencg-btn {
+    padding: 8px 20px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    background-color: var(--color-primary);
+}
+
+.gerencg-btn:hover {
+    padding: 6px 18px;
+    transition: all 0.3s ease-out;
+    background-color: transparent;
+    color:#000;
+    border-radius: 5px;
+    border: 2.5px solid var(--color-primary);
+}
