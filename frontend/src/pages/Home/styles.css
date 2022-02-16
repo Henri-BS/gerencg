@@ -2,6 +2,14 @@
 --color-primary: #154f55;
 }
 
+.home {
+    background-image: url('assets/img/categ.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-size: 100px;
+}
 
 .gerencg-btn {
     padding: 8px 20px;

@@ -1,16 +1,15 @@
 
 .navbar {
-    background: rgb(21, 41, 43);
+    background: #0B2626;
     height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
     font-family: 'Nunito', sans-serif;
-    margin-bottom: 80px;
 }
 .navbar-logo {
-    color: #fff;
+    width: 230px;
     justify-self: start;
     margin-left: 20px;
     cursor: pointer;
