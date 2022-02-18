@@ -1,0 +1,10 @@
+.container {
+    height: 1500px;
+    width: 1500px;
+    background-color: #a7abaf;
+    color: #00020D; 
+    max-height:max-content;
+    max-width: fit-content;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}

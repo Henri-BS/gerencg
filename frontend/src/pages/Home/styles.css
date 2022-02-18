@@ -1,5 +1,15 @@
 :root{
---color-primary: #154f55;
+--color-primary: #0f3535;
+}
+
+.container {
+    height: 1500px;
+    width: 1500px;
+    background-color: #fff;
+    color: #00020D; 
+    max-width:fit-content;
+    margin-bottom: 40px;
+    margin-top: 20px;
 }
 
 .home {
@@ -20,13 +30,14 @@
     color: #fff;
     cursor: pointer;
     background-color: var(--color-primary);
+    margin-bottom: 30px;
 }
 
 .gerencg-btn:hover {
     padding: 6px 18px;
     transition: all 0.3s ease-out;
     background-color: transparent;
-    color:#000;
+    color:#00020D;
     border-radius: 5px;
     border: 2.5px solid var(--color-primary);
 }
