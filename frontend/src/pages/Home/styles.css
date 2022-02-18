@@ -3,11 +3,10 @@
 }
 
 .container {
-    height: 1500px;
-    width: 1500px;
+  
     background-color: #fff;
     color: #00020D; 
-    max-width:fit-content;
+    max-inline-size: 100%;
     margin-bottom: 40px;
     margin-top: 20px;
 }

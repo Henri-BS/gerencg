@@ -21,7 +21,7 @@ const Home = () => {
         </p>
         <hr/>
             <Link className="gerencg-btn" to="/dashboard"> Dashboard </Link>
-                       </div>
+            </div>
         </div>
         <Footer/>
         </>
