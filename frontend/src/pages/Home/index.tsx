@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <>
         <NavBar/>
-        <div className="container" >
+        <div className="container"  >
             <div className="jumbotron" >            
             <h1 className="display-4">Gerenciar Categorias </h1>
         <p className="lead">Gereng Categories permite ao usuário uma forma de administrar as categorias de seu interessse através de informações referentes a:
@@ -18,8 +18,9 @@ const Home = () => {
         <p>• Data de registro das atualizações</p>
         <p>Clique no botão abaixo para acessar o Dashboard</p>
         </p>
+        <Link className="gerencg-btn" to="/gerencg/dashboard"> Dashboard </Link>
+
         <hr/>
-            <Link className="gerencg-btn" to="/dashboard"> Dashboard </Link>
             </div>
         </div>
         <Footer/>

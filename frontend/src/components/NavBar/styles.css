@@ -1,20 +1,17 @@
-
 .navbar {
-    background: #0B2626;
+    background-color: #191b41;
     height: 60px;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     font-size: 1.2rem;
     font-family: 'Nunito', sans-serif;
 }
+
 .navbar-logo {
-    width: 230px;
-    justify-self: start;
-    margin-left: 20px;
+    width: 250px;
+    height: 50px;
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
 }
-
-

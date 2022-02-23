@@ -15,20 +15,20 @@ function Footer() {
             <Container maxWidth="lg">
                 <Grid container spacing={5}>
                     <Grid item xs={12} sm={4}>
-                        <Box borderBottom={1}>Ajuda</Box>
+                        <Box borderBottom={1}>Contato</Box>
                         <Box>
                             <Link href="/" color="inherit">
-                                Contato
+                                Github
                             </Link>
                         </Box>
                         <Box>
                             <Link href="/" color="inherit">
-                                Suporte
+                                Email
                             </Link>
                         </Box>
                         <Box>
                             <Link href="/" color="inherit">
-                                Privacidade
+                                LinkedIn
                             </Link>
                         </Box>
                     </Grid>

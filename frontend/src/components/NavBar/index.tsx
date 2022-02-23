@@ -5,7 +5,7 @@ import Logo from 'assets/img/logo-g.png'
 const NavBar = () => {
     return (
                 <nav className='navbar'>
-                    <Link to="/">
+                    <Link to="/gerencg">
                         <img className='navbar-logo' src={Logo} alt='logo' />
                     </Link>
                 </nav>

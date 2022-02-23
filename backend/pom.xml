@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.altercod</groupId>
-	<artifactId>gerencg</artifactId>
+	<artifactId>gerencg-categories</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gerencg</name>
 	<description>Desenvolvimento de projeto para gerenciamento comercial </description>
