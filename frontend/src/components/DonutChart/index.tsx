@@ -8,6 +8,7 @@ import { BASE_URL } from 'utils/requests';
 type ChartData = {
     labels: string[];
     series: number[];
+
 }
 
 const DonutChart = () => {
@@ -25,6 +26,7 @@ const DonutChart = () => {
                 setChartData({ labels: myLabels, series: mySeries });
             });
     }, []);
+
     const options = {
         legend: {
             show: true,
@@ -32,12 +34,13 @@ const DonutChart = () => {
     }
 
     return (
-        <Chart
-            options={{ ...options, labels: chartData.labels }}
+        <Chart 
+            options={{...options, labels: chartData.labels}} 
             series={chartData.series}
             type="donut"
             height="240"
         />
+
     );
 }
 

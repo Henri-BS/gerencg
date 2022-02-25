@@ -1,8 +1,9 @@
 .container {
-    
-    background-color: #fff;
-    color: #00020D; 
+    background-color: #1f252b;
+    color: #fff;
     max-inline-size: 100%;
-    margin-bottom: 40px;
-    margin-top: 20px;
+    margin: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }

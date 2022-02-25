@@ -32,7 +32,7 @@ const changePage = (index: number) => {
         <>
             <Pagination page ={page} onPageChange={changePage} />
             <div className="table-responsive">
-                <table className="table table-striped table-sm">
+                <table className="table table-striped table-sm table-dark">
                     <thead>
                         <tr>
                             <th>Data de Resgistro</th>

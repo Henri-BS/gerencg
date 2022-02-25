@@ -9,6 +9,7 @@ const NavBar = () => {
                         <img className='navbar-logo' src={Logo} alt='logo' />
                     </Link>
                 </nav>
+                
     );
 }
 

@@ -12,6 +12,7 @@ type SeriesData = {
 }
 
 type ChartData = {
+
     labels: {
         categories: string[];
     };
@@ -21,15 +22,18 @@ type ChartData = {
 const BarChart = () => {
 
     const [chartData, setChartData] = useState<ChartData>({
+        
         labels: {
             categories: []
         },
+        
         series: [
             {
                 name: "",
                 data: []
             }
         ]
+        
     });
 
     useEffect(() => {
@@ -55,10 +59,11 @@ const BarChart = () => {
     }, []);
 
     const options = {
+        
         plotOptions: {
             bar: {
                 horizontal: true,
-            }
+            },
         },
     };
 
