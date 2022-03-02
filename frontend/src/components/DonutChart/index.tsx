@@ -26,20 +26,19 @@ const DonutChart = () => {
                 setChartData({ labels: myLabels, series: mySeries });
             });
     }, []);
-
-
-
+    const options = {
+        legend: {
+            show: true,
+        },
+    }
     return (
         <Chart
-            options={{
-                legend: {
-                    show: true,
-                },
-                theme: {
-                    mode: "dark"
-                }
-            }}
-            labels={chartData.labels}
+            options={{ ...options, 
+                labels: chartData.labels,
+            theme: {
+                mode: "dark"
+            } 
+        }}
             series={chartData.series}
             type="donut"
             height="240"

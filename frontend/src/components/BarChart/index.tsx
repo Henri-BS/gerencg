@@ -58,25 +58,25 @@ const BarChart = () => {
             });
     }, []);
 
-
-
-
-    return (
-        <Chart
-            options={{
-
-                theme: {
-                    mode: "dark"
-                },
-
-                plotOptions: {
+const opitions = {
+plotOptions: {
                     bar: {
                         horizontal: true,
                     },
                 },
-            }}
 
-            labels={chartData.labels}
+}
+
+
+    return (
+        <Chart
+            options={{...opitions,
+                xaxis: chartData.labels, 
+                theme: {
+                    mode: "dark"
+                }          
+            }}
+              labels={chartData.labels}
             series={chartData.series}
             type="bar"
             height="240"
