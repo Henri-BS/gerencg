@@ -22,18 +22,18 @@ type ChartData = {
 const BarChart = () => {
 
     const [chartData, setChartData] = useState<ChartData>({
-        
+
         labels: {
             categories: []
         },
-        
+
         series: [
             {
                 name: "",
                 data: []
             }
         ]
-        
+
     });
 
     useEffect(() => {
@@ -58,18 +58,25 @@ const BarChart = () => {
             });
     }, []);
 
-    const options = {
-        
-        plotOptions: {
-            bar: {
-                horizontal: true,
-            },
-        },
-    };
+
+
 
     return (
         <Chart
-            options={{ ...options, xaxis: chartData.labels }}
+            options={{
+
+                theme: {
+                    mode: "dark"
+                },
+
+                plotOptions: {
+                    bar: {
+                        horizontal: true,
+                    },
+                },
+            }}
+
+            labels={chartData.labels}
             series={chartData.series}
             type="bar"
             height="240"

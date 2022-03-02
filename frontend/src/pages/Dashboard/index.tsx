@@ -13,12 +13,12 @@ const Dashboard = () => {
           <h1 className=" py-4">Categorias</h1>
   
           <div className="row px-3">
-            <div className="col-sm-6">
-              <h5 className="text-center text-secondary">Fluxo de Movimento (%)</h5>
+            <div className="container-chart col-sm-6">
+              <h5 className="text-center">Fluxo de Movimento (%)</h5>
               <BarChart />
             </div>
-            <div className="col-sm-6">
-              <h5 className="text-center text-secondary">Principais Categorias</h5>
+            <div className="container-chart col-sm-6">
+              <h5 className="text-center ">Principais Categorias</h5>
               <DonutChart />
             </div>
           </div>
