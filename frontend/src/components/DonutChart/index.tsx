@@ -11,7 +11,7 @@ type ChartData = {
 
 }
 
-const DonutChart = () => {
+function DonutChart(){
 
     const [chartData, setChartData] = useState<ChartData>({ labels: [], series: [] });
 

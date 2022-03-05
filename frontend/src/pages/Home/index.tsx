@@ -19,9 +19,18 @@ const Home = () => {
         <p>• Valor atual de cada categoria</p>
         <p>• Quantidade de itens adicionados e removidos em determinado periodo</p>
         <p>• Data de registro das atualizações</p>
-        <p><b>Clique no botão abaixo para acessar o Dashboard</b></p>
+        <p><b>Acesse informações relacionadas as categorias:</b></p>
         </div>
-        <Link className="gerencg-btn" to="/gerencg/dashboard"> Dashboard </Link>
+
+        <div className="row">
+        <div className="mb-5 col-sm-6 col-lg-6 col-xl-4 mb-4">
+        <Link className="gerencg-btn " to="/gerencg/dashboard"> Dashboard </Link>
+        </div>
+        <div className="col-sm-6 col-lg-6 col-xl-4 mb-4">
+        <Link className="gerencg-btn" to="/gerencg/listing"> Categorias </Link>
+        </div>
+        </div>
+
         <hr className="mb-0 mt-5"/>
             </div>
         </div>
