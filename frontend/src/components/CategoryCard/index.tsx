@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import "./styles.css";
+
 function CategoryCard() {
 
     const category = {
@@ -10,11 +10,10 @@ function CategoryCard() {
     
     return (
     <div> 
-        <Link to="gerencg/category/1">
         <img className="gerencg-card-image" src={category.image} alt={category.title} />
         <div className="gerencg-card-container">  <h3>{category.title}</h3>         
      </div>
-     </Link>
+
     </div>
     );
     
