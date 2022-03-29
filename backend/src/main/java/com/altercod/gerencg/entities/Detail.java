@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/*Classe contendo os dados referentes as informações de cada uma das categorias. 
+/*Classe contendo os dados referentes as informações periodicas de cada uma das categorias. 
  * Long id: identificação das categorias; 
  * int prod_adc: quantidade de produtos que foram adicionados na categoria até determinada data; 
  * int prod_remov: quantidade de produtos que foram removidos da categoria até determinada data; 
@@ -23,8 +23,9 @@ import javax.persistence.Table;
 public class Detail {
 	
 	@Id
-	@GeneratedValue(strategy =  GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private Integer prod_adc;
 	private Integer prod_remov;
 	private Double upd_val;

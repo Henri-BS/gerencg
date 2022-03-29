@@ -20,5 +20,11 @@ public class CategoryService {
 			List<Category> result = repository.findAll();
 			return result.stream().map(x -> new CategoryDTO(x)).collect(Collectors.toList());
 	}
+
+	public CategoryDTO findById(Long id) {
+		Category result = repository.findById(id).get();
+		CategoryDTO dto = new CategoryDTO(result);
+		return dto;	
+		}
 	
 }

@@ -1,13 +1,13 @@
 import Dashboard from "pages/Dashboard";
 import Home from "pages/Home";
 import Listing from "pages/Listing";
-import { BrowserRouter, Route, Switch } from "react-router-dom"
+import { BrowserRouter, Route, Switch  as NavRoutes } from "react-router-dom"
 
 const Routes = () => {
     return (
         <BrowserRouter>
-            <Switch>
-                <Route path="/gerencg" exact>
+            <NavRoutes>
+                <Route path="/gerencg">
                     <Home />
                 </Route>
                 <Route path="/gerencg/dashboard">
@@ -17,7 +17,7 @@ const Routes = () => {
                     <Route path=":categoryId" />
                     {<Listing />}
                 </Route>
-            </Switch>
+            </NavRoutes>
         </BrowserRouter>
     );
 }

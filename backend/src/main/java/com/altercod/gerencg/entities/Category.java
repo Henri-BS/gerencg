@@ -18,11 +18,12 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String name;
 	
 	@OneToMany(mappedBy = "category")
 	private List<Detail> details = new ArrayList<>();
-	
+
 	public Category() {
 	}
 
@@ -47,6 +48,7 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 
 	public List<Detail> getDetails() {
 		return details;

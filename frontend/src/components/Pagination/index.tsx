@@ -1,5 +1,4 @@
 import { DetailPage } from "types/detail";
-import "./styles.css"
 type Props = {
     page: DetailPage;
     onPageChange: Function;

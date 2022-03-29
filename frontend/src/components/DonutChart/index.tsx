@@ -43,7 +43,6 @@ function DonutChart(){
             type="donut"
             height="240"
         />
-
     );
 }
 
