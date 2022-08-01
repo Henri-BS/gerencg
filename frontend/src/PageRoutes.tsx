@@ -1,25 +1,22 @@
+import NavBar from "components/NavBar";
 import Dashboard from "pages/Dashboard";
 import Home from "pages/Home";
 import Listing from "pages/Listing";
-import { BrowserRouter, Route, Switch  as NavRoutes } from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
-const Routes = () => {
+const PageRoutes = () => {
     return (
         <BrowserRouter>
-            <NavRoutes>
-                <Route path="/gerencg">
-                    <Home />
-                </Route>
-                <Route path="/gerencg/dashboard">
-                    <Dashboard />
-                </Route>
-                <Route path="/gerencg/listing">
+            <NavBar/>
+                <Routes>
+                <Route path="/gerencg" element={<Home />}/>
+                <Route path="/gerencg/dashboard"element={ <Dashboard />}/>
+                <Route path="/gerencg/listing"element={<Listing />}>
                     <Route path=":categoryId" />
-                    {<Listing />}
                 </Route>
-            </NavRoutes>
+                </Routes>
         </BrowserRouter>
     );
 }
 
-export default Routes;
+export default PageRoutes;

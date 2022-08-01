@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.altercod.gerencg.dto.CategoryFlowDTO;
 import com.altercod.gerencg.dto.CategoryValueDTO;
 import com.altercod.gerencg.dto.DetailDTO;
-import com.altercod.gerencg.service.DetailService;
+import com.altercod.gerencg.service.CategoryStatsService;
 
 @RestController
 @RequestMapping(value = "/details")
 public class DetailController {
 	
 	@Autowired
-	private DetailService service;
+	private CategoryStatsService service;
 	
 	@GetMapping
 	public ResponseEntity<Page<DetailDTO>> findAll(Pageable pageable){

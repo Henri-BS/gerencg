@@ -5,12 +5,14 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.altercod.gerencg.dto.CategoryDTO;
 import com.altercod.gerencg.entities.Category;
 import com.altercod.gerencg.repositories.CategoryRepository;
 
 @Service
+@Transactional
 public class CategoryService {
 	
 	@Autowired
@@ -26,5 +28,15 @@ public class CategoryService {
 		CategoryDTO dto = new CategoryDTO(result);
 		return dto;	
 		}
+	
+	public CategoryDTO addCategory(CategoryDTO dto) {
+		
+		Category add = new Category();
+		add.setId(dto.getId());
+		add.setName(dto.getName());
+		
+		Category category = repository.saveAndFlush(add);
+		return new CategoryDTO(category);
+	}
 	
 }

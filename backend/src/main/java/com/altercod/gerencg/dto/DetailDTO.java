@@ -2,35 +2,35 @@ package com.altercod.gerencg.dto;
 
 import java.time.LocalDate;
 
-import com.altercod.gerencg.entities.Detail;
+import com.altercod.gerencg.entities.CategoryStats;
 
 public class DetailDTO {
 	private Long id;
-	private Integer prod_adc;
-	private Integer prod_remov;
-	private Double upd_val;
-	private LocalDate date;
+	private Integer addedProducts;
+	private Integer removedProducts;
+	private Double categoryValue;
+	private LocalDate registrationDate;
 	
 	private CategoryDTO category;
 	
 	public DetailDTO() {}
 
-	public DetailDTO(Long id, Integer prod_adc, Integer prod_remov, Double upd_val, LocalDate date,
+	public DetailDTO(Long id, Integer addedProducts, Integer removedProducts, Double categoryValue, LocalDate registrationDate,
 			CategoryDTO category) {
 		this.id = id;
-		this.prod_adc = prod_adc;
-		this.prod_remov = prod_remov;
-		this.upd_val = upd_val;
-		this.date = date;
+		this.addedProducts = addedProducts;
+		this.removedProducts = removedProducts;
+		this.categoryValue = categoryValue;
+		this.registrationDate = registrationDate;
 		this.category = category;
 	}
 	
-	public DetailDTO(Detail entity) {
+	public DetailDTO(CategoryStats entity) {
 		id = entity.getId();
-		prod_adc = entity.getProd_adc();
-		prod_remov = entity.getProd_remov();
-		upd_val = entity.getUpd_val();
-		date = entity.getDate();
+		addedProducts = entity.getAddedProducts();
+		removedProducts = entity.getRemovedProducts();
+		categoryValue = entity.getCategoryValue();
+		registrationDate = entity.getRegistrationDate();
 		category = new CategoryDTO(entity.getCategory());
 
 	}
@@ -44,35 +44,35 @@ public class DetailDTO {
 	}
 
 	public Integer getProd_adc() {
-		return prod_adc;
+		return addedProducts;
 	}
 
 	public void setProd_adc(Integer prod_adc) {
-		this.prod_adc = prod_adc;
+		this.addedProducts = prod_adc;
 	}
 
 	public Integer getProd_remov() {
-		return prod_remov;
+		return removedProducts;
 	}
 
 	public void setProd_remov(Integer prod_remov) {
-		this.prod_remov = prod_remov;
+		this.removedProducts = prod_remov;
 	}
 
 	public Double getUpd_val() {
-		return upd_val;
+		return categoryValue;
 	}
 
 	public void setUpd_val(Double upd_val) {
-		this.upd_val = upd_val;
+		this.categoryValue = upd_val;
 	}
 
 	public LocalDate getDate() {
-		return date;
+		return registrationDate;
 	}
 
 	public void setDate(LocalDate date) {
-		this.date = date;
+		this.registrationDate = date;
 	}
 
 	public CategoryDTO getCategory() {

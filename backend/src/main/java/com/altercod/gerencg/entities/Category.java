@@ -3,6 +3,7 @@ package com.altercod.gerencg.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,25 +11,24 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-//Classe referente as categorias do sistema
 @Entity
 @Table(name = "tb_category")
 public class Category {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "category_id")
 	private Long id;
 	
 	private String name;
 	
 	@OneToMany(mappedBy = "category")
-	private List<Detail> details = new ArrayList<>();
+	private List<CategoryStats> categoryStats = new ArrayList<>();
 
 	public Category() {
 	}
 
 	public Category(Long id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}
@@ -50,11 +50,11 @@ public class Category {
 	}
 	
 
-	public List<Detail> getDetails() {
-		return details;
+	public List<CategoryStats> getDetails() {
+		return categoryStats;
 	}
 
-	public void setDetails(List<Detail> details) {
-		this.details = details;
+	public void setDetails(List<CategoryStats> categoryStats) {
+		this.categoryStats = categoryStats;
 	}
 }

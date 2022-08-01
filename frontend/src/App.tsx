@@ -1,9 +1,9 @@
-import Routes from "Routes";
+import PageRoutes from "PageRoutes";
 
 
 function App() {
   return (
-   <Routes />
+   <PageRoutes />
   );
 }
 
