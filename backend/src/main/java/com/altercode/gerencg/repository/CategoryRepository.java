@@ -1,8 +1,8 @@
-package com.altercod.gerencg.repositories;
+package com.altercode.gerencg.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.altercod.gerencg.entities.Category;
+import com.altercode.gerencg.entity.Category;
 
 public interface CategoryRepository extends JpaRepository<Category, Long>{
 

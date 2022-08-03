@@ -1,4 +1,4 @@
-package com.altercod.gerencg.service;
+package com.altercode.gerencg.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.altercod.gerencg.dto.CategoryDTO;
-import com.altercod.gerencg.entities.Category;
-import com.altercod.gerencg.repositories.CategoryRepository;
+import com.altercode.gerencg.dto.CategoryDTO;
+import com.altercode.gerencg.entity.Category;
+import com.altercode.gerencg.repository.CategoryRepository;
 
 @Service
 @Transactional

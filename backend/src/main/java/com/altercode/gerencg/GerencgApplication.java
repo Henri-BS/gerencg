@@ -1,4 +1,4 @@
-package com.altercod.gerencg;
+package com.altercode.gerencg;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

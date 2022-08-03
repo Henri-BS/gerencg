@@ -1,4 +1,4 @@
-package com.altercod.gerencg.service;
+package com.altercode.gerencg.service;
 
 import java.util.List;
 
@@ -8,27 +8,27 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.altercod.gerencg.dto.CategoryFlowDTO;
-import com.altercod.gerencg.dto.CategoryValueDTO;
-import com.altercod.gerencg.dto.DetailDTO;
-import com.altercod.gerencg.entities.CategoryStats;
-import com.altercod.gerencg.repositories.CategoryRepository;
-import com.altercod.gerencg.repositories.DetailRepository;
+import com.altercode.gerencg.dto.CategoryFlowDTO;
+import com.altercode.gerencg.dto.CategoryStatsDTO;
+import com.altercode.gerencg.dto.CategoryValueDTO;
+import com.altercode.gerencg.entity.CategoryStats;
+import com.altercode.gerencg.repository.CategoryRepository;
+import com.altercode.gerencg.repository.CategoryStatsRepository;
 
 @Service
 public class CategoryStatsService {
 	
 	@Autowired
-	private DetailRepository repository;
+	private CategoryStatsRepository repository;
 	
 	@Autowired
 	private CategoryRepository ctrepository;
 	
 	@Transactional(readOnly = true)
-	public Page<DetailDTO> findAll(Pageable pageable){
+	public Page<CategoryStatsDTO> findAll(Pageable pageable){
 		ctrepository.findAll();
 		Page<CategoryStats> result = repository.findAll(pageable);
-		return result.map(x -> new DetailDTO(x));
+		return result.map(x -> new CategoryStatsDTO(x));
 	}
 	
 	@Transactional(readOnly = true)

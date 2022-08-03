@@ -1,4 +1,4 @@
-package com.altercod.gerencg.entities;
+package com.altercode.gerencg.entity;
 
 import java.util.ArrayList;
 import java.util.List;

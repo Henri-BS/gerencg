@@ -1,8 +1,8 @@
-package com.altercod.gerencg.dto;
+package com.altercode.gerencg.dto;
 
 import java.io.Serializable;
 
-import com.altercod.gerencg.entities.Category;
+import com.altercode.gerencg.entity.Category;
 
 public class CategoryFlowDTO implements Serializable{
 	private static final long serialVersionUID = 1L;

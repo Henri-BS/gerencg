@@ -1,4 +1,4 @@
-package com.altercod.gerencg.controllers;
+package com.altercode.gerencg.controller;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.altercod.gerencg.dto.CategoryDTO;
-import com.altercod.gerencg.service.CategoryService;
+import com.altercode.gerencg.dto.CategoryDTO;
+import com.altercode.gerencg.service.CategoryService;
 
 @RestController
 @RequestMapping(value = "/categories")

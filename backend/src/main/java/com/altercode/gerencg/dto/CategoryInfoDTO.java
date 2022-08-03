@@ -1,4 +1,4 @@
-package com.altercod.gerencg.dto;
+package com.altercode.gerencg.dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;

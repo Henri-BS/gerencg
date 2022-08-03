@@ -1,4 +1,4 @@
-package com.altercod.gerencg.controllers;
+package com.altercode.gerencg.controller;
 
 import java.util.List;
 
@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.altercod.gerencg.dto.CategoryFlowDTO;
-import com.altercod.gerencg.dto.CategoryValueDTO;
-import com.altercod.gerencg.dto.DetailDTO;
-import com.altercod.gerencg.service.CategoryStatsService;
+import com.altercode.gerencg.dto.CategoryFlowDTO;
+import com.altercode.gerencg.dto.CategoryStatsDTO;
+import com.altercode.gerencg.dto.CategoryValueDTO;
+import com.altercode.gerencg.service.CategoryStatsService;
 
 @RestController
 @RequestMapping(value = "/details")
-public class DetailController {
+public class CategoryStatsController {
 	
 	@Autowired
 	private CategoryStatsService service;
 	
 	@GetMapping
-	public ResponseEntity<Page<DetailDTO>> findAll(Pageable pageable){
-		Page<DetailDTO> list = service.findAll(pageable);
+	public ResponseEntity<Page<CategoryStatsDTO>> findAll(Pageable pageable){
+		Page<CategoryStatsDTO> list = service.findAll(pageable);
 		return ResponseEntity.ok(list);
 	}
 	

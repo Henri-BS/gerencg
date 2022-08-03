@@ -1,10 +1,10 @@
-package com.altercod.gerencg.dto;
+package com.altercode.gerencg.dto;
 
 import java.time.LocalDate;
 
-import com.altercod.gerencg.entities.CategoryStats;
+import com.altercode.gerencg.entity.CategoryStats;
 
-public class DetailDTO {
+public class CategoryStatsDTO {
 	private Long id;
 	private Integer addedProducts;
 	private Integer removedProducts;
@@ -13,9 +13,9 @@ public class DetailDTO {
 	
 	private CategoryDTO category;
 	
-	public DetailDTO() {}
+	public CategoryStatsDTO() {}
 
-	public DetailDTO(Long id, Integer addedProducts, Integer removedProducts, Double categoryValue, LocalDate registrationDate,
+	public CategoryStatsDTO(Long id, Integer addedProducts, Integer removedProducts, Double categoryValue, LocalDate registrationDate,
 			CategoryDTO category) {
 		this.id = id;
 		this.addedProducts = addedProducts;
@@ -25,7 +25,7 @@ public class DetailDTO {
 		this.category = category;
 	}
 	
-	public DetailDTO(CategoryStats entity) {
+	public CategoryStatsDTO(CategoryStats entity) {
 		id = entity.getId();
 		addedProducts = entity.getAddedProducts();
 		removedProducts = entity.getRemovedProducts();

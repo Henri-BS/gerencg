@@ -1,7 +1,8 @@
-package com.altercod.gerencg.entities;
+package com.altercode.gerencg.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Table(name = "tb_category_info")
@@ -19,8 +22,13 @@ public class CategoryInfo {
 	private Long id;
 		
 	private String image;
-	private Integer total_products;
-	private LocalDate last_change;
+	
+	@Column(name = "total_products")
+	private Integer totalProducts;
+
+	@LastModifiedDate
+	@Column(name = "last_modified_date")
+	private LocalDateTime lastModifiedDate;
 	
 	@ManyToOne
 	@JoinColumn(name = "category_id")
@@ -28,11 +36,11 @@ public class CategoryInfo {
 	
 	public CategoryInfo() {}
 	
-	public CategoryInfo(Long id, String image, Integer total_products, LocalDate last_change, Category category) {
+	public CategoryInfo(Long id, String image, Integer totalProducts, LocalDateTime lastModifiedDate, Category category) {
 		this.id = id;
 		this.image = image;
-		this.total_products = total_products;
-		this.last_change = last_change;
+		this.totalProducts = totalProducts;
+		this.lastModifiedDate = lastModifiedDate;
 		this.category = category;
 	}
 
@@ -52,20 +60,20 @@ public class CategoryInfo {
 		this.image = image;
 	}
 
-	public Integer getTotal_products() {
-		return total_products;
+	public Integer getTotalProducts() {
+		return totalProducts;
 	}
 
-	public void setTotal_products(Integer total_products) {
-		this.total_products = total_products;
+	public void setTotalProducts(Integer totalProducts) {
+		this.totalProducts = totalProducts;
 	}
 
-	public LocalDate getLast_change() {
-		return last_change;
+	public LocalDateTime getCreatedDate() {
+		return lastModifiedDate;
 	}
 
-	public void setLast_change(LocalDate last_change) {
-		this.last_change = last_change;
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.lastModifiedDate = createdDate;
 	}
 
 	public Category getCategory() {
@@ -75,4 +83,6 @@ public class CategoryInfo {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	
 }
