@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.altercode.gerencg.dto.CategoryDTO;
 import com.altercode.gerencg.entity.Category;
+import com.altercode.gerencg.entity.User;
 import com.altercode.gerencg.repository.CategoryRepository;
+import com.altercode.gerencg.repository.UserRepository;
 
 @Service
 @Transactional
@@ -32,11 +34,25 @@ public class CategoryService {
 	public CategoryDTO addCategory(CategoryDTO dto) {
 		
 		Category add = new Category();
-		add.setId(dto.getId());
 		add.setName(dto.getName());
 		
-		Category category = repository.saveAndFlush(add);
-		return new CategoryDTO(category);
+		Category save = repository.saveAndFlush(add);
+		return new CategoryDTO(save);
+	}
+	
+	public CategoryDTO updateCategory(CategoryDTO dto) {
+		
+		Category edit = repository.findById(dto.getId()).get();
+		
+		edit.setId(dto.getId());
+		edit.setName(dto.getName());
+		
+		Category update = repository.save(edit);
+		return new CategoryDTO(update);
+	}
+	
+	public void deleteCategory(Long id) {
+		this.repository.deleteById(id);
 	}
 	
 }
