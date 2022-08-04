@@ -2,15 +2,15 @@ package com.altercode.gerencg.entity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -48,13 +48,13 @@ public class Category {
 	private List<CategoryStats> categoryStats = new ArrayList<>();
 
 	@OneToMany(mappedBy = "category")
-	private List<Product> product = new ArrayList<>();
+	private Set<Register> products = new HashSet<>();
 	
 	public Category() {
 	}
 
 	public Category(Long id, String name, String image, Integer totalProducts, Integer expense, Integer income,
-			LocalDateTime lastModifiedDate, List<CategoryStats> categoryStats, List<Product> product) {
+			LocalDateTime lastModifiedDate, List<CategoryStats> categoryStats, Set<Register> product) {
 		this.id = id;
 		this.name = name;
 		this.image = image;
@@ -63,7 +63,7 @@ public class Category {
 		this.income = income;
 		this.lastModifiedDate = lastModifiedDate;
 		this.categoryStats = categoryStats;
-		this.product = product;
+		this.products = product;
 	}
 
 	public Long getId() {
@@ -126,8 +126,8 @@ public class Category {
 		return categoryStats;
 	}
 
-	public List<Product> getProduct() {
-		return product;
+	public Set<Register> getProduct() {
+		return products;
 	}
 	
 }
