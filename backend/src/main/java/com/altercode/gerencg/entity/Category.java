@@ -11,7 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.LastModifiedDate;
@@ -25,7 +27,7 @@ public class Category {
 	@Column(name = "category_id")
 	private Long id;
 	
-	@Column(name = "category_name")
+	@Column(name = "category_name", unique = true)
 	private String name;
 	
 	@Column(name = "category_image")
@@ -34,11 +36,11 @@ public class Category {
 	@Column(name = "total_products")
 	private Integer totalProducts;
 	
-	@Column(name = "category_expense")
-	private Integer expense;
+	@Column(name = "expense")
+	private Double expense;
 	
-	@Column(name = "category_income")
-	private Integer income;
+	@Column(name = "income")
+	private Double income;
 
 	@LastModifiedDate
 	@Column(name = "last_modified_date")
@@ -50,10 +52,13 @@ public class Category {
 	@OneToMany(mappedBy = "category")
 	private Set<Register> products = new HashSet<>();
 	
+	@OneToMany(mappedBy = "category")
+	private Product product;
+	
 	public Category() {
 	}
 
-	public Category(Long id, String name, String image, Integer totalProducts, Integer expense, Integer income,
+	public Category(Long id, String name, String image, Integer totalProducts, Double expense, Double income,
 			LocalDateTime lastModifiedDate, List<CategoryStats> categoryStats, Set<Register> product) {
 		this.id = id;
 		this.name = name;
@@ -98,19 +103,19 @@ public class Category {
 		this.totalProducts = totalProducts;
 	}
 
-	public Integer getExpense() {
+	public Double getExpense() {
 		return expense;
 	}
 
-	public void setExpense(Integer expense) {
+	public void setExpense(Double expense) {
 		this.expense = expense;
 	}
 
-	public Integer getIncome() {
+	public Double getIncome() {
 		return income;
 	}
 
-	public void setIncome(Integer income) {
+	public void setIncome(Double income) {
 		this.income = income;
 	}
 

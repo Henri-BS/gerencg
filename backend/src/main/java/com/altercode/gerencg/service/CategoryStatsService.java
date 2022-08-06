@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.altercode.gerencg.dto.CategoryFlowDTO;
 import com.altercode.gerencg.dto.CategoryStatsDTO;
 import com.altercode.gerencg.dto.CategoryValueDTO;
+import com.altercode.gerencg.dto.SumCategoryValuesDTO;
 import com.altercode.gerencg.entity.CategoryStats;
 import com.altercode.gerencg.repository.CategoryRepository;
 import com.altercode.gerencg.repository.CategoryStatsRepository;
@@ -32,8 +33,8 @@ public class CategoryStatsService {
 	}
 	
 	@Transactional(readOnly = true)
-	public List<CategoryValueDTO> valueGroupedByCategory(){
-		return repository.valueGroupedByCategory();
+	public List<SumCategoryValuesDTO> valueGroupedByCategory(){
+		return repository.valuesGroupedByCategory();
 	}
 	
 	@Transactional(readOnly = true)

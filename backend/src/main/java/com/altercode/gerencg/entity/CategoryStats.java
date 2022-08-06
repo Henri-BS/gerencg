@@ -20,10 +20,10 @@ public class CategoryStats {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "added_products")
+	@Column(name = "added_item")
 	private Integer addedProducts;
 	
-	@Column(name = "removed_products")
+	@Column(name = "removed_item")
 	private Integer removedProducts;
 	
 	@Column(name = "category_value")

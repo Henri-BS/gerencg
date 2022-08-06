@@ -9,15 +9,17 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.altercode.gerencg.dto.CategoryFlowDTO;
 import com.altercode.gerencg.dto.CategoryValueDTO;
+import com.altercode.gerencg.dto.SumCategoryValuesDTO;
 import com.altercode.gerencg.entity.CategoryStats;
 
 public interface CategoryStatsRepository extends JpaRepository<CategoryStats, Long>{
-
-	@Query("SELECT new com.altercode.gerencg.dto.CategoryValueDTO(obj.category, SUM(obj.categoryValue)) "
-			+ "FROM CategoryStats AS obj GROUP BY obj.category")
-	List<CategoryValueDTO> valueGroupedByCategory();
 	
 	@Query("SELECT new com.altercode.gerencg.dto.CategoryFlowDTO(obj.category, SUM(obj.addedProducts), SUM(obj.removedProducts)) "
 			+ "FROM CategoryStats AS obj GROUP BY obj.category")
 	List<CategoryFlowDTO> flowGroupedByCategory();
+	
+	@Query("SELECT new com.altercode.gerencg.dto.SumCategoryValuesDTO(obj.category, SUM(obj.expense), SUM(obj.income)) "
+			+ "FROM CategoryStats AS obj GROUP BY obj.category")
+	List<SumCategoryValuesDTO> valuesGroupedByCategory();
+	
 }

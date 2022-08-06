@@ -12,13 +12,14 @@ public class CategoryProfileDTO implements Serializable{
 	private String name;
 	private String image;
 	private Integer totalProducts;
-	private Integer expense;
-	private Integer income;
+	private Double expense;
+	private Double income;
 	private LocalDateTime lastModifiedDate;
 	
 	public CategoryProfileDTO() {}
 	
-	public CategoryProfileDTO(Long id, String name, String image, Integer totalProducts, Integer expense, Integer income,
+	public CategoryProfileDTO(Long id, String name, String image, 
+			Integer totalProducts, Double expense, Double income,
 			LocalDateTime lastModifiedDate) {
 		this.id = id;
 		this.name = name;
@@ -71,19 +72,19 @@ public class CategoryProfileDTO implements Serializable{
 		this.totalProducts = totalProducts;
 	}
 
-	public Integer getExpense() {
+	public Double getExpense() {
 		return expense;
 	}
 
-	public void setExpense(Integer expense) {
+	public void setExpense(Double expense) {
 		this.expense = expense;
 	}
 
-	public Integer getIncome() {
+	public Double getIncome() {
 		return income;
 	}
 
-	public void setIncome(Integer income) {
+	public void setIncome(Double income) {
 		this.income = income;
 	}
 
