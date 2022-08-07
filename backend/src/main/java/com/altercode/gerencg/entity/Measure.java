@@ -5,9 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -20,18 +17,21 @@ public class Measure {
 	@Column(name = "measure_id")
 	private Long id;
 	
-	private String name;
+	@Column(name = "measure_description")
+	private String description;
+	
 	private Integer value;
 	private String abbreviation;
 	
 	@OneToOne(mappedBy = "measure")
 	private Product product;
-
 	
+	public Measure() {
+	}
 	
-	public Measure(Long id, String name, Integer value, String abbreviation, Product product) {
+	public Measure(Long id, String description, Integer value, String abbreviation, Product product) {
 		this.id = id;
-		this.name = name;
+		this.description = description;
 		this.value = value;
 		this.abbreviation = abbreviation;
 		this.product = product;
@@ -45,12 +45,12 @@ public class Measure {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Integer getValue() {
