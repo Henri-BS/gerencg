@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_")
+@Table(name = "tb_user")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,9 +27,6 @@ public class User {
 
 	@Column(name = "password")
 	private String password;
-	
-	@OneToMany(mappedBy = "user")
-	private List<Category> categories = new ArrayList<>();
 
 	public User() {
 	}

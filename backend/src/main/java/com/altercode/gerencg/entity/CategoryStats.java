@@ -20,15 +20,19 @@ public class CategoryStats {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "added_item")
+	@Column(name = "added_products")
 	private Integer addedProducts;
 	
-	@Column(name = "removed_item")
+	@Column(name = "removed_products")
 	private Integer removedProducts;
 	
 	@Column(name = "category_value")
 	private Double categoryValue;
 	
+	private Double expense;
+
+	private Double income;
+
 	@Column(name = "registration_date")
 	private LocalDate registrationDate;
 	
@@ -38,10 +42,14 @@ public class CategoryStats {
 	
 	public CategoryStats(){}
 	
-	public CategoryStats(Long id, Integer addedProducts, Integer removedProducts, Double categoryValue, LocalDate registrationDate, Category category) {
+	public CategoryStats(Long id, Integer addedProducts, Integer removedProducts, 
+			Double categoryValue, LocalDate registrationDate, 
+			Double expense, Double income,  Category category) {
 		this.id = id;
 		this.addedProducts = addedProducts;
 		this.removedProducts = removedProducts;
+		this.expense = expense;
+		this.income = income;
 		this.categoryValue = categoryValue;
 		this.registrationDate = registrationDate;
 	}
@@ -78,6 +86,22 @@ public class CategoryStats {
 		this.categoryValue = categoryValue;
 	}
 	
+	public Double getExpense() {
+		return expense;
+	}
+
+	public void setExpense(Double expense) {
+		this.expense = expense;
+	}
+
+	public Double getIncome() {
+		return income;
+	}
+
+	public void setIncome(Double income) {
+		this.income = income;
+	}
+
 	public LocalDate getRegistrationDate() {
 		return registrationDate;
 	}

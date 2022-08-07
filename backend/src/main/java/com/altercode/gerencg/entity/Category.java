@@ -11,9 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.LastModifiedDate;
@@ -36,12 +34,6 @@ public class Category {
 	@Column(name = "total_products")
 	private Integer totalProducts;
 	
-	@Column(name = "expense")
-	private Double expense;
-	
-	@Column(name = "income")
-	private Double income;
-
 	@LastModifiedDate
 	@Column(name = "last_modified_date")
 	private LocalDateTime lastModifiedDate;
@@ -50,25 +42,23 @@ public class Category {
 	private List<CategoryStats> categoryStats = new ArrayList<>();
 
 	@OneToMany(mappedBy = "category")
-	private Set<Register> products = new HashSet<>();
+	private Set<Register> productRegister = new HashSet<>();
 	
 	@OneToMany(mappedBy = "category")
-	private Product product;
+	private List<Product> products = new ArrayList<>();
 	
 	public Category() {
 	}
 
-	public Category(Long id, String name, String image, Integer totalProducts, Double expense, Double income,
-			LocalDateTime lastModifiedDate, List<CategoryStats> categoryStats, Set<Register> product) {
+	public Category(Long id, String name, String image, Integer totalProducts,
+			LocalDateTime lastModifiedDate, List<CategoryStats> categoryStats, Set<Register> productRegister) {
 		this.id = id;
 		this.name = name;
 		this.image = image;
 		this.totalProducts = totalProducts;
-		this.expense = expense;
-		this.income = income;
 		this.lastModifiedDate = lastModifiedDate;
 		this.categoryStats = categoryStats;
-		this.products = product;
+		this.productRegister = productRegister;
 	}
 
 	public Long getId() {
@@ -103,22 +93,6 @@ public class Category {
 		this.totalProducts = totalProducts;
 	}
 
-	public Double getExpense() {
-		return expense;
-	}
-
-	public void setExpense(Double expense) {
-		this.expense = expense;
-	}
-
-	public Double getIncome() {
-		return income;
-	}
-
-	public void setIncome(Double income) {
-		this.income = income;
-	}
-
 	public LocalDateTime getLastModifiedDate() {
 		return lastModifiedDate;
 	}
@@ -131,8 +105,8 @@ public class Category {
 		return categoryStats;
 	}
 
-	public Set<Register> getProduct() {
-		return products;
+	public Set<Register> getProductRegister() {
+		return productRegister;
 	}
 	
 }

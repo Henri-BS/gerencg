@@ -1,7 +1,12 @@
 package com.altercode.gerencg.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +14,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "tb_product")
@@ -36,12 +43,17 @@ public class Product {
 	@Column(name = "product_validate")
 	private LocalDate validate;
 	
-	@OneToOne(mappedBy = "product")
+	@OneToOne
+	@JoinColumn(name = "measure_id")
 	private Measure measure;
 	
 	@ManyToOne
-	@JoinColumn(name = "categoty_id")
+	@JoinColumn(name = "category_id")
 	private Category category;
+	
+	@OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
+    private Set<Register> register = new HashSet<>();
+	
 	
 	public Product() {
 	}

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.altercode.gerencg.dto.CategoryFlowDTO;
 import com.altercode.gerencg.dto.CategoryStatsDTO;
-import com.altercode.gerencg.dto.CategoryValueDTO;
 import com.altercode.gerencg.dto.SumCategoryValuesDTO;
 import com.altercode.gerencg.service.CategoryStatsService;
 

@@ -1,5 +1,7 @@
 package com.altercode.gerencg.dto;
 
+import com.altercode.gerencg.entity.Category;
+
 public class SumCategoryValuesDTO {
 	
 	private String name;
@@ -11,8 +13,8 @@ public SumCategoryValuesDTO() {
 }
 
 
-public SumCategoryValuesDTO(String name, Double expense, Double income) {
-	this.name = name;
+public SumCategoryValuesDTO(Category category, Double expense, Double income) {
+	this.name = category.getName();
 	this.expense = expense;
 	this.income = income;
 }

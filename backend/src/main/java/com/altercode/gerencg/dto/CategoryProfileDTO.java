@@ -12,8 +12,6 @@ public class CategoryProfileDTO implements Serializable{
 	private String name;
 	private String image;
 	private Integer totalProducts;
-	private Double expense;
-	private Double income;
 	private LocalDateTime lastModifiedDate;
 	
 	public CategoryProfileDTO() {}
@@ -25,8 +23,6 @@ public class CategoryProfileDTO implements Serializable{
 		this.name = name;
 		this.image = image;
 		this.totalProducts = totalProducts;
-		this.expense = expense;
-		this.income = income;
 		this.lastModifiedDate = lastModifiedDate;
 	}
 
@@ -35,8 +31,6 @@ public class CategoryProfileDTO implements Serializable{
 		name = entity.getName();
 		image = entity.getImage();
 		totalProducts = entity.getTotalProducts();
-		expense = entity.getExpense();
-		income = entity.getIncome();
 		lastModifiedDate = entity.getLastModifiedDate();
 	}
 
@@ -70,22 +64,6 @@ public class CategoryProfileDTO implements Serializable{
 
 	public void setTotalProducts(Integer totalProducts) {
 		this.totalProducts = totalProducts;
-	}
-
-	public Double getExpense() {
-		return expense;
-	}
-
-	public void setExpense(Double expense) {
-		this.expense = expense;
-	}
-
-	public Double getIncome() {
-		return income;
-	}
-
-	public void setIncome(Double income) {
-		this.income = income;
 	}
 
 	public LocalDateTime getLastModifiedDate() {

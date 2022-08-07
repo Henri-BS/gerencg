@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.altercode.gerencg.dto.CategoryFlowDTO;
-import com.altercode.gerencg.dto.CategoryValueDTO;
 import com.altercode.gerencg.dto.SumCategoryValuesDTO;
 import com.altercode.gerencg.entity.CategoryStats;
 

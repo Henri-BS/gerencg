@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.altercode.gerencg.dto.CategoryFlowDTO;
 import com.altercode.gerencg.dto.CategoryStatsDTO;
-import com.altercode.gerencg.dto.CategoryValueDTO;
 import com.altercode.gerencg.dto.SumCategoryValuesDTO;
 import com.altercode.gerencg.entity.CategoryStats;
 import com.altercode.gerencg.repository.CategoryRepository;

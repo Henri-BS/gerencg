@@ -76,7 +76,7 @@ public class CategoryService {
 		register = registerRepository.saveAndFlush(register);
 		
 		int result = 1;
-		for(Register r : category.getProduct()) {
+		for(Register r : category.getProductRegister()) {
 			result = result + r.getValue();
 		}
 		
