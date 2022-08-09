@@ -31,3 +31,5 @@ INSERT INTO tb_category_stats (category_id, added_products, removed_products, ex
 INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES (5, 54, 32, 5231.00, 6203.80, '2021-11-21');
 INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES (1, 745, 535, 8323.00, 10329.00, '2021-11-20'); 
 INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES (9, 243, 324, 3132.00, 3912.00, '2021-11-20');
+
+Insert Into tb_measure(measure_description, value, abbreviation) VALUES ('1 quilograma', 1, 'kg')

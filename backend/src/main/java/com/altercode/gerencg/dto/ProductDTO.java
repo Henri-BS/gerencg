@@ -14,6 +14,7 @@ public class ProductDTO {
 		private LocalDate validate;
 		
 		private Long measure;
+		private String measureDescription;
 		private Long category;
 		
 		
@@ -40,6 +41,7 @@ public class ProductDTO {
 			price = entity.getPrice();
 			quantity = entity.getQuantity();
 			validate = entity.getValidate();
+			measureDescription = entity.getMeasure().getDescription();
 			measure = entity.getMeasure().getId();
 			category = entity.getCategory().getId();
 		}
@@ -122,6 +124,16 @@ public class ProductDTO {
 
 		public void setCategory(Long category) {
 			this.category = category;
+		}
+
+
+		public String getMeasureDescription() {
+			return measureDescription;
+		}
+
+
+		public void setMeasureDescription(String measureDescription) {
+			this.measureDescription = measureDescription;
 		}
 
 

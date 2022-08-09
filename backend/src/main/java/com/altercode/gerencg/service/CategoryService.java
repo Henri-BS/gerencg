@@ -41,24 +41,28 @@ public class CategoryService {
 		return dto;	
 		}
 	
-	public CategoryDTO addCategory(CategoryDTO dto) {
+	public CategoryProfileDTO addCategory(CategoryProfileDTO dto) {
 		
 		Category add = new Category();
 		add.setName(dto.getName());
+		add.setImage(dto.getImage());
+		add.setTotalProducts(dto.getTotalProducts());
 		
 		Category save = categoryRepository.saveAndFlush(add);
-		return new CategoryDTO(save);
+		return new CategoryProfileDTO(save);
 	}
 	
-	public CategoryDTO updateCategory(CategoryDTO dto) {
+	public CategoryProfileDTO updateCategory(CategoryProfileDTO dto) {
 		
 		Category edit = categoryRepository.findById(dto.getId()).get();
 		
 		edit.setId(dto.getId());
 		edit.setName(dto.getName());
+		edit.setImage(dto.getImage());
+		edit.setTotalProducts(dto.getTotalProducts());
 		
 		Category update = categoryRepository.save(edit);
-		return new CategoryDTO(update);
+		return new CategoryProfileDTO(update);
 	}
 	
 	public void deleteCategory(Long id) {

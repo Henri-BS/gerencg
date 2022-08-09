@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.altercode.gerencg.dto.CategoryDTO;
+import com.altercode.gerencg.dto.CategoryProfileDTO;
 import com.altercode.gerencg.service.CategoryService;
 
 @RestController
@@ -25,26 +26,26 @@ public class CategoryController {
     @Autowired
     private CategoryService service;
 
-    @GetMapping
+    @GetMapping("/list")
     public ResponseEntity<List<CategoryDTO>> findAll() {
         List<CategoryDTO> list = service.findAll();
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id}")
     public CategoryDTO findById(@PathVariable Long id) {
         return service.findById(id);
     }
     
     @PostMapping("/add")
-    public ResponseEntity<CategoryDTO> addCategory(@RequestBody CategoryDTO category) {
-    	CategoryDTO newCategory = service.addCategory(category);
-    	return new ResponseEntity<CategoryDTO>(newCategory , HttpStatus.CREATED);
+    public ResponseEntity<CategoryProfileDTO> addCategory(@RequestBody CategoryProfileDTO category) {
+    	CategoryProfileDTO newCategory = service.addCategory(category);
+    	return new ResponseEntity<CategoryProfileDTO>(newCategory , HttpStatus.CREATED);
     }
     
     @PutMapping("/edit/{id}")
-    public ResponseEntity<CategoryDTO> updateCategory(@PathVariable Long id, @RequestBody CategoryDTO category) {
-    	CategoryDTO updateCategory = service.updateCategory(category);
+    public ResponseEntity<CategoryProfileDTO> updateCategory(@PathVariable Long id, @RequestBody CategoryProfileDTO category) {
+    	CategoryProfileDTO updateCategory = service.updateCategory(category);
     	return new ResponseEntity<>(updateCategory, HttpStatus.OK);
     }
     

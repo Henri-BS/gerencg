@@ -41,26 +41,10 @@ public class ProductService {
 		return dto;
 	}
 
-	public ProductDTO saveProduct(ProductDTO dto) {
+	public ProductDTO addProduct(ProductDTO dto) {
 
 		Category category = categoryRepository.findById(dto.getCategory()).get();
 		Measure measure = measureRepository.findById(dto.getMeasure()).get();
-
-		if (category == null) {
-			Category addCategory = new Category();
-			CategoryDTO cdto = new CategoryDTO();
-			addCategory.setName(cdto.getName());
-
-			addCategory = categoryRepository.saveAndFlush(category);
-		}
-
-		if (measure == null) {
-			Measure addMeasure = new Measure();
-			MeasureDTO mdto = new MeasureDTO();
-			addMeasure.setDescription(mdto.getDescription());
-
-			addMeasure = measureRepository.saveAndFlush(measure);
-		}
 
 		Product add = new Product();
 		add.setDescription(dto.getDescription());
@@ -71,7 +55,31 @@ public class ProductService {
 		add.setCategory(category);
 		add.setMeasure(measure);
 		
+		
 		return new ProductDTO(productRepository.saveAndFlush(add));
 	}
+	
+	public ProductDTO updateProduct(ProductDTO dto) {
 
+		Category category = categoryRepository.findById(dto.getCategory()).get();
+		Measure measure = measureRepository.findById(dto.getMeasure()).get();
+		
+		Product edit = productRepository.findById(dto.getId()).get();
+		
+		edit.setDescription(dto.getDescription());
+		edit.setImage(dto.getImage());
+		edit.setPrice(dto.getPrice());
+		edit.setQuantity(dto.getQuantity());
+		edit.setValidate(dto.getValidate());
+		edit.setCategory(category);
+		edit.setMeasure(measure);
+		
+		return new ProductDTO(productRepository.save(edit));
+		
+	}
+	
+	public void deleteProduct(Long id) {
+		this.productRepository.deleteById(id);
+	}
+	
 }
