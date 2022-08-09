@@ -11,33 +11,68 @@ import org.springframework.transaction.annotation.Transactional;
 import com.altercode.gerencg.dto.CategoryFlowDTO;
 import com.altercode.gerencg.dto.CategoryStatsDTO;
 import com.altercode.gerencg.dto.SumCategoryValuesDTO;
+import com.altercode.gerencg.entity.Category;
 import com.altercode.gerencg.entity.CategoryStats;
 import com.altercode.gerencg.repository.CategoryRepository;
 import com.altercode.gerencg.repository.CategoryStatsRepository;
 
 @Service
+@Transactional
 public class CategoryStatsService {
 	
 	@Autowired
-	private CategoryStatsRepository repository;
+	private CategoryStatsRepository statsRepository;
 	
 	@Autowired
-	private CategoryRepository ctrepository;
+	private CategoryRepository categoryRepository;
 	
-	@Transactional(readOnly = true)
+	
 	public Page<CategoryStatsDTO> findAll(Pageable pageable){
-		ctrepository.findAll();
-		Page<CategoryStats> result = repository.findAll(pageable);
+		categoryRepository.findAll();
+		Page<CategoryStats> result = statsRepository.findAll(pageable);
 		return result.map(x -> new CategoryStatsDTO(x));
 	}
 	
-	@Transactional(readOnly = true)
+	public CategoryStatsDTO saveStats(CategoryStatsDTO dto) {
+		
+		Category category = categoryRepository.findById(dto.getId()).get(); 
+		
+		CategoryStats add = new CategoryStats();
+		add.setRegistrationDate(dto.getRegistrationDate());
+		add.setCategory(category);
+		add.setAddedProducts(dto.getAddedProducts());
+		add.setRemovedProducts(dto.getRemovedProducts());
+		add.setIncome(dto.getIncome());
+		add.setExpense(dto.getExpense());
+				
+		return new CategoryStatsDTO(statsRepository.saveAndFlush(add));
+	}
+	
+	public CategoryStatsDTO updateStats(CategoryStatsDTO dto) {
+		
+		CategoryStats edit = statsRepository.findById(dto.getId()).get();
+		Category category = categoryRepository.findById(dto.getId()).get();
+		
+		edit.setRegistrationDate(dto.getRegistrationDate());
+		edit.setCategory(category);
+		edit.setAddedProducts(dto.getAddedProducts());
+		edit.setRemovedProducts(dto.getRemovedProducts());
+		edit.setIncome(dto.getIncome());
+		edit.setExpense(dto.getExpense());
+		
+		return new CategoryStatsDTO(statsRepository.save(edit));
+	}
+	
+	public void deleteStats(Long id) {
+		this.statsRepository.findById(id);
+	}
+	
 	public List<SumCategoryValuesDTO> valueGroupedByCategory(){
-		return repository.valuesGroupedByCategory();
+		return statsRepository.valuesGroupedByCategory();
 	}
 	
 	@Transactional(readOnly = true)
 	public List<CategoryFlowDTO> flowGroupedByCategory(){
-		return repository.flowGroupedByCategory();
+		return statsRepository.flowGroupedByCategory();
 	}
 }

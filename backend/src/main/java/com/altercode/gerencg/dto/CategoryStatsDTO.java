@@ -8,19 +8,21 @@ public class CategoryStatsDTO {
 	private Long id;
 	private Integer addedProducts;
 	private Integer removedProducts;
-	private Double categoryValue;
+	private Double income;
+	private Double expense;
 	private LocalDate registrationDate;
 	
 	private CategoryDTO category;
 	
 	public CategoryStatsDTO() {}
 
-	public CategoryStatsDTO(Long id, Integer addedProducts, Integer removedProducts, Double categoryValue, LocalDate registrationDate,
+	public CategoryStatsDTO(Long id, Integer addedProducts, Integer removedProducts, Double income, Double expense, LocalDate registrationDate,
 			CategoryDTO category) {
 		this.id = id;
 		this.addedProducts = addedProducts;
 		this.removedProducts = removedProducts;
-		this.categoryValue = categoryValue;
+		this.income = income;
+		this.expense = expense;
 		this.registrationDate = registrationDate;
 		this.category = category;
 	}
@@ -29,7 +31,8 @@ public class CategoryStatsDTO {
 		id = entity.getId();
 		addedProducts = entity.getAddedProducts();
 		removedProducts = entity.getRemovedProducts();
-		categoryValue = entity.getCategoryValue();
+		income = entity.getIncome();
+		expense = entity.getExpense();
 		registrationDate = entity.getRegistrationDate();
 		category = new CategoryDTO(entity.getCategory());
 
@@ -43,36 +46,46 @@ public class CategoryStatsDTO {
 		this.id = id;
 	}
 
-	public Integer getProd_adc() {
+	public Integer getAddedProducts() {
 		return addedProducts;
 	}
 
-	public void setProd_adc(Integer prod_adc) {
-		this.addedProducts = prod_adc;
+	public void setAddedProducts(Integer addedProducts) {
+		this.addedProducts = addedProducts;
 	}
 
-	public Integer getProd_remov() {
+	public Integer getRemovedProducts() {
 		return removedProducts;
 	}
 
-	public void setProd_remov(Integer prod_remov) {
-		this.removedProducts = prod_remov;
+	public void setRemovedProducts(Integer removedProducts) {
+		this.removedProducts = removedProducts;
+	}
+	
+	
+
+	public Double getIncome() {
+		return income;
 	}
 
-	public Double getUpd_val() {
-		return categoryValue;
+	public void setIncome(Double income) {
+		this.income = income;
 	}
 
-	public void setUpd_val(Double upd_val) {
-		this.categoryValue = upd_val;
+	public Double getExpense() {
+		return expense;
 	}
 
-	public LocalDate getDate() {
+	public void setExpense(Double expense) {
+		this.expense = expense;
+	}
+
+	public LocalDate getRegistrationDate() {
 		return registrationDate;
 	}
 
-	public void setDate(LocalDate date) {
-		this.registrationDate = date;
+	public void setRegistrationDate(LocalDate registrationDate) {
+		this.registrationDate = registrationDate;
 	}
 
 	public CategoryDTO getCategory() {
@@ -82,6 +95,4 @@ public class CategoryStatsDTO {
 	public void setCategory(CategoryDTO category) {
 		this.category = category;
 	}
-	
-	
 }

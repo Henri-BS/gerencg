@@ -26,9 +26,6 @@ public class CategoryStats {
 	@Column(name = "removed_products")
 	private Integer removedProducts;
 	
-	@Column(name = "category_value")
-	private Double categoryValue;
-	
 	private Double expense;
 
 	private Double income;
@@ -50,7 +47,6 @@ public class CategoryStats {
 		this.removedProducts = removedProducts;
 		this.expense = expense;
 		this.income = income;
-		this.categoryValue = categoryValue;
 		this.registrationDate = registrationDate;
 	}
 
@@ -78,14 +74,6 @@ public class CategoryStats {
 		this.removedProducts = removedProducts;
 	}
 
-	public Double getCategoryValue() {
-		return categoryValue;
-	}
-
-	public void setCategoryValue(Double categoryValue) {
-		this.categoryValue = categoryValue;
-	}
-	
 	public Double getExpense() {
 		return expense;
 	}
