@@ -25,14 +25,14 @@ public class Category {
 	@Column(name = "category_id")
 	private Long id;
 	
-	@Column(name = "category_name", unique = true)
+	@Column(name = "category_name")
 	private String name;
 	
 	@Column(name = "category_image")
 	private String image;
 	
 	@Column(name = "total_products")
-	private Integer totalProducts;
+	private Integer totalProducts = 1;
 	
 	@LastModifiedDate
 	@Column(name = "last_modified_date")
@@ -108,5 +108,10 @@ public class Category {
 	public Set<Register> getProductRegister() {
 		return productRegister;
 	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+	
 	
 }

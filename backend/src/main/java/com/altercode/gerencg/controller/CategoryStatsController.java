@@ -23,7 +23,7 @@ import com.altercode.gerencg.dto.SumCategoryValuesDTO;
 import com.altercode.gerencg.service.CategoryStatsService;
 
 @RestController
-@RequestMapping(value = "/stats")
+@RequestMapping(value = "/category-stats")
 public class CategoryStatsController {
 	
 	@Autowired
@@ -53,13 +53,13 @@ public class CategoryStatsController {
 		this.service.deleteStats(id);
 	}
 	
-	@GetMapping(value = "/value-of-category")
+	@GetMapping("/value-of-category")
 	public ResponseEntity<List<SumCategoryValuesDTO>> valueGroupedByCategory(){
 		List<SumCategoryValuesDTO> list = service.valueGroupedByCategory();
 		return ResponseEntity.ok(list);
 	}
 	
-	@GetMapping(value = "/flow-of-category")
+	@GetMapping("/flow-of-category")
 	public ResponseEntity<List<CategoryFlowDTO>> flowGroupedByCategory(){
 		List<CategoryFlowDTO> list = service.flowGroupedByCategory();
 		return ResponseEntity.ok(list);

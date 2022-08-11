@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.altercode.gerencg.dto.CategoryDTO;
 import com.altercode.gerencg.dto.CategoryProfileDTO;
 import com.altercode.gerencg.service.CategoryService;
 
@@ -24,35 +23,35 @@ import com.altercode.gerencg.service.CategoryService;
 public class CategoryController {
 
     @Autowired
-    private CategoryService service;
+    private CategoryService categoryService;
 
     @GetMapping("/list")
-    public ResponseEntity<List<CategoryDTO>> findAll() {
-        List<CategoryDTO> list = service.findAll();
+    public ResponseEntity<List<CategoryProfileDTO>> findAll() {
+        List<CategoryProfileDTO> list = categoryService.findAll();
         return ResponseEntity.ok(list);
     }
 
     @GetMapping("/{id}")
-    public CategoryDTO findById(@PathVariable Long id) {
-        return service.findById(id);
+    public CategoryProfileDTO findById(@PathVariable Long id) {
+        return categoryService.findById(id);
     }
     
     @PostMapping("/add")
     public ResponseEntity<CategoryProfileDTO> addCategory(@RequestBody CategoryProfileDTO category) {
-    	CategoryProfileDTO newCategory = service.addCategory(category);
+    	CategoryProfileDTO newCategory = categoryService.addCategory(category);
     	return new ResponseEntity<CategoryProfileDTO>(newCategory , HttpStatus.CREATED);
     }
     
     @PutMapping("/edit/{id}")
     public ResponseEntity<CategoryProfileDTO> updateCategory(@PathVariable Long id, @RequestBody CategoryProfileDTO category) {
-    	CategoryProfileDTO updateCategory = service.updateCategory(category);
+    	CategoryProfileDTO updateCategory = categoryService.updateCategory(category);
     	return new ResponseEntity<>(updateCategory, HttpStatus.OK);
     }
     
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCategory(@PathVariable Long id) {
-    	this.service.deleteCategory(id);
+    	this.categoryService.deleteCategory(id);
     	
     }
 }
