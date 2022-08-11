@@ -20,7 +20,7 @@ import com.altercode.gerencg.dto.CategoryProfileDTO;
 import com.altercode.gerencg.service.CategoryService;
 
 @RestController
-@RequestMapping(value = "/categories")
+@RequestMapping(value = "/category")
 public class CategoryController {
 
     @Autowired

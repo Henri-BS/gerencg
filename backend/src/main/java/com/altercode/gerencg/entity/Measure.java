@@ -1,10 +1,14 @@
 package com.altercode.gerencg.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -20,16 +24,16 @@ public class Measure {
 	@Column(name = "measure_description")
 	private String description;
 	
-	private Integer value;
+	private Double value;
 	private String abbreviation;
 	
-	@OneToOne(mappedBy = "measure")
-	private Product product;
+	@OneToMany(mappedBy = "measure")
+	private Set<Product> product = new HashSet<>();
 	
 	public Measure() {
 	}
 	
-	public Measure(Long id, String description, Integer value, String abbreviation, Product product) {
+	public Measure(Long id, String description, Double value, String abbreviation, Set<Product> product) {
 		this.id = id;
 		this.description = description;
 		this.value = value;
@@ -53,11 +57,11 @@ public class Measure {
 		this.description = description;
 	}
 
-	public Integer getValue() {
+	public Double getValue() {
 		return value;
 	}
 
-	public void setValue(Integer value) {
+	public void setValue(Double value) {
 		this.value = value;
 	}
 
@@ -69,11 +73,11 @@ public class Measure {
 		this.abbreviation = abbreviation;
 	}
 
-	public Product getProduct() {
+	public Set<Product> getProduct() {
 		return product;
 	}
 
-	public void setProduct(Product product) {
+	public void setProduct(Set<Product> product) {
 		this.product = product;
 	}
 

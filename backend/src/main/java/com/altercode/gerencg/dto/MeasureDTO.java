@@ -9,10 +9,10 @@ public class MeasureDTO implements Serializable {
 	
 	private Long id;
 	private String description;
-	private Integer value;
+	private Double value;
 	private String abbreviation;
 	
-	private Long productId;
+
 		
 	public MeasureDTO() {
 	}
@@ -22,7 +22,6 @@ public class MeasureDTO implements Serializable {
 		description = entity.getDescription();
 		value = entity.getValue();
 		abbreviation = entity.getAbbreviation();
-		productId = entity.getProduct().getId();
 	}
 
 	public Long getId() {
@@ -41,11 +40,11 @@ public class MeasureDTO implements Serializable {
 		this.description = description;
 	}
 
-	public Integer getValue() {
+	public Double getValue() {
 		return value;
 	}
 
-	public void setValue(Integer value) {
+	public void setValue(Double value) {
 		this.value = value;
 	}
 
@@ -55,14 +54,5 @@ public class MeasureDTO implements Serializable {
 
 	public void setAbbreviation(String abbreviation) {
 		this.abbreviation = abbreviation;
-	}
-
-	public Long getProductId() {
-		return productId;
-	}
-
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
-	
+	}	
 }

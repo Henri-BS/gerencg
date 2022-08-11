@@ -71,7 +71,6 @@ public class CategoryStatsService {
 		return statsRepository.valuesGroupedByCategory();
 	}
 	
-	@Transactional(readOnly = true)
 	public List<CategoryFlowDTO> flowGroupedByCategory(){
 		return statsRepository.flowGroupedByCategory();
 	}

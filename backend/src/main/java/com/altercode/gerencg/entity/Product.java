@@ -41,7 +41,7 @@ public class Product {
 	@Column(name = "product_validate")
 	private LocalDate validate;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "measure_id")
 	private Measure measure;
 	
@@ -52,10 +52,8 @@ public class Product {
 	@OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
     private Set<Register> register = new HashSet<>();
 	
-	
 	public Product() {
 	}
-
 
 	public Product(Long id, String description, String image, Double price, Integer quantity, LocalDate validate,
 			Measure measure, Category category) {

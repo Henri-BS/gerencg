@@ -31,5 +31,30 @@ public class MeasureService {
 		MeasureDTO dto = new MeasureDTO(result);
 		return dto;
 	}
+	
+	public MeasureDTO saveMeasure(MeasureDTO dto) {
+		
+		Measure add = new Measure();
+		add.setDescription(dto.getDescription());
+		add.setValue(dto.getValue());
+		add.setAbbreviation(dto.getAbbreviation());
+		
+		return new MeasureDTO(measureRepository.saveAndFlush(add));
+	}
+	
+	public MeasureDTO updateMeasure(MeasureDTO dto) {
+		
+		Measure edit = measureRepository.findById(dto.getId()).get();
+		
+		edit.setDescription(dto.getDescription());
+		edit.setValue(dto.getValue());
+		edit.setAbbreviation(dto.getAbbreviation());
+		
+		return new MeasureDTO(measureRepository.save(edit));
+	}
+	
+	public void deleteMeasure(Long id) {
+		this.measureRepository.deleteById(id);
+	}
 
 }

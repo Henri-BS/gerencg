@@ -6,8 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.altercode.gerencg.dto.CategoryDTO;
-import com.altercode.gerencg.dto.MeasureDTO;
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.Category;
 import com.altercode.gerencg.entity.Measure;
