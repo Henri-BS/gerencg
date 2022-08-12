@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.altercode.gerencg.dto.CategoryDTO;
 import com.altercode.gerencg.dto.CategoryProfileDTO;
 import com.altercode.gerencg.entity.Category;
 import com.altercode.gerencg.repository.CategoryRepository;

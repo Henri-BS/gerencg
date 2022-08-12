@@ -12,25 +12,17 @@ public class CategoryProfileDTO implements Serializable{
 	private String name;
 	private String image;
 	private Integer totalProducts;
+	private Integer totalRegisters;
 	private LocalDateTime lastModifiedDate;
 	
 	public CategoryProfileDTO() {}
-	
-	public CategoryProfileDTO(Long id, String name, String image, 
-			Integer totalProducts, Double expense, Double income,
-			LocalDateTime lastModifiedDate) {
-		this.id = id;
-		this.name = name;
-		this.image = image;
-		this.totalProducts = totalProducts;
-		this.lastModifiedDate = lastModifiedDate;
-	}
 
 	public CategoryProfileDTO(Category entity) {
 		id = entity.getId();
 		name = entity.getName();
 		image = entity.getImage();
 		totalProducts = entity.getTotalProducts();
+		totalRegisters = entity.getTotalRegisters();
 		lastModifiedDate = entity.getLastModifiedDate();
 	}
 
@@ -64,6 +56,14 @@ public class CategoryProfileDTO implements Serializable{
 
 	public void setTotalProducts(Integer totalProducts) {
 		this.totalProducts = totalProducts;
+	}
+	
+	public Integer getTotalRegisters() {
+		return totalRegisters;
+	}
+
+	public void setTotalRegisters(Integer totalRegisters) {
+		this.totalRegisters = totalRegisters;
 	}
 
 	public LocalDateTime getLastModifiedDate() {

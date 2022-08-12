@@ -29,7 +29,10 @@ public class CategoryStatsService {
 	
 	public Page<CategoryStatsDTO> findAll(Pageable pageable){
 		categoryRepository.findAll();
+		
 		Page<CategoryStats> result = statsRepository.findAll(pageable);
+		
+		
 		return result.map(x -> new CategoryStatsDTO(x));
 	}
 	
@@ -44,7 +47,10 @@ public class CategoryStatsService {
 		add.setRemovedProducts(dto.getRemovedProducts());
 		add.setIncome(dto.getIncome());
 		add.setExpense(dto.getExpense());
-				
+	
+		category.setTotalRegisters(category.getCategoryStats().size());
+		category = categoryRepository.save(category);
+		
 		return new CategoryStatsDTO(statsRepository.saveAndFlush(add));
 	}
 	
@@ -59,6 +65,9 @@ public class CategoryStatsService {
 		edit.setRemovedProducts(dto.getRemovedProducts());
 		edit.setIncome(dto.getIncome());
 		edit.setExpense(dto.getExpense());
+		
+		category.setTotalRegisters(category.getCategoryStats().size());
+		category = categoryRepository.save(category);
 		
 		return new CategoryStatsDTO(statsRepository.save(edit));
 	}

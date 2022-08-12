@@ -8,16 +8,16 @@ public class CategoryFlowDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String categoryName;
-	private Long addedProduct;
-	private Long removedProduct;
+	private Long addedProducts;
+	private Long removedProducts;
 	
 	
 	public CategoryFlowDTO(){}
 
-	public CategoryFlowDTO(Category category, Long addedProduct, Long removedProduct) {
+	public CategoryFlowDTO(Category category, Long addedProducts, Long removedProducts) {
 		categoryName = category.getName();
-		this.addedProduct = addedProduct;
-		this.removedProduct = removedProduct;
+		this.addedProducts = addedProducts;
+		this.removedProducts = removedProducts;
 	}
 
 	public String getCategoryName() {
@@ -29,19 +29,19 @@ public class CategoryFlowDTO implements Serializable{
 	}
 
 	public Long getAddedProduct() {
-		return addedProduct;
+		return addedProducts;
 	}
 
 	public void setAddedProduct(Long addedProduct) {
-		this.addedProduct = addedProduct;
+		this.addedProducts = addedProduct;
 	}
 
 	public Long getRemovedProduct() {
-		return removedProduct;
+		return removedProducts;
 	}
 
 	public void setRemovedProduct(Long removedProduct) {
-		this.removedProduct = removedProduct;
+		this.removedProducts = removedProduct;
 	}
 
 

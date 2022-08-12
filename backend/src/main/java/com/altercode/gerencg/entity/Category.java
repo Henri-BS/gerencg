@@ -34,6 +34,9 @@ public class Category {
 	@Column(name = "total_products")
 	private Integer totalProducts = 1;
 	
+	@Column(name = "total_registers")
+	private Integer totalRegisters;
+	
 	@LastModifiedDate
 	@Column(name = "last_modified_date")
 	private LocalDateTime lastModifiedDate;
@@ -111,6 +114,14 @@ public class Category {
 
 	public List<Product> getProducts() {
 		return products;
+	}
+
+	public Integer getTotalRegisters() {
+		return totalRegisters;
+	}
+
+	public void setTotalRegisters(Integer totalRegisters) {
+		this.totalRegisters = totalRegisters;
 	}
 	
 	
