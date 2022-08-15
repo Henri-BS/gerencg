@@ -1,11 +1,13 @@
 package com.altercode.gerencg.dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import com.altercode.gerencg.entity.Product;
 
-public class ProductDTO {
-		
+public class ProductDTO implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 		private Long id;
 		private String description;
 		private String image;
@@ -14,7 +16,7 @@ public class ProductDTO {
 		private LocalDate validate;
 		
 		private Long measure;
-		private String measureDescription;
+	
 		private Long category;
 		
 		
@@ -41,7 +43,6 @@ public class ProductDTO {
 			price = entity.getPrice();
 			quantity = entity.getQuantity();
 			validate = entity.getValidate();
-			measureDescription = entity.getMeasure().getDescription();
 			measure = entity.getMeasure().getId();
 			category = entity.getCategory().getId();
 		}
@@ -127,14 +128,6 @@ public class ProductDTO {
 		}
 
 
-		public String getMeasureDescription() {
-			return measureDescription;
-		}
-
-
-		public void setMeasureDescription(String measureDescription) {
-			this.measureDescription = measureDescription;
-		}
 
 
 }

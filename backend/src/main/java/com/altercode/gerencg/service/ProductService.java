@@ -44,6 +44,7 @@ public class ProductService {
 		Category category = categoryRepository.findById(dto.getCategory()).get();
 		Measure measure = measureRepository.findById(dto.getMeasure()).get();
 
+		
 		Product add = new Product();
 		add.setDescription(dto.getDescription());
 		add.setImage(dto.getImage());
@@ -84,5 +85,7 @@ public class ProductService {
 		
 		this.productRepository.deleteById(id);
 	}
+	
+	
 
 }

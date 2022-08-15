@@ -32,13 +32,12 @@ INSERT INTO tb_category_stats (category_id, added_products, removed_products, ex
 INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES (1, 745, 535, 8323.00, 10329.00, '2021-11-20'); 
 INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES (9, 243, 324, 3132.00, 3912.00, '2021-11-20');
 
-INSERT INTO tb_measure(measure_description, value, abbreviation) VALUES ('1 quilograma', 1.00, 'kg')
-INSERT INTO tb_measure(measure_description, value, abbreviation) VALUES ('1 litro', 1.00, 'l')
-INSERT INTO tb_measure(measure_description, value, abbreviation) VALUES ('1 Metro', 1.00, 'm')
-INSERT INTO tb_measure(measure_description, value, abbreviation) VALUES ('2 litros', 2.00, 'l')
-INSERT INTO tb_measure(measure_description, value, abbreviation) VALUES ('500 mililitros', 500, 'ml')
-INSERT INTO tb_measure(measure_description, value, abbreviation) VALUES ('100 mililitros', 100, 'ml')
-
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('quilo', 'kg');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('gramas', 'g');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('litro', 'l');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('mililitro', 'ml');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('metro', 'm');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('milimetro', 'mm');
 
 INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Arroz Doura', 'https://cdn3.iconfinder.com/data/icons/food-1-11/128/food-22-512.png', 3.90, 43, '2022-08-04', 1, 1);
 INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Arroz Catarinão', 'https://cdn3.iconfinder.com/data/icons/food-1-11/128/food-22-512.png', 4.75, 82, '2022-05-02', 1, 1);
@@ -46,8 +45,15 @@ INSERT INTO tb_product (product_description, product_image, product_price, produ
 INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Arroz Pérola do Sul', 'https://cdn3.iconfinder.com/data/icons/food-1-11/128/food-22-512.png', 4.70, 66, '2022-11-01', 1, 1);
 INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Arroz Rio Balsas', 'https://cdn3.iconfinder.com/data/icons/food-1-11/128/food-22-512.png', 3.90, 96, '2022-07-30', 1, 1);
 
-INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Ácido Muriático Limpa Fácil', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.30, 9, '2024-10-06', 2, 6);
-INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Água Sanitária Nutrilar', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 2.50, 11, '2022-12-06', 2, 6);
-INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Desinfetante LavaBem Limão', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 6.95, 3, '2023-05-09', 4, 6);
-INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Amaciante Ypê Aconchego', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.70, 11, '2024-01-01', 5, 6);
-INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Óleo de Peroba', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 9.40, 12, '2033-04-22', 6, 6);
+INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Ácido Muriático Limpa Fácil', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.30, 9, '2024-10-06', 3, 6);
+INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Água Sanitária Nutrilar', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 2.50, 11, '2022-12-06', 3, 6);
+INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Desinfetante LavaBem Limão', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 6.95, 3, '2023-05-09', 3, 6);
+INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Amaciante Ypê Aconchego', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.70, 11, '2024-01-01', 4, 6);
+INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Óleo de Peroba', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 9.40, 12, '2033-04-22', 5, 6);
+INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Detergente LavaBem Coco', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 2.10, 3, '2024-04-20', 4, 6);
+INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Esponja Nutribrilho', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 0.65, 50, '2033-04-22', 6, 6);
+INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Sabão em Barra Neutro Ypê', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 2.20, 10, '2023-12-01', 4, 6);
+INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Sabão em Barra LavaBem', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 2.50, 32, '2022-12-06', 4, 6);
+INSERT INTO tb_product (product_description, product_image, product_price, product_quantity, product_validate, measure_id, category_id) VALUES ('Sabão em Pó Omo Lavagem Perfeita', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 7.70, 32, '2024-06-01', 4, 6);
+
+
