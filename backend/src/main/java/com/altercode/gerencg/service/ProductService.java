@@ -42,8 +42,7 @@ public class ProductService {
 	public ProductDTO addProduct(ProductDTO dto) {
 
 		Category category = categoryRepository.findById(dto.getCategory()).get();
-		Measure measure = measureRepository.findById(dto.getMeasure()).get();
-
+		Measure measure = measureRepository.findByDescription(dto.getMeasure()).get();
 		
 		Product add = new Product();
 		add.setDescription(dto.getDescription());
@@ -52,6 +51,7 @@ public class ProductService {
 		add.setQuantity(dto.getQuantity());
 		add.setValidate(dto.getValidate());
 		add.setCategory(category);
+		add.setMeasureValue(dto.getMeasureValue());
 		add.setMeasure(measure);
 
 		category.setTotalProducts(category.getProducts().size());
@@ -63,7 +63,7 @@ public class ProductService {
 	public ProductDTO updateProduct(ProductDTO dto) {
 
 		Category category = categoryRepository.findById(dto.getCategory()).get();
-		Measure measure = measureRepository.findById(dto.getMeasure()).get();
+		Measure measure = measureRepository.findByDescription(dto.getMeasure()).get();
 
 		Product edit = productRepository.findById(dto.getId()).get();
 
@@ -85,7 +85,4 @@ public class ProductService {
 		
 		this.productRepository.deleteById(id);
 	}
-	
-	
-
 }

@@ -24,21 +24,19 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "product_id")
 	private Long id;
-	
-	@Column(name = "product_description")
+
 	private String description;
-	
-	@Column(name = "product_image")
+
 	private String image;
 	
-	@Column(name = "product_price")
 	private Double price;
 	
-	@Column(name = "product_quantity")
 	private Integer quantity;
 	
-	@Column(name = "product_validate")
 	private LocalDate validate;
+	
+	@Column(name = "measure_value")
+	private Double measureValue;
 	
 	@ManyToOne
 	@JoinColumn(name = "measure_id")
@@ -126,6 +124,15 @@ public class Product {
 		this.validate = validate;
 	}
 
+	
+
+	public Double getMeasureValue() {
+		return measureValue;
+	}
+
+	public void setMeasureValue(Double measureValue) {
+		this.measureValue = measureValue;
+	}
 
 	public Measure getMeasure() {
 		return measure;
