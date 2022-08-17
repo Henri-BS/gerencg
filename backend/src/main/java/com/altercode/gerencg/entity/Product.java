@@ -47,7 +47,7 @@ public class Product {
 	private Category category;
 	
 	@OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
-    private Set<Register> register = new HashSet<>();
+    private Set<Calculator> calculators = new HashSet<>();
 	
 	public Product() {
 	}
@@ -152,4 +152,10 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	public Set<Calculator> getCalculators() {
+		return calculators;
+	}
+	
+	
 }
