@@ -37,7 +37,11 @@ INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('gramas', 'g')
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('litro', 'l');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('mililitro', 'ml');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('metro', 'm');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('centimetro', 'cm');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('milimetro', 'mm');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('volt', 'v');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('gigabyte', 'gb');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('megabyte', 'mb');
 
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Arroz Doura', 'https://cdn3.iconfinder.com/data/icons/food-1-11/128/food-22-512.png', 3.90, 43, '2022-08-04', 1.00, 1, 1);
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Arroz Catarinão', 'https://cdn3.iconfinder.com/data/icons/food-1-11/128/food-22-512.png', 4.75, 82, '2022-05-02', 1.00, 1, 1);
@@ -58,7 +62,7 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sabonete Protex Limpeza Profunda', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 3.20, 5, '2023-10-01', 85, 2, 3);
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Gel Massageador Arnica', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 5.25, 8, '2022-09-28', 200, 2, 3);
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Creme de Babear Nivea Men', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 7.40, 5, '2022-11-011', 65, 2, 3);
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Creme de Babear Nivea Men', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 7.40, 5, '2022-11-11', 65, 2, 3);
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Creme Dental Closeup Triple Hortelã', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 2.20, 5, '2024-12-01', 70, 2, 3);
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Leite de Colônia Toque de Carinho', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 7.25, 4, '2024-02-01', 200, 4, 3);
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Hidratante Skala Lavanda', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 8.25, 5, '2025-06-01', 400, 4, 3);
@@ -67,3 +71,10 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Coloração Capilar Cor&Ton Louro Platinado', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 11.95, 6, '2024-12-01', 60, 2, 3);
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Óleo Capilar Vita Capili Abacate', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 6.25, 10, '2025-03-01', 80, 4, 3);
 
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Extensão Elétrica Megatron 3m', 'https://cdn2.iconfinder.com/data/icons/internet-of-things-filled-outline/64/08-Plug-512.png', 16.50, 5, '2999-12-30', 220, 8, 5);
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Extensão Elétrica Megatron 5m', 'https://cdn2.iconfinder.com/data/icons/internet-of-things-filled-outline/64/08-Plug-512.png', 21.95, 4, '2999-12-30', 220, 8, 5);
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Pilhas Panasonic AA', 'https://cdn2.iconfinder.com/data/icons/internet-of-things-filled-outline/64/08-Plug-512.png', 4.95, 6, '2999-12-30', 1.5, 8, 5);
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Tomada PLuzie 2 Interrupitores', 'https://cdn2.iconfinder.com/data/icons/internet-of-things-filled-outline/64/08-Plug-512.png', 14.30, 6, '2999-12-30', 70, 2, 5);
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Carregador Basike 3.1A', 'https://cdn2.iconfinder.com/data/icons/internet-of-things-filled-outline/64/08-Plug-512.png', 22.90, 14, '2999-12-30', 240, 8, 5);
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Usb X-cell 3.0A', 'https://cdn2.iconfinder.com/data/icons/internet-of-things-filled-outline/64/08-Plug-512.png', 10.90, 6, '2999-12-30', 480, 10, 5);
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Controle Remoto Maxx', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 12.90, 7, '2999-12-30', 15, 2, 5);
