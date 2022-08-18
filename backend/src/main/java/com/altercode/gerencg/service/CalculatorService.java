@@ -5,10 +5,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.altercode.gerencg.dto.CalculatorDTO;
+import com.altercode.gerencg.dto.RegisterDTO;
 import com.altercode.gerencg.entity.Calculator;
 import com.altercode.gerencg.entity.Product;
+import com.altercode.gerencg.entity.Register;
 import com.altercode.gerencg.repository.CalculatorRepository;
 import com.altercode.gerencg.repository.ProductRepository;
+import com.altercode.gerencg.repository.RegisterRepository;
 
 @Service 
 @Transactional
@@ -20,23 +23,30 @@ public class CalculatorService {
 	@Autowired
 	private CalculatorRepository calculatorRepository;
 	
-	public CalculatorDTO sumProducts(CalculatorDTO dto) {
+	@Autowired
+	private RegisterRepository registerRepository;
+	
+	public RegisterDTO sumProducts(CalculatorDTO dto) {
 		
-		Product product = productRepository.findById(dto.getProductId()).get();
+		Product product1 = productRepository.findById(dto.getFirstNumber()).get();
+		Product product2 = productRepository.findById(dto.getSecondNumber()).get();
+Register register =  registerRepository.findById(dto.getId()).get();
 
 		Calculator calculator = new Calculator();
-		calculator.setFirstProduct(product);
-		calculator.setSecondProduct(product);
-		calculator.setResult(dto.getResult());
+		calculator.setFirstProduct(product1);
+		calculator.setSecondProduct(product2);
 		
-		calculator =  calculatorRepository.save(calculator);
+		calculator =  calculatorRepository.saveAndFlush(calculator);
 		
-		double price = product.getPrice();
-		for(Calculator c : product.getCalculators()) {
-			price = price + c.getResult();
+		double sum = 0.0;
+		for(Calculator c : product1.getCalculators()) {
+			sum = product1.getPrice() + product2.getPrice();
 		}
 		
 		
-		return new CalculatorDTO();
+		calculator = calculatorRepository.save(calculator);
+		
+		
+		return new RegisterDTO();
 	}
 }

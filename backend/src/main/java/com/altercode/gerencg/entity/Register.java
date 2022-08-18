@@ -27,7 +27,7 @@ public class Register {
 	private Product product;
 	
 	@Column(name = "value")
-	private Integer value = 0;
+	private Double value;
 	
 	public Register() {
 	}
@@ -50,10 +50,10 @@ public class Register {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	public Integer getValue() {
+	public Double getValue() {
 		return value;
 	}
-	public void setValue(Integer value) {
+	public void setValue(Double value) {
 		this.value = value;
 	} 
 	

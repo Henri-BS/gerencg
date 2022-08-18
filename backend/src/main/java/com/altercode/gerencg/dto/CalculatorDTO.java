@@ -2,58 +2,48 @@ package com.altercode.gerencg.dto;
 
 import java.io.Serializable;
 
+import com.altercode.gerencg.entity.Calculator;
+import com.altercode.gerencg.entity.Product;
+
 public class CalculatorDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	private Long productId;
-	private Double firstNumber;
-	private Double secondNumber;
-	private Double result; 
+	private Long id; 
+	private Long firstNumber;
+	private Long secondNumber;
 	
 	public CalculatorDTO() {
 		
 	}
 	
-	public CalculatorDTO(Double firstNumber, Double secondNumber) {
-		this.firstNumber = firstNumber;
-		this.secondNumber = secondNumber;
+	public CalculatorDTO(Calculator entity) {
+		firstNumber = entity.getFirstProduct().getId();
+		secondNumber = entity.getSecondProduct().getId();
 	}
 	
 	
 
-	public Long getProductId() {
-		return productId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public Double getFirstNumber() {
+	public Long getFirstNumber() {
 		return firstNumber;
 	}
 
-	public void setFirstNumber(Double firstNumber) {
+	public void setFirstNumber(Long firstNumber) {
 		this.firstNumber = firstNumber;
 	}
 
-	public Double getSecondNumber() {
+	public Long getSecondNumber() {
 		return secondNumber;
 	}
 
-	public void setSecondNumber(Double secondNumber) {
+	public void setSecondNumber(Long secondNumber) {
 		this.secondNumber = secondNumber;
-	}
-
-	public Double getResult() {
-		return result;
-	}
-
-	public void setResult(Double result) {
-		this.result = result;
-	}
-	
-	
-	
-	
+	}	
 }

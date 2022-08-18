@@ -19,17 +19,19 @@ public class Calculator {
 	
 	@ManyToOne
 	@JoinColumn(name = "product_id")
-	private Product productId;
+	private Product product;
 	
+	@ManyToOne
+	@JoinColumn(name = "first_product")
 	private Product firstProduct;
+	
+	@ManyToOne
+	@JoinColumn(name = "second_product")
 	private Product secondProduct;
-	private Double result;
-
+	
 	public Calculator() {
 	}
-
 	
-
 	public Long getId() {
 		return id;
 	}
@@ -39,11 +41,11 @@ public class Calculator {
 	}
 
 	public Product getProductId() {
-		return productId;
+		return product;
 	}
 
 	public void setProductId(Product productId) {
-		this.productId = productId;
+		this.product = productId;
 	}
 
 
@@ -62,14 +64,6 @@ public class Calculator {
 
 	public void setSecondProduct(Product secondProduct) {
 		this.secondProduct = secondProduct;
-	}
-
-	public Double getResult() {
-		return result;
-	}
-
-	public void setResult(Double result) {
-		this.result = result;
 	}
 
 }
