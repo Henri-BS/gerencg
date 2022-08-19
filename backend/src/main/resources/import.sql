@@ -43,6 +43,8 @@ INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('volt', 'v');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('gigabyte', 'gb');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('megabyte', 'mb');
 
+
+
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Arroz Doura', 'https://cdn3.iconfinder.com/data/icons/food-1-11/128/food-22-512.png', 3.90, 43, '2022-08-04', 1.00, 1, 1);
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Arroz Catarinão', 'https://cdn3.iconfinder.com/data/icons/food-1-11/128/food-22-512.png', 4.75, 82, '2022-05-02', 1.00, 1, 1);
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Arroz Carvalho', 'https://cdn3.iconfinder.com/data/icons/food-1-11/128/food-22-512.png', 4.75, 48, '2022-08-04', 1.00, 1, 1);
@@ -78,3 +80,4 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Carregador Basike 3.1A', 'https://cdn2.iconfinder.com/data/icons/internet-of-things-filled-outline/64/08-Plug-512.png', 22.90, 14, '2999-12-30', 240, 8, 5);
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Usb X-cell 3.0A', 'https://cdn2.iconfinder.com/data/icons/internet-of-things-filled-outline/64/08-Plug-512.png', 10.90, 6, '2999-12-30', 480, 10, 5);
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Controle Remoto Maxx', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 12.90, 7, '2999-12-30', 15, 2, 5);
+

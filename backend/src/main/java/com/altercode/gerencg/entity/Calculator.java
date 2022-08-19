@@ -22,6 +22,10 @@ public class Calculator {
 	private Product product;
 	
 	@ManyToOne
+	@JoinColumn(name = "register_id")
+	private Register register;	
+	
+	@ManyToOne
 	@JoinColumn(name = "first_product")
 	private Product firstProduct;
 	
@@ -48,7 +52,13 @@ public class Calculator {
 		this.product = productId;
 	}
 
+	public Register getRegister() {
+		return register;
+	}
 
+	public void setRegister(Register register) {
+		this.register = register;
+	}
 
 	public Product getFirstProduct() {
 		return firstProduct;

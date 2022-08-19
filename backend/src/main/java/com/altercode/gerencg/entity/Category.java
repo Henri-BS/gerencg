@@ -2,7 +2,6 @@ package com.altercode.gerencg.entity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -43,9 +42,6 @@ public class Category {
 	
 	@OneToMany(mappedBy = "category")
 	private List<CategoryStats> categoryStats = new ArrayList<>();
-
-	@OneToMany(mappedBy = "category")
-	private Set<Register> productRegister = new HashSet<>();
 	
 	@OneToMany(mappedBy = "category")
 	private List<Product> products = new ArrayList<>();
@@ -61,7 +57,6 @@ public class Category {
 		this.totalProducts = totalProducts;
 		this.lastModifiedDate = lastModifiedDate;
 		this.categoryStats = categoryStats;
-		this.productRegister = productRegister;
 	}
 
 	public Long getId() {
@@ -106,10 +101,6 @@ public class Category {
 
 	public List<CategoryStats> getCategoryStats() {
 		return categoryStats;
-	}
-
-	public Set<Register> getProductRegister() {
-		return productRegister;
 	}
 
 	public List<Product> getProducts() {

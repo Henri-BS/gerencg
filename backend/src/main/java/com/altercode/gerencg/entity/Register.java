@@ -1,5 +1,8 @@
 package com.altercode.gerencg.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,15 +23,19 @@ public class Register {
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name = "category_id")
-	private Category category;
+	@JoinColumn(name = "first_product")
+	private Product firstProduct;
 	
 	@ManyToOne
-	@JoinColumn(name = "product_id")
-	private Product product;
-	
+	@JoinColumn(name = "second_product")
+	private Product secondProduct;
+
 	@Column(name = "value")
 	private Double value;
+	
+	@OneToMany(mappedBy = "register")
+	private Set<Calculator> calculators = new HashSet<>();
+
 	
 	public Register() {
 	}
@@ -38,18 +46,23 @@ public class Register {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Category getCategory() {
-		return category;
+	
+	public Product getFirstProduct() {
+		return firstProduct;
 	}
-	public void setCategory(Category category) {
-		this.category = category;
+
+	public void setFirstProduct(Product firstProduct) {
+		this.firstProduct = firstProduct;
 	}
-	public Product getProduct() {
-		return product;
+
+	public Product getSecondProduct() {
+		return secondProduct;
 	}
-	public void setProduct(Product product) {
-		this.product = product;
+
+	public void setSecondProduct(Product secondProduct) {
+		this.secondProduct = secondProduct;
 	}
+
 	public Double getValue() {
 		return value;
 	}

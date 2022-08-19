@@ -2,7 +2,6 @@ package com.altercode.gerencg.dto;
 
 import java.io.Serializable;
 
-import com.altercode.gerencg.entity.Calculator;
 import com.altercode.gerencg.entity.Register;
 
 public class RegisterDTO implements Serializable {
@@ -17,23 +16,25 @@ public class RegisterDTO implements Serializable {
 	}
 
 	public RegisterDTO(Register entity) {
-		
+		firstProduct = entity.getFirstProduct().getId();
+		secondProduct = entity.getSecondProduct().getId();
+		result = entity.getValue();
 	}
 
-	public Long getCategoryId() {
+	public Long getFirstProduct() {
 		return firstProduct;
 	}
 
-	public void setCategoryId(Long categoryId) {
-		this.firstProduct = categoryId;
+	public void setFirstProduct(Long firstProduct) {
+		this.firstProduct = firstProduct;
 	}
 
-	public Long getProductId() {
+	public Long getSecondProduct() {
 		return secondProduct;
 	}
 
-	public void setProductId(Long productId) {
-		this.secondProduct = productId;
+	public void setSecondProduct(Long secondProduct) {
+		this.secondProduct = secondProduct;
 	}
 
 	public Double getResult() {

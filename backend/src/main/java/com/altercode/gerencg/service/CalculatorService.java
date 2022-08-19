@@ -30,7 +30,7 @@ public class CalculatorService {
 		
 		Product product1 = productRepository.findById(dto.getFirstNumber()).get();
 		Product product2 = productRepository.findById(dto.getSecondNumber()).get();
-Register register =  registerRepository.findById(dto.getId()).get();
+		Register register =  registerRepository.findById(dto.getFirstNumber()).get();
 
 		Calculator calculator = new Calculator();
 		calculator.setFirstProduct(product1);
@@ -38,15 +38,15 @@ Register register =  registerRepository.findById(dto.getId()).get();
 		
 		calculator =  calculatorRepository.saveAndFlush(calculator);
 		
-		double sum = 0.0;
+		double sum = calculator.getFirstProduct().getPrice();
 		for(Calculator c : product1.getCalculators()) {
-			sum = product1.getPrice() + product2.getPrice();
+			sum = sum + c.getSecondProduct().getPrice();
 		}
 		
+		register.setValue(sum);
+		register = registerRepository.save(register);
 		
-		calculator = calculatorRepository.save(calculator);
 		
-		
-		return new RegisterDTO();
+		return new RegisterDTO(register);
 	}
 }
