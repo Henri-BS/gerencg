@@ -1,5 +1,8 @@
 package com.altercode.gerencg.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,16 +17,12 @@ public class Calculator {
 	
 	@Id
 	@GeneratedValue
-	@Column
+	@Column(name = "calculator_id")
 	private Long id;
 	
 	@ManyToOne
 	@JoinColumn(name = "product_id")
 	private Product product;
-	
-	@ManyToOne
-	@JoinColumn(name = "register_id")
-	private Register register;	
 	
 	@ManyToOne
 	@JoinColumn(name = "first_product")
@@ -32,6 +31,8 @@ public class Calculator {
 	@ManyToOne
 	@JoinColumn(name = "second_product")
 	private Product secondProduct;
+	
+	private Double result ;
 	
 	public Calculator() {
 	}
@@ -52,12 +53,12 @@ public class Calculator {
 		this.product = productId;
 	}
 
-	public Register getRegister() {
-		return register;
+	public Double getResult() {
+		return result;
 	}
 
-	public void setRegister(Register register) {
-		this.register = register;
+	public void setResut(Double result) {
+		this.result = result;
 	}
 
 	public Product getFirstProduct() {
@@ -74,6 +75,10 @@ public class Calculator {
 
 	public void setSecondProduct(Product secondProduct) {
 		this.secondProduct = secondProduct;
+	}
+
+	public void setSecondProduct(List<Product> product2) {
+		
 	}
 
 }

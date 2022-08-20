@@ -33,10 +33,6 @@ public class Register {
 	@Column(name = "value")
 	private Double value;
 	
-	@OneToMany(mappedBy = "register")
-	private Set<Calculator> calculators = new HashSet<>();
-
-	
 	public Register() {
 	}
 	

@@ -1,17 +1,16 @@
 package com.altercode.gerencg.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.altercode.gerencg.dto.CalculatorDTO;
-import com.altercode.gerencg.dto.RegisterDTO;
 import com.altercode.gerencg.entity.Calculator;
 import com.altercode.gerencg.entity.Product;
-import com.altercode.gerencg.entity.Register;
 import com.altercode.gerencg.repository.CalculatorRepository;
 import com.altercode.gerencg.repository.ProductRepository;
-import com.altercode.gerencg.repository.RegisterRepository;
 
 @Service 
 @Transactional
@@ -23,30 +22,28 @@ public class CalculatorService {
 	@Autowired
 	private CalculatorRepository calculatorRepository;
 	
-	@Autowired
-	private RegisterRepository registerRepository;
-	
-	public RegisterDTO sumProducts(CalculatorDTO dto) {
+	public CalculatorDTO sumProducts(CalculatorDTO dto) {
 		
-		Product product1 = productRepository.findById(dto.getFirstNumber()).get();
-		Product product2 = productRepository.findById(dto.getSecondNumber()).get();
-		Register register =  registerRepository.findById(dto.getFirstNumber()).get();
-
+		Product product1 = productRepository.findById(dto.getFirstProduct()).get();
+		Product product2 = productRepository.findById(dto.getSecondProduct()).get();
+		
 		Calculator calculator = new Calculator();
 		calculator.setFirstProduct(product1);
 		calculator.setSecondProduct(product2);
+		calculator.getResult();
 		
 		calculator =  calculatorRepository.saveAndFlush(calculator);
 		
-		double sum = calculator.getFirstProduct().getPrice();
-		for(Calculator c : product1.getCalculators()) {
-			sum = sum + c.getSecondProduct().getPrice();
-		}
+		double firstValue = product1.getPrice();
+		double secondValue = product2.getPrice();
+		double result = 0.0;
 		
-		register.setValue(sum);
-		register = registerRepository.save(register);
+		result = firstValue + secondValue;
+		
+		calculator.setResut(result);
+		calculator = calculatorRepository.save(calculator);
 		
 		
-		return new RegisterDTO(register);
+		return new CalculatorDTO(calculator);
 	}
 }

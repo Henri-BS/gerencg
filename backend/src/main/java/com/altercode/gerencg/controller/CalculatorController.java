@@ -20,8 +20,8 @@ public class CalculatorController {
 	private CalculatorService calculatorService;
 	
 	@PutMapping
-	public ResponseEntity<RegisterDTO> updateMeasure( @RequestBody CalculatorDTO dto) {
-		RegisterDTO sumProducts = calculatorService.sumProducts(dto);
+	public ResponseEntity<CalculatorDTO> updateMeasure( @RequestBody CalculatorDTO dto) {
+		CalculatorDTO sumProducts = calculatorService.sumProducts(dto);
 		return new ResponseEntity<>(sumProducts, HttpStatus.OK);
 	}
 	
