@@ -1,10 +1,8 @@
 package com.altercode.gerencg.dto;
 
 import java.io.Serializable;
-import java.util.List;
 
 import com.altercode.gerencg.entity.Calculator;
-import com.altercode.gerencg.entity.Product;
 
 public class CalculatorDTO implements Serializable{
 	private static final long serialVersionUID = 1L;

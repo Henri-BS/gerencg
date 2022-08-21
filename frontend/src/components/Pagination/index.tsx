@@ -1,6 +1,6 @@
-import { DetailPage } from "types/detail";
+import { StatsPage } from "types/categoryStats";
 type Props = {
-    page: DetailPage;
+    page: StatsPage;
     onPageChange: Function;
 }
 

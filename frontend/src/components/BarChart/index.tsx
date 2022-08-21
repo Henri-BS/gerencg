@@ -1,8 +1,7 @@
-//Gráfico referente ao fluxo de entrada e saida de produtos de cada categoria
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts'
-import { FlowCategory } from 'types/detail';
+import { FlowCategory } from 'types/categoryStats';
 import { round } from 'utils/format';
 import { BASE_URL } from 'utils/requests';
 
@@ -19,7 +18,7 @@ type ChartData = {
     series: SeriesData[];
 }
 
-const BarChart = () => {
+export function AddedProductsChart() {
 
     const [chartData, setChartData] = useState<ChartData>({
 
@@ -38,11 +37,11 @@ const BarChart = () => {
 
     useEffect(() => {
 
-        axios.get(`${BASE_URL}/details/flow-of-category`)
+        axios.get(`${BASE_URL}/category-stats/flow-of-category`)
             .then(response => {
                 const data = response.data as FlowCategory[];
                 const myLabels = data.map(x => x.categoryName);
-                const mySeries = data.map(x => round(100.0 * x.prod_adc / x.prod_remov, 1));
+                const mySeries = data.map(x => x.addedProduct);
 
                 setChartData({
                     labels: {
@@ -58,25 +57,26 @@ const BarChart = () => {
             });
     }, []);
 
-const opitions = {
-plotOptions: {
-                    bar: {
-                        horizontal: true,
-                    },
-                },
+    const opitions = {
+        plotOptions: {
+            bar: {
+                horizontal: true,
+            },
+        },
 
-}
+    }
 
 
     return (
         <Chart
-            options={{...opitions,
-                xaxis: chartData.labels, 
+            options={{
+                ...opitions,
+                xaxis: chartData.labels,
                 theme: {
                     mode: "dark"
-                }          
+                }
             }}
-              labels={chartData.labels}
+            labels={chartData.labels}
             series={chartData.series}
             type="bar"
             height="240"
@@ -85,4 +85,73 @@ plotOptions: {
     );
 }
 
-export default BarChart;
+
+
+export function RemovedProductsChart() {
+    const [chartData, setChartData] = useState<ChartData>({
+
+        labels: {
+            categories: []
+        },
+
+        series: [
+            {
+                name: "",
+                data: []
+            }
+        ]
+
+    });
+
+    useEffect(() => {
+
+        axios.get(`${BASE_URL}/category-stats/flow-of-category`)
+            .then(response => {
+                const data = response.data as FlowCategory[];
+                const myLabels = data.map(x => x.categoryName);
+                const mySeries = data.map(x => x.removedProduct);
+
+                setChartData({
+                    labels: {
+                        categories: myLabels
+                    },
+                    series: [
+                        {
+                            name: "% Fluxo",
+                            data: mySeries
+                        }
+                    ]
+                });
+            });
+    }, []);
+
+    const opitions = {
+        plotOptions: {
+            bar: {
+                horizontal: true,
+            },
+        },
+
+    }
+
+
+    return (
+        <Chart
+            options={{
+                ...opitions,
+                xaxis: chartData.labels,
+                theme: {
+                    mode: "dark"
+                }
+            }}
+            labels={chartData.labels}
+            series={chartData.series}
+            type="bar"
+            height="240"
+        />
+
+    );
+
+
+}
+

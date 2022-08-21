@@ -1,5 +1,4 @@
-import Footer from "components/Footer";
-import NavBar from "components/NavBar";
+
 import { Link } from "react-router-dom";
 import "./styles.css"
 
@@ -31,7 +30,6 @@ const Home = () => {
         <hr className="mb-0 mt-5"/>
             </div>
         </div>
-        <Footer/>
         </>
     );
 }

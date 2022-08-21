@@ -1,16 +1,17 @@
 import { Category } from "./category"
 
-export type Detail = {
+export type CategoryStats = {
         id: number;
-        prod_adc: number;
-        prod_remov: number;
-        upd_val: number;
-        date: string;
+        addedProducts: number;
+        removedProducts: number;
+        income: number;
+        expense: number;
+        registrationDate: string;
         category: Category;
 }
 
-export type DetailPage = {
-        content?: Detail[];
+export type StatsPage = {
+        content?: CategoryStats[];
         last: boolean;
         totalElements: number;
         totalPages: number;
@@ -23,11 +24,12 @@ export type DetailPage = {
 
 export type CategoryValue = {
         categoryName: string;
-        sum: number;
+        income: number;
+        expense: number;
 }
 
 export type FlowCategory = {
         categoryName: string;
-        prod_adc: number;
-        prod_remov: number;
+        addedProduct: number;
+        removedProduct: number;
 }

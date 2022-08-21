@@ -1,6 +1,5 @@
 package com.altercode.gerencg.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -31,7 +30,7 @@ public class Calculator {
 	@ManyToOne
 	@JoinColumn(name = "second_product")
 	private Product secondProduct;
-	
+		
 	private Double result ;
 	
 	public Calculator() {
@@ -76,9 +75,4 @@ public class Calculator {
 	public void setSecondProduct(Product secondProduct) {
 		this.secondProduct = secondProduct;
 	}
-
-	public void setSecondProduct(List<Product> product2) {
-		
-	}
-
 }

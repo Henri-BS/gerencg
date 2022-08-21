@@ -1,3 +1,4 @@
+import Footer from "components/Footer";
 import NavBar from "components/NavBar";
 import Dashboard from "pages/Dashboard";
 import Home from "pages/Home";
@@ -15,6 +16,7 @@ const PageRoutes = () => {
                     <Route path=":categoryId" />
                 </Route>
                 </Routes>
+                <Footer />
         </BrowserRouter>
     );
 }

@@ -1,7 +1,5 @@
 package com.altercode.gerencg.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,7 +37,6 @@ public class CalculatorService {
 		double result = 0.0;
 		
 		result = firstValue + secondValue;
-		
 		calculator.setResut(result);
 		calculator = calculatorRepository.save(calculator);
 		

@@ -1,14 +1,12 @@
-//Gráfico referente a categoria com o histórico de valor mais relevante
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts'
-import { CategoryValue } from 'types/detail';
+import {CategoryValue} from 'types/categoryStats';
 import { BASE_URL } from 'utils/requests';
 
 type ChartData = {
     labels: string[];
     series: number[];
-
 }
 
 function DonutChart(){
@@ -17,11 +15,11 @@ function DonutChart(){
 
     useEffect(() => {
 
-        axios.get(`${BASE_URL}/details/value-of-category`)
+        axios.get(`${BASE_URL}/category-stats/value-of-category`)
             .then(response => {
                 const data = response.data as CategoryValue[];
                 const myLabels = data.map(x => x.categoryName);
-                const mySeries = data.map(x => x.sum);
+                const mySeries = data.map(x => x.income);
 
                 setChartData({ labels: myLabels, series: mySeries });
             });

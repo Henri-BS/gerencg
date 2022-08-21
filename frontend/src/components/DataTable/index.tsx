@@ -2,14 +2,14 @@
 import axios from "axios";
 import Pagination from "components/Pagination";
 import { useEffect, useState } from "react";
-import { DetailPage } from "types/detail";
+import { StatsPage } from "types/categoryStats";
 import { formatLocalDate } from "utils/format";
 import { BASE_URL } from "utils/requests";
 
 const DataTable = () => {
 
 const [activePage, setActivePage] = useState(0);
-    const [page, setPage] = useState<DetailPage>({
+    const [page, setPage] = useState<StatsPage>({
         first: true,
         last: true,
         number: 0,
@@ -18,7 +18,7 @@ const [activePage, setActivePage] = useState(0);
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/details?page=${activePage}&size=10&sort=date,desc`)
+        axios.get(`${BASE_URL}/category-stats/list?page=${activePage}&size=10&sort=registrationDate,desc`)
             .then(response => {
                 setPage(response.data);
             });
@@ -39,17 +39,19 @@ const changePage = (index: number) => {
                             <th>Categoria</th>
                             <th>Produtos Adicionados</th>
                             <th>Produtos Removidos</th>
-                            <th>Valor Atual</th>
+                            <th>Renda</th>
+                            <th>Despesa</th>
                         </tr>
                     </thead>
                     <tbody>
                         {page.content?.map(item => (
                             <tr key={item.id}>
-                                <td>{formatLocalDate(item.date, "dd/MM/yyyy")}</td>
+                                <td>{formatLocalDate(item.registrationDate, "dd/MM/yyyy")}</td>
                                 <td>{item.category.name}</td>
-                                <td>{item.prod_adc}</td>
-                                <td>{item.prod_remov}</td>
-                                <td>{item.upd_val}</td>
+                                <td>{item.addedProducts}</td>
+                                <td>{item.removedProducts}</td>
+                                <td>{item.income}</td>
+                                <td>{item.expense}</td>
                             </tr>
                         ))}
                     </tbody>
