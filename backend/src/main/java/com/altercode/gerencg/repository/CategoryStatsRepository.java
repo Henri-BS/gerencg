@@ -17,7 +17,7 @@ public interface CategoryStatsRepository extends JpaRepository<CategoryStats, Lo
 			+ "FROM CategoryStats AS obj GROUP BY obj.category" )
 	List<CategoryFlowDTO> flowGroupedByCategory();
 	
-	@Query("SELECT new com.altercode.gerencg.dto.SumCategoryValuesDTO(obj.category, SUM(obj.expense), SUM(obj.income)) "
+	@Query("SELECT new com.altercode.gerencg.dto.SumCategoryValuesDTO(obj.category, SUM(obj.income), SUM(obj.expense)) "
 			+ "FROM CategoryStats AS obj GROUP BY obj.category")
 	List<SumCategoryValuesDTO> valuesGroupedByCategory();
 	

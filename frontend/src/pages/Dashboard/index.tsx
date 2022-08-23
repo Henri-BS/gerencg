@@ -1,6 +1,6 @@
 import  {AddedProductsChart, RemovedProductsChart } from "components/BarChart";
 import DataTable from "components/DataTable";
-import DonutChart from "components/DonutChart";
+import {ExpenseChart, IncomeChart} from "components/DonutChart";
 import "./styles.css"
 
 const Dashboard = () => {
@@ -16,8 +16,8 @@ const Dashboard = () => {
               <AddedProductsChart />
             </div>
             <div className="container-chart col-sm-6">
-              <h5 className="text-center ">Principais Categorias</h5>
-              <DonutChart />
+              <h5 className="text-center ">Índice de Renda por Categoria</h5>
+              <IncomeChart />
             </div>
           </div>
 
@@ -27,8 +27,8 @@ const Dashboard = () => {
               <RemovedProductsChart />
             </div>
             <div className="container-chart col-sm-6">
-              <h5 className="text-center ">Principais Categorias</h5>
-              <DonutChart />
+              <h5 className="text-center ">Índice de Despesa por Categoria</h5>
+              <ExpenseChart />
             </div>
           </div>
         </div>
