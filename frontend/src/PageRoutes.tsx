@@ -8,15 +8,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 const PageRoutes = () => {
     return (
         <BrowserRouter>
-            <NavBar/>
-                <Routes>
-                <Route path="/gerencg" element={<Home />}/>
-                <Route path="/gerencg/dashboard"element={ <Dashboard />}/>
-                <Route path="/gerencg/listing"element={<Listing />}>
+            <NavBar />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/categories-stats" element={<Dashboard />} />
+                <Route path="/listing" element={<Listing />}>
                     <Route path=":categoryId" />
                 </Route>
-                </Routes>
-                <Footer />
+            </Routes>
+            <Footer />
         </BrowserRouter>
     );
 }

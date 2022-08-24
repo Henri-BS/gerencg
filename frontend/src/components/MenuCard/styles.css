@@ -45,61 +45,16 @@
     opacity: 1;
 }
 
-.card-info {
-    width: 100%;
-    padding: 20px 20px 20px 20px;
-    line-height: 20px;
-}
-
-.card-info li a {
-    text-decoration: none;
-    color: #fff;
-}
-
-.card-info nav {
-    width: 100%;
-    margin: 8px auto;
-    background-color: var(--deca);
-    border-radius: 10px;
-}
-
-.card-info span {
-    padding: 10px;
-    border: 1px solid var(--tert);
-    background: var(--deca);
-    color: var(--sena);
-    border-radius: 4px;
-    font-size: 1.2em;
-    cursor: pointer;
-    display: block;
-}
-
-.card-info span::after {
-    float: right;
-    right: 10%;
-    content: "+";
-}
-
-.slide {
-    clear: both;
-    width: 100%;
-    height: 0px;
-    overflow: hidden;
-    text-align: start;
-    transition: height .4 ease;
-}
-
-.slide li {
-    padding: 14px;
-    align-items: center;
-}
-
-#touch {
-    position: absolute;
-    opacity: 0;
-    height: 0px;
-}
-
-#touch:checked+.slide {
+.container-menu-options {
     height: 300px;
+    width: 100%;
+    color: rgb(162, 151, 173);
+    overflow-x: scroll;
+    display: grid;
+}
+
+.menu-item {
+    width: 250px;
+    background-color: rgb(162, 151, 173);
+    padding: 6px;
 }
