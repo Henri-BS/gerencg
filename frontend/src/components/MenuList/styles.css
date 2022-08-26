@@ -44,17 +44,3 @@
     border: 0;
     opacity: 1;
 }
-
-.container-menu-options {
-    height: 300px;
-    width: 100%;
-    color: rgb(162, 151, 173);
-    overflow-x: scroll;
-    display: grid;
-}
-
-.menu-item {
-    width: 250px;
-    background-color: rgb(162, 151, 173);
-    padding: 6px;
-}

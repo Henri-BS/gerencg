@@ -43,7 +43,7 @@ return (
         } 
     }}
         series={chartData.series}
-        type="donut"
+        type="pie"
         height="240"
     />
 );

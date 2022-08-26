@@ -3,6 +3,7 @@ import NavBar from "components/NavBar";
 import Dashboard from "pages/Dashboard";
 import Home from "pages/Home";
 import Listing from "pages/Listing";
+import ProductsList from "pages/Products";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 const PageRoutes = () => {
@@ -12,6 +13,7 @@ const PageRoutes = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/categories-stats" element={<Dashboard />} />
+                <Route path="/product/list" element={<ProductsList />} />
                 <Route path="/listing" element={<Listing />}>
                     <Route path=":categoryId" />
                 </Route>
