@@ -1,8 +1,5 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Product } from "types/product";
-import { BASE_URL } from "utils/requests";
 import "./styles.css"
 
 type Props = {
@@ -12,22 +9,19 @@ type Props = {
 function ProductCard({ product }: Props) {
 
     return (
-            <Link to={`/product/${product?.id}`}>
-                <div className="product-display-card">
-            <img className="product-card-image" src={product?.image} alt={product?.description} />
-            <div className="product-card-container">
-            <h3>{product?.description} | {product?.measureValue} {product?.measure}</h3>
-           
-            <div className="product-price-container">
-                <h2>Preço: {product?.price} R$</h2>
+        <Link to={`/product/${product?.id}`}>
+            <div className="product-display-card">
+                <img className="product-card-image" src={product?.image} alt={product?.description} />
+                <div className="product-card-container">
+                    <h3>{product?.description} | {product?.measureValue} {product?.measure}</h3>
+
+                    <div className="product-price-container">
+                        <h2>Preço: {product?.price} R$</h2>
+                    </div>
                 </div>
-
             </div>
-            </div>
-            </Link>
-
+        </Link>
     );
-
 }
 
 export default ProductCard;

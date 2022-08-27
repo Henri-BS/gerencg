@@ -1,22 +1,28 @@
-import "./styles.css";
+import { Link } from "react-router-dom";
+import { Category } from "types/category";
+import "./styles.css"
 
-function CategoryCard() {
-
-    const category = {
-        id: 1,
-        image: "https://th.bing.com/th/id/R.cd47cfe5d35976c29a4089ba8d956595?rik=s0Q58BKLtkebuw&riu=http%3a%2f%2fwww.ninos-felices.com.mx%2fwp-content%2fuploads%2f2014%2f08%2feat4.png&ehk=PXorkH%2bYrhBsYUYviRrUztj2P7R7n9KRnA%2f2eNSCJlY%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1",
-        title: "Alimentícios",
-    };
-    
-    return (
-    <div> 
-        <img className="gerencg-card-image" src={category.image} alt={category.title} />
-        <div className="gerencg-card-container">  <h3>{category.title}</h3>         
-     </div>
-
-    </div>
-    );
-    
+    type Props = {
+        category: Category;
     }
 
+function CategoryCard({category}: Props) {
+    
+        return (
+            <Link to={`/category/${category?.id}`}>
+                <div className="category-display-card">
+                    <img className="category-card-image" 
+                    src={category?.image} 
+                    alt={category?.name} />
+                    <div className="category-card-container">
+                        <h3>{category?.name}</h3>
+    
+                        <div className="category-products-container">
+                            <h2>Atualizado em: {category?.lastModifiedDate}</h2>
+                        </div>
+                    </div>
+                </div>
+            </Link>
+        );
+    }
 export default CategoryCard;

@@ -1,4 +1,3 @@
-import './styles.css'
  
 export const product = {
     title: 'Produtos',
@@ -9,7 +8,7 @@ export const product = {
 
 export const category = {
     title: 'Categorias',
-    path: '/category',
+    path: '/category/list',
     image: "https://cdn1.iconfinder.com/data/icons/ecommerce-basic-1-filled-outline/468/16-menu-512.png",
     cName: 'menu-link'
 }

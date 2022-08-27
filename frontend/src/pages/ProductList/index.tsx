@@ -8,7 +8,7 @@ import "./styles.css"
 
 function ProductsList() {
 
-    const[pageNumber, setPageNumber] = useState(0);
+    const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<PageProduct>({
         content: [],
         first: true,
@@ -25,20 +25,20 @@ function ProductsList() {
                 const data = response.data as PageProduct;
                 setProductPage(data);
             });
-    },  [pageNumber]);
+    }, [pageNumber]);
 
     const handlePageChange = (newPageNumber: number) => {
         setPageNumber(newPageNumber);
     }
     return (
         <>
- <div className="container">
+            <div className="container">
                 <div className="pagination-container-menu">
-                    <div  className="pagination-item">
-                    <Pagination page={productPage}
-                 onPageChange={handlePageChange}/>
-                 </div>
-                 </div>
+                    <div className="pagination-item">
+                        <Pagination page={productPage}
+                            onPageChange={handlePageChange} />
+                    </div>
+                </div>
                 <div className="list-container row">
                     {productPage.content?.map(product => (
                         <div key={product.id} className="col-sm-4 col-lg-4 col-xl-4 mb-3">

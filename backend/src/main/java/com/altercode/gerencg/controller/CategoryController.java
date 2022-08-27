@@ -3,6 +3,8 @@ package com.altercode.gerencg.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,8 +28,8 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping("/list")
-    public ResponseEntity<List<CategoryProfileDTO>> findAll() {
-        List<CategoryProfileDTO> list = categoryService.findAll();
+    public ResponseEntity<Page<CategoryProfileDTO>> findAll(Pageable pageable) {
+        Page<CategoryProfileDTO> list = categoryService.findAll(pageable);
         return ResponseEntity.ok(list);
     }
 
