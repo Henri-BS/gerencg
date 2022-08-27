@@ -1,0 +1,11 @@
+.striped-rows {
+    background-color: rgb(168, 167, 167);
+}
+
+.table-box {
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid var(--seco);
+    padding: 10px;
+    text-align: center;
+}

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { StatsPage } from "types/categoryStats";
 import { formatLocalDate } from "utils/format";
 import { BASE_URL } from "utils/requests";
+import "./styles.css"
 
 const DataTable = () => {
 
@@ -32,26 +33,26 @@ const changePage = (index: number) => {
         <>
             <Pagination page ={page} onPageChange={changePage} />
             <div className="table-responsive">
-                <table className="table table-striped table-sm table-dark">
+                <table className="table table-striped table-sm">
                     <thead>
-                        <tr>
-                            <th>Data de Resgistro</th>
-                            <th>Categoria</th>
-                            <th>Produtos Adicionados</th>
-                            <th>Produtos Removidos</th>
-                            <th>Renda</th>
-                            <th>Despesa</th>
+                        <tr className="striped-rows">
+                            <th className="table-box">Data de Resgistro</th>
+                            <th className="table-box">Categoria</th>
+                            <th className="table-box">Produtos Adicionados</th>
+                            <th className="table-box">Produtos Removidos</th>
+                            <th className="table-box">Renda</th>
+                            <th className="table-box">Despesa</th>
                         </tr>
                     </thead>
                     <tbody>
                         {page.content?.map(item => (
                             <tr key={item.id}>
-                                <td>{formatLocalDate(item.registrationDate, "dd/MM/yyyy")}</td>
-                                <td>{item.category.name}</td>
-                                <td>{item.addedProducts}</td>
-                                <td>{item.removedProducts}</td>
-                                <td>{item.income}</td>
-                                <td>{item.expense}</td>
+                                <td className="table-box">{formatLocalDate(item.registrationDate, "dd/MM/yyyy")}</td>
+                                <td className="table-box">{item.category.name}</td>
+                                <td className="table-box">{item.addedProducts}</td>
+                                <td className="table-box">{item.removedProducts}</td>
+                                <td className="table-box">{item.income}</td>
+                                <td className="table-box">{item.expense}</td>
                             </tr>
                         ))}
                     </tbody>

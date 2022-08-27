@@ -2,9 +2,9 @@ import axios from "axios";
 import Pagination from "components/Pagination";
 import ProductCard from "components/ProductCard";
 import { useEffect, useState } from "react";
-import { Page } from "types/page";
 import { PageProduct } from "types/product";
 import { BASE_URL } from "utils/requests";
+import "./styles.css"
 
 function ProductsList() {
 
@@ -20,7 +20,7 @@ function ProductsList() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/product/list?=${pageNumber}&size=10`)
+        axios.get(`${BASE_URL}/product/list?page=${pageNumber}&size=10`)
             .then(response => {
                 const data = response.data as PageProduct;
                 setProductPage(data);
@@ -33,9 +33,11 @@ function ProductsList() {
     return (
         <>
  <div className="container">
-                <div><Pagination 
-                 page={productPage}
+                <div className="pagination-container-menu">
+                    <div  className="pagination-item">
+                    <Pagination page={productPage}
                  onPageChange={handlePageChange}/>
+                 </div>
                  </div>
                 <div className="list-container row">
                     {productPage.content?.map(product => (

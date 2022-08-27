@@ -1,6 +1,6 @@
 .container {
-    background-color: #2d2d30;
-    color: #ababb3;
+    background-color: #e0e0e9;
+    color: var(--prim);
     max-inline-size: 100%;
     margin: 0;
 }
@@ -49,7 +49,7 @@
 }
 
 .item-card-image:hover {
-    padding: 25px;
+    padding: 22px;
     border: 15px solid #054069;
     background: rgb(170, 168, 168);
     transition: all 0.3s ease-out;
@@ -61,8 +61,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px 10px 20px 10px;
-    border-radius: 0 0 8px 8px;
+    padding: 10px 10px 16px 10px;
+    border-radius: 8px;
     text-decoration-color: transparent;
     margin-bottom: 5px;
 }
@@ -70,6 +70,7 @@
 .item-card-bottom-container:hover {
     background: #054069;
     transition: all 0.3s ease-out;
+    padding: 12px 12px 18px 12px;
 }
 
 .item-card-bottom-container h3 {

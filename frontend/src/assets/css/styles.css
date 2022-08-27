@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100;0,300;0,500;1,100&family=Nanum+Gothic&family=Nunito:wght@300&display=swap');
 :root {
-    --color-primary: #8b1f74;
-    --color-sec: #00020D
+    --prim: rgb(73, 73, 73);
+    --seco: #00020D;
 }
 
 html,

@@ -1,5 +1,4 @@
 import { StatsPage } from "types/categoryStats";
-import { Page } from "types/page";
 import { PageProduct } from "types/product";
 type Props = {
     page: PageProduct | StatsPage;
@@ -9,9 +8,9 @@ type Props = {
 const Pagination = ({ page, onPageChange } : Props) => {
 
     return (
-        <div className="row d-flex justify-content-center">
+        
             <nav>
-                <ul className="pagination pagination-dark">
+                <ul className="pagination ">
                     <li className={`page-item ${page.first ? 'disabled' : ''} `}>
                         <button className="page-link" onClick={() => onPageChange(page.number - 1)}>Anterior</button>
                     </li>
@@ -23,7 +22,7 @@ const Pagination = ({ page, onPageChange } : Props) => {
                     </li>
                 </ul>
             </nav>
-        </div>
+        
     )
 }
 

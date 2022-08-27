@@ -1,0 +1,13 @@
+.pagination-container-menu {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 30px;
+    height: 90px;
+    border-top: 2px solid var(--prim);
+}
+
+.pagination-item {
+    width: 250px;
+    padding: 20px;
+}

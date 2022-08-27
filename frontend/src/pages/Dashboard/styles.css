@@ -1,4 +1,4 @@
 .max-container-charts {
-    border: 2px solid #ccc;
+    border: 2px solid var(--seco);
     padding: 20px;
 }
