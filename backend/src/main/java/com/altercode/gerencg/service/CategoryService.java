@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.altercode.gerencg.dto.CategoryProfileDTO;
 import com.altercode.gerencg.entity.Category;
+import com.altercode.gerencg.entity.CategoryStats;
 import com.altercode.gerencg.repository.CategoryRepository;
+import com.altercode.gerencg.repository.CategoryStatsRepository;
 
 @Service
 @Transactional
@@ -17,6 +19,7 @@ public class CategoryService {
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
+	
 
 	public List<CategoryProfileDTO> findAll(){
 			List<Category> result = categoryRepository.findAll();
@@ -24,8 +27,13 @@ public class CategoryService {
 	}
 
 	public CategoryProfileDTO findById(Long id) {
-		Category result = categoryRepository.findById(id).get();
-		CategoryProfileDTO dto = new CategoryProfileDTO(result);
+		Category category = categoryRepository.findById(id).get();
+		
+		category.setTotalProducts(category.getProducts().size());
+		category.setTotalRegisters(category.getCategoryStats().size());
+		category = categoryRepository.save(category);
+		
+		CategoryProfileDTO dto = new CategoryProfileDTO(category);
 		return dto;	
 		}
 	

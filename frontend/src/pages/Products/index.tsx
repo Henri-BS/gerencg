@@ -20,7 +20,7 @@ function ProductsList() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/product/list?page=${pageNumber}&size=10`)
+        axios.get(`${BASE_URL}/product/list?page=${pageNumber}&size=12`)
             .then(response => {
                 const data = response.data as PageProduct;
                 setProductPage(data);

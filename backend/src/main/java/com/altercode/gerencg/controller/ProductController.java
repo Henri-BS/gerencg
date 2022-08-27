@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.altercode.gerencg.dto.ProductDTO;
+import com.altercode.gerencg.entity.Category;
 import com.altercode.gerencg.service.ProductService;
 
 @RestController
@@ -60,5 +61,11 @@ public class ProductController {
 	@GetMapping("/find-all-by-id")
 	public List<ProductDTO> findAllProductsById(@RequestBody List<Long> ids) {
 		return service.findAllProductsById(ids);
+	}
+	
+	@GetMapping("/find-by-category/{category}")
+	public ResponseEntity<List<ProductDTO>> findByCategory(Category category){
+		List<ProductDTO> list = service.findByCategory(category);
+		return ResponseEntity.ok(list);
 	}
 }
