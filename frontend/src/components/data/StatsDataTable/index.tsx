@@ -1,6 +1,6 @@
 //Tabela de dados referente as categorias 
 import axios from "axios";
-import Pagination from "components/Pagination";
+import Pagination from "components/shared/Pagination";
 import { useEffect, useState } from "react";
 import { StatsPage } from "types/categoryStats";
 import { formatLocalDate } from "utils/format";

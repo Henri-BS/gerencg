@@ -1,4 +1,4 @@
-import CategoryCard from "components/CategoryCard";
+import CategoryCard from "components/container/CategoryCard";
 
 function Listing() {
     return (

@@ -1,9 +1,9 @@
-import Footer from "components/Footer";
-import NavBar from "components/NavBar";
-import Dashboard from "pages/Dashboard";
+import Footer from "components/shared/Footer";
+import NavBar from "components/shared/NavBar";
+import Dashboard from "pages/StatsDashboard";
 import Home from "pages/Home";
 import Listing from "pages/Listing";
-import ProductsList from "pages/Products";
+import ProductsList from "pages/ProductList";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 const PageRoutes = () => {
