@@ -26,6 +26,7 @@
 
 .category-card-image {
     width: 150px;
+    height: 150px;
     border: 2px solid #ccc;
     border-radius: 20px;
 }

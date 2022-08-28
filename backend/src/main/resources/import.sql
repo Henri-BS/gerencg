@@ -1,14 +1,14 @@
 
-INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Alimentícios', 'https://static.vecteezy.com/system/resources/previews/000/131/055/original/free-meal-vector.jpg', now()); 
-INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Brinquedos', 'https://static.vecteezy.com/system/resources/previews/000/084/002/non_2x/free-vector-toy-vector-set.jpg', now());
-INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Cosmeticos e Higiene', 'https://healthybeauty365bn.com/wp-content/uploads/2020/07/shampoo-blue-icon-400x400.png', now());
-INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Cozinha', 'https://data.ac-illust.com/data/thumbnails/4a/4a5505923bb467460aea258c3aa7054a_t.jpeg', now());
+INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Alimentícios', 'https://cdn-0.imagensemoldes.com.br/wp-content/uploads/2020/06/Ilustra%C3%A7%C3%A3o-de-Panela-PNG.png', now()); 
+INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Brinquedos', 'https://image.freepik.com/vecteurs-libre/illustration-vectorielle-dans-vaisseau-spatial-fusee-style-plat-flamme-turbine_501907-347.jpg', now());
+INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Cosmeticos e Higiene', 'https://www.onuki.tv/wp-content/uploads/2020/05/70a01cfb3113a6b27c88548295fbe250.png', now());
+INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Cozinha', 'https://cdn3.iconfinder.com/data/icons/food-set-2-1/91/Food_C162-512.png', now());
 INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Eletrônicos', 'https://static.vecteezy.com/system/resources/previews/000/355/193/original/vector-bulb-icon.jpg', now());
 INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Ferramentas', 'https://media.istockphoto.com/vectors/screwdriver-and-hammer-icon-vector-id481293820?k=6&m=481293820&s=170667a&w=0&h=cLTroYQVvkzjyHNNG6qQJp4J3E1qKx3JuGV_I2pxTe0=', now());
 INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Limpeza', 'https://img.freepik.com/vector-gratis/fregona-ilustracion-icono-cubo-concepto-icono-herramienta-limpieza-aislado-estilo-plano-dibujos-animados_138676-1336.jpg?size=338&ext=jpg', now());
 INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Papelaria e Escolar', 'https://www.945enet.com.tw/945enet/img/pic02.jpg', now());
 INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Tecidos e Acessórios', 'https://item.itembox.design/item/images/index/icon-cat-hab-yousai.png', now());
-INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Variados', 'https://thumbs.dreamstime.com/b/%E5%8A%9E%E5%85%AC%E5%AE%A4%E8%A2%AB%E8%AE%BE%E7%BD%AE%E7%9A%84-%E7%BA%B8%E8%B1%A1%E3%80%82-%E4%BE%8B%E8%AF%81eps-29737504.jpg', now());
+INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Variados', 'https://www.teccuro.com/wp-content/uploads/2021/01/Special-Projects-2.jpg', now());
 
 
 INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES (1, 674, 232, 9323.00, 11002.35, '2022-01-03'); 
@@ -79,5 +79,5 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Tomada PLuzie 2 Interrupitores', 'https://cdn2.iconfinder.com/data/icons/internet-of-things-filled-outline/64/08-Plug-512.png', 14.30, 6, '2999-12-30', 70, 2, 5);
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Carregador Basike 3.1A', 'https://cdn2.iconfinder.com/data/icons/internet-of-things-filled-outline/64/08-Plug-512.png', 22.90, 14, '2999-12-30', 240, 8, 5);
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Usb X-cell 3.0A', 'https://cdn2.iconfinder.com/data/icons/internet-of-things-filled-outline/64/08-Plug-512.png', 10.90, 6, '2999-12-30', 480, 10, 5);
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Controle Remoto Maxx', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 12.90, 7, '2999-12-30', 15, 2, 5);
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Controle Remoto Maxx', 'https://cdn2.iconfinder.com/data/icons/internet-of-things-filled-outline/64/08-Plug-512.png', 12.90, 7, '2999-12-30', 15, 2, 5);
 

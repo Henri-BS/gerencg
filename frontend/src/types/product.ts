@@ -1,4 +1,5 @@
 import { Category } from "./category"
+import { Measure } from "./measure";
 
 export type Product = {
     id: number;

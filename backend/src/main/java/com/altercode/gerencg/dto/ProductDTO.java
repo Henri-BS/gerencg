@@ -45,7 +45,7 @@ public class ProductDTO implements Serializable{
 			price = entity.getPrice();
 			quantity = entity.getQuantity();
 			validate = entity.getValidate();
-			measure = entity.getMeasure().getDescription();
+			measure = entity.getMeasure().getAbbreviation();
 			category = entity.getCategory().getId();
 		}
 

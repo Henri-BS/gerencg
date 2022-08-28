@@ -5,6 +5,7 @@ import Home from "pages/Home";
 import ProductsList from "pages/ProductList";
 import CategoryList from "pages/CategoryList";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
+import ProductProfile from "pages/ProductProfile";
 
 
 const PageRoutes = () => {
@@ -16,6 +17,10 @@ const PageRoutes = () => {
                 <Route path="/categories-stats" element={<Dashboard />} />
                 <Route path="/product/list" element={<ProductsList />} />
                 <Route path="/category/list" element={<CategoryList/>} />
+
+                <Route path="/product">
+                        <Route path=":productId" element={<ProductProfile />} />
+                    </Route>
             </Routes>
             <Footer />
         </BrowserRouter>

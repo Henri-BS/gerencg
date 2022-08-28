@@ -45,7 +45,7 @@ public class ProductService {
 	public ProductDTO addProduct(ProductDTO dto) {
 
 		Category category = categoryRepository.findById(dto.getCategory()).get();
-		Measure measure = measureRepository.findByDescription(dto.getMeasure()).get();
+		Measure measure = measureRepository.findByAbbreviation(dto.getMeasure()).get();
 		
 		Product add = new Product();
 		add.setDescription(dto.getDescription());
@@ -66,7 +66,7 @@ public class ProductService {
 	public ProductDTO updateProduct(ProductDTO dto) {
 
 		Category category = categoryRepository.findById(dto.getCategory()).get();
-		Measure measure = measureRepository.findByDescription(dto.getMeasure()).get();
+		Measure measure = measureRepository.findByAbbreviation(dto.getMeasure()).get();
 
 		Product edit = productRepository.findById(dto.getId()).get();
 
