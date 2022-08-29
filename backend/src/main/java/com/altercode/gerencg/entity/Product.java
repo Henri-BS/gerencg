@@ -16,6 +16,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 @Entity
 @Table(name = "tb_product")
@@ -34,6 +38,7 @@ public class Product {
 	
 	private Integer quantity;
 	
+
 	private LocalDate validate;
 	
 	@Column(name = "measure_value")

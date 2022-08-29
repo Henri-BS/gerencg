@@ -4,7 +4,6 @@
     display: flex;
     padding: 30px;
     height: 90px;
-    border-top: 2px solid var(--prim);
 }
 
 .pagination-item {

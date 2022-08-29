@@ -13,10 +13,10 @@ function ProductCard({ product }: Props) {
             <div className="product-display-card">
                 <img className="product-card-image" src={product?.image} alt={product?.description} />
                 <div className="product-card-container">
-                    <h3>{product?.description} | {product?.measureValue} {product?.measure}</h3>
+                    <h3>{product?.description} • {product?.measureValue} {product?.measure}</h3>
 
                     <div className="product-price-container">
-                        <h2>Preço: {product?.price} R$</h2>
+                        <h2>Preço: {product?.price.toFixed(2)} R$</h2>
                     </div>
                 </div>
             </div>

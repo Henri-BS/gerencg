@@ -1,4 +1,3 @@
-//Tabela de dados referente as categorias 
 import axios from "axios";
 import Pagination from "components/shared/Pagination";
 import { useEffect, useState } from "react";
@@ -7,7 +6,7 @@ import { formatLocalDate } from "utils/format";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 
-const DataTable = () => {
+function DataTable()  {
 
 const [activePage, setActivePage] = useState(0);
     const [page, setPage] = useState<StatsPage>({

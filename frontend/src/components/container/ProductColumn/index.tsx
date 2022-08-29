@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { useEffect, useState } from "react";
 import { Product } from "types/product";
 import { BASE_URL } from "utils/requests";
@@ -19,29 +20,35 @@ function ProductColumn({ productId }: Props) {
             });
     }, [productId]);
 
-    return (
-        <div className="product-column-container">
-            <img className="product-card-column-image" src={product?.image} alt={product?.description} />
-            <div className="product-item-container">
-                <h1>{product?.description}</h1>
+    return (     
+        
+          <>  
+          <div className="column-image-container">           
+           <img className="column-card-image" src={product?.image} alt={product?.description} />    
+</div>
+        <div className="column-container">
+        <div className="column-item-container">
+                <h1>{ product?.description}</h1>
             </div>
-            <div className="product-item-container">
-                <h3>Preço: {product?.price} R$</h3>
+          
+            <div className="column-item-container">
+                <h3>Preço: {product?.price.toFixed(2)} R$</h3>
             </div>
-            <div className="product-item-container">
+            <div className="column-item-container">
                 <h3>Medida: {product?.measureValue} {product?.measure}</h3>
             </div>
-            <div className="product-item-container">
+            <div className="column-item-container">
                 <h3>Quantidade: {product?.quantity}</h3>
             </div>
-            <div className="product-item-container">
+            <div className="column-item-container">
                 <h3>Validade: {product?.validate} </h3>
             </div>
-            <div className="product-item-container">
+            <div className="column-item-container">
                 <h3>Category: {product?.category} </h3>
             </div>
-        </div>
-
+            </div>     
+            
+            </>
     );
 }
 

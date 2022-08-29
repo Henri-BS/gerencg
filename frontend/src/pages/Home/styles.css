@@ -1,24 +1,8 @@
 .container {
-    background-color: #e0e0e9;
-    color: var(--prim);
+    background-color: var(--quat);
+    color: var(--seco);
     max-inline-size: 100%;
     margin: 0;
-}
-
-.container-text {
-    background-color: #212529;
-    color: #fff;
-    max-inline-size: 100%;
-    margin-bottom: 40px;
-    margin-left: 20px;
-}
-
-.home {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: #fff;
-    font-size: 100px;
 }
 
 .container hr {
@@ -27,9 +11,9 @@
 }
 
 .container-menu {
-    display: flex;
-    height: 370px;
-    border: 2px solid #919191;
+    justify-content: center;
+    align-items: center;
+    min-height: 370px;
     padding: 20px;
 }
 
@@ -44,41 +28,39 @@
     width: 200px;
     border-radius: 8px 8px 0 0;
     object-fit: cover;
-    border: 10px solid #05395e;
+    border: 10px solid var(--tert);
     background: rgb(138, 136, 136);
 }
 
 .item-card-image:hover {
     padding: 22px;
-    border: 15px solid #054069;
+    border: 15px solid var(--tert);
     background: rgb(170, 168, 168);
     transition: all 0.3s ease-out;
 }
 
 .item-card-bottom-container {
     width: 200px;
-    background-color: #05395e;
+    background-color: var(--tert);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px 10px 16px 10px;
     border-radius: 8px;
     text-decoration-color: transparent;
     margin-bottom: 5px;
 }
 
 .item-card-bottom-container:hover {
-    background: #054069;
+    background: var(--tert);
     transition: all 0.3s ease-out;
-    padding: 12px 12px 18px 12px;
 }
 
 .item-card-bottom-container h3 {
     text-decoration: underline;
-    text-decoration-color: #05395e;
+    text-decoration-color: var(--tert);
     text-align: center;
-    font-size: 25px;
-    font-weight: 300;
+    font-size: 23px;
+    font-weight: 500;
     min-height: 60px;
     color: #fff;
 }

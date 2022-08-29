@@ -33,6 +33,9 @@ function ProductsList() {
     return (
         <>
             <div className="container">
+            <div className="header-container">             
+                <h2>Lista de Produtos</h2>
+                </div>
                 <div className="pagination-container-menu">
                     <div className="pagination-item">
                         <Pagination page={productPage}

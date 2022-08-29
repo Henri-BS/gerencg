@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100;0,300;0,500;1,100&family=Nanum+Gothic&family=Nunito:wght@300&display=swap');
 :root {
     --prim: rgb(73, 73, 73);
-    --seco: #00020D;
+    --seco: #1b1a1a;
+    --tert: #1c2022;
+    --quat: #e0e0e9;
+    --quin: #fcf6f6;
 }
 
 html,
 body {
     height: 100%;
-    font-family: 'Libre Franklin', sans-serif;
+    font-family: 'Nunito', sans-serif;
+    color: var(--seco);
     background-color: #ccc;
 }
 
@@ -20,18 +24,3 @@ body {
 .content {
     flex: 1 0 auto;
 }
-
-.bg.primary {
-    background-color: var(--color-primary) !important;
-}
-
-.text-primary {
-    color: var(--color-primary) !important;
-}
-
-.text-secondary {
-    color: var(--color-sec);
-    font-family: 'Nanum Gothic', sans-serif;
-}
-
-;
