@@ -16,7 +16,7 @@ function CategoryCard({category}: Props) {
                     src={category?.image} 
                     alt={category?.name} />
                     <div className="category-card-container">
-                        <h3>{category?.name}</h3>
+                        <h3><b>{category?.name}</b></h3>
     
                         <div className="category-products-container">
                             <h2>Atualizado em: {moment(category?.lastModifiedDate).format('lll')}</h2>

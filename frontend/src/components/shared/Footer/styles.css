@@ -1,6 +1,32 @@
-.footer-color {
-    background: var(--seco);
+.footer-container {
+    display: flexbox;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    background-color: var(--tert);
     color: #fff;
+    overflow-y: visible;
+    margin: 0;
+    font-size: 20px;
+}
+
+.footer-container hr {
+    margin-bottom: 20px;
+}
+
+.footer-title {
+    color: var(--quat);
+    padding: 12px;
+    display: flex;
+}
+
+.footer-box {
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: var(--quat);
+    height: 40px;
+    display: flex;
 }
 
 .footer-logo {

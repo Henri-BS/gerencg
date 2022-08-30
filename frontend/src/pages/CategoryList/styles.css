@@ -1,6 +1,8 @@
 .header-container {
     padding: 12px;
     border-bottom: 2px solid #ccc;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .page-container {

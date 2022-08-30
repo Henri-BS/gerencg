@@ -6,7 +6,7 @@ export type Product = {
     image: string;
     price: number;
     quantity: number;
-    validate?: string | undefined;
+    validate: string;
     measureValue: number;
     measure: string;
     category: Category;

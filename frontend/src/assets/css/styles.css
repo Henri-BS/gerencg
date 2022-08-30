@@ -5,6 +5,7 @@
     --tert: #1c2022;
     --quat: #e0e0e9;
     --quin: #fcf6f6;
+    --sena: rgb(8, 108, 133);
 }
 
 html,
@@ -12,7 +13,7 @@ body {
     height: 100%;
     font-family: 'Nunito', sans-serif;
     color: var(--seco);
-    background-color: #ccc;
+    background-color: var(--tert);
 }
 
 #root {

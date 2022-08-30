@@ -3,14 +3,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Product } from "types/product";
 import { BASE_URL } from "utils/requests";
-
+import "./styles.css"
 
 function ProductForm() {
 
     const [product, setProduct] = useState([])
     const [selectProduct, setSelectProduct] = useState<Product>()
     const [data, setData] = useState({
-        descripton: "",
+        description: "",
         image: "",
         price: 0.0,
         quantity: 0,
@@ -31,7 +31,7 @@ function ProductForm() {
         console.log("data", data);
         const productData = {
             id: (product.length + 1),
-            description: data.descripton,
+            description: data.description,
             image: data.image,
             price: data.price,
             quantity: data.quantity,
@@ -44,7 +44,7 @@ function ProductForm() {
             .then((response) => {
                 console.log("Adicionado com Sucesso")
                 setData({
-                    descripton: "",
+                    description: "",
                     image: "",
                     price: 0.0,
                     quantity: 0,
@@ -59,11 +59,11 @@ function ProductForm() {
             })
     }
 
-    const editPost = () => {
-        console.log("data",data)
-        const productData ={
+    const editProduct = () => {
+        console.log("data", data)
+        const productData = {
             id: (product.length + 1),
-            description: data.descripton,
+            description: data.description,
             image: data.image,
             price: data.price,
             quantity: data.quantity,
@@ -73,10 +73,10 @@ function ProductForm() {
             category: data.category
         }
         axios.put(`${BASE_URL}/product/edit/${selectProduct?.id}`, productData)
-        .then((response) => {
-            console.log("Adicionado com Sucesso")
-            setData({
-                descripton: "",
+            .then((response) => {
+                console.log("Adicionado com Sucesso")
+                setData({
+                    description: "",
                     image: "",
                     price: 0.0,
                     quantity: 0,
@@ -91,6 +91,39 @@ function ProductForm() {
             })
     }
 
+    const deleteProduct = () => {
+        axios.delete(`${BASE_URL}/product/delete/${selectProduct?.id}`)
+            .then((response) => {
+                console.log("Adicinado com Sucesso")
+                setData({
+                    description: "",
+                    image: "",
+                    price: 0.0,
+                    quantity: 0,
+                    measureValue: 0.0,
+                    measure: "",
+                    validate: "",
+                    category: 0
+                })
+                setMsg("Produto Deletado")
+            }).catch(() => {
+                setMsg("Erro")
+            })
+    }
+    useEffect(() => {
+        setData({
+            description: selectProduct ? selectProduct.description : "",
+            image: selectProduct ? selectProduct.image : "",
+            price: selectProduct ? selectProduct.price : 0.0,
+            quantity: selectProduct ? selectProduct.quantity : 0,
+            measureValue: selectProduct ? selectProduct.measureValue : 0.0,
+            measure: selectProduct ? selectProduct.measure : "",
+            validate: selectProduct ? selectProduct.validate : "",
+            category: selectProduct ? selectProduct.category.id : 0
+        })
+    }, [selectProduct])
+
+
     return (
         <div className="form-container">
             <div className="form-card-container">
@@ -98,44 +131,52 @@ function ProductForm() {
                 <form className="gerencg-form" >
 
                     <div className="form-group gerencg-form-group">
-                        <label htmlFor="email">Descrição: {data.descripton}</label>
-                        <input type="email" className="form-control" id="email" />
+                        <label htmlFor="description">Descrição: {data.description}</label>
+                        <input type="text" className="form-control" id="description" />
                     </div>
 
                     <div className="form-group gerencg-form-group">
-                        <label htmlFor="email">Preço: </label>
-                        <input type="email" className="form-control" id="email" />
+                        <label htmlFor="image">Image: </label>
+                        <input type="text" className="form-control" id="image" />
                     </div>
 
                     <div className="form-group gerencg-form-group">
-                        <label htmlFor="email">Quantidade: </label>
-                        <input type="email" className="form-control" id="email" />
+                        <label htmlFor="price">Preço: </label>
+                        <input type="number" className="form-control" id="price" />
                     </div>
 
                     <div className="form-group gerencg-form-group">
-                        <label htmlFor="email">Valor de Medida: </label>
-                        <input type="email" className="form-control" id="email" />
+                        <label htmlFor="quantity">Quantidade: </label>
+                        <input type="number" className="form-control" id="quantity" />
                     </div>
 
                     <div className="form-group gerencg-form-group">
-                        <label htmlFor="email">Tipo de Medida: </label>
-                        <input type="email" className="form-control" id="email" />
+                        <label htmlFor="measureValue">Valor de Medida: </label>
+                        <input type="number" className="form-control" id="measureValue" />
                     </div>
 
                     <div className="form-group gerencg-form-group">
-                        <label htmlFor="email">Validade: </label>
-                        <input type="email" className="form-control" id="email" />
+                        <label htmlFor="measure">Tipo de Medida: </label>
+                        <input type="text" className="form-control" id="measure" />
                     </div>
 
                     <div className="form-group gerencg-form-group">
-                        <label htmlFor="email">Categoria</label>
-                        <input type="email" className="form-control" id="email" />
+                        <label htmlFor="validate">Validade: </label>
+                        <input type="date" className="form-control" id="validate" />
                     </div>
 
-                    <div className="gerencg-form-btn-container">
-                        <button type="submit" className="btn btn-primary gerencg-btn">
-                            Salvar
+                    <div className="form-group gerencg-form-group">
+                        <label htmlFor="category">Categoria</label>
+                        <input type="number" className="form-control" id="category" />
+                    </div>
+
+                    <div className="form-btn-container">
+                        <button type="submit" className="btn btn-primary gerencg-btn" onClick={() => addProduct()}>
+                            Adicionar Produto
                         </button>
+                    </div>
+                    <div className="msg-container">
+                        <h3>{msg}</h3>
                     </div>
                 </form>
                 <Link to="/product/list">

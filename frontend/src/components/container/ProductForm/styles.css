@@ -1,5 +1,5 @@
 .form-container {
-    max-width: 480px;
+    max-width: 580px;
     margin: 40px auto;
     padding: 20px;
 }
@@ -13,13 +13,32 @@
 }
 
 .gerencg-form-group label {
-    font-size: 12px;
-    color: #aaa;
+    font-size: 18px;
+    color: var(--quin);
 }
 
-.form-btn-container {
+.form-card-container {
+    background-color: var(--tert);
+    border: 1px solid var(--tert);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.form-card-container h3 {
+    color: var(--quin);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    min-height: 40px;
+}
+
+.msg-container {
+    padding: 4px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.692);
 }
 
 .form-card-image {
@@ -27,40 +46,25 @@
     border-radius: 8px 8px 0 0;
 }
 
-.form-card-container {
-    background-color: #fff;
+.form-btn-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 10px 20px 10px;
-    border-radius: 0 0 8px 8px;
-}
-
-.form-card-container h3 {
-    color: #4A4A4A;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    min-height: 40px;
+    justify-content: center;
 }
 
 .gerencg-btn {
-    padding: 8px 20px;
+    padding: 8px;
     border-radius: 5px;
-    outline: none;
-    border: none;
-    font-size: 18px;
-    color: #fff;
+    font-size: 20px;
+    color: var(--quin);
     cursor: pointer;
-    background-color: var(--tert);
+    background-color: var(--sena);
 }
 
-.gerencg.btn:hover {
-    padding: 6px 18px;
+.gerencg-btn:hover {
+    padding: 8px;
     transition: all 0.3s ease-out;
     background-color: transparent;
     color: #fff;
     border-radius: 5px;
-    border: 2.5px solid var(--seco);
+    border: 2.5px solid var(--quat);
 }

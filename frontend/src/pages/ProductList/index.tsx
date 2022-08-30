@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { PageProduct } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
+import { Link } from "react-router-dom";
 
 function ProductsList() {
 
@@ -35,6 +36,9 @@ function ProductsList() {
             <div className="container">
             <div className="header-container">             
                 <h2>Lista de Produtos</h2>
+                <Link to="/product/add"> 
+                <h3 className="gerencg-btn">Adicionar</h3>
+                </Link>
                 </div>
                 <div className="pagination-container-menu">
                     <div className="pagination-item">
@@ -44,7 +48,7 @@ function ProductsList() {
                 </div>
                 <div className="list-container row">
                     {productPage.content?.map(product => (
-                        <div key={product.id} className="col-sm-4 col-lg-4 col-xl-4 mb-3">
+                        <div key={product.id} className="col-sm-6 col-lg-5 col-xl-4 mb-3">
                             <ProductCard product={product} />
                         </div>
                     ))}
