@@ -1,3 +1,4 @@
+import moment from "moment";
 import { Link } from "react-router-dom";
 import { Category } from "types/category";
 import "./styles.css"
@@ -18,7 +19,7 @@ function CategoryCard({category}: Props) {
                         <h3>{category?.name}</h3>
     
                         <div className="category-products-container">
-                            <h2>Atualizado em: {category?.lastModifiedDate}</h2>
+                            <h2>Atualizado em: {moment(category?.lastModifiedDate).format('lll')}</h2>
                         </div>
                     </div>
                 </div>

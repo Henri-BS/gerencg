@@ -20,35 +20,34 @@ function ProductColumn({ productId }: Props) {
             });
     }, [productId]);
 
-    return (     
-        
-          <>  
-          <div className="column-image-container">           
-           <img className="column-card-image" src={product?.image} alt={product?.description} />    
-</div>
-        <div className="column-container">
-        <div className="column-item-container">
-                <h1>{ product?.description}</h1>
+    return (
+
+        <>
+            <div className="column-image-container">
+                <img className="column-card-image" src={product?.image} alt={product?.description} />
             </div>
-          
-            <div className="column-item-container">
-                <h3>Preço: {product?.price.toFixed(2)} R$</h3>
+            <div className="column-container">
+                <div className="column-item-container">
+                    <h1>{product?.description}</h1>
+                </div>
+
+                <div className="column-item-container">
+                    <h3>Preço: {product?.price.toFixed(2)} R$</h3>
+                </div>
+                <div className="column-item-container">
+                    <h3>Medida: {product?.measureValue} {product?.measure}</h3>
+                </div>
+                <div className="column-item-container">
+                    <h3>Quantidade: {product?.quantity}</h3>
+                </div>
+                <div className="column-item-container">
+                    <h3>Validade: {product?.validate} </h3>
+                </div>
+                <div className="column-item-container">
+                    <h3>Category: {product?.category} </h3>
+                </div>
             </div>
-            <div className="column-item-container">
-                <h3>Medida: {product?.measureValue} {product?.measure}</h3>
-            </div>
-            <div className="column-item-container">
-                <h3>Quantidade: {product?.quantity}</h3>
-            </div>
-            <div className="column-item-container">
-                <h3>Validade: {product?.validate} </h3>
-            </div>
-            <div className="column-item-container">
-                <h3>Category: {product?.category} </h3>
-            </div>
-            </div>     
-            
-            </>
+        </>
     );
 }
 
