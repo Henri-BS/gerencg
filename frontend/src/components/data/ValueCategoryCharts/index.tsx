@@ -10,7 +10,6 @@ type ChartData = {
 }
 
 const mockData = {
-    series: [5324, 4243, 6534, 1093, 84392],
     labels: ['Alimentícios', 'Brinquedos', 'Cosméticos e Higiene', 'Cozinha', 'Eletrônicos', 'Ferramentas', 'Limpeza', 'Papelaria e Escolar', 'Tecidos e Acessórios', 'Variados']
 }
 

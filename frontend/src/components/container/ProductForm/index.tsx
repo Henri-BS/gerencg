@@ -20,6 +20,8 @@ function ProductForm() {
         category: 0
     })
     const [msg, setMsg] = useState('')
+
+
     useEffect(() => {
         axios.get(`${BASE_URL}/product/list`)
             .then((response) => {
@@ -40,21 +42,20 @@ function ProductForm() {
             measure: data.measure,
             category: data.category
         }
-        axios.post(`${BASE_URL}/product/add`)
+        axios.post(`${BASE_URL}/product/add`, productData)
             .then((response) => {
                 console.log("Adicionado com Sucesso")
                 setData({
                     description: "",
                     image: "",
-                    price: 0.0,
-                    quantity: 0,
-                    measureValue: 0.0,
+                    price: data.price,
+                    quantity: data.quantity,
+                    measureValue: data.measureValue,
                     measure: "",
                     validate: "",
-                    category: 0
+                    category: data.category
                 })
-                setMsg("Produto Adicionado")
-            }).catch(() => {
+                setMsg("Produto Adicionado")}).catch(() => {
                 setMsg("Erro")
             })
     }
@@ -98,7 +99,7 @@ function ProductForm() {
                 setData({
                     description: "",
                     image: "",
-                    price: 0.0,
+                    price: 0,
                     quantity: 0,
                     measureValue: 0.0,
                     measure: "",
@@ -110,39 +111,46 @@ function ProductForm() {
                 setMsg("Erro")
             })
     }
+    
     useEffect(() => {
         setData({
             description: selectProduct ? selectProduct.description : "",
             image: selectProduct ? selectProduct.image : "",
-            price: selectProduct ? selectProduct.price : 0.0,
-            quantity: selectProduct ? selectProduct.quantity : 0,
-            measureValue: selectProduct ? selectProduct.measureValue : 0.0,
+            price: selectProduct ? selectProduct.price : data.price,
+            quantity: selectProduct ? selectProduct.quantity : data.quantity,
+            measureValue: selectProduct ? selectProduct.measureValue : data.measureValue,
             measure: selectProduct ? selectProduct.measure : "",
             validate: selectProduct ? selectProduct.validate : "",
-            category: selectProduct ? selectProduct.category.id : 0
+            category: selectProduct ? selectProduct.category.id : data.category
         })
     }, [selectProduct])
-
 
     return (
         <div className="form-container">
             <div className="form-card-container">
                 <h3>Adicionar um Novo Produto</h3>
-                <form className="gerencg-form" >
+
+                <form className="gerencg-form">
 
                     <div className="form-group gerencg-form-group">
-                        <label htmlFor="description">Descrição: {data.description}</label>
-                        <input type="text" className="form-control" id="description" />
+                        <label htmlFor="description">Descrição: </label>
+                        <input type="text" className="form-control" id="description" 
+                        value={data.description} onChange={(x) => 
+                        setData({ ...data, description: x.target.value 
+                        })} />
                     </div>
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="image">Image: </label>
-                        <input type="text" className="form-control" id="image" />
+                        <input type="text" className="form-control" id="image" 
+                        onChange={(x) => 
+                        setData({ ...data, image: x.target.value
+                        })}/>
                     </div>
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="price">Preço: </label>
-                        <input type="number" className="form-control" id="price" />
+                        <input type="number" className="form-control" id="price"/>
                     </div>
 
                     <div className="form-group gerencg-form-group">
@@ -157,16 +165,21 @@ function ProductForm() {
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="measure">Tipo de Medida: </label>
-                        <input type="text" className="form-control" id="measure" />
+                        <input type="text" className="form-control" id="measure"
+                        value={data.measure} onChange={(x) =>
+                        setData({...data, measure: x.target.value
+                        })}/>
                     </div>
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="validate">Validade: </label>
-                        <input type="date" className="form-control" id="validate" />
+                        <input type="text" className="form-control" value={data.validate} id="validate" 
+                        onChange={(x) => setData({ ...data, validate: x.target.value })}/>
                     </div>
 
                     <div className="form-group gerencg-form-group">
-                        <label htmlFor="category">Categoria</label>
+                        <label htmlFor="category">Categoria: 
+                        </label>
                         <input type="number" className="form-control" id="category" />
                     </div>
 
@@ -174,14 +187,15 @@ function ProductForm() {
                         <button type="submit" className="btn btn-primary gerencg-btn" onClick={() => addProduct()}>
                             Adicionar Produto
                         </button>
-                    </div>
-                    <div className="msg-container">
-                        <h3>{msg}</h3>
-                    </div>
+</div>
+                        <Link className="form-btn-container"to="/product/list">
+                            <button className="btn gerencg-btn mt-3">Cancelar</button>
+                        </Link>
                 </form>
-                <Link to="/product/list">
-                    <button className="btn btn-primary gerencg-btn mt-3">Cancelar</button>
-                </Link>
+
+                <div className="msg-container">
+                    <h3>{msg}</h3>
+                </div>
             </div>
         </div>);
 }

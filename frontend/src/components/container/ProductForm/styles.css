@@ -10,6 +10,7 @@
 
 .gerencg-form-group {
     margin-bottom: 20px;
+    max-width: 300px;
 }
 
 .gerencg-form-group label {
@@ -41,20 +42,17 @@
     color: rgba(255, 255, 255, 0.692);
 }
 
-.form-card-image {
-    width: 100%;
-    border-radius: 8px 8px 0 0;
-}
-
 .form-btn-container {
     display: flex;
     justify-content: center;
+    text-decoration: none;
 }
 
 .gerencg-btn {
     padding: 8px;
     border-radius: 5px;
     font-size: 20px;
+    border: 2.5px solid transparent;
     color: var(--quin);
     cursor: pointer;
     background-color: var(--sena);
