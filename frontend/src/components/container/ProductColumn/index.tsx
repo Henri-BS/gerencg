@@ -1,4 +1,5 @@
 import axios from "axios";
+import moment from "moment";
 
 import { useEffect, useState } from "react";
 import { Product } from "types/product";
@@ -41,7 +42,7 @@ function ProductColumn({ productId }: Props) {
                     <h3>Quantidade: {product?.quantity}</h3>
                 </div>
                 <div className="column-item-container">
-                    <h3>Validade: {product?.validate} </h3>
+                    <h3>Validade: {moment(product?.validate).format('DD/MM/YYYY')} </h3>
                 </div>
                 <div className="column-item-container">
                     <h3>Category: {product?.category} </h3>

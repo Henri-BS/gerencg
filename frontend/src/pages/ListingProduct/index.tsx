@@ -36,8 +36,10 @@ function ProductsList() {
             <div className="container">
             <div className="header-container">             
                 <h2>Lista de Produtos</h2>
-                <Link to="/product/add"> 
-                <h3 className="gerencg-btn">Adicionar</h3>
+                <Link className="gerencg-btn-sec-container" to="/product/add"> 
+                <button className="gerencg-btn-sec">
+                    <h3>Adicionar</h3>
+                    </button>
                 </Link>
                 </div>
                 <div className="pagination-container-menu">

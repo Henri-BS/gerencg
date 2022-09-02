@@ -3,7 +3,6 @@ import CategoryCard from "components/container/CategoryCard";
 import { useEffect, useState } from "react";
 import { CategoryPage } from "types/category";
 import { BASE_URL } from "utils/requests";
-import "./styles.css";
 
 function CategoryList() {
 

@@ -1,0 +1,52 @@
+.header-container {
+    padding: 12px;
+    border-bottom: 2px solid #ccc;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 90px;
+}
+
+.page-container {
+    padding: 40px;
+}
+
+.pagination-container-menu {
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    padding: 30px;
+    height: 90px;
+}
+
+.option-item {
+    width: 250px;
+    padding: 20px;
+    border: 1px;
+}
+
+.gerencg-btn-sec-container {
+    text-decoration: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.gerencg-btn-sec {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    background-color: var(--sena);
+}
+
+.gerencg-btn-sec:hover {
+    transition: all 0.3s ease-out;
+    border-radius: 5px;
+    background-color: rgb(10, 131, 161);
+}
+
+.gerencg-btn-sec h3 {
+    text-align: center;
+    font-size: 22px
+}

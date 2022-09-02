@@ -2,8 +2,8 @@ import Footer from "components/shared/Footer";
 import NavBar from "components/shared/NavBar";
 import Dashboard from "pages/StatsDashboard";
 import Home from "pages/Home";
-import ProductsList from "pages/ProductList";
-import CategoryList from "pages/CategoryList";
+import ProductsList from "pages/ListingProduct";
+import CategoryList from "pages/ListingCategory";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import ProductProfile from "pages/ProductProfile";
 import CategoryProfile from "pages/CategoryProfile";
