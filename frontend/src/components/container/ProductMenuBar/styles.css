@@ -1,0 +1,24 @@
+.menu-profile-container {
+    height: 280px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    background-color: var(--quat);
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr;
+}
+
+.menu-option-card {
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 100px;
+    border-radius: 8px;
+    font-size: 18px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.452), rgba(255, 255, 255, 0));
+}
+
+.option-card-img {
+    padding: 10px;
+    width: 94%;
+}

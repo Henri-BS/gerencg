@@ -5,9 +5,9 @@ import Home from "pages/Home";
 import ProductsList from "pages/ListingProduct";
 import CategoryList from "pages/ListingCategory";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import ProductProfile from "pages/ProductProfile";
-import CategoryProfile from "pages/CategoryProfile";
-import { SaveProduct } from "pages/ProductOptions";
+import ProductProfile from "pages/ProfileProduct";
+import CategoryProfile from "pages/ProfileCategory";
+import { SaveProduct, UpdateProduct } from "pages/ProductOptions";
 
 
 const PageRoutes = () => {
@@ -19,13 +19,17 @@ const PageRoutes = () => {
              
                 <Route path="/product/list" element={<ProductsList />} />
                 <Route path="/product/add" element={<SaveProduct />} />  
-
                 <Route path="/category/list" element={<CategoryList/>} />
                 <Route path="/categories-stats" element={<Dashboard />} />
+
                 <Route path="/product">
                         <Route path=":productId" element={<ProductProfile />} />
                     </Route>
 
+                <Route path="/product/edit" >   
+                        <Route path=":productId" element={<UpdateProduct />} />
+                        </Route>
+                        
                     <Route path="/category">
                         <Route path=":categoryId" element={<CategoryProfile />} />
                     </Route>

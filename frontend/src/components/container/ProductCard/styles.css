@@ -14,30 +14,35 @@
 
 .product-display-card h3 {
     padding: 6px;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 400;
 }
 
 .product-display-card h2 {
     padding: 6px;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 300;
 }
 
 .product-card-image {
     width: 150px;
-    border: 2px solid #ccc;
     border-radius: 20px;
 }
 
 .product-card-container {
-    height: 160px;
+    height: 100%;
     background-color: #fcf6f6;
     align-items: center;
-    border-radius: 30px;
     text-decoration-color: transparent;
-    padding: 8px;
+    padding: 10px;
     display: grid;
+    overflow-x: scroll;
+    border-left: 2px solid var(--prim)
+}
+
+.product-card-container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 .product-price-container {
