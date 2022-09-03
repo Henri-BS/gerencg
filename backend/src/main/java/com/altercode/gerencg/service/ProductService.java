@@ -69,7 +69,7 @@ public class ProductService {
 		Measure measure = measureRepository.findByAbbreviation(dto.getMeasure()).get();
 
 		Product edit = productRepository.findById(dto.getId()).get();
-
+		edit.setId(dto.getId());
 		edit.setDescription(dto.getDescription());
 		edit.setImage(dto.getImage());
 		edit.setPrice(dto.getPrice());

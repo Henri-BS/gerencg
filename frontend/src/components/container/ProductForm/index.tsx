@@ -140,52 +140,51 @@ type Props = {
 }
 
 export function UpdateProductForm({ productId }: Props) {
-    const navigate = useNavigate();
-    const [product, setProduct] = useState<Product>()
-    const [msg, setMsg] = useState('')
 
-    console.log("data", product);
+    const navigate = useNavigate();
+    const [product, setProduct] = useState<Product>();
 
     useEffect(() => {
         axios.get(`${BASE_URL}/product/edit/${productId}`)
             .then((response) => {
                 setProduct(response.data);
-            });
-    }, [productId]);
-
+            })
+    }, [productId])
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
         event.preventDefault();
+
         const description = (event.target as any).description.value;
         const image = (event.target as any).image.value;
         const price = (event.target as any).price.value;
         const quantity = (event.target as any).quantity.value;
-        const validate = (event.target as any).validate.value;
         const measureValue = (event.target as any).measureValue.value;
         const measure = (event.target as any).measure.value;
+        const validate = (event.target as any).validate.value;
         const category = (event.target as any).category.value;
+
+        //        console.log(description, image, price, quantity, measureValue, measure, validate, category)
 
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
-            method: "PUT",
-            url: "/product/edit",
+            method: 'PUT',
+            url: '/product/list',
             data: {
-                productId: productId,
                 description: description,
                 image: image,
                 price: price,
                 quantity: quantity,
-                validate: validate,
                 measureValue: measureValue,
                 measure: measure,
+                validate: validate,
                 category: category
-            },
-        };
+            }
+        }
         axios(config).then(response => {
-            navigate("/");
+            console.log(response.data);
         });
-    };
-
+    }
 
     return (
         <div className="form-container">
@@ -193,6 +192,7 @@ export function UpdateProductForm({ productId }: Props) {
                 <h3>Editar Produto</h3>
 
                 <form className="gerencg-form" onSubmit={handleSubmit}>
+
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="description">Descrição: </label>
                         <input type="text" className="form-control" id="description" />
@@ -234,18 +234,14 @@ export function UpdateProductForm({ productId }: Props) {
                     </div>
 
                     <div className="form-btn-container">
-                        <button type="submit" className="btn btn-primary gerencg-btn" >
+                        <button type="submit" className=" gerencg-btn" >
                             Editar Produto
                         </button>
                     </div>
                     <Link className="form-btn-container" to="/product/">
-                        <button className="btn gerencg-btn mt-3">Cancelar</button>
+                        <button className=" gerencg-btn mt-3">Cancelar</button>
                     </Link>
                 </form>
-
-                <div className="msg-container">
-                    <h3>{msg}</h3>
-                </div>
             </div>
         </div>
     );
