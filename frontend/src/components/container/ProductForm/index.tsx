@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { MeasurePage } from "types/measure";
 import { Product } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
@@ -9,13 +10,6 @@ export function SaveProductForm() {
     const navigate = useNavigate();
     const [product, setProduct] = useState<Product>()
     const [msg, setMsg] = useState('')
-
-    useEffect(() => {
-        axios.get(`${BASE_URL}/product/list`)
-            .then((response) => {
-                setProduct(response.data);
-            })
-    }, [])
 
     const addProduct = () => {
         console.log("data", product);
@@ -141,9 +135,20 @@ type Props = {
 
 export function UpdateProductForm({ productId }: Props) {
 
-    const navigate = useNavigate();
-    const [product, setProduct] = useState<Product>();
+    const navigate = useNavigate();    
+    
+    const [measureList, setMeasure] = useState<MeasurePage>({
+        content: []
+    })
+    useEffect(() => {
+        axios.get(`${BASE_URL}/measure/list`)
+            .then((response) => {
+                setMeasure(response.data);
+            })
+    }, [])
+    
 
+    const [product, setProduct] = useState<Product>();
     useEffect(() => {
         axios.get(`${BASE_URL}/product/edit/${productId}`)
             .then((response) => {
@@ -164,12 +169,12 @@ export function UpdateProductForm({ productId }: Props) {
         const validate = (event.target as any).validate.value;
         const category = (event.target as any).category.value;
 
-        //        console.log(description, image, price, quantity, measureValue, measure, validate, category)
+        console.log(description, image, price, quantity, measure, measureValue, measure, validate, category)
 
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
             method: 'PUT',
-            url: '/product/list',
+            url: '/product/edit',
             data: {
                 description: description,
                 image: image,
@@ -182,8 +187,8 @@ export function UpdateProductForm({ productId }: Props) {
             }
         }
         axios(config).then(response => {
-            console.log(response.data);
-        });
+            navigate('product/list')
+        })
     }
 
     return (
@@ -220,7 +225,14 @@ export function UpdateProductForm({ productId }: Props) {
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="measure">Tipo de Medida: </label>
-                        <input type="text" className="form-control" id="measure" />
+                        <select id="measure" className="form-control" >
+                            {measureList.content?.map(item => (
+                                <option key={item.id}>
+                                    {item.abbreviation}
+                                    </option>
+                            ))}
+                        </select>
+
                     </div>
 
                     <div className="form-group gerencg-form-group">

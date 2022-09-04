@@ -1,4 +1,5 @@
 import { Category } from "./category"
+import { Measure } from "./measure";
 
 export type Product = {
     id: number;
@@ -8,7 +9,7 @@ export type Product = {
     quantity: number;
     validate: string;
     measureValue: number;
-    measure: string;
+    measure: number;
     category: Category;
 }
 
