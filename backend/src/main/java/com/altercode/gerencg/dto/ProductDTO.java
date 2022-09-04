@@ -14,10 +14,9 @@ public class ProductDTO implements Serializable{
 		private Double price;
 		private Integer quantity;
 		private LocalDate validate;
-		
 		private Double measureValue;
+		
 		private String measure;
-	
 		private Long category;
 		
 		
@@ -109,9 +108,6 @@ public class ProductDTO implements Serializable{
 		public void setValidate(LocalDate validate) {
 			this.validate = validate;
 		}
-
-
-		
 
 		public Double getMeasureValue() {
 			return measureValue;

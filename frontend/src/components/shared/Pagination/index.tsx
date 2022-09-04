@@ -1,8 +1,8 @@
 import { CategoryPage } from "types/category";
 import { StatsPage } from "types/categoryStats";
-import { PageProduct } from "types/product";
+import { ProductPage } from "types/product";
 type Props = {
-    page: PageProduct | StatsPage | CategoryPage;
+    page: ProductPage | StatsPage | CategoryPage;
     onPageChange: Function;
 }
 

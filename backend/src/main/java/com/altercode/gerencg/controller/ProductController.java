@@ -47,9 +47,9 @@ public class ProductController {
 	}
 	
 	@PutMapping("/edit")
-	public ResponseEntity<ProductDTO> updateProduct(@RequestBody ProductDTO porduct) {
+	public ProductDTO updateProduct(@RequestBody ProductDTO porduct) {
 		ProductDTO editProduct = service.updateProduct(porduct);
-		return new ResponseEntity<>(editProduct, HttpStatus.OK);
+		return editProduct;
 	}
 	
 	@DeleteMapping("/delete/{id}")

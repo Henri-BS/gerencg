@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { CategoryPage } from "types/category";
 import { MeasurePage } from "types/measure";
 import { Product } from "types/product";
 import { BASE_URL } from "utils/requests";
@@ -60,7 +61,7 @@ export function SaveProductForm() {
             },
         };
         axios(config).then(response => {
-            navigate("/");
+            navigate("/product/list");
         });
     };
 
@@ -135,8 +136,9 @@ type Props = {
 
 export function UpdateProductForm({ productId }: Props) {
 
-    const navigate = useNavigate();    
-    
+    const navigate = useNavigate();
+
+//Get MeasureList for the measure type selector        
     const [measureList, setMeasure] = useState<MeasurePage>({
         content: []
     })
@@ -146,8 +148,21 @@ export function UpdateProductForm({ productId }: Props) {
                 setMeasure(response.data);
             })
     }, [])
-    
 
+//Get CategoryList for the category selector    
+    const [categoryList, setCategoryList] = useState<CategoryPage>({
+        content: [],
+        number: 0
+    })
+    useEffect(() => {
+        axios.get(`${BASE_URL}/category/list`)
+            .then((response) => {
+                setCategoryList(response.data);
+            })
+    }, [])
+
+
+//Get Product in edit page
     const [product, setProduct] = useState<Product>();
     useEffect(() => {
         axios.get(`${BASE_URL}/product/edit/${productId}`)
@@ -157,9 +172,7 @@ export function UpdateProductForm({ productId }: Props) {
     }, [productId])
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-
         event.preventDefault();
-
         const description = (event.target as any).description.value;
         const image = (event.target as any).image.value;
         const price = (event.target as any).price.value;
@@ -169,7 +182,7 @@ export function UpdateProductForm({ productId }: Props) {
         const validate = (event.target as any).validate.value;
         const category = (event.target as any).category.value;
 
-        console.log(description, image, price, quantity, measure, measureValue, measure, validate, category)
+        console.log(description, image, price, quantity, measureValue, measure, validate, category)
 
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
@@ -187,9 +200,11 @@ export function UpdateProductForm({ productId }: Props) {
             }
         }
         axios(config).then(response => {
-            navigate('product/list')
+            navigate('/product/list')
         })
     }
+
+
 
     return (
         <div className="form-container">
@@ -219,6 +234,11 @@ export function UpdateProductForm({ productId }: Props) {
                     </div>
 
                     <div className="form-group gerencg-form-group">
+                        <label htmlFor="validate">Validade: </label>
+                        <input type="text" className="form-control" id="validate" />
+                    </div>
+
+                    <div className="form-group gerencg-form-group">
                         <label htmlFor="measureValue">Valor de Medida: </label>
                         <input className="form-control" id="measureValue" />
                     </div>
@@ -227,22 +247,23 @@ export function UpdateProductForm({ productId }: Props) {
                         <label htmlFor="measure">Tipo de Medida: </label>
                         <select id="measure" className="form-control" >
                             {measureList.content?.map(item => (
-                                <option key={item.id}>
+                                <option key={item.abbreviation}>
                                     {item.abbreviation}
-                                    </option>
+                                </option>
                             ))}
                         </select>
 
                     </div>
 
                     <div className="form-group gerencg-form-group">
-                        <label htmlFor="validate">Validade: </label>
-                        <input type="text" className="form-control" id="validate" />
-                    </div>
-
-                    <div className="form-group gerencg-form-group">
                         <label htmlFor="category">Categoria: </label>
-                        <input type="number" className="form-control" id="category" />
+                        <select  className="form-control" id="category">
+                            {categoryList.content?.map(item => (
+                                <option key={item.id}>
+                                    {item.id}
+                                </option>
+                            ))}
+                        </select>
                     </div>
 
                     <div className="form-btn-container">

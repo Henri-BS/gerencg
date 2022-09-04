@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.altercode.gerencg.entity.Measure;
 
 @Repository
-public interface MeasureRepository extends JpaRepository<Measure, Long>{
+public interface MeasureRepository extends JpaRepository<Measure, String>{
 	
 	Optional<Measure> findByAbbreviation(String abbreviation);
 	

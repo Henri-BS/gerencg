@@ -2,7 +2,7 @@ import axios from "axios";
 import Pagination from "components/shared/Pagination";
 import ProductCard from "components/container/ProductCard";
 import { useEffect, useState } from "react";
-import { PageProduct } from "types/product";
+import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 function ProductsList() {
 
     const [pageNumber, setPageNumber] = useState(0);
-    const [productPage, setProductPage] = useState<PageProduct>({
+    const [productPage, setProductPage] = useState<ProductPage>({
         content: [],
         first: true,
         last: true,
@@ -23,7 +23,7 @@ function ProductsList() {
     useEffect(() => {
         axios.get(`${BASE_URL}/product/list?page=${pageNumber}&size=12`)
             .then(response => {
-                const data = response.data as PageProduct;
+                const data = response.data as ProductPage;
                 setProductPage(data);
             });
     }, [pageNumber]);

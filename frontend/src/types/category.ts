@@ -9,12 +9,12 @@ export type Category = {
 
 export type CategoryPage = {
   content?: Category[];
-  last: boolean;
-  totalElements: number;
-  totalPages: number;
+  last?: boolean;
+  totalElements?: number;
+  totalPages?: number;
   size?: number;
   number: number;
-  first: boolean;
+  first?: boolean;
   numberOfElements?: number;
   empty?: boolean;
 };

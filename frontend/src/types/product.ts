@@ -9,11 +9,11 @@ export type Product = {
     quantity: number;
     validate: string;
     measureValue: number;
-    measure: number;
-    category: Category;
+    measure: Measure[];
+    category: Category[];
 }
 
-export type PageProduct = {
+export type ProductPage = {
     content?: Product[];
 size?: number;
 pageNumber?: number;

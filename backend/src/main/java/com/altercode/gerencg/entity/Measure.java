@@ -16,15 +16,12 @@ import javax.persistence.Table;
 public class Measure {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "measure_id")
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)	
+	@Column(name = "abbreviation")
+	private String abbreviation;
 	
 	@Column(name = "measure_description")
 	private String description;
-	
-	private Double value;
-	private String abbreviation;
 	
 	@OneToMany(mappedBy = "measure")
 	private Set<Product> product = new HashSet<>();
@@ -32,20 +29,10 @@ public class Measure {
 	public Measure() {
 	}
 	
-	public Measure(Long id, String description, Double value, String abbreviation, Set<Product> product) {
-		this.id = id;
-		this.description = description;
-		this.value = value;
+	public Measure(String abbreviation, String description, Set<Product> product) {
 		this.abbreviation = abbreviation;
+		this.description = description;
 		this.product = product;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getDescription() {
@@ -54,14 +41,6 @@ public class Measure {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public Double getValue() {
-		return value;
-	}
-
-	public void setValue(Double value) {
-		this.value = value;
 	}
 
 	public String getAbbreviation() {

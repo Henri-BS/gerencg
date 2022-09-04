@@ -1,11 +1,10 @@
 package com.altercode.gerencg.service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.altercode.gerencg.dto.MeasureDTO;
@@ -20,13 +19,13 @@ public class MeasureService {
 	private MeasureRepository measureRepository;
 	
 	
-	public List<MeasureDTO> findAll() {
-		List<Measure> result = measureRepository.findAll();
-		List<MeasureDTO> list = result.stream().map(x -> new MeasureDTO(x)).collect(Collectors.toList());
-		return list;
+	public Page<MeasureDTO> findAll(Pageable pageable) {
+		Page<Measure> result = measureRepository.findAll(pageable);
+		Page<MeasureDTO> page = result.map(x -> new MeasureDTO(x));
+		return page;
 	}
 
-	public MeasureDTO findById(Long id) {
+	public MeasureDTO findById(String id) {
 		Measure result = measureRepository.findById(id).get();
 		MeasureDTO dto = new MeasureDTO(result);
 		return dto;
@@ -36,7 +35,6 @@ public class MeasureService {
 		
 		Measure add = new Measure();
 		add.setDescription(dto.getDescription());
-		add.setValue(dto.getValue());
 		add.setAbbreviation(dto.getAbbreviation());
 		
 		return new MeasureDTO(measureRepository.saveAndFlush(add));
@@ -44,16 +42,15 @@ public class MeasureService {
 	
 	public MeasureDTO updateMeasure(MeasureDTO dto) {
 		
-		Measure edit = measureRepository.findById(dto.getId()).get();
+		Measure edit = measureRepository.findById(dto.getDescription()).get();
 		
 		edit.setDescription(dto.getDescription());
-		edit.setValue(dto.getValue());
 		edit.setAbbreviation(dto.getAbbreviation());
 		
 		return new MeasureDTO(measureRepository.save(edit));
 	}
 	
-	public void deleteMeasure(Long id) {
+	public void deleteMeasure(String id) {
 		this.measureRepository.deleteById(id);
 	}
 
