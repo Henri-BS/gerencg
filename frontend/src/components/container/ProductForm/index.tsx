@@ -259,8 +259,8 @@ export function UpdateProductForm({ productId }: Props) {
                         <label htmlFor="category">Categoria: </label>
                         <select  className="form-control" id="category">
                             {categoryList.content?.map(item => (
-                                <option key={item.id}>
-                                    {item.id}
+                                <option key={item.name}>
+                                    {item.name}
                                 </option>
                             ))}
                         </select>

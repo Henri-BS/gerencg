@@ -32,7 +32,7 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public CategoryProfileDTO findById(@PathVariable Long id) {
+    public CategoryProfileDTO findById(@PathVariable String id) {
         return categoryService.findById(id);
     }
     
@@ -42,15 +42,15 @@ public class CategoryController {
     	return new ResponseEntity<CategoryProfileDTO>(newCategory , HttpStatus.CREATED);
     }
     
-    @PutMapping("/edit/{id}")
-    public ResponseEntity<CategoryProfileDTO> updateCategory(@PathVariable Long id, @RequestBody CategoryProfileDTO category) {
+    @PutMapping("/edit")
+    public ResponseEntity<CategoryProfileDTO> updateCategory( @RequestBody CategoryProfileDTO category) {
     	CategoryProfileDTO updateCategory = categoryService.updateCategory(category);
     	return new ResponseEntity<>(updateCategory, HttpStatus.OK);
     }
     
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCategory(@PathVariable Long id) {
+    public void deleteCategory(@PathVariable String id) {
     	this.categoryService.deleteCategory(id);
     	
     }

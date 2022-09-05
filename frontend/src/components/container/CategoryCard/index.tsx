@@ -10,7 +10,7 @@ import "./styles.css"
 function CategoryCard({category}: Props) {
     
         return (
-            <Link to={`/category/${category?.id}`}>
+            <Link to={`/category/${category?.name}`}>
                 <div className="category-display-card">
                     <img className="category-card-image" 
                     src={category?.image} 

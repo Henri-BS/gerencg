@@ -12,12 +12,12 @@ public class CategoryStatsDTO {
 	private Double expense;
 	private LocalDate registrationDate;
 	
-	private CategoryDTO category;
+	private CategoryProfileDTO category;
 	
 	public CategoryStatsDTO() {}
 
-	public CategoryStatsDTO(Long id, Integer addedProducts, Integer removedProducts, Double income, Double expense, LocalDate registrationDate,
-			CategoryDTO category) {
+	public CategoryStatsDTO(Long id, Integer addedProducts, Integer removedProducts, 
+			Double income, Double expense, LocalDate registrationDate, CategoryProfileDTO category) {
 		this.id = id;
 		this.addedProducts = addedProducts;
 		this.removedProducts = removedProducts;
@@ -34,7 +34,7 @@ public class CategoryStatsDTO {
 		income = entity.getIncome();
 		expense = entity.getExpense();
 		registrationDate = entity.getRegistrationDate();
-		category = new CategoryDTO(entity.getCategory());
+		category = new CategoryProfileDTO(entity.getCategory());
 
 	}
 
@@ -88,11 +88,13 @@ public class CategoryStatsDTO {
 		this.registrationDate = registrationDate;
 	}
 
-	public CategoryDTO getCategory() {
+	public CategoryProfileDTO getCategory() {
 		return category;
 	}
 
-	public void setCategory(CategoryDTO category) {
+	public void setCategory(CategoryProfileDTO category) {
 		this.category = category;
 	}
+
+	
 }

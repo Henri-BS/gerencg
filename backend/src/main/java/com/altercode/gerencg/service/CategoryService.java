@@ -22,7 +22,7 @@ public class CategoryService {
 		return result.map(x -> new CategoryProfileDTO(x));
 	}
 
-	public CategoryProfileDTO findById(Long id) {
+	public CategoryProfileDTO findById(String id) {
 		Category category = categoryRepository.findById(id).get();
 
 		category.setTotalProducts(category.getProducts().size());
@@ -34,29 +34,37 @@ public class CategoryService {
 	}
 
 	public CategoryProfileDTO addCategory(CategoryProfileDTO dto) {
-
+		Category category = categoryRepository.findById(dto.getName()).get();
+		
 		Category add = new Category();
 		add.setName(dto.getName());
 		add.setImage(dto.getImage());
-		add.setTotalProducts(dto.getTotalProducts());
+		
+		category.setTotalProducts(category.getProducts().size());
+		category.setTotalRegisters(category.getCategoryStats().size());
+		category = categoryRepository.save(category);
 
+		
 		return new CategoryProfileDTO(categoryRepository.saveAndFlush(add));
 	}
 
 	public CategoryProfileDTO updateCategory(CategoryProfileDTO dto) {
 
-		Category edit = categoryRepository.findById(dto.getId()).get();
+		Category edit = categoryRepository.findById(dto.getName()).get();
 
-		edit.setId(dto.getId());
 		edit.setName(dto.getName());
 		edit.setImage(dto.getImage());
-		edit.setTotalProducts(dto.getTotalProducts());
+
+		edit.setTotalProducts(edit.getProducts().size());
+		edit.setTotalRegisters(edit.getCategoryStats().size());
+		edit = categoryRepository.save(edit);
+
 
 		Category update = categoryRepository.save(edit);
 		return new CategoryProfileDTO(update);
 	}
 
-	public void deleteCategory(Long id) {
+	public void deleteCategory(String id) {
 		this.categoryRepository.deleteById(id);
 	}
 

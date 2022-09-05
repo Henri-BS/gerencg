@@ -17,7 +17,7 @@ public class ProductDTO implements Serializable{
 		private Double measureValue;
 		
 		private String measure;
-		private Long category;
+		private String category;
 		
 		
 		public ProductDTO() {
@@ -25,7 +25,7 @@ public class ProductDTO implements Serializable{
 
 
 		public ProductDTO(Long id, String description, String image, Double price, Integer quantity, 
-				LocalDate validate, Double measureValue, String measure, Long category) {
+				LocalDate validate, Double measureValue, String measure, String category) {
 			this.id = id;
 			this.description = description;
 			this.image = image;
@@ -46,7 +46,7 @@ public class ProductDTO implements Serializable{
 			validate = entity.getValidate();
 			measureValue = entity.getMeasureValue();
 			measure = entity.getMeasure().getAbbreviation();
-			category = entity.getCategory().getId();
+			category = entity.getCategory().getName();
 		}
 
 
@@ -129,12 +129,12 @@ public class ProductDTO implements Serializable{
 		}
 
 
-		public Long getCategory() {
+		public String getCategory() {
 			return category;
 		}
 
 
-		public void setCategory(Long category) {
+		public void setCategory(String category) {
 			this.category = category;
 		}
 

@@ -20,10 +20,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 public class Category {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "category_id")
-	private Long id;
-	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "category_name")
 	private String name;
 	
@@ -34,7 +31,7 @@ public class Category {
 	private Integer totalProducts = 1;
 	
 	@Column(name = "total_registers")
-	private Integer totalRegisters;
+	private Integer totalRegisters = 1;
 	
 	@LastModifiedDate
 	@Column(name = "last_modified_date")
@@ -49,9 +46,8 @@ public class Category {
 	public Category() {
 	}
 
-	public Category(Long id, String name, String image, Integer totalProducts,
+	public Category( String name, String image, Integer totalProducts,
 			LocalDateTime lastModifiedDate, List<CategoryStats> categoryStats, Set<Register> productRegister) {
-		this.id = id;
 		this.name = name;
 		this.image = image;
 		this.totalProducts = totalProducts;
@@ -59,15 +55,7 @@ public class Category {
 		this.categoryStats = categoryStats;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
+		public String getName() {
 		return name;
 	}
 

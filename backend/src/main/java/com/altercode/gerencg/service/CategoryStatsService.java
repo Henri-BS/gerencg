@@ -38,7 +38,7 @@ public class CategoryStatsService {
 	
 	public CategoryStatsDTO saveStats(CategoryStatsDTO dto) {
 		
-		Category category = categoryRepository.findById(dto.getId()).get(); 
+		Category category = categoryRepository.findById(dto.getCategory().getName()).get(); 
 		
 		CategoryStats add = new CategoryStats();
 		add.setRegistrationDate(dto.getRegistrationDate());
@@ -57,7 +57,7 @@ public class CategoryStatsService {
 	public CategoryStatsDTO updateStats(CategoryStatsDTO dto) {
 		
 		CategoryStats edit = statsRepository.findById(dto.getId()).get();
-		Category category = categoryRepository.findById(dto.getId()).get();
+		Category category = categoryRepository.findById(dto.getCategory().getName()).get();
 		
 		edit.setRegistrationDate(dto.getRegistrationDate());
 		edit.setCategory(category);

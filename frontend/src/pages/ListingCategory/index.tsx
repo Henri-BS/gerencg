@@ -34,7 +34,7 @@ function CategoryList() {
           <div className="page-container">
                 <div className="list-container row">
                     {categoryPage.content?.map(category => (
-                        <div key={category.id} className="col-sm-12 mb-3">
+                        <div key={category.name} className="col-sm-12 mb-3">
                             <CategoryCard category={category} />
                         </div>
                     ))}
