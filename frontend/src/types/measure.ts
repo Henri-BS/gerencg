@@ -1,8 +1,8 @@
-export type Measure = {
-  description: string;
+export type Measure = {  
   abbreviation: string;
+  description: string;
 };
-
+  
 export type MeasurePage = {
   content?: Measure[];
   last?: boolean;

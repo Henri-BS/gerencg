@@ -1,5 +1,4 @@
 import {SaveProductForm, UpdateProductForm} from "components/container/ProductForm";
-import { useParams } from "react-router-dom";
 import "./styles.css"
 
 
@@ -14,10 +13,9 @@ export function SaveProduct() {
 
 export function UpdateProduct() {
     
-    const params = useParams();
     return(
         <div className="container-blur">
-            <UpdateProductForm productId={`${params.productId}`}/>
+            <UpdateProductForm />
         </div>  
     )
 }

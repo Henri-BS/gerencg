@@ -12,6 +12,29 @@ export function SaveProductForm() {
     const [product, setProduct] = useState<Product>()
     const [msg, setMsg] = useState('')
 
+    //Get MeasureList for the measure type selector        
+    const [measureList, setMeasure] = useState<MeasurePage>({
+        content: []
+    })
+    useEffect(() => {
+        axios.get(`${BASE_URL}/measure/list`)
+            .then((response) => {
+                setMeasure(response.data);
+            })
+    }, [])
+
+    //Get CategoryList for the category selector    
+    const [categoryList, setCategoryList] = useState<CategoryPage>({
+        content: [],
+        number: 0
+    })
+    useEffect(() => {
+        axios.get(`${BASE_URL}/category/list`)
+            .then((response) => {
+                setCategoryList(response.data);
+            })
+    }, [])
+
     const addProduct = () => {
         console.log("data", product);
         const productData = {
@@ -93,23 +116,35 @@ export function SaveProductForm() {
                     </div>
 
                     <div className="form-group gerencg-form-group">
+                        <label htmlFor="validate">Validade: </label>
+                        <input type="text" className="form-control" id="validate" />
+                    </div>
+
+                    <div className="form-group gerencg-form-group">
                         <label htmlFor="measureValue">Valor de Medida: </label>
                         <input className="form-control" id="measureValue" />
                     </div>
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="measure">Tipo de Medida: </label>
-                        <input type="text" className="form-control" id="measure" />
-                    </div>
-
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="validate">Validade: </label>
-                        <input type="text" className="form-control" id="validate" />
+                        <select className="form-control" id="measure">
+                            {measureList.content?.map(item => (
+                                <option key={item.abbreviation}>
+                                    {item.abbreviation}
+                                </option>
+                            ))}
+                        </select>
                     </div>
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="category">Categoria: </label>
-                        <input type="number" className="form-control" id="category" />
+                        <select className="form-control" id="category">
+                            {categoryList.content?.map(item => (
+                                <option key={item.name}>
+                                    {item.name}
+                                </option>
+                            ))}
+                        </select>
                     </div>
 
                     <div className="form-btn-container">
@@ -130,15 +165,12 @@ export function SaveProductForm() {
     );
 }
 
-type Props = {
-    productId: string;
-}
 
-export function UpdateProductForm({ productId }: Props) {
+export function UpdateProductForm() {
 
     const navigate = useNavigate();
 
-//Get MeasureList for the measure type selector        
+    //Get MeasureList for the measure type selector        
     const [measureList, setMeasure] = useState<MeasurePage>({
         content: []
     })
@@ -149,7 +181,7 @@ export function UpdateProductForm({ productId }: Props) {
             })
     }, [])
 
-//Get CategoryList for the category selector    
+    //Get CategoryList for the category selector    
     const [categoryList, setCategoryList] = useState<CategoryPage>({
         content: [],
         number: 0
@@ -160,19 +192,31 @@ export function UpdateProductForm({ productId }: Props) {
                 setCategoryList(response.data);
             })
     }, [])
+    
 
-
-//Get Product in edit page
+    //Get Product in edit page
     const [product, setProduct] = useState<Product>();
-    useEffect(() => {
-        axios.get(`${BASE_URL}/product/edit/${productId}`)
+    const editProduct = () =>{
+    const productData = {
+        id: (product?.id),
+        description: product?.description,
+        image: product?.image,
+        price: product?.price,
+        quantity: product?.quantity,
+        validate: product?.validate,
+        measureValue: product?.measureValue,
+        measure: product?.measure,
+        category: product?.category
+    }
+        axios.put(`${BASE_URL}/product/edit/${product?.id}`, productData)
             .then((response) => {
+                console.log("successfully add")
                 setProduct(response.data);
             })
-    }, [productId])
-
+        }
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        const id = (event.target as any).id.value;
         const description = (event.target as any).description.value;
         const image = (event.target as any).image.value;
         const price = (event.target as any).price.value;
@@ -182,13 +226,14 @@ export function UpdateProductForm({ productId }: Props) {
         const validate = (event.target as any).validate.value;
         const category = (event.target as any).category.value;
 
-        console.log(description, image, price, quantity, measureValue, measure, validate, category)
+        console.log(id, description, image, price, quantity, measureValue, measure, validate, category)
 
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
             method: 'PUT',
             url: '/product/edit',
             data: {
+                id: id,
                 description: description,
                 image: image,
                 price: price,
@@ -200,12 +245,10 @@ export function UpdateProductForm({ productId }: Props) {
             }
         }
         axios(config).then(response => {
-            navigate('/product/list')
+            navigate('/')
         })
+
     }
-
-
-
     return (
         <div className="form-container">
             <div className="form-card-container">
@@ -257,7 +300,7 @@ export function UpdateProductForm({ productId }: Props) {
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="category">Categoria: </label>
-                        <select  className="form-control" id="category">
+                        <select className="form-control" id="category">
                             {categoryList.content?.map(item => (
                                 <option key={item.name}>
                                     {item.name}
@@ -267,7 +310,7 @@ export function UpdateProductForm({ productId }: Props) {
                     </div>
 
                     <div className="form-btn-container">
-                        <button type="submit" className=" gerencg-btn" >
+                        <button type="submit" className=" gerencg-btn" onClick={() => editProduct()}>
                             Editar Produto
                         </button>
                     </div>
@@ -278,4 +321,5 @@ export function UpdateProductForm({ productId }: Props) {
             </div>
         </div>
     );
+
 }
