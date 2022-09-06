@@ -4,6 +4,12 @@ import ILinkedIn from 'assets/img/linked.svg'
 import IGmail from 'assets/img/gmail.svg'
 import "./styles.css";
 
+const links = {
+    github: "https://github.com/Henri-BS",
+    email: "mailto:hbsantos720@gmail.com",
+    linkedin: "https://www.linkedin.com/in/h-b-santos-1758351a3/"
+}
+
 
 function Footer() {
     return (
@@ -15,24 +21,24 @@ function Footer() {
             </div>
             
                 <div className="col-4 ">
-                    <Link to="https://github.com/Henri-BS" color="inherit">
+                    <a href={links.github} color="inherit">
                         <img className='footer-logo' src={IGithub} alt='logo' />
                         Github
-                    </Link>
+                    </a>
                 </div>
 
                 <div className="col-4  ">
-                    <Link to="mailto:hbsantos720@gmail.com" color="inherit">
+                    <a href={links.email} color="inherit">
                         <img className='footer-logo' src={IGmail} alt='logo' />
                         Gmail
-                    </Link>
+                    </a>
                 </div>
 
                 <div className="col-4  ">
-                    <Link to="https://www.linkedin.com/in/h-b-santos-1758351a3/" color="inherit">
+                    <a href={links.linkedin} color="inherit">
                         <img className='footer-logo' src={ILinkedIn} alt='logo' />
                         LinkedIn
-                    </Link>
+                    </a>
                 </div>
                 <hr/>
                 <div className='footer-box'>

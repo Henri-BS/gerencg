@@ -1,4 +1,7 @@
-import {SaveProductForm, UpdateProductForm} from "components/container/ProductForm";
+import MeasureInfo from "components/container/MeasureInfo";
+import {ProductFormAdd} from "components/container/ProductFormAdd";
+import { ProductFormEdit } from "components/container/ProductFormEdit";
+import { useParams } from "react-router-dom";
 import "./styles.css"
 
 
@@ -6,7 +9,7 @@ import "./styles.css"
 export function SaveProduct() {
     return(
         <div className="container-blur">
-            <SaveProductForm />
+            <ProductFormAdd />
         </div>  
     )
 }
@@ -15,7 +18,18 @@ export function UpdateProduct() {
     
     return(
         <div className="container-blur">
-            <UpdateProductForm />
+            <ProductFormEdit />
+        </div>  
+    )
+}
+
+export function MeasureProfile() {
+
+    const params = useParams();
+
+    return(
+        <div className="container-blur">
+            <MeasureInfo measureId = {`${params.measureId}`} />
         </div>  
     )
 }

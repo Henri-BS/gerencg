@@ -7,7 +7,7 @@ import CategoryList from "pages/ListingCategory";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import ProductProfile from "pages/ProfileProduct";
 import CategoryProfile from "pages/ProfileCategory";
-import { SaveProduct, UpdateProduct } from "pages/ProductOptions";
+import { MeasureProfile, SaveProduct, UpdateProduct } from "pages/ProductOptions";
 
 
 const PageRoutes = () => {
@@ -32,6 +32,10 @@ const PageRoutes = () => {
                         
                     <Route path="/category">
                         <Route path=":categoryId" element={<CategoryProfile />} />
+                    </Route>
+
+                    <Route path="/measure">
+                        <Route path=":measureId" element={<MeasureProfile />} />
                     </Route>
             </Routes>
             <Footer />

@@ -1,5 +1,5 @@
 
-import { category, categoryStats, product } from "components/data/MenuList";
+import { category, categoryStats, product } from "components/shared/MenuList";
 import { Link } from "react-router-dom";
 import "./styles.css"
 
