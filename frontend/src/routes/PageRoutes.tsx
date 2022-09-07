@@ -16,27 +16,28 @@ const PageRoutes = () => {
             <NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />
-             
+
                 <Route path="/product/list" element={<ProductsList />} />
-                <Route path="/product/add" element={<SaveProduct />} />  
-                <Route path="/category/list" element={<CategoryList/>} />
-                <Route path="/categories-stats" element={<Dashboard />} />
+                <Route path="/product/add" element={<SaveProduct />} />
 
                 <Route path="/product">
-                        <Route path=":productId" element={<ProductProfile />} />
-                    </Route>
+                    <Route path=":productId" element={<ProductProfile />} />
+                </Route>
 
-                <Route path="/product/edit" >   
-                        <Route path=":productId" element={<UpdateProduct />} />
-                        </Route>
-                        
-                    <Route path="/category">
-                        <Route path=":categoryId" element={<CategoryProfile />} />
-                    </Route>
+                <Route path="/product/edit" >
+                    <Route path=":productId" element={<UpdateProduct />} />
+                </Route>
 
-                    <Route path="/measure">
-                        <Route path=":measureId" element={<MeasureProfile />} />
-                    </Route>
+                <Route path="/category/list" element={<CategoryList />} />
+                <Route path="/categories-stats" element={<Dashboard />} />
+                
+                <Route path="/category">
+                    <Route path=":categoryId" element={<CategoryProfile />} />
+                </Route>
+
+                <Route path="/measure">
+                    <Route path=":measureId" element={<MeasureProfile />} />
+                </Route>
             </Routes>
             <Footer />
         </BrowserRouter>

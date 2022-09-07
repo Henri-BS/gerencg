@@ -7,7 +7,10 @@ import { MeasurePage } from "types/measure";
 import { Product } from "types/product";
 import { BASE_URL } from "utils/requests";
 
-export function ProductFormEdit(){
+type Props = {
+    productId: string;
+}
+export function ProductFormEdit({productId}: Props){
 
     //Get MeasureList for the measure type selector        
     const [measureList, setMeasure] = useState<MeasurePage>({
@@ -33,28 +36,19 @@ export function ProductFormEdit(){
     }, [])
     
     const [product, setProduct] = useState<Product>();
+
+useEffect(() => {
+    axios.get(`${BASE_URL}/product/${productId}`)
+    .then((response) => {
+        setProduct(response.data);
+    })
+}, [productId])
+
     const [msg, setMsg] = useState('')
     const editProduct = () => {
         console.log("data:", product);
-        const productData = {
-            id: (product?.id),
-            description: product?.description,
-            image: product?.image,
-            price: product?.price,
-            quantity: product?.quantity,
-            validate: product?.validate,
-            measureValue: product?.measureValue,
-            measure: product?.measure,
-            category: product?.category
-        }
-        axios.put(`${BASE_URL}/product/edit/${product?.id}`, productData)
-        .then((response) => {
-            console.log("Sucess")
-            setProduct(response.data);
-            setMsg("Produto Editado")
-        }).catch(() => {
-            setMsg("Erro")
-        })
+        
+        
     }
 
     const navigate = useNavigate();
@@ -69,12 +63,14 @@ export function ProductFormEdit(){
         const measure = (event.target as any).measure.value;
         const category = (event.target as any).category.value;
 
+        console.log(id, description, image, price, quantity, validate, measureValue, measure, category);
+
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
             method: "put",
             url: "/product/edit",
             data: {
-                id: id,
+                id: productId,
                 description: description,
                 image: image,
                 price: price,
@@ -87,7 +83,16 @@ export function ProductFormEdit(){
         };
         axios(config).then(response => {
             navigate("/product/list");
-        });    
+            console.log(response.data);
+        });  
+        axios.put(`${BASE_URL}/product/edit/${productId}`, handleSubmit)
+        .then((response) => {
+            console.log("Sucess")
+            setProduct(response.data);
+            setMsg("Produto Editado")
+        }).catch(() => {
+            setMsg("Erro")
+        })  
     }
     
     return (
@@ -148,13 +153,13 @@ export function ProductFormEdit(){
                         </select>
                     </div>
     
-                    <div className="form-btn-container">
-                        <button type="submit" className=" gerencg-btn" onClick={() => editProduct()}>
+                    <Link className="form-btn-container" to={`/product/${productId}`}>
+                        <button type="submit" className=" gerencg-btn" >
                             Editar Produto
                         </button>
-                    </div>
+                    </Link>
 
-                    <Link className="form-btn-container" to={`/product/${product?.id}`}>
+                    <Link className="form-btn-container" to={`/product/${productId}`}>
                         <button className=" gerencg-btn mt-3">
                             Cancelar
                         </button>
