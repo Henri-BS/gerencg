@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.altercode.gerencg.dto.CalculatorDTO;
-import com.altercode.gerencg.dto.RegisterDTO;
 import com.altercode.gerencg.service.CalculatorService;
 
 @RestController

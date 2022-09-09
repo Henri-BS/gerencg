@@ -15,7 +15,7 @@ function ProductProfile() {
         </div>
 
         <div className="col-6-sm col-md-8 p-0">
-          <ProductMenuBar productId={`${params.productId}`}/>
+          <ProductMenuBar id={`${params.productId}`}/>
           <hr/>
         </div>
 

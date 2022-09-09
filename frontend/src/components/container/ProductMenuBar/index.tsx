@@ -9,10 +9,10 @@ import axios from 'axios';
 import { BASE_URL } from 'utils/requests';
 
 type Props = {
-    productId: string
+    id: string
 }
 
-function ProductMenuBar({ productId }: Props) {
+function ProductMenuBar({ id: productId }: Props) {
 
     const [product, setProduct] = useState<Product>();
 

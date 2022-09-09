@@ -91,11 +91,6 @@ public class ProductService {
 		this.productRepository.deleteById(id);
 	}
 	
-	public List<ProductDTO> findAllProductsById(List<Long> ids) {
-		List<Product> result = productRepository.findAllById(ids);
-		return result.stream().map(x -> new ProductDTO()).collect(Collectors.toList());
-	}
-	
 	public List<ProductDTO> findByCategory(Category category) {
 		List<Product> result = productRepository.findByCategory(category);
 		return result.stream().map(x -> new ProductDTO(x)).collect(Collectors.toList());

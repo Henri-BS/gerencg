@@ -1,16 +1,15 @@
 import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { CategoryPage } from "types/category";
 import { MeasurePage } from "types/measure";
 import { Product } from "types/product";
 import { BASE_URL } from "utils/requests";
 
-type Props = {
-    productId: string;
-}
-export function ProductFormEdit({productId}: Props){
+export function ProductFormEdit() {
+
+
 
     //Get MeasureList for the measure type selector        
     const [measureList, setMeasure] = useState<MeasurePage>({
@@ -34,116 +33,127 @@ export function ProductFormEdit({productId}: Props){
                 setCategoryList(response.data);
             })
     }, [])
-    
-    const [product, setProduct] = useState<Product>();
 
-useEffect(() => {
-    axios.get(`${BASE_URL}/product/${productId}`)
-    .then((response) => {
-        setProduct(response.data);
-    })
-}, [productId])
-
+    //Edit Product 
     const [msg, setMsg] = useState('')
-    const editProduct = () => {
-        console.log("data:", product);
+    const [product, setProduct] = useState({
+        description: "", 
+        price: "",
+        quantity: "", 
+        validate: "", 
+        measureValue: "", 
+        measure: "", 
+        category: ""
+    });    
+const {id} = useParams();
+    const {description, price, quantity, validate, measureValue, measure, category} = product; 
         
-        
-    }
+    const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setProduct({...product, [event.target.name]: event.target.value });
+    };
+
+    useEffect(() => {
+        loadProduct();
+    }, []);
 
     const navigate = useNavigate();
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        const id = (event.target as any).id.value;
-        const description = (event.target as any).description.value;
-        const image = (event.target as any).image.value;
-        const price = (event.target as any).price.value;
-        const quantity = (event.target as any).quantity.value;
-        const validate = (event.target as any).validate.value;
-        const measureValue = (event.target as any).measureValue.value;
-        const measure = (event.target as any).measure.value;
-        const category = (event.target as any).category.value;
-
-        console.log(id, description, image, price, quantity, validate, measureValue, measure, category);
-
-        const config: AxiosRequestConfig = {
-            baseURL: BASE_URL,
-            method: "put",
-            url: "/product/edit",
-            data: {
-                id: productId,
-                description: description,
-                image: image,
-                price: price,
-                quantity: quantity,
-                validate: validate,
-                measureValue: measureValue,
-                measure: measure,
-                category: category
-            },
-        };
-        axios(config).then(response => {
-            navigate("/product/list");
-            console.log(response.data);
-        });  
-        axios.put(`${BASE_URL}/product/edit/${productId}`, handleSubmit)
-        .then((response) => {
-            console.log("Sucess")
-            setProduct(response.data);
-            setMsg("Produto Editado")
-        }).catch(() => {
-            setMsg("Erro")
-        })  
-    }
     
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        await axios.put(`${BASE_URL}/product/edit/${id}`, product)
+           
+            navigate("/product/list");
+    };
+
+const loadProduct = async () => {
+    const response = await axios.get(`${BASE_URL}/product/${id}`);
+    setProduct(response.data)
+}
     return (
         <div className="form-container">
             <div className="form-card-container">
                 <h3>Editar Produto</h3>
-    
-                <form className="gerencg-form" onSubmit={handleSubmit}>
+
+                <form className="gerencg-form" onSubmit={(event) =>handleSubmit(event)}>
+
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="description">Descrição: </label>
-                        <input type="text" className="form-control" id="description" />
+                        <input 
+                        type="text" 
+                        className="form-control" 
+                        id="description" 
+                        value={description}
+                        onChange={(event) => onInputChange(event)}
+                        />
                     </div>
-    
+
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="image">Image: </label>
-                        <input type="text" className="form-control" id="image" />
+                        <input 
+                        type="text" 
+                        className="form-control" 
+                        id="image" 
+                        onChange={(event) => onInputChange(event)}
+                        />
                     </div>
-    
+
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="price">Preço: </label>
-                        <input className="form-control" id="price" />
+                        <input 
+                        className="form-control" 
+                        id="price" 
+                        onChange={(event) => onInputChange(event)}
+                        />
                     </div>
-    
+
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="quantity">Quantidade: </label>
-                        <input type="number" className="form-control" id="quantity" />
+                        <input 
+                        type="number" 
+                        className="form-control" 
+                        id="quantity" 
+                        onChange={(event) => onInputChange(event)}
+                        />
                     </div>
-    
+
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="validate">Validade: </label>
-                        <input type="text" className="form-control" id="validate" />
+                        <input 
+                        type="text" 
+                        className="form-control" 
+                        id="validate" 
+                        onChange={(event) => onInputChange(event)}
+                        />
                     </div>
-    
+
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="measureValue">Valor de Medida: </label>
-                        <input className="form-control" id="measureValue" />
+                        <input 
+                        className="form-control" 
+                        id="measureValue" 
+                        onChange={(event) => onInputChange(event)}
+                        />
                     </div>
-    
+
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="measure">Tipo de Medida: </label>
-                        <select className="form-control" id="measure">
+                        <input onChange={(event) => onInputChange(event)}>
+                        <select 
+                        className="form-control" 
+                        id="measure">                            
                             {measureList.content?.map(item => (
-                                <option key={item.abbreviation}>
+                                <option 
+                                key={item.abbreviation}>
                                     {item.abbreviation}
                                 </option>
                             ))}
                         </select>
+                        </input> 
                     </div>
-    
+
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="category">Categoria: </label>
+                        <input onChange={(event) => onInputChange(event)}>
                         <select className="form-control" id="category">
                             {categoryList.content?.map(item => (
                                 <option key={item.name}>
@@ -151,25 +161,26 @@ useEffect(() => {
                                 </option>
                             ))}
                         </select>
+                        </input>
                     </div>
-    
-                    <Link className="form-btn-container" to={`/product/${productId}`}>
+
+                    <div className="form-btn-container">
                         <button type="submit" className=" gerencg-btn" >
                             Editar Produto
                         </button>
-                    </Link>
+                    </div>
 
-                    <Link className="form-btn-container" to={`/product/${productId}`}>
+                    <Link className="form-btn-container" to={`/product/${id}`}>
                         <button className=" gerencg-btn mt-3">
-                            Cancelar
+                            Retornar
                         </button>
                     </Link>
                 </form>
-    
+
                 <div className="msg-container">
                     <h3>{msg}</h3>
                 </div>
             </div>
         </div>
     );
-    }
+}

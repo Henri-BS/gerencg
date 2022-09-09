@@ -24,47 +24,44 @@ import com.altercode.gerencg.service.ProductService;
 @RestController
 @RequestMapping(value = "/product")
 public class ProductController {
-	
+
 	@Autowired
 	private ProductService service;
-	
+
+
+
 	@GetMapping("/list")
-	public ResponseEntity<Page<ProductDTO>> findAll(Pageable pageable){
+	public ResponseEntity<Page<ProductDTO>> findAll(Pageable pageable) {
 		Page<ProductDTO> list = service.findAll(pageable);
 		return ResponseEntity.ok(list);
 	}
-	
+
 	@GetMapping("/{id}")
-	public ProductDTO findById(@PathVariable Long id){
+	public ProductDTO findById(@PathVariable Long id) {
 		return service.findById(id);
-		
+
 	}
-	
+
 	@PostMapping("/add")
 	public ResponseEntity<ProductDTO> addProduct(@RequestBody ProductDTO product) {
 		ProductDTO newProduct = service.addProduct(product);
 		return new ResponseEntity<ProductDTO>(newProduct, HttpStatus.CREATED);
 	}
-	
+
 	@PutMapping("/edit/{id}")
-	public ProductDTO updateProduct(@PathVariable Long id, @RequestBody ProductDTO porduct) {
-		ProductDTO editProduct = service.updateProduct(porduct);
-		return editProduct;
+	public ProductDTO updateProduct(@PathVariable Long id, @RequestBody ProductDTO product) {
+		ProductDTO editProduct = service.updateProduct(product);
+			return editProduct;
 	}
-	
+
 	@DeleteMapping("/delete/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteProduct(@PathVariable Long id) {
 		this.service.deleteProduct(id);
 	}
-	
-	@GetMapping("/find-all-by-id")
-	public List<ProductDTO> findAllProductsById(@RequestBody List<Long> ids) {
-		return service.findAllProductsById(ids);
-	}
-	
+
 	@GetMapping("/find-by-category/{category}")
-	public ResponseEntity<List<ProductDTO>> findByCategory(Category category){
+	public ResponseEntity<List<ProductDTO>> findByCategory(Category category) {
 		List<ProductDTO> list = service.findByCategory(category);
 		return ResponseEntity.ok(list);
 	}
