@@ -24,8 +24,8 @@ const PageRoutes = () => {
                     <Route path=":productId" element={<ProductProfile />} />
                 </Route>
 
-                <Route path="/product/edit/" >
-                    <Route path=":id" element={<UpdateProduct />} />
+                <Route path="/product/edit" >
+                    <Route path=":productId" element={<UpdateProduct />} />
                 </Route>
 
                 <Route path="/category/list" element={<CategoryList />} />
