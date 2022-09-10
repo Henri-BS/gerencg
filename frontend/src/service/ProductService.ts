@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Product } from "types/product";
 import { BASE_URL } from "utils/requests";
 
 class ProductService {

@@ -2,32 +2,28 @@
 import IUpdateProduct from '../../../assets/img/update-product.png';
 import IDeleteProduct from 'assets/img/delete-product.png';
 import "./styles.css"
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Product } from 'types/product';
-import axios from 'axios';
-import { BASE_URL } from 'utils/requests';
+import ProductService from 'service/ProductService';
 
-type Props = {
-    productId: string
-}
-
-function ProductMenuBar({productId }: Props) {
+function ProductMenuBar() {
 
     const [product, setProduct] = useState<Product>();
+    const { id } = useParams();
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/product/edit/${productId}`)
+        ProductService.findProductById(id as string)
             .then((response) => {
                 setProduct(response.data);
             })
-    }, [productId])
+    }, [id]);
 
     return (
         <div className=" menu-profile-container">
-            <Link to={`/product/edit/${productId}`}>
+            <Link to={`/product/edit/${id}`}>
                 <button className="menu-option-card" >
-                    <img className="option-card-img" src={IUpdateProduct} alt="update-product" />
+                    <img className="option-card-img" src={IUpdateProduct} alt={product?.description} />
                     Editar produto
                 </button>
             </Link>

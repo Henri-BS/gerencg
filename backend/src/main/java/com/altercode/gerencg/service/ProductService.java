@@ -64,12 +64,12 @@ public class ProductService {
 		return new ProductDTO(productRepository.saveAndFlush(add));
 	}
 
-	public ProductDTO updateProduct(ProductDTO dto) {
+	public ProductDTO updateProduct(Long id, ProductDTO dto) {
 
 		Category category = categoryRepository.findById(dto.getCategory()).get();
 		Measure measure = measureRepository.findById(dto.getMeasure()).get();
 		
-		Product edit = productRepository.findById(dto.getId()).get();
+		Product edit = productRepository.findById(id).orElseThrow();
 		edit.setId(dto.getId());
 		edit.setDescription(dto.getDescription());
 		edit.setImage(dto.getImage());

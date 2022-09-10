@@ -50,7 +50,7 @@ public class ProductController {
 
 	@PutMapping("/edit/{id}")
 	public ProductDTO updateProduct(@PathVariable Long id, @RequestBody ProductDTO product) {
-		ProductDTO editProduct = service.updateProduct(product);
+		ProductDTO editProduct = service.updateProduct(id, product);
 			return editProduct;
 	}
 
