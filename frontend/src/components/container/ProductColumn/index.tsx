@@ -1,7 +1,8 @@
 import axios from "axios";
+import { productIcons } from "components/shared/MenuIcons";
 import moment from "moment";
-
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Product } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
@@ -24,6 +25,7 @@ function ProductColumn({ productId }: Props) {
     return (
 
         <>
+        <div className="max-container-column">
             <div className="column-image-container">
                 <img className="column-card-image" src={product?.image} alt={product?.description} />
             </div>
@@ -33,20 +35,26 @@ function ProductColumn({ productId }: Props) {
                 </div>
 
                 <div className="column-item-container">
+                    <div className="column-icon-container"> {productIcons.priceIcon} </div>
                     <h3>Preço: {product?.price.toFixed(2)} R$</h3>
                 </div>
                 <div className="column-item-container">
+                    <div className="column-icon-container">{productIcons.measureIcon}</div>
                     <h3>Medida: {product?.measureValue} {product?.measure}</h3>
                 </div>
                 <div className="column-item-container">
+                    <div className="column-icon-container">{productIcons.quantityIcon}</div>
                     <h3>Quantidade: {product?.quantity}</h3>
                 </div>
                 <div className="column-item-container">
+                    <div className="column-icon-container">{productIcons.validateIcon}</div>
                     <h3>Validade: {moment(product?.validate).format('DD/MM/YYYY')} </h3>
                 </div>
-                <div className="column-item-container">
+                <Link to={`/category/${product?.category}`} className="column-item-container">
+                    <div className="column-icon-container">{productIcons.categoryIcon}</div>
                     <h3>Category: {product?.category} </h3>
-                </div>
+                    </Link>
+            </div>
             </div>
         </>
     );

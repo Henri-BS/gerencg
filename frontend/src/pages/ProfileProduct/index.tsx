@@ -2,6 +2,7 @@ import ProductColumn from "components/container/ProductColumn";
 import { useParams } from "react-router-dom";
 import "./styles.css"
 import ProductMenuBar from "components/container/ProductMenuBar";
+import { ProductFormEdit } from "components/container/ProductFormEdit";
 
 function ProductProfile() {
   const params = useParams();
@@ -18,7 +19,7 @@ function ProductProfile() {
           <ProductMenuBar/>
           <hr/>
         </div>
-
+        
       </div>
     </>
   );

@@ -16,6 +16,8 @@ export function SaveProduct() {
 
 export function UpdateProduct() {
     
+const params = useParams();
+
     return(
         <div className="container-blur">
             <ProductFormEdit />

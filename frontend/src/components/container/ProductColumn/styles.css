@@ -1,31 +1,63 @@
-.column-container {
-    display: block;
-    width: 400px;
+.max-container-column {
+    display: grid;
+    width: 430px;
     background-color: var(--tert);
+}
+
+.column-container {
+    text-align: center;
+    display: block;
     color: var(--quat);
 }
 
-.column-container h1 {
+.column-item-container {
     display: flex;
+    text-align: center;
+    border-left: 6px solid rgb(13, 75, 126);
+    height: 90px;
+    padding: 30px;
+    background-color: rgba(85, 85, 85, 0.521);
+    margin: 6px;
+    text-decoration: none;
+}
+
+.column-item-container:hover {
+    border-left: 6px solid rgb(15, 91, 153);
+    background-color: rgba(97, 96, 96, 0.603);
+}
+
+.column-icon-container {
+    align-self: center;
+    text-align: center;
+    font-size: 30px;
+    height: 50px;
+    width: 50px;
+    color: var(--quat);
+}
+
+.column-item-container h1 {
     justify-content: center;
-    align-items: center;
+    width: 100%;
+    display: flex;
+    font-size: 28px;
     font-weight: 700;
 }
 
-.column-item-container {
-    height: 90px;
-    padding: 8px;
-    border-radius: 10px;
+.column-item-container h3 {
+    justify-content: center;
+    display: flex;
+    padding: 5px;
+    font-size: 19px;
+    text-align: center;
+    color: var(--quat);
 }
 
 .column-image-container {
     display: flex;
     margin: 0;
     padding: 30px;
-    width: 400px;
     justify-content: center;
     align-items: center;
-    background-color: var(--tert);
 }
 
 .column-card-image {

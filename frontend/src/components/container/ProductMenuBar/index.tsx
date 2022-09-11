@@ -10,10 +10,10 @@ import ProductService from 'service/ProductService';
 function ProductMenuBar() {
 
     const [product, setProduct] = useState<Product>();
-    const { id } = useParams();
+    const id  = product?.id;
 
     useEffect(() => {
-        ProductService.findProductById(id as string)
+        ProductService.findProductById(id as number)
             .then((response) => {
                 setProduct(response.data);
             })

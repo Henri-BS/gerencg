@@ -37,7 +37,7 @@ export function ProductFormEdit() {
     //Edit Product 
     const [product, setProduct] = useState<Product>();
 
-    const { id } = useParams();
+    const id = product?.id;
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
     const [price, setPrice] = useState('');
@@ -48,7 +48,7 @@ export function ProductFormEdit() {
     const [category, setCategory] = useState('');
 
 
-    const productData = { description, image, price, quantity, validate, measureValue, measure, category };
+    const productData = { id, description, image, price, quantity, validate, measureValue, measure, category };
     const navigate = useNavigate();
 
     function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -64,26 +64,21 @@ export function ProductFormEdit() {
             productData.measure !== product?.measure.abbreviation &&
             productData.category !== product?.category.name) {
 
-            if (id) {
-                ProductService.updateProduct(id, productData)
+                ProductService.updateProduct(id as number, productData)
                     .then((response) =>{
                         setProduct(response.data)
                     })
                     .catch((event: any) => console.log(event));
                 navigate("/product/list")
-            } else {
-                ProductService.saveProduct(productData)
-                    .then()
-                    .catch((event: any) => console.log(event));
-            }
+
         } else {
             alert("Porfavor, complete as inserções");
         }
     };
 
     useEffect(() => {
-        if (id) {
-            ProductService.findProductById(id)
+        if (id as number) {
+            ProductService.findProductById(id as number)
                 .then((response) => {
                     setDescription(response.data.description);
                     setImage(response.data.image);
