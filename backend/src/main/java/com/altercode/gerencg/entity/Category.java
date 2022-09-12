@@ -47,7 +47,7 @@ public class Category {
 	}
 
 	public Category( String name, String image, Integer totalProducts,
-			LocalDateTime lastModifiedDate, List<CategoryStats> categoryStats, Set<Register> productRegister) {
+			LocalDateTime lastModifiedDate, List<CategoryStats> categoryStats) {
 		this.name = name;
 		this.image = image;
 		this.totalProducts = totalProducts;

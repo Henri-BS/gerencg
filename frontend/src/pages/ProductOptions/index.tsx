@@ -20,7 +20,7 @@ const params = useParams();
 
     return(
         <div className="container-blur">
-            <ProductFormEdit />
+            <ProductFormEdit productId={`${params.id}`}/>
         </div>  
     )
 }

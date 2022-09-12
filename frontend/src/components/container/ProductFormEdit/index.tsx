@@ -8,8 +8,11 @@ import { MeasurePage } from "types/measure";
 import { Product } from "types/product";
 import { BASE_URL } from "utils/requests";
 
+type Props = {
+    productId: string;
+}
 
-export function ProductFormEdit() {
+export function ProductFormEdit({ productId }: Props) {
 
     //Get MeasureList for the measure type selector        
     const [measureList, setMeasureList] = useState<MeasurePage>({
@@ -37,75 +40,66 @@ export function ProductFormEdit() {
     //Edit Product 
     const [product, setProduct] = useState<Product>();
 
-    const id = product?.id;
-    const [description, setDescription] = useState('');
-    const [image, setImage] = useState('');
-    const [price, setPrice] = useState('');
-    const [quantity, setQuantity] = useState('');
-    const [validate, setValidate] = useState('');
-    const [measureValue, setMeasureValue] = useState('');
-    const [measure, setMeasure] = useState('');
-    const [category, setCategory] = useState('');
+    useEffect(() => {
+        axios.get(`${BASE_URL}/product/${productId}`)
+            .then((response) => {
+                setProduct(response.data);
+            })
+    }, [productId])
 
-
-    const productData = { id, description, image, price, quantity, validate, measureValue, measure, category };
     const navigate = useNavigate();
 
-    function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        if (
-            productData.description !== product?.description &&
-            productData.image !== product?.image &&
-            productData.price !== product?.price.toFixed(2) &&
-            productData.quantity !== product?.quantity.toFixed(0) &&
-            productData.validate !== product?.validate &&
-            productData.measureValue !== product?.measureValue.toFixed(2) &&
-            productData.measure !== product?.measure.abbreviation &&
-            productData.category !== product?.category.name) {
+        const description = (event.target as any).description.value;
+        const image = (event.target as any).image.value;
+        const price = (event.target as any).price.value;
+        const quantity = (event.target as any).quantity.value;
+        const validate = (event.target as any).validate.value;
+        const measureValue = (event.target as any).measureValue.value;
+        const measure = (event.target as any).measure.value;
+        const category = (event.target as any).category.value;
 
-                ProductService.updateProduct(id as number, productData)
-                    .then((response) =>{
-                        setProduct(response.data)
-                    })
-                    .catch((event: any) => console.log(event));
-                navigate("/product/list")
-
-        } else {
-            alert("Porfavor, complete as inserções");
+        const productData = { description, image, price, quantity, validate, measureValue, measure, category };
+        const config: AxiosRequestConfig = {
+            baseURL: BASE_URL,
+            method: "PUT",
+            url: "/product/edit",
+            data: {
+                productId: productId,
+                description: description,
+                image: image,
+                price: price,
+                quantity: quantity,
+                validate: validate,
+                measureValue: measureValue,
+                measure: measure,
+                category: category
+            },
         }
+        axios(config).then(response => {
+                navigate("/")
+            })
+       
+        console.log(productData)
     };
 
-    useEffect(() => {
-        if (id as number) {
-            ProductService.findProductById(id as number)
-                .then((response) => {
-                    setDescription(response.data.description);
-                    setImage(response.data.image);
-                    setPrice(response.data.price);
-                    setQuantity(response.data.quantity);
-                    setValidate(response.data.validate);
-                    setMeasureValue(response.data.measureValue);
-                    setMeasure(response.data.measure);
-                    setCategory(response.data.category);
-                })
-                .catch(event => console.log(event));
-        }
-    }, [id])
+
 
     return (
         <div className="form-container">
             <div className="form-card-container">
                 <h3>Editar Produto</h3>
 
-                <form className="gerencg-form">
+                <form className="gerencg-form" onSubmit={handleSubmit}>
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="description">Descrição: </label>
                         <input
                             type="text"
                             className="form-control"
                             id="description"
-                            onChange={(event) => setDescription(event.target.value)}
+
                         />
                     </div>
 
@@ -115,7 +109,7 @@ export function ProductFormEdit() {
                             type="text"
                             className="form-control"
                             id="image"
-                            onChange={(event) => setImage(event.target.value)}
+
                         />
                     </div>
 
@@ -124,7 +118,7 @@ export function ProductFormEdit() {
                         <input
                             className="form-control"
                             id="price"
-                            onChange={(event) => setPrice(event.target.value)}
+
                         />
                     </div>
 
@@ -134,7 +128,7 @@ export function ProductFormEdit() {
                             type="number"
                             className="form-control"
                             id="quantity"
-                            onChange={(event) => setQuantity(event.target.value)}
+
                         />
                     </div>
 
@@ -145,7 +139,7 @@ export function ProductFormEdit() {
                             className="form-control"
                             id="validate"
                             placeholder="aaaa-mm-dd"
-                            onChange={(event) => setValidate(event.target.value)}
+
                         />
                     </div>
 
@@ -154,7 +148,7 @@ export function ProductFormEdit() {
                         <input
                             className="form-control"
                             id="measureValue"
-                            onChange={(event) => setMeasureValue(event.target.value)}
+
                         />
                     </div>
 
@@ -163,7 +157,7 @@ export function ProductFormEdit() {
                         <select
                             className="form-control"
                             id="measure"
-                            onChange={(event) => setDescription(event.target.value)}
+
                         >
                             {measureList.content?.map(item => (
                                 <option
@@ -180,7 +174,7 @@ export function ProductFormEdit() {
                         <select
                             className="form-control"
                             id="category"
-                            onChange={(event) => setDescription(event.target.value)}
+
                         >
                             {categoryList.content?.map(item => (
                                 <option key={item.name}>
@@ -192,12 +186,12 @@ export function ProductFormEdit() {
                     </div>
 
                     <div className="form-btn-container">
-                        <button type="submit" className=" gerencg-btn" onClick={(event) => handleSubmit(event)}>
+                        <button type="submit" className=" gerencg-btn" >
                             Editar Produto
                         </button>
                     </div>
 
-                    <Link className="form-btn-container" to={`/product/${id}`}>
+                    <Link className="form-btn-container" to={`/product/${productId}`}>
                         <button className=" gerencg-btn mt-3">
                             Retornar
                         </button>

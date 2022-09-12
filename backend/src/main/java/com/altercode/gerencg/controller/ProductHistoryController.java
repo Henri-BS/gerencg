@@ -1,0 +1,27 @@
+package com.altercode.gerencg.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.altercode.gerencg.dto.ProductDTO;
+import com.altercode.gerencg.dto.ProductHistoryDTO;
+import com.altercode.gerencg.service.HistoryService;
+
+
+@RestController
+@RequestMapping("/history")
+public class ProductHistoryController {
+	
+	@Autowired
+	private HistoryService historyService;
+	
+	@PutMapping
+	public ProductDTO updateProductHistory(@RequestBody ProductHistoryDTO dto) {
+		ProductDTO productDTO = historyService.updateProduct(dto);
+		return productDTO;
+	}
+
+}

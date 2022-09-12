@@ -46,6 +46,8 @@ public class Product {
 	@JoinColumn(name = "category_id")
 	private Category category;
 	
+	private Integer alteration;
+	
 	@OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
     private Set<Calculator> calculators = new HashSet<>();
 	
@@ -54,6 +56,9 @@ public class Product {
 	
 	@OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
     private Set<Calculator> second = new HashSet<>();
+	
+	@OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
+    private Set<ProductHistory> history = new HashSet<>();
 	
 	public Product() {
 	}
@@ -158,10 +163,23 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+	
+	
+
+	public Integer getAlteration() {
+		return alteration;
+	}
+
+	public void setAlteration(Integer alteration) {
+		this.alteration = alteration;
+	}
 
 	public Set<Calculator> getCalculators() {
 		return calculators;
 	}
-	
+
+	public Set<ProductHistory> getAllHistory() {
+		return history;
+	}
 	
 }
