@@ -1,10 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import ProductService from "service/ProductService";
-import { CategoryPage } from "types/category";
-import { MeasurePage } from "types/measure";
 import { Product } from "types/product";
 import { BASE_URL } from "utils/requests";
 
@@ -13,29 +10,6 @@ type Props = {
 }
 
 export function ProductFormEdit({ productId }: Props) {
-
-    //Get MeasureList for the measure type selector        
-    const [measureList, setMeasureList] = useState<MeasurePage>({
-        content: []
-    })
-    useEffect(() => {
-        axios.get(`${BASE_URL}/measure/list`)
-            .then((response) => {
-                setMeasureList(response.data);
-            })
-    }, [])
-
-    //Get CategoryList for the category selector    
-    const [categoryList, setCategoryList] = useState<CategoryPage>({
-        content: [],
-        number: 0
-    })
-    useEffect(() => {
-        axios.get(`${BASE_URL}/category/list`)
-            .then((response) => {
-                setCategoryList(response.data);
-            })
-    }, [])
 
     //Edit Product 
     const [product, setProduct] = useState<Product>();
@@ -49,7 +23,7 @@ export function ProductFormEdit({ productId }: Props) {
 
     const navigate = useNavigate();
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         const description = (event.target as any).description.value;
@@ -57,31 +31,24 @@ export function ProductFormEdit({ productId }: Props) {
         const price = (event.target as any).price.value;
         const quantity = (event.target as any).quantity.value;
         const validate = (event.target as any).validate.value;
-        const measureValue = (event.target as any).measureValue.value;
-        const measure = (event.target as any).measure.value;
-        const category = (event.target as any).category.value;
 
-        const productData = { description, image, price, quantity, validate, measureValue, measure, category };
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
             method: "PUT",
-            url: "/product/edit",
+            url: "/history",
             data: {
                 productId: productId,
                 description: description,
                 image: image,
                 price: price,
                 quantity: quantity,
-                validate: validate,
-                measureValue: measureValue,
-                measure: measure,
-                category: category
+                validate: validate
             },
         }
         axios(config).then(response => {
-                navigate("/")
-            })
-       
+            navigate("/")
+        })
+        const productData = { description, image, price, quantity, validate };
         console.log(productData)
     };
 
@@ -141,48 +108,6 @@ export function ProductFormEdit({ productId }: Props) {
                             placeholder="aaaa-mm-dd"
 
                         />
-                    </div>
-
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="measureValue">Valor de Medida: </label>
-                        <input
-                            className="form-control"
-                            id="measureValue"
-
-                        />
-                    </div>
-
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="measure">Tipo de Medida: </label>
-                        <select
-                            className="form-control"
-                            id="measure"
-
-                        >
-                            {measureList.content?.map(item => (
-                                <option
-                                    key={item.abbreviation}>
-                                    {item.abbreviation}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="category">Categoria: </label>
-
-                        <select
-                            className="form-control"
-                            id="category"
-
-                        >
-                            {categoryList.content?.map(item => (
-                                <option key={item.name}>
-                                    {item.name}
-                                </option>
-                            ))}
-                        </select>
-
                     </div>
 
                     <div className="form-btn-container">

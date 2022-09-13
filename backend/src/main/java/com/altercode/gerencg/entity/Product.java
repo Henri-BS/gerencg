@@ -76,6 +76,9 @@ public class Product {
 	}
 
 
+	public Product(String description2, String image2, Double price2, Integer quantity2, LocalDate validate2, Double measureValue2, Measure measure2, Category category2) {
+	}
+
 	public Long getId() {
 		return id;
 	}

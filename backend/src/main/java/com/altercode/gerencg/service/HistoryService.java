@@ -1,6 +1,8 @@
 package com.altercode.gerencg.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,12 +23,20 @@ public class HistoryService {
 	@Autowired
 	private ProductHistoryRepository historyRepository;
 	
+	
+	public Page<ProductHistoryDTO> findAll(Pageable pageable) {
+		Page<ProductHistory> result = historyRepository.findAll(pageable);
+		Page<ProductHistoryDTO> page = result.map(x -> new ProductHistoryDTO(x));
+		return page;
+	}
+	
 	public ProductDTO updateProduct(ProductHistoryDTO dto) {
 		Product product = productRepository.findById(dto.getProductId()).get();
 		
 		ProductHistory history = new ProductHistory();
 		history.setProduct(product);
 		history.setDescription(dto.getDescription());
+		history.setImage(dto.getImage());
 		history.setPrice(dto.getPrice());
 		history.setQuantity(dto.getQuantity());
 		history.setValidate(dto.getValidate());
@@ -34,6 +44,7 @@ public class HistoryService {
 		history = historyRepository.saveAndFlush(history);
 		
 		product.setDescription(history.getDescription());
+		product.setImage(history.getImage());
 		product.setPrice(history.getPrice());
 		product.setQuantity(history.getQuantity());
 		product.setValidate(history.getValidate());
@@ -42,6 +53,7 @@ public class HistoryService {
 		
 		return new ProductDTO(product);
 	}
+	
 	
 
 

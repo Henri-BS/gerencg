@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.entity.ProductHistory;
 
 public class ProductHistoryDTO implements Serializable {
@@ -16,17 +15,21 @@ public class ProductHistoryDTO implements Serializable {
 	private Double price;
 	private Integer quantity;
 	private LocalDate validate;
-	private Double measureValue;
 	private LocalDateTime createdDate;
-	
-	private String measure;
-	private String category;
-	
-	
 	
 	public ProductHistoryDTO() {
 	}
 	
+
+	public ProductHistoryDTO(ProductHistory entity) {
+		description = entity.getDescription();
+		image = entity.getImage();
+		price = entity.getPrice();
+		quantity = entity.getQuantity();
+		validate = entity.getValidate();
+		createdDate = entity.getCreatedDate();
+	}
+
 
 	public String getDescription() {
 		return description;
@@ -75,35 +78,6 @@ public class ProductHistoryDTO implements Serializable {
 
 	public void setValidate(LocalDate validate) {
 		this.validate = validate;
-	}
-
-	public Double getMeasureValue() {
-		return measureValue;
-	}
-
-
-	public void setMeasureValue(Double measureValue) {
-		this.measureValue = measureValue;
-	}
-
-
-	public String getMeasure() {
-		return measure;
-	}
-
-
-	public void setMeasure(String measure) {
-		this.measure = measure;
-	}
-
-
-	public String getCategory() {
-		return category;
-	}
-
-
-	public void setCategory(String category) {
-		this.category = category;
 	}
 
 
