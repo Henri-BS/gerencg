@@ -5,11 +5,16 @@
     border: 3px solid #ccc;
     padding: 20px;
     text-decoration: underline;
-    text-decoration-color: #fcf6f6;
-    color: rgb(73, 73, 73);
+    text-decoration-color: var(--quin);
+    color: var(--prim);
     align-items: flex-start;
     justify-content: start;
     display: flex;
+}
+
+.product-display-card:hover {
+    border: 3px solid var(--sena);
+    transition: all 0.7s ease-out;
 }
 
 .product-display-card h3 {
@@ -47,5 +52,23 @@
 
 .product-price-container {
     height: 40px;
-    background-color: #fcf6f6;
+    background-color: var(--quin);
+}
+
+.product-history-card {
+    height: 250px;
+    width: 200px;
+    padding: 10px;
+    background-color: var(--quin);
+    border: 3px solid #ccc;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-history-box {
+    font-size: 18px;
+    width: 100%;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
 }

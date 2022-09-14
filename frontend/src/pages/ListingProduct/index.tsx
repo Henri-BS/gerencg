@@ -1,6 +1,6 @@
 import axios from "axios";
 import Pagination from "components/shared/Pagination";
-import ProductCard from "components/container/ProductCard";
+import {ProductCard} from "components/container/ProductCard";
 import { useEffect, useState } from "react";
 import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
