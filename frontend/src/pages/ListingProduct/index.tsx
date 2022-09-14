@@ -1,13 +1,14 @@
 import axios from "axios";
 import Pagination from "components/shared/Pagination";
-import {ProductCard} from "components/container/ProductCard";
+import { ProductCard, ProductHistoryCard } from "components/container/ProductCards";
 import { useEffect, useState } from "react";
 import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 import { Link } from "react-router-dom";
+import { ProductHistoryPage } from "types/productHistory";
 
-function ProductsList() {
+export function ProductsList() {
 
     const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<ProductPage>({
@@ -34,13 +35,13 @@ function ProductsList() {
     return (
         <>
             <div className="container">
-            <div className="header-container">             
-                <h2>Lista de Produtos</h2>
-                <Link className="gerencg-btn-sec-container" to="/product/add"> 
-                <button className="gerencg-btn-sec">
-                    <h3>Adicionar</h3>
-                    </button>
-                </Link>
+                <div className="header-container">
+                    <h2>Lista de Produtos</h2>
+                    <Link className="gerencg-btn-sec-container" to="/product/add">
+                        <button className="gerencg-btn-sec">
+                            <h3>Adicionar</h3>
+                        </button>
+                    </Link>
                 </div>
                 <div className="pagination-container-menu">
                     <div className="pagination-item">
@@ -60,4 +61,34 @@ function ProductsList() {
     );
 }
 
-export default ProductsList;
+export function ProductHistoryList() {
+    const [historyPage, setHistoryPage] = useState<ProductHistoryPage>({
+        content: [],
+        size: 10
+    })
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/history/list`)
+            .then((response) => {
+                setHistoryPage(response.data);
+            })
+    }, [])
+
+
+    return (
+        <>
+            <div className="pagination-max-container ">
+                <div className="header-container ">
+                    <h3>Histórico de Alterações:</h3>
+                </div>
+                <div className="row m-0">
+                    {historyPage.content?.map(history => (
+                        <div key={history.id} className="col-sm-12 col-lg-6 col-xl-6 mb-3">
+                            <ProductHistoryCard history={history} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </>
+    );
+}

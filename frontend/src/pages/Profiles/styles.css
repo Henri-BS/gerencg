@@ -1,0 +1,19 @@
+.profile {
+    padding: 0;
+    margin: 0;
+    max-inline-size: 100%;
+    color: var(--prim);
+    background-color: var(--quat);
+}
+
+.profile hr {
+    width: 380px;
+    background: var(--prim);
+}
+
+@media screen and (max-width: 450px) {
+    .profile {
+        display: flex;
+        width: 580px;
+    }
+}

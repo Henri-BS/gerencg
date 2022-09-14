@@ -1,3 +1,4 @@
+import moment from "moment";
 import { Link } from "react-router-dom";
 import { Product } from "types/product";
 import { ProductHistory } from "types/productHistory";
@@ -29,25 +30,25 @@ type Cons = {
     history: ProductHistory
 }
 
-export function ProductHistoryCard({history}: Cons) {
-    return(
-<div className="product-history-card">
-<div className="product-history-item">
-        <h2>Data da Atualização: {history.createdDate}</h2>
-    </div>
-    <div className="product-history-item">
-        <h3>Descrição: {history.description}</h3>
-    </div>
-    <div className="product-history-item">
-        <h3>Preço: {history.price.toFixed(2)}</h3>
-    </div>
-    <div className="product-history-item">
-        <h3>Quantidade: {history.quantity}</h3>
-    </div>
-    <div className="product-history-item">
-        <h3>Validade: {history.validate}</h3>
-    </div>
-</div>
+export function ProductHistoryCard({ history }: Cons) {
+    return (
+        <div className="product-history-card">
+            <div className="product-history-box  border-dark">
+                <h2>Data da Atualização: {moment(history.createdDate).format("DD/MM/YYYY")}</h2>
+            </div>
+            <div className="product-history-box">
+                <h4>Descrição: {history.description}</h4>
+            </div>
+            <div className="product-history-box">
+                <h3>Preço: {history.price.toFixed(2)}</h3>
+            </div>
+            <div className="product-history-box">
+                <h3>Quantidade: {history.quantity}</h3>
+            </div>
+            <div className="product-history-box border-0">
+                <h3>Validade: {moment(history.validate).format("DD/MM/YYYY")}</h3>
+            </div>
+        </div>
     );
 
 }

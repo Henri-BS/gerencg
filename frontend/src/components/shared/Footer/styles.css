@@ -37,3 +37,10 @@
     font-size: 2rem;
     margin: 10px;
 }
+
+@media screen and (max-width: 450px) {
+    .footer-container {
+        width: 380px;
+        display: flex;
+    }
+}

@@ -45,3 +45,9 @@
     height: 40px;
     background-color: #fcf6f6;
 }
+
+@media screen and (max-width: 450px) {
+    .category-display-card {
+        width: 96%;
+    }
+}

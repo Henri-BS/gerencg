@@ -4,6 +4,8 @@ import Chart from 'react-apexcharts'
 import { FlowCategory } from 'types/categoryStats';
 import { BASE_URL } from 'utils/requests';
 
+// Chart Added Products in Category
+
 type SeriesData = {
     name: string;
     data: number[];

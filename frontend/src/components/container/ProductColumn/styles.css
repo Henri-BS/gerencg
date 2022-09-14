@@ -66,3 +66,9 @@
     border: 1px solid #fff;
     border-radius: 10px;
 }
+
+@media screen and (max-width: 650px) {
+    .max-container-column {
+        max-width: 380px;
+    }
+}

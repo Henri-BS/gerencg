@@ -64,3 +64,9 @@
     min-height: 60px;
     color: #fff;
 }
+
+@media screen and (max-width: 450px) {
+    .container {
+        max-width: 400px;
+    }
+}

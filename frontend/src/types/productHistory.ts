@@ -7,3 +7,16 @@ export type ProductHistory = {
     validate: string;
     createdDate: string;
   };
+
+  export type ProductHistoryPage = {
+    content: ProductHistory[],
+    size: number,
+    pageNumber?: number;
+    numberOfElements?: number;
+    totalElements?: number;
+    totalPages?: number;
+    number?: number;
+    empty?: boolean;
+    first?: boolean;
+    last?: boolean;
+  };

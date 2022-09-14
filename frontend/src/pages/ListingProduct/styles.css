@@ -1,13 +1,16 @@
+.pagination-max-container {
+    display: grid;
+    background-color: var(--quin);
+}
+
 .header-container {
     padding: 12px;
     border-bottom: 2px solid #ccc;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    height: 90px;
-}
-
-.page-container {
-    padding: 40px;
+    grid-template-columns: 4fr 1fr;
+    height: 70px;
+    margin-bottom: 10px;
+    background-color: var(--quat);
 }
 
 .pagination-container-menu {
@@ -16,6 +19,7 @@
     display: grid;
     padding: 30px;
     height: 90px;
+    background-color: var(--quat);
 }
 
 .option-item {
@@ -33,15 +37,15 @@
 
 .gerencg-btn-sec {
     border: none;
-    padding: 6px 10px;
+    padding: 6px 14px;
     border-radius: 5px;
-    color: #fff;
+    color: var(--quin);
     cursor: pointer;
     background-color: var(--sena);
 }
 
 .gerencg-btn-sec:hover {
-    transition: all 0.3s ease-out;
+    transition: all 0.7 s ease-out;
     border-radius: 5px;
     background-color: rgb(10, 131, 161);
 }
@@ -49,4 +53,10 @@
 .gerencg-btn-sec h3 {
     text-align: center;
     font-size: 22px
+}
+
+@media screen and (max-width: 450px) {
+    .pagination-max-container {
+        width: 380px;
+    }
 }

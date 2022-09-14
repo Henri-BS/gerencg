@@ -44,9 +44,7 @@ function Footer() {
                 <div className='footer-box'>
             <h5 >Gerencg 2022©️</h5> 
             </div>
-
                 </div>
-          
         </footer>
     );
 }
