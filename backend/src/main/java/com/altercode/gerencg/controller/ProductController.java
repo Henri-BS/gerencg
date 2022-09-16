@@ -28,8 +28,6 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 
-
-
 	@GetMapping("/list")
 	public ResponseEntity<Page<ProductDTO>> findAll(Pageable pageable) {
 		Page<ProductDTO> list = service.findAll(pageable);
@@ -60,9 +58,9 @@ public class ProductController {
 		this.service.deleteProduct(id);
 	}
 
-	@GetMapping("/find-by-category/{category}")
-	public ResponseEntity<List<ProductDTO>> findByCategory(Category category) {
-		List<ProductDTO> list = service.findByCategory(category);
+	@GetMapping("/find-category/{category}")
+	public ResponseEntity<Page<ProductDTO>> findByCategory(Pageable pageable, Category category) {
+		Page<ProductDTO> list = service.findByCategory(pageable, category);
 		return ResponseEntity.ok(list);
 	}
 }

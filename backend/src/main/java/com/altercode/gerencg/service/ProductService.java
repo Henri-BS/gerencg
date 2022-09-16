@@ -93,8 +93,9 @@ public class ProductService {
 		this.productRepository.deleteById(id);
 	}
 	
-	public List<ProductDTO> findByCategory(Category category) {
-		List<Product> result = productRepository.findByCategory(category);
-		return result.stream().map(x -> new ProductDTO(x)).collect(Collectors.toList());
+	public Page<ProductDTO> findByCategory(Pageable pageable, Category category) {
+		Page<Product> result = productRepository.findByCategory(pageable, category);
+		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
+		return page;
 	}
 }

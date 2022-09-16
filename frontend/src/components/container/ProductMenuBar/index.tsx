@@ -29,7 +29,7 @@ const deleteProduct = () => {
         axios.delete(`${BASE_URL}/product/delete/${productId}`)
         .then((response) => {
             setProduct(response.data);
-            navigate("/product/list")
+            navigate("/product/list");
         })
     
 }

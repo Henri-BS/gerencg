@@ -14,6 +14,7 @@ export type Product = {
 };
 
 export type ProductPage = {
+  id?: string;
   content?: Product[];
   size?: number;
   pageNumber?: number;

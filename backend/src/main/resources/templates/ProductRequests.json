@@ -1,0 +1,10 @@
+{
+"id": 1,
+"description": "Descrição do Produto",
+"price": 1.0,
+"quantity": 1,
+"validate": "2999-12-30",
+"measureValue": 1.0,
+"measure": "Abbreviação da Medida",
+"category": "Nome da Categoria"
+}

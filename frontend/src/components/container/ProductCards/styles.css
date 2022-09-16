@@ -1,5 +1,5 @@
 .product-display-card {
-    height: 190px;
+    min-height: 190px;
     background-color: var(--quin);
     border-radius: 30px;
     border: 3px solid #ccc;
@@ -35,8 +35,9 @@
 }
 
 .product-card-container {
+    width: 100%;
     height: 100%;
-    background-color: #fcf6f6;
+    background-color: var(--quin);
     align-items: center;
     text-decoration-color: transparent;
     padding: 10px;
