@@ -45,10 +45,10 @@ function ProductColumn({ productId }: Props) {
                         <div className="column-icon-container">{productIcons.quantityIcon}</div>
                         <h3>Quantidade: {product?.quantity}</h3>
                     </div>
-                    <div className="column-item-container">
+                    <Link to={`/find-by-validate`} className="column-item-container">
                         <div className="column-icon-container">{productIcons.validateIcon}</div>
                         <h3>Validade: {moment(product?.validate).format('DD/MM/YYYY')} </h3>
-                    </div>
+                    </Link>
                     <Link to={`/category/${product?.category}`} className="column-item-container">
                         <div className="column-icon-container">{productIcons.categoryIcon}</div>
                         <h3>Category: {product?.category} </h3>

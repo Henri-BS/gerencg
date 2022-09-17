@@ -2,7 +2,7 @@ import Footer from "components/shared/Footer";
 import NavBar from "components/shared/NavBar";
 import Dashboard from "pages/StatsDashboard";
 import Home from "pages/Home";
-import {ProductsList} from "pages/ListingProduct";
+import {ProductsList, ProductValidateList} from "pages/ListingProduct";
 import CategoryList from "pages/ListingCategory";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import {ProductProfile, CategoryProfile} from "pages/Profiles";
@@ -18,6 +18,7 @@ const PageRoutes = () => {
 
                 <Route path="/product/list" element={<ProductsList />} />
                 <Route path="/product/add" element={<SaveProduct />} />
+                <Route path="/find-by-validate" element={<ProductValidateList />} />
 
                 <Route path="/product">
                     <Route path=":productId" element={<ProductProfile />} />

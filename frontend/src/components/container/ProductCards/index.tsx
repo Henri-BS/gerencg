@@ -26,6 +26,28 @@ export function ProductCard({ product }: Props) {
     );
 }
 
+//Card with Validade
+
+export function ProductValidateCard({ product }: Props) {
+
+    return (
+        <Link to={`/product/${product?.id}`}>
+            <div className="product-display-card">
+                <img className="product-card-image" src={product?.image} alt={product?.description} />
+                <div className="product-card-container">
+                    <h3>{product?.description}</h3>
+
+                    <div className="product-price-container">
+                        <h2>Validao até: {moment(product?.validate).format('DD/MM/YYYY')} </h2>
+                    </div>
+                </div>
+            </div>
+        </Link>
+    );
+}
+
+
+
 type Cons = {
     history: ProductHistory
 }

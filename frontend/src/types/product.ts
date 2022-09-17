@@ -22,6 +22,6 @@ export type ProductPage = {
   totalPages?: number;
   number: number;
   empty?: boolean;
-  first: boolean;
-  last: boolean;
+  first?: boolean;
+  last?: boolean;
 };

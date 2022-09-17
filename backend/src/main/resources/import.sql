@@ -44,6 +44,8 @@ INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('milimetro', '
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('volt', 'v');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('gigabyte', 'gb');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('megabyte', 'mb');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('indefinido', '*');
+
 
 
 
@@ -60,6 +62,11 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Feijâo Preto Mayara', 'https://media.istockphoto.com/vectors/beans-vector-id487671327?k=6&m=487671327&s=170667a&w=0&h=8-IC6Y6v2YOo3xM0rQD1mdajgE05Yp40Lqu2OaI1pXc=',  9.80, 1, '2022-10-01', 1, 'kg', 'Alimentícios');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sal Cavalinho', 'https://images.ctfassets.net/x2t7lek2vf7h/3v3OqCHUeTSOYbNeZUry0Y/6cac9a68112ccdf3fbf120b9fe5271aa/step_1.png?w=600&h=600&q=50&fm=png', 1.0, 19, '2024-06-01', 1, 'kg', 'Alimentícios'); 
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Farinha de Milho Flocada Coringa (Flocão)', 'https://cdn0.iconfinder.com/data/icons/farm-27/64/Fertiliser-fertilizer-soil-Farm-512.png', 3.20, 16, '2023-01-04', 500, 'g', 'Alimentícios');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Milho Stella dOro Enlatado', 'https://cdn3.iconfinder.com/data/icons/autumn-vol-1/68/Bee_food_honey_jar_sugar_sweet-512.png', 3.25, 25, '2024-04-01', 280, 'g', 'Alimentícios');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sopão de Carne Sandella', 'https://www.rcamposcomvoce.com.br/wp-content/uploads/2018/07/Sopas-ajudam-a-emagrecer.jpg', 6.30, 4, '2023-02-01', 180, 'g', 'Alimentícios');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Vinagre de Álcool Minhoto', 'https://www.kindpng.com/picc/m/752-7526415_apple-cider-vinegar-vinegar-clipart-hd-png-download.png', 3.45, 19, '2999-12-30', 500, 'ml', 'Alimentícios');
+
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Boneca Beijokinhas Mister Brinque', 'https://i.pinimg.com/originals/d1/57/1f/d1571f9b88cf530c8a4e52be50d5b7ca.png', 31.40, 3, '2999-12-30', null, '*', 'Brinquedos');
 
 
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sabonete Protex Limpeza Profunda', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 3.20, 5, '2023-10-01', 85, 'g', 'Cosméticos e Higiene');
