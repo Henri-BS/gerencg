@@ -1,12 +1,11 @@
 import axios from "axios";
-import { Product } from "types/product";
 import { BASE_URL } from "utils/requests";
 
-type Props = {
-    productId: string;
-}
-
 class ProductService {
+
+findProductsByValidate() {
+    return axios.get(`${BASE_URL}/product/list?sort=validate`)
+}
 
 };
 export default new ProductService();

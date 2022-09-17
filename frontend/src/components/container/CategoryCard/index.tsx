@@ -17,8 +17,7 @@ function CategoryCard({category}: Props) {
                     alt={category?.name} />
                     <div className="category-card-container">
                         <h3><b>{category?.name}</b></h3>
-    
-                        <div className="category-products-container">
+                        <div className="category-details-container">
                             <h2>Atualizado em: {moment(category?.lastModifiedDate).format('DD/MM/YYYY, hh:mm')}</h2>
                         </div>
                     </div>

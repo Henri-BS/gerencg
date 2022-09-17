@@ -61,6 +61,8 @@ export function ProductsList() {
     );
 }
 
+//Find product uppdate history
+
 export function ProductHistoryList() {
     const [historyPage, setHistoryPage] = useState<ProductHistoryPage>({
         content: [],
@@ -93,6 +95,8 @@ export function ProductHistoryList() {
     );
 }
 
+//Find all products by category
+
 type Props = {
     categoryId: string
 }
@@ -111,12 +115,12 @@ export function ProductCategoryList({categoryId}: Props){
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/product/find-category/${categoryId}?size=10`)
+        axios.get(`${BASE_URL}/product/find-category/${categoryId}/?page=${pageNumber}&size=6`)
             .then(response => {
                 const data = response.data as ProductPage;
                 setProductPage(data);
             });
-    }, []);
+    }, [pageNumber]);
 
     const handlePageChange = (newPageNumber: number) => {
         setPageNumber(newPageNumber);
@@ -133,9 +137,60 @@ export function ProductCategoryList({categoryId}: Props){
                             onPageChange={handlePageChange} />
                     </div>
                 </div>
-                <div className=" row">
+                <div className="row">
                     {productPage.content?.map(product => (
-                        <div key={product.category.name} className="col-sm-6 col-lg-5 col-xl-4 mb-3">
+                        <div key={product.category.name} className="  col-sm-12 col-lg-6 col-xl-6 mb-3">
+                            <ProductCard product={product} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </>
+    );
+}
+
+
+
+type Cons = {
+    measureId: string
+}
+
+export function ProductMeasureList({measureId}: Cons){
+    const [pageNumber, setPageNumber] = useState(0);
+    const [productPage, setProductPage] = useState<ProductPage>({
+        content: [],
+        size: 10,
+        first: true,
+        last: true,
+        number: 0,
+    });
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/product/find-measure/${measureId}/?page=${pageNumber}`)
+            .then(response => {
+                const data = response.data as ProductPage;
+                setProductPage(data);
+            });
+    }, [pageNumber]);
+
+    const handlePageChange = (newPageNumber: number) => {
+        setPageNumber(newPageNumber);
+    }
+    return (
+        <>
+            <div className="container">
+                <div className="header-container">
+                    <h2>Produtos Medidos por: {measureId}</h2>                   
+                </div>
+                <div className="pagination-container-menu">
+                    <div className="pagination-item">
+                        <Pagination page={productPage}
+                            onPageChange={handlePageChange} />
+                    </div>
+                </div>
+                <div className="row">
+                    {productPage.content?.map(product => (
+                        <div key={product.measure.abbreviation} className="  col-sm-12 col-lg-6 col-xl-6 mb-3">
                             <ProductCard product={product} />
                         </div>
                     ))}

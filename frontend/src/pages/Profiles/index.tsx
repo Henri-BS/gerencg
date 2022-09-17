@@ -39,9 +39,9 @@ export function CategoryProfile() {
         <div className="col-6-sm col-md-6 col-lg-4 p-0">
           <CategoryColumn categoryId={`${params.categoryId}`} />
         </div>
-        <div>
-              <ProductCategoryList categoryId={`${params.categoryId}`} />
-              </div>
+        <div className="col-6-sm col-md-6 col-lg-8 p-0">
+          <ProductCategoryList categoryId={`${params.categoryId}`} />
+        </div>
       </div>
     </>
   );

@@ -14,13 +14,12 @@ export type Product = {
 };
 
 export type ProductPage = {
-  id?: string;
   content?: Product[];
   size?: number;
   pageNumber?: number;
-  numberOfElements: number;
+  numberOfElements?: number;
   totalElements?: number;
-  totalPages: number;
+  totalPages?: number;
   number: number;
   empty?: boolean;
   first: boolean;

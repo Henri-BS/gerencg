@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.Category;
+import com.altercode.gerencg.entity.Measure;
 import com.altercode.gerencg.service.ProductService;
 
 @RestController
@@ -63,4 +64,11 @@ public class ProductController {
 		Page<ProductDTO> list = service.findByCategory(pageable, category);
 		return ResponseEntity.ok(list);
 	}
+	
+	@GetMapping("/find-measure/{measure}")
+	public ResponseEntity<Page<ProductDTO>> findByMeasure(Pageable pageable, Measure measure){
+		Page<ProductDTO> list = service.findByMeasure(pageable, measure);
+		return ResponseEntity.ok(list);
+	}
+	
 }

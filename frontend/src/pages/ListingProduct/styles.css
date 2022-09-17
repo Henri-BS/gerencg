@@ -3,6 +3,11 @@
     background-color: var(--quin);
 }
 
+.pagination-box {
+    width: 400px;
+    max-height: 200px;
+}
+
 .header-container {
     padding: 12px;
     border-bottom: 2px solid #ccc;

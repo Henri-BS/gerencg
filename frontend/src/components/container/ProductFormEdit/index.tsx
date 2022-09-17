@@ -11,7 +11,7 @@ type Props = {
 
 export function ProductFormEdit({ productId }: Props) {
 
-    //Edit Product 
+    //Get Product 
     const [product, setProduct] = useState<Product>();
 
     useEffect(() => {
@@ -21,8 +21,8 @@ export function ProductFormEdit({ productId }: Props) {
             })
     }, [productId])
 
+    //Creating submission event for html form to update the product
     const navigate = useNavigate();
-
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
@@ -52,12 +52,10 @@ export function ProductFormEdit({ productId }: Props) {
         console.log(productData)
     };
 
-
-
     return (
         <div className="form-container">
             <div className="form-card-container">
-                <h3>Editar Produto</h3>
+                <h3>Editar Produto: {product?.description}</h3>
 
                 <form className="gerencg-form" onSubmit={handleSubmit}>
                     <div className="form-group gerencg-form-group">
@@ -66,7 +64,7 @@ export function ProductFormEdit({ productId }: Props) {
                             type="text"
                             className="form-control"
                             id="description"
-
+                            placeholder={product?.description}
                         />
                     </div>
 
@@ -76,7 +74,7 @@ export function ProductFormEdit({ productId }: Props) {
                             type="text"
                             className="form-control"
                             id="image"
-
+                            placeholder={product?.image}
                         />
                     </div>
 
@@ -85,7 +83,7 @@ export function ProductFormEdit({ productId }: Props) {
                         <input
                             className="form-control"
                             id="price"
-
+                            placeholder={product?.price.toFixed(2)}
                         />
                     </div>
 
@@ -95,7 +93,7 @@ export function ProductFormEdit({ productId }: Props) {
                             type="number"
                             className="form-control"
                             id="quantity"
-
+                            placeholder={product?.quantity.toFixed()}
                         />
                     </div>
 
@@ -105,7 +103,7 @@ export function ProductFormEdit({ productId }: Props) {
                             type="text"
                             className="form-control"
                             id="validate"
-                            placeholder="aaaa-mm-dd"
+                            placeholder={product?.validate}
 
                         />
                     </div>

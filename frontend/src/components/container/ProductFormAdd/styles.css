@@ -20,7 +20,7 @@
 
 .form-card-container {
     background-color: var(--tert);
-    border: 1px solid var(--tert);
+    border: 1px solid var(--prim);
     display: flex;
     flex-direction: column;
     align-items: center;

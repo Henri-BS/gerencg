@@ -1,15 +1,20 @@
 .category-display-card {
     height: 190px;
-    background-color: #fcf6f6;
+    background-color: var(--quin);
     border-radius: 30px;
     border: 3px solid #ccc;
     padding: 20px;
     text-decoration: underline;
-    text-decoration-color: #fcf6f6;
-    color: rgb(73, 73, 73);
+    text-decoration-color: var(--quin);
+    color: var(--prim);
     align-items: flex-start;
     justify-content: start;
     display: flex;
+    transition: all 0.2ms ease-out;
+}
+
+.category-display-card:hover {
+    border: 3px solid var(--sena);
 }
 
 .category-display-card h3 {
@@ -33,7 +38,6 @@
 
 .category-card-container {
     height: 160px;
-    background-color: #fcf6f6;
     align-items: center;
     border-radius: 30px;
     text-decoration-color: transparent;
@@ -41,13 +45,14 @@
     display: grid;
 }
 
-.category-products-container {
-    height: 40px;
-    background-color: #fcf6f6;
+.category-details-container {
+    height: 70px;
+    background-color: var(--quin);
 }
 
 @media screen and (max-width: 450px) {
     .category-display-card {
-        width: 96%;
+        height: 350px;
+        display: grid;
     }
 }

@@ -1,5 +1,5 @@
 .product-display-card {
-    min-height: 190px;
+    height: 190px;
     background-color: var(--quin);
     border-radius: 30px;
     border: 3px solid #ccc;
@@ -82,4 +82,10 @@
 
 .product-history-box h3 {
     font-size: 20px;
+}
+
+@media screen and (max-width: 450px) {
+    .product-card-image {
+        width: 100px;
+    }
 }

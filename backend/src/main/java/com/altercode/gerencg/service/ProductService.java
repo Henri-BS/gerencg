@@ -98,4 +98,10 @@ public class ProductService {
 		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
 		return page;
 	}
+	
+	public Page<ProductDTO> findByMeasure(Pageable pageable, Measure measure) {
+		Page<Product> result = productRepository.findByMeasure(pageable, measure);
+		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
+		return page;
+	}
 }
