@@ -1,8 +1,5 @@
 package com.altercode.gerencg.service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -46,7 +43,7 @@ public class ProductService {
 
 		Category category = categoryRepository.findById(dto.getCategory()).get();
 		Measure measure = measureRepository.findById(dto.getMeasure()).get();
-		
+
 		Product add = new Product();
 		add.setDescription(dto.getDescription());
 		add.setImage(dto.getImage());
@@ -54,7 +51,7 @@ public class ProductService {
 		add.setQuantity(dto.getQuantity());
 		add.setValidate(dto.getValidate());
 		add.setMeasureValue(dto.getMeasureValue());
-		add.setMeasure(measure);	
+		add.setMeasure(measure);
 		add.setCategory(category);
 
 		category.setTotalProducts(category.getProducts().size());
@@ -64,11 +61,11 @@ public class ProductService {
 		return new ProductDTO(productRepository.saveAndFlush(add));
 	}
 
-	public ProductDTO updateProduct( ProductDTO dto) {
+	public ProductDTO updateProduct(ProductDTO dto) {
 
 		Category category = categoryRepository.findById(dto.getCategory()).get();
 		Measure measure = measureRepository.findById(dto.getMeasure()).get();
-		
+
 		Product edit = productRepository.findById(dto.getId()).get();
 		edit.setId(dto.getId());
 		edit.setDescription(dto.getDescription());
@@ -79,29 +76,38 @@ public class ProductService {
 		edit.setMeasureValue(dto.getMeasureValue());
 		edit.setMeasure(measure);
 		edit.setCategory(category);
-	
+
 		category.setTotalProducts(category.getProducts().size());
 		category = categoryRepository.save(category);
 
 		edit = productRepository.save(edit);
-		
+
 		return new ProductDTO(edit);
 	}
 
 	public void deleteProduct(Long id) {
-		
 		this.productRepository.deleteById(id);
 	}
 	
+public Page<ProductDTO> findByDescription(Pageable pageable, String description) {
+		Page<Product> result = productRepository.findByDescription(pageable, description);
+		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
+		return page;
+	}
+
 	public Page<ProductDTO> findByCategory(Pageable pageable, Category category) {
 		Page<Product> result = productRepository.findByCategory(pageable, category);
 		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
 		return page;
 	}
-	
+
 	public Page<ProductDTO> findByMeasure(Pageable pageable, Measure measure) {
 		Page<Product> result = productRepository.findByMeasure(pageable, measure);
 		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
 		return page;
 	}
+
+	
+	
+	
 }

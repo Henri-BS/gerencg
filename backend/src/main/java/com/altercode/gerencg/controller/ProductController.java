@@ -1,6 +1,5 @@
 package com.altercode.gerencg.controller;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -57,6 +56,12 @@ public class ProductController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteProduct(@PathVariable Long id) {
 		this.service.deleteProduct(id);
+	}
+	
+	@GetMapping("/description")
+	public ResponseEntity<Page<ProductDTO>> findByDescription(Pageable pageable, String description) {
+		Page<ProductDTO> list = service.findByDescription(pageable, description);
+		return ResponseEntity.ok(list);
 	}
 
 	@GetMapping("/find-category/{category}")
