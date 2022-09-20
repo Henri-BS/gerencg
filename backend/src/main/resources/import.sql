@@ -104,6 +104,15 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Carregador Inova 3.1A CAR-9011', 'https://cdn2.iconfinder.com/data/icons/internet-of-things-filled-outline/64/08-Plug-512.png', 23.90, 5, '2999-12-30', 220, 'v', 'Eletrônicos');
 
 
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Pincel Condor', 'https://www.malerei-lorin.at/fileadmin/flaticon/paint-brush.png', 3.85, 6, '2999-12-30', null, '*', 'Ferramentas');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desempenadeira de Aço Max Ferramentas', 'https://cdn2.iconfinder.com/data/icons/construction-equipment/130/_cement_knife-512.png', 13.20, 5, '2999-12-30', null, '*', 'Ferramentas');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Trena Vox', 'https://cdn3.iconfinder.com/data/icons/construction-157/64/tape-measure-ruler-construction-metric-512.png', 12.95, 7, '2999-12-30', 5, 'm', 'Ferramentas');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Alicate Vape Solution', 'https://static.vecteezy.com/system/resources/previews/002/698/182/large_2x/pliers-construction-tool-isolated-icon-free-vector.jpg', 21.90, 9, '2999-12-30', null, '*', 'Ferramentas');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Ferrolho Redondo Rns', 'http://bappeda.jogjaprov.go.id/view_image/view/1094/002-padlock.png', 13.20, 8, '2999-12-30', null, '*', 'Ferramentas');
+
+
+
+
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Ácido Muriático Limpa Fácil', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.30, 9, '2024-10-06', 1.00, 'l', 'Limpeza');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Água Sanitária Nutrilar', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 2.50, 11, '2022-12-06', 1.00, 'l', 'Limpeza');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante LavaBem Limão', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 6.95, 3, '2023-05-09', 2.00, 'l', 'Limpeza');

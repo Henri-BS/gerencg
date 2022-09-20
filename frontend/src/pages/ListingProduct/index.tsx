@@ -2,14 +2,15 @@ import axios from "axios";
 import Pagination from "components/shared/Pagination";
 import { ProductCard, ProductHistoryCard, ProductValidateCard } from "components/container/ProductCards";
 import { useEffect, useState } from "react";
-import { ProductPage } from "types/product";
+import { Product, ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 import { Link } from "react-router-dom";
 import { ProductHistoryPage } from "types/productHistory";
+import * as FaIcons from 'react-icons/fa'
 
 export function ProductsList() {
-
+    const[product, setProduct] = useState<Product>();
     const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<ProductPage>({
         content: [],
@@ -31,26 +32,49 @@ export function ProductsList() {
 
     const handlePageChange = (newPageNumber: number) => {
         setPageNumber(newPageNumber);
+
+const findByDescription = () => {
+    axios.get(`${BASE_URL}/product/description?description=`) 
+    .then((response) => {
+        setProduct(response.data);
+    })
+}
     }
 
     return (
         <>
             <div className="container">
-                <div className="header-container">
-                    <h2>Lista de Produtos</h2>
+                <nav className="header-container">
+                    <h2>Lista de Produtos</h2>                    
+
+                    <div className="search-container">                    
+                    <div className="option-item"><FaIcons.FaSearch/></div>
+
+                    <div className="form-group gerencg-form-group">    
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="description"
+                            placeholder="Buscar produto..."
+                        />                     
+                    </div>
+                    </div>
+                  
+
                     <Link className="gerencg-btn-sec-container" to="/product/add">
-                        <button className="gerencg-btn-sec">
-                            <h3>Adicionar</h3>
+                        <button className="gerencg-btn-sec" >
+                            <h3><FaIcons.FaSave/> Adicionar</h3>
                         </button>
                     </Link>
-                </div>
+
+                </nav>
                 <div className="pagination-container-menu">
                     <div className="pagination-item">
                         <Pagination page={productPage}
                             onPageChange={handlePageChange} />
                     </div>
                 </div>
-                <div className=" row">
+                <div className=" row w-100">
                     {productPage.content?.map(product => (
                         <div key={product.id} className="col-sm-6 col-lg-5 col-xl-4 mb-3">
                             <ProductCard product={product} />
@@ -102,7 +126,7 @@ type Category = {
 }
 
 
-export function ProductCategoryList({categoryId}: Category){
+export function ProductCategoryList({ categoryId }: Category) {
 
     const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<ProductPage>({
@@ -128,7 +152,7 @@ export function ProductCategoryList({categoryId}: Category){
         <>
             <div className="container">
                 <div className="header-container">
-                    <h2>Produtos Catalogados</h2>                   
+                    <h2>Produtos Catalogados</h2>
                 </div>
                 <div className="pagination-container-menu">
                     <div className="pagination-item">
@@ -154,7 +178,7 @@ type Measure = {
     measureId: string
 }
 
-export function ProductMeasureList({measureId}: Measure){
+export function ProductMeasureList({ measureId }: Measure) {
     const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<ProductPage>({
         content: [],
@@ -178,7 +202,7 @@ export function ProductMeasureList({measureId}: Measure){
         <>
             <div className="container">
                 <div className="header-container">
-                    <h2>Produtos Medidos por: {measureId}</h2>                   
+                    <h2>Produtos Medidos por: {measureId}</h2>
                 </div>
                 <div className="pagination-container-menu">
                     <div className="pagination-item">

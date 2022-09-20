@@ -26,7 +26,7 @@ export function ProductCard({ product }: Props) {
     );
 }
 
-//Card with Validade
+//Card with Validate
 
 export function ProductValidateCard({ product }: Props) {
 
