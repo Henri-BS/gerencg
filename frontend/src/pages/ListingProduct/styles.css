@@ -24,10 +24,10 @@
     padding: 12px;
     border-bottom: 2px solid #ccc;
     display: grid;
-    grid-template-columns: 2fr 2fr 1fr;
-    grid-template-areas: "h2 h2 h2" "search-container search-container search-container" "gerencg-btn-sec-container gerencg-btn-sec-container gerencg-btn-sec-container";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "h2 gerencg-btn-sec-container" "search-container search-container";
     grid-gap: 0.2rem;
-    height: 70px;
+    max-height: 70px;
     background-color: var(--quat);
 }
 
@@ -37,6 +37,7 @@
     display: flex;
     height: 40px;
     font-size: 30px;
+    margin-bottom: 80px;
 }
 
 .search-container {
@@ -44,38 +45,44 @@
     height: 40px;
     display: grid;
     align-items: center;
-    grid-template-columns: 0.2fr 2fr;
+    grid-template-columns: 3fr 1fr;
+    margin-bottom: 80px;
+}
+
+.search-container button {
+    border: 1px solid var(--prim);
+    margin-bottom: 19px;
+    margin-left: 8px;
+    display: inline;
 }
 
 .option-item {
     padding: 10px;
     height: 100%;
-    color: var(--seco);
-    border-radius: 360px;
 }
 
 .gerencg-btn-sec-container {
     grid-area: "gerencg-btn-sec-container";
     text-decoration: none;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 80px;
 }
 
 .gerencg-btn-sec {
     padding: 6px;
-    border-radius: 5px;
+    border-radius: 7px;
     color: var(--quin);
     cursor: pointer;
-    border: 2px solid var(--sena);
+    border: 4px solid transparent;
     background: var(--sena);
+    transition: all 0.4s ease-out;
 }
 
 .gerencg-btn-sec:hover {
-    transition: all 0.5s ease-out;
-    border-radius: 5px;
-    border: 2px solid var(--seco);
-    color: var(--seco);
-    background-color: transparent;
+    border-radius: 13px;
+    border: 4px solid var(--sena);
+    color: rgb(3, 58, 80);
+    background: transparent;
 }
 
 .gerencg-btn-sec h3 {
@@ -90,21 +97,17 @@
     }
     .header-container {
         height: 180px;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 1fr;
         grid-template-areas: "h2" "search-container";
     }
     .header-container h2 {
         text-align: start;
         display: flex;
         height: 40px;
-        font-size: 24px;
+        font-size: 22px;
     }
     .gerencg-btn-sec-container {
-        margin-bottom: 90px;
-        padding: 30px;
-        position: fixed;
-        width: 100%;
-        text-align: end;
+        display: none;
     }
 }

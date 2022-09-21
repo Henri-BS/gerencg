@@ -2,21 +2,25 @@ import Footer from "components/shared/Footer";
 import NavBar from "components/shared/NavBar";
 import Dashboard from "pages/StatsDashboard";
 import Home from "pages/Home";
-import {ProductsList, ProductValidateList} from "pages/ListingProduct";
+import { ProductsList, ProductValidateList } from "pages/ListingProduct";
 import CategoryList from "pages/ListingCategory";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import {ProductProfile, CategoryProfile} from "pages/Profiles";
+import { ProductProfile, CategoryProfile } from "pages/Profiles";
 import { MeasureProfile, SaveProduct, UpdateProduct } from "pages/ProductOptions";
+import { useState } from "react";
 
 
-const PageRoutes = () => {
+function PageRoutes() {
+
+
     return (
         <BrowserRouter>
             <NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />
 
-                <Route path="/product/list" element={<ProductsList />} />
+                <Route path="/product/list"element={<ProductsList/>}/>
+
                 <Route path="/product/add" element={<SaveProduct />} />
                 <Route path="/find-by-validate" element={<ProductValidateList />} />
 
@@ -30,7 +34,7 @@ const PageRoutes = () => {
 
                 <Route path="/category/list" element={<CategoryList />} />
                 <Route path="/categories-stats" element={<Dashboard />} />
-                
+
                 <Route path="/category">
                     <Route path=":categoryId" element={<CategoryProfile />} />
                 </Route>
