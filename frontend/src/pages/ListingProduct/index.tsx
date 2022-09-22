@@ -11,7 +11,6 @@ import * as FaIcons from 'react-icons/fa'
 
 export function ProductsList() {
     const [value, setValue] = useState("");
-    const [searchTerm, setSearchTerm] = useState("");
     const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<ProductPage>({
         content: [],
@@ -22,11 +21,9 @@ export function ProductsList() {
         totalElements: 0,
         numberOfElements: 0
     });
-
-
-
+  
     useEffect(() => {
-        axios.get(`${BASE_URL}/product/list?page=${pageNumber}&size=12`)
+        axios.get(`${BASE_URL}/product/list/description/?description=${value}&page=${pageNumber}&size=12`)
             .then(response => {
                 const data = response.data as ProductPage;
                 setProductPage(data);
@@ -42,6 +39,7 @@ export function ProductsList() {
     }
 
     const onSearch = (searchTerm: string) => {
+        setValue(searchTerm);
         console.log('search ', searchTerm);
     }
 
@@ -68,7 +66,9 @@ export function ProductsList() {
                                 placeholder="Buscar produto..."
                             />
                         </div>
-                        <button className="btn" onClick={() => onSearch(value)}><FaIcons.FaSearch /></button>
+                        <button className="btn" onClick={() => onSearch(value)}>
+                            <FaIcons.FaSearch />
+                        </button>
                     </form>
                 </nav>
 
@@ -77,18 +77,41 @@ export function ProductsList() {
                         <Pagination
                             page={productPage}
                             onPageChange={handlePageChange}
-
                         />
                     </div>
                 </div>
 
+                    <div className=" row w-100">
+                        {productPage.content?.filter((product) => {
+
+                            const searchTerm = value.toLowerCase();
+                            const description = product.description.toLowerCase();
+
+                            return (
+                                searchTerm && description.startsWith(searchTerm) && description !== searchTerm
+                            );
+
+                        })
+                            .slice(0, 10)
+                            .map((product) => (
+                                <div
+                                    onClick={() => onSearch(product.description)}
+                                    className="className=col-sm-6 col-lg-5 col-xl-4 mb-3"
+                                    key={product.description}>
+                                    <ProductCard product={product} />
+                                </div>
+                            ))
+                        }
+                    </div>
+                
                 <div className=" row w-100">
-                    {productPage.content?.filter(product => (
+                    {productPage.content?.map(product => (
                         <div key={product.id} className="col-sm-6 col-lg-5 col-xl-4 mb-3">
                             <ProductCard product={product} />
                         </div>
                     ))}
                 </div>
+
             </div>
         </>
     );
