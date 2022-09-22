@@ -58,7 +58,7 @@ public class ProductController {
 		this.service.deleteProduct(id);
 	}
 	
-	@GetMapping("/description")
+	@GetMapping("/search")
 	public ResponseEntity<Page<ProductDTO>> findByDescription(Pageable pageable, String description) {
 		Page<ProductDTO> list = service.findByDescription(pageable, description);
 		return ResponseEntity.ok(list);

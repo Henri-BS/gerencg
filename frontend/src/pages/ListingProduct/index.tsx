@@ -1,8 +1,8 @@
 import axios from "axios";
 import Pagination from "components/shared/Pagination";
 import { ProductCard, ProductHistoryCard, ProductValidateCard } from "components/container/ProductCards";
-import { SetStateAction, useEffect, useState } from "react";
-import { ProductPage } from "types/product";
+import { useEffect, useState } from "react";
+import { Product, ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 import { Link } from "react-router-dom";
@@ -14,33 +14,19 @@ export function ProductsList() {
     const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<ProductPage>({
         content: [],
-        first: true,
-        last: true,
-        number: 0,
-        totalPages: 0,
-        totalElements: 0,
-        numberOfElements: 0
+        number: 0
     });
-  
+
     useEffect(() => {
-        axios.get(`${BASE_URL}/product/list/description/?description=${value}&page=${pageNumber}&size=12`)
+        axios.get(`${BASE_URL}/product/search?description=${value}&size=21&page=${pageNumber}`)
             .then(response => {
-                const data = response.data as ProductPage;
-                setProductPage(data);
+                setProductPage(response.data);
             });
-    }, [pageNumber]);
+    }, [value, pageNumber]);
+
 
     const handlePageChange = (newPageNumber: number) => {
         setPageNumber(newPageNumber);
-    }
-
-    const onChange = (event: { target: { value: SetStateAction<string>; }; }) => {
-        setValue(event.target.value)
-    }
-
-    const onSearch = (searchTerm: string) => {
-        setValue(searchTerm);
-        console.log('search ', searchTerm);
     }
 
     return (
@@ -60,20 +46,21 @@ export function ProductsList() {
                             <input
                                 type="text"
                                 value={value}
-                                onChange={onChange}
+                                onChange={(e) => setValue(e.target.value)}
                                 className="form-control"
-                                id="description"
+                                id="value"
                                 placeholder="Buscar produto..."
                             />
                         </div>
-                        <button className="btn" onClick={() => onSearch(value)}>
+                        <div className="option-item" >
                             <FaIcons.FaSearch />
-                        </button>
+                        </div>
                     </form>
                 </nav>
 
                 <div className="pagination-container-menu">
                     <div className="pagination-item">
+
                         <Pagination
                             page={productPage}
                             onPageChange={handlePageChange}
@@ -81,37 +68,17 @@ export function ProductsList() {
                     </div>
                 </div>
 
-                    <div className=" row w-100">
-                        {productPage.content?.filter((product) => {
-
-                            const searchTerm = value.toLowerCase();
-                            const description = product.description.toLowerCase();
-
-                            return (
-                                searchTerm && description.startsWith(searchTerm) && description !== searchTerm
-                            );
-
-                        })
-                            .slice(0, 10)
-                            .map((product) => (
-                                <div
-                                    onClick={() => onSearch(product.description)}
-                                    className="className=col-sm-6 col-lg-5 col-xl-4 mb-3"
-                                    key={product.description}>
-                                    <ProductCard product={product} />
-                                </div>
-                            ))
-                        }
-                    </div>
-                
                 <div className=" row w-100">
-                    {productPage.content?.map(product => (
-                        <div key={product.id} className="col-sm-6 col-lg-5 col-xl-4 mb-3">
-                            <ProductCard product={product} />
-                        </div>
-                    ))}
+                    {productPage.content?.filter((product) =>
+                        product.description.includes(value))
+                        .map((product) => (
+                            <div
+                                key={product.id}
+                                className="col-sm-6 col-lg-5 col-xl-4 mb-3">
+                                <ProductCard product={product} />
+                            </div>
+                        ))}
                 </div>
-
             </div>
         </>
     );
