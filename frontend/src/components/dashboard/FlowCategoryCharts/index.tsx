@@ -50,7 +50,7 @@ export function AddedProductsChart() {
                     },
                     series: [
                         {
-                            name: "% Fluxo",
+                            name: "Adicionados",
                             data: mySeries
                         }
                     ]
@@ -85,8 +85,6 @@ export function AddedProductsChart() {
 
     );
 }
-
-
 
 export function RemovedProductsChart() {
     const [chartData, setChartData] = useState<ChartData>({

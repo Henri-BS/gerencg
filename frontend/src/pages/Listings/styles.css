@@ -23,25 +23,19 @@
     align-items: center;
     padding: 12px;
     border-bottom: 2px solid #ccc;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: "h2 gerencg-btn-sec-container" "search-container search-container";
-    grid-gap: 0.2rem;
     max-height: 70px;
     background-color: var(--quat);
 }
 
 .header-container h2 {
-    grid-area: "h2";
     text-align: start;
     display: flex;
     height: 40px;
-    font-size: 30px;
+    font-size: 26px;
     margin-bottom: 80px;
 }
 
 .search-container {
-    grid-area: "search-container";
     height: 40px;
     display: grid;
     align-items: center;
@@ -62,7 +56,6 @@
 }
 
 .gerencg-btn-sec-container {
-    grid-area: "gerencg-btn-sec-container";
     text-decoration: none;
     text-align: center;
     margin-bottom: 80px;
@@ -97,9 +90,6 @@
     }
     .header-container {
         height: 180px;
-        grid-template-columns: 1fr 2fr;
-        grid-template-rows: 1fr;
-        grid-template-areas: "h2" "search-container";
     }
     .header-container h2 {
         text-align: start;

@@ -46,7 +46,7 @@ export function ProductValidateCard({ product }: Props) {
     );
 }
 
-
+//Product history card
 
 type Cons = {
     history: ProductHistory

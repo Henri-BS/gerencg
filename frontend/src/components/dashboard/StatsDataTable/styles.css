@@ -1,11 +1,23 @@
 .striped-rows {
     background-color: rgb(168, 167, 167);
+    color: var(--seco);
 }
 
 .table-box {
+    color: var(--seco);
     font-size: 14px;
     font-weight: 600;
     border: 1px solid var(--seco);
     padding: 10px;
     text-align: center;
+}
+
+.table-box-title {
+    font-size: 16px;
+    font-weight: 900;
+    padding: 10px;
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }

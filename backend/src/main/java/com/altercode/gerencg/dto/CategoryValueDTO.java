@@ -8,13 +8,15 @@ public class CategoryValueDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String categoryName;
-	private Double sum;
+	private Double income;
+	private Double expense;
 	
 	public CategoryValueDTO(){}
 
-	public CategoryValueDTO(Category category, Double sum) {
+	public CategoryValueDTO(Category category, Double income, Double expense) {
 		this.categoryName = category.getName();
-		this.sum = sum;
+		this.income = income;
+		this.expense = expense;
 	}
 
 	public String getCategoryName() {
@@ -24,13 +26,22 @@ public class CategoryValueDTO implements Serializable{
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-
-	public Double getSum() {
-		return sum;
+	
+	public Double getIncome() {
+		return income;
 	}
 
-	public void setSum(Double sum) {
-		this.sum = sum;
+	public void setIncome(Double income) {
+		this.income = income;
 	}
-		
+
+	public Double getExpense() {
+		return expense;
+	}
+
+	public void setExpense(Double expense) {
+		this.expense = expense;
+	}
+
+	
 }

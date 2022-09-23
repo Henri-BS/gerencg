@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.altercode.gerencg.dto.CategoryFlowDTO;
 import com.altercode.gerencg.dto.CategoryStatsDTO;
-import com.altercode.gerencg.dto.SumCategoryValuesDTO;
+import com.altercode.gerencg.dto.CategoryValueDTO;
 import com.altercode.gerencg.service.CategoryStatsService;
 
 @RestController
@@ -54,8 +54,8 @@ public class CategoryStatsController {
 	}
 	
 	@GetMapping("/value-of-category")
-	public ResponseEntity<List<SumCategoryValuesDTO>> valueGroupedByCategory(){
-		List<SumCategoryValuesDTO> list = service.valueGroupedByCategory();
+	public ResponseEntity<List<CategoryValueDTO>> valueGroupedByCategory(){
+		List<CategoryValueDTO> list = service.valueGroupedByCategory();
 		return ResponseEntity.ok(list);
 	}
 	

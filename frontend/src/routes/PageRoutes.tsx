@@ -2,12 +2,10 @@ import Footer from "components/shared/Footer";
 import NavBar from "components/shared/NavBar";
 import Dashboard from "pages/StatsDashboard";
 import Home from "pages/Home";
-import { ProductsList, ProductValidateList } from "pages/ListingProduct";
-import CategoryList from "pages/ListingCategory";
+import { CategoryList, ProductsList, ProductValidateList } from "pages/Listings";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { ProductProfile, CategoryProfile } from "pages/Profiles";
 import { MeasureProfile, SaveProduct, UpdateProduct } from "pages/ProductOptions";
-import { useState } from "react";
 
 
 function PageRoutes() {

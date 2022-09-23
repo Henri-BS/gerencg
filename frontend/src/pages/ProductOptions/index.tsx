@@ -1,7 +1,7 @@
 import MeasureInfo from "components/container/MeasureInfo";
 import {ProductFormAdd} from "components/container/ProductFormAdd";
 import { ProductFormEdit } from "components/container/ProductFormEdit";
-import { ProductMeasureList } from "pages/ListingProduct";
+import { ProductMeasureList } from "pages/Listings";
 import { useParams } from "react-router-dom";
 import "./styles.css"
 

@@ -2,12 +2,16 @@ import axios from "axios";
 import Pagination from "components/shared/Pagination";
 import { ProductCard, ProductHistoryCard, ProductValidateCard } from "components/container/ProductCards";
 import { useEffect, useState } from "react";
-import { Product, ProductPage } from "types/product";
+import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 import { Link } from "react-router-dom";
 import { ProductHistoryPage } from "types/productHistory";
 import * as FaIcons from 'react-icons/fa'
+import { CategoryPage } from "types/category";
+import CategoryCard from "components/container/CategoryCard";
+
+//Product list with description filter 
 
 export function ProductsList() {
     const [value, setValue] = useState("");
@@ -32,16 +36,16 @@ export function ProductsList() {
     return (
         <>
             <div className="container">
-                <nav className="header-container">
-                    <h2>Lista de Produtos</h2>
+                <nav className="row header-container">
+                    <h2 className="col-6 col-sm-5 col-md-4 col-lg-4 col-xl-4 ">Lista de Produtos</h2>
 
-                    <Link className="gerencg-btn-sec-container" to="/product/add">
+                    <Link className="col-0 col-sm-3 col-md-3 col-lg-2 col-xl-2 gerencg-btn-sec-container" to="/product/add">
                         <button className="gerencg-btn-sec" >
                             <h3><FaIcons.FaSave /> Adicionar</h3>
                         </button>
                     </Link>
 
-                    <form className="search-container">
+                    <form className="col-6 col-sm-3 col-md-4 col-lg-4 col-xl-4 search-container">
                         <div className="form-group gerencg-form-group">
                             <input
                                 type="text"
@@ -99,12 +103,11 @@ export function ProductHistoryList() {
             })
     }, [])
 
-
     return (
         <>
-            <div className="pagination-max-container ">
+            <div className="container ">
                 <div className="header-container ">
-                    <h3>Histórico de Alterações:</h3>
+                    <h4>Histórico de Alterações:</h4>
                 </div>
                 <div className="row m-0">
                     {historyPage.content?.map(history => (
@@ -129,9 +132,7 @@ export function ProductCategoryList({ categoryId }: Category) {
     const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<ProductPage>({
         content: [],
-        number: 0,
-        totalPages: 0,
-        totalElements: 0,
+        number: 0
     });
 
     useEffect(() => {
@@ -180,9 +181,7 @@ export function ProductMeasureList({ measureId }: Measure) {
     const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<ProductPage>({
         content: [],
-        first: true,
-        last: true,
-        number: 0,
+        number: 0
     });
 
     useEffect(() => {
@@ -226,12 +225,7 @@ export function ProductValidateList() {
     const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<ProductPage>({
         content: [],
-        first: true,
-        last: true,
-        number: 0,
-        totalPages: 0,
-        totalElements: 0,
-        numberOfElements: 0
+        number: 0
     });
 
     useEffect(() => {
@@ -268,4 +262,46 @@ export function ProductValidateList() {
             </div>
         </>
     );
+}
+
+export function CategoryList() {
+
+
+    const [categoryPage, setCategoryPage] = useState<CategoryPage>({
+        content: [],      
+        first: true,
+        last: true,
+        totalElements: 0,
+        totalPages: 0,
+        number: 0,
+        numberOfElements: 0
+    });
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/category/list?page=0&size=10`)
+            .then(response => {
+                const data = response.data as CategoryPage;
+                setCategoryPage(data);
+            })
+    }, []);
+
+    return(
+        <>
+            <div className="container">
+                <div className="header-container">             
+                <h2>Lista de Categorias</h2>
+                </div>
+          <div className="page-container">
+                <div className="list-container row">
+                    {categoryPage.content?.map(category => (
+                        <div key={category.name} className="col-sm-12 mb-3">
+                            <CategoryCard category={category} />
+                        </div>
+                    ))}
+                </div>
+   
+            </div>
+            </div>
+        </>    
+        );
 }

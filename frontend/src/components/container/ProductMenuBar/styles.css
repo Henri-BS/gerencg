@@ -1,10 +1,8 @@
 .menu-profile-container {
     height: 280px;
-    width: 400px;
     justify-content: center;
     justify-items: center;
     align-items: center;
-    background-color: var(--quat);
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -26,6 +24,6 @@
 
 @media screen and (max-width: 450px) {
     .menu-profile-container {
-        max-width: 380px;
+        margin: 0;
     }
 }

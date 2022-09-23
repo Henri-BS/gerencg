@@ -1,6 +1,7 @@
 import axios from "axios";
 import Pagination from "components/shared/Pagination";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { StatsPage } from "types/categoryStats";
 import { formatLocalDate } from "utils/format";
 import { BASE_URL } from "utils/requests";
@@ -30,24 +31,34 @@ const changePage = (index: number) => {
 
     return (
         <>
-            <Pagination page ={page} onPageChange={changePage} />
+        <div className="pagination-container-menu">
+            <Pagination 
+            page ={page} 
+            onPageChange={changePage} 
+            />
+            </div>
             <div className="table-responsive">
-                <table className="table table-striped table-sm">
+                <table className="table ">
                     <thead>
-                        <tr className="striped-rows">
+                        <tr className="striped-rows">                            
+                        <th className="table-box-title border-0">Categoria</th>
                             <th className="table-box">Data de Resgistro</th>
-                            <th className="table-box">Categoria</th>
                             <th className="table-box">Produtos Adicionados</th>
                             <th className="table-box">Produtos Removidos</th>
                             <th className="table-box">Renda</th>
                             <th className="table-box">Despesa</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="border-0">
                         {page.content?.map(item => (
-                            <tr key={item.id}>
+                            <tr key={item.id}>                                
+                            <Link 
+                            to={`/category/${item.category.name}`} 
+                            className="table-box-title">
+                               {item.category.name}
+                               </Link>
+                               
                                 <td className="table-box">{formatLocalDate(item.registrationDate, "dd/MM/yyyy")}</td>
-                                <td className="table-box">{item.category.name}</td>
                                 <td className="table-box">{item.addedProducts}</td>
                                 <td className="table-box">{item.removedProducts}</td>
                                 <td className="table-box">{item.income}</td>
