@@ -19,40 +19,47 @@
 }
 
 .header-container {
+    height: 50px;
     justify-content: space-between;
     align-items: center;
-    padding: 12px;
     border-bottom: 2px solid #ccc;
-    max-height: 70px;
     background-color: var(--quat);
 }
 
 .header-container h2 {
     text-align: start;
+    justify-content: center;
+    align-items: center;
     display: flex;
-    height: 40px;
+    height: 100%;
     font-size: 26px;
-    margin-bottom: 80px;
 }
 
 .search-container {
-    height: 40px;
-    display: grid;
+    padding: 1px 6px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    justify-items: auto;
+    align-self: stretch;
     align-items: center;
-    grid-template-columns: 3fr 1fr;
-    margin-bottom: 80px;
 }
 
-.search-container button {
-    border: 1px solid var(--prim);
-    margin-bottom: 19px;
-    margin-left: 8px;
-    display: inline;
+.search-form-group {
+    width: 300px;
+    align-items: center;
+}
+
+.search-form-group label {
+    font-size: 18px;
+    color: var(--quin);
 }
 
 .option-item {
     padding: 10px;
     height: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .gerencg-btn-sec-container {

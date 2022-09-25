@@ -1,6 +1,6 @@
-import  {AddedProductsChart, RemovedProductsChart } from "components/dashboard/FlowCategoryCharts";
-import DataTable from "components/dashboard/StatsDataTable";
-import {ExpenseChart, IncomeChart} from "components/dashboard/ValueCategoryCharts";
+import  {AddedProductsChart, RemovedProductsChart } from "components/dashboard/quantity-charts";
+import DataTable from "components/dashboard/data-tables";
+import {ExpenseChart, IncomeChart} from "components/dashboard/proportion-charts";
 import "./styles.css"
 
 const Dashboard = () => {

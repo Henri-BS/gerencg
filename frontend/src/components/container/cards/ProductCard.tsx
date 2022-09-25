@@ -12,12 +12,12 @@ export function ProductCard({ product }: Props) {
 
     return (
         <Link to={`/product/${product?.id}`}>
-            <div className="product-display-card">
+            <div className="product-card-container">
                 <img className="product-card-image" src={product?.image} alt={product?.description} />
-                <div className="product-card-container">
+                <div className="product-info-box">
                     <h3>{product?.description} • {product?.measureValue} {product?.measure}</h3>
 
-                    <div className="product-price-container">
+                    <div className="product-info-item">
                         <h2>Preço: {product?.price.toFixed(2)} R$</h2>
                     </div>
                 </div>
@@ -32,13 +32,13 @@ export function ProductValidateCard({ product }: Props) {
 
     return (
         <Link to={`/product/${product?.id}`}>
-            <div className="product-display-card">
+            <div className="product-card-container">
                 <img className="product-card-image" src={product?.image} alt={product?.description} />
-                <div className="product-card-container">
+                <div className="product-info-box">
                     <h3>{product?.description}</h3>
 
-                    <div className="product-price-container">
-                        <h2>Validao até: {moment(product?.validate).format('DD/MM/YYYY')} </h2>
+                    <div className="product-info-item">
+                        <h2>Valido até: {moment(product?.validate).format('DD/MM/YYYY')} </h2>
                     </div>
                 </div>
             </div>

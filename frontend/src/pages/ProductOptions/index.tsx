@@ -1,11 +1,9 @@
-import MeasureInfo from "components/container/MeasureInfo";
-import {ProductFormAdd} from "components/container/ProductFormAdd";
-import { ProductFormEdit } from "components/container/ProductFormEdit";
+import { MeasureInfo } from "components/container/cards/MeasureCard";
+import {ProductFormAdd} from "components/container/form/ProductFormAdd";
+import { ProductFormEdit } from "components/container/form/ProductFormEdit";
 import { ProductMeasureList } from "pages/Listings";
 import { useParams } from "react-router-dom";
 import "./styles.css"
-
-
 
 export function SaveProduct() {
     return(
@@ -33,8 +31,9 @@ export function MeasureProfile() {
     return(
         <div className="container-blur">
             <div>
-            <MeasureInfo measureId = {`${params.measureId}`} />
+            <MeasureInfo measureId={`${params.measureId}`} />
             </div>
+            
             <ProductMeasureList measureId={`${params.measureId}`} />
         </div>  
     )

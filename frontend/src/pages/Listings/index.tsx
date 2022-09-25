@@ -1,15 +1,16 @@
 import axios from "axios";
 import Pagination from "components/shared/Pagination";
-import { ProductCard, ProductHistoryCard, ProductValidateCard } from "components/container/ProductCards";
+import { ProductCard, ProductHistoryCard, ProductValidateCard } from "components/container/cards/ProductCard";
 import { useEffect, useState } from "react";
 import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
-import { Link } from "react-router-dom";
 import { ProductHistoryPage } from "types/productHistory";
 import * as FaIcons from 'react-icons/fa'
 import { CategoryPage } from "types/category";
-import CategoryCard from "components/container/CategoryCard";
+import CategoryCard from "components/container/cards/CategoryCard";
+import { MeasurePage } from "types/measure";
+import {MeasureCard}from "components/container/cards/MeasureCard";
 
 //Product list with description filter 
 
@@ -39,14 +40,17 @@ export function ProductsList() {
                 <nav className="row header-container">
                     <h2 className="col-6 col-sm-5 col-md-4 col-lg-4 col-xl-4 ">Lista de Produtos</h2>
 
-                    <Link className="col-0 col-sm-3 col-md-3 col-lg-2 col-xl-2 gerencg-btn-sec-container" to="/product/add">
-                        <button className="gerencg-btn-sec" >
-                            <h3><FaIcons.FaSave /> Adicionar</h3>
-                        </button>
-                    </Link>
+                    <nav className="col-0 col-sm-3 col-md-3 col-lg-2 col-xl-2" >
+                        <div className="option-item" >
+                            <h5><b>Total: </b>{productPage.totalElements} Produtos</h5>
+                        </div>
+                    </nav>
 
                     <form className="col-6 col-sm-3 col-md-4 col-lg-4 col-xl-4 search-container">
-                        <div className="form-group gerencg-form-group">
+                        <label className="option-item" >
+                            <FaIcons.FaSearch />
+                        </label>
+                        <div className="form-group search-form-group">
                             <input
                                 type="text"
                                 value={value}
@@ -56,9 +60,7 @@ export function ProductsList() {
                                 placeholder="Buscar produto..."
                             />
                         </div>
-                        <div className="option-item" >
-                            <FaIcons.FaSearch />
-                        </div>
+
                     </form>
                 </nav>
 
@@ -72,13 +74,13 @@ export function ProductsList() {
                     </div>
                 </div>
 
-                <div className=" row w-100">
+                <div className=" row ">
                     {productPage.content?.filter((product) =>
                         product.description.includes(value))
                         .map((product) => (
                             <div
                                 key={product.id}
-                                className="col-sm-6 col-lg-5 col-xl-4 mb-3">
+                                className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-3">
                                 <ProductCard product={product} />
                             </div>
                         ))}
@@ -244,7 +246,7 @@ export function ProductValidateList() {
         <>
             <div className="container">
                 <div className="header-container">
-                    <h2>Próximos da data de validate</h2>
+                    <h2>Próximos da data de validade</h2>
                 </div>
                 <div className="pagination-container-menu">
                     <div className="pagination-item">
@@ -268,13 +270,8 @@ export function CategoryList() {
 
 
     const [categoryPage, setCategoryPage] = useState<CategoryPage>({
-        content: [],      
-        first: true,
-        last: true,
-        totalElements: 0,
-        totalPages: 0,
+        content: [],
         number: 0,
-        numberOfElements: 0
     });
 
     useEffect(() => {
@@ -285,23 +282,58 @@ export function CategoryList() {
             })
     }, []);
 
-    return(
+    return (
         <>
             <div className="container">
-                <div className="header-container">             
-                <h2>Lista de Categorias</h2>
+                <div className="header-container">
+                    <h2>Lista de Categorias</h2>
                 </div>
-          <div className="page-container">
-                <div className="list-container row">
-                    {categoryPage.content?.map(category => (
-                        <div key={category.name} className="col-sm-12 mb-3">
-                            <CategoryCard category={category} />
+                <div className="page-container">
+                    <div className="list-container row">
+                        {categoryPage.content?.map(category => (
+                            <div key={category.name} className="col-sm-12 mb-3">
+                                <CategoryCard category={category} />
+                            </div>
+                        ))}
+                    </div>
+
+                </div>
+            </div>
+        </>
+    );
+}
+
+export function MeasureList() {
+
+    const [measurePage, setMeasurePage] = useState<MeasurePage>({
+        content: [],
+        number: 0,
+        totalElements: 0,
+        totalPages: 0
+    });
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/measure/list?size=30`)
+            .then(response => {
+                setMeasurePage(response.data);
+            });
+    }, []);
+
+    return (
+        <>
+            <div className="container">
+                <div className="header-container">
+                    <h2>Lista de Medidas</h2>
+                </div>
+                <div className=" row">
+                    {measurePage.content?.map(measure => (
+                        <div key={measure.abbreviation} className="col-12 mb-3">
+                            <MeasureCard measure={measure}/>
                         </div>
                     ))}
                 </div>
-   
             </div>
-            </div>
-        </>    
-        );
+        </>
+    );
 }
+

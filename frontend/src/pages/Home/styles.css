@@ -6,12 +6,13 @@
 }
 
 .container hr {
-    margin-bottom: 5px;
-    margin-top: 5px;
+    color: var(--prim);
 }
 
 .container-menu {
+    margin: 0;
     justify-content: center;
+    justify-items: center;
     align-items: center;
     min-height: 370px;
     padding: 20px;
@@ -19,13 +20,15 @@
 
 .menu-item {
     padding: 12px;
-    width: 250px;
+    width: 210px;
+    justify-self: center;
+    align-content: center;
+    text-align: center;
 }
 
 .item-card-image {
     padding: 20px;
-    height: 200px;
-    width: 200px;
+    width: 100%;
     border-radius: 8px 8px 0 0;
     object-fit: cover;
     border: 10px solid var(--tert);
@@ -40,7 +43,7 @@
 }
 
 .item-card-bottom-container {
-    width: 200px;
+    width: 100%;
     background-color: var(--tert);
     display: flex;
     flex-direction: column;

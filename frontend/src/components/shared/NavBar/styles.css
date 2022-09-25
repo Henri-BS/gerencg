@@ -1,11 +1,32 @@
 .navbar {
-    background: var(--seco);
+    width: 100%;
+    background: var(--tert);
     height: 60px;
     display: flex;
     justify-content: start;
     align-items: center;
     font-size: 1.2rem;
     font-family: 'Nunito', sans-serif;
+}
+
+.navbar-item {
+    margin: 2px;
+    height: 100%;
+    color: var(--blue-prim);
+    text-decoration: none;
+    padding: 8px 8px;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in;
+    font-size: 17px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.navbar-item:hover {
+    color: var(--blue-seco);
+    background-color: var(--blue-tert);
+    border-radius: 8px;
 }
 
 .navbar-logo {
@@ -16,8 +37,8 @@
     font-size: 2rem;
 }
 
-@media screen and (max-width: 450px) {
-    .navbar {
-        width: 100%;
+@media screen and (max-width: 750px) {
+    .navbar-item {
+        display: none;
     }
 }

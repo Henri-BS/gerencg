@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Measure } from "types/measure";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
@@ -8,7 +9,7 @@ type Props = {
     measureId: string;
 }
 
-function MeasureInfo({ measureId }: Props) {
+export function MeasureInfo({ measureId }: Props) {
 
     const [measure, setMeasure] = useState<Measure>();
 
@@ -36,6 +37,27 @@ function MeasureInfo({ measureId }: Props) {
 
 }
 
+type Cons = {
+    measure: Measure;
+}
+
+export function MeasureCard({measure}: Cons) {
+
+    return (
+        <>
+            <div className="container">
+                <Link to={`/measure/${measure.abbreviation}`} className="measure-details-container">
+                    <div className="measure-details-box">
+                        <h3>{measure.abbreviation}</h3>
+                    </div>
+                    <div className="measure-details-box">
+                        <h3>{measure.description}</h3>
+                    </div>
+                </Link>
+            </div>
+        </>
+    );
+
+}
 
 
-export default MeasureInfo;

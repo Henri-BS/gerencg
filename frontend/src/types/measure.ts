@@ -4,12 +4,12 @@ export type Measure = {
 };
   
 export type MeasurePage = {
-  content?: Measure[];
+  content: Measure[];
   last?: boolean;
-  totalElements?: number;
-  totalPages?: number;
+  totalElements: number;
+  totalPages: number;
   size?: number;
-  number?: number;
+  number: number;
   first?: boolean;
   numberOfElements?: number;
   empty?: boolean;

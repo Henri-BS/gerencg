@@ -11,7 +11,7 @@
 }
 
 .footer-container hr {
-    margin-bottom: 20px;
+    margin: 20px 0px;
 }
 
 .footer-title {
@@ -38,9 +38,12 @@
     margin: 10px;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
     .footer-container {
         width: 100%;
-        display: flex;
+    }
+    .footer-logo {
+        width: 34px;
+        height: 34px;
     }
 }

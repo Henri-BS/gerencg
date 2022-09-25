@@ -9,7 +9,7 @@ type Props = {
     categoryId: string;
 }
 
-function CategoryColumn({ categoryId }: Props) {
+function CategoryLateralBar({ categoryId }: Props) {
 
     const [category, setCategory] = useState<Category>()
 
@@ -48,4 +48,4 @@ function CategoryColumn({ categoryId }: Props) {
     );
 }
 
-export default CategoryColumn;
+export default CategoryLateralBar;

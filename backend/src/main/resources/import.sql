@@ -44,7 +44,7 @@ INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('milimetro', '
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('volt', 'v');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('gigabyte', 'gb');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('megabyte', 'mb');
-INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('indefinido', '*');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('indefinido', '~');
 
 
 
@@ -66,16 +66,16 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sopão de Carne Sandella', 'https://www.rcamposcomvoce.com.br/wp-content/uploads/2018/07/Sopas-ajudam-a-emagrecer.jpg', 6.30, 4, '2023-02-01', 180, 'g', 'Alimentícios');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Vinagre de Álcool Minhoto', 'https://www.kindpng.com/picc/m/752-7526415_apple-cider-vinegar-vinegar-clipart-hd-png-download.png', 3.45, 19, '2999-12-30', 500, 'ml', 'Alimentícios');
 
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Boneca Beijokinhas Mister Brinque', 'https://i.pinimg.com/originals/d1/57/1f/d1571f9b88cf530c8a4e52be50d5b7ca.png', 31.40, 3, '2999-12-30', null, '*', 'Brinquedos');
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Boneca Bee Bee Girls Bee Toys', 'https://i.pinimg.com/originals/d1/57/1f/d1571f9b88cf530c8a4e52be50d5b7ca.png', 38.40, 2, '2999-12-30', null, '*', 'Brinquedos');
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Avião de Controle Remoto AirPlane', 'https://static.vecteezy.com/system/resources/previews/000/550/256/original/airplane-flying-vector-icon.jpg', 21.50, 2, '2999-12-30', null, '*', 'Brinquedos');
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Be-Blade Arena Banana Toys', 'https://newyear-nenga.com/wp-content/uploads/2019/01/oshougatsu_koma_illust_69.png', 22.85, 2, '2999-12-30', null, '*', 'Brinquedos');
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Be-Blade Banana Toys', 'https://newyear-nenga.com/wp-content/uploads/2019/01/oshougatsu_koma_illust_69.png', 15.20, 6, '2999-12-30', null, '*', 'Brinquedos');
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('New Moto 1000 BS Toys', 'https://st.depositphotos.com/3146979/4704/v/600/depositphotos_47044003-stock-illustration-red-motorcycle.jpg', 12.90, 5, '2999-12-30', null, '*', 'Brinquedos');
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Moto New Cross BS Toys', 'https://st.depositphotos.com/3146979/4704/v/600/depositphotos_47044003-stock-illustration-red-motorcycle.jpg', 15.20, 6, '2999-12-30', null, '*', 'Brinquedos');
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Moto Rodão BS Toys', 'https://st.depositphotos.com/3146979/4704/v/600/depositphotos_47044003-stock-illustration-red-motorcycle.jpg', 11.95, 6, '2999-12-30', null, '*', 'Brinquedos');
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Boneco Soldado Pequeno BS Toys', 'https://cdn0.iconfinder.com/data/icons/science-80/64/astronaut-space_suit-job-occupation-512.png', 12.95, 2, '2999-12-30', null, '*', 'Brinquedos');
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Jeep Injetsul Brinquedos', 'https://cdn0.iconfinder.com/data/icons/transport-lineal-color/512/car_cabriolet_auto_transport_automobile-512.png', 31.40, 4, '2999-12-30', null, '*', 'Brinquedos');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Boneca Beijokinhas Mister Brinque', 'https://i.pinimg.com/originals/d1/57/1f/d1571f9b88cf530c8a4e52be50d5b7ca.png', 31.40, 3, '2999-12-30', null, '~', 'Brinquedos');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Boneca Bee Bee Girls Bee Toys', 'https://i.pinimg.com/originals/d1/57/1f/d1571f9b88cf530c8a4e52be50d5b7ca.png', 38.40, 2, '2999-12-30', null, '~', 'Brinquedos');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Avião de Controle Remoto AirPlane', 'https://static.vecteezy.com/system/resources/previews/000/550/256/original/airplane-flying-vector-icon.jpg', 21.50, 2, '2999-12-30', null, '~', 'Brinquedos');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Be-Blade Arena Banana Toys', 'https://newyear-nenga.com/wp-content/uploads/2019/01/oshougatsu_koma_illust_69.png', 22.85, 2, '2999-12-30', null, '~', 'Brinquedos');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Be-Blade Banana Toys', 'https://newyear-nenga.com/wp-content/uploads/2019/01/oshougatsu_koma_illust_69.png', 15.20, 6, '2999-12-30', null, '~', 'Brinquedos');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('New Moto 1000 BS Toys', 'https://st.depositphotos.com/3146979/4704/v/600/depositphotos_47044003-stock-illustration-red-motorcycle.jpg', 12.90, 5, '2999-12-30', null, '~', 'Brinquedos');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Moto New Cross BS Toys', 'https://st.depositphotos.com/3146979/4704/v/600/depositphotos_47044003-stock-illustration-red-motorcycle.jpg', 15.20, 6, '2999-12-30', null, '~', 'Brinquedos');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Moto Rodão BS Toys', 'https://st.depositphotos.com/3146979/4704/v/600/depositphotos_47044003-stock-illustration-red-motorcycle.jpg', 11.95, 6, '2999-12-30', null, '~', 'Brinquedos');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Boneco Soldado Pequeno BS Toys', 'https://cdn0.iconfinder.com/data/icons/science-80/64/astronaut-space_suit-job-occupation-512.png', 12.95, 2, '2999-12-30', null, '~', 'Brinquedos');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Jeep Injetsul Brinquedos', 'https://cdn0.iconfinder.com/data/icons/transport-lineal-color/512/car_cabriolet_auto_transport_automobile-512.png', 31.40, 4, '2999-12-30', null, '~', 'Brinquedos');
 
 
 
@@ -104,11 +104,11 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Carregador Inova 3.1A CAR-9011', 'https://cdn2.iconfinder.com/data/icons/internet-of-things-filled-outline/64/08-Plug-512.png', 23.90, 5, '2999-12-30', 220, 'v', 'Eletrônicos');
 
 
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Pincel Condor', 'https://www.malerei-lorin.at/fileadmin/flaticon/paint-brush.png', 3.85, 6, '2999-12-30', null, '*', 'Ferramentas');
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desempenadeira de Aço Max Ferramentas', 'https://cdn2.iconfinder.com/data/icons/construction-equipment/130/_cement_knife-512.png', 13.20, 5, '2999-12-30', null, '*', 'Ferramentas');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Pincel Condor', 'https://www.malerei-lorin.at/fileadmin/flaticon/paint-brush.png', 3.85, 6, '2999-12-30', null, '~', 'Ferramentas');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desempenadeira de Aço Max Ferramentas', 'https://cdn2.iconfinder.com/data/icons/construction-equipment/130/_cement_knife-512.png', 13.20, 5, '2999-12-30', null, '~', 'Ferramentas');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Trena Vox', 'https://cdn3.iconfinder.com/data/icons/construction-157/64/tape-measure-ruler-construction-metric-512.png', 12.95, 7, '2999-12-30', 5, 'm', 'Ferramentas');
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Alicate Vape Solution', 'https://static.vecteezy.com/system/resources/previews/002/698/182/large_2x/pliers-construction-tool-isolated-icon-free-vector.jpg', 21.90, 9, '2999-12-30', null, '*', 'Ferramentas');
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Ferrolho Redondo Rns', 'http://bappeda.jogjaprov.go.id/view_image/view/1094/002-padlock.png', 13.20, 8, '2999-12-30', null, '*', 'Ferramentas');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Alicate Vape Solution', 'https://static.vecteezy.com/system/resources/previews/002/698/182/large_2x/pliers-construction-tool-isolated-icon-free-vector.jpg', 21.90, 9, '2999-12-30', null, '~', 'Ferramentas');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Ferrolho Redondo Rns', 'http://bappeda.jogjaprov.go.id/view_image/view/1094/002-padlock.png', 13.20, 8, '2999-12-30', null, '~', 'Ferramentas');
 
 
 

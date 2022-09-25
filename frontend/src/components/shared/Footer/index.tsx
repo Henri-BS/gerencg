@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import IGithub from 'assets/img/git.svg'
 import ILinkedIn from 'assets/img/linked.svg'
 import IGmail from 'assets/img/gmail.svg'
@@ -17,34 +16,34 @@ function Footer() {
             <div className='row footer-container '>
 
                 <div className='footer-title'>
-            <h5 >Contato com o Desenvolvedor </h5> 
-            </div>
-            
-                <div className="col-4 ">
+                    <h5 >Contato com o Desenvolvedor </h5>
+                </div>
+
+                <div className="col-4 footer-box">
                     <a href={links.github} color="inherit">
                         <img className='footer-logo' src={IGithub} alt='logo' />
                         Github
                     </a>
                 </div>
 
-                <div className="col-4  ">
+                <div className="col-4 footer-box">
                     <a href={links.email} color="inherit">
                         <img className='footer-logo' src={IGmail} alt='logo' />
                         Gmail
                     </a>
                 </div>
 
-                <div className="col-4  ">
+                <div className="col-4 footer-box">
                     <a href={links.linkedin} color="inherit">
                         <img className='footer-logo' src={ILinkedIn} alt='logo' />
                         LinkedIn
                     </a>
                 </div>
-                <hr/>
+                <hr />
                 <div className='footer-box'>
-            <h5 >Gerencg 2022©️</h5> 
-            </div>
+                    <h5>Gerencg 2022©️</h5>
                 </div>
+            </div>
         </footer>
     );
 }

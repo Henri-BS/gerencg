@@ -9,10 +9,6 @@ type ChartData = {
     series: number[];
 }
 
-const mockData = {
-    labels: ['Alimentícios', 'Brinquedos', 'Cosméticos e Higiene', 'Cozinha', 'Eletrônicos', 'Ferramentas', 'Limpeza', 'Papelaria e Escolar', 'Tecidos e Acessórios', 'Variados']
-}
-
 export function IncomeChart() {
 
     const [chartData, setChartData] = useState<ChartData>({ labels: [], series: [] });

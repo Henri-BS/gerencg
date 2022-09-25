@@ -1,9 +1,9 @@
-import ProductColumn from "components/container/ProductColumn";
+import ProductLateralBar from "components/container/lateral-bar/ProductLateralBar";
 import { useParams } from "react-router-dom";
 import "./styles.css"
-import ProductMenuBar from "components/container/ProductMenuBar";
+import ProductMenuBar from "components/container/horizontal-bar/ProductHorizontalBar";
 import { ProductCategoryList, ProductHistoryList } from "pages/Listings";
-import CategoryColumn from "components/container/CategoryColumn";
+import CategoryLateralBar from "components/container/lateral-bar/CategoryLateralBar";
 
 //Product profile 
 
@@ -15,7 +15,7 @@ export function ProductProfile() {
       <div className="profile row">
 
         <div className="col-12 col-md-12 col-lg-6 col-xl-4 p-0">
-          < ProductColumn productId={`${params.productId}`} />
+          < ProductLateralBar productId={`${params.productId}`} />
         </div>
 
         <div className="col-12 col-md-12 col-lg-6 col-xl-8  p-0">
@@ -37,7 +37,7 @@ export function CategoryProfile() {
     <>
       <div className="profile row">
         <div className="col-6-sm col-md-6 col-lg-4 p-0">
-          <CategoryColumn categoryId={`${params.categoryId}`} />
+          <CategoryLateralBar categoryId={`${params.categoryId}`} />
         </div>
         <div className="col-6-sm col-md-6 col-lg-8 p-0">
           <ProductCategoryList categoryId={`${params.categoryId}`} />

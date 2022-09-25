@@ -2,7 +2,7 @@ import Footer from "components/shared/Footer";
 import NavBar from "components/shared/NavBar";
 import Dashboard from "pages/StatsDashboard";
 import Home from "pages/Home";
-import { CategoryList, ProductsList, ProductValidateList } from "pages/Listings";
+import { CategoryList, MeasureList, ProductsList, ProductValidateList } from "pages/Listings";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { ProductProfile, CategoryProfile } from "pages/Profiles";
 import { MeasureProfile, SaveProduct, UpdateProduct } from "pages/ProductOptions";
@@ -40,6 +40,9 @@ function PageRoutes() {
                 <Route path="/measure">
                     <Route path=":measureId" element={<MeasureProfile />} />
                 </Route>
+
+                <Route path="/measure/list" element={<MeasureList />} />
+
             </Routes>
             <Footer />
         </BrowserRouter>

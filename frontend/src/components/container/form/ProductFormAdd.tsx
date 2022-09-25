@@ -14,7 +14,10 @@ export function ProductFormAdd() {
 
     //Get MeasureList for the measure type selector        
     const [measureList, setMeasure] = useState<MeasurePage>({
-        content: []
+        content: [],
+        number: 0,
+        totalElements: 0,
+        totalPages: 0
     })
     useEffect(() => {
         axios.get(`${BASE_URL}/measure/list`)

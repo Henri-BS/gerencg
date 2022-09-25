@@ -11,7 +11,7 @@ type Props = {
     productId: string;
 }
 
-function ProductColumn({ productId }: Props) {
+function ProductLateralBar({ productId }: Props) {
 
     const [product, setProduct] = useState<Product>()
 
@@ -59,4 +59,4 @@ function ProductColumn({ productId }: Props) {
     );
 }
 
-export default ProductColumn;
+export default ProductLateralBar;
