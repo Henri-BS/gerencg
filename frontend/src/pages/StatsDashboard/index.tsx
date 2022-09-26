@@ -15,9 +15,9 @@ const Dashboard = () => {
               <h5 className="text-center">Total de Produtos Adicionados</h5>
               <AddedProductsChart />
             </div>
-            <div className="container-chart col-sm-6">
-              <h5 className="text-center ">Índice de Renda por Categoria</h5>
-              <IncomeChart />
+            <div className="container-chart col-sm-6"> <h5 className="text-center ">Índice de Renda por Categoria</h5>  
+              <ExpenseChart />
+              
             </div>
           </div>
 
@@ -27,8 +27,8 @@ const Dashboard = () => {
               <RemovedProductsChart />
             </div>
             <div className="container-chart col-sm-6">
-              <h5 className="text-center ">Índice de Despesa por Categoria</h5>
-              <ExpenseChart />
+            <h5 className="text-center ">Índice de Despesas por Categoria</h5>
+              <IncomeChart />
             </div>
           </div>
         </div>

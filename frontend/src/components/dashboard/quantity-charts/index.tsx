@@ -67,7 +67,6 @@ export function AddedProductsChart() {
 
     }
 
-
     return (
         <Chart
             options={{
@@ -116,7 +115,7 @@ export function RemovedProductsChart() {
                     },
                     series: [
                         {
-                            name: "% Fluxo",
+                            name: "Removidos",
                             data: mySeries
                         }
                     ]

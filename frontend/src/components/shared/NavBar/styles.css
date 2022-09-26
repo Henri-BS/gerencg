@@ -1,29 +1,48 @@
 .navbar {
     width: 100%;
     background: var(--tert);
-    height: 60px;
+    height: 80px;
     display: flex;
     justify-content: start;
-    align-items: center;
+    align-content: center;
+    text-align: center;
     font-size: 1.2rem;
-    font-family: 'Nunito', sans-serif;
+}
+
+.fa-firstdraft {
+    margin-left: 0.5rem;
+    font-size: 1.6rem;
+}
+
+.fa-list {
+    color: var(--blue-prim);
+    font-size: 2rem;
+}
+
+.navbar-menu {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 10px;
+    list-style: none;
+    justify-content: start;
+    text-align: center;
+    margin: 0;
 }
 
 .navbar-item {
     margin: 2px;
-    height: 100%;
+}
+
+.navbar-link {
+    font-size: 17px;
+    font-weight: 900;
     color: var(--blue-prim);
     text-decoration: none;
     padding: 8px 8px;
-    justify-content: center;
-    align-items: center;
     transition: all 0.3s ease-in;
-    font-size: 17px;
-    font-weight: 900;
-    text-align: center;
 }
 
-.navbar-item:hover {
+.navbar-link:hover {
     color: var(--blue-seco);
     background-color: var(--blue-tert);
     border-radius: 8px;
@@ -37,8 +56,72 @@
     font-size: 2rem;
 }
 
-@media screen and (max-width: 750px) {
+.menu-icon {
+    display: none;
+}
+
+@media screen and (max-width: 860px) {
     .navbar-item {
-        display: none;
+        position: relative;
+    }
+    .navbar-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 66px;
+        right: -100%;
+        opacity: 1;
+        transition: all 0.9s ease;
+    }
+    .navbar-menu.active {
+        background: rgba(0, 0, 0, 0.945);
+        height: 10in;
+        right: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 1;
+        padding: 40px 30px 20px 30px;
+        list-style: none;
+    }
+    .menu-icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 35%);
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+    .fa-times {
+        color: var(--blue-prim);
+        font-size: 2rem;
+    }
+    .navbar-link {
+        font-size: 20px;
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+    }
+    .navbar-link:hover {
+        background-color: var(--prim);
+        border-radius: 0;
+    }
+    .navbar-link-mobile {
+        text-align: center;
+        padding: 1.7rem;
+        border-radius: 20px;
+        text-decoration: none;
+        color: var(--sena);
+        font-size: 20px;
+        display: table;
+        width: 100%;
+        background-color: var(--quat);
+    }
+    .navbar-link-mobile:hover {
+        background-color: var(--tert);
+        color: #fff;
+        transition: 250ms;
     }
 }

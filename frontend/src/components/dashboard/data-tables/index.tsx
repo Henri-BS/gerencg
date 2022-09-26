@@ -7,9 +7,9 @@ import { formatLocalDate } from "utils/format";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 
-function DataTable()  {
+function DataTable() {
 
-const [activePage, setActivePage] = useState(0);
+    const [activePage, setActivePage] = useState(0);
     const [page, setPage] = useState<StatsPage>({
         first: true,
         last: true,
@@ -25,23 +25,23 @@ const [activePage, setActivePage] = useState(0);
             });
     }, [activePage]);
 
-const changePage = (index: number) => {
-    setActivePage(index);
-}
+    const changePage = (index: number) => {
+        setActivePage(index);
+    }
 
     return (
         <>
-        <div className="pagination-container-menu">
-            <Pagination 
-            page ={page} 
-            onPageChange={changePage} 
-            />
+            <div className="pagination-container-menu">
+                <Pagination
+                    page={page}
+                    onPageChange={changePage}
+                />
             </div>
             <div className="table-responsive">
                 <table className="table ">
                     <thead>
-                        <tr className="striped-rows">                            
-                        <th className="table-box-title border-0">Categoria</th>
+                        <tr className="striped-rows">
+                            <th className="table-box-title border-0">Categoria</th>
                             <th className="table-box">Data de Resgistro</th>
                             <th className="table-box">Produtos Adicionados</th>
                             <th className="table-box">Produtos Removidos</th>
@@ -51,13 +51,14 @@ const changePage = (index: number) => {
                     </thead>
                     <tbody className="border-0">
                         {page.content?.map(item => (
-                            <tr key={item.id}>                                
-                            <Link 
-                            to={`/category/${item.category.name}`} 
-                            className="table-box-title">
-                               {item.category.name}
-                               </Link>
-                               
+                            <tr key={item.id}>
+
+                                <Link
+                                    to={`/category/${item.category.name}`}
+                                    className="table-box-title">
+                                    {item.category.name}
+                                </Link>
+
                                 <td className="table-box">{formatLocalDate(item.registrationDate, "dd/MM/yyyy")}</td>
                                 <td className="table-box">{item.addedProducts}</td>
                                 <td className="table-box">{item.removedProducts}</td>

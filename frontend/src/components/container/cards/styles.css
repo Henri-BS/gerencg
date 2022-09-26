@@ -166,16 +166,32 @@
 /*Measure card styles*/
 
 .measure-details-container {
+    text-decoration: none;
+    width: 300px;
     align-items: center;
     justify-items: center;
-    height: 80px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid var(--prim);
+    border: 3px solid transparent;
+    border-radius: 8px;
+    transition: all 0.3s ease-out;
+    background-color: var(--quin);
+    color: var(--prim);
+}
+
+.measure-details-container:hover {
+    color: var(--blue-prim);
+    border-color: var(--blue-prim);
+}
+
+.measure-details-container h3 {
+    font-weight: 900;
 }
 
 .measure-details-box {
-    color: var(--seco);
-    padding: 8px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
     font-size: 16px;
 }

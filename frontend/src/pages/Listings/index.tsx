@@ -38,16 +38,16 @@ export function ProductsList() {
         <>
             <div className="container">
                 <nav className="row header-container">
-                    <h2 className="col-6 col-sm-5 col-md-4 col-lg-4 col-xl-4 ">Lista de Produtos</h2>
+                    <h2 className="col-3 col-sm-4 col-md-4 col-xl-4 ">Lista de Produtos</h2>
 
-                    <nav className="col-0 col-sm-3 col-md-3 col-lg-2 col-xl-2" >
+                    <nav className="col-4 col-sm-4 col-md-4 col-xl-3" >
                         <div className="option-item" >
                             <h5><b>Total: </b>{productPage.totalElements} Produtos</h5>
                         </div>
                     </nav>
 
-                    <form className="col-6 col-sm-3 col-md-4 col-lg-4 col-xl-4 search-container">
-                        <label className="option-item" >
+                    <form className="col-5 col-sm-4 col-md-4  col-xl-5 search-container">
+                        <label className="form-group" >
                             <FaIcons.FaSearch />
                         </label>
                         <div className="form-group search-form-group">
@@ -327,7 +327,7 @@ export function MeasureList() {
                 </div>
                 <div className=" row">
                     {measurePage.content?.map(measure => (
-                        <div key={measure.abbreviation} className="col-12 mb-3">
+                        <div key={measure.abbreviation} className="col-12 col-md-6 col-xl-4 mb-3">
                             <MeasureCard measure={measure}/>
                         </div>
                     ))}

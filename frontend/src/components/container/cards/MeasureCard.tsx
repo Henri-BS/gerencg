@@ -45,16 +45,12 @@ export function MeasureCard({measure}: Cons) {
 
     return (
         <>
-            <div className="container">
                 <Link to={`/measure/${measure.abbreviation}`} className="measure-details-container">
-                    <div className="measure-details-box">
-                        <h3>{measure.abbreviation}</h3>
-                    </div>
-                    <div className="measure-details-box">
+                    <div className="measure-details-box ">
                         <h3>{measure.description}</h3>
                     </div>
                 </Link>
-            </div>
+            
         </>
     );
 

@@ -166,8 +166,6 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
-	
 
 	public Integer getAlteration() {
 		return alteration;
