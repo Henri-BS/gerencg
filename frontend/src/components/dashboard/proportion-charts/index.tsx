@@ -38,6 +38,10 @@ export function IncomeChart() {
 
                 theme: {
                     mode: "dark"
+                },
+
+                chart: {
+                    background: "#2a323a"
                 }
             }}
             series={chartData.series}
@@ -75,7 +79,9 @@ export function ExpenseChart() {
                 theme: {
                     mode: "dark"
                 },
-               
+                chart: {
+                    background: "#2a323a"
+                }
             }}
             series={chartData.series}
             type="donut"

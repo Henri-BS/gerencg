@@ -1,23 +1,38 @@
-.striped-rows {
-    background-color: rgb(168, 167, 167);
-    color: var(--seco);
+.border-table {
+    border: 1px solid;
+    border-left: 5px solid var(--blue-prim);
 }
 
 .table-box {
+    height: 100%;
     color: var(--seco);
-    font-size: 14px;
+    font-size: 19px;
     font-weight: 600;
     border: 1px solid var(--seco);
-    padding: 10px;
     text-align: center;
 }
 
+.table-box h5 {
+    color: #fff;
+}
+
 .table-box-title {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 900;
-    padding: 10px;
     display: grid;
     text-align: center;
-    justify-content: center;
-    align-items: center;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease-in;
+    color: var(--seco);
+    text-decoration: none;
+}
+
+.table-box-title h5 {
+    font-weight: 700;
+}
+
+.table-box-title:hover {
+    border-left: 5px solid var(--blue-prim);
+    background: rgba(20, 16, 16, 0.521);
+    color: #fff;
 }

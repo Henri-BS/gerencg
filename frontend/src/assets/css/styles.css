@@ -30,3 +30,12 @@ body {
 .content {
     flex: 1 0 auto;
 }
+
+.footer {
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.bg-primary {
+    background-color: var(--tert) !important;
+}

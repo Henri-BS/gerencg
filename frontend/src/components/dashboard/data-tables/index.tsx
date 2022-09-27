@@ -37,16 +37,17 @@ function DataTable() {
                     onPageChange={changePage}
                 />
             </div>
-            <div className="table-responsive">
-                <table className="table ">
-                    <thead>
-                        <tr className="striped-rows">
-                            <th className="table-box-title border-0">Categoria</th>
-                            <th className="table-box">Data de Resgistro</th>
-                            <th className="table-box">Produtos Adicionados</th>
-                            <th className="table-box">Produtos Removidos</th>
-                            <th className="table-box">Renda</th>
-                            <th className="table-box">Despesa</th>
+            
+            <div className="table-responsive ">
+                <table className="table border-table">
+                    <thead className="bg-primary text-primary">
+                        <tr >
+                            <th className="table-box "><h5>Categoria</h5></th>
+                            <th className="table-box"><h5>Data de Resgistro</h5></th>
+                            <th className="table-box striped-rows"><h5>Produtos Adicionados</h5></th>
+                            <th className="table-box striped-rows"><h5>Produtos Removidos</h5></th>
+                            <th className="table-box striped-rows"><h5>Renda</h5></th>
+                            <th className="table-box striped-rows"><h5>Despesa</h5></th>
                         </tr>
                     </thead>
                     <tbody className="border-0">
@@ -56,7 +57,7 @@ function DataTable() {
                                 <Link
                                     to={`/category/${item.category.name}`}
                                     className="table-box-title">
-                                    {item.category.name}
+                                   <h5> {item.category.name}</h5>
                                 </Link>
 
                                 <td className="table-box">{formatLocalDate(item.registrationDate, "dd/MM/yyyy")}</td>

@@ -1,8 +1,23 @@
 .max-container-charts {
     border-bottom: 2px solid var(--seco);
-    padding: 20px;
+    align-items: center;
+    padding: 10px;
+    display: grid;
 }
 
 .container-chart {
-    border-radius: 20px;
+    color: var(--quin);
+    border-radius: 12px;
+    background: #2a323a;
+    height: 360px;
+}
+
+.chart-box {
+    padding: 20px;
+}
+
+.container-chart h5 {
+    font-size: 26px;
+    font-weight: 500;
+    margin: 0;
 }

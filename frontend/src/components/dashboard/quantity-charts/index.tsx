@@ -12,7 +12,6 @@ type SeriesData = {
 }
 
 type ChartData = {
-
     labels: {
         categories: string[];
     };
@@ -74,14 +73,11 @@ export function AddedProductsChart() {
             options={{
                 ...opitions,
                 xaxis: chartData.labels,
-                dataLabels: {
-                    enabled: true,
-                    
-                    
-                },
+                
                 theme: {
                     mode: "dark"
                 },
+                colors: ["#1a6"],
                 chart: {
                     background: "#2a323a"                    
                 },
@@ -143,12 +139,9 @@ export function RemovedProductsChart() {
 
         plotOptions: {
             bar: {
-                horizontal: true,
-                borderRadius: 5,
-
+                horizontal: true
             },
-        
-        
+    
         },
 
     }
@@ -168,7 +161,6 @@ export function RemovedProductsChart() {
                 
                 chart: {
                     background: "#2a323a",
-                     
                 },
 
                 grid: {
@@ -179,9 +171,8 @@ export function RemovedProductsChart() {
             series={chartData.series}
             type="bar"
             height="300"
-
+            
         />
-
     );
 
 
