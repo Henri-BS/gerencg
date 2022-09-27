@@ -10,7 +10,7 @@ import * as FaIcons from 'react-icons/fa'
 import { CategoryPage } from "types/category";
 import CategoryCard from "components/container/cards/CategoryCard";
 import { MeasurePage } from "types/measure";
-import {MeasureCard}from "components/container/cards/MeasureCard";
+import { MeasureCard } from "components/container/cards/MeasureCard";
 
 //Product list with description filter 
 
@@ -60,7 +60,6 @@ export function ProductsList() {
                                 placeholder="Buscar produto..."
                             />
                         </div>
-
                     </form>
                 </nav>
 
@@ -224,6 +223,7 @@ export function ProductMeasureList({ measureId }: Measure) {
 //Find all products by validate
 export function ProductValidateList() {
 
+    const [value, setValue] = useState("");
     const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<ProductPage>({
         content: [],
@@ -231,7 +231,7 @@ export function ProductValidateList() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/product/list?page=${pageNumber}&size=12&sort=validate`)
+        axios.get(`${BASE_URL}/product/list?validate=${value}&page=${pageNumber}&size=12&sort=validate`)
             .then(response => {
                 const data = response.data as ProductPage;
                 setProductPage(data);
@@ -245,21 +245,40 @@ export function ProductValidateList() {
     return (
         <>
             <div className="container">
-                <div className="header-container">
-                    <h2>Próximos da data de validade</h2>
+                <div className="row header-container">
+                    <h2 className="col-6 col-sm-7 col-md-7">Próximos da data de validade</h2>
+
+                    <form className="col-6 col-sm-5 col-md-5 search-container">
+                        <label className="form-group" >
+                            <FaIcons.FaSearch />
+                        </label>
+                        <div className="form-group search-form-group">
+                            <input
+                                type="date"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                className="form-control"
+                                id="value"
+                                placeholder="Buscar data..."
+                            />
+                        </div>
+                    </form>
                 </div>
                 <div className="pagination-container-menu">
                     <div className="pagination-item">
-                        <Pagination page={productPage}
-                            onPageChange={handlePageChange} />
+                        <Pagination
+                            page={productPage}
+                            onPageChange={handlePageChange}
+                        />
                     </div>
                 </div>
                 <div className=" row">
-                    {productPage.content?.map(product => (
-                        <div key={product.id} className="col-sm-6 col-lg-5 col-xl-4 mb-3">
-                            <ProductValidateCard product={product} />
-                        </div>
-                    ))}
+                    {productPage.content?.filter((product) =>
+                        product.description.includes(value)).map(product => (
+                            <div key={product.id} className="col-sm-6 col-lg-5 col-xl-4 mb-3">
+                                <ProductValidateCard product={product} />
+                            </div>
+                        ))}
                 </div>
             </div>
         </>
@@ -328,7 +347,7 @@ export function MeasureList() {
                 <div className=" row">
                     {measurePage.content?.map(measure => (
                         <div key={measure.abbreviation} className="col-12 col-md-6 col-xl-4 mb-3">
-                            <MeasureCard measure={measure}/>
+                            <MeasureCard measure={measure} />
                         </div>
                     ))}
                 </div>

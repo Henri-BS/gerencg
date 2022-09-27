@@ -22,7 +22,7 @@ const Dashboard = () => {
           </div>
 
           <div className="row px-3">
-            <div className="container-chart col-sm-6">
+            <div className=" col-sm-6">
               <h5 className="text-center">Total de Produtos Removidos</h5>
               <RemovedProductsChart />
             </div>

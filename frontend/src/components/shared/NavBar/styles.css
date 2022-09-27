@@ -70,14 +70,13 @@
         width: 100%;
         position: absolute;
         top: 66px;
-        right: -100%;
+        left: -100%;
         opacity: 1;
         transition: all 0.9s ease;
     }
     .navbar-menu.active {
         background: rgba(0, 0, 0, 0.945);
-        height: 10in;
-        right: 0;
+        left: 0;
         opacity: 1;
         transition: all 0.5s ease;
         z-index: 1;
@@ -95,7 +94,7 @@
     }
     .fa-times {
         color: var(--blue-prim);
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     .navbar-link {
         font-size: 20px;
@@ -106,7 +105,7 @@
     }
     .navbar-link:hover {
         background-color: var(--prim);
-        border-radius: 0;
+        border-radius: 8px;
     }
     .navbar-link-mobile {
         text-align: center;

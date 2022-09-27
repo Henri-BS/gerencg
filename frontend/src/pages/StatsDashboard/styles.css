@@ -2,3 +2,7 @@
     border-bottom: 2px solid var(--seco);
     padding: 20px;
 }
+
+.container-chart {
+    border-radius: 20px;
+}

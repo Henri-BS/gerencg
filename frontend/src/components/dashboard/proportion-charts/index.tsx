@@ -42,7 +42,7 @@ export function IncomeChart() {
             }}
             series={chartData.series}
             type="pie"
-            height="240"
+            height="300"
         />
     );
 }
@@ -74,11 +74,12 @@ export function ExpenseChart() {
                 ...options, labels: chartData.labels,
                 theme: {
                     mode: "dark"
-                }
+                },
+               
             }}
             series={chartData.series}
             type="donut"
-            height="240"
+            height="300"
 
         />
     );

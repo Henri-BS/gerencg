@@ -47,6 +47,7 @@ export function AddedProductsChart() {
                 setChartData({
                     labels: {
                         categories: myLabels
+
                     },
                     series: [
                         {
@@ -60,11 +61,12 @@ export function AddedProductsChart() {
 
     const opitions = {
         plotOptions: {
+
             bar: {
                 horizontal: true,
             },
-        },
 
+        },
     }
 
     return (
@@ -72,18 +74,32 @@ export function AddedProductsChart() {
             options={{
                 ...opitions,
                 xaxis: chartData.labels,
+                dataLabels: {
+                    enabled: true,
+                    
+                    
+                },
                 theme: {
                     mode: "dark"
-                }
+                },
+                chart: {
+                    background: "#2a323a"                    
+                },
+
+                grid: {
+                    borderColor: "#139acf"
+                },
             }}
             labels={chartData.labels}
             series={chartData.series}
             type="bar"
-            height="240"
+            height="300"
         />
 
     );
 }
+
+
 
 export function RemovedProductsChart() {
     const [chartData, setChartData] = useState<ChartData>({
@@ -124,10 +140,15 @@ export function RemovedProductsChart() {
     }, []);
 
     const opitions = {
+
         plotOptions: {
             bar: {
                 horizontal: true,
+                borderRadius: 5,
+
             },
+        
+        
         },
 
     }
@@ -138,14 +159,27 @@ export function RemovedProductsChart() {
             options={{
                 ...opitions,
                 xaxis: chartData.labels,
+                
                 theme: {
                     mode: "dark"
-                }
+                },
+
+                colors: ["#ad1321"],
+                
+                chart: {
+                    background: "#2a323a",
+                     
+                },
+
+                grid: {
+                    borderColor: "#139acf"
+                },
             }}
             labels={chartData.labels}
             series={chartData.series}
             type="bar"
-            height="240"
+            height="300"
+
         />
 
     );
