@@ -22,7 +22,7 @@
     display: grid;
     text-align: center;
     border-bottom: 2px solid transparent;
-    transition: all 0.3s ease-in;
+    transition: all 0.2s ease-in;
     color: var(--seco);
     text-decoration: none;
 }
@@ -32,7 +32,6 @@
 }
 
 .table-box-title:hover {
-    border-left: 5px solid var(--blue-prim);
-    background: rgba(20, 16, 16, 0.521);
+    background: rgba(5, 5, 5, 0.753);
     color: #fff;
 }

@@ -1,6 +1,6 @@
 import axios from "axios";
 import Pagination from "components/shared/Pagination";
-import { ProductCard, ProductHistoryCard, ProductValidateCard } from "components/container/cards/ProductCard";
+import { ProductCard, ProductHistoryCard, ProductValidateCard } from "components/container/Card/ProductCard";
 import { useEffect, useState } from "react";
 import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
@@ -8,10 +8,11 @@ import "./styles.css"
 import { ProductHistoryPage } from "types/productHistory";
 import * as FaIcons from 'react-icons/fa'
 import { CategoryPage } from "types/category";
-import CategoryCard from "components/container/cards/CategoryCard";
+import CategoryCard from "components/container/Card/CategoryCard";
 import { MeasurePage } from "types/measure";
-import { MeasureCard } from "components/container/cards/MeasureCard";
-
+import { MeasureCard } from "components/container/Card/MeasureCard";
+import "react-datepicker/dist/react-datepicker.css";
+import ReactDatePicker from "react-datepicker";
 //Product list with description filter 
 
 export function ProductsList() {
@@ -231,7 +232,7 @@ export function ProductValidateList() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/product/list?validate=${value}&page=${pageNumber}&size=12&sort=validate`)
+        axios.get(`${BASE_URL}/product/list?page=${pageNumber}&size=12&sort=validate`)
             .then(response => {
                 const data = response.data as ProductPage;
                 setProductPage(data);
@@ -245,25 +246,39 @@ export function ProductValidateList() {
     return (
         <>
             <div className="container">
-                <div className="row header-container">
-                    <h2 className="col-6 col-sm-7 col-md-7">Próximos da data de validade</h2>
 
-                    <form className="col-6 col-sm-5 col-md-5 search-container">
+                <nav className="row header-container">
+                    <h2 className="col-12 col-sm-3 col-md-3 border-0">Próximos da data de validade</h2>
+
+                    <form className="col-12 col-sm-4 col-md-4 search-container">
                         <label className="form-group" >
                             <FaIcons.FaSearch />
                         </label>
                         <div className="form-group search-form-group">
-                            <input
-                                type="date"
-                                value={value}
-                                onChange={(e) => setValue(e.target.value)}
+                            <ReactDatePicker
+                                selected={new Date()}
+                                onChange={(date: Date) => { }}
                                 className="form-control"
-                                id="value"
-                                placeholder="Buscar data..."
+                                dateFormat="dd/MM/yyyy"
                             />
                         </div>
                     </form>
-                </div>
+
+                    <form className="col-12 col-sm-4 col-md-4 search-container">
+                        <label className="form-group" >
+                            <FaIcons.FaSearch />
+                        </label>
+                        <div className="form-group search-form-group">
+                            <ReactDatePicker
+                                selected={new Date()}
+                                onChange={(date: Date) => { }}
+                                className="form-control"
+                                dateFormat="dd/MM/yyyy"
+                            />
+                        </div>
+                    </form>
+                </nav>
+
                 <div className="pagination-container-menu">
                     <div className="pagination-item">
                         <Pagination

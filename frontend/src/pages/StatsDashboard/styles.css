@@ -2,7 +2,7 @@
     border-bottom: 2px solid var(--seco);
     align-items: center;
     padding: 10px;
-    display: grid;
+    display: block;
 }
 
 .container-chart {
@@ -10,6 +10,7 @@
     border-radius: 12px;
     background: #2a323a;
     height: 360px;
+    width: 100%;
 }
 
 .chart-box {
@@ -20,4 +21,13 @@
     font-size: 26px;
     font-weight: 500;
     margin: 0;
+}
+
+@media screen and (max-width: 450px) {
+    .chart-box {
+        max-width: 440px;
+        align-items: center;
+        justify-content: center;
+        overflow-x: scroll;
+    }
 }

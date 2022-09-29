@@ -4,8 +4,7 @@ import Dashboard from "pages/StatsDashboard";
 import Home from "pages/Home";
 import { CategoryList, MeasureList, ProductsList, ProductValidateList } from "pages/Listings";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { ProductProfile, CategoryProfile } from "pages/Profiles";
-import { MeasureProfile, SaveProduct, UpdateProduct } from "pages/ProductOptions";
+import { ProductProfile, CategoryProfile, MeasureProfile, SaveProduct, UpdateProduct} from "pages/Profiles";
 
 
 function PageRoutes() {

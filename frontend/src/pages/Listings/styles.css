@@ -20,7 +20,7 @@
 
 .header-container {
     padding: 10px 0px 20px 0px;
-    height: 70px;
+    min-height: 70px;
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid #ccc;
@@ -94,12 +94,12 @@
     font-weight: 700;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 680px) {
     .pagination-max-container {
         width: 100%;
     }
     .header-container {
-        height: 90px;
+        min-height: 90px;
     }
     .header-container h2 {
         text-align: start;

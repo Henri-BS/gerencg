@@ -1,9 +1,12 @@
-import ProductLateralBar from "components/container/lateral-bar/ProductLateralBar";
+import ProductLateralBar from "components/container/LateralBar/ProductLateralBar";
 import { useParams } from "react-router-dom";
 import "./styles.css"
-import ProductMenuBar from "components/container/horizontal-bar/ProductHorizontalBar";
-import { ProductCategoryList, ProductHistoryList } from "pages/Listings";
-import CategoryLateralBar from "components/container/lateral-bar/CategoryLateralBar";
+import ProductMenuBar from "components/container/HorizontalBar/ProductHorizontalBar";
+import { ProductCategoryList, ProductHistoryList, ProductMeasureList } from "pages/Listings";
+import CategoryLateralBar from "components/container/LateralBar/CategoryLateralBar";
+import { MeasureInfo } from "components/container/Card/MeasureCard";
+import { ProductFormEdit } from "components/container/Form/ProductFormEdit";
+import { ProductFormAdd } from "components/container/Form/ProductFormAdd";
 
 //Product profile 
 
@@ -45,4 +48,39 @@ export function CategoryProfile() {
       </div>
     </>
   );
+}
+
+
+export function SaveProduct() {
+  return(
+      <div className="container-blur">
+          <ProductFormAdd />
+      </div>  
+  )
+}
+
+export function UpdateProduct() {
+  
+const params = useParams();
+
+  return(
+      <div className="container-blur">
+          <ProductFormEdit productId={`${params.productId}`}/>
+      </div>  
+  )
+}
+
+export function MeasureProfile() {
+
+  const params = useParams();
+
+  return(
+      <div className="container-blur">
+          <div>
+          <MeasureInfo measureId={`${params.measureId}`} />
+          </div>
+          
+          <ProductMeasureList measureId={`${params.measureId}`} />
+      </div>  
+  )
 }
