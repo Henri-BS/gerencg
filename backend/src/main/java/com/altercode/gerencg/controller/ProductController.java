@@ -1,6 +1,5 @@
 package com.altercode.gerencg.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,9 +28,27 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 
-	@GetMapping("/list")
-	public ResponseEntity<Page<ProductDTO>> findAll(Pageable pageable) {
-		Page<ProductDTO> list = service.findAll(pageable);
+	@GetMapping("/search")
+	public ResponseEntity<Page<ProductDTO>> findByDescription(Pageable pageable, String description) {
+		Page<ProductDTO> list = service.findAll(pageable, description);
+		return ResponseEntity.ok(list);
+	}
+
+	@GetMapping("/validate")
+	public ResponseEntity<Page<ProductDTO>> findAllByValidate(@RequestParam(defaultValue = "") String minDate, @RequestParam(defaultValue = "") String maxDate, Pageable pageable) {
+		Page<ProductDTO> list = service.findAllByValidate(minDate, maxDate, pageable);
+		return ResponseEntity.ok(list);
+	}
+
+	@GetMapping("/find-category/{category}")
+	public ResponseEntity<Page<ProductDTO>> findByCategory(Pageable pageable, Category category) {
+		Page<ProductDTO> list = service.findByCategory(pageable, category);
+		return ResponseEntity.ok(list);
+	}
+
+	@GetMapping("/find-measure/{measure}")
+	public ResponseEntity<Page<ProductDTO>> findByMeasure(Pageable pageable, Measure measure) {
+		Page<ProductDTO> list = service.findByMeasure(pageable, measure);
 		return ResponseEntity.ok(list);
 	}
 
@@ -48,8 +66,8 @@ public class ProductController {
 
 	@PutMapping("/edit/{id}")
 	public ProductDTO updateProduct(@RequestBody ProductDTO product) {
-		ProductDTO editProduct = service.updateProduct( product);
-			return editProduct;
+		ProductDTO editProduct = service.updateProduct(product);
+		return editProduct;
 	}
 
 	@DeleteMapping("/delete/{id}")
@@ -57,23 +75,4 @@ public class ProductController {
 	public void deleteProduct(@PathVariable Long id) {
 		this.service.deleteProduct(id);
 	}
-	
-	@GetMapping("/search")
-	public ResponseEntity<Page<ProductDTO>> findByDescription(Pageable pageable, String description) {
-		Page<ProductDTO> list = service.findByDescription(pageable, description);
-		return ResponseEntity.ok(list);
-	}
-
-	@GetMapping("/find-category/{category}")
-	public ResponseEntity<Page<ProductDTO>> findByCategory(Pageable pageable, Category category) {
-		Page<ProductDTO> list = service.findByCategory(pageable, category);
-		return ResponseEntity.ok(list);
-	}
-	
-	@GetMapping("/find-measure/{measure}")
-	public ResponseEntity<Page<ProductDTO>> findByMeasure(Pageable pageable, Measure measure){
-		Page<ProductDTO> list = service.findByMeasure(pageable, measure);
-		return ResponseEntity.ok(list);
-	}
-	
 }

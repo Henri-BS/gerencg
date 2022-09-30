@@ -1,5 +1,9 @@
 package com.altercode.gerencg.service;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,12 +31,41 @@ public class ProductService {
 	@Autowired
 	private MeasureRepository measureRepository;
 
-	public Page<ProductDTO> findAll(Pageable pageable) {
-		Page<Product> result = productRepository.findAll(pageable);
+	/* Find all products by page and description */
+	public Page<ProductDTO> findAll(Pageable pageable, String description) {
+		Page<Product> result = productRepository.findAll(pageable, description);
 		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
 		return page;
 	}
 
+	/* Find all products by page, minimum date and max date of validate */
+	public Page<ProductDTO> findAllByValidate(String minDate, String maxDate, Pageable pageable) {
+
+		LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
+
+		LocalDate min = minDate.equals("") ? today.minusDays(30) : LocalDate.parse(minDate);
+		LocalDate max = maxDate.equals("") ? today : LocalDate.parse(maxDate);
+
+		Page<Product> result = productRepository.findByValidate(min, max, pageable);
+		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
+		return page;
+	}
+
+	/* Find all products by page and category */
+	public Page<ProductDTO> findByCategory(Pageable pageable, Category category) {
+		Page<Product> result = productRepository.findByCategory(pageable, category);
+		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
+		return page;
+	}
+
+	/* Find all products by page and measure */
+	public Page<ProductDTO> findByMeasure(Pageable pageable, Measure measure) {
+		Page<Product> result = productRepository.findByMeasure(pageable, measure);
+		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
+		return page;
+	}
+
+	/* Find products by id */
 	public ProductDTO findById(Long id) {
 		Product result = productRepository.findById(id).get();
 		ProductDTO dto = new ProductDTO(result);
@@ -88,26 +121,5 @@ public class ProductService {
 	public void deleteProduct(Long id) {
 		this.productRepository.deleteById(id);
 	}
-	
-public Page<ProductDTO> findByDescription(Pageable pageable, String description) {
-		Page<Product> result = productRepository.findByDescription(pageable, description);
-		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
-		return page;
-	}
 
-	public Page<ProductDTO> findByCategory(Pageable pageable, Category category) {
-		Page<Product> result = productRepository.findByCategory(pageable, category);
-		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
-		return page;
-	}
-
-	public Page<ProductDTO> findByMeasure(Pageable pageable, Measure measure) {
-		Page<Product> result = productRepository.findByMeasure(pageable, measure);
-		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
-		return page;
-	}
-
-	
-	
-	
 }

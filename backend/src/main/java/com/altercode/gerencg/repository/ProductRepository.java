@@ -1,6 +1,8 @@
 package com.altercode.gerencg.repository;
 
 
+import java.time.LocalDate;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,7 +18,10 @@ import com.altercode.gerencg.entity.Product;
 public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product>{
 
 	@Query("SELECT obj FROM Product obj WHERE obj.description LIKE %?1%")
-	Page<Product> findByDescription(Pageable pageable, String description);
+	Page<Product> findAll(Pageable pageable, String description);
+	
+	@Query("SELECT obj FROM Product obj WHERE obj.validate BETWEEN :min AND :max ORDER BY obj.quantity DESC ")
+	Page<Product> findByValidate(LocalDate min, LocalDate max, Pageable pageable);
 	
 	Page<Product> findByCategory(Pageable pageable, Category category);
 	

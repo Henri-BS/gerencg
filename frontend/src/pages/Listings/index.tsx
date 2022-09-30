@@ -224,7 +224,9 @@ export function ProductMeasureList({ measureId }: Measure) {
 //Find all products by validate
 export function ProductValidateList() {
 
-    const [value, setValue] = useState("");
+    const min = new Date(new Date().setDate(new Date().getDate() -7))
+    const [minDate, setMinDate] = useState(min);
+    const [maxDate, setMaxDate] = useState(new Date());
     const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<ProductPage>({
         content: [],
@@ -234,8 +236,7 @@ export function ProductValidateList() {
     useEffect(() => {
         axios.get(`${BASE_URL}/product/list?page=${pageNumber}&size=12&sort=validate`)
             .then(response => {
-                const data = response.data as ProductPage;
-                setProductPage(data);
+                setProductPage(response.data );
             });
     }, [pageNumber]);
 
@@ -256,10 +257,10 @@ export function ProductValidateList() {
                         </label>
                         <div className="form-group search-form-group">
                             <ReactDatePicker
-                                selected={new Date()}
-                                onChange={(date: Date) => { }}
+                                selected={minDate}
+                                onChange={(date: Date) => setMinDate(date)}
                                 className="form-control"
-                                dateFormat="dd/MM/yyyy"
+                                dateFormat="dd/MM/yyyy"                                
                             />
                         </div>
                     </form>
@@ -270,8 +271,8 @@ export function ProductValidateList() {
                         </label>
                         <div className="form-group search-form-group">
                             <ReactDatePicker
-                                selected={new Date()}
-                                onChange={(date: Date) => { }}
+                                selected={maxDate}
+                                onChange={(date: Date) => setMaxDate(date)}
                                 className="form-control"
                                 dateFormat="dd/MM/yyyy"
                             />
@@ -289,7 +290,7 @@ export function ProductValidateList() {
                 </div>
                 <div className=" row">
                     {productPage.content?.filter((product) =>
-                        product.description.includes(value)).map(product => (
+                        product.description.includes("")).map(product => (
                             <div key={product.id} className="col-sm-6 col-lg-5 col-xl-4 mb-3">
                                 <ProductValidateCard product={product} />
                             </div>
