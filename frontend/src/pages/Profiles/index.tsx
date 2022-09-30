@@ -9,7 +9,6 @@ import { ProductFormEdit } from "components/container/Form/ProductFormEdit";
 import { ProductFormAdd } from "components/container/Form/ProductFormAdd";
 
 //Product profile 
-
 export function ProductProfile() {
   const params = useParams();
 
@@ -32,7 +31,6 @@ export function ProductProfile() {
 }
 
 //Category Profile Function
-
 export function CategoryProfile() {
 
   const params = useParams();
@@ -52,22 +50,23 @@ export function CategoryProfile() {
 
 
 export function SaveProduct() {
+
   return(
       <div className="container-blur">
           <ProductFormAdd />
       </div>  
-  )
+  );
 }
 
 export function UpdateProduct() {
-  
+
 const params = useParams();
 
   return(
       <div className="container-blur">
           <ProductFormEdit productId={`${params.productId}`}/>
       </div>  
-  )
+  );
 }
 
 export function MeasureProfile() {
@@ -82,5 +81,5 @@ export function MeasureProfile() {
           
           <ProductMeasureList measureId={`${params.measureId}`} />
       </div>  
-  )
+  );
 }

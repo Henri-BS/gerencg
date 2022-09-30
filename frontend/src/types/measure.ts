@@ -15,3 +15,7 @@ export type MeasurePage = {
   empty?: boolean;
 }
 
+
+export type MeasureProps = {
+  measureId: string
+}

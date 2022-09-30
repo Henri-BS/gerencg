@@ -20,6 +20,7 @@ import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.Category;
 import com.altercode.gerencg.entity.Measure;
 import com.altercode.gerencg.service.ProductService;
+import com.altercode.gerencg.service.SmsService;
 
 @RestController
 @RequestMapping(value = "/product")
@@ -28,6 +29,9 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 
+	@Autowired
+	private SmsService smsService;
+	
 	@GetMapping("/search")
 	public ResponseEntity<Page<ProductDTO>> findByDescription(Pageable pageable, String description) {
 		Page<ProductDTO> list = service.findAll(pageable, description);
@@ -74,5 +78,10 @@ public class ProductController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteProduct(@PathVariable Long id) {
 		this.service.deleteProduct(id);
+	}
+	
+	@GetMapping("/{id}/notification")
+	public void notifySms(@PathVariable Long id) {
+		smsService.sendSms(id);
 	}
 }

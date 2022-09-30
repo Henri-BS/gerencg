@@ -17,3 +17,7 @@ export type CategoryPage = {
   numberOfElements?: number;
   empty?: boolean;
 };
+
+export type CategoryProps = {
+  categoryId: string
+}

@@ -7,9 +7,9 @@ import { BASE_URL } from "utils/requests";
 import "./styles.css"
 import { ProductHistoryPage } from "types/productHistory";
 import * as FaIcons from 'react-icons/fa'
-import { CategoryPage } from "types/category";
+import { CategoryPage, CategoryProps } from "types/category";
 import CategoryCard from "components/container/Card/CategoryCard";
-import { MeasurePage } from "types/measure";
+import { MeasurePage, MeasureProps } from "types/measure";
 import { MeasureCard } from "components/container/Card/MeasureCard";
 import "react-datepicker/dist/react-datepicker.css";
 import ReactDatePicker from "react-datepicker";
@@ -91,7 +91,6 @@ export function ProductsList() {
 }
 
 //Find product uppdate history
-
 export function ProductHistoryList() {
     const [historyPage, setHistoryPage] = useState<ProductHistoryPage>({
         content: [],
@@ -124,12 +123,7 @@ export function ProductHistoryList() {
 }
 
 //Find all products by category
-type Category = {
-    categoryId: string
-}
-
-
-export function ProductCategoryList({ categoryId }: Category) {
+export function ProductCategoryList({ categoryId }: CategoryProps) {
 
     const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<ProductPage>({
@@ -173,13 +167,9 @@ export function ProductCategoryList({ categoryId }: Category) {
     );
 }
 
+
 //Find all products by measure
-
-type Measure = {
-    measureId: string
-}
-
-export function ProductMeasureList({ measureId }: Measure) {
+export function ProductMeasureList({ measureId }: MeasureProps) {
     const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<ProductPage>({
         content: [],
@@ -224,7 +214,7 @@ export function ProductMeasureList({ measureId }: Measure) {
 //Find all products by validate
 export function ProductValidateList() {
 
-    const min = new Date(new Date().setDate(new Date().getDate() -7))
+    const min = new Date(new Date().setDate(new Date().getDate() - 7))
     const [minDate, setMinDate] = useState(min);
     const [maxDate, setMaxDate] = useState(new Date());
     const [pageNumber, setPageNumber] = useState(0);
@@ -234,9 +224,13 @@ export function ProductValidateList() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/product/list?page=${pageNumber}&size=12&sort=validate`)
+        axios.get(
+            `${BASE_URL}/product/validate?
+            minDate=2022-01-01&maxDate=2022-06-31
+            &page=${pageNumber}&size=12&sort=quantity`
+        )
             .then(response => {
-                setProductPage(response.data );
+                setProductPage(response.data);
             });
     }, [pageNumber]);
 
@@ -260,7 +254,7 @@ export function ProductValidateList() {
                                 selected={minDate}
                                 onChange={(date: Date) => setMinDate(date)}
                                 className="form-control"
-                                dateFormat="dd/MM/yyyy"                                
+                                dateFormat="dd/MM/yyyy"
                             />
                         </div>
                     </form>
@@ -302,7 +296,6 @@ export function ProductValidateList() {
 }
 
 export function CategoryList() {
-
 
     const [categoryPage, setCategoryPage] = useState<CategoryPage>({
         content: [],

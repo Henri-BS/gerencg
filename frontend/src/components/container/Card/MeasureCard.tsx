@@ -1,15 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Measure } from "types/measure";
+import { Measure, MeasureProps } from "types/measure";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 
-type Props = {
-    measureId: string;
-}
-
-export function MeasureInfo({ measureId }: Props) {
+export function MeasureInfo({ measureId }: MeasureProps) {
 
     const [measure, setMeasure] = useState<Measure>();
 
