@@ -2,14 +2,10 @@ import axios from "axios";
 import moment from 'moment';
 import { useEffect, useState } from "react";
 import { BASE_URL } from "utils/requests";
-import { Category } from "types/category";
+import { Category, CategoryProps } from "types/category";
 import { categoryIcons } from "components/shared/MenuIcons";
 
-type Props = {
-    categoryId: string;
-}
-
-function CategoryLateralBar({ categoryId }: Props) {
+function CategoryLateralBar({ categoryId }: CategoryProps) {
 
     const [category, setCategory] = useState<Category>()
 
@@ -26,10 +22,8 @@ function CategoryLateralBar({ categoryId }: Props) {
                 <div className="column-image-container">
                     <img className="column-card-image" src={category?.image} alt={category?.name} />
                 </div>
-                <div className="column-container">
-                    
-                        <h1>{category?.name}</h1>
-                    
+                <div className="column-container">                    
+                        <h1>{category?.name}</h1>                    
                     <div className="column-item-container">
                         <div className="column-icon-container">{categoryIcons.lastUpdateIcon}</div>
                         <h3>Última Ateração: {moment(category?.lastModifiedDate).format('DD/MM/YYYY')} </h3>

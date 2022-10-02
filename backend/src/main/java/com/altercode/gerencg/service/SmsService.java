@@ -35,7 +35,7 @@ public class SmsService {
 		String date = product.getValidate().getMonthValue() + "/" + product.getValidate().getYear();
 		
 		String msg = "O produto '" + product.getDescription() 
-		+ "' terá sua data de validade exprida em: " + date 
+		+ "' terá sua data de validade expirada em: " + date 
 		+ ". \nEste produto possui " + product.getQuantity() + " unidades em estoque!";
 		
 		Twilio.init(twilioSid, twilioKey);

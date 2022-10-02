@@ -25,3 +25,7 @@ export type ProductPage = {
   first?: boolean;
   last?: boolean;
 };
+
+export type ProductProps = {
+  productId: string;
+}

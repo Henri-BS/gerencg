@@ -3,15 +3,11 @@ import { productIcons } from "components/shared/MenuIcons";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Product } from "types/product";
+import { Product, ProductProps } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 
-type Props = {
-    productId: string;
-}
-
-function ProductLateralBar({ productId }: Props) {
+function ProductLateralBar({ productId }: ProductProps) {
 
     const [product, setProduct] = useState<Product>()
 
@@ -31,7 +27,6 @@ function ProductLateralBar({ productId }: Props) {
                 </div>
                 <div className="column-container">
                     <h1>{product?.description}</h1>
-
 
                     <div className="column-item-container">
                         <div className="column-icon-container"> {productIcons.priceIcon} </div>

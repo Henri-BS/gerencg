@@ -41,15 +41,15 @@ export function ProductsList() {
                 <nav className="row header-container">
                     <h2 className="col-3 col-sm-4 col-md-4 col-xl-4 ">Lista de Produtos</h2>
 
-                    <nav className="col-4 col-sm-4 col-md-4 col-xl-3" >
+                    <nav className="col-4 col-sm-4 col-md-4 col-xl-4" >
                         <div className="option-item" >
                             <h5><b>Total: </b>{productPage.totalElements} Produtos</h5>
                         </div>
                     </nav>
 
-                    <form className="col-5 col-sm-4 col-md-4  col-xl-5 search-container">
+                    <form className="col-5 col-sm-4 col-md-4  col-xl-4 search-container">
                         <label className="form-group" >
-                            <FaIcons.FaSearch />
+                        <h5><FaIcons.FaSearch /></h5>
                         </label>
                         <div className="form-group search-form-group">
                             <input
@@ -216,7 +216,7 @@ export function ProductMeasureList({ measureId }: MeasureProps) {
 //Find all products by validate
 export function ProductValidateList() {
 
-    const min = new Date(new Date().setDate(new Date().getDate() - 365))
+    const min = new Date(new Date().setDate(new Date().getDate() - 30))
 
 
     const [minValidate, setMinValidate] = useState(min);

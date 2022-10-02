@@ -20,7 +20,7 @@ public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpec
 	@Query("SELECT obj FROM Product obj WHERE obj.description LIKE %?1%")
 	Page<Product> findAll(Pageable pageable, String description);
 	
-	@Query("SELECT obj FROM Product obj WHERE obj.validate BETWEEN :min AND :max ORDER BY obj.quantity DESC ")
+	@Query("SELECT obj FROM Product obj WHERE obj.validate BETWEEN :min AND :max ORDER BY obj.validate DESC ")
 	Page<Product> findByValidate(LocalDate min, LocalDate max, Pageable pageable);
 	
 	Page<Product> findByCategory(Pageable pageable, Category category);

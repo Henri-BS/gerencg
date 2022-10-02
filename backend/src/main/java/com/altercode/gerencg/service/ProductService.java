@@ -44,8 +44,8 @@ public class ProductService {
 	public Page<ProductDTO> findAllByValidate(String minValidate, String maxValidate, Pageable pageable) {
 
 		LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
-		LocalDate min = minValidate.equals("") ? today.minusMonths(12) : LocalDate.parse(minValidate);
-		LocalDate max = maxValidate.equals("") ? today : LocalDate.parse(maxValidate);
+		LocalDate min = minValidate.equals("") ? today.minusMonths(1) : LocalDate.parse(minValidate);
+		LocalDate max = maxValidate.equals("") ? today.plusMonths(1) : LocalDate.parse(maxValidate);
 
 		Page<Product> result = productRepository.findByValidate(min, max, pageable);
 		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));

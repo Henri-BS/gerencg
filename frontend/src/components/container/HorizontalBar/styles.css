@@ -4,17 +4,21 @@
     justify-items: center;
     align-items: center;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .menu-option-card {
-    justify-content: center;
-    align-items: center;
     height: 80px;
     width: 100px;
+    justify-content: center;
+    align-items: center;
     border-radius: 8px;
     font-size: 18px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.452), rgba(255, 255, 255, 0));
+    transition: all 0.3s ease-in;
+}
+
+.menu-option-card:hover {
+    border: solid var(--blue-prim);
 }
 
 .option-card-img {
@@ -22,8 +26,12 @@
     width: 94%;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
     .menu-profile-container {
         margin: 0;
+    }
+    .menu-option-card {
+        height: 60px;
+        width: 80px;
     }
 }
