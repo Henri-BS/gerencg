@@ -31,19 +31,21 @@ public class ProductService {
 	@Autowired
 	private MeasureRepository measureRepository;
 
-	// Find all products by page and description 
+	// Find all products by page and description
+	
 	public Page<ProductDTO> findAll(Pageable pageable, String description) {
 		Page<Product> result = productRepository.findAll(pageable, description);
 		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
 		return page;
 	}
 
-	// Find all products by page, minimum date and max date of validate 
-	public Page<ProductDTO> findAllByValidate(String minDate, String maxDate, Pageable pageable) {
+	// Find all products by page, minimum date and max date of validate
+	
+	public Page<ProductDTO> findAllByValidate(String minValidate, String maxValidate, Pageable pageable) {
 
 		LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
-		LocalDate min = minDate.equals("") ? today.minusDays(30) : LocalDate.parse(minDate);
-		LocalDate max = maxDate.equals("") ? today : LocalDate.parse(maxDate);
+		LocalDate min = minValidate.equals("") ? today.minusMonths(12) : LocalDate.parse(minValidate);
+		LocalDate max = maxValidate.equals("") ? today : LocalDate.parse(maxValidate);
 
 		Page<Product> result = productRepository.findByValidate(min, max, pageable);
 		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
@@ -51,27 +53,34 @@ public class ProductService {
 	}
 
 	// Find all products by page and category 
+	
 	public Page<ProductDTO> findByCategory(Pageable pageable, Category category) {
+		
 		Page<Product> result = productRepository.findByCategory(pageable, category);
 		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
 		return page;
 	}
 
-	// Find all products by page and measure 
+	// Find all products by page and measure
+	
 	public Page<ProductDTO> findByMeasure(Pageable pageable, Measure measure) {
+		
 		Page<Product> result = productRepository.findByMeasure(pageable, measure);
 		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
 		return page;
 	}
 
-	// Find products by id 
+	// Find products by id
+	
 	public ProductDTO findById(Long id) {
+		
 		Product result = productRepository.findById(id).get();
 		ProductDTO dto = new ProductDTO(result);
 		return dto;
 	}
 
 	// Save new product
+	
 	public ProductDTO addProduct(ProductDTO dto) {
 
 		Category category = categoryRepository.findById(dto.getCategory()).get();
@@ -95,6 +104,7 @@ public class ProductService {
 	}
 
 	//Edit product
+	
 	public ProductDTO updateProduct(ProductDTO dto) {
 
 		Category category = categoryRepository.findById(dto.getCategory()).get();
@@ -120,6 +130,7 @@ public class ProductService {
 	}
 
 	//Delete product
+	
 	public void deleteProduct(Long id) {
 		this.productRepository.deleteById(id);
 	}

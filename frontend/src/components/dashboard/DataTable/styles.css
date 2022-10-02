@@ -5,10 +5,10 @@
 
 .table-box {
     height: 100%;
-    color: var(--seco);
+    color: var(--dark-seco);
     font-size: 19px;
     font-weight: 600;
-    border: 1px solid var(--seco);
+    border: 1px solid var(--dark-seco);
     text-align: center;
 }
 
@@ -23,7 +23,7 @@
     text-align: center;
     border-bottom: 2px solid transparent;
     transition: all 0.2s ease-in;
-    color: var(--seco);
+    color: var(--dark-seco);
     text-decoration: none;
 }
 

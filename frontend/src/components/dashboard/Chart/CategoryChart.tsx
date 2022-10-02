@@ -27,7 +27,7 @@ export function IncomeChart() {
     }, []);
 
     const options = {
-        legend: {show: true}
+        legend: { show: true }
     }
 
     return (
@@ -69,7 +69,7 @@ export function ExpenseChart() {
     return (
         <Chart
             options={{
-                ...options, 
+                ...options,
                 labels: chartData.labels,
                 theme: { mode: "dark" },
                 chart: { background: "#2a323a" }
@@ -121,16 +121,11 @@ export function AddedProductsChart() {
                 const mySeries = data.map(x => x.addedProduct);
 
                 setChartData({
-                    labels: {
-                        categories: myLabels
-
-                    },
-                    series: [
-                        {
-                            name: "Adicionados",
-                            data: mySeries
-                        }
-                    ]
+                    labels: { categories: myLabels },
+                    series: [{
+                        name: "Adicionados",
+                        data: mySeries
+                    }]
                 });
             });
     }, []);
@@ -138,10 +133,7 @@ export function AddedProductsChart() {
     const opitions = {
         plotOptions: {
 
-            bar: {
-                horizontal: true,
-            },
-
+            bar: { horizontal: true }
         },
     }
 
@@ -150,18 +142,10 @@ export function AddedProductsChart() {
             options={{
                 ...opitions,
                 xaxis: chartData.labels,
-
-                theme: {
-                    mode: "dark"
-                },
+                theme: { mode: "dark" },
                 colors: ["#1a6"],
-                chart: {
-                    background: "#2a323a"
-                },
-
-                grid: {
-                    borderColor: "#139acf"
-                },
+                chart: { background: "#2a323a" },
+                grid: { borderColor: "#139acf" },
             }}
             labels={chartData.labels}
             series={chartData.series}
@@ -177,17 +161,12 @@ export function AddedProductsChart() {
 export function RemovedProductsChart() {
     const [chartData, setChartData] = useState<QuantityChartData>({
 
-        labels: {
-            categories: []
-        },
+        labels: { categories: [] },
 
-        series: [
-            {
-                name: "",
-                data: []
-            }
-        ]
-
+        series: [{
+            name: "",
+            data: []
+        }]
     });
 
     useEffect(() => {
@@ -199,30 +178,20 @@ export function RemovedProductsChart() {
                 const mySeries = data.map(x => x.removedProduct);
 
                 setChartData({
-                    labels: {
-                        categories: myLabels
-                    },
-                    series: [
-                        {
-                            name: "Removidos",
-                            data: mySeries
-                        }
-                    ]
+                    labels: { categories: myLabels },
+                    series: [{
+                        name: "Removidos",
+                        data: mySeries
+                    }]
                 });
             });
     }, []);
 
     const opitions = {
-
         plotOptions: {
-            bar: {
-                horizontal: true
-            },
-
+            bar: { horizontal: true }
         },
-
     }
-
 
     return (
         <Chart
@@ -230,26 +199,18 @@ export function RemovedProductsChart() {
                 ...opitions,
                 xaxis: chartData.labels,
 
-                theme: {
-                    mode: "dark"
-                },
+                theme: { mode: "dark" },
 
                 colors: ["#ad1321"],
 
-                chart: {
-                    background: "#2a323a",
-                },
+                chart: { background: "#2a323a" },
 
-                grid: {
-                    borderColor: "#139acf"
-                },
+                grid: { borderColor: "#139acf" },
             }}
             labels={chartData.labels}
             series={chartData.series}
             type="bar"
             height="300"
-
         />
     );
 }
-

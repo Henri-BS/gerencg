@@ -2,17 +2,17 @@
     padding: 0;
     margin: 0;
     max-inline-size: 100%;
-    color: var(--prim);
+    color: var(--dark-prim);
     background-color: var(--quat);
 }
 
 .profile hr {
     width: 380px;
-    background: var(--prim);
+    background: var(--dark-prim);
 }
 
 .container-blur {
-    color: var(--seco);
+    color: var(--dark-seco);
     max-inline-size: 100%;
     margin: 0;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.452), rgba(255, 255, 255, 0));

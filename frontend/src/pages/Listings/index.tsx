@@ -4,9 +4,9 @@ import { ProductCard, ProductHistoryCard, ProductValidateCard } from "components
 import { useEffect, useState } from "react";
 import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
-import "./styles.css"
+import "./styles.css";
 import { ProductHistoryPage } from "types/productHistory";
-import * as FaIcons from 'react-icons/fa'
+import * as FaIcons from 'react-icons/fa';
 import { CategoryPage, CategoryProps } from "types/category";
 import CategoryCard from "components/container/Card/CategoryCard";
 import { MeasurePage, MeasureProps } from "types/measure";
@@ -193,11 +193,13 @@ export function ProductMeasureList({ measureId }: MeasureProps) {
                 <div className="header-container">
                     <h2>Produtos Medidos por: {measureId}</h2>
                 </div>
+
                 <div className="pagination-container-menu">
                     <div className="pagination-item">
                         <Pagination page={productPage}
                             onPageChange={handlePageChange} />
                     </div>
+
                 </div>
                 <div className="row">
                     {productPage.content?.map(product => (
@@ -214,9 +216,11 @@ export function ProductMeasureList({ measureId }: MeasureProps) {
 //Find all products by validate
 export function ProductValidateList() {
 
-    const min = new Date(new Date().setDate(new Date().getDate() - 7))
-    const [minDate, setMinDate] = useState(min);
-    const [maxDate, setMaxDate] = useState(new Date());
+    const min = new Date(new Date().setDate(new Date().getDate() - 365))
+
+
+    const [minValidate, setMinValidate] = useState(min);
+    const [maxValidate, setMaxValidate] = useState(new Date());
     const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<ProductPage>({
         content: [],
@@ -224,16 +228,20 @@ export function ProductValidateList() {
     });
 
     useEffect(() => {
+
+        const minDate = minValidate.toISOString().slice(0, 10);
+        const maxDate = maxValidate.toISOString().slice(0, 10);
+
         axios.get(
-            `${BASE_URL}/product/validate?
-            minDate=2022-01-01&maxDate=2022-06-31
-            &page=${pageNumber}&size=12&sort=quantity`
+            `${BASE_URL}/product/validate?minValidate=${minDate}&maxValidate=${maxDate}&size=40`
         )
             .then(response => {
                 setProductPage(response.data);
             });
-    }, [pageNumber]);
+    }, [minValidate, maxValidate, pageNumber]);
 
+    console.log(minValidate, maxValidate);
+    
     const handlePageChange = (newPageNumber: number) => {
         setPageNumber(newPageNumber);
     }
@@ -241,32 +249,32 @@ export function ProductValidateList() {
     return (
         <>
             <div className="container">
-
                 <nav className="row header-container">
                     <h2 className="col-12 col-sm-3 col-md-3 border-0">Próximos da data de validade</h2>
-
                     <form className="col-12 col-sm-4 col-md-4 search-container">
+                        
                         <label className="form-group" >
-                            <FaIcons.FaSearch />
+                            <h5>Data inicial</h5>
                         </label>
                         <div className="form-group search-form-group">
                             <ReactDatePicker
-                                selected={minDate}
-                                onChange={(date: Date) => setMinDate(date)}
+                                selected={minValidate}
+                                onChange={(date: Date) => setMinValidate(date)}
                                 className="form-control"
                                 dateFormat="dd/MM/yyyy"
                             />
                         </div>
                     </form>
 
+                    
                     <form className="col-12 col-sm-4 col-md-4 search-container">
                         <label className="form-group" >
-                            <FaIcons.FaSearch />
+                        <h5> Data final </h5>
                         </label>
                         <div className="form-group search-form-group">
                             <ReactDatePicker
-                                selected={maxDate}
-                                onChange={(date: Date) => setMaxDate(date)}
+                                selected={maxValidate}
+                                onChange={(date: Date) => setMaxValidate(date)}
                                 className="form-control"
                                 dateFormat="dd/MM/yyyy"
                             />
@@ -283,8 +291,7 @@ export function ProductValidateList() {
                     </div>
                 </div>
                 <div className=" row">
-                    {productPage.content?.filter((product) =>
-                        product.description.includes("")).map(product => (
+                {productPage.content?.map((product) => (
                             <div key={product.id} className="col-sm-6 col-lg-5 col-xl-4 mb-3">
                                 <ProductValidateCard product={product} />
                             </div>

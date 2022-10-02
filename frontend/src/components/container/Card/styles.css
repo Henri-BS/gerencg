@@ -8,7 +8,7 @@
     padding: 20px;
     text-decoration: underline;
     text-decoration-color: var(--quin);
-    color: var(--prim);
+    color: var(--dark-prim);
     align-items: flex-start;
     justify-content: start;
     display: flex;
@@ -43,7 +43,7 @@
     padding: 10px;
     display: grid;
     overflow-x: scroll;
-    border-left: 2px solid var(--prim);
+    border-left: 2px solid var(--dark-prim);
     margin-left: 2px;
 }
 
@@ -111,7 +111,7 @@
     padding: 20px;
     text-decoration: underline;
     text-decoration-color: var(--quin);
-    color: var(--prim);
+    color: var(--dark-prim);
     align-items: flex-start;
     justify-content: start;
     display: flex;
@@ -175,7 +175,7 @@
     border-radius: 8px;
     transition: all 0.3s ease-out;
     background-color: var(--quin);
-    color: var(--prim);
+    color: var(--dark-prim);
 }
 
 .measure-details-container:hover {

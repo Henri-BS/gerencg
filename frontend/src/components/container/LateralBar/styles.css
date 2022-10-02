@@ -2,7 +2,7 @@
     display: grid;
     height: 100%;
     width: 430px;
-    background-color: var(--tert);
+    background-color: var(--dark-tert);
 }
 
 .column-container {
@@ -14,7 +14,7 @@
 .column-item-container {
     display: flex;
     text-align: center;
-    border-left: 6px solid rgb(13, 75, 126);
+    border-left: 6px solid var(--blue-prim);
     height: 90px;
     padding: 30px;
     background-color: rgba(85, 85, 85, 0.521);
@@ -23,7 +23,7 @@
 }
 
 .column-item-container:hover {
-    border-left: 6px solid rgb(15, 91, 153);
+    border-left: 6px solid var(--blue-seco);
     background-color: rgba(97, 96, 96, 0.603);
 }
 

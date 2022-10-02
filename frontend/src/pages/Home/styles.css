@@ -1,12 +1,12 @@
 .container {
     background-color: var(--quat);
-    color: var(--seco);
+    color: var(--dark-seco);
     max-inline-size: 100%;
     margin: 0;
 }
 
 .container hr {
-    color: var(--prim);
+    color: var(--dark-prim);
 }
 
 .container-menu {
@@ -31,20 +31,20 @@
     width: 100%;
     border-radius: 8px 8px 0 0;
     object-fit: cover;
-    border: 10px solid var(--tert);
+    border: 10px solid var(--dark-tert);
     background: rgb(138, 136, 136);
 }
 
 .item-card-image:hover {
     padding: 22px;
-    border: 15px solid var(--tert);
+    border: 15px solid var(--dark-tert);
     background: rgb(170, 168, 168);
     transition: all 0.3s ease-out;
 }
 
 .item-card-bottom-container {
     width: 100%;
-    background-color: var(--tert);
+    background-color: var(--dark-tert);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,13 +54,13 @@
 }
 
 .item-card-bottom-container:hover {
-    background: var(--tert);
+    background: var(--dark-tert);
     transition: all 0.3s ease-out;
 }
 
 .item-card-bottom-container h3 {
     text-decoration: underline;
-    text-decoration-color: var(--tert);
+    text-decoration-color: var(--dark-tert);
     text-align: center;
     font-size: 23px;
     font-weight: 500;

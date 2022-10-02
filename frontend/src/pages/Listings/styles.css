@@ -42,6 +42,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 8px;
+}
+
+.search-container h5 {
+    text-align: center;
+    padding: 4px;
+    width: 100%;
+    margin: 4px;
+    font-size: large;
+    border-radius: 8px;
+    font-weight: 800;
 }
 
 .search-form-group {
@@ -51,7 +62,7 @@
 
 .search-form-group label {
     font-size: 18px;
-    color: var(--prim);
+    color: var(--dark-prim);
 }
 
 .option-item {
@@ -107,10 +118,10 @@
         height: 40px;
         font-size: 18px;
         font-weight: 700;
-        border-right: 1px solid var(--prim);
+        border-right: 1px solid var(--dark-prim);
     }
     .option-item h5 {
         font-size: 16px;
-        border-right: 1px solid var(--prim);
+        border-right: 1px solid var(--dark-prim);
     }
 }

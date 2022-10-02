@@ -1,6 +1,6 @@
 .navbar {
     width: 100%;
-    background: var(--tert);
+    background: var(--dark-tert);
     height: 80px;
     display: flex;
     justify-content: start;
@@ -104,7 +104,7 @@
         display: table;
     }
     .navbar-link:hover {
-        background-color: var(--prim);
+        background-color: var(--dark-prim);
         border-radius: 8px;
     }
     .navbar-link-mobile {
@@ -119,7 +119,7 @@
         background-color: var(--quat);
     }
     .navbar-link-mobile:hover {
-        background-color: var(--tert);
+        background-color: var(--dark-tert);
         color: #fff;
         transition: 250ms;
     }

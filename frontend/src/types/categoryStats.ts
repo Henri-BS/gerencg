@@ -12,12 +12,12 @@ export type CategoryStats = {
 
 export type StatsPage = {
         content?: CategoryStats[];
-        last: boolean;
-        totalElements: number;
-        totalPages: number;
+        last?: boolean;
+        totalElements?: number;
+        totalPages?: number;
         size?: number;
         number: number;
-        first: boolean;
+        first?: boolean;
         numberOfElements?: number;
         empty?: boolean
 }

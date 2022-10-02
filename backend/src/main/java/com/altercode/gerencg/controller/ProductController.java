@@ -39,8 +39,12 @@ public class ProductController {
 	}
 
 	@GetMapping("/validate")
-	public ResponseEntity<Page<ProductDTO>> findAllByValidate(@RequestParam(defaultValue = "") String minDate, @RequestParam(defaultValue = "") String maxDate, Pageable pageable) {
-		Page<ProductDTO> list = service.findAllByValidate(minDate, maxDate, pageable);
+	public ResponseEntity<Page<ProductDTO>> findAllByValidate(
+			@RequestParam(value = "minValidate", defaultValue = "") String minValidate, 
+			@RequestParam(value = "maxValidate", defaultValue = "") String maxValidate, 
+			Pageable pageable) {
+		
+		Page<ProductDTO> list = service.findAllByValidate(minValidate, maxValidate, pageable);
 		return ResponseEntity.ok(list);
 	}
 

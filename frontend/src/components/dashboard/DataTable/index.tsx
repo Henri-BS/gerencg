@@ -11,11 +11,7 @@ function DataTable() {
 
     const [activePage, setActivePage] = useState(0);
     const [page, setPage] = useState<StatsPage>({
-        first: true,
-        last: true,
         number: 0,
-        totalElements: 0,
-        totalPages: 0
     });
 
     useEffect(() => {
@@ -41,7 +37,7 @@ function DataTable() {
             <div className="table-responsive ">
                 <table className="table border-table">
                     <thead className="bg-primary text-primary">
-                        <tr >
+                        <tr>
                             <th className="table-box "><h5>Categoria</h5></th>
                             <th className="table-box"><h5>Data de Resgistro</h5></th>
                             <th className="table-box striped-rows"><h5>Produtos Adicionados</h5></th>
@@ -54,9 +50,7 @@ function DataTable() {
                         {page.content?.map(item => (
                             <tr key={item.id}>
 
-                                <Link
-                                    to={`/category/${item.category.name}`}
-                                    className="table-box-title">
+                                <Link to={`/category/${item.category.name}`} className="table-box-title">
                                    <h5> {item.category.name}</h5>
                                 </Link>
 

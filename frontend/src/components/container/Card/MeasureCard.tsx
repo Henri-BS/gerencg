@@ -30,7 +30,6 @@ export function MeasureInfo({ measureId }: MeasureProps) {
             </div>
         </>
     );
-
 }
 
 type Cons = {

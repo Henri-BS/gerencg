@@ -1,24 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100;0,300;0,500;1,100&family=Nanum+Gothic&family=Nunito:wght@300&display=swap');
 :root {
-    --prim: rgb(73, 73, 73);
-    --seco: #1b1a1a;
-    --tert: #1c2022;
+    --dark-prim: rgb(73, 73, 73);
+    --dark-seco: #1b1a1a;
+    --dark-tert: #1c2022;
+    --blue-prim: #1d878d;
+    --blue-seco: #28c1c9;
+    --blue-tert: #08565a49;
     --quat: #e0e0e9;
     --quin: #fcf6f6;
     --sena: rgb(8, 108, 133);
     --sept: rgb(8, 133, 116);
     --octa: rgb(141, 3, 26);
-    --blue-prim: #1d878d;
-    --blue-seco: #28c1c9;
-    --blue-tert: #08565a49;
 }
 
 html,
 body {
     height: 100%;
     font-family: 'Nunito', sans-serif;
-    color: var(--seco);
-    background-color: var(--tert);
+    color: var(--dark-seco);
+    background-color: var(--dark-tert);
 }
 
 #root {
@@ -37,5 +37,5 @@ body {
 }
 
 .bg-primary {
-    background-color: var(--tert) !important;
+    background-color: var(--dark-tert) !important;
 }
