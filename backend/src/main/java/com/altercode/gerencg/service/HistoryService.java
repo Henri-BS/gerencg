@@ -1,5 +1,7 @@
 package com.altercode.gerencg.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.dto.ProductHistoryDTO;
+import com.altercode.gerencg.dto.QuantityTimelineDTO;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.entity.ProductHistory;
 import com.altercode.gerencg.repository.ProductHistoryRepository;
@@ -54,7 +57,9 @@ public class HistoryService {
 		return new ProductDTO(product);
 	}
 	
-	
+	public List<QuantityTimelineDTO> getProductQuantityInHistory() {
+		return historyRepository.getProductQuantityInHistory();
+	}
 
 
 }

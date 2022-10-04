@@ -1,5 +1,7 @@
 package com.altercode.gerencg.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.dto.ProductHistoryDTO;
+import com.altercode.gerencg.dto.QuantityTimelineDTO;
 import com.altercode.gerencg.service.HistoryService;
 
 
@@ -32,6 +35,11 @@ public class ProductHistoryController {
 	public ResponseEntity<Page<ProductHistoryDTO>> findAll(Pageable pageable) {
 		Page<ProductHistoryDTO> page = historyService.findAll(pageable);
 		return ResponseEntity.ok(page);
+	}
+	
+	@GetMapping("/quantity-timeline")
+	public List<QuantityTimelineDTO> find() {
+		return historyService.getProductQuantityInHistory();
 	}
 
 }

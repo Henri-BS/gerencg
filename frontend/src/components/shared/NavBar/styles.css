@@ -16,7 +16,7 @@
 
 .fa-list {
     color: var(--blue-prim);
-    font-size: 2rem;
+    font-size: 2.3rem;
 }
 
 .navbar-menu {
@@ -49,11 +49,14 @@
 }
 
 .navbar-logo {
-    width: 250px;
-    height: 50px;
+    margin-left: 10px;
+    width: 60px;
+    height: 60px;
+    padding: 4px 0px;
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
+    border-radius: 100%;
 }
 
 .menu-icon {
@@ -84,17 +87,19 @@
         list-style: none;
     }
     .menu-icon {
+        padding: 6px;
         display: block;
         position: absolute;
         top: 0;
         right: 0;
         transform: translate(-100%, 35%);
-        font-size: 1.8rem;
+        font-size: 1rem;
         cursor: pointer;
     }
     .fa-times {
         color: var(--blue-prim);
-        font-size: 2.5rem;
+        font-size: 2.3rem;
+        margin-right: 6px;
     }
     .navbar-link {
         font-size: 20px;

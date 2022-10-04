@@ -30,10 +30,10 @@ function ProductMenuBar({ productId }: ProductProps) {
     }
 
     const handleCLick = () => {
-axios(`${BASE_URL}/product/${productId}/notification`)
-.then((response) => {
-console.log("SUCESS")
-})
+        axios(`${BASE_URL}/product/${productId}/notification`)
+            .then((response) => {
+                console.log("SUCESS")
+            })
     }
 
     return (

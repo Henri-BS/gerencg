@@ -55,6 +55,10 @@
     font-weight: 800;
 }
 
+.form-group {
+    min-width: 110px;
+}
+
 .search-form-group {
     width: 300px;
     align-items: center;

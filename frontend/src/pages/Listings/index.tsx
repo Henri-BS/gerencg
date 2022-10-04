@@ -13,6 +13,7 @@ import { MeasurePage, MeasureProps } from "types/measure";
 import { MeasureCard } from "components/container/Card/MeasureCard";
 import "react-datepicker/dist/react-datepicker.css";
 import ReactDatePicker from "react-datepicker";
+
 //Product list with description filter 
 
 export function ProductsList() {
@@ -48,7 +49,7 @@ export function ProductsList() {
                     </nav>
 
                     <form className="col-5 col-sm-4 col-md-4  col-xl-4 search-container">
-                        <label className="form-group" >
+                        <label >
                         <h5><FaIcons.FaSearch /></h5>
                         </label>
                         <div className="form-group search-form-group">
@@ -269,7 +270,7 @@ export function ProductValidateList() {
                     
                     <form className="col-12 col-sm-4 col-md-4 search-container">
                         <label className="form-group" >
-                        <h5> Data final </h5>
+                        <h5>Data final</h5>
                         </label>
                         <div className="form-group search-form-group">
                             <ReactDatePicker

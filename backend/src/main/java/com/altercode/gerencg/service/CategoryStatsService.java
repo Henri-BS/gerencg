@@ -29,10 +29,7 @@ public class CategoryStatsService {
 	
 	public Page<CategoryStatsDTO> findAll(Pageable pageable){
 		categoryRepository.findAll();
-		
 		Page<CategoryStats> result = statsRepository.findAll(pageable);
-		
-		
 		return result.map(x -> new CategoryStatsDTO(x));
 	}
 	

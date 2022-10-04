@@ -27,7 +27,6 @@ export function ProductFormEdit({ productId }: Props) {
         event.preventDefault();
 
         const description = (event.target as any).description.value;
-        const image = (event.target as any).image.value;
         const price = (event.target as any).price.value;
         const quantity = (event.target as any).quantity.value;
         const validate = (event.target as any).validate.value;
@@ -39,7 +38,6 @@ export function ProductFormEdit({ productId }: Props) {
             data: {
                 productId: productId,
                 description: description,
-                image: image,
                 price: price,
                 quantity: quantity,
                 validate: validate
@@ -48,7 +46,7 @@ export function ProductFormEdit({ productId }: Props) {
         axios(config).then(response => {
             navigate("/")
         })
-        const productData = { description, image, price, quantity, validate };
+        const productData = { description, price, quantity, validate };
         console.log(productData)
     };
 
@@ -65,16 +63,6 @@ export function ProductFormEdit({ productId }: Props) {
                             className="form-control"
                             id="description"
                             placeholder={product?.description}
-                        />
-                    </div>
-
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="image">Image: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="image"
-                            placeholder={product?.image}
                         />
                     </div>
 
@@ -119,6 +107,7 @@ export function ProductFormEdit({ productId }: Props) {
                             Retornar
                         </button>
                     </Link>
+                    
                 </form>
             </div>
         </div>

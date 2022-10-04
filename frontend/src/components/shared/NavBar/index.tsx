@@ -7,12 +7,8 @@ import { useState } from "react";
 
 function NavBar() {
     const [click, setClick] = useState(false);
-
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
-
-   
-
 
     return (
         <nav className='navbar'>
@@ -23,7 +19,6 @@ function NavBar() {
 
             <div className="menu-icon" onClick={handleClick}>
                 <i className={click ? "fa fa-times" : "fas fa-list"} />
-
             </div>
 
             <ul className={click ? "navbar-menu active" : "navbar-menu"}>

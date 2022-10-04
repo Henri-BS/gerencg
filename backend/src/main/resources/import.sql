@@ -111,8 +111,6 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Ferrolho Redondo Rns', 'http://bappeda.jogjaprov.go.id/view_image/view/1094/002-padlock.png', 13.20, 8, '2999-12-30', null, '~', 'Ferramentas');
 
 
-
-
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Ácido Muriático Limpa Fácil', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.30, 9, '2024-10-06', 1.00, 'l', 'Limpeza');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Água Sanitária Nutrilar', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 2.50, 11, '2022-12-06', 1.00, 'l', 'Limpeza');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante LavaBem Limão', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 6.95, 3, '2023-05-09', 2.00, 'l', 'Limpeza');
@@ -124,3 +122,7 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sabão em Barra LavaBem', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 2.50, 32, '2022-12-06', 200, 'ml', 'Limpeza');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sabão em Pó Omo Lavagem Perfeita', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 7.70, 32, '2024-06-01', 400, 'ml', 'Limpeza');
 
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(1, 'Arroz Doura', 23, 3.60, '2023-04-02', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(1, 'Arroz Doura', 35, 3.60, '2023-06-30', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(1, 'Arroz Doura', 50, 3.80, '2023-09-10', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(1, 'Arroz Doura', 49, 3.80, '2024-02-02', now());
