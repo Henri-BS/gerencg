@@ -25,9 +25,11 @@
 
 @media screen and (max-width: 450px) {
     .chart-box {
-        max-width: 440px;
         align-items: center;
         justify-content: center;
+    }
+    .container-chart {
+        height: 400px;
         overflow-x: scroll;
     }
 }

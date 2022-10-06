@@ -28,7 +28,7 @@ export function ProductProfile() {
         <div className="max-container-charts ">
             <div className="chart-box">
               <div className="container-chart">
-                <h5 className="text-center">Total de Produtos Adicionados</h5>
+                <h5 className="text-center">Quantidade do Produto por Data</h5>
                 <QuantityProductChart productId={`${params.productId}`}/>
             </div>
           </div>
@@ -38,7 +38,6 @@ export function ProductProfile() {
       </div>
     </>
   );
-
 }
 
 //Category Profile Function

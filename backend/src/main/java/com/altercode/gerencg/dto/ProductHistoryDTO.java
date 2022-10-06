@@ -17,9 +17,24 @@ public class ProductHistoryDTO implements Serializable {
 	private LocalDate validate;
 	private LocalDateTime createdDate;
 	
+	private ProductDTO productDTO;
+	
 	public ProductHistoryDTO() {
 	}
-	
+
+	public ProductHistoryDTO(Long product, String description, String image, Double price, Integer quantity,
+			LocalDate validate, LocalDateTime createdDate, ProductDTO productDTO) {
+		this.product = product;
+		this.description = description;
+		this.image = image;
+		this.price = price;
+		this.quantity = quantity;
+		this.validate = validate;
+		this.createdDate = createdDate;
+		this.productDTO = productDTO;
+	}
+
+
 
 	public ProductHistoryDTO(ProductHistory entity) {
 		product = entity.getProduct().getId();
@@ -29,6 +44,7 @@ public class ProductHistoryDTO implements Serializable {
 		quantity = entity.getQuantity();
 		validate = entity.getValidate();
 		createdDate = entity.getCreatedDate();
+		productDTO = new ProductDTO(entity.getProduct());
 	}
 
 
@@ -100,4 +116,16 @@ public class ProductHistoryDTO implements Serializable {
 	public void setCreatedDate(LocalDateTime createdDate) {
 		this.createdDate = createdDate;
 	}
+
+
+	public ProductDTO getProductDTO() {
+		return productDTO;
+	}
+
+
+	public void setProductDTO(ProductDTO productDTO) {
+		this.productDTO = productDTO;
+	}
+	
+	
 }

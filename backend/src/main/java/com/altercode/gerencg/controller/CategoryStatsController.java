@@ -31,8 +31,8 @@ public class CategoryStatsController {
 	
 	@GetMapping("/list")
 	public ResponseEntity<Page<CategoryStatsDTO>> findAll(Pageable pageable){
-		Page<CategoryStatsDTO> list = service.findAll(pageable);
-		return ResponseEntity.ok(list);
+		Page<CategoryStatsDTO> page = service.findAll(pageable);
+		return ResponseEntity.ok(page);
 	}
 	
 	@PostMapping("/add")

@@ -22,7 +22,7 @@ function NavBar() {
             </div>
 
             <ul className={click ? "navbar-menu active" : "navbar-menu"}>
-                <li  className="navbar-item">
+                <li className="navbar-item">
                     <Link className="navbar-link " to="/product/add" onClick={closeMobileMenu}>
                         <AiIcons.AiOutlinePlus />  Novo Produto
                     </Link>
@@ -39,6 +39,7 @@ function NavBar() {
                         <AiIcons.AiOutlineDashboard /> Medidas
                     </Link>
                 </li>
+
             </ul>
 
         </nav>

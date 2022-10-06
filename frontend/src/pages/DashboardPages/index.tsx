@@ -1,6 +1,6 @@
 import { AddedProductsChart, RemovedProductsChart, ExpenseChart, IncomeChart } from "components/dashboard/Chart/CategoryChart";
-import { QuantityProductChart } from "components/dashboard/Chart/ProductCharts";
-import DataTable from "components/dashboard/DataTable";
+import CategoryDataTable from "components/dashboard/DataTable/CategoryDataTable";
+import ProductDataTable from "components/dashboard/DataTable/ProductDataTable";
 import { ProductHistoryList } from "pages/Listings";
 import "./styles.css"
 
@@ -42,7 +42,7 @@ export function Dashboard() {
           </div>
         </div>
         <h2 className="py-3">Registros de Informações</h2>
-        <DataTable />
+        <CategoryDataTable />
       </div>
     </>
   );
@@ -52,8 +52,8 @@ export function ProductDashboard() {
   return (
     <>
       <div className="container">
-        <h1 className=" py-4">Estatísticas das Categorias</h1>
-        <ProductHistoryList />
+        <h1 className=" py-4">Registros de Alterações dos Produtos</h1>
+        <ProductDataTable />
       </div>
     </>
   );

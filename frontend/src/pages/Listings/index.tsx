@@ -95,7 +95,8 @@ export function ProductsList() {
 export function ProductHistoryList() {
     const [historyPage, setHistoryPage] = useState<ProductHistoryPage>({
         content: [],
-        size: 10
+        size: 10,
+        number:0
     })
 
     useEffect(() => {

@@ -7,22 +7,22 @@ import { formatLocalDate } from "utils/format";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 
-function DataTable() {
+function CategoryDataTable() {
 
-    const [activePage, setActivePage] = useState(0);
+    const [pageNumber, setPageNumber] = useState(0);
     const [page, setPage] = useState<StatsPage>({
-        number: 0,
+        number: 0
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/category-stats/list?page=${activePage}&size=10&sort=registrationDate,desc`)
-            .then(response => {
+        axios.get(`${BASE_URL}/category-stats/list?page=${pageNumber}&size=10&sort=registrationDate,desc`)
+            .then((response) => {
                 setPage(response.data);
             });
-    }, [activePage]);
+    }, [pageNumber]);
 
-    const changePage = (index: number) => {
-        setActivePage(index);
+    const handlePageChange = (newPageNumber: number) => {
+        setPageNumber(newPageNumber);
     }
 
     return (
@@ -30,7 +30,7 @@ function DataTable() {
             <div className="pagination-container-menu">
                 <Pagination
                     page={page}
-                    onPageChange={changePage}
+                    onPageChange={handlePageChange}
                 />
             </div>
             
@@ -40,10 +40,10 @@ function DataTable() {
                         <tr>
                             <th className="table-box "><h5>Categoria</h5></th>
                             <th className="table-box"><h5>Data de Resgistro</h5></th>
-                            <th className="table-box striped-rows"><h5>Produtos Adicionados</h5></th>
-                            <th className="table-box striped-rows"><h5>Produtos Removidos</h5></th>
-                            <th className="table-box striped-rows"><h5>Renda</h5></th>
-                            <th className="table-box striped-rows"><h5>Despesa</h5></th>
+                            <th className="table-box "><h5>Produtos Adicionados</h5></th>
+                            <th className="table-box "><h5>Produtos Removidos</h5></th>
+                            <th className="table-box "><h5>Renda</h5></th>
+                            <th className="table-box "><h5>Despesa</h5></th>
                         </tr>
                     </thead>
                     <tbody className="border-0">
@@ -51,7 +51,7 @@ function DataTable() {
                             <tr key={item.id}>
 
                                 <Link to={`/category/${item.category.name}`} className="table-box-title">
-                                   <h5> {item.category.name}</h5>
+                                   <h5>{item.category.name}</h5>
                                 </Link>
 
                                 <td className="table-box">{formatLocalDate(item.registrationDate, "dd/MM/yyyy")}</td>
@@ -68,4 +68,4 @@ function DataTable() {
     );
 }
 
-export default DataTable;
+export default CategoryDataTable;

@@ -1,3 +1,5 @@
+import { Product } from "./product";
+
 export type ProductHistory = {
     id: number;
     description: string;
@@ -6,6 +8,7 @@ export type ProductHistory = {
     quantity: number;
     validate: string;
     createdDate: string;
+    product: number;
   };
 
   export type ProductHistoryPage = {
@@ -15,7 +18,7 @@ export type ProductHistory = {
     numberOfElements?: number;
     totalElements?: number;
     totalPages?: number;
-    number?: number;
+    number: number;
     empty?: boolean;
     first?: boolean;
     last?: boolean;

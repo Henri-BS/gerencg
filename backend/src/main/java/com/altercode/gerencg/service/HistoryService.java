@@ -1,7 +1,5 @@
 package com.altercode.gerencg.service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.dto.ProductHistoryDTO;
-import com.altercode.gerencg.dto.QuantityTimelineDTO;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.entity.ProductHistory;
 import com.altercode.gerencg.repository.ProductHistoryRepository;
@@ -31,9 +28,9 @@ public class HistoryService {
 	
 	
 	public Page<ProductHistoryDTO> findAll(Pageable pageable) {
+		productRepository.findAll();
 		Page<ProductHistory> result = historyRepository.findAll(pageable);
-		Page<ProductHistoryDTO> page = result.map(x -> new ProductHistoryDTO(x));
-		return page;
+		return result.map(x -> new ProductHistoryDTO(x));
 	}
 	
 	public ProductDTO updateProduct(ProductHistoryDTO dto) {
