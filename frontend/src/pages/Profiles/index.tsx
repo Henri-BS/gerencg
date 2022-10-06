@@ -7,6 +7,7 @@ import CategoryLateralBar from "components/container/LateralBar/CategoryLateralB
 import { MeasureInfo } from "components/container/Card/MeasureCard";
 import { ProductFormEdit } from "components/container/Form/ProductFormEdit";
 import { ProductFormAdd } from "components/container/Form/ProductFormAdd";
+import { QuantityProductChart } from "components/dashboard/Chart/ProductCharts";
 
 //Product profile 
 export function ProductProfile() {
@@ -22,7 +23,17 @@ export function ProductProfile() {
 
         <div className="col-12 col-md-12 col-lg-6 col-xl-8  p-0">
           <ProductMenuBar productId={`${params.productId}`} />
-
+          <div className="container">
+        <h1 className=" py-4">Estatísticas do Produto</h1>
+        <div className="max-container-charts ">
+            <div className="chart-box">
+              <div className="container-chart">
+                <h5 className="text-center">Total de Produtos Adicionados</h5>
+                <QuantityProductChart productId={`${params.productId}`}/>
+            </div>
+          </div>
+        </div>
+      </div>
         </div>
       </div>
     </>

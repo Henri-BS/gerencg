@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { QuantityTimelineChart } from "types/product";
+import { ProductProps, QuantityTimelineChart } from "types/product";
 import { BASE_URL } from "utils/requests";
 import Chart from 'react-apexcharts'
+import { ProductHistory, ProductHistoryPage } from "types/productHistory";
+import moment from "moment";
 
 type SeriesData = {
     name: string;
@@ -14,7 +16,7 @@ type QuantityChartData = {
     series: SeriesData[];
 }
 
-export function QuantityProductChart() {
+export function QuantityProductChart({productId}: ProductProps) {
 
     const [chartData, setChartData] = useState<QuantityChartData>({
         labels: [],
@@ -29,10 +31,10 @@ export function QuantityProductChart() {
 
     useEffect(() => {
 
-        axios.get(`${BASE_URL}/history/quantity-timeline`)
+        axios.get(`${BASE_URL}/history/${productId}`)
             .then((response) => {
-                const data = response.data as QuantityTimelineChart[];
-                const myLabels = data.map(x => x.date);
+                const data = response.data as ProductHistory[];
+                const myLabels = data.map(x => moment(x.createdDate).format("DD/MM/YYYY"))
                 const mySeries = data.map(x => x.quantity);
 
                 setChartData({

@@ -53,17 +53,6 @@ export function ProductDashboard() {
     <>
       <div className="container">
         <h1 className=" py-4">Estatísticas das Categorias</h1>
-
-        <div className="max-container-charts ">
-          <div className="row ">
-            <div className="chart-box col-lg-6">
-              <div className="container-chart">
-                <h5 className="text-center">Total de Produtos Adicionados</h5>
-                <QuantityProductChart />
-              </div>
-            </div>
-          </div>
-        </div>
         <ProductHistoryList />
       </div>
     </>
