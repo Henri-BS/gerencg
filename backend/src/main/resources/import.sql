@@ -125,4 +125,9 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(1, 'Arroz Doura', 23, 3.60, '2023-04-02', now());
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(1, 'Arroz Doura', 35, 3.60, '2023-06-30', now());
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(1, 'Arroz Doura', 50, 3.80, '2023-09-10', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(1, 'Arroz Doura', 49, 3.80, '2024-02-02', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(1, 'Arroz Doura', 49, 3.90, '2024-02-02', now());
+
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(2, 'Arroz Catarinão', 72, 4.50, '2023-04-02', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(2, 'Arroz Catarinão', 64, 4.60, '2023-06-30', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(2, 'Arroz Catarinão', 70, 4.75, '2023-09-10', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(2, 'Arroz Catarinão', 88, 4.75, '2024-02-02', now());

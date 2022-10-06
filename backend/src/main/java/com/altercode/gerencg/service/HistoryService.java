@@ -1,6 +1,9 @@
 package com.altercode.gerencg.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,7 +37,7 @@ public class HistoryService {
 	}
 	
 	public ProductDTO updateProduct(ProductHistoryDTO dto) {
-		Product product = productRepository.findById(dto.getProductId()).get();
+		Product product = productRepository.findById(dto.getProduct()).get();
 		
 		ProductHistory history = new ProductHistory();
 		history.setProduct(product);
@@ -56,9 +59,10 @@ public class HistoryService {
 		
 		return new ProductDTO(product);
 	}
-	
-	public List<QuantityTimelineDTO> getProductQuantityInHistory() {
-		return historyRepository.getProductQuantityInHistory();
+
+	public List<ProductHistoryDTO> findByProduct(Product product) {
+		List<ProductHistory> result = historyRepository.findByProduct(product);
+		return result.stream().map(x -> new ProductHistoryDTO(x)).collect(Collectors.toList());
 	}
 
 

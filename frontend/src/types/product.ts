@@ -1,6 +1,10 @@
 import { Category } from "./category";
 import { Measure } from "./measure";
 
+export type ProductProps = {
+  productId: string;
+}
+
 export type Product = {
   id: number;
   description: string;
@@ -26,6 +30,8 @@ export type ProductPage = {
   last?: boolean;
 };
 
-export type ProductProps = {
-  productId: string;
-}
+export type QuantityTimelineChart = {
+  description: string;
+  quantity: number;
+  date: string;
+};

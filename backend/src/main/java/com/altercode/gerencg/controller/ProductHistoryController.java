@@ -7,14 +7,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.dto.ProductHistoryDTO;
 import com.altercode.gerencg.dto.QuantityTimelineDTO;
+import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.service.HistoryService;
 
 
@@ -37,9 +40,10 @@ public class ProductHistoryController {
 		return ResponseEntity.ok(page);
 	}
 	
-	@GetMapping("/quantity-timeline")
-	public List<QuantityTimelineDTO> find() {
-		return historyService.getProductQuantityInHistory();
+	@GetMapping("/{product}")
+	public ResponseEntity<List<ProductHistoryDTO>> findByProduct(@PathVariable Product product) {
+		List<ProductHistoryDTO> list = historyService.findByProduct(product);
+		return ResponseEntity.ok(list);
 	}
 
 }

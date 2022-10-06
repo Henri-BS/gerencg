@@ -2,7 +2,7 @@ import ProductLateralBar from "components/container/LateralBar/ProductLateralBar
 import { useParams } from "react-router-dom";
 import "./styles.css"
 import ProductMenuBar from "components/container/HorizontalBar/ProductHorizontalBar";
-import { ProductCategoryList, ProductHistoryList, ProductMeasureList } from "pages/Listings";
+import { ProductCategoryList, ProductMeasureList } from "pages/Listings";
 import CategoryLateralBar from "components/container/LateralBar/CategoryLateralBar";
 import { MeasureInfo } from "components/container/Card/MeasureCard";
 import { ProductFormEdit } from "components/container/Form/ProductFormEdit";
@@ -22,7 +22,7 @@ export function ProductProfile() {
 
         <div className="col-12 col-md-12 col-lg-6 col-xl-8  p-0">
           <ProductMenuBar productId={`${params.productId}`} />
-          < ProductHistoryList />
+
         </div>
       </div>
     </>
@@ -78,8 +78,8 @@ export function MeasureProfile() {
           <div>
           <MeasureInfo measureId={`${params.measureId}`} />
           </div>
-          
           <ProductMeasureList measureId={`${params.measureId}`} />
       </div>  
   );
 }
+

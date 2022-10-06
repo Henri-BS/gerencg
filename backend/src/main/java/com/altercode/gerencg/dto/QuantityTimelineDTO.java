@@ -1,50 +1,39 @@
 package com.altercode.gerencg.dto;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+
 
 import com.altercode.gerencg.entity.Product;
 
 public class QuantityTimelineDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private Long product;
-	private Integer quantity;
-	private LocalDateTime date;
 
-	
+	private String productName;
+	private Long sum;
+
 
 	public QuantityTimelineDTO() {
 	}
 
-	public QuantityTimelineDTO(Product product, Integer quantity, LocalDateTime date) {
-		this.product = product.getId();
-		this.quantity = quantity;
-		this.date = date;
-
+	public QuantityTimelineDTO(Product product, Long sum) {
+		productName = product.getDescription();
+		this.sum = sum;
 	}
 
-	public Long getProduct() {
-		return product;
+	public Long getSum() {
+		return sum;
 	}
 
-	public void setProduct(Long product) {
-		this.product = product;
+	public void setSum(Long sum) {
+		this.sum = sum;
 	}
 
-	public Integer getQuantity() {
-		return quantity;
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
-
-	public LocalDateTime getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDateTime date) {
-		this.date = date;
-	}	
 }

@@ -115,7 +115,7 @@ export function AddedProductsChart() {
     useEffect(() => {
 
         axios.get(`${BASE_URL}/category-stats/flow-of-category`)
-            .then(response => {
+            .then((response) => {
                 const data = response.data as FlowCategory[];
                 const myLabels = data.map(x => x.categoryName);
                 const mySeries = data.map(x => x.addedProduct);

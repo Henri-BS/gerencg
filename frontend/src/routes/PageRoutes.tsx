@@ -1,6 +1,6 @@
 import Footer from "components/shared/Footer";
 import NavBar from "components/shared/NavBar";
-import Dashboard from "pages/StatsDashboard";
+import {Dashboard, ProductDashboard} from "pages/DashboardPages";
 import Home from "pages/Home";
 import { CategoryList, MeasureList, ProductsList, ProductValidateList } from "pages/Listings";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
@@ -17,6 +17,7 @@ function PageRoutes() {
                 <Route path="/" element={<Home />} />
 
                 <Route path="/product/list"element={<ProductsList/>}/>
+                <Route path="/products-stats" element={<ProductDashboard />} />
 
                 <Route path="/product/add" element={<SaveProduct />} />
                 <Route path="/find-by-validate" element={<ProductValidateList />} />

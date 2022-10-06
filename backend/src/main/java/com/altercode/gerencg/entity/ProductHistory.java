@@ -131,6 +131,4 @@ public class ProductHistory {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	
-	
 }

@@ -1,16 +1,17 @@
-import { AddedProductsChart, RemovedProductsChart, ExpenseChart, IncomeChart} from "components/dashboard/Chart/CategoryChart";
+import { AddedProductsChart, RemovedProductsChart, ExpenseChart, IncomeChart } from "components/dashboard/Chart/CategoryChart";
+import { QuantityProductChart } from "components/dashboard/Chart/ProductCharts";
 import DataTable from "components/dashboard/DataTable";
+import { ProductHistoryList } from "pages/Listings";
 import "./styles.css"
 
-const Dashboard = () => {
+export function Dashboard() {
   return (
     <>
       <div className="container">
-        <h1 className=" py-4">Categorias</h1>
+        <h1 className=" py-4">Estatísticas das Categorias</h1>
 
         <div className="max-container-charts ">
           <div className="row ">
-
             <div className="chart-box col-lg-6">
               <div className="container-chart">
                 <h5 className="text-center">Total de Produtos Adicionados</h5>
@@ -18,15 +19,14 @@ const Dashboard = () => {
               </div>
             </div>
 
-           
             <div className="chart-box col-lg-6">
               <div className="container-chart ">
                 <h5 className="text-center">Total de Produtos Removidos</h5>
                 <RemovedProductsChart />
               </div>
             </div>
-            
- <div className="chart-box col-lg-6">
+
+            <div className="chart-box col-lg-6">
               <div className="container-chart">
                 <h5 className="text-center ">Índice de Renda por Categoria</h5>
                 <ExpenseChart />
@@ -41,14 +41,31 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-
-        <div className="py-3">
-          <h2>Registros de Informações</h2>
-        </div>
+        <h2 className="py-3">Registros de Informações</h2>
         <DataTable />
       </div>
     </>
   );
 }
 
-export default Dashboard;
+export function ProductDashboard() {
+  return (
+    <>
+      <div className="container">
+        <h1 className=" py-4">Estatísticas das Categorias</h1>
+
+        <div className="max-container-charts ">
+          <div className="row ">
+            <div className="chart-box col-lg-6">
+              <div className="container-chart">
+                <h5 className="text-center">Total de Produtos Adicionados</h5>
+                <QuantityProductChart />
+              </div>
+            </div>
+          </div>
+        </div>
+        <ProductHistoryList />
+      </div>
+    </>
+  );
+}
