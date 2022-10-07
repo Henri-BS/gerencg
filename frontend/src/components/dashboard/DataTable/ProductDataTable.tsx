@@ -1,5 +1,4 @@
 import axios from "axios";
-import ProductLateralBar from "components/container/LateralBar/ProductLateralBar";
 import Pagination from "components/shared/Pagination";
 import moment from "moment";
 import { useEffect, useState } from "react";

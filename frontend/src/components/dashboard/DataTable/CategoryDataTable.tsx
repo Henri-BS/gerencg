@@ -57,8 +57,8 @@ function CategoryDataTable() {
                                 <td className="table-box">{formatLocalDate(item.registrationDate, "dd/MM/yyyy")}</td>
                                 <td className="table-box">{item.addedProducts}</td>
                                 <td className="table-box">{item.removedProducts}</td>
-                                <td className="table-box">{item.income}</td>
-                                <td className="table-box">{item.expense}</td>
+                                <td className="table-box">{item.income.toFixed(2)} </td>
+                                <td className="table-box">{item.expense.toFixed(2)} </td>
                             </tr>
                         ))}
                     </tbody>

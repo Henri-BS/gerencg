@@ -4,7 +4,7 @@ import {Dashboard, ProductDashboard} from "pages/DashboardPages";
 import Home from "pages/Home";
 import { CategoryList, MeasureList, ProductsList, ProductValidateList } from "pages/Listings";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { ProductProfile, CategoryProfile, MeasureProfile, SaveProduct, UpdateProduct} from "pages/Profiles";
+import { ProductProfile, CategoryProfile, MeasureProfile, SaveProduct, UpdateProduct, SaveCategoryStats} from "pages/Profiles";
 
 
 function PageRoutes() {
@@ -31,7 +31,8 @@ function PageRoutes() {
                 </Route>
 
                 <Route path="/category/list" element={<CategoryList />} />
-                <Route path="/categories-stats" element={<Dashboard />} />
+                <Route path="/category-stats" element={<Dashboard />} />
+                <Route path="/category-stats/add" element={<SaveCategoryStats />} />
 
                 <Route path="/category">
                     <Route path=":categoryId" element={<CategoryProfile />} />

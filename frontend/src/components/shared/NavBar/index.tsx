@@ -29,6 +29,12 @@ function NavBar() {
                 </li>
 
                 <li className="navbar-item">
+                    <Link className="navbar-link " to="/category-stats/add" onClick={closeMobileMenu}>
+                        <AiIcons.AiOutlineOrderedList />  Novo Registro
+                    </Link>
+                </li>
+
+                <li className="navbar-item">
                     <Link className="navbar-link" to="/find-by-validate" onClick={closeMobileMenu}>
                         <AiIcons.AiFillClockCircle /> Validades
                     </Link>

@@ -5,8 +5,8 @@ import ProductMenuBar from "components/container/HorizontalBar/ProductHorizontal
 import { ProductCategoryList, ProductMeasureList } from "pages/Listings";
 import CategoryLateralBar from "components/container/LateralBar/CategoryLateralBar";
 import { MeasureInfo } from "components/container/Card/MeasureCard";
-import { ProductFormEdit } from "components/container/Form/ProductFormEdit";
-import { ProductFormAdd } from "components/container/Form/ProductFormAdd";
+import { AddProduct, ProductFormEdit } from "components/container/Form/ProductForm";
+import { AddCategoryStats } from "components/container/Form/CategoryForm";
 import { QuantityProductChart } from "components/dashboard/Chart/ProductCharts";
 
 //Product profile 
@@ -63,7 +63,7 @@ export function SaveProduct() {
 
   return(
       <div className="container-blur">
-          <ProductFormAdd />
+          <AddProduct />
       </div>  
   );
 }
@@ -75,6 +75,15 @@ const params = useParams();
   return(
       <div className="container-blur">
           <ProductFormEdit productId={`${params.productId}`}/>
+      </div>  
+  );
+}
+
+export function SaveCategoryStats() {
+
+  return(
+      <div className="container-blur">
+          <AddCategoryStats />
       </div>  
   );
 }
