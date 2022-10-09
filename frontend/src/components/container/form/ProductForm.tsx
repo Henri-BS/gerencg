@@ -7,7 +7,6 @@ import { MeasurePage } from "types/measure";
 import { Product, ProductProps } from "types/product";
 import { BASE_URL } from "utils/requests";
 
-
 export function AddProduct() {
     const navigate = useNavigate();
     const [product, setProduct] = useState<Product>()

@@ -36,8 +36,8 @@ public class CategoryStatsController {
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<CategoryStatsDTO> saveStats(@RequestBody CategoryStatsDTO dto) {
-		CategoryStatsDTO newStats = service.saveStats(dto);
+	public ResponseEntity<CategoryStatsDTO> saveStats(@RequestBody CategoryStatsDTO categoryStats) {
+		CategoryStatsDTO newStats = service.saveStats(categoryStats);
 		return new ResponseEntity<CategoryStatsDTO>( newStats, HttpStatus.CREATED);
 	}
 	

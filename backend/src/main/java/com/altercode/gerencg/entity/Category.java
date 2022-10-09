@@ -46,12 +46,11 @@ public class Category {
 	}
 
 	public Category( String name, String image, Integer totalProducts,
-			LocalDateTime lastModifiedDate, List<CategoryStats> categoryStats) {
+			LocalDateTime lastModifiedDate) {
 		this.name = name;
 		this.image = image;
 		this.totalProducts = totalProducts;
 		this.lastModifiedDate = lastModifiedDate;
-		this.categoryStats = categoryStats;
 	}
 
 		public String getName() {

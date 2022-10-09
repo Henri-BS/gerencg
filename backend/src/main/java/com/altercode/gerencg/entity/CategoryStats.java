@@ -43,11 +43,12 @@ public class CategoryStats {
 			Double categoryValue, LocalDate registrationDate, 
 			Double expense, Double income,  Category category) {
 		this.id = id;
-		this.addedProducts = addedProducts;
-		this.removedProducts = removedProducts;
-		this.expense = expense;
-		this.income = income;
 		this.registrationDate = registrationDate;
+		this.addedProducts = addedProducts;
+		this.removedProducts = removedProducts;		
+		this.income = income;
+		this.expense = expense;
+		this.category = category;
 	}
 
 	public Long getId() {
@@ -105,6 +106,4 @@ public class CategoryStats {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
-	
 }

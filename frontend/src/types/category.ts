@@ -7,7 +7,7 @@ export type Category = {
 };
 
 export type CategoryPage = {
-  content?: Category[];
+  content: Category[];
   last?: boolean;
   totalElements?: number;
   totalPages?: number;

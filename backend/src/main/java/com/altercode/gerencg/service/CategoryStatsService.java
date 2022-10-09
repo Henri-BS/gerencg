@@ -35,15 +35,15 @@ public class CategoryStatsService {
 	
 	public CategoryStatsDTO saveStats(CategoryStatsDTO dto) {
 		
-		Category category = categoryRepository.findById(dto.getCategory().getName()).get(); 
+		Category category = categoryRepository.findById(dto.getCategory()).get(); 
 		
 		CategoryStats add = new CategoryStats();
 		add.setRegistrationDate(dto.getRegistrationDate());
-		add.setCategory(category);
 		add.setAddedProducts(dto.getAddedProducts());
 		add.setRemovedProducts(dto.getRemovedProducts());
 		add.setIncome(dto.getIncome());
 		add.setExpense(dto.getExpense());
+		add.setCategory(category);
 	
 		category.setTotalRegisters(category.getCategoryStats().size());
 		category = categoryRepository.save(category);
@@ -54,7 +54,7 @@ public class CategoryStatsService {
 	public CategoryStatsDTO updateStats(CategoryStatsDTO dto) {
 		
 		CategoryStats edit = statsRepository.findById(dto.getId()).get();
-		Category category = categoryRepository.findById(dto.getCategory().getName()).get();
+		Category category = categoryRepository.findById(dto.getCategory()).get();
 		
 		edit.setRegistrationDate(dto.getRegistrationDate());
 		edit.setCategory(category);

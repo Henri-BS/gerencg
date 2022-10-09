@@ -33,5 +33,4 @@ export type ProductPage = {
 export type QuantityTimelineChart = {
   description: string;
   quantity: number;
-  date: string;
 };

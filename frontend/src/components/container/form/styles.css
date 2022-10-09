@@ -37,9 +37,16 @@
 }
 
 .msg-container {
-    padding: 4px;
+    text-align: center;
+    padding: 0px;
     border-radius: 10px;
     color: rgba(255, 255, 255, 0.692);
+    background-color: var(--dark-seco);
+    left: 20%;
+}
+
+.msg-container:active {
+    left: 0;
 }
 
 .form-btn-container {

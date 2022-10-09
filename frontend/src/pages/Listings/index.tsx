@@ -67,9 +67,7 @@ export function ProductsList() {
 
                 <div className="pagination-container-menu">
                     <div className="pagination-item">
-
-                        <Pagination
-                            page={productPage}
+                        <Pagination page={productPage}
                             onPageChange={handlePageChange}
                         />
                     </div>
@@ -219,10 +217,10 @@ export function ProductMeasureList({ measureId }: MeasureProps) {
 export function ProductValidateList() {
 
     const min = new Date(new Date().setDate(new Date().getDate() - 30))
-
+    const max = new Date(new Date().setDate(new Date().getDate() + 30))
 
     const [minValidate, setMinValidate] = useState(min);
-    const [maxValidate, setMaxValidate] = useState(new Date());
+    const [maxValidate, setMaxValidate] = useState(max);
     const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<ProductPage>({
         content: [],

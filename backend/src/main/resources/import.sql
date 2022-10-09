@@ -48,7 +48,6 @@ INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('indefinido', 
 
 
 
-
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Arroz Doura', 'https://cdn3.iconfinder.com/data/icons/food-1-11/128/food-22-512.png', 3.90, 43, '2022-08-04', 1.00, 'kg', 'Alimentícios');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Arroz Catarinão', 'https://cdn3.iconfinder.com/data/icons/food-1-11/128/food-22-512.png', 4.75, 82, '2022-05-02', 1.00, 'kg', 'Alimentícios');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Arroz Carvalho', 'https://cdn3.iconfinder.com/data/icons/food-1-11/128/food-22-512.png', 4.75, 48, '2022-08-04', 1.00, 'kg', 'Alimentícios');
@@ -76,7 +75,6 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Moto Rodão BS Toys', 'https://st.depositphotos.com/3146979/4704/v/600/depositphotos_47044003-stock-illustration-red-motorcycle.jpg', 11.95, 6, '2999-12-30', null, '~', 'Brinquedos');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Boneco Soldado Pequeno BS Toys', 'https://cdn0.iconfinder.com/data/icons/science-80/64/astronaut-space_suit-job-occupation-512.png', 12.95, 2, '2999-12-30', null, '~', 'Brinquedos');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Jeep Injetsul Brinquedos', 'https://cdn0.iconfinder.com/data/icons/transport-lineal-color/512/car_cabriolet_auto_transport_automobile-512.png', 31.40, 4, '2999-12-30', null, '~', 'Brinquedos');
-
 
 
 
@@ -122,12 +120,12 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sabão em Barra LavaBem', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 2.50, 32, '2022-12-06', 200, 'ml', 'Limpeza');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sabão em Pó Omo Lavagem Perfeita', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 7.70, 32, '2024-06-01', 400, 'ml', 'Limpeza');
 
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(1, 'Arroz Doura', 23, 3.60, '2023-04-02', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(1, 'Arroz Doura', 35, 3.60, '2023-06-30', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(1, 'Arroz Doura', 50, 3.80, '2023-09-10', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(1, 'Arroz Doura', 49, 3.90, '2024-02-02', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(1, 'Arroz Doura', 23, 3.60, '2023-04-02', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(1, 'Arroz Doura', 35, 3.60, '2023-06-30', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(1, 'Arroz Doura', 50, 3.80, '2023-09-10', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(1, 'Arroz Doura', 49, 3.90, '2024-02-02', now());
 
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(2, 'Arroz Catarinão', 72, 4.50, '2023-04-02', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(2, 'Arroz Catarinão', 64, 4.60, '2023-06-30', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(2, 'Arroz Catarinão', 70, 4.75, '2023-09-10', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUEs(2, 'Arroz Catarinão', 88, 4.75, '2024-02-02', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(2, 'Arroz Catarinão', 72, 4.50, '2023-04-02', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(2, 'Arroz Catarinão', 64, 4.60, '2023-06-30', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(2, 'Arroz Catarinão', 70, 4.75, '2023-09-10', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(2, 'Arroz Catarinão', 88, 4.75, '2024-02-02', now());

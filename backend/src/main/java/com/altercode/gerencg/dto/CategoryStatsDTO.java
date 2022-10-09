@@ -1,41 +1,43 @@
 package com.altercode.gerencg.dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import com.altercode.gerencg.entity.CategoryStats;
 
-public class CategoryStatsDTO {
+public class CategoryStatsDTO implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private Long id;
+	private LocalDate registrationDate;
 	private Integer addedProducts;
 	private Integer removedProducts;
 	private Double income;
 	private Double expense;
-	private LocalDate registrationDate;
 	
-	private CategoryProfileDTO category;
+	private String category;
 	
 	public CategoryStatsDTO() {}
 
-	public CategoryStatsDTO(Long id, Integer addedProducts, Integer removedProducts, 
-			Double income, Double expense, LocalDate registrationDate, CategoryProfileDTO category) {
+	public CategoryStatsDTO(Long id, LocalDate registrationDate, Integer addedProducts, Integer removedProducts,
+			Double income, Double expense, String category) {
 		this.id = id;
+		this.registrationDate = registrationDate;
 		this.addedProducts = addedProducts;
 		this.removedProducts = removedProducts;
 		this.income = income;
 		this.expense = expense;
-		this.registrationDate = registrationDate;
 		this.category = category;
 	}
-	
+
 	public CategoryStatsDTO(CategoryStats entity) {
-		id = entity.getId();
+		id = entity.getId();		
+		registrationDate = entity.getRegistrationDate();
 		addedProducts = entity.getAddedProducts();
 		removedProducts = entity.getRemovedProducts();
 		income = entity.getIncome();
 		expense = entity.getExpense();
-		registrationDate = entity.getRegistrationDate();
-		category = new CategoryProfileDTO(entity.getCategory());
-
+		category = entity.getCategory().getName();
 	}
 
 	public Long getId() {
@@ -88,13 +90,11 @@ public class CategoryStatsDTO {
 		this.registrationDate = registrationDate;
 	}
 
-	public CategoryProfileDTO getCategory() {
+	public String getCategory() {
 		return category;
 	}
 
-	public void setCategory(CategoryProfileDTO category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
-
-	
 }
