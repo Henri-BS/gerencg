@@ -1,7 +1,7 @@
 package com.altercode.gerencg.repository;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -15,6 +15,6 @@ public interface ProductHistoryRepository extends JpaRepository<ProductHistory, 
 			+ "FROM ProductHistory AS obj GROUP BY obj.product")
 	QuantityTimelineDTO getProductQuantityInHistory();
 
-	List<ProductHistory> findByProduct(Product product);
+	Page<ProductHistory> findByProduct(Pageable pageable, Product product);
 		
 }

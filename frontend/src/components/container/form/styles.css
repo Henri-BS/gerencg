@@ -18,6 +18,17 @@
     color: var(--quin);
 }
 
+.form-links {
+    color: var(--blue-seco);
+    font-size: large;
+    text-decoration: underline;
+    transition: all 0.3s ease-out;
+}
+
+.form-links:hover {
+    color: var(--quin);
+}
+
 .form-card-container {
     background-color: var(--dark-tert);
     border: 1px solid var(--dark-prim);
@@ -34,19 +45,6 @@
     font-size: 14px;
     font-weight: 700;
     min-height: 40px;
-}
-
-.msg-container {
-    text-align: center;
-    padding: 0px;
-    border-radius: 10px;
-    color: rgba(255, 255, 255, 0.692);
-    background-color: var(--dark-seco);
-    left: 20%;
-}
-
-.msg-container:active {
-    left: 0;
 }
 
 .form-btn-container {
@@ -72,4 +70,17 @@
     color: #fff;
     border-radius: 5px;
     border: 2.5px solid var(--quat);
+}
+
+.msg-container {
+    text-align: center;
+    padding: 0px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.692);
+    background-color: var(--dark-seco);
+    left: 20%;
+}
+
+.msg-container:active {
+    left: 0;
 }

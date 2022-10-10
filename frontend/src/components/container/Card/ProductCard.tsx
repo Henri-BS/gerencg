@@ -72,5 +72,4 @@ export function ProductHistoryCard({ history }: Cons) {
             </div>
         </div>
     );
-
 }

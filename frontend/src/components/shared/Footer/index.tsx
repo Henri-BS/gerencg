@@ -34,7 +34,7 @@ function Footer() {
                 </div>
 
                 <div className="col-4 footer-box">
-                    <a href={links.linkedin} color="inherit">
+                    <a href={links.linkedin} >
                         <img className='footer-logo' src={ILinkedIn} alt='logo' />
                         LinkedIn
                     </a>

@@ -18,15 +18,28 @@
     color: var(--quat);
     padding: 12px;
     display: flex;
+    margin: 4px 0px;
 }
 
 .footer-box {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    color: var(--quat);
+    font-size: large;
     height: 40px;
     display: flex;
+}
+
+.footer-box a {
+    color: var(--blue-seco);
+    font-size: large;
+    text-decoration: underline;
+    transition: all 0.2s ease-out;
+}
+
+.footer-box a:hover {
+    color: var(--quin);
+    border-left: solid var(--blue-prim);
 }
 
 .footer-logo {
@@ -36,6 +49,8 @@
     text-decoration: none;
     font-size: 2rem;
     margin: 10px;
+    color: var(--blue-prim);
+    transition: all 0.3s ease-out;
 }
 
 @media screen and (max-width: 550px) {

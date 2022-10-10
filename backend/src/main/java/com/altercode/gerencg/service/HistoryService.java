@@ -1,8 +1,5 @@
 package com.altercode.gerencg.service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,6 +30,11 @@ public class HistoryService {
 		return result.map(x -> new ProductHistoryDTO(x));
 	}
 	
+		public Page<ProductHistoryDTO> findByProduct(Pageable pageable, Product product) {
+		Page<ProductHistory> result = historyRepository.findByProduct(pageable, product);
+		return result.map(x -> new ProductHistoryDTO(x));
+	}
+
 	public ProductDTO updateProduct(ProductHistoryDTO dto) {
 		Product product = productRepository.findById(dto.getProduct()).get();
 		
@@ -56,11 +58,4 @@ public class HistoryService {
 		
 		return new ProductDTO(product);
 	}
-
-	public List<ProductHistoryDTO> findByProduct(Product product) {
-		List<ProductHistory> result = historyRepository.findByProduct(product);
-		return result.stream().map(x -> new ProductHistoryDTO(x)).collect(Collectors.toList());
-	}
-
-
 }

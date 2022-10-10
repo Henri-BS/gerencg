@@ -9,7 +9,6 @@ import { BASE_URL } from "utils/requests";
 
 export function AddProduct() {
     const navigate = useNavigate();
-    const [product, setProduct] = useState<Product>()
     const [msg, setMsg] = useState('')
 
     //Get MeasureList for the measure type selector        
@@ -38,29 +37,7 @@ export function AddProduct() {
             })
     }, [])
 
-    const addProduct = () => {
-        console.log("data", product);
-        const productData = {
-            id: (product?.id),
-            description: product?.description,
-            image: product?.image,
-            price: product?.price,
-            quantity: product?.quantity,
-            validate: product?.validate,
-            measureValue: product?.measureValue,
-            measure: product?.measure,
-            category: product?.category
-        }
-        axios.post(`${BASE_URL}/product/add`, productData)
-            .then((response) => {
-                console.log("Adicionado com Sucesso")
-                setProduct(response.data);
-                setMsg("Produto Adicionado")
-            }).catch(() => {
-                setMsg("Erro")
-            })
-    }
-
+    
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const description = (event.target as any).description.value;
         const image = (event.target as any).image.value;
@@ -87,8 +64,11 @@ export function AddProduct() {
             },
         };
         axios(config).then(response => {
+            setMsg("Produto Adicionado");
             navigate("/product/list");
-        });
+        }).catch(() => {
+            setMsg("Erro");
+        })
     };
 
 
@@ -151,7 +131,7 @@ export function AddProduct() {
                     </div>
 
                     <div className="form-btn-container">
-                        <button type="submit" className="gerencg-btn" onClick={() => addProduct()}>
+                        <button type="submit" className="gerencg-btn">
                             Adicionar Produto
                         </button>
                     </div>

@@ -2,7 +2,7 @@ import axios from "axios";
 import Pagination from "components/shared/Pagination";
 import { ProductCard, ProductHistoryCard, ProductValidateCard } from "components/container/Card/ProductCard";
 import { useEffect, useState } from "react";
-import { ProductPage } from "types/product";
+import { ProductPage, ProductProps } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css";
 import { ProductHistoryPage } from "types/productHistory";
@@ -15,7 +15,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import ReactDatePicker from "react-datepicker";
 
 //Product list with description filter 
-
 export function ProductsList() {
     const [value, setValue] = useState("");
     const [pageNumber, setPageNumber] = useState(0);
@@ -30,7 +29,6 @@ export function ProductsList() {
                 setProductPage(response.data);
             });
     }, [value, pageNumber]);
-
 
     const handlePageChange = (newPageNumber: number) => {
         setPageNumber(newPageNumber);
@@ -50,7 +48,7 @@ export function ProductsList() {
 
                     <form className="col-5 col-sm-4 col-md-4  col-xl-4 search-container">
                         <label >
-                        <h5><FaIcons.FaSearch /></h5>
+                            <h5><FaIcons.FaSearch /></h5>
                         </label>
                         <div className="form-group search-form-group">
                             <input
@@ -94,7 +92,7 @@ export function ProductHistoryList() {
     const [historyPage, setHistoryPage] = useState<ProductHistoryPage>({
         content: [],
         size: 10,
-        number:0
+        number: 0
     })
 
     useEffect(() => {
@@ -118,6 +116,34 @@ export function ProductHistoryList() {
                     ))}
                 </div>
             </div>
+        </>
+    );
+}
+
+//Find product uppdate history
+export function ProductHistoryByProduct({productId}: ProductProps) {
+    const [historyPage, setHistoryPage] = useState<ProductHistoryPage>({
+        content: [],
+        size: 10,
+        number: 0
+    });
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/history/${productId}?sort=createdDate&size=10`)
+            .then((response) => {
+                setHistoryPage(response.data);
+            });
+    }, [productId]);
+
+    return (
+        <>
+        <div className="horizontal-list">
+                    {historyPage.content?.map(history => (
+                        <div key={history.id} className="list-item">
+                            <ProductHistoryCard history={history} />
+                        </div>
+                    ))}       
+                    </div>
         </>
     );
 }
@@ -233,15 +259,16 @@ export function ProductValidateList() {
         const maxDate = maxValidate.toISOString().slice(0, 10);
 
         axios.get(
-            `${BASE_URL}/product/validate?minValidate=${minDate}&maxValidate=${maxDate}&size=40`
-        )
+            `${BASE_URL}/product/validate?page=${pageNumber}&size=40
+            &minValidate=${minDate}&maxValidate=${maxDate}`
+            )
             .then(response => {
                 setProductPage(response.data);
             });
     }, [minValidate, maxValidate, pageNumber]);
 
     console.log(minValidate, maxValidate);
-    
+
     const handlePageChange = (newPageNumber: number) => {
         setPageNumber(newPageNumber);
     }
@@ -252,7 +279,7 @@ export function ProductValidateList() {
                 <nav className="row header-container">
                     <h2 className="col-12 col-sm-3 col-md-3 border-0">Próximos da data de validade</h2>
                     <form className="col-12 col-sm-4 col-md-4 search-container">
-                        
+
                         <label className="form-group" >
                             <h5>Data inicial</h5>
                         </label>
@@ -266,10 +293,10 @@ export function ProductValidateList() {
                         </div>
                     </form>
 
-                    
+
                     <form className="col-12 col-sm-4 col-md-4 search-container">
                         <label className="form-group" >
-                        <h5>Data final</h5>
+                            <h5>Data final</h5>
                         </label>
                         <div className="form-group search-form-group">
                             <ReactDatePicker
@@ -291,17 +318,18 @@ export function ProductValidateList() {
                     </div>
                 </div>
                 <div className=" row">
-                {productPage.content?.map((product) => (
-                            <div key={product.id} className="col-sm-6 col-lg-5 col-xl-4 mb-3">
-                                <ProductValidateCard product={product} />
-                            </div>
-                        ))}
+                    {productPage.content?.map((product) => (
+                        <div key={product.id} className="col-sm-6 col-lg-5 col-xl-4 mb-3">
+                            <ProductValidateCard product={product} />
+                        </div>
+                    ))}
                 </div>
             </div>
         </>
     );
 }
 
+//Find all categories
 export function CategoryList() {
 
     const [categoryPage, setCategoryPage] = useState<CategoryPage>({
@@ -338,6 +366,7 @@ export function CategoryList() {
     );
 }
 
+//Find all measure
 export function MeasureList() {
 
     const [measurePage, setMeasurePage] = useState<MeasurePage>({

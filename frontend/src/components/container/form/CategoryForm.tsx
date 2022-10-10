@@ -24,27 +24,6 @@ export function AddCategoryStats() {
             })
     }, [])
 
-    const addProduct = () => {
-        console.log("data", stats);
-        const productData = {
-            id: (stats?.id),
-            registrationDate: stats?.registrationDate,
-            addedProducts: stats?.addedProducts,
-            removedProducts:    stats?.removedProducts,
-            income: stats?.income,
-            expense:  stats?.expense,
-            category: stats?.category
-        }
-        axios.post(`${BASE_URL}/category-stats/add`, productData)
-            .then((response) => {
-                console.log("Adicionado com Sucesso")
-                setStats(response.data);
-                setMsg("Registro Adicionado")
-            }).catch(() => {
-                setMsg("Erro")
-            })
-    }
-
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const registrationDate = (event.target as any).registrationDate.value;
         const addedProducts = (event.target as any).addedProducts.value;
@@ -58,17 +37,20 @@ export function AddCategoryStats() {
             method: "POST",
             url: "/category-stats/add",
             data: {
-            registrationDate: registrationDate,   
-            addedProducts: addedProducts,    
-            removedProducts: removedProducts,
-            income: income,
-            expense:expense,
-            category: category
+                registrationDate: registrationDate,
+                addedProducts: addedProducts,
+                removedProducts: removedProducts,
+                income: income,
+                expense: expense,
+                category: category
             },
         };
         axios(config).then(response => {
+            setMsg("Registro Adcionado")
             navigate("/category-stats");
-        });
+        }).catch(() => {
+            setMsg("Erro")
+        })
     };
 
 
@@ -77,7 +59,7 @@ export function AddCategoryStats() {
             <div className="form-card-container">
                 <h3>Adicionar um Novo Produto</h3>
                 <form className="gerencg-form" onSubmit={handleSubmit}>
-                    
+
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="registrationDate">Data de Registro: </label>
                         <input type="text" className="form-control" id="registrationDate" />
@@ -116,16 +98,16 @@ export function AddCategoryStats() {
                     </div>
 
                     <div className="form-btn-container">
-                        <button type="submit" className="gerencg-btn" onClick={() => addProduct()}>
+                        <button type="submit" className="gerencg-btn" >
                             Adicionar Produto
                         </button>
                     </div>
-                    <Link className="form-btn-container" to="/category-stats">
-                        <button className="btn gerencg-btn mt-3">Lista de Registros</button>
-                    </Link>
-                </form>
 
-                <div className="msg-container">
+                </form>
+                <Link to="/category-stats">
+                    <h5 className=" form-links mt-5">Ir para a Lista de Registros</h5>
+                </Link>
+                 <div className="msg-container">
                     <h3>{msg}</h3>
                 </div>
             </div>

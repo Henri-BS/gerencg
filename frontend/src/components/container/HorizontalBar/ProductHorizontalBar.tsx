@@ -1,7 +1,7 @@
 
-import IUpdateProduct from '../../../assets/img/update.png';
-import IDeleteProduct from 'assets/img/delete.png';
-import INotifications from 'assets/img/notifications.png';
+import IUpdateProduct from "assets/img/update.png"
+import IDeleteProduct from "assets/img/delete-img.png"
+import INotifications from "assets/img/notifications.png"
 import "./styles.css"
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -40,7 +40,7 @@ function ProductMenuBar({ productId }: ProductProps) {
         <div className=" menu-profile-container">
             <Link to={`/product/edit/${productId}`}>
                 <button className="menu-option-card" >
-                    <img className="option-card-img" src={IUpdateProduct} alt={product?.description} />
+                    <img className="option-card-img" src={IUpdateProduct} alt="update-product" />
                     Editar produto
                 </button>
             </Link>

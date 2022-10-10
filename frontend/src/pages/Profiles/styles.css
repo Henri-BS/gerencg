@@ -11,6 +11,24 @@
     background: var(--dark-prim);
 }
 
+.horizontal-list {
+    max-height: 400px;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    overflow-x: scroll;
+}
+
+.horizontal-list::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+}
+
+.list-item {
+    min-width: 340px;
+    text-align: center;
+}
+
 .container-blur {
     color: var(--dark-seco);
     max-inline-size: 100%;

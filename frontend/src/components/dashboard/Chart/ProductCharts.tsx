@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { ProductProps, QuantityTimelineChart } from "types/product";
+import { ProductProps } from "types/product";
 import { BASE_URL } from "utils/requests";
 import Chart from 'react-apexcharts'
-import { ProductHistory, ProductHistoryPage } from "types/productHistory";
+import { ProductHistoryPage } from "types/productHistory";
 import moment from "moment";
 
 type SeriesData = {
@@ -16,7 +16,7 @@ type QuantityChartData = {
     series: SeriesData[];
 }
 
-export function QuantityProductChart({productId}: ProductProps) {
+export function QuantityProductChart({ productId }: ProductProps) {
 
     const [chartData, setChartData] = useState<QuantityChartData>({
         labels: [],
@@ -26,16 +26,15 @@ export function QuantityProductChart({productId}: ProductProps) {
                 data: []
             }
         ]
-
     });
 
     useEffect(() => {
 
         axios.get(`${BASE_URL}/history/${productId}`)
             .then((response) => {
-                const data = response.data as ProductHistory[];
-                const myLabels = data.map(x => moment(x.createdDate).format("DD/MM/YYYY"))
-                const mySeries = data.map(x => x.quantity);
+                const data = response.data as ProductHistoryPage;
+                const myLabels = data.content.map(x => moment(x.createdDate).format("DD/MM/YYYY"))
+                const mySeries = data.content.map(x => x.quantity);
 
                 setChartData({
                     labels: myLabels,
@@ -45,7 +44,7 @@ export function QuantityProductChart({productId}: ProductProps) {
                     }]
                 });
             });
-    }, []);
+    }, [productId]);
 
     const opitions = {
         plotOptions: {
@@ -58,14 +57,6 @@ export function QuantityProductChart({productId}: ProductProps) {
         <Chart
             options={{
                 ...opitions,
-                xaxis: {
-                    labels: {
-                        datetimeFormatter: {
-                            year: 'yyyy',
-                            month: 'MMM \'yy',
-                        }
-                    }
-                },
                 labels: chartData.labels,
                 theme: { mode: "dark" },
                 colors: ["#1a6"],
@@ -77,7 +68,6 @@ export function QuantityProductChart({productId}: ProductProps) {
             type="line"
             height="300"
         />
-
     );
 }
 

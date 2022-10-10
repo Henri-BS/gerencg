@@ -2,7 +2,7 @@ import ProductLateralBar from "components/container/LateralBar/ProductLateralBar
 import { useParams } from "react-router-dom";
 import "./styles.css"
 import ProductMenuBar from "components/container/HorizontalBar/ProductHorizontalBar";
-import { ProductCategoryList, ProductMeasureList } from "pages/Listings";
+import { ProductCategoryList, ProductHistoryByProduct, ProductMeasureList } from "pages/Listings";
 import CategoryLateralBar from "components/container/LateralBar/CategoryLateralBar";
 import { MeasureInfo } from "components/container/Card/MeasureCard";
 import { AddProduct, ProductFormEdit } from "components/container/Form/ProductForm";
@@ -24,16 +24,17 @@ export function ProductProfile() {
         <div className="col-12 col-md-12 col-lg-6 col-xl-8  p-0">
           <ProductMenuBar productId={`${params.productId}`} />
           <div className="container">
-        <h1 className=" py-4">Estatísticas do Produto</h1>
-        <div className="max-container-charts ">
+            <h1 className=" py-4">Estatísticas do Produto</h1>
+
             <div className="chart-box">
               <div className="container-chart">
                 <h5 className="text-center">Quantidade do Produto por Data</h5>
-                <QuantityProductChart productId={`${params.productId}`}/>
+                <QuantityProductChart productId={`${params.productId}`} />
+              </div>
             </div>
+            <h1>Histórico de Alterações</h1>
+              <ProductHistoryByProduct productId={`${params.productId}`} />
           </div>
-        </div>
-      </div>
         </div>
       </div>
     </>
@@ -61,30 +62,30 @@ export function CategoryProfile() {
 
 export function SaveProduct() {
 
-  return(
-      <div className="container-blur">
-          <AddProduct />
-      </div>  
+  return (
+    <div className="container-blur">
+      <AddProduct />
+    </div>
   );
 }
 
 export function UpdateProduct() {
 
-const params = useParams();
+  const params = useParams();
 
-  return(
-      <div className="container-blur">
-          <ProductFormEdit productId={`${params.productId}`}/>
-      </div>  
+  return (
+    <div className="container-blur">
+      <ProductFormEdit productId={`${params.productId}`} />
+    </div>
   );
 }
 
 export function SaveCategoryStats() {
 
-  return(
-      <div className="container-blur">
-          <AddCategoryStats />
-      </div>  
+  return (
+    <div className="container-blur">
+      <AddCategoryStats />
+    </div>
   );
 }
 
@@ -92,13 +93,13 @@ export function MeasureProfile() {
 
   const params = useParams();
 
-  return(
-      <div className="container-blur">
-          <div>
-          <MeasureInfo measureId={`${params.measureId}`} />
-          </div>
-          <ProductMeasureList measureId={`${params.measureId}`} />
-      </div>  
+  return (
+    <div className="container-blur">
+      <div>
+        <MeasureInfo measureId={`${params.measureId}`} />
+      </div>
+      <ProductMeasureList measureId={`${params.measureId}`} />
+    </div>
   );
 }
 
