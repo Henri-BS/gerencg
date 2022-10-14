@@ -107,6 +107,13 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Trena Vox', 'https://cdn3.iconfinder.com/data/icons/construction-157/64/tape-measure-ruler-construction-metric-512.png', 12.95, 7, '2999-12-30', 5, 'm', 'Ferramentas');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Alicate Vape Solution', 'https://static.vecteezy.com/system/resources/previews/002/698/182/large_2x/pliers-construction-tool-isolated-icon-free-vector.jpg', 21.90, 9, '2999-12-30', null, '~', 'Ferramentas');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Ferrolho Redondo Rns', 'http://bappeda.jogjaprov.go.id/view_image/view/1094/002-padlock.png', 13.20, 8, '2999-12-30', null, '~', 'Ferramentas');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Mangueira Vox', 'https://static.vecteezy.com/ti/vetor-gratis/p2/353232-mangueira-vector-icone-gr%C3%A1tis-vetor.jpg', 25.40, 3, null, 10, 'm', 'Ferramentas');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Engate Flexível Krona', 'https://static.vecteezy.com/ti/vetor-gratis/p2/353232-mangueira-vector-icone-gr%C3%A1tis-vetor.jpg', 3.95, 52, null, 30, 'cm', 'Ferramentas');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Colher de Pedreiro Fertak Tools', 'https://cdn2.iconfinder.com/data/icons/construction-equipment/130/_cement_knife-512.png', 15.50, 5, null, 9, 'cm', 'Ferramentas');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Trena Home&More', 'https://cdn3.iconfinder.com/data/icons/construction-157/64/tape-measure-ruler-construction-metric-512.png', 12.90, 7, null, 5, 'm', 'Ferramentas');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Bomba de ar BallPump', '', 8.90, 3, null, null, '~', 'Ferramentas');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Colher de Pedreiro Fertak Tools', 'https://cdn2.iconfinder.com/data/icons/construction-equipment/130/_cement_knife-512.png', 13.75, 3, null, 8, 'cm', 'Ferramentas');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Trena Vap Solution', 'https://cdn3.iconfinder.com/data/icons/construction-157/64/tape-measure-ruler-construction-metric-512.png', 21.75, 3, null, 7.5, 'm', 'Ferramentas');
 
 
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Ácido Muriático Limpa Fácil', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.30, 9, '2024-10-06', 1.00, 'l', 'Limpeza');
@@ -120,10 +127,30 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sabão em Barra LavaBem', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 2.50, 32, '2022-12-06', 200, 'ml', 'Limpeza');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sabão em Pó Omo Lavagem Perfeita', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 7.70, 32, '2024-06-01', 400, 'ml', 'Limpeza');
 
+
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Fita Transparente Aldebras 48mm', 'https://cdn1.iconfinder.com/data/icons/stationary-desk-1/150/tape__cutter__stationary__tools__equipment-512.png', 5.15, 43, null, 40, 'm', 'Papelaria e Escolar');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Cola Branca Radex', '', 1.50, 33, '2024-02-01', 40, 'g', 'Papelaria e Escolar');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Marcador Permanente Compactor Vermelho', '', 4.00, 13, null, null, '~', 'Papelaria e Escolar');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Cola Branca Radex', '', 2.60, 24, '2024-02-01', 90, 'g', 'Papelaria e Escolar');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Fita Adesiva Kraft Aldebras 36mm', 'https://cdn1.iconfinder.com/data/icons/stationary-desk-1/150/tape__cutter__stationary__tools__equipment-512.png', 3.00, 18, null, 10, 'm', 'Papelaria e Escolar');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Cola Branca Radex', '', 8.90, 12, '2023-06-01', 500, 'g', 'Papelaria e Escolar');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Caderno Lift Credeal 96 Folhas', '', 9.95, 23, null, 275, 'mm', 'Papelaria e Escolar');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Cola Branca Maxi Cola', '', 7.25, 3, '2023-10-19', 500, 'g', 'Papelaria e Escolar');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Lápis De Cor Cromus', '', 5.30, 18, null, null, '~', 'Papelaria e Escolar');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Cola De Isopor Polar Compactor', '', 3.85, 21, '2032-07-01', 40, 'g', 'Papelaria e Escolar');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Tinta Guache Koala', '', 5.60, 20, '2024-05-01', 15, 'ml', 'Papelaria e Escolar');
+
+
+
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(1, 'Arroz Doura', 23, 3.60, '2023-04-02', now());
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(1, 'Arroz Doura', 35, 3.60, '2023-06-30', now());
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(1, 'Arroz Doura', 50, 3.80, '2023-09-10', now());
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(1, 'Arroz Doura', 49, 3.90, '2024-02-02', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(1, 'Arroz Doura', 14, 3.90, '2024-04-30', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(1, 'Arroz Doura', 44, 3.90, '2024-05-22', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(1, 'Arroz Doura', 20, 3.80, '2024-08-04', now());
+INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(1, 'Arroz Doura', 80, 3.80, '2024-11-16', now());
+
 
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(2, 'Arroz Catarinão', 72, 4.50, '2023-04-02', now());
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, created_date) VALUES(2, 'Arroz Catarinão', 64, 4.60, '2023-06-30', now());

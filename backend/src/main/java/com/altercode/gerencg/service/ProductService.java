@@ -3,6 +3,7 @@ package com.altercode.gerencg.service;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -32,7 +33,7 @@ public class ProductService {
 	private MeasureRepository measureRepository;
 
 	// Find all products by page and description
-	
+
 	public Page<ProductDTO> findAll(Pageable pageable, String description) {
 		Page<Product> result = productRepository.findAll(pageable, description);
 		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
@@ -40,7 +41,7 @@ public class ProductService {
 	}
 
 	// Find all products by page, minimum date and max date of validate
-	
+
 	public Page<ProductDTO> findAllByValidate(String minValidate, String maxValidate, Pageable pageable) {
 
 		LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
@@ -52,35 +53,35 @@ public class ProductService {
 		return page;
 	}
 
-	// Find all products by page and category 
-	
+	// Find all products by page and category
+
 	public Page<ProductDTO> findByCategory(Pageable pageable, Category category) {
-		
+
 		Page<Product> result = productRepository.findByCategory(pageable, category);
 		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
 		return page;
 	}
 
 	// Find all products by page and measure
-	
+
 	public Page<ProductDTO> findByMeasure(Pageable pageable, Measure measure) {
-		
+
 		Page<Product> result = productRepository.findByMeasure(pageable, measure);
 		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
 		return page;
 	}
 
 	// Find products by id
-	
+
 	public ProductDTO findById(Long id) {
-		
+
 		Product result = productRepository.findById(id).get();
 		ProductDTO dto = new ProductDTO(result);
 		return dto;
 	}
 
 	// Save new product
-	
+
 	public ProductDTO addProduct(ProductDTO dto) {
 
 		Category category = categoryRepository.findById(dto.getCategory()).get();
@@ -96,6 +97,11 @@ public class ProductService {
 		add.setMeasure(measure);
 		add.setCategory(category);
 
+		LocalDate undefined = LocalDate.parse("Indeterminado");
+		if (dto.getValidate() == null) {
+			add.setValidate(undefined);
+		}
+		
 		category.setTotalProducts(category.getProducts().size());
 		category.setTotalRegisters(category.getCategoryStats().size());
 		category = categoryRepository.save(category);
@@ -103,8 +109,8 @@ public class ProductService {
 		return new ProductDTO(productRepository.saveAndFlush(add));
 	}
 
-	//Edit product
-	
+	// Edit product
+
 	public ProductDTO updateProduct(ProductDTO dto) {
 
 		Category category = categoryRepository.findById(dto.getCategory()).get();
@@ -129,8 +135,8 @@ public class ProductService {
 		return new ProductDTO(edit);
 	}
 
-	//Delete product
-	
+	// Delete product
+
 	public void deleteProduct(Long id) {
 		this.productRepository.deleteById(id);
 	}

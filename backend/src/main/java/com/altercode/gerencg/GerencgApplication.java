@@ -10,4 +10,5 @@ public class GerencgApplication {
 		SpringApplication.run(GerencgApplication.class, args);
 	}
 
+
 }

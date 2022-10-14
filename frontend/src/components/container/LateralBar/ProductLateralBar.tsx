@@ -18,6 +18,7 @@ function ProductLateralBar({ productId }: ProductProps) {
             });
     }, [productId]);
 
+    
     return (
 
         <>
