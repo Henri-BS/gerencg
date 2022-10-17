@@ -43,7 +43,7 @@ export function AddCategoryStats() {
                 income: income,
                 expense: expense,
                 category: category
-            },
+            }
         };
         axios(config).then(response => {
             setMsg("Registro Adcionado")

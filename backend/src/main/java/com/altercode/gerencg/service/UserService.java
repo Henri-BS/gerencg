@@ -39,7 +39,7 @@ public class UserService implements UserDetailsService{
 		add.setLastName(dto.getLastName());
 		add.setPassword(passwordEncoder.encode(dto.getPassword()));
 		add.setEnabled(true);
-		
+		add.setAuthorities(authorityList);
 		return new UserDTO(userDetailsRepository.save(add));
 	}
 	

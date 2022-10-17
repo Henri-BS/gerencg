@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.altercode.gerencg.dto.UserDTO;
 import com.altercode.gerencg.service.UserService;
 
-@RestController("/user")
+@RestController
 public class UserController {
 
 	
@@ -18,7 +18,7 @@ public class UserController {
 	private UserService userService;
 	
 	
-	@PostMapping
+	@PostMapping("/auth")
 	public ResponseEntity<UserDTO> saveUser(@RequestBody UserDTO user) {
 		UserDTO newUser = userService.saveUser(user);
 		return new ResponseEntity<UserDTO>(newUser, HttpStatus.CREATED);
