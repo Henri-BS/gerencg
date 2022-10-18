@@ -33,13 +33,13 @@
 .footer-box a {
     color: var(--blue-seco);
     font-size: large;
-    text-decoration: underline;
+    text-decoration: none;
     transition: all 0.2s ease-out;
 }
 
 .footer-box a:hover {
     color: var(--quin);
-    border-left: solid var(--blue-prim);
+    border-bottom: solid var(--blue-prim);
 }
 
 .footer-logo {

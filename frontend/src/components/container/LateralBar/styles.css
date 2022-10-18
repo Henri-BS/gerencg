@@ -1,13 +1,14 @@
 .max-container-column {
+    align-items: flex-start;
     display: grid;
     height: 100%;
     width: 430px;
     background-color: var(--dark-tert);
+    align-content: flex-start;
 }
 
 .column-container {
     text-align: center;
-    display: block;
     color: var(--quat);
 }
 
@@ -54,6 +55,7 @@
 }
 
 .column-image-container {
+    max-height: 300px;
     display: flex;
     margin: 0;
     padding: 30px;

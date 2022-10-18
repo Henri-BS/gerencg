@@ -1,6 +1,7 @@
 package com.altercode.gerencg.controller;
 
 import java.security.NoSuchAlgorithmException;
+import java.security.Principal;
 import java.security.spec.InvalidKeySpecException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,7 @@ import com.altercode.gerencg.config.JWTTokenHelper;
 import com.altercode.gerencg.entity.User;
 import com.altercode.gerencg.request.AuthenticationRequest;
 import com.altercode.gerencg.response.LoginResponse;
+import com.altercode.gerencg.response.UserInfo;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -49,5 +52,16 @@ public class AuthenticationController {
 		LoginResponse response = new LoginResponse();
 		response.setToken(jwtToken);
 		return ResponseEntity.ok(response);
+	}
+	
+	@GetMapping("/auth/user-info")
+	public ResponseEntity<?> getUserInfo(Principal user) {
+		User userObj = (User) userDetailsService.loadUserByUsername(user.getName());
+		
+		UserInfo userInfo = new UserInfo();
+		userInfo.setFirstName(userObj.getFirstName());
+		userInfo.setLastName(userObj.getLastName());
+		userInfo.setRoles(userObj.getAuthorities().toArray());
+		return ResponseEntity.ok(userInfo); 
 	}
 }

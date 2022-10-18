@@ -16,11 +16,9 @@ export function ProductProfile() {
   return (
     <>
       <div className="profile row">
-
         <div className="col-12 col-md-12 col-lg-6 col-xl-4 p-0">
           < ProductLateralBar productId={`${params.productId}`} />
         </div>
-
         <div className="col-12 col-md-12 col-lg-6 col-xl-8  p-0">
           <ProductMenuBar productId={`${params.productId}`} />
           <div className="container">
@@ -31,12 +29,12 @@ export function ProductProfile() {
                 <h5 className="text-center">Quantidade do Produto por Data</h5>
                 <QuantityProductChart productId={`${params.productId}`} />
               </div>
-            </div>
-            <h1>Histórico de Alterações</h1>
+            </div><h1>Histórico de Alterações</h1>
               <ProductHistoryByProduct productId={`${params.productId}`} />
           </div>
         </div>
-      </div>
+      </div> 
+      
     </>
   );
 }

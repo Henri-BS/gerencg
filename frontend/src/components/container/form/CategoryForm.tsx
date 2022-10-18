@@ -57,7 +57,7 @@ export function AddCategoryStats() {
     return (
         <div className="form-container">
             <div className="form-card-container">
-                <h3>Adicionar um Novo Produto</h3>
+                <h3>Adicionar um Novo Registro de Categoria</h3>
                 <form className="gerencg-form" onSubmit={handleSubmit}>
 
                     <div className="form-group gerencg-form-group">

@@ -11,6 +11,11 @@
     background: var(--dark-prim);
 }
 
+.info-container {
+    overflow-y: scroll;
+    height: 600px;
+}
+
 .horizontal-list {
     max-height: 400px;
     width: 100%;
