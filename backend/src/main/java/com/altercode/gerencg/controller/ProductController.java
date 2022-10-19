@@ -63,7 +63,6 @@ public class ProductController {
 	@GetMapping("/{id}")
 	public ProductDTO findById(@PathVariable Long id) {
 		return service.findById(id);
-
 	}
 
 	@PostMapping("/add")
@@ -83,9 +82,10 @@ public class ProductController {
 	public void deleteProduct(@PathVariable Long id) {
 		this.service.deleteProduct(id);
 	}
-	
+/*
 	@GetMapping("/{id}/notification")
 	public void notifySms(@PathVariable Long id) {
 		smsService.sendSms(id);
 	}
+*/
 }

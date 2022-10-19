@@ -18,7 +18,7 @@ export function ProductCard({ product }: Props) {
                     <h3>{product?.description} • {product?.measureValue} {product?.measure}</h3>
 
                     <div className="product-info-item">
-                        <h2>Preço: {product?.price.toFixed(2)} R$</h2>
+                        <h6>Preço: {product?.price.toFixed(2)} R$</h6>
                     </div>
                 </div>
             </div>

@@ -54,11 +54,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		}
 
 		http.cors().and().csrf().disable();
-		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-		.and().exceptionHandling().authenticationEntryPoint(authenticationEntryPoint)
-		.and().authorizeRequests((request) -> 
-		request.antMatchers("/h2-console/**", "/api/v1/auth/login").permitAll());
-			
+		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().exceptionHandling()
+				.authenticationEntryPoint(authenticationEntryPoint).and()
+				.authorizeRequests((request) -> request.antMatchers("/h2-console/**", "/api/v1/auth/login").permitAll()
+						.antMatchers(HttpMethod.OPTIONS, "/**").permitAll())
+				.addFilterBefore(new JWTAuthenticationFilter(userService, jwtTokenHelper),
+						UsernamePasswordAuthenticationFilter.class);
 
 		http.authorizeRequests().anyRequest().permitAll();
 	}
@@ -67,7 +68,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().withUser("GerencgApp").password(passwordEncoder().encode("gerencg720"))
 				.authorities("USER", "ADMIN");
-
 		auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
 	}
 

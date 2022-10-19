@@ -2,6 +2,7 @@ package com.altercode.gerencg.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import com.altercode.gerencg.entity.Product;
@@ -13,6 +14,7 @@ import com.twilio.type.PhoneNumber;
 @Service
 public class SmsService {
 
+/*
 	@Autowired
 	private ProductRepository productRepository;
 
@@ -29,15 +31,15 @@ public class SmsService {
 	private String twilioPhoneTo;
 
 	public void sendSms(Long id) {
-		
+
 		Product product = productRepository.findById(id).get();
-		
+
 		String date = product.getValidate().getMonthValue() + "/" + product.getValidate().getYear();
-		
-		String msg = "O produto '" + product.getDescription() 
-		+ "' terá sua data de validade expirada em: " + date 
+
+		String msg = "O produto '" + product.getDescription()
+		+ "' terá sua data de validade expirada em: " + date
 		+ ". \nEste produto possui " + product.getQuantity() + " unidades em estoque!";
-		
+
 		Twilio.init(twilioSid, twilioKey);
 
 		PhoneNumber to = new PhoneNumber(twilioPhoneTo);
@@ -46,4 +48,5 @@ public class SmsService {
 		Message message = Message.creator(to, from, msg).create();
 		System.out.println(message.getSid());
 	}
+*/
 }

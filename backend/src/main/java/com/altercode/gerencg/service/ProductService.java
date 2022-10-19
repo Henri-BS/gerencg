@@ -1,16 +1,5 @@
 package com.altercode.gerencg.service;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.Category;
 import com.altercode.gerencg.entity.Measure;
@@ -18,6 +7,15 @@ import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.CategoryRepository;
 import com.altercode.gerencg.repository.MeasureRepository;
 import com.altercode.gerencg.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 
 @Service
 @Transactional
@@ -36,8 +34,7 @@ public class ProductService {
 
 	public Page<ProductDTO> findAll(Pageable pageable, String description) {
 		Page<Product> result = productRepository.findAll(pageable, description);
-		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
-		return page;
+		return result.map(x -> new ProductDTO(x));
 	}
 
 	// Find all products by page, minimum date and max date of validate
@@ -49,8 +46,7 @@ public class ProductService {
 		LocalDate max = maxValidate.equals("") ? today.plusMonths(1) : LocalDate.parse(maxValidate);
 
 		Page<Product> result = productRepository.findByValidate(min, max, pageable);
-		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
-		return page;
+		return result.map(x -> new ProductDTO(x));
 	}
 
 	// Find all products by page and category
@@ -58,8 +54,7 @@ public class ProductService {
 	public Page<ProductDTO> findByCategory(Pageable pageable, Category category) {
 
 		Page<Product> result = productRepository.findByCategory(pageable, category);
-		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
-		return page;
+		return result.map(x -> new ProductDTO(x));
 	}
 
 	// Find all products by page and measure
@@ -67,8 +62,7 @@ public class ProductService {
 	public Page<ProductDTO> findByMeasure(Pageable pageable, Measure measure) {
 
 		Page<Product> result = productRepository.findByMeasure(pageable, measure);
-		Page<ProductDTO> page = result.map(x -> new ProductDTO(x));
-		return page;
+		return result.map(x -> new ProductDTO(x));
 	}
 
 	// Find products by id
@@ -76,8 +70,7 @@ public class ProductService {
 	public ProductDTO findById(Long id) {
 
 		Product result = productRepository.findById(id).get();
-		ProductDTO dto = new ProductDTO(result);
-		return dto;
+		return new ProductDTO(result);
 	}
 
 	// Save new product
