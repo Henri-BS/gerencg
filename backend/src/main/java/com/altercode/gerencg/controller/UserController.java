@@ -18,7 +18,7 @@ public class UserController {
 	private UserService userService;
 	
 	
-	@PostMapping("/auth")
+	@PostMapping("/auth-sign")
 	public ResponseEntity<UserDTO> saveUser(@RequestBody UserDTO user) {
 		UserDTO newUser = userService.saveUser(user);
 		return new ResponseEntity<UserDTO>(newUser, HttpStatus.CREATED);

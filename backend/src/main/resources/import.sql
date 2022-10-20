@@ -33,12 +33,12 @@ INSERT INTO tb_category_stats (category_id, added_products, removed_products, ex
 INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES ('Tecidos e Acessórios', 243, 324, 3132.00, 3912.00, '2021-11-20');
 
 
-
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('quilo', 'kg');
-INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('gramas', 'g');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('grama', 'g');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('litro', 'l');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('mililitro', 'ml');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('metro', 'm');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('diâmetro', 'dm');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('centimetro', 'cm');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('milimetro', 'mm');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('volt', 'v');
@@ -93,7 +93,17 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Boneco Soldado Pequeno BS Toys', 'https://cdn0.iconfinder.com/data/icons/science-80/64/astronaut-space_suit-job-occupation-512.png', 12.95, 2, '2999-12-30', null, '~', 'Brinquedos');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Jeep Injetsul Brinquedos', 'https://cdn0.iconfinder.com/data/icons/transport-lineal-color/512/car_cabriolet_auto_transport_automobile-512.png', 31.40, 4, '2999-12-30', null, '~', 'Brinquedos');
 
-
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Taça Nadir Figueiredo', 'https://cdn1.iconfinder.com/data/icons/christmas-96/32/33_alcohol_party_beverage_celebration_wine_drink_xmas-512.png', 5.10, 47, null, 250, 'ml', 'Cozinha');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Tigela Americana Nadir Figueiredo', 'https://images.vexels.com/media/users/3/151964/isolated/preview/abebf2cd6c00915757a8c0f03fe1190b-iacute-cone-de-tigela-de-servir-by-vexels.png', 7.20, 8, null, 350, 'ml', 'Cozinha');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Paliteiro Plasutil', 'https://st.depositphotos.com/1978999/3074/v/950/depositphotos_30747781-stock-illustration-salt-icon.jpg', 5.10, 11, null, 90, 'ml', 'Cozinha');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Saleiro de Mesa Ercaplast', 'https://st.depositphotos.com/1978999/3074/v/950/depositphotos_30747781-stock-illustration-salt-icon.jpg', 2.50, 15, null, 50, 'ml', 'Cozinha');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Garrafa Plásticos Lumar', 'https://i.pinimg.com/originals/5a/1d/59/5a1d595c17163dd88db427e2199ce0c5.png', 6.20, 10, null, 1.5, 'l', 'Cozinha');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Pote de Café Ercaplast', 'https://cdn2.iconfinder.com/data/icons/food-1091/512/1_Honey_jar_pickle_food_bee-512.png', 4.90, 6, null, 1.3, 'l', 'Cozinha');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Pote de Açúcar Ercaplast', 'https://cdn2.iconfinder.com/data/icons/food-1091/512/1_Honey_jar_pickle_food_bee-512.png', 3.90, 4, null, 1, 'l', 'Cozinha');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Cuzcuzeira Alumínio Vieira', 'https://cdn1.iconfinder.com/data/icons/household-appliance/512/g30763-512.png', 31.20, 6, null, 180, 'dm', 'Cozinha');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Papeiro Alumínio Vieira', 'https://www.lespapillonsblancsdeparis.fr/wp-content/uploads/2018/10/Fichier-13.png', 31.40, 3, null, 160, 'dm', 'Cozinha');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Ralador Arcaplast', 'https://cdn2.iconfinder.com/data/icons/kitchen-utensils-24/64/34-512.png', 6.95, 6, null, null, '~', 'Cozinha');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Organizador Fit Califórnia', 'https://cdn2.iconfinder.com/data/icons/food-1091/512/1_Honey_jar_pickle_food_bee-512.png', 23.50, 6, null, 1.3, 'l', 'Cozinha');
 
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sabonete Protex Limpeza Profunda', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 3.20, 5, '2023-10-01', 85, 'g', 'Cosméticos e Higiene');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Gel Massageador Arnica', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 5.25, 8, '2022-09-28', 200, 'g', 'Cosméticos e Higiene');

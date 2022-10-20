@@ -1,10 +1,41 @@
 
 import { category, categoryStats, product, productStats } from "components/shared/MenuList";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "./styles.css"
+import axios, { AxiosRequestConfig } from "axios";
+import { BASE_URL } from "utils/requests";
 
 
 function Home() {
+
+    const getToken = () => {
+        return localStorage.getItem('USER_KEY');
+    }
+
+    const [loading, setLoading] = useState(false);
+    const [data, setData] = useState({});
+
+    const navigate = useNavigate();
+        const config: AxiosRequestConfig = {
+            baseURL: BASE_URL,
+            method: "GET",
+            url: "/auth/user-info",
+            headers: {
+                'Authorization': 'Bearer '+getToken()
+            }
+        };
+        axios(config).then((response) => {
+            setData(response.data);
+        }).catch((e) => {
+            localStorage.clear();
+             navigate("/");
+        })
+
+        const logOut = () => {
+            localStorage.clear();
+            navigate("/");
+        }
 
     return (
         <>

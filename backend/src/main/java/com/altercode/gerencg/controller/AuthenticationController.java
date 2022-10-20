@@ -25,7 +25,6 @@ import com.altercode.gerencg.response.LoginResponse;
 import com.altercode.gerencg.response.UserInfo;
 
 @RestController
-@RequestMapping("/api/v1")
 @CrossOrigin
 public class AuthenticationController {
 
