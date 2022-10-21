@@ -29,12 +29,12 @@ function Home() {
             setData(response.data);
         }).catch((e) => {
             localStorage.clear();
-             navigate("/");
+             navigate("");
         })
 
         const logOut = () => {
             localStorage.clear();
-            navigate("/");
+            navigate("");
         }
 
     return (
