@@ -5,6 +5,7 @@ import Home from "pages/Home";
 import { CategoryList, MeasureList, ProductsList, ProductValidateList } from "pages/Listings";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { ProductProfile, CategoryProfile, MeasureProfile, SaveProduct, UpdateProduct, SaveCategoryStats} from "pages/Profiles";
+import { Login } from "pages/LoginPage";
 
 
 function PageRoutes() {
@@ -12,9 +13,9 @@ function PageRoutes() {
 
     return (
         <BrowserRouter>
-            <NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/home" element={<Home />} />
 
                 <Route path="/product/list"element={<ProductsList/>}/>
                 <Route path="/products-stats" element={<ProductDashboard />} />
@@ -45,7 +46,6 @@ function PageRoutes() {
                 <Route path="/measure/list" element={<MeasureList />} />
 
             </Routes>
-            <Footer />
         </BrowserRouter>
     );
 }

@@ -8,6 +8,8 @@ import { MeasureInfo } from "components/container/Card/MeasureCard";
 import { AddProduct, ProductFormEdit } from "components/container/Form/ProductForm";
 import { AddCategoryStats } from "components/container/Form/CategoryForm";
 import { QuantityProductChart } from "components/dashboard/Chart/ProductCharts";
+import NavBar from "components/shared/NavBar";
+import Footer from "components/shared/Footer";
 
 //Product profile 
 export function ProductProfile() {
@@ -15,6 +17,7 @@ export function ProductProfile() {
 
   return (
     <>
+    <NavBar />
       <div className="profile row">
         <div className="col-12 col-md-12 col-lg-6 col-xl-4 p-0">
           < ProductLateralBar productId={`${params.productId}`} />
@@ -34,7 +37,7 @@ export function ProductProfile() {
           </div>
         </div>
       </div> 
-      
+      <Footer />
     </>
   );
 }
@@ -45,6 +48,7 @@ export function CategoryProfile() {
   const params = useParams();
   return (
     <>
+    <NavBar />
       <div className="profile row">
         <div className="col-6-sm col-md-6 col-lg-4 p-0">
           <CategoryLateralBar categoryId={`${params.categoryId}`} />
@@ -53,6 +57,7 @@ export function CategoryProfile() {
           <ProductCategoryList categoryId={`${params.categoryId}`} />
         </div>
       </div>
+      <Footer />
     </>
   );
 }
@@ -92,12 +97,16 @@ export function MeasureProfile() {
   const params = useParams();
 
   return (
+    <>
+    <NavBar />
     <div className="container-blur">
       <div>
         <MeasureInfo measureId={`${params.measureId}`} />
       </div>
       <ProductMeasureList measureId={`${params.measureId}`} />
     </div>
+    <Footer />
+    </>
   );
 }
 

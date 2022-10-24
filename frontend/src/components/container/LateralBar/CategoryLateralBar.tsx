@@ -18,11 +18,12 @@ function CategoryLateralBar({ categoryId }: CategoryProps) {
 
     return (
         <>
-            <div className="max-container-column">
+            <div className="max-container-column">                
+            <div className="column-container">   
                 <div className="column-image-container">
                     <img className="column-card-image" src={category?.image} alt={category?.name} />
                 </div>
-                <div className="column-container">                    
+                 
                         <h1>{category?.name}</h1>                    
                     <div className="column-item-container">
                         <div className="column-icon-container">{categoryIcons.lastUpdateIcon}</div>

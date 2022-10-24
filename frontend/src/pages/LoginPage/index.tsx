@@ -1,34 +1,21 @@
-import axios, { AxiosRequestConfig } from "axios";
-import {useState} from "react";
-import { BASE_URL } from "utils/requests";
+import LoginForm from "components/container/Form/LoginForm";
+import Footer from "components/shared/Footer";
+import ILogo from "assets/img/full-logo.png"
+import "./styles.css"
+import { useParams } from "react-router-dom";
+export function Login() {
 
-export function Login(){
+    const params = useParams();
 
-    const [values, setValues] = useState({
-userName: "",
-password: ""
-    })
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const userName = (event.target as any).userName.value;
-        const password = (event.target as any).password.value;
-
-const config: AxiosRequestConfig = {
-    baseURL: BASE_URL,
-    method: "POST",
-    url: "/user-login",
-    data: {
-        userName: userName,
-        password: password
-    },
-
-};
-axios(config).then((response) => {
-    
-})
-}
-    return(
-        <div></div>
+    return (
+        <>
+            <div className="container-blur">
+                <div className="img-logo-container">
+                    <img className="img-item" src={ILogo} alt="full-logo" />
+                </div>
+                <LoginForm loading={`${params.loading}`} error={`${params.error}`} />
+            </div>
+            <Footer />
+        </>
     );
 }

@@ -1,9 +1,10 @@
 import axios from "axios";
 import { productIcons } from "components/shared/MenuIcons";
+import Pagination from "components/shared/Pagination";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Product, ProductProps } from "types/product";
+import { Product, ProductPage, ProductProps } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 
@@ -18,15 +19,14 @@ function ProductLateralBar({ productId }: ProductProps) {
             });
     }, [productId]);
 
-    
     return (
 
         <>
             <div className="max-container-column">
-                <div className="column-image-container">
-                    <img className="column-card-image" src={product?.image} alt={product?.description} />
-                </div>
                 <div className="column-container">
+                    <div className="column-image-container">
+                        <img className="column-card-image" src={product?.image} alt={product?.description} />
+                    </div>
                     <h1>{product?.description}</h1>
 
                     <div className="column-item-container">

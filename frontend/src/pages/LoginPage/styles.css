@@ -1,0 +1,12 @@
+.img-logo-container {
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+
+.img-item {
+    margin-top: 10px;
+    height: 90px;
+    padding: 10px;
+}

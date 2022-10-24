@@ -34,9 +34,9 @@
 }
 
 .navbar-link {
+    color: var(--blue-prim);
     font-size: 17px;
     font-weight: 900;
-    color: var(--blue-prim);
     text-decoration: none;
     padding: 8px 8px;
     transition: all 0.3s ease-in;
@@ -99,7 +99,7 @@
     .fa-times {
         color: var(--blue-prim);
         font-size: 2.3rem;
-        margin-right: 6px;
+        margin-right: 4px;
     }
     .navbar-link {
         font-size: 20px;

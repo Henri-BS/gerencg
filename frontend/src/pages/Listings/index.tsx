@@ -13,6 +13,8 @@ import { MeasurePage, MeasureProps } from "types/measure";
 import { MeasureCard } from "components/container/Card/MeasureCard";
 import "react-datepicker/dist/react-datepicker.css";
 import ReactDatePicker from "react-datepicker";
+import NavBar from "components/shared/NavBar";
+import Footer from "components/shared/Footer";
 
 //Product list with description filter 
 export function ProductsList() {
@@ -36,6 +38,7 @@ export function ProductsList() {
 
     return (
         <>
+            <NavBar />
             <div className="container">
                 <nav className="row header-container">
                     <h2 className="col-3 col-sm-4 col-md-4 col-xl-4 ">Lista de Produtos</h2>
@@ -83,6 +86,7 @@ export function ProductsList() {
                         ))}
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
@@ -104,6 +108,7 @@ export function ProductHistoryList() {
 
     return (
         <>
+            <NavBar />
             <div className="container ">
                 <div className="header-container ">
                     <h4>Histórico de Alterações:</h4>
@@ -116,12 +121,13 @@ export function ProductHistoryList() {
                     ))}
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
 
 //Find product uppdate history
-export function ProductHistoryByProduct({productId}: ProductProps) {
+export function ProductHistoryByProduct({ productId }: ProductProps) {
     const [historyPage, setHistoryPage] = useState<ProductHistoryPage>({
         content: [],
         size: 10,
@@ -137,13 +143,13 @@ export function ProductHistoryByProduct({productId}: ProductProps) {
 
     return (
         <>
-        <div className="horizontal-list">
-                    {historyPage.content?.map(history => (
-                        <div key={history.id} className="list-item">
-                            <ProductHistoryCard history={history} />
-                        </div>
-                    ))}       
+            <div className="horizontal-list">
+                {historyPage.content?.map(history => (
+                    <div key={history.id} className="list-item">
+                        <ProductHistoryCard history={history} />
                     </div>
+                ))}
+            </div>
         </>
     );
 }
@@ -189,10 +195,10 @@ export function ProductCategoryList({ categoryId }: CategoryProps) {
                     ))}
                 </div>
             </div>
+
         </>
     );
 }
-
 
 //Find all products by measure
 export function ProductMeasureList({ measureId }: MeasureProps) {
@@ -213,6 +219,7 @@ export function ProductMeasureList({ measureId }: MeasureProps) {
     const handlePageChange = (newPageNumber: number) => {
         setPageNumber(newPageNumber);
     }
+
     return (
         <>
             <div className="container">
@@ -235,6 +242,7 @@ export function ProductMeasureList({ measureId }: MeasureProps) {
                     ))}
                 </div>
             </div>
+
         </>
     );
 }
@@ -261,7 +269,7 @@ export function ProductValidateList() {
         axios.get(
             `${BASE_URL}/product/validate?page=${pageNumber}&size=40
             &minValidate=${minDate}&maxValidate=${maxDate}`
-            )
+        )
             .then(response => {
                 setProductPage(response.data);
             });
@@ -275,6 +283,7 @@ export function ProductValidateList() {
 
     return (
         <>
+            <NavBar />
             <div className="container">
                 <nav className="row header-container">
                     <h2 className="col-12 col-sm-3 col-md-3 border-0">Próximos da data de validade</h2>
@@ -325,6 +334,7 @@ export function ProductValidateList() {
                     ))}
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
@@ -340,13 +350,13 @@ export function CategoryList() {
     useEffect(() => {
         axios.get(`${BASE_URL}/category/list?page=0&size=10`)
             .then(response => {
-                const data = response.data as CategoryPage;
-                setCategoryPage(data);
+                setCategoryPage(response.data);
             })
     }, []);
 
     return (
         <>
+            <NavBar />
             <div className="container">
                 <div className="header-container">
                     <h2>Lista de Categorias</h2>
@@ -359,14 +369,14 @@ export function CategoryList() {
                             </div>
                         ))}
                     </div>
-
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
 
-//Find all measure
+//Find all measures
 export function MeasureList() {
 
     const [measurePage, setMeasurePage] = useState<MeasurePage>({
@@ -377,6 +387,7 @@ export function MeasureList() {
     });
 
     useEffect(() => {
+
         axios.get(`${BASE_URL}/measure/list?size=30`)
             .then(response => {
                 setMeasurePage(response.data);
@@ -385,6 +396,7 @@ export function MeasureList() {
 
     return (
         <>
+            <NavBar />
             <div className="container">
                 <div className="header-container">
                     <h2>Lista de Medidas</h2>
@@ -397,6 +409,7 @@ export function MeasureList() {
                     ))}
                 </div>
             </div>
+            <Footer />
         </>
     );
 }

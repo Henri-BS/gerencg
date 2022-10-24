@@ -4,7 +4,7 @@
     height: 100%;
     width: 430px;
     background-color: var(--dark-tert);
-    align-content: flex-start;
+    align-content: space-between;
 }
 
 .column-container {
@@ -68,6 +68,10 @@
     height: 200px;
     border: 1px solid #fff;
     border-radius: 10px;
+}
+
+.pagination-container-menu {
+    background-color: transparent;
 }
 
 @media screen and (max-width: 650px) {

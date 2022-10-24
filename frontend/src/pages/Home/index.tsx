@@ -5,10 +5,12 @@ import { useState, useEffect } from "react";
 import "./styles.css"
 import axios, { AxiosRequestConfig } from "axios";
 import { BASE_URL } from "utils/requests";
+import NavBar from "components/shared/NavBar";
+import Footer from "components/shared/Footer";
 
 
 function Home() {
-
+/**
     const getToken = () => {
         return localStorage.getItem('USER_KEY');
     }
@@ -17,7 +19,7 @@ function Home() {
     const [data, setData] = useState({});
 
     const navigate = useNavigate();
-        const config: AxiosRequestConfig = {
+       const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
             method: "GET",
             url: "/auth/user-info",
@@ -29,16 +31,17 @@ function Home() {
             setData(response.data);
         }).catch((e) => {
             localStorage.clear();
-             navigate("");
+             navigate("/");
         })
 
         const logOut = () => {
             localStorage.clear();
-            navigate("");
+            navigate("/");
         }
-
+ */    
     return (
         <>
+        <NavBar />
             <div className="container"  >
                 <div className="jumbotron" >
                     <h1 className="display-5 mt-3">Gerenciador Comercial </h1>
@@ -77,7 +80,8 @@ function Home() {
                     </div>
                     <hr className="mb-0 mt-5" />
                 </div>
-            </div>
+            </div> 
+            <Footer />
         </>
     );
 }
