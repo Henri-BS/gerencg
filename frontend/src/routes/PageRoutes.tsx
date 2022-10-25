@@ -1,5 +1,3 @@
-import Footer from "components/shared/Footer";
-import NavBar from "components/shared/NavBar";
 import {Dashboard, ProductDashboard} from "pages/DashboardPages";
 import Home from "pages/Home";
 import { CategoryList, MeasureList, ProductsList, ProductValidateList } from "pages/Listings";
@@ -14,7 +12,7 @@ function PageRoutes() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Login />} />
                 <Route path="/home" element={<Home />} />
 
                 <Route path="/product/list"element={<ProductsList/>}/>

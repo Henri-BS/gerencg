@@ -1,10 +1,9 @@
 import axios from "axios";
 import { productIcons } from "components/shared/MenuIcons";
-import Pagination from "components/shared/Pagination";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Product, ProductPage, ProductProps } from "types/product";
+import { Product, ProductProps } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 

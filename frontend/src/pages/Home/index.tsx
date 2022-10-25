@@ -1,22 +1,23 @@
 
 import { category, categoryStats, product, productStats } from "components/shared/MenuList";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./styles.css"
 import axios, { AxiosRequestConfig } from "axios";
 import { BASE_URL } from "utils/requests";
 import NavBar from "components/shared/NavBar";
 import Footer from "components/shared/Footer";
+import { User } from "types/user";
+import { useDispatch } from "react-redux";
 
 
 function Home() {
-/**
+
     const getToken = () => {
         return localStorage.getItem('USER_KEY');
     }
 
-    const [loading, setLoading] = useState(false);
-    const [data, setData] = useState({});
+    const [data, setData] = useState<User>();
 
     const navigate = useNavigate();
        const config: AxiosRequestConfig = {
@@ -38,7 +39,7 @@ function Home() {
             localStorage.clear();
             navigate("/");
         }
- */    
+     
     return (
         <>
         <NavBar />
@@ -47,6 +48,7 @@ function Home() {
                     <h1 className="display-5 mt-3">Gerenciador Comercial </h1>
                     <p className="lead">Acompanhe a lista de produtos e tenham acesso as atuais informações de cada produto,
                         tenha acesso a lista de categorias e veja as atuais estatísticas</p>
+                        <h4>Bem Vindo {data && `${data.firstName}`}</h4>
                     <hr />
                     <div className="container-menu row">
                         <Link className="menu-item col-sm-3" to={product.path}>

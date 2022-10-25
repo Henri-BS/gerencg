@@ -5,22 +5,8 @@ import { authenticate, authFailure, authSuccess } from "service/authActions";
 import { BASE_URL } from "utils/requests";
 
 
-function LoginForm({ loading, error, ...props }: any) {
-    const mapDispatchToProps = (dispatch: (arg0: { type: string; payload?: any; }) => any) => {
-        return {
-            authenticate: () => dispatch(authenticate()),
-            setUser: (data: { token: string; }) => dispatch(authSuccess(data)),
-            loginFailure: (message: string) => dispatch(authFailure(message))
-        }
-    }
+function LoginForm({ ...props }: any) {
 
-    const mapStateToProps = ({ auth }: any) => {
-        console.log("state ", auth)
-        return {
-            loading: auth.loading,
-            error: auth.error
-        }
-    }
 
     const navigate = useNavigate();
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -31,7 +17,7 @@ function LoginForm({ loading, error, ...props }: any) {
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
             method: "POST",
-            url: "/user-login",
+            url: "/auth/login",
             data: {
                 userName: userName,
                 password: password
@@ -59,7 +45,6 @@ function LoginForm({ loading, error, ...props }: any) {
             }
         });
 
-        console.log("Loading ", loading)
     }
 
     return (
@@ -73,10 +58,8 @@ function LoginForm({ loading, error, ...props }: any) {
                     </div>
 
                     <div className="form-group gerencg-form-group">
-                        <label htmlFor="password">Senha
-
-                        </label>
-                        <input className="form-control" id="password" required />
+                        <label htmlFor="password">Senha</label>
+                        <input type="password" className="form-control" id="password" required />
                         <a href="forget.html" className="float-right form-links">
                             Esqueceu a Senha ?
                         </a>
@@ -85,7 +68,7 @@ function LoginForm({ loading, error, ...props }: any) {
                     <div className="form-group">
                         <div className="custom-control custom-checkbox">
                             <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                            <label className="custom-control-label" htmlFor="customCheck1">Mantenha-me Conectado</label>
+                            <label className="custom-control-label msg-container" htmlFor="customCheck1">Mantenha-me Conectado</label>
                         </div>
                     </div>
 
@@ -100,4 +83,13 @@ function LoginForm({ loading, error, ...props }: any) {
     );
 }
 
-export default LoginForm;
+const mapDispatchToProps = (dispatch: (arg0: { type: any; payload?: any; }) => any) => {
+    return {
+        authenticate: () => dispatch(authenticate()),
+        setUser: (data: { token: string; }) => dispatch(authSuccess(data)),
+        loginFailure: (message: string) => dispatch(authFailure(message))
+    }
+}
+
+
+export default connect(mapDispatchToProps)(LoginForm);
