@@ -7,6 +7,7 @@ import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.CategoryRepository;
 import com.altercode.gerencg.repository.MeasureRepository;
 import com.altercode.gerencg.repository.ProductRepository;
+import com.altercode.gerencg.service.iservice.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,119 +20,82 @@ import java.time.ZoneId;
 
 @Service
 @Transactional
-public class ProductService {
+public class ProductService implements IProductService {
 
-	@Autowired
-	private ProductRepository productRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
-	@Autowired
-	private CategoryRepository categoryRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
-	@Autowired
-	private MeasureRepository measureRepository;
+    @Autowired
+    private MeasureRepository measureRepository;
 
-	// Find all products by page and description
+    // Find all products by page and description
 
-	public Page<ProductDTO> findAll(Pageable pageable, String description) {
-		Page<Product> result = productRepository.findAll(pageable, description);
-		return result.map(x -> new ProductDTO(x));
-	}
+    public Page<ProductDTO> findAll(Pageable pageable, String description) {
+        Page<Product> result = productRepository.findAll(pageable, description);
+        return result.map(x -> new ProductDTO(x));
+    }
 
-	// Find all products by page, minimum date and max date of validate
+    // Find all products by page, minimum date and max date of validate
+    public Page<ProductDTO> findAllByValidate(String minValidate, String maxValidate, Pageable pageable) {
+        LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
+        LocalDate min = minValidate.equals("") ? today.minusMonths(1) : LocalDate.parse(minValidate);
+        LocalDate max = maxValidate.equals("") ? today.plusMonths(1) : LocalDate.parse(maxValidate);
 
-	public Page<ProductDTO> findAllByValidate(String minValidate, String maxValidate, Pageable pageable) {
+        Page<Product> result = productRepository.findByValidate(min, max, pageable);
+        return result.map(x -> new ProductDTO(x));
+    }
 
-		LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
-		LocalDate min = minValidate.equals("") ? today.minusMonths(1) : LocalDate.parse(minValidate);
-		LocalDate max = maxValidate.equals("") ? today.plusMonths(1) : LocalDate.parse(maxValidate);
+    // Find all products by page and category
+    public Page<ProductDTO> findByCategory(Pageable pageable, Category category) {
 
-		Page<Product> result = productRepository.findByValidate(min, max, pageable);
-		return result.map(x -> new ProductDTO(x));
-	}
+        Page<Product> result = productRepository.findByCategory(pageable, category);
+        return result.map(x -> new ProductDTO(x));
+    }
 
-	// Find all products by page and category
+    // Find all products by page and measure
+    public Page<ProductDTO> findByMeasure(Pageable pageable, Measure measure) {
 
-	public Page<ProductDTO> findByCategory(Pageable pageable, Category category) {
+        Page<Product> result = productRepository.findByMeasure(pageable, measure);
+        return result.map(x -> new ProductDTO(x));
+    }
 
-		Page<Product> result = productRepository.findByCategory(pageable, category);
-		return result.map(x -> new ProductDTO(x));
-	}
+    // Find products by id
+    public ProductDTO findById(Long id) {
 
-	// Find all products by page and measure
+        Product result = productRepository.findById(id).get();
+        return new ProductDTO(result);
+    }
 
-	public Page<ProductDTO> findByMeasure(Pageable pageable, Measure measure) {
+    // Save new product
+    public ProductDTO saveProduct(ProductDTO dto) {
 
-		Page<Product> result = productRepository.findByMeasure(pageable, measure);
-		return result.map(x -> new ProductDTO(x));
-	}
+        Category category = categoryRepository.findById(dto.getCategory()).get();
+        Measure measure = measureRepository.findById(dto.getMeasure()).get();
 
-	// Find products by id
+        Product add = new Product();
+        add.setDescription(dto.getDescription());
+        add.setImage(dto.getImage());
+        add.setPrice(dto.getPrice());
+        add.setQuantity(dto.getQuantity());
+        add.setValidate(dto.getValidate());
+        add.setMeasureValue(dto.getMeasureValue());
+        add.setMeasure(measure);
+        add.setCategory(category);
 
-	public ProductDTO findById(Long id) {
+        category.setTotalProducts(category.getProducts().size());
+        category.setTotalRegisters(category.getCategoryStats().size());
+        categoryRepository.save(category);
 
-		Product result = productRepository.findById(id).get();
-		return new ProductDTO(result);
-	}
+        return new ProductDTO(productRepository.saveAndFlush(add));
+    }
 
-	// Save new product
+    // Delete product
 
-	public ProductDTO addProduct(ProductDTO dto) {
-
-		Category category = categoryRepository.findById(dto.getCategory()).get();
-		Measure measure = measureRepository.findById(dto.getMeasure()).get();
-
-		Product add = new Product();
-		add.setDescription(dto.getDescription());
-		add.setImage(dto.getImage());
-		add.setPrice(dto.getPrice());
-		add.setQuantity(dto.getQuantity());
-		add.setValidate(dto.getValidate());
-		add.setMeasureValue(dto.getMeasureValue());
-		add.setMeasure(measure);
-		add.setCategory(category);
-
-		LocalDate undefined = LocalDate.parse("Indeterminado");
-		if (dto.getValidate() == null) {
-			add.setValidate(undefined);
-		}
-		
-		category.setTotalProducts(category.getProducts().size());
-		category.setTotalRegisters(category.getCategoryStats().size());
-		category = categoryRepository.save(category);
-
-		return new ProductDTO(productRepository.saveAndFlush(add));
-	}
-
-	// Edit product
-
-	public ProductDTO updateProduct(ProductDTO dto) {
-
-		Category category = categoryRepository.findById(dto.getCategory()).get();
-		Measure measure = measureRepository.findById(dto.getMeasure()).get();
-
-		Product edit = productRepository.findById(dto.getId()).get();
-		edit.setId(dto.getId());
-		edit.setDescription(dto.getDescription());
-		edit.setImage(dto.getImage());
-		edit.setPrice(dto.getPrice());
-		edit.setQuantity(dto.getQuantity());
-		edit.setValidate(dto.getValidate());
-		edit.setMeasureValue(dto.getMeasureValue());
-		edit.setMeasure(measure);
-		edit.setCategory(category);
-
-		category.setTotalProducts(category.getProducts().size());
-		category = categoryRepository.save(category);
-
-		edit = productRepository.save(edit);
-
-		return new ProductDTO(edit);
-	}
-
-	// Delete product
-
-	public void deleteProduct(Long id) {
-		this.productRepository.deleteById(id);
-	}
+    public void deleteProduct(Long id) {
+        this.productRepository.deleteById(id);
+    }
 
 }

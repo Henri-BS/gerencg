@@ -14,7 +14,7 @@ import com.twilio.type.PhoneNumber;
 @Service
 public class SmsService {
 
-/*
+
 	@Autowired
 	private ProductRepository productRepository;
 
@@ -48,5 +48,5 @@ public class SmsService {
 		Message message = Message.creator(to, from, msg).create();
 		System.out.println(message.getSid());
 	}
-*/
+
 }

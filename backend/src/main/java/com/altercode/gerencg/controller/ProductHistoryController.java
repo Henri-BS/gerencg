@@ -14,31 +14,31 @@ import org.springframework.web.bind.annotation.RestController;
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.dto.ProductHistoryDTO;
 import com.altercode.gerencg.entity.Product;
-import com.altercode.gerencg.service.HistoryService;
+import com.altercode.gerencg.service.ProductHistoryService;
 
 
 @RestController
 @RequestMapping("/history")
 public class ProductHistoryController {
-	
+
 	@Autowired
-	private HistoryService historyService;
-	
+	private ProductHistoryService productHistoryService;
+
 	@PutMapping
 	public ProductDTO updateProductHistory(@RequestBody ProductHistoryDTO dto) {
-		ProductDTO productDTO = historyService.updateProduct(dto);
+		ProductDTO productDTO = productHistoryService.updateProduct(dto);
 		return productDTO;
 	}
-	
+
 	@GetMapping("/list")
 	public ResponseEntity<Page<ProductHistoryDTO>> findAll(Pageable pageable) {
-		Page<ProductHistoryDTO> page = historyService.findAll(pageable);
+		Page<ProductHistoryDTO> page = productHistoryService.findAll(pageable);
 		return ResponseEntity.ok(page);
 	}
-	
+
 	@GetMapping("/{product}")
 	public ResponseEntity<Page<ProductHistoryDTO>> findByProduct(Pageable pageable, @PathVariable Product product) {
-		Page<ProductHistoryDTO> page = historyService.findByProduct(pageable, product);
+		Page<ProductHistoryDTO> page = productHistoryService.findByProduct(pageable, product);
 		return ResponseEntity.ok(page);
 	}
 }

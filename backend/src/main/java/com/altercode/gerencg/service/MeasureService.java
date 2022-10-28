@@ -2,6 +2,7 @@ package com.altercode.gerencg.service;
 
 import javax.transaction.Transactional;
 
+import com.altercode.gerencg.service.iservice.IMeasureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +14,7 @@ import com.altercode.gerencg.repository.MeasureRepository;
 
 @Service
 @Transactional
-public class MeasureService {
+public class MeasureService implements IMeasureService {
 	
 	@Autowired
 	private MeasureRepository measureRepository;
@@ -21,14 +22,12 @@ public class MeasureService {
 	
 	public Page<MeasureDTO> findAll(Pageable pageable) {
 		Page<Measure> result = measureRepository.findAll(pageable);
-		Page<MeasureDTO> page = result.map(x -> new MeasureDTO(x));
-		return page;
+		return result.map(x -> new MeasureDTO(x));
 	}
 
 	public MeasureDTO findById(String id) {
 		Measure result = measureRepository.findById(id).get();
-		MeasureDTO dto = new MeasureDTO(result);
-		return dto;
+		return new MeasureDTO(result);
 	}
 	
 	public MeasureDTO saveMeasure(MeasureDTO dto) {

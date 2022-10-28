@@ -4,47 +4,51 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.altercode.gerencg.entity.Category;
+import com.altercode.gerencg.entity.Measure;
 import com.altercode.gerencg.entity.ProductHistory;
+
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 public class ProductHistoryDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	private Long product;
+
+	private Long productId;
 	private String description;
 	private String image;
 	private Double price;
 	private Integer quantity;
 	private LocalDate validate;
+	private Double measureValue;
+	private String measure;
+	private String category;
 	private LocalDateTime createdDate;
-	
-	private ProductDTO productDTO;
-	
+
 	public ProductHistoryDTO() {
 	}
 
-	public ProductHistoryDTO(Long product, String description, String image, Double price, Integer quantity,
-			LocalDate validate, LocalDateTime createdDate, ProductDTO productDTO) {
-		this.product = product;
-		this.description = description;
-		this.image = image;
-		this.price = price;
-		this.quantity = quantity;
-		this.validate = validate;
-		this.createdDate = createdDate;
-		this.productDTO = productDTO;
-	}
-
-
-
 	public ProductHistoryDTO(ProductHistory entity) {
-		product = entity.getProduct().getId();
+		productId = entity.getProduct().getId();
 		description = entity.getDescription();
 		image = entity.getImage();
 		price = entity.getPrice();
 		quantity = entity.getQuantity();
 		validate = entity.getValidate();
+		measureValue = entity.getMeasureValue();
+		measure = entity.getMeasure().getAbbreviation();
+		category = entity.getCategory().getName();
 		createdDate = entity.getCreatedDate();
-		productDTO = new ProductDTO(entity.getProduct());
+	}
+
+	public Long getProductId() {
+		return productId;
+	}
+
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
 	}
 
 
@@ -97,16 +101,29 @@ public class ProductHistoryDTO implements Serializable {
 		this.validate = validate;
 	}
 
-
-	public Long getProduct() {
-		return product;
+	public Double getMeasureValue() {
+		return measureValue;
 	}
 
-
-	public void setProduct(Long product) {
-		this.product = product;
+	public void setMeasureValue(Double measureValue) {
+		this.measureValue = measureValue;
 	}
 
+	public String getMeasure() {
+		return measure;
+	}
+
+	public void setMeasure(String measure) {
+		this.measure = measure;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
 	public LocalDateTime getCreatedDate() {
 		return createdDate;
@@ -118,14 +135,6 @@ public class ProductHistoryDTO implements Serializable {
 	}
 
 
-	public ProductDTO getProductDTO() {
-		return productDTO;
-	}
 
 
-	public void setProductDTO(ProductDTO productDTO) {
-		this.productDTO = productDTO;
-	}
-	
-	
 }

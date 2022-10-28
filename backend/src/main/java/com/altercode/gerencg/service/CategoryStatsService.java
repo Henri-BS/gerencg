@@ -2,6 +2,7 @@ package com.altercode.gerencg.service;
 
 import java.util.List;
 
+import com.altercode.gerencg.service.iservice.ICategoryStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +19,7 @@ import com.altercode.gerencg.repository.CategoryStatsRepository;
 
 @Service
 @Transactional
-public class CategoryStatsService {
+public class CategoryStatsService implements ICategoryStatsService {
 	
 	@Autowired
 	private CategoryStatsRepository statsRepository;

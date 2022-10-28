@@ -1,7 +1,8 @@
 import { AddedProductsChart, RemovedProductsChart, ExpenseChart, IncomeChart } from "components/dashboard/Chart/CategoryChart";
 import CategoryDataTable from "components/dashboard/DataTable/CategoryDataTable";
 import ProductDataTable from "components/dashboard/DataTable/ProductDataTable";
-import { ProductHistoryList } from "pages/Listings";
+import { ProductHistoryByProduct } from "pages/Listings";
+import { useParams } from "react-router-dom";
 import "./styles.css"
 
 export function Dashboard() {
@@ -49,6 +50,8 @@ export function Dashboard() {
 }
 
 export function ProductDashboard() {
+
+
   return (
     <>
       <div className="container">

@@ -1,5 +1,9 @@
 package com.altercode.gerencg.service;
 
+import com.altercode.gerencg.entity.Category;
+import com.altercode.gerencg.entity.Measure;
+import com.altercode.gerencg.repository.CategoryRepository;
+import com.altercode.gerencg.repository.MeasureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,14 +19,19 @@ import com.altercode.gerencg.repository.ProductRepository;
 
 @Service
 @Transactional
-public class HistoryService {
+public class ProductHistoryService {
 	
 	@Autowired
 	private ProductRepository productRepository;
 	
 	@Autowired
 	private ProductHistoryRepository historyRepository;
-	
+
+	@Autowired
+	private MeasureRepository measureRepository;
+
+	@Autowired
+	private CategoryRepository categoryRepository;
 	
 	public Page<ProductHistoryDTO> findAll(Pageable pageable) {
 		productRepository.findAll();
@@ -36,8 +45,10 @@ public class HistoryService {
 	}
 
 	public ProductDTO updateProduct(ProductHistoryDTO dto) {
-		Product product = productRepository.findById(dto.getProduct()).get();
-		
+		Product product = productRepository.findById(dto.getProductId()).get();
+		Measure measure = measureRepository.findById(dto.getMeasure()).get();
+		Category category = categoryRepository.findById(dto.getCategory()).get();
+
 		ProductHistory history = new ProductHistory();
 		history.setProduct(product);
 		history.setDescription(dto.getDescription());
@@ -45,6 +56,9 @@ public class HistoryService {
 		history.setPrice(dto.getPrice());
 		history.setQuantity(dto.getQuantity());
 		history.setValidate(dto.getValidate());
+		history.setMeasureValue(dto.getMeasureValue());
+		history.setMeasure(measure);
+		history.setCategory(category);
 		history.setCreatedDate(history.getCreatedDate());
 		history = historyRepository.saveAndFlush(history);
 		
@@ -53,6 +67,9 @@ public class HistoryService {
 		product.setPrice(history.getPrice());
 		product.setQuantity(history.getQuantity());
 		product.setValidate(history.getValidate());
+		product.setMeasureValue(history.getMeasureValue());
+		product.setMeasure(history.getMeasure());
+		product.setCategory(history.getCategory());
 		product.setAlteration(product.getAllHistory().size());
 		product = productRepository.save(product);
 		

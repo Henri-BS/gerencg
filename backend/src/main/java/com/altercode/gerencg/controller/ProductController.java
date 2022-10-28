@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,9 +33,11 @@ public class ProductController {
 	
 	@GetMapping("/search")
 	public ResponseEntity<Page<ProductDTO>> findByDescription(Pageable pageable, String description) {
-		Page<ProductDTO> list = service.findAll(pageable, description);
-		return ResponseEntity.ok(list);
+		Page<ProductDTO> page = service.findAll(pageable, description);
+		return ResponseEntity.ok(page);
 	}
+
+
 
 	@GetMapping("/validate")
 	public ResponseEntity<Page<ProductDTO>> findAllByValidate(
@@ -67,14 +68,8 @@ public class ProductController {
 
 	@PostMapping("/add")
 	public ResponseEntity<ProductDTO> addProduct(@RequestBody ProductDTO product) {
-		ProductDTO newProduct = service.addProduct(product);
+		ProductDTO newProduct = service.saveProduct(product);
 		return new ResponseEntity<ProductDTO>(newProduct, HttpStatus.CREATED);
-	}
-
-	@PutMapping("/edit/{id}")
-	public ProductDTO updateProduct(@RequestBody ProductDTO product) {
-		ProductDTO editProduct = service.updateProduct(product);
-		return editProduct;
 	}
 
 	@DeleteMapping("/delete/{id}")
@@ -82,10 +77,11 @@ public class ProductController {
 	public void deleteProduct(@PathVariable Long id) {
 		this.service.deleteProduct(id);
 	}
-/*
+
+
 	@GetMapping("/{id}/notification")
 	public void notifySms(@PathVariable Long id) {
 		smsService.sendSms(id);
 	}
-*/
+
 }

@@ -1,5 +1,6 @@
 package com.altercode.gerencg.service;
 
+import com.altercode.gerencg.service.iservice.ICalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +13,7 @@ import com.altercode.gerencg.repository.ProductRepository;
 
 @Service 
 @Transactional
-public class CalculatorService {
+public class CalculatorService implements ICalculatorService {
 	
 	@Autowired
 	private ProductRepository productRepository;

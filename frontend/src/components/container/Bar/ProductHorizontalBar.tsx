@@ -37,7 +37,7 @@ function ProductMenuBar({ productId }: ProductProps) {
     }
 
     return (
-        <div className=" menu-profile-container">
+        <div className="menu-profile-container">
             <Link to={`/product/edit/${productId}`}>
                 <button className="menu-option-card" >
                     <img className="option-card-img" src={IUpdateProduct} alt="update-product" />

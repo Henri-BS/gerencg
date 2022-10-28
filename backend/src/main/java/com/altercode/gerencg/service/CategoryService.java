@@ -1,5 +1,6 @@
 package com.altercode.gerencg.service;
 
+import com.altercode.gerencg.service.iservice.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +13,7 @@ import com.altercode.gerencg.repository.CategoryRepository;
 
 @Service
 @Transactional
-public class CategoryService {
+public class CategoryService implements ICategoryService {
 
 	@Autowired
 	private CategoryRepository categoryRepository;
@@ -29,8 +30,7 @@ public class CategoryService {
 		category.setTotalRegisters(category.getCategoryStats().size());
 		category = categoryRepository.save(category);
 
-		CategoryProfileDTO dto = new CategoryProfileDTO(category);
-		return dto;
+		return new CategoryProfileDTO(category);
 	}
 
 	public CategoryProfileDTO addCategory(CategoryProfileDTO dto) {
@@ -44,7 +44,6 @@ public class CategoryService {
 		category.setTotalRegisters(category.getCategoryStats().size());
 		category = categoryRepository.save(category);
 
-		
 		return new CategoryProfileDTO(categoryRepository.saveAndFlush(add));
 	}
 
@@ -58,7 +57,6 @@ public class CategoryService {
 		edit.setTotalProducts(edit.getProducts().size());
 		edit.setTotalRegisters(edit.getCategoryStats().size());
 		edit = categoryRepository.save(edit);
-
 
 		Category update = categoryRepository.save(edit);
 		return new CategoryProfileDTO(update);

@@ -18,7 +18,7 @@ function CategoryLateralBar({ categoryId }: CategoryProps) {
 
     return (
         <>
-            <div className="max-container-column">                
+            <div className="max-sidebar-container">                
             <div className="column-container">   
                 <div className="column-image-container">
                     <img className="column-card-image" src={category?.image} alt={category?.name} />

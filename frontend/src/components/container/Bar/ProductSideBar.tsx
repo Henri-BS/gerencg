@@ -19,9 +19,8 @@ function ProductLateralBar({ productId }: ProductProps) {
     }, [productId]);
 
     return (
-
         <>
-            <div className="max-container-column">
+            <div className="max-sidebar-container">
                 <div className="column-container">
                     <div className="column-image-container">
                         <img className="column-card-image" src={product?.image} alt={product?.description} />

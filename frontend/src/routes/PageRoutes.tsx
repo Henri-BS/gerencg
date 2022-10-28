@@ -12,7 +12,7 @@ function PageRoutes() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Login />} />
+                <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />
 
                 <Route path="/product/list"element={<ProductsList/>}/>

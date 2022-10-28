@@ -1,9 +1,9 @@
-import ProductLateralBar from "components/container/LateralBar/ProductLateralBar";
+import ProductLateralBar from "components/container/Bar/ProductSideBar";
 import { useParams } from "react-router-dom";
 import "./styles.css"
-import ProductMenuBar from "components/container/HorizontalBar/ProductHorizontalBar";
+import ProductMenuBar from "components/container/Bar/ProductHorizontalBar";
 import { ProductCategoryList, ProductHistoryByProduct, ProductMeasureList } from "pages/Listings";
-import CategoryLateralBar from "components/container/LateralBar/CategoryLateralBar";
+import CategoryLateralBar from "components/container/Bar/CategorySideBar";
 import { MeasureInfo } from "components/container/Card/MeasureCard";
 import { AddProduct, ProductFormEdit } from "components/container/Form/ProductForm";
 import { AddCategoryStats } from "components/container/Form/CategoryForm";
@@ -32,8 +32,7 @@ export function ProductProfile() {
                 <h5 className="text-center">Quantidade do Produto por Data</h5>
                 <QuantityProductChart productId={`${params.productId}`} />
               </div>
-            </div><h1>Histórico de Alterações</h1>
-              <ProductHistoryByProduct productId={`${params.productId}`} />
+            </div>
           </div>
         </div>
       </div> 
