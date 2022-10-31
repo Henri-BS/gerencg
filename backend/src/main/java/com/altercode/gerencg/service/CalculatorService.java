@@ -38,7 +38,7 @@ public class CalculatorService implements ICalculatorService {
 		double result = 0.0;
 		
 		result = firstValue + secondValue;
-		calculator.setResut(result);
+		calculator.setResult(result);
 		calculator = calculatorRepository.save(calculator);
 		
 		

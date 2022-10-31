@@ -1,4 +1,4 @@
-import ProductLateralBar from "components/container/Bar/ProductSideBar";
+import ProductSideBar from "components/container/Bar/ProductSideBar";
 import { useParams } from "react-router-dom";
 import "./styles.css"
 import ProductMenuBar from "components/container/Bar/ProductHorizontalBar";
@@ -10,6 +10,7 @@ import { AddCategoryStats } from "components/container/Form/CategoryForm";
 import { QuantityProductChart } from "components/dashboard/Chart/ProductCharts";
 import NavBar from "components/shared/NavBar";
 import Footer from "components/shared/Footer";
+import { ProductHistoryCard } from "components/container/Card/ProductCard";
 
 //Product profile 
 export function ProductProfile() {
@@ -20,7 +21,7 @@ export function ProductProfile() {
     <NavBar />
       <div className="profile row">
         <div className="col-12 col-md-12 col-lg-6 col-xl-4 p-0">
-          < ProductLateralBar productId={`${params.productId}`} />
+          < ProductSideBar productId={`${params.productId}`} />
         </div>
         <div className="col-12 col-md-12 col-lg-6 col-xl-8  p-0">
           <ProductMenuBar productId={`${params.productId}`} />
@@ -33,6 +34,7 @@ export function ProductProfile() {
                 <QuantityProductChart productId={`${params.productId}`} />
               </div>
             </div>
+            <ProductHistoryByProduct productId={`${params.productId}`}/>
           </div>
         </div>
       </div> 

@@ -52,14 +52,10 @@ public class Product {
     private Set<Calculator> calculators = new HashSet<>();
 	
 	@OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
-    private Set<Calculator> first = new HashSet<>();
-	
-	@OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
-    private Set<Calculator> second = new HashSet<>();
-	
-	@OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
-    private Set<ProductHistory> history = new HashSet<>();
-	
+    private final Set<ProductHistory> history = new HashSet<>();
+
+
+
 	public Product() {
 	}
 

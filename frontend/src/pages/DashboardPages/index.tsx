@@ -1,6 +1,8 @@
 import { AddedProductsChart, RemovedProductsChart, ExpenseChart, IncomeChart } from "components/dashboard/Chart/CategoryChart";
 import CategoryDataTable from "components/dashboard/DataTable/CategoryDataTable";
 import ProductDataTable from "components/dashboard/DataTable/ProductDataTable";
+import Footer from "components/shared/Footer";
+import NavBar from "components/shared/NavBar";
 import { ProductHistoryByProduct } from "pages/Listings";
 import { useParams } from "react-router-dom";
 import "./styles.css"
@@ -54,10 +56,12 @@ export function ProductDashboard() {
 
   return (
     <>
+    <NavBar />
       <div className="container">
         <h1 className=" py-4">Registros de Alterações dos Produtos</h1>
         <ProductDataTable />
       </div>
+      <Footer />
     </>
   );
 }

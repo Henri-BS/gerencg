@@ -54,7 +54,7 @@ public class Calculator {
 		return result;
 	}
 
-	public void setResut(Double result) {
+	public void setResult(Double result) {
 		this.result = result;
 	}
 
