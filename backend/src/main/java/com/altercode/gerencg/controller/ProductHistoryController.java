@@ -26,8 +26,7 @@ public class ProductHistoryController {
 
 	@PutMapping
 	public ProductDTO updateProductHistory(@RequestBody ProductHistoryDTO dto) {
-		ProductDTO productDTO = productHistoryService.updateProduct(dto);
-		return productDTO;
+		return productHistoryService.updateProduct(dto);
 	}
 
 	@GetMapping("/list")

@@ -10,8 +10,7 @@ public class CategoryFlowDTO implements Serializable{
 	private String categoryName;
 	private Long addedProducts;
 	private Long removedProducts;
-	
-	
+
 	public CategoryFlowDTO(){}
 
 	public CategoryFlowDTO(Category category, Long addedProducts, Long removedProducts) {

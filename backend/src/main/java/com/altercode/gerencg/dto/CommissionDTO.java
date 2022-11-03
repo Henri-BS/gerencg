@@ -1,27 +1,27 @@
 package com.altercode.gerencg.dto;
 
-import com.altercode.gerencg.entity.Order;
+import com.altercode.gerencg.entity.Commission;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class OrderDTO implements Serializable {
+public class CommissionDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private String id;
-    private String orderCode;
+    private Long id;
+    private String commissionCode;
     private LocalDate orderDate;
     private Double totalValue;
     private Integer quantity;
     private String distributor;
     private Long product;
 
-    public OrderDTO() {
+    public CommissionDTO() {
     }
 
-    public OrderDTO(Order entity) {
+    public CommissionDTO(Commission entity) {
         id = entity.getId();
-        orderCode = entity.getOrderCode();
+        commissionCode = entity.getCode().getCode();
         orderDate = entity.getOrderDate();
         totalValue = entity.getTotalValue();
         quantity = entity.getQuantity();
@@ -29,20 +29,20 @@ public class OrderDTO implements Serializable {
         product = entity.getProduct().getId();
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getOrderCode() {
-        return orderCode;
+    public String getCommissionCode() {
+        return commissionCode;
     }
 
-    public void setOrderCode(String orderCode) {
-        this.orderCode = orderCode;
+    public void setCommissionCode(String orderCode) {
+        this.commissionCode = orderCode;
     }
 
     public LocalDate getOrderDate() {

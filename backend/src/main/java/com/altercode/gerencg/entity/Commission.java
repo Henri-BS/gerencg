@@ -4,18 +4,15 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "tb_order")
-public class Order {
+@Table(name = "tb_commission")
+public class Commission {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
-    private String id;
+    @Column(name = "commission_id")
+    private Long id;
 
-    @Column(name = "order_code")
-    private String orderCode;
-
-    @Column(name = "order_date")
+    @Column(name = "commission_date")
     private LocalDate orderDate;
 
     @Column(name = "total_value")
@@ -26,15 +23,19 @@ public class Order {
     private String distributor;
 
     @ManyToOne
+    @JoinColumn(name = "code_id")
+    private CommissionCode code;
+
+    @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
-    public Order() {
+    public Commission() {
     }
 
-    public Order(String id, String orderCode, LocalDate orderDate, Double totalValue, Integer quantity, String distributor, Product product) {
+    public Commission(Long id, CommissionCode code, LocalDate orderDate, Double totalValue, Integer quantity, String distributor, Product product) {
         this.id = id;
-        this.orderCode = orderCode;
+        this.code = code;
         this.orderDate = orderDate;
         this.totalValue = totalValue;
         this.quantity = quantity;
@@ -42,20 +43,20 @@ public class Order {
         this.product = product;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getOrderCode() {
-        return orderCode;
+    public CommissionCode getCode() {
+        return code;
     }
 
-    public void setOrderCode(String orderCode) {
-        this.orderCode = orderCode;
+    public void setCode(CommissionCode code) {
+        this.code = code;
     }
 
     public LocalDate getOrderDate() {
@@ -97,4 +98,5 @@ public class Order {
     public void setProduct(Product product) {
         this.product = product;
     }
+
 }
