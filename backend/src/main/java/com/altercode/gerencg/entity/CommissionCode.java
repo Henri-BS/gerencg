@@ -9,14 +9,25 @@ import java.util.List;
 public class CommissionCode {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "code_id")
+    private Long id;
+
+    @Column(name ="commission_code")
     private String code;
 
     @OneToMany(mappedBy = "code", cascade = CascadeType.REMOVE)
     private List<Commission> commissions = new ArrayList<>();
 
     public CommissionCode() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public CommissionCode(String code) {
