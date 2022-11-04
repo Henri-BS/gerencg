@@ -3,6 +3,7 @@ package com.altercode.gerencg.dto;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import com.altercode.gerencg.entity.Category;
 import com.altercode.gerencg.entity.CategoryStats;
 
 public class CategoryStatsDTO implements Serializable {
@@ -40,7 +41,11 @@ public class CategoryStatsDTO implements Serializable {
 		category = entity.getCategory().getName();
 	}
 
-	public Long getId() {
+	public CategoryStatsDTO(Category name) {
+		category = name.getName();
+	}
+
+		public Long getId() {
 		return id;
 	}
 

@@ -2,13 +2,14 @@ package com.altercode.gerencg.service;
 
 import com.altercode.gerencg.dto.CommissionDTO;
 import com.altercode.gerencg.dto.CommissionResultsDTO;
+import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.Commission;
 import com.altercode.gerencg.entity.CommissionCode;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.CommissionCodeRepository;
 import com.altercode.gerencg.repository.CommissionRepository;
 import com.altercode.gerencg.repository.ProductRepository;
-import com.altercode.gerencg.service.iservice.IOrderService;
+import com.altercode.gerencg.service.iservice.ICommissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +20,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class CommissionService implements IOrderService {
+public class CommissionService implements ICommissionService {
 
     @Autowired
     private CommissionRepository commissionRepository;
@@ -45,9 +46,9 @@ public class CommissionService implements IOrderService {
     @Override
     public CommissionDTO addOrder(CommissionDTO dto) {
         Product product = productRepository.findById(dto.getProduct()).get();
-        CommissionCode code = commissionCodeRepository.findById(dto.getCommissionCode()).get();
+        CommissionCode code = commissionCodeRepository.findByCode(dto.getCommissionCode());
 
-        if(code == null){
+        if (code == null) {
             code = new CommissionCode();
             code.setCode(dto.getCommissionCode());
             code = commissionCodeRepository.saveAndFlush(code);
@@ -70,11 +71,10 @@ public class CommissionService implements IOrderService {
 
         Product product = productRepository.findById(dto.getProduct()).get();
         Commission edit = commissionRepository.findById(dto.getId()).get();
-        CommissionCode commissionCode = commissionCodeRepository.findById(dto.getCommissionCode()).get();
-
+        CommissionCode code = commissionCodeRepository.findById(dto.getCommissionCode()).get();
 
         edit.setId(dto.getId());
-        edit.setCode(commissionCode);
+        edit.setCode(code);
         edit.setOrderDate(dto.getOrderDate());
         edit.setQuantity(dto.getQuantity());
         edit.setTotalValue(dto.getTotalValue());
@@ -90,7 +90,9 @@ public class CommissionService implements IOrderService {
         this.commissionRepository.findById(id);
     }
 
+    @Override
     public List<CommissionResultsDTO> orderResults() {
         return commissionRepository.orderResults();
     }
+
 }

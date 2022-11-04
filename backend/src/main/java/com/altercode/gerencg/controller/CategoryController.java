@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.altercode.gerencg.dto.CategoryProfileDTO;
+import com.altercode.gerencg.dto.CategoryDTO;
 import com.altercode.gerencg.service.CategoryService;
 
 @RestController
@@ -26,25 +26,25 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping("/list")
-    public ResponseEntity<Page<CategoryProfileDTO>> findAll(Pageable pageable) {
-        Page<CategoryProfileDTO> list = categoryService.findAll(pageable);
+    public ResponseEntity<Page<CategoryDTO>> findAll(Pageable pageable) {
+        Page<CategoryDTO> list = categoryService.findAll(pageable);
         return ResponseEntity.ok(list);
     }
 
     @GetMapping("/{id}")
-    public CategoryProfileDTO findById(@PathVariable String id) {
+    public CategoryDTO findById(@PathVariable String id) {
         return categoryService.findById(id);
     }
     
     @PostMapping("/add")
-    public ResponseEntity<CategoryProfileDTO> addCategory(@RequestBody CategoryProfileDTO category) {
-    	CategoryProfileDTO newCategory = categoryService.addCategory(category);
-    	return new ResponseEntity<CategoryProfileDTO>(newCategory , HttpStatus.CREATED);
+    public ResponseEntity<CategoryDTO> addCategory(@RequestBody CategoryDTO category) {
+    	CategoryDTO newCategory = categoryService.addCategory(category);
+    	return new ResponseEntity<CategoryDTO>(newCategory , HttpStatus.CREATED);
     }
     
     @PutMapping("/edit")
-    public ResponseEntity<CategoryProfileDTO> updateCategory( @RequestBody CategoryProfileDTO category) {
-    	CategoryProfileDTO updateCategory = categoryService.updateCategory(category);
+    public ResponseEntity<CategoryDTO> updateCategory(@RequestBody CategoryDTO category) {
+    	CategoryDTO updateCategory = categoryService.updateCategory(category);
     	return new ResponseEntity<>(updateCategory, HttpStatus.OK);
     }
     

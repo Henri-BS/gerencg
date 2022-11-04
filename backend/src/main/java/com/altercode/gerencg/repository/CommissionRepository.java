@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface CommissionRepository extends JpaRepository<Commission, Long> {
 
-    @Query("SELECT new com.altercode.gerencg.dto.CommissionResultsDTO( obj.code, obj.product, SUM(obj.quantity), SUM(obj.totalValue)) "
+    @Query("SELECT new com.altercode.gerencg.dto.CommissionResultsDTO(obj.code, SUM(obj.quantity), SUM(obj.totalValue)) "
             + "FROM Commission AS obj GROUP BY obj.code")
     List<CommissionResultsDTO> orderResults();
 }
