@@ -32,19 +32,19 @@ public class CommissionService implements ICommissionService {
     private ProductRepository productRepository;
 
     @Override
-    public Page<CommissionDTO> findAllOrders(Pageable pageable) {
+    public Page<CommissionDTO> findAllCommissions(Pageable pageable) {
         Page<Commission> result = commissionRepository.findAll(pageable);
         return result.map(x -> new CommissionDTO(x));
     }
 
     @Override
-    public CommissionDTO findOrderById(Long id) {
+    public CommissionDTO findCommissionById(Long id) {
         Commission result = commissionRepository.findById(id).get();
         return new CommissionDTO(result);
     }
 
     @Override
-    public CommissionDTO addOrder(CommissionDTO dto) {
+    public ProductDTO saveCommission(CommissionDTO dto) {
         Product product = productRepository.findById(dto.getProduct()).get();
         CommissionCode code = commissionCodeRepository.findByCode(dto.getCommissionCode());
 
@@ -55,7 +55,6 @@ public class CommissionService implements ICommissionService {
         }
 
         Commission add = new Commission();
-        add.setId(dto.getId());
         add.setCode(code);
         add.setOrderDate(dto.getOrderDate());
         add.setTotalValue(dto.getTotalValue());
@@ -63,11 +62,19 @@ public class CommissionService implements ICommissionService {
         add.setDistributor(dto.getDistributor());
         add.setProduct(product);
 
-        return new CommissionDTO(commissionRepository.saveAndFlush(add));
+        commissionRepository.saveAndFlush(add);
+
+        int sum = add.getQuantity();
+        sum = sum + product.getQuantity();
+
+        product.setQuantity(sum);
+        productRepository.save(product);
+
+        return new ProductDTO(product);
     }
 
     @Override
-    public CommissionDTO updateOrder(CommissionDTO dto) {
+    public CommissionDTO updateCommission(CommissionDTO dto) {
 
         Product product = productRepository.findById(dto.getProduct()).get();
         Commission edit = commissionRepository.findById(dto.getId()).get();
@@ -86,12 +93,12 @@ public class CommissionService implements ICommissionService {
     }
 
     @Override
-    public void deleteOrder(Long id) {
+    public void deleteCommission(Long id) {
         this.commissionRepository.findById(id);
     }
 
     @Override
-    public List<CommissionResultsDTO> orderResults() {
+    public List<CommissionResultsDTO> commissionResults() {
         return commissionRepository.orderResults();
     }
 

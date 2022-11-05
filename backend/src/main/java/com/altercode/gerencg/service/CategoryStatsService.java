@@ -47,7 +47,7 @@ public class CategoryStatsService implements ICategoryStatsService {
 		add.setCategory(category);
 	
 		category.setTotalRegisters(category.getCategoryStats().size());
-		category = categoryRepository.save(category);
+		categoryRepository.save(category);
 		
 		return new CategoryStatsDTO(statsRepository.saveAndFlush(add));
 	}

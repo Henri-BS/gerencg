@@ -75,9 +75,5 @@ public class ProductController {
 		smsService.sendSms(id);
 	}
 
-	@PutMapping("/update-quantity")
-	public ProductDTO updateProductByCommission(@RequestBody CommissionDTO dto) {
-		ProductDTO update = service.updateProductByCommission(dto);
-		return update;
-	}
+
 }

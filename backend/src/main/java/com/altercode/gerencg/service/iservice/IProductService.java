@@ -22,5 +22,4 @@ public interface IProductService {
 
     void deleteProduct(Long id);
 
-    public ProductDTO updateProductByCommission(CommissionDTO dto);
 }

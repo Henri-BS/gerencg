@@ -11,16 +11,16 @@ import java.util.List;
 
 
 public interface ICommissionService {
-    Page<CommissionDTO> findAllOrders(Pageable pageable);
+    Page<CommissionDTO> findAllCommissions(Pageable pageable, CommissionCodeD);
 
-    CommissionDTO findOrderById(Long id);
+    CommissionDTO findCommissionById(Long id);
 
-    CommissionDTO addOrder(CommissionDTO dto);
+    ProductDTO saveCommission(CommissionDTO dto);
 
-    CommissionDTO updateOrder(CommissionDTO dto);
+    CommissionDTO updateCommission(CommissionDTO dto);
 
-    void deleteOrder(Long id);
+    void deleteCommission(Long id);
 
-    List<CommissionResultsDTO> orderResults();
+    List<CommissionResultsDTO> commissionResults();
 
 }

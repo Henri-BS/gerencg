@@ -98,17 +98,4 @@ public class ProductService implements IProductService {
     public void deleteProduct(Long id) {
         this.productRepository.deleteById(id);
     }
-
-    public ProductDTO updateProductByCommission(CommissionDTO dto) {
-        Product product = productRepository.findById(dto.getProduct()).get();
-
-        int sumQuantity = product.getQuantity();
-        for (Commission c : product.getOrders()) {
-            sumQuantity = sumQuantity + c.getQuantity();
-        }
-
-        product.setQuantity(sumQuantity);
-        product = productRepository.save(product);
-        return new ProductDTO(product);
-    }
 }
