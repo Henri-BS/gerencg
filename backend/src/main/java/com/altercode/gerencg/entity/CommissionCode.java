@@ -1,9 +1,7 @@
 package com.altercode.gerencg.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,7 +22,6 @@ public class CommissionCode {
         this.code = code;
     }
 
-
     public String getCode() {
         return code;
     }
@@ -36,5 +33,4 @@ public class CommissionCode {
     public Set<Commission> getCommissions() {
         return commissions;
     }
-
 }

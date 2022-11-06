@@ -76,4 +76,8 @@ public class ProductController {
 	}
 
 
+	@PutMapping("/update-quantity")
+	public ProductDTO updateProductByCommission(@RequestBody CommissionDTO dto) {
+		return service.updateProductByCommission(dto);
+	}
 }
