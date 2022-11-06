@@ -2,37 +2,28 @@ package com.altercode.gerencg.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_commission_code")
 public class CommissionCode {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "code_id")
-    private Long id;
-
-    @Column(name ="commission_code")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private String code;
 
-    @OneToMany(mappedBy = "code", cascade = CascadeType.REMOVE)
-    private List<Commission> commissions = new ArrayList<>();
+    @OneToMany(mappedBy = "code", cascade = CascadeType.ALL)
+    private final Set<Commission> commissions = new HashSet<>();
 
     public CommissionCode() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public CommissionCode(String code) {
         this.code = code;
     }
+
 
     public String getCode() {
         return code;
@@ -42,7 +33,7 @@ public class CommissionCode {
         this.code = code;
     }
 
-    public List<Commission> getCommissions() {
+    public Set<Commission> getCommissions() {
         return commissions;
     }
 

@@ -11,7 +11,9 @@ import java.util.List;
 
 
 public interface ICommissionService {
-    Page<CommissionDTO> findAllCommissions(Pageable pageable, CommissionCodeD);
+    Page<CommissionDTO> findAllCommissions(Pageable pageable);
+
+    List<CommissionDTO> findAllCommissionsByCode( CommissionCode code);
 
     CommissionDTO findCommissionById(Long id);
 

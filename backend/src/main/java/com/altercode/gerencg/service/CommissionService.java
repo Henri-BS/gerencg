@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -37,6 +38,11 @@ public class CommissionService implements ICommissionService {
         return result.map(x -> new CommissionDTO(x));
     }
 
+    public List<CommissionDTO> findAllCommissionsByCode(CommissionCode code) {
+        List<Commission> result = commissionRepository.findAllCommissionsByCode(code);
+        return result.stream().map(x -> new CommissionDTO(x)).collect(Collectors.toList());
+    }
+
     @Override
     public CommissionDTO findCommissionById(Long id) {
         Commission result = commissionRepository.findById(id).get();
@@ -46,13 +52,7 @@ public class CommissionService implements ICommissionService {
     @Override
     public ProductDTO saveCommission(CommissionDTO dto) {
         Product product = productRepository.findById(dto.getProduct()).get();
-        CommissionCode code = commissionCodeRepository.findByCode(dto.getCommissionCode());
-
-        if (code == null) {
-            code = new CommissionCode();
-            code.setCode(dto.getCommissionCode());
-            code = commissionCodeRepository.saveAndFlush(code);
-        }
+        CommissionCode code = commissionCodeRepository.findById(dto.getCommissionCode()).get();
 
         Commission add = new Commission();
         add.setCode(code);
@@ -61,12 +61,10 @@ public class CommissionService implements ICommissionService {
         add.setQuantity(dto.getQuantity());
         add.setDistributor(dto.getDistributor());
         add.setProduct(product);
-
         commissionRepository.saveAndFlush(add);
 
         int sum = add.getQuantity();
         sum = sum + product.getQuantity();
-
         product.setQuantity(sum);
         productRepository.save(product);
 

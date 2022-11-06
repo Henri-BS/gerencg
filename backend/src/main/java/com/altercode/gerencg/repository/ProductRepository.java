@@ -26,5 +26,4 @@ public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpec
 	Page<Product> findByCategory(Pageable pageable, Category category);
 	
 	Page<Product> findByMeasure(Pageable pageable, Measure measure);
-
 }

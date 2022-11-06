@@ -49,13 +49,13 @@ public class Product {
     private Integer alteration;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
-    private Set<Calculator> calculators = new HashSet<>();
+    private final Set<Calculator> calculators = new HashSet<>();
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
     private final Set<ProductHistory> history = new HashSet<>();
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
-    private Set<Commission> commissions = new HashSet<>();
+    private final Set<Commission> commissions = new HashSet<>();
 
     public Product() {
     }

@@ -3,6 +3,8 @@ package com.altercode.gerencg.controller;
 import com.altercode.gerencg.dto.CommissionDTO;
 import com.altercode.gerencg.dto.CommissionResultsDTO;
 import com.altercode.gerencg.dto.ProductDTO;
+import com.altercode.gerencg.entity.Category;
+import com.altercode.gerencg.entity.CommissionCode;
 import com.altercode.gerencg.service.CommissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,9 +22,14 @@ public class CommissionController {
     private CommissionService commissionService;
 
     @GetMapping("/orders")
-    public ResponseEntity<Page<CommissionDTO>> findAllOrders(Pageable pageable) {
-        Page<CommissionDTO> page = commissionService.findAllCommissions(pageable);
-        return ResponseEntity.ok(page);
+    public Page<CommissionDTO> findAllCommissions(Pageable pageable) {
+      return commissionService.findAllCommissions(pageable);
+    }
+
+    @GetMapping("/find-code")
+    public ResponseEntity<List<CommissionDTO>> findAllCommissionsByCode(CommissionCode code) {
+        List<CommissionDTO> list = commissionService.findAllCommissionsByCode(code);
+        return ResponseEntity.ok(list);
     }
 
     @GetMapping("/order/{id}")
