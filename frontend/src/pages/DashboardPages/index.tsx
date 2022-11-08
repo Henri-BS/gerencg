@@ -3,8 +3,6 @@ import CategoryDataTable from "components/dashboard/DataTable/CategoryDataTable"
 import ProductDataTable from "components/dashboard/DataTable/ProductDataTable";
 import Footer from "components/shared/Footer";
 import NavBar from "components/shared/NavBar";
-import { ProductHistoryByProduct } from "pages/Listings";
-import { useParams } from "react-router-dom";
 import "./styles.css"
 
 export function Dashboard() {
@@ -52,7 +50,6 @@ export function Dashboard() {
 }
 
 export function ProductDashboard() {
-
 
   return (
     <>

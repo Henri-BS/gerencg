@@ -1,6 +1,7 @@
 package com.altercode.gerencg.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,11 +10,15 @@ import java.util.Set;
 public class CommissionCode {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private String code;
 
+    @Column(name = "commission_date")
+    private LocalDate commissionDate;
+
+    private String distributor;
+
     @OneToMany(mappedBy = "code", cascade = CascadeType.ALL)
-    private final Set<Commission> commissions = new HashSet<>();
+    private final Set<CommissionItem> commissionItems = new HashSet<>();
 
     public CommissionCode() {
     }
@@ -30,7 +35,25 @@ public class CommissionCode {
         this.code = code;
     }
 
-    public Set<Commission> getCommissions() {
-        return commissions;
+    public LocalDate getCommissionDate() {
+        return commissionDate;
     }
+
+    public void setCommissionDate(LocalDate commissionDate) {
+        this.commissionDate = commissionDate;
+    }
+
+    public String getDistributor() {
+        return distributor;
+    }
+
+    public void setDistributor(String distributor) {
+        this.distributor = distributor;
+    }
+
+    public Set<CommissionItem> getCommissions() {
+        return commissionItems;
+    }
+
+
 }

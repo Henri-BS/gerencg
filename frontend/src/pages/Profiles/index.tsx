@@ -2,7 +2,7 @@ import ProductSideBar from "components/container/Bar/ProductSideBar";
 import { useParams } from "react-router-dom";
 import "./styles.css"
 import ProductMenuBar from "components/container/Bar/ProductHorizontalBar";
-import { ProductCategoryList, ProductHistoryByProduct, ProductMeasureList } from "pages/Listings";
+import { ProductHistoryByProduct } from "pages/Listings/ProductListing";
 import CategoryLateralBar from "components/container/Bar/CategorySideBar";
 import { MeasureInfo } from "components/container/Card/MeasureCard";
 import { AddProduct, ProductFormEdit } from "components/container/Form/ProductForm";
@@ -10,7 +10,8 @@ import { AddCategoryStats } from "components/container/Form/CategoryForm";
 import { QuantityProductChart } from "components/dashboard/Chart/ProductCharts";
 import NavBar from "components/shared/NavBar";
 import Footer from "components/shared/Footer";
-import { ProductHistoryCard } from "components/container/Card/ProductCard";
+import { ProductCategoryList } from "pages/Listings/CategoryListing";
+import { ProductMeasureList } from "pages/Listings/MeasureListing";
 
 //Product profile 
 export function ProductProfile() {

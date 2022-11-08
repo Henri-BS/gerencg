@@ -1,31 +1,27 @@
 package com.altercode.gerencg.dto;
 
-import com.altercode.gerencg.entity.Commission;
+import com.altercode.gerencg.entity.CommissionItem;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class CommissionDTO implements Serializable {
+public class CommissionItemDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
     private String commissionCode;
-    private LocalDate orderDate;
     private Double totalValue;
     private Integer quantity;
-    private String distributor;
     private Long product;
 
-    public CommissionDTO() {
+    public CommissionItemDTO() {
     }
 
-    public CommissionDTO(Commission entity) {
+    public CommissionItemDTO(CommissionItem entity) {
         id = entity.getId();
         commissionCode = entity.getCode().getCode();
-        orderDate = entity.getOrderDate();
         totalValue = entity.getTotalValue();
         quantity = entity.getQuantity();
-        distributor = entity.getDistributor();
         product = entity.getProduct().getId();
     }
 
@@ -45,14 +41,6 @@ public class CommissionDTO implements Serializable {
         this.commissionCode = orderCode;
     }
 
-    public LocalDate getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(LocalDate orderDate) {
-        this.orderDate = orderDate;
-    }
-
     public Double getTotalValue() {
         return totalValue;
     }
@@ -67,14 +55,6 @@ public class CommissionDTO implements Serializable {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }
-
-    public String getDistributor() {
-        return distributor;
-    }
-
-    public void setDistributor(String distributor) {
-        this.distributor = distributor;
     }
 
     public Long getProduct() {

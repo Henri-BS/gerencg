@@ -1,6 +1,6 @@
 package com.altercode.gerencg.controller;
 
-import com.altercode.gerencg.dto.CommissionDTO;
+import com.altercode.gerencg.dto.CommissionItemDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -77,7 +77,7 @@ public class ProductController {
 
 
 	@PutMapping("/update-quantity")
-	public ProductDTO updateProductByCommission(@RequestBody CommissionDTO dto) {
+	public ProductDTO updateProductByCommission(@RequestBody CommissionItemDTO dto) {
 		return service.updateProductByCommission(dto);
 	}
 }

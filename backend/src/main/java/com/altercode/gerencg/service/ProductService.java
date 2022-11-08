@@ -1,9 +1,9 @@
 package com.altercode.gerencg.service;
 
-import com.altercode.gerencg.dto.CommissionDTO;
+import com.altercode.gerencg.dto.CommissionItemDTO;
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.Category;
-import com.altercode.gerencg.entity.Commission;
+import com.altercode.gerencg.entity.CommissionItem;
 import com.altercode.gerencg.entity.Measure;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.CategoryRepository;
@@ -98,14 +98,12 @@ public class ProductService implements IProductService {
     public void deleteProduct(Long id) {
         this.productRepository.deleteById(id);
     }
-<<<<<<< HEAD
-=======
 
-    public ProductDTO updateProductByCommission(CommissionDTO dto) {
+    public ProductDTO updateProductByCommission(CommissionItemDTO dto) {
         Product product = productRepository.findById(dto.getProduct()).get();
 
         int sumQuantity = product.getQuantity();
-        for (Commission c : product.getOrders()) {
+        for (CommissionItem c : product.getOrders()) {
             sumQuantity = sumQuantity + c.getQuantity();
         }
 
@@ -113,5 +111,4 @@ public class ProductService implements IProductService {
         product = productRepository.save(product);
         return new ProductDTO(product);
     }
->>>>>>> 09edb1c85a5896d4038c70f7b16129191df9ae4a
 }

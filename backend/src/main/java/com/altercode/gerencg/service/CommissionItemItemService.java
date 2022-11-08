@@ -1,15 +1,15 @@
 package com.altercode.gerencg.service;
 
-import com.altercode.gerencg.dto.CommissionDTO;
+import com.altercode.gerencg.dto.CommissionItemDTO;
 import com.altercode.gerencg.dto.CommissionResultsDTO;
 import com.altercode.gerencg.dto.ProductDTO;
-import com.altercode.gerencg.entity.Commission;
+import com.altercode.gerencg.entity.CommissionItem;
 import com.altercode.gerencg.entity.CommissionCode;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.CommissionCodeRepository;
-import com.altercode.gerencg.repository.CommissionRepository;
+import com.altercode.gerencg.repository.CommissionItemRepository;
 import com.altercode.gerencg.repository.ProductRepository;
-import com.altercode.gerencg.service.iservice.ICommissionService;
+import com.altercode.gerencg.service.iservice.ICommissionItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,10 +21,10 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
-public class CommissionService implements ICommissionService {
+public class CommissionItemItemService implements ICommissionItemService {
 
     @Autowired
-    private CommissionRepository commissionRepository;
+    private CommissionItemRepository commissionItemRepository;
 
     @Autowired
     private CommissionCodeRepository commissionCodeRepository;
@@ -33,35 +33,33 @@ public class CommissionService implements ICommissionService {
     private ProductRepository productRepository;
 
     @Override
-    public Page<CommissionDTO> findAllCommissions(Pageable pageable) {
-        Page<Commission> result = commissionRepository.findAll(pageable);
-        return result.map(x -> new CommissionDTO(x));
+    public Page<CommissionItemDTO> findAllCommissions(Pageable pageable) {
+        Page<CommissionItem> result = commissionItemRepository.findAll(pageable);
+        return result.map(x -> new CommissionItemDTO(x));
     }
 
-    public List<CommissionDTO> findAllCommissionsByCode(CommissionCode code) {
-        List<Commission> result = commissionRepository.findAllCommissionsByCode(code);
-        return result.stream().map(x -> new CommissionDTO(x)).collect(Collectors.toList());
-    }
-
-    @Override
-    public CommissionDTO findCommissionById(Long id) {
-        Commission result = commissionRepository.findById(id).get();
-        return new CommissionDTO(result);
+    public List<CommissionItemDTO> findAllCommissionsByCode(CommissionCode code) {
+        List<CommissionItem> result = commissionItemRepository.findAllCommissionsByCode(code);
+        return result.stream().map(x -> new CommissionItemDTO(x)).collect(Collectors.toList());
     }
 
     @Override
-    public ProductDTO saveCommission(CommissionDTO dto) {
+    public CommissionItemDTO findCommissionById(Long id) {
+        CommissionItem result = commissionItemRepository.findById(id).get();
+        return new CommissionItemDTO(result);
+    }
+
+    @Override
+    public ProductDTO saveCommission(CommissionItemDTO dto) {
         Product product = productRepository.findById(dto.getProduct()).get();
         CommissionCode code = commissionCodeRepository.findById(dto.getCommissionCode()).get();
 
-        Commission add = new Commission();
+        CommissionItem add = new CommissionItem();
         add.setCode(code);
-        add.setOrderDate(dto.getOrderDate());
         add.setTotalValue(dto.getTotalValue());
         add.setQuantity(dto.getQuantity());
-        add.setDistributor(dto.getDistributor());
         add.setProduct(product);
-        commissionRepository.saveAndFlush(add);
+        commissionItemRepository.saveAndFlush(add);
 
         int sum = add.getQuantity();
         sum = sum + product.getQuantity();
@@ -72,32 +70,30 @@ public class CommissionService implements ICommissionService {
     }
 
     @Override
-    public CommissionDTO updateCommission(CommissionDTO dto) {
+    public CommissionItemDTO updateCommission(CommissionItemDTO dto) {
 
         Product product = productRepository.findById(dto.getProduct()).get();
-        Commission edit = commissionRepository.findById(dto.getId()).get();
+        CommissionItem edit = commissionItemRepository.findById(dto.getId()).get();
         CommissionCode code = commissionCodeRepository.findById(dto.getCommissionCode()).get();
 
         edit.setId(dto.getId());
         edit.setCode(code);
-        edit.setOrderDate(dto.getOrderDate());
         edit.setQuantity(dto.getQuantity());
         edit.setTotalValue(dto.getTotalValue());
-        edit.setDistributor(dto.getDistributor());
         edit.setProduct(product);
-        edit = commissionRepository.save(edit);
+        edit = commissionItemRepository.save(edit);
 
-        return new CommissionDTO(edit);
+        return new CommissionItemDTO(edit);
     }
 
     @Override
     public void deleteCommission(Long id) {
-        this.commissionRepository.findById(id);
+        this.commissionItemRepository.findById(id);
     }
 
     @Override
     public List<CommissionResultsDTO> commissionResults() {
-        return commissionRepository.orderResults();
+        return commissionItemRepository.orderResults();
     }
 
 }

@@ -181,8 +181,8 @@ INSERT INTO tb_product_history(product_id, description, quantity, price, validat
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(2, 'Arroz Catarinão', 70, 4.75, '2023-09-10', 1, 'kg', 'Alimentícios', now());
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(2, 'Arroz Catarinão', 88, 4.75, '2024-02-02', 1, 'kg', 'Alimentícios', now());
 
-INSERT INTO tb_commission_code (code) VALUES ('20.10.2022.01-mt')
+INSERT INTO tb_commission_code (code, commission_date, distributor) VALUES ('20.10.2022.01-mt', '2022-10-20', 'Matheus');
 
-INSERT INTO tb_commission (commission_date, quantity, total_value, distributor, code_id, product_id) VALUES ('2022-10-20', 60, 204, 'Matheus', '20.10.2022.01-mt', 3);
-INSERT INTO tb_commission (commission_date, quantity, total_value, distributor, code_id, product_id) VALUES ('2022-10-20', 30, 120, 'Matheus', '20.10.2022.01-mt', 5);
-INSERT INTO tb_commission (commission_date, quantity, total_value, distributor, code_id, product_id) VALUES ('2022-10-20', 30, 110, 'Matheus', '20.10.2022.01-mt', 1);
+INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (60, 204, '20.10.2022.01-mt', 3);
+INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (30, 120, '20.10.2022.01-mt', 5);
+INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (30, 110, '20.10.2022.01-mt', 1);

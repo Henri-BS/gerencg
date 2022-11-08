@@ -1,9 +1,11 @@
 import {Dashboard, ProductDashboard} from "pages/DashboardPages";
 import Home from "pages/Home";
-import { CategoryList, MeasureList, ProductsList, ProductValidateList } from "pages/Listings";
+import { ProductsList, ProductValidateList } from "pages/Listings/ProductListing";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { ProductProfile, CategoryProfile, MeasureProfile, SaveProduct, UpdateProduct, SaveCategoryStats} from "pages/Profiles";
 import { Login } from "pages/LoginPage";
+import { CategoryList } from "pages/Listings/CategoryListing";
+import { MeasureList } from "pages/Listings/MeasureListing";
 
 
 function PageRoutes() {

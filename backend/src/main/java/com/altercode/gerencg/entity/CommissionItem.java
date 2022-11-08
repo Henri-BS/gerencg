@@ -1,26 +1,20 @@
 package com.altercode.gerencg.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "tb_commission")
-public class Commission {
+public class CommissionItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "commission_id")
     private Long id;
 
-    @Column(name = "commission_date")
-    private LocalDate orderDate;
-
     @Column(name = "total_value")
     private Double totalValue;
 
     private Integer quantity;
-
-    private String distributor;
 
     @ManyToOne
     @JoinColumn(name = "code_id")
@@ -30,16 +24,14 @@ public class Commission {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    public Commission() {
+    public CommissionItem() {
     }
 
-    public Commission(Long id, CommissionCode code, LocalDate orderDate, Double totalValue, Integer quantity, String distributor, Product product) {
+    public CommissionItem(Long id, CommissionCode code, Double totalValue, Integer quantity, Product product) {
         this.id = id;
         this.code = code;
-        this.orderDate = orderDate;
         this.totalValue = totalValue;
         this.quantity = quantity;
-        this.distributor = distributor;
         this.product = product;
     }
 
@@ -59,14 +51,6 @@ public class Commission {
         this.code = code;
     }
 
-    public LocalDate getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(LocalDate orderDate) {
-        this.orderDate = orderDate;
-    }
-
     public Double getTotalValue() {
         return totalValue;
     }
@@ -81,14 +65,6 @@ public class Commission {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }
-
-    public String getDistributor() {
-        return distributor;
-    }
-
-    public void setDistributor(String distributor) {
-        this.distributor = distributor;
     }
 
     public Product getProduct() {

@@ -65,7 +65,7 @@ public class CategoryStatsService implements ICategoryStatsService {
 		edit.setExpense(dto.getExpense());
 		
 		category.setTotalRegisters(category.getCategoryStats().size());
-		category = categoryRepository.save(category);
+		categoryRepository.save(category);
 		
 		return new CategoryStatsDTO(statsRepository.save(edit));
 	}
