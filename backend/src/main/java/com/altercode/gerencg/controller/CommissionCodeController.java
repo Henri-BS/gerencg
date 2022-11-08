@@ -16,8 +16,8 @@ public class CommissionCodeController {
     private CommissionCodeService codeService;
 
     @GetMapping("/code-list")
-    public ResponseEntity<Page<CommissionCodeDTO>> findAllCommissionCode(Pageable pageable) {
-        Page<CommissionCodeDTO> page = codeService.findAllCommissionCode(pageable);
+    public ResponseEntity<Page<CommissionCodeDTO>> findAllCommissionsByCode(Pageable pageable, String code) {
+        Page<CommissionCodeDTO> page = codeService.findAllCommissionsByCode(pageable, code);
         return ResponseEntity.ok(page);
     }
     @GetMapping("/code/{id}")

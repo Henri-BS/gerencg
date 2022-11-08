@@ -70,7 +70,7 @@ export function ProductsList() {
                     </div>
                 </div>
 
-                <div className=" row ">
+                <div className="row">
                     {productPage.content?.filter((product) =>
                         product.description.includes(value))
                         .map((product) => (
