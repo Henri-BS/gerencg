@@ -14,13 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class CommissionCodeService implements ICommissionCodeService {
 
-
     @Autowired
     private CommissionCodeRepository commissionCodeRepository;
 
     @Override
-    public Page<CommissionCodeDTO> findAllCommissionCode(Pageable pageable) {
-        Page<CommissionCode> result = commissionCodeRepository.findAll(pageable);
+    public Page<CommissionCodeDTO> findAllCommissionsByCode(Pageable pageable, String code) {
+        Page<CommissionCode> result = commissionCodeRepository.findAllCommissionsByCode(pageable, code);
         return result.map(x -> new CommissionCodeDTO(x));
     }
 
@@ -40,6 +39,4 @@ public class CommissionCodeService implements ICommissionCodeService {
 
         return new CommissionCodeDTO(commissionCodeRepository.saveAndFlush(add));
     }
-
-
 }

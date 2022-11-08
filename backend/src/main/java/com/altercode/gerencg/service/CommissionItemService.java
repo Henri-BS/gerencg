@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
-public class CommissionItemItemService implements ICommissionItemService {
+public class CommissionItemService implements ICommissionItemService {
 
     @Autowired
     private CommissionItemRepository commissionItemRepository;

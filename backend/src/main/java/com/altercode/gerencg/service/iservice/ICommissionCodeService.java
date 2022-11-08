@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 
 
 public interface ICommissionCodeService {
-    Page<CommissionCodeDTO> findAllCommissionCode(Pageable pageable);
+    Page<CommissionCodeDTO> findAllCommissionsByCode(Pageable pageable, String code);
 
     CommissionCodeDTO findCodeById(String id);
 
