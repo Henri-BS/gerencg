@@ -20,7 +20,7 @@ public class CommissionItemController {
     @Autowired
     private CommissionItemService commissionItemService;
 
-    @GetMapping("/commission-list")
+    @GetMapping("/items-list")
     public Page<CommissionItemDTO> findAllCommissions(Pageable pageable) {
       return commissionItemService.findAllCommissions(pageable);
     }
@@ -31,29 +31,29 @@ public class CommissionItemController {
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/order/{id}")
+    @GetMapping("/item/{id}")
     public CommissionItemDTO findOrderById(@PathVariable Long id) {
         return commissionItemService.findCommissionById(id);
     }
 
-    @PutMapping("/commission/add")
+    @PutMapping("/item/add")
     public ProductDTO saveOrder(@RequestBody CommissionItemDTO order) {
         return commissionItemService.saveCommission(order);
     }
 
-    @PutMapping("/commission/update")
+    @PutMapping("/item/update")
     public ResponseEntity<CommissionItemDTO> updateOrder(@RequestBody CommissionItemDTO order) {
         CommissionItemDTO edit = commissionItemService.updateCommission(order);
         return new ResponseEntity<>(edit, HttpStatus.OK);
     }
 
-    @DeleteMapping("/commission/delete/{id}")
+    @DeleteMapping("/item/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteOrder(@PathVariable Long id) {
         this.commissionItemService.deleteCommission(id);
     }
 
-    @GetMapping("/commission-info")
+    @GetMapping("/item-info")
     public ResponseEntity<List<CommissionResultsDTO>> orderResults() {
         List<CommissionResultsDTO> list = commissionItemService.commissionResults();
         return ResponseEntity.ok(list);

@@ -195,3 +195,38 @@
     padding: 20px;
     font-size: 16px;
 }
+
+
+/*Commission card styles*/
+
+.commission-card {
+    display: grid;
+    grid-template-rows: 1fr 0.5fr 0.5fr;
+    padding: 10px;
+    background-color: var(--quin);
+    border: 3px solid #ccc;
+    border-radius: 20px;
+    transition: all 0.2s ease-out;
+    justify-content: center;
+    align-items: center;
+}
+
+.commission-card:hover {
+    border: 3px solid var(--blue-prim);
+}
+
+.commission-box {
+    display: flex;
+    width: 100%;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.commission-box h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.commission-box h3 {
+    font-size: 20px;
+}
