@@ -38,7 +38,7 @@ export function ProductValidateCard({ product }: Props) {
                     <h3>{product?.description}</h3>
 
                     <div className="product-info-item">
-                        <h2>Valido até: {new Date(product?.validate).toLocaleDateString()} </h2>
+                        <h2>Valido até: {new Date(product?.validate).toLocaleDateString()}</h2>
                     </div>
                 </div>
             </div>

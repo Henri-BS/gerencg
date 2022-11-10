@@ -1,3 +1,4 @@
+import { CommissionCodeList } from "pages/Listings/CommissionListing";
 import { Product } from "./product";
 
 export type Commission = {
@@ -37,3 +38,7 @@ export type CodePage = {
   numberOfElements?: number;
   empty?: boolean;
 };
+
+export type CodeProps= {
+    code: string;
+}

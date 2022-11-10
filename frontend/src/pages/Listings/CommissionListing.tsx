@@ -7,6 +7,7 @@ import { BASE_URL } from "utils/requests";
 import * as FaIcons from 'react-icons/fa';
 import "./styles.css";
 import Pagination from "components/shared/Pagination";
+import { CommissionCard } from "components/container/Card/CommissionCards";
 
 export function CommissionCodeList() {
     const [value, setValue] = useState("");
@@ -35,7 +36,7 @@ export function CommissionCodeList() {
                 <div className="container">
                     <nav className="row header-container">
                         <h2 className="col-3 col-sm-4 col-md-4 col-xl-4">Lista de Pedidos</h2>
-                        <nav className="option-item">
+                        <nav className="option-item col-3 col-sm-4 col-md-4 col-xl-4">
                             <h5><b>Total:</b>{codePage.totalElements} Pedidos</h5>
                         </nav>
                         <form className="col-5 col-sm-4 col-md-4 col-xl-4 search-container">
@@ -66,11 +67,10 @@ export function CommissionCodeList() {
                             commission.code.includes(value))
                             .map((commission) => (
                                 <div key={commission.code} className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-3">
-
+                                    <CommissionCard commission={commission} />
                                 </div>
                             ))}
                     </div>
-
                 </div>
                 <Footer />
             </div>
