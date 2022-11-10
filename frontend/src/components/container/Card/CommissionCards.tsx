@@ -8,14 +8,14 @@ type Commission = {
 export function CommissionCard({ commission }: Commission) {
 
     return (
-        <div className="product-history-card">
-            <div className="product-history-box border-dark">
-                <h2>Código do Pedido: {commission.code}</h2>
+        <div className="commission-card">
+            <div className="commission-box border-dark">
+                <h2>Código do Pedido: <p>{commission.code}</p></h2>
             </div>
-            <div className="product-history-box">
+            <div className="commission-box">
                 <h3>Data do Pedido: {moment(commission.commissionDate).format("DD/MM/YYYY")}</h3>
             </div>
-            <div className="product-history-box border-0">
+            <div className="commission-box border-0">
                 <h3>Distribuidora: {commission.distributor}</h3>
             </div>
         </div>

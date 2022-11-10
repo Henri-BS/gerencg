@@ -82,6 +82,13 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Amido de Milho Kimimo', 'https://cdn1.iconfinder.com/data/icons/grocery-store-filled/64/Grocery_Shop-10-512.png', 3.20, 4, '2024-07-13', 200, 'g', 'Alimentícios');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Amido de Milho Maizena', 'https://cdn1.iconfinder.com/data/icons/grocery-store-filled/64/Grocery_Shop-10-512.png', 3.50, 21, '2024-06-01', 180, 'g', 'Alimentícios');
 
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Refrigerante Coca Cola Original Pet', 'https://egitimgrafik.com/wp-content/uploads/2020/01/cola-1024x1024.png', 6.20, 3, '2023-12-30', 1.5, 'l', 'Alimentícios');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Refrigerante Fanta Laranja Pet', 'https://egitimgrafik.com/wp-content/uploads/2020/01/cola-1024x1024.png', 7.50, 3, '2023-12-30', 2, 'l', 'Alimentícios');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Refrigerante Coca Cola Original Pet', 'https://egitimgrafik.com/wp-content/uploads/2020/01/cola-1024x1024.png', 9.00, 3, '2023-12-30', 2, 'l', 'Alimentícios');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Refrigerante Coca Cola Pet Retornável', 'https://egitimgrafik.com/wp-content/uploads/2020/01/cola-1024x1024.png', 9.90, 3, '2023-12-30', 2, 'l', 'Alimentícios');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Suco Del Valle Fruit Laranja', 'https://egitimgrafik.com/wp-content/uploads/2020/01/cola-1024x1024.png', 2.50, 3, '2023-12-30', 450, 'ml', 'Alimentícios');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Água Crystral Br sem Gás', 'https://egitimgrafik.com/wp-content/uploads/2020/01/cola-1024x1024.png', 3.25, 3, '2023-12-30', 1.5, 'l', 'Alimentícios');
+
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Boneca Beijokinhas Mister Brinque', 'https://i.pinimg.com/originals/d1/57/1f/d1571f9b88cf530c8a4e52be50d5b7ca.png', 31.40, 3, '2999-12-30', null, '~', 'Brinquedos');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Boneca Bee Bee Girls Bee Toys', 'https://i.pinimg.com/originals/d1/57/1f/d1571f9b88cf530c8a4e52be50d5b7ca.png', 38.40, 2, '2999-12-30', null, '~', 'Brinquedos');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Avião de Controle Remoto AirPlane', 'https://static.vecteezy.com/system/resources/previews/000/550/256/original/airplane-flying-vector-icon.jpg', 21.50, 2, '2999-12-30', null, '~', 'Brinquedos');
@@ -185,10 +192,17 @@ INSERT INTO tb_product_history(product_id, description, quantity, price, validat
 
 INSERT INTO tb_commission_code (code, commission_date, distributor) VALUES ('20.10.2022.01-mt', '2022-10-20', 'Matheus');
 INSERT INTO tb_commission_code (code, commission_date, distributor) VALUES ('05.11.2022.01-mt', '2022-11-05', 'Matheus');
-INSERT INTO tb_commission_code (code, commission_date, distributor) VALUES ('20.10.2022.01-mt', '2022-10-20', 'York Distribuidora');
+INSERT INTO tb_commission_code (code, commission_date, distributor) VALUES ('05.11.2022.01-yd', '2022-11-05', 'York Distribuidora');
 
 INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (60, 204, '20.10.2022.01-mt', 3);
 INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (30, 120, '20.10.2022.01-mt', 5);
 INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (30, 110, '20.10.2022.01-mt', 1);
 INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (12, 34.2, '05.11.2022.01-mt', 88);
 INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (24, 114.96, '05.11.2022.01-mt', 89);
+INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (6, 28.08, '05.11.2022.01-yd', 33);
+INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (6, 34.98, '05.11.2022.01-yd', 34);
+INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (12, 86.76, '05.11.2022.01-yd', 35);
+INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (9, 52.29, '05.11.2022.01-yd', 36);
+INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (6, 12.42, '05.11.2022.01-yd', 37);
+INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (6, 25.56, '05.11.2022.01-yd', 38);
+

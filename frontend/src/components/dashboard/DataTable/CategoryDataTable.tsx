@@ -39,12 +39,12 @@ function CategoryDataTable() {
                 <table className="table border-table">
                     <thead className="bg-primary text-primary">
                         <tr>
-                            <th className="table-box "><h5>Categoria</h5></th>
+                            <th className="table-box"><h5>Categoria</h5></th>
                             <th className="table-box"><h5>Data de Resgistro</h5></th>
-                            <th className="table-box "><h5>Produtos Adicionados</h5></th>
-                            <th className="table-box "><h5>Produtos Removidos</h5></th>
-                            <th className="table-box "><h5>Renda</h5></th>
-                            <th className="table-box "><h5>Despesa</h5></th>
+                            <th className="table-box"><h5>Produtos Adicionados</h5></th>
+                            <th className="table-box"><h5>Produtos Removidos</h5></th>
+                            <th className="table-box"><h5>Renda</h5></th>
+                            <th className="table-box"><h5>Despesa</h5></th>
                         </tr>
                     </thead>
                     <tbody className="border-0">

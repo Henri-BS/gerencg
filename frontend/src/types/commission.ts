@@ -3,7 +3,7 @@ import { Product } from "./product";
 
 export type Commission = {
   id: number;
-  commiddionCode: string;
+  commissionCode: string;
   totalValue: number;
   quantity: number;
   product: Product;
