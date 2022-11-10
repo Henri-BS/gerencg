@@ -6,10 +6,10 @@ export const product = {
     cName: 'menu-link'
 }
 
-export const productStats = {
-    title: 'Estatísticas de Produtos',
-    path: '/products-stats',
-    image: "https://www.escaplan.com/wp-content/uploads/2018/07/growth-1.png",
+export const commission = {
+    title: 'Pedidos',
+    path: '/commission/list',
+    image: "https://www.playingfire.com/wp-content/uploads/2020/08/874889_clipboard_512x512-1-300x300.png",
     cName: 'menu-link'
 }
 

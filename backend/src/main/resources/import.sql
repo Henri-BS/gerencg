@@ -143,8 +143,10 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Trena Vap Solution', 'https://cdn3.iconfinder.com/data/icons/construction-157/64/tape-measure-ruler-construction-metric-512.png', 21.75, 3, null, 7.5, 'm', 'Ferramentas');
 
 
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Ácido Muriático Limpa Fácil', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.30, 9, '2024-10-06', 1.00, 'l', 'Limpeza');
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Água Sanitária Nutrilar', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 2.50, 11, '2022-12-06', 1.00, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Ácido Muriático Limpa Fácil', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.30, 9, '2024-10-06', 1, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Água Sanitária Nutrilar', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 2.50, 11, '2022-12-06', 1, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Água Sanitária LavaBem', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 2.85, 11, '2022-12-06', 1, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Limp Azulim Cerâmica/Azulejo', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 6.50, 24, '2022-12-06', 1.00, 'l', 'Limpeza');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante LavaBem Limão', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 6.95, 3, '2023-05-09', 2.00, 'l', 'Limpeza');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Amaciante Ypê Aconchego', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.70, 11, '2024-01-01', 500, 'ml', 'Limpeza');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Óleo de Peroba', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 9.40, 12, '2033-04-22', 100, 'ml', 'Limpeza');
@@ -182,7 +184,11 @@ INSERT INTO tb_product_history(product_id, description, quantity, price, validat
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(2, 'Arroz Catarinão', 88, 4.75, '2024-02-02', 1, 'kg', 'Alimentícios', now());
 
 INSERT INTO tb_commission_code (code, commission_date, distributor) VALUES ('20.10.2022.01-mt', '2022-10-20', 'Matheus');
+INSERT INTO tb_commission_code (code, commission_date, distributor) VALUES ('05.11.2022.01-mt', '2022-11-05', 'Matheus');
+INSERT INTO tb_commission_code (code, commission_date, distributor) VALUES ('20.10.2022.01-mt', '2022-10-20', 'York Distribuidora');
 
 INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (60, 204, '20.10.2022.01-mt', 3);
 INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (30, 120, '20.10.2022.01-mt', 5);
 INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (30, 110, '20.10.2022.01-mt', 1);
+INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (12, 34.2, '05.11.2022.01-mt', 88);
+INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (24, 114.96, '05.11.2022.01-mt', 89);
