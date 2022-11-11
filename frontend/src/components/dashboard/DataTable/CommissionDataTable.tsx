@@ -1,23 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { CommissionPage } from "types/commission";
+import { CodeProps, Commission } from "types/commission";
 import { BASE_URL } from "utils/requests";
 
-function ItemDataTable() {
+function ItemDataTable({codeId}: CodeProps) {
 
-    const [pageItem, setPageItem] = useState<CommissionPage>({
-        content: [],
-        number: 0,
-        totalElements: 0
-    });
-
+    const [pageItem, setPageItem] = useState<Commission[]>();
     useEffect(() => {
-        axios.get(`${BASE_URL}/items-list`)
+        axios.get(`${BASE_URL}/find-code?code=${codeId}`)
             .then((response) => {
                 setPageItem(response.data);
             });
-    }, []);
+    }, [codeId]);
 
     return (
         <div className="table-responsive">
@@ -31,11 +26,12 @@ function ItemDataTable() {
                     </tr>
                 </thead>
                 <tbody className="border-0">
-                    {pageItem.content?.map(item => (
+                    {pageItem?.map(item => (
                      <tr key={item.id}>
                         <Link to={`/product/${item.product}`} className="table-box-title">
-                            <td>{item.product}</td>
+                            <td>{item.productDescription}</td>
                         </Link>
+                        <td className="table-box">{item.product.measure}</td>
                         <td className="table-box">{item.quantity}</td>
                         <td className="table-box">{item.totalValue}</td>
                      </tr>

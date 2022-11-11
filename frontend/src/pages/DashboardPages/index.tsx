@@ -4,7 +4,6 @@ import ItemDataTable from "components/dashboard/DataTable/CommissionDataTable";
 import ProductDataTable from "components/dashboard/DataTable/ProductDataTable";
 import Footer from "components/shared/Footer";
 import NavBar from "components/shared/NavBar";
-import { CommissionCodeList } from "pages/Listings/CommissionListing";
 import "./styles.css"
 
 export function Dashboard() {
@@ -72,7 +71,7 @@ export function CommissionItemDashboard() {
     <NavBar />
       <div className="container">
         <h1 className=" py-4">Registros de Alterações dos Produtos</h1>
-        <ItemDataTable />
+    
       </div>
       <Footer />
     </>

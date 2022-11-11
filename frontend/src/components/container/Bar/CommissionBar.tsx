@@ -7,7 +7,7 @@ import { Code, CodeProps, Commission } from "types/commission";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 
-export function CommissionMenuBar({ code }: CodeProps) {
+export function CommissionMenuBar({ codeId: code }: CodeProps) {
 
     const [commission, setCommission] = useState<Code>();
 

@@ -1,4 +1,3 @@
-import { CommissionCodeList } from "pages/Listings/CommissionListing";
 import { Product } from "./product";
 
 export type Commission = {
@@ -7,11 +6,12 @@ export type Commission = {
   totalValue: number;
   quantity: number;
   product: Product;
+  productDescription: string;
 };
 
 export type CommissionPage = {
-    content?: Commission[];
-    last?: boolean;
+  content?: Commission[];
+  last?: boolean;
   totalElements?: number;
   totalPages?: number;
   size?: number;
@@ -22,14 +22,14 @@ export type CommissionPage = {
 };
 
 export type Code = {
-    code: string;
-    commissionDate: string;
-    distributor: string;
+  code: string;
+  commissionDate: string;
+  distributor: string;
 };
 
 export type CodePage = {
-    content?: Code[];
-    last?: boolean;
+  content?: Code[];
+  last?: boolean;
   totalElements?: number;
   totalPages?: number;
   size?: number;
@@ -39,6 +39,7 @@ export type CodePage = {
   empty?: boolean;
 };
 
-export type CodeProps= {
-    code: string;
-}
+export type CodeProps = {
+  codeId: string;
+  productId: string;
+};

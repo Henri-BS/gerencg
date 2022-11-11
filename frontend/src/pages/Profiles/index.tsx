@@ -12,7 +12,6 @@ import { ProductCategoryList } from "pages/Listings/CategoryListing";
 import { ProductMeasureList } from "pages/Listings/MeasureListing";
 import { ProductMenuBar, ProductSideBar } from "components/container/Bar/ProductBar";
 import { CommissionMenuBar } from "components/container/Bar/CommissionBar";
-import { CommissionItemDashboard } from "pages/DashboardPages";
 import ItemDataTable from "components/dashboard/DataTable/CommissionDataTable";
 
 //Product profile 
@@ -66,6 +65,22 @@ export function CategoryProfile() {
   );
 }
 
+export function CommissionProfile() {
+  const params = useParams();
+
+  return(
+  <>
+    <NavBar />
+    <div className="container">
+      <div>
+        <CommissionMenuBar codeId={`${params.code}`} productId={`${params.productId}`}/>
+      </div>
+      <ItemDataTable codeId={`${params.code}`} productId={`${params.productId}`} />
+    </div>
+    <Footer />
+  </>
+  );
+}
 //Save product page
 export function SaveProduct() {
 
@@ -117,19 +132,5 @@ export function MeasureProfile() {
   );
 }
 
-export function CommissionProfile() {
-  const params = useParams();
 
-  return(
-  <>
-    <NavBar />
-    <div className="container">
-      <div>
-        <CommissionMenuBar code={`${params.code}`} />
-      </div>
-    </div>
-    <Footer />
-  </>
-  );
-}
 
