@@ -1,3 +1,4 @@
+import { CommissionCodeList } from "pages/Listings/CommissionListing";
 import { Product } from "./product";
 
 export type Commission = {

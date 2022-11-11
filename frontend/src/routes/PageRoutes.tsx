@@ -45,6 +45,7 @@ function PageRoutes() {
                 <Route path="/measure/list" element={<MeasureList />} />
 
                 <Route path="/commission/list" element={<CommissionCodeList />} />
+
                 <Route path="/commission">
                     <Route path=":code" element={<CommissionProfile />} />
                 </Route>
