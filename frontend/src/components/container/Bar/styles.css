@@ -80,7 +80,7 @@
     }
 }
 
-.menu-profile-container {
+.menu-bar-container {
     height: 280px;
     justify-content: center;
     justify-items: center;
@@ -89,7 +89,7 @@
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.menu-option-card {
+.menu-bar-option {
     height: 80px;
     width: 100px;
     justify-content: center;
@@ -99,7 +99,7 @@
     transition: all 0.3s ease-in;
 }
 
-.menu-option-card:hover {
+.menu-bar-option:hover {
     border: solid var(--blue-prim);
 }
 
@@ -116,4 +116,25 @@
         height: 60px;
         width: 80px;
     }
+}
+
+.bar-container {
+    height: 100px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: solid #ccc;
+}
+
+.bar-option {
+    padding: 20px;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 22px;
+    font-weight: 800;
+    transition: all 0.3s ease-in;
 }

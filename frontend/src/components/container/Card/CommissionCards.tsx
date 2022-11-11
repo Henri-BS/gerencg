@@ -1,4 +1,5 @@
 import moment from "moment";
+import { Link } from "react-router-dom";
 import { Code } from "types/commission";
 import "./styles.css"
 
@@ -8,6 +9,7 @@ type Commission = {
 export function CommissionCard({ commission }: Commission) {
 
     return (
+        <Link to={`/commission/${commission.code}`}>
         <div className="commission-card">
             <div className="commission-box border-dark">
                 <h2>Código do Pedido: <p>{commission.code}</p></h2>
@@ -19,5 +21,6 @@ export function CommissionCard({ commission }: Commission) {
                 <h3>Distribuidora: {commission.distributor}</h3>
             </div>
         </div>
+        </Link>
     );
 }

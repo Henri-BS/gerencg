@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { CommissionPage } from "types/commission";
 import { BASE_URL } from "utils/requests";
 
+
 function ItemDataTable() {
 
     const [pageItem, setPageItem] = useState<CommissionPage>({
@@ -18,7 +19,6 @@ function ItemDataTable() {
                 setPageItem(response.data);
             });
     }, []);
-
     return (
         <div className="table-responsive">
             <table className="table border-table">
