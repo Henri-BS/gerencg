@@ -33,5 +33,5 @@ build/
 .vscode/
 
 ### Backend ###
-
+application.properties
 application-dev.properties

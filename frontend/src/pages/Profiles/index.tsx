@@ -73,9 +73,9 @@ export function CommissionProfile() {
     <NavBar />
     <div className="container">
       <div>
-        <CommissionMenuBar codeId={`${params.code}`} productId={`${params.productId}`}/>
+        <CommissionMenuBar codeId={`${params.code}`} />
       </div>
-      <ItemDataTable codeId={`${params.code}`} productId={`${params.productId}`} />
+      <ItemDataTable codeId={`${params.code}`} />
     </div>
     <Footer />
   </>

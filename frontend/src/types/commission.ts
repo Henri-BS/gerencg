@@ -41,5 +41,4 @@ export type CodePage = {
 
 export type CodeProps = {
   codeId: string;
-  productId: string;
 };
