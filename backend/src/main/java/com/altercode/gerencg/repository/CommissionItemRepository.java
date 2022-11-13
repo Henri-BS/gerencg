@@ -3,6 +3,7 @@ package com.altercode.gerencg.repository;
 import com.altercode.gerencg.dto.CommissionResultsDTO;
 import com.altercode.gerencg.entity.CommissionItem;
 import com.altercode.gerencg.entity.CommissionCode;
+import com.altercode.gerencg.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -16,4 +17,5 @@ public interface CommissionItemRepository extends JpaRepository<CommissionItem, 
 
     List<CommissionItem> findAllCommissionsByCode(CommissionCode code);
 
+    List<CommissionItem> findItemByProduct(Product product);
 }

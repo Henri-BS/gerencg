@@ -209,6 +209,9 @@
     transition: all 0.2s ease-out;
     justify-content: center;
     align-items: center;
+    text-decoration: underline;
+    text-decoration-color: var(--quin);
+    color: var(--dark-prim);
 }
 
 .commission-card:hover {

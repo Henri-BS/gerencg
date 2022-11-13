@@ -4,6 +4,7 @@ import com.altercode.gerencg.dto.CommissionItemDTO;
 import com.altercode.gerencg.dto.CommissionResultsDTO;
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.CommissionCode;
+import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.service.CommissionItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,8 +27,14 @@ public class CommissionItemController {
     }
 
     @GetMapping("/find-code")
-    public ResponseEntity<List<CommissionItemDTO>> findAllCommissionsByCode(CommissionCode code) {
-        List<CommissionItemDTO> list = commissionItemService.findAllCommissionsByCode(code);
+    public ResponseEntity<List<CommissionItemDTO>> findItemsByCode(CommissionCode code) {
+        List<CommissionItemDTO> list = commissionItemService.findItemsByCode(code);
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/find-item-by-product/{product}")
+    public ResponseEntity<List<CommissionItemDTO>> findItemByProduct(Product product) {
+        List<CommissionItemDTO> list = commissionItemService.findItemByProduct(product);
         return ResponseEntity.ok(list);
     }
 
@@ -57,5 +64,10 @@ public class CommissionItemController {
     public ResponseEntity<List<CommissionResultsDTO>> orderResults() {
         List<CommissionResultsDTO> list = commissionItemService.commissionResults();
         return ResponseEntity.ok(list);
+    }
+
+    @PutMapping("update-by-item/{id}")
+    public ProductDTO updateProductByItem(@RequestBody CommissionItemDTO dto, @PathVariable Long product) {
+        return commissionItemService.updateProductByItem(dto);
     }
 }

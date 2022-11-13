@@ -7,6 +7,7 @@ import com.altercode.gerencg.entity.CommissionItem;
 import com.altercode.gerencg.entity.Measure;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.CategoryRepository;
+import com.altercode.gerencg.repository.CommissionItemRepository;
 import com.altercode.gerencg.repository.MeasureRepository;
 import com.altercode.gerencg.repository.ProductRepository;
 import com.altercode.gerencg.service.iservice.IProductService;
@@ -32,6 +33,9 @@ public class ProductService implements IProductService {
 
     @Autowired
     private MeasureRepository measureRepository;
+
+    @Autowired
+    private CommissionItemRepository itemRepository;
 
     // Find all products by page and description
 
@@ -66,8 +70,8 @@ public class ProductService implements IProductService {
 
     // Find products by id
     public ProductDTO findById(Long id) {
-
         Product result = productRepository.findById(id).get();
+
         return new ProductDTO(result);
     }
 

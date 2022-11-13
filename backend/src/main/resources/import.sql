@@ -194,15 +194,15 @@ INSERT INTO tb_commission_code (code, commission_date, distributor) VALUES ('20.
 INSERT INTO tb_commission_code (code, commission_date, distributor) VALUES ('05.11.2022.01-mt', '2022-11-05', 'Matheus');
 INSERT INTO tb_commission_code (code, commission_date, distributor) VALUES ('05.11.2022.01-yd', '2022-11-05', 'York Distribuidora');
 
-INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (60, 204, '20.10.2022.01-mt', 3);
-INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (30, 120, '20.10.2022.01-mt', 5);
-INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (30, 110, '20.10.2022.01-mt', 1);
-INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (12, 34.2, '05.11.2022.01-mt', 88);
-INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (24, 114.96, '05.11.2022.01-mt', 89);
-INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (6, 28.08, '05.11.2022.01-yd', 33);
-INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (6, 34.98, '05.11.2022.01-yd', 34);
-INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (12, 86.76, '05.11.2022.01-yd', 35);
-INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (9, 52.29, '05.11.2022.01-yd', 36);
-INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (6, 12.42, '05.11.2022.01-yd', 37);
-INSERT INTO tb_commission (quantity, total_value, code_id, product_id) VALUES (6, 25.56, '05.11.2022.01-yd', 38);
+INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (60, 204, '20.10.2022.01-mt', 3);
+INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (30, 120, '20.10.2022.01-mt', 5);
+INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (30, 110, '20.10.2022.01-mt', 1);
+INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (12, 34.2, '05.11.2022.01-mt', 88);
+INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (24, 114.96, '05.11.2022.01-mt', 89);
+INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (6, 28.08, '05.11.2022.01-yd', 33);
+INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (6, 34.98, '05.11.2022.01-yd', 34);
+INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (12, 86.76, '05.11.2022.01-yd', 35);
+INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (9, 52.29, '05.11.2022.01-yd', 36);
+INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (6, 12.42, '05.11.2022.01-yd', 37);
+INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (6, 25.56, '05.11.2022.01-yd', 38);
 

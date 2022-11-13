@@ -3,7 +3,7 @@ package com.altercode.gerencg.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tb_commission")
+@Table(name = "tb_commission_item")
 public class CommissionItem {
 
     @Id

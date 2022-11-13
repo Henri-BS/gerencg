@@ -124,8 +124,8 @@
     justify-items: center;
     align-items: center;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    border-bottom: solid #ccc;
+    grid-template-columns: repeat(3, auto);
+    border: solid;
 }
 
 .bar-option {
@@ -133,7 +133,6 @@
     height: 80px;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
     font-size: 22px;
     font-weight: 800;
     transition: all 0.3s ease-in;

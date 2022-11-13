@@ -20,14 +20,15 @@ public class CommissionCodeController {
         Page<CommissionCodeDTO> page = codeService.findAllCommissionsByCode(pageable, code);
         return ResponseEntity.ok(page);
     }
-    @GetMapping("/code/{id}")
+
+    @GetMapping("/commission/{id}")
     public CommissionCodeDTO findById(@PathVariable String id) {
         return codeService.findCodeById(id);
     }
 
     @PostMapping("/save-code")
     public ResponseEntity<CommissionCodeDTO> saveCommissionCode(@RequestBody CommissionCodeDTO dto) {
-         CommissionCodeDTO addCode = codeService.saveCommissionCode(dto);
-         return new ResponseEntity<>(addCode, HttpStatus.CREATED);
+        CommissionCodeDTO addCode = codeService.saveCommissionCode(dto);
+        return new ResponseEntity<>(addCode, HttpStatus.CREATED);
     }
-    }
+}

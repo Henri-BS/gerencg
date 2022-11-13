@@ -7,6 +7,8 @@ export type Commission = {
   quantity: number;
   product: Product;
   productDescription: string;
+  productMeasure: string;
+  productMeasureValue: number;
 };
 
 export type CommissionPage = {
