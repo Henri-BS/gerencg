@@ -1,5 +1,6 @@
 package com.altercode.gerencg.controller;
 
+import com.altercode.gerencg.dto.CommissionDataDTO;
 import com.altercode.gerencg.dto.CommissionItemDTO;
 import com.altercode.gerencg.dto.CommissionResultsDTO;
 import com.altercode.gerencg.dto.ProductDTO;
@@ -66,8 +67,8 @@ public class CommissionItemController {
         return ResponseEntity.ok(list);
     }
 
-    @PutMapping("update-by-item/{id}")
-    public ProductDTO updateProductByItem(@RequestBody CommissionItemDTO dto, @PathVariable Long product) {
+    @PutMapping("/update-by-item")
+    public ProductDTO updateProductByItem(@RequestBody CommissionDataDTO dto) {
         return commissionItemService.updateProductByItem(dto);
     }
 }

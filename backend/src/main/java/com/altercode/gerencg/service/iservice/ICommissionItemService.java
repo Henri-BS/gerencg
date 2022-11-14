@@ -1,5 +1,6 @@
 package com.altercode.gerencg.service.iservice;
 
+import com.altercode.gerencg.dto.CommissionDataDTO;
 import com.altercode.gerencg.dto.CommissionItemDTO;
 import com.altercode.gerencg.dto.CommissionResultsDTO;
 import com.altercode.gerencg.dto.ProductDTO;
@@ -28,6 +29,6 @@ public interface ICommissionItemService {
 
     List<CommissionResultsDTO> commissionResults();
 
-    ProductDTO updateProductByItem(CommissionItemDTO dto);
+    ProductDTO updateProductByItem(CommissionDataDTO dto);
 
 }

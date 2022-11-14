@@ -1,5 +1,6 @@
 package com.altercode.gerencg.service;
 
+import com.altercode.gerencg.dto.CommissionDataDTO;
 import com.altercode.gerencg.dto.CommissionItemDTO;
 import com.altercode.gerencg.dto.CommissionResultsDTO;
 import com.altercode.gerencg.dto.ProductDTO;
@@ -109,13 +110,13 @@ public class CommissionItemService implements ICommissionItemService {
     }
 
     @Override
-    public ProductDTO updateProductByItem(CommissionItemDTO dto) {
-        Product product = productRepository.findById(dto.getProduct()).get();
-        CommissionItem item = itemRepository.findById(dto.getId()).get();
+    public ProductDTO updateProductByItem(CommissionDataDTO dto) {
+        Product product = productRepository.findById(dto.getProductId()).get();
+        CommissionItem item = itemRepository.findById(dto.getItemId()).get();
 
         CommissionData data = new CommissionData();
-        data.setCommissionId(item);
-        data.setProductId(product);
+        data.setCommission(item);
+        data.setProduct(product);
 dataRepository.saveAndFlush(data);
 
         int sum = item.getQuantity();

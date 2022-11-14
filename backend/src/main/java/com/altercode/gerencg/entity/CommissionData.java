@@ -12,28 +12,28 @@ public class CommissionData {
 
     @ManyToOne
     @JoinColumn(name = "commission_id")
-    private CommissionItem commissionId;
+    private CommissionItem commission;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product productId;
+    private Product product;
 
     public CommissionData() {
     }
 
-    public CommissionItem getCommissionId() {
-        return commissionId;
+    public CommissionItem getCommission() {
+        return commission;
     }
 
-    public void setCommissionId(CommissionItem commissionId) {
-        this.commissionId = commissionId;
+    public void setCommission(CommissionItem commission) {
+        this.commission = commission;
     }
 
-    public Product getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(Product productId) {
-        this.productId = productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }
