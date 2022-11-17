@@ -45,13 +45,13 @@ public class CommissionItemController {
     }
 
     @PutMapping("/item/add")
-    public ProductDTO saveOrder(@RequestBody CommissionItemDTO order) {
-        return commissionItemService.saveCommission(order);
+    public CommissionItemDTO saveOrder(@RequestBody CommissionItemDTO item) {
+        return commissionItemService.saveCommission(item);
     }
 
     @PutMapping("/item/update")
-    public ResponseEntity<CommissionItemDTO> updateOrder(@RequestBody CommissionItemDTO order) {
-        CommissionItemDTO edit = commissionItemService.updateCommission(order);
+    public ResponseEntity<CommissionItemDTO> updateOrder(@RequestBody CommissionItemDTO item) {
+        CommissionItemDTO edit = commissionItemService.updateCommission(item);
         return new ResponseEntity<>(edit, HttpStatus.OK);
     }
 
@@ -68,7 +68,7 @@ public class CommissionItemController {
     }
 
     @PutMapping("/update-by-item")
-    public ProductDTO updateProductByItem(@RequestBody CommissionDataDTO dto) {
-        return commissionItemService.updateProductByItem(dto);
+    public ProductDTO updateProductByItem(@RequestBody CommissionDataDTO data) {
+        return commissionItemService.updateProductByItem(data);
     }
 }

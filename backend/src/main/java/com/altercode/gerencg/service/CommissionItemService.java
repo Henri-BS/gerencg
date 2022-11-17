@@ -63,7 +63,7 @@ public class CommissionItemService implements ICommissionItemService {
     }
 
     @Override
-    public ProductDTO saveCommission(CommissionItemDTO dto) {
+    public CommissionItemDTO saveCommission(CommissionItemDTO dto) {
         Product product = productRepository.findById(dto.getProduct()).get();
         CommissionCode code = commissionCodeRepository.findById(dto.getCommissionCode()).get();
 
@@ -72,14 +72,9 @@ public class CommissionItemService implements ICommissionItemService {
         add.setTotalValue(dto.getTotalValue());
         add.setQuantity(dto.getQuantity());
         add.setProduct(product);
-        itemRepository.saveAndFlush(add);
 
-        int sum = add.getQuantity();
-        sum = sum + product.getQuantity();
-        product.setQuantity(sum);
-        productRepository.save(product);
 
-        return new ProductDTO(product);
+        return new CommissionItemDTO(itemRepository.saveAndFlush(add));
     }
 
     @Override
@@ -106,8 +101,10 @@ public class CommissionItemService implements ICommissionItemService {
 
     @Override
     public List<CommissionResultsDTO> commissionResults() {
-        return itemRepository.orderResults();
+        return itemRepository.commissionResults();
     }
+
+
 
     @Override
     public ProductDTO updateProductByItem(CommissionDataDTO dto) {
@@ -117,7 +114,7 @@ public class CommissionItemService implements ICommissionItemService {
         CommissionData data = new CommissionData();
         data.setCommission(item);
         data.setProduct(product);
-dataRepository.saveAndFlush(data);
+        dataRepository.saveAndFlush(data);
 
         int sum = item.getQuantity();
         sum = sum + product.getQuantity();
@@ -126,4 +123,5 @@ dataRepository.saveAndFlush(data);
 
         return new ProductDTO(product);
     }
-}
+
+    }

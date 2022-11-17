@@ -22,7 +22,9 @@ function ItemDataTable({ codeId }: CodeProps) {
                         <th className="table-box"><h5>Descrição do Produto</h5></th>
                         <th className="table-box"><h5>Medida</h5></th>
                         <th className="table-box"><h5>Quantidade</h5></th>
+                        <th className="table-box"><h5>Valor por Unidade</h5></th>
                         <th className="table-box"><h5>Valor Total</h5></th>
+                        <th className="table-box"><h5>Quantidade de Pacotes</h5></th>
                     </tr>
                 </thead>
                 <tbody className="border-0">
@@ -33,7 +35,9 @@ function ItemDataTable({ codeId }: CodeProps) {
                             </Link>
                             <td className="table-box">{item.productMeasureValue}{item.productMeasure}</td>
                             <td className="table-box">{item.quantity}</td>
+                            <td className="table-box">{item.unitValue}</td>
                             <td className="table-box">{item.totalValue}</td>
+                            <td className="table-box">{item.packageQuantity}</td>
                         </tr>
                     ))}
                 </tbody>

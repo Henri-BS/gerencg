@@ -18,6 +18,10 @@ public class CommissionResultsDTO implements Serializable {
         this.totalValue = totalValue;
     }
 
+    public CommissionResultsDTO() {
+
+    }
+
     public String getCommissionCode() {
         return commissionCode;
     }

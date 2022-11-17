@@ -25,6 +25,9 @@ public class Measure {
 	
 	@OneToMany(mappedBy = "measure")
 	private Set<Product> product = new HashSet<>();
+
+	@OneToMany(mappedBy = "code")
+	private Set<CommissionCode> codes = new HashSet<>();
 	
 	public Measure() {
 	}

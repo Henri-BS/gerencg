@@ -9,8 +9,12 @@ public class CommissionCodeDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String code;
-private LocalDate commissionDate;
-private String distributor;
+    private LocalDate commissionDate;
+    private String distributor;
+    private Double totalValue;
+    private Integer totalQuantity;
+    private Integer totalPackage;
+    private String packageType;
 
     public CommissionCodeDTO() {
     }
@@ -19,6 +23,10 @@ private String distributor;
         code = entity.getCode();
         commissionDate = entity.getCommissionDate();
         distributor = entity.getDistributor();
+        totalValue = entity.getTotalValue();
+        totalQuantity = entity.getTotalQuantity();
+        totalPackage = entity.getTotalPackage();
+        packageType = entity.getPackageType().getAbbreviation();
     }
 
     public String getCode() {
@@ -43,5 +51,37 @@ private String distributor;
 
     public void setDistributor(String distributor) {
         this.distributor = distributor;
+    }
+
+    public Double getTotalValue() {
+        return totalValue;
+    }
+
+    public void setTotalValue(Double totalValue) {
+        this.totalValue = totalValue;
+    }
+
+    public Integer getTotalQuantity() {
+        return totalQuantity;
+    }
+
+    public void setTotalQuantity(Integer totalQuantity) {
+        this.totalQuantity = totalQuantity;
+    }
+
+    public Integer getTotalPackage() {
+        return totalPackage;
+    }
+
+    public void setTotalPackage(Integer totalPackage) {
+        this.totalPackage = totalPackage;
+    }
+
+    public String getPackageType() {
+        return packageType;
+    }
+
+    public void setPackageType(String packageType) {
+        this.packageType = packageType;
     }
 }

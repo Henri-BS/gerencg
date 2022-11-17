@@ -21,7 +21,7 @@ public interface ICommissionItemService {
 
     CommissionItemDTO findCommissionById(Long id);
 
-    ProductDTO saveCommission(CommissionItemDTO dto);
+    CommissionItemDTO saveCommission(CommissionItemDTO dto);
 
     CommissionItemDTO updateCommission(CommissionItemDTO dto);
 

@@ -18,8 +18,11 @@ public class CommissionData {
     @JoinColumn(name = "product_id")
     private Product product;
 
+
     public CommissionData() {
     }
+
+
 
     public CommissionItem getCommission() {
         return commission;

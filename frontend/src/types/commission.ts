@@ -3,8 +3,10 @@ import { Product } from "./product";
 export type Commission = {
   id: number;
   commissionCode: string;
+  unitValue: number;
   totalValue: number;
   quantity: number;
+  packageQuantity: string;
   product: Product;
   productDescription: string;
   productMeasure: string;
@@ -27,6 +29,8 @@ export type Code = {
   code: string;
   commissionDate: string;
   distributor: string;
+  totalPackage: number;
+  packageType: string;
 };
 
 export type CodePage = {
@@ -44,3 +48,9 @@ export type CodePage = {
 export type CodeProps = {
   codeId: string;
 };
+
+export type CommissionResults = {
+  commissionCode: string;
+  totalQuantity: number;
+  totalValue: number;
+}

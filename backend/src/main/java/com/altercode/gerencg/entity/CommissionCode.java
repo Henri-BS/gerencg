@@ -17,6 +17,19 @@ public class CommissionCode {
 
     private String distributor;
 
+    @Column(name = "total_value")
+    private Double totalValue;
+
+    @Column(name = "total_quantity")
+    private Integer totalQuantity;
+
+    @Column(name = "total_package")
+    private Integer totalPackage;
+
+    @ManyToOne
+    @JoinColumn(name = "package_type")
+    private Measure packageType;
+
     @OneToMany(mappedBy = "code", cascade = CascadeType.ALL)
     private final Set<CommissionItem> commissionItems = new HashSet<>();
 
@@ -51,9 +64,40 @@ public class CommissionCode {
         this.distributor = distributor;
     }
 
+    public Double getTotalValue() {
+        return totalValue;
+    }
+
+    public void setTotalValue(Double totalValue) {
+        this.totalValue = totalValue;
+    }
+
+    public Integer getTotalQuantity() {
+        return totalQuantity;
+    }
+
+    public void setTotalQuantity(Integer totalQuantity) {
+        this.totalQuantity = totalQuantity;
+    }
+
+    public Integer getTotalPackage() {
+        return totalPackage;
+    }
+
+    public void setTotalPackage(Integer totalPackage) {
+        this.totalPackage = totalPackage;
+    }
+
+    public Measure getPackageType() {
+        return packageType;
+    }
+
+    public void setPackageType(Measure packageType) {
+        this.packageType = packageType;
+    }
+
     public Set<CommissionItem> getCommissions() {
         return commissionItems;
     }
-
 
 }

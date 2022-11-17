@@ -1,6 +1,7 @@
 package com.altercode.gerencg.controller;
 
 import com.altercode.gerencg.dto.CommissionCodeDTO;
+import com.altercode.gerencg.dto.CommissionItemDTO;
 import com.altercode.gerencg.service.CommissionCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,7 +27,13 @@ public class CommissionCodeController {
         return codeService.findCodeById(id);
     }
 
-    @PostMapping("/save-code")
+    @PutMapping("/sum-item-values/{code}")
+    public CommissionCodeDTO sumItemValues(CommissionCodeDTO dto, @PathVariable String code) {
+        return codeService.sumItemValues(dto);
+    }
+
+
+        @PostMapping("/save-code")
     public ResponseEntity<CommissionCodeDTO> saveCommissionCode(@RequestBody CommissionCodeDTO dto) {
         CommissionCodeDTO addCode = codeService.saveCommissionCode(dto);
         return new ResponseEntity<>(addCode, HttpStatus.CREATED);

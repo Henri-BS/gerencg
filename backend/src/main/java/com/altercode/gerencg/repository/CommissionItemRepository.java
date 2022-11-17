@@ -13,9 +13,11 @@ public interface CommissionItemRepository extends JpaRepository<CommissionItem, 
 
     @Query("SELECT new com.altercode.gerencg.dto.CommissionResultsDTO(obj.code, SUM(obj.quantity), SUM(obj.totalValue)) "
             + "FROM CommissionItem AS obj GROUP BY obj.code")
-    List<CommissionResultsDTO> orderResults();
+    List<CommissionResultsDTO> commissionResults();
 
     List<CommissionItem> findAllCommissionsByCode(CommissionCode code);
 
     List<CommissionItem> findItemByProduct(Product product);
+
+
 }

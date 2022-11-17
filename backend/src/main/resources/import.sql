@@ -44,6 +44,7 @@ INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('milimetro', '
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('volt', 'v');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('gigabyte', 'gb');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('megabyte', 'mb');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('caixa', 'cx');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('indefinido', '~');
 
 
@@ -153,7 +154,7 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Ácido Muriático Limpa Fácil', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.30, 9, '2024-10-06', 1, 'l', 'Limpeza');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Água Sanitária Nutrilar', 'https://st3.depositphotos.com/32990740/34745/v/450/depositphotos_347451662-stock-illustration-detergent-bottle-line-and-fill.jpg', 2.50, 11, '2022-12-06', 1, 'l', 'Limpeza');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Água Sanitária LavaBem', 'https://st3.depositphotos.com/32990740/34745/v/450/depositphotos_347451662-stock-illustration-detergent-bottle-line-and-fill.jpg', 2.85, 11, '2022-12-06', 1, 'l', 'Limpeza');
-INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Água Sanitária', 'https://st3.depositphotos.com/32990740/34745/v/450/depositphotos_347451662-stock-illustration-detergent-bottle-line-and-fill.jpg', 4.95, 0, '2024-06-23', 2, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Água Sanitária LavaBem', 'https://st3.depositphotos.com/32990740/34745/v/450/depositphotos_347451662-stock-illustration-detergent-bottle-line-and-fill.jpg', 4.95, 0, '2024-06-23', 2, 'l', 'Limpeza');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Limpa Vidros Lavabem', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 5.40, 0, '2024-06-23', 500, 'ml', 'Limpeza');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Limp Azulim Cerâmica/Azulejo', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 6.50, 24, '2022-12-06', 1.00, 'l', 'Limpeza');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante LavaBem Limão', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 6.95, 3, '2023-05-09', 2.00, 'l', 'Limpeza');
@@ -165,6 +166,26 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sabão em Barra LavaBem', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 2.50, 32, '2022-12-06', 200, 'ml', 'Limpeza');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sabão em Pó Omo Lavagem Perfeita', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 7.70, 32, '2024-06-01', 400, 'ml', 'Limpeza');
 
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante LavaBem Erva-Doce', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.70, 3, '2023-05-25', 1, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante LavaBem Limão', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.70, 9, '2023-05-24', 1, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante LavaBem Jasmim', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.70, 12, '2023-07-18', 1, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante Azulim Violette', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 5.40, 3, null, 1, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante Azulim Erva Doce', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 5.40, 3, null, 1, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante Azulim Mariner', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 5.40, 3, null, 1, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante Azulim Absolutte', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 5.40, 3, null, 1, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante Azulim Violette', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 5.40, 3, null, 1, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante Nutrilar Limão', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.50, 5, '2023-01-04', 1, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante Nutrilar Flor de Cereja', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.50, 4, '2023-07-22', 1, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante Nutrilar Floral', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.50, 2, '2023-07-15', 1, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante LavaBem Floral', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 3.70, 0, '2023-07-18', 1, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante LavaBem Jasmim', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 6.95, 0, '2023-07-18', 2, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante LavaBem Erva-Doce', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 6.95, 0, '2023-07-18', 2, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante LavaBem Floral', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 6.95, 0, '2023-07-18', 2, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Desinfetante LavaBem Lavanda', 'https://i.pinimg.com/originals/f8/67/71/f86771b11630bd9934efedfd5df3a0de.png', 6.95, 0, '2023-07-18', 2, 'l', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sabão Glicerinado Guarani Limão', 'https://cdn2.iconfinder.com/data/icons/objects-23/50/1F9FC-soap-512.png', 10.95, 5, '2024-08-08', 1, 'kg', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sabão Glicerinado Guarani Plus', 'https://cdn2.iconfinder.com/data/icons/objects-23/50/1F9FC-soap-512.png', 10.95, 6, '2024-08-26', 1, 'kg', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sabão Glicerinado Guarani Neutro', 'https://cdn2.iconfinder.com/data/icons/objects-23/50/1F9FC-soap-512.png', 10.95, 7, '2024-07-28', 1, 'kg', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sabão Glicerinado LavaBem Limão', 'https://cdn2.iconfinder.com/data/icons/objects-23/50/1F9FC-soap-512.png', 12.50, 5, '2024-06-23', 1, 'kg', 'Limpeza');
 
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Fita Transparente Aldebras 48mm', 'https://cdn1.iconfinder.com/data/icons/stationary-desk-1/150/tape__cutter__stationary__tools__equipment-512.png', 5.15, 43, null, 40, 'm', 'Papelaria e Escolar');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Cola Branca Radex', 'https://cdn1.iconfinder.com/data/icons/stationery-items-3/64/Glue_Icon-512.png', 1.50, 33, '2024-02-01', 40, 'g', 'Papelaria e Escolar');
@@ -192,19 +213,30 @@ INSERT INTO tb_product_history(product_id, description, quantity, price, validat
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(2, 'Arroz Catarinão', 70, 4.75, '2023-09-10', 1, 'kg', 'Alimentícios', now());
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(2, 'Arroz Catarinão', 88, 4.75, '2024-02-02', 1, 'kg', 'Alimentícios', now());
 
-INSERT INTO tb_commission_code (code, commission_date, distributor) VALUES ('20.10.2022.01-mt', '2022-10-20', 'Matheus');
-INSERT INTO tb_commission_code (code, commission_date, distributor) VALUES ('05.11.2022.01-mt', '2022-11-05', 'Matheus');
-INSERT INTO tb_commission_code (code, commission_date, distributor) VALUES ('05.11.2022.01-yd', '2022-11-05', 'York Distribuidora');
+INSERT INTO tb_commission_code (code, commission_date, distributor, total_package, package_type) VALUES ('20.10.2022.01-mt', '2022-10-20', 'Matheus', 4, '~');
+INSERT INTO tb_commission_code (code, commission_date, distributor, total_package, package_type) VALUES ('14.11.2022.01-al', '2022-11-14', 'Aldenir', 14, 'cx');
+INSERT INTO tb_commission_code (code, commission_date, distributor, total_package, package_type) VALUES ('05.11.2022.01-mt', '2022-11-05', 'Matheus', 5, 'cx');
+INSERT INTO tb_commission_code (code, commission_date, distributor, total_package, package_type) VALUES ('05.11.2022.01-yd', '2022-11-05', 'York Distribuidora', 8, 'cx');
 
-INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (60, 204, '20.10.2022.01-mt', 3);
-INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (30, 120, '20.10.2022.01-mt', 5);
-INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (30, 110, '20.10.2022.01-mt', 1);
-INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (12, 34.2, '05.11.2022.01-mt', 88);
-INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (24, 114.96, '05.11.2022.01-mt', 89);
-INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (6, 28.08, '05.11.2022.01-yd', 33);
-INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (6, 34.98, '05.11.2022.01-yd', 34);
-INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (12, 86.76, '05.11.2022.01-yd', 35);
-INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (9, 52.29, '05.11.2022.01-yd', 36);
-INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (6, 12.42, '05.11.2022.01-yd', 37);
-INSERT INTO tb_commission_item (quantity, total_value, code_id, product_id) VALUES (6, 25.56, '05.11.2022.01-yd', 38);
-
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (60, 3.50, 204, 2,'20.10.2022.01-mt', 3);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (30, 4.20, 120, 1, '20.10.2022.01-mt', 5);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (30, 3.80, 110, 1, '20.10.2022.01-mt', 1);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (12, 2.85, 23.80, 1, '05.11.2022.01-mt', 94);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (24, 6.50, 114.96, 1, '05.11.2022.01-mt', 97);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 6.20, 28.08, 1, '05.11.2022.01-yd', 33);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 7.50, 34.98, 1, '05.11.2022.01-yd', 34);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (12, 9, 86.76, 2, '05.11.2022.01-yd', 35);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (9, 9.90, 52.29, 1, '05.11.2022.01-yd', 36);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 2.50, 12.42, 1, '05.11.2022.01-yd', 37);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 3.25, 25.56, 2, '05.11.2022.01-yd', 38);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (48, 2.85, 95.20, 4, '14.11.2022.01-al', 94);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 4.95, 22.50, 1, '14.11.2022.01-al', 95);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (24, 5.40, 91.80, 1, '14.11.2022.01-al', 96);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 7.10, 31.50, 1, '14.11.2022.01-al', 98);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (12, 3.80, 33.50, 1, '14.11.2022.01-al', 106);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (12, 3.80, 33.50, 1, '14.11.2022.01-al', 108);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (12, 3.80, 33.50, 1, '14.11.2022.01-al', 117);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 7.10, 31.50, 1, '14.11.2022.01-al', 118);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 7.10, 31.50, 1, '14.11.2022.01-al', 119);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 7.10, 31.50, 1, '14.11.2022.01-al', 120);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 7.10, 31.50, 1, '14.11.2022.01-al', 121)

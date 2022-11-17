@@ -14,7 +14,14 @@ public class CommissionItem {
     @Column(name = "total_value")
     private Double totalValue;
 
+    @Column(name = "quantity")
     private Integer quantity;
+
+    @Column(name = "unit_value")
+    private Double unitValue;
+
+    @Column(name = "package_quantity")
+    private Integer packageQuantity;
 
     @ManyToOne
     @JoinColumn(name = "code_id")
@@ -27,11 +34,13 @@ public class CommissionItem {
     public CommissionItem() {
     }
 
-    public CommissionItem(Long id, CommissionCode code, Double totalValue, Integer quantity, Product product) {
+    public CommissionItem(Long id, Double totalValue, Integer quantity, Double unitValue, Integer packageQuantity, CommissionCode code, Product product) {
         this.id = id;
-        this.code = code;
         this.totalValue = totalValue;
         this.quantity = quantity;
+        this.unitValue = unitValue;
+        this.packageQuantity = packageQuantity;
+        this.code = code;
         this.product = product;
     }
 
@@ -65,6 +74,22 @@ public class CommissionItem {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Double getUnitValue() {
+        return unitValue;
+    }
+
+    public void setUnitValue(Double unitValue) {
+        this.unitValue = unitValue;
+    }
+
+    public Integer getPackageQuantity() {
+        return packageQuantity;
+    }
+
+    public void setPackageQuantity(Integer packageQuantity) {
+        this.packageQuantity = packageQuantity;
     }
 
     public Product getProduct() {
