@@ -119,6 +119,7 @@
 }
 
 .bar-container {
+    margin-top: 5px;
     height: 100px;
     justify-content: center;
     justify-items: center;

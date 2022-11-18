@@ -30,10 +30,13 @@ export function CommissionMenuBar({ codeId: code }: CodeProps) {
             </div>
             <div className="bar-container">
                 <div className="bar-option">
-                    Valor Total: {commission?.code}
+                    Valor Total do Pedido: {commission?.totalValue}
                 </div>
                 <div className="bar-option">
-                    QUantidade Total: {commission?.commissionDate}
+                    Quantidade Total de Items: {commission?.totalQuantity}
+                </div>
+                <div className="bar-option">
+                    Total de Pacotes: {commission?.totalPackage}
                 </div>
             </div>
         </>

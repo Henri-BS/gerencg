@@ -108,7 +108,7 @@ public class ProductService implements IProductService {
 
         int sumQuantity = product.getQuantity();
         for (CommissionItem c : product.getOrders()) {
-            sumQuantity = sumQuantity + c.getQuantity();
+            sumQuantity = sumQuantity + c.getItemQuantity();
         }
 
         product.setQuantity(sumQuantity);

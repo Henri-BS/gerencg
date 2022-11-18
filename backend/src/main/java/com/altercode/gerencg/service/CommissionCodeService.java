@@ -1,7 +1,6 @@
 package com.altercode.gerencg.service;
 
 import com.altercode.gerencg.dto.CommissionCodeDTO;
-import com.altercode.gerencg.dto.CommissionItemDTO;
 import com.altercode.gerencg.entity.CommissionCode;
 import com.altercode.gerencg.entity.CommissionItem;
 import com.altercode.gerencg.repository.CommissionCodeRepository;
@@ -12,8 +11,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @Transactional
@@ -40,14 +37,18 @@ public class CommissionCodeService implements ICommissionCodeService {
     @Override
     public CommissionCodeDTO sumItemValues(CommissionCodeDTO dto) {
         CommissionCode code = codeRepository.findById(dto.getCode()).get();
-        List<CommissionCode> all = codeRepository.findAllCommissionsByCode(dto.getCode());
 
-        double sum = 0;
-        for(CommissionItem i : code.getCommissions()){
-            sum = sum + i.getTotalValue();
+        double sumValues = 0;
+        int sumQuantity = 0;
+        int sumPackages = 0;
+        for (CommissionItem i : code.getCommissions()) {
+            sumValues = sumValues + i.getItemTotalValue();
+            sumQuantity = sumQuantity + i.getItemQuantity();
+            sumPackages = sumPackages + i.getPackageQuantity();
         }
 
-        code.setTotalValue(sum);
+        code.setTotalValue(sumValues);
+        code.setTotalQuantity(sumQuantity);
         codeRepository.save(code);
 
         return new CommissionCodeDTO(code);

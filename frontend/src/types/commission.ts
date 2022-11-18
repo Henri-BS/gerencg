@@ -29,6 +29,8 @@ export type Code = {
   code: string;
   commissionDate: string;
   distributor: string;
+  totalValue: number;
+  totalQuantity: number;
   totalPackage: number;
   packageType: string;
 };
