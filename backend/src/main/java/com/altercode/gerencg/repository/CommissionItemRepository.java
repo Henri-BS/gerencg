@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface CommissionItemRepository extends JpaRepository<CommissionItem, Long> {
 
-    @Query("SELECT new com.altercode.gerencg.dto.CommissionResultsDTO(obj.code, SUM(obj.quantity), SUM(obj.totalValue)) "
+    @Query("SELECT new com.altercode.gerencg.dto.CommissionResultsDTO(obj.code, SUM(obj.itemQuantity), SUM(obj.totalValue)) "
             + "FROM CommissionItem AS obj GROUP BY obj.code")
     List<CommissionResultsDTO> commissionResults();
 

@@ -2,10 +2,11 @@ import {Dashboard, ProductDashboard} from "pages/DashboardPages";
 import Home from "pages/Home";
 import { ProductsList, ProductValidateList } from "pages/Listings/ProductListing";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { ProductProfile, CategoryProfile, MeasureProfile, SaveProduct, UpdateProduct, SaveCategoryStats, CommissionProfile} from "pages/Profiles";
+import { ProductProfile, CategoryProfile, MeasureProfile, SaveProduct, UpdateProduct, SaveCategoryStats} from "pages/Profiles";
 import { CategoryList } from "pages/Listings/CategoryListing";
 import { MeasureList } from "pages/Listings/MeasureListing";
 import { CommissionCodeList } from "pages/Listings/CommissionListing";
+import { CommissionProfile, UpdateProductByItem } from "pages/Profiles/CommissionProfile";
 
 
 function PageRoutes() {
@@ -48,6 +49,10 @@ function PageRoutes() {
 
                 <Route path="/commission">
                     <Route path=":code" element={<CommissionProfile />} />
+                </Route>
+
+                <Route path="/update-by-item">
+                    <Route path=":itemId" element={<UpdateProductByItem />} />
                 </Route>
 
             </Routes>

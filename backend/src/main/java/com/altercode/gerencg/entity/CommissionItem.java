@@ -18,7 +18,7 @@ public class CommissionItem {
     private Double unitValue;
 
     @Column(name = "total_value")
-    private Double itemTotalValue;
+    private Double totalValue;
 
     @Column(name = "package_quantity")
     private Integer packageQuantity;
@@ -34,9 +34,9 @@ public class CommissionItem {
     public CommissionItem() {
     }
 
-    public CommissionItem(Long id, Double itemTotalValue, Integer itemQuantity, Double unitValue, Integer packageQuantity, CommissionCode code, Product product) {
+    public CommissionItem(Long id, Double totalValue, Integer itemQuantity, Double unitValue, Integer packageQuantity, CommissionCode code, Product product) {
         this.id = id;
-        this.itemTotalValue = itemTotalValue;
+        this.totalValue = totalValue;
         this.itemQuantity = itemQuantity;
         this.unitValue = unitValue;
         this.packageQuantity = packageQuantity;
@@ -60,12 +60,12 @@ public class CommissionItem {
         this.code = code;
     }
 
-    public Double getItemTotalValue() {
-        return itemTotalValue;
+    public Double getTotalValue() {
+        return totalValue;
     }
 
-    public void setItemTotalValue(Double itemTotalValue) {
-        this.itemTotalValue = itemTotalValue;
+    public void setTotalValue(Double totalValue) {
+        this.totalValue = totalValue;
     }
 
     public Integer getItemQuantity() {

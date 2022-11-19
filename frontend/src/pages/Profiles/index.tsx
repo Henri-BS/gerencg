@@ -65,22 +65,7 @@ export function CategoryProfile() {
   );
 }
 
-export function CommissionProfile() {
-  const params = useParams();
 
-  return(
-  <>
-    <NavBar />
-    <div className="container">
-      <div>
-        <CommissionMenuBar codeId={`${params.code}`} />
-      </div>
-      <ItemDataTable codeId={`${params.code}`} />
-    </div>
-    <Footer />
-  </>
-  );
-}
 //Save product page
 export function SaveProduct() {
 

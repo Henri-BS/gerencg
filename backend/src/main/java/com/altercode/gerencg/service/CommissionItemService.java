@@ -69,7 +69,7 @@ public class CommissionItemService implements ICommissionItemService {
 
         CommissionItem add = new CommissionItem();
         add.setCode(code);
-        add.setItemTotalValue(dto.getTotalValue());
+        add.setTotalValue(dto.getTotalValue());
         add.setItemQuantity(dto.getQuantity());
         add.setProduct(product);
 
@@ -87,7 +87,7 @@ public class CommissionItemService implements ICommissionItemService {
         edit.setId(dto.getId());
         edit.setCode(code);
         edit.setItemQuantity(dto.getQuantity());
-        edit.setItemTotalValue(dto.getTotalValue());
+        edit.setTotalValue(dto.getTotalValue());
         edit.setProduct(product);
         edit = itemRepository.save(edit);
 

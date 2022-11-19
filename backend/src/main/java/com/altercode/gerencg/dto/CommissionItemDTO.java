@@ -27,7 +27,7 @@ public class CommissionItemDTO implements Serializable {
         id = entity.getId();
         commissionCode = entity.getCode().getCode();
         unitValue = entity.getUnitValue();
-        totalValue = entity.getItemTotalValue();
+        totalValue = entity.getTotalValue();
         quantity = entity.getItemQuantity();
         packageQuantity = entity.getPackageQuantity();
         product = entity.getProduct().getId();

@@ -1,8 +1,6 @@
 package com.altercode.gerencg.service.iservice;
 
 import com.altercode.gerencg.dto.CommissionCodeDTO;
-import com.altercode.gerencg.dto.CommissionItemDTO;
-import com.altercode.gerencg.entity.CommissionCode;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -12,7 +10,7 @@ public interface ICommissionCodeService {
 
     CommissionCodeDTO findCodeById(String id);
 
-    CommissionCodeDTO sumItemValues(CommissionCodeDTO dto);
+    CommissionCodeDTO commissionTotalValues(CommissionCodeDTO dto);
 
     CommissionCodeDTO saveCommissionCode(CommissionCodeDTO code);
 

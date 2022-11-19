@@ -1,18 +1,22 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { CodeProps, Commission } from "types/commission";
+import { CodeProps, Item } from "types/commission";
 import { BASE_URL } from "utils/requests";
 
 function ItemDataTable({ codeId }: CodeProps) {
 
-    const [pageItem, setPageItem] = useState<Commission[]>();
+    const [pageItem, setPageItem] = useState<Item[]>();
     useEffect(() => {
         axios.get(`${BASE_URL}/find-code?code=${codeId}`)
             .then((response) => {
                 setPageItem(response.data);
             });
     }, [codeId]);
+
+    
+
+
 
     return (
         <div className="table-responsive">
@@ -25,6 +29,7 @@ function ItemDataTable({ codeId }: CodeProps) {
                         <th className="table-box"><h5>Valor por Unidade</h5></th>
                         <th className="table-box"><h5>Valor Total</h5></th>
                         <th className="table-box"><h5>Quantidade de Pacotes</h5></th>
+                        <th className="table-box"><h5>Atualizar Produto</h5></th>
                     </tr>
                 </thead>
                 <tbody className="border-0">
@@ -35,9 +40,14 @@ function ItemDataTable({ codeId }: CodeProps) {
                             </Link>
                             <td className="table-box">{item.productMeasureValue}{item.productMeasure}</td>
                             <td className="table-box">{item.quantity}</td>
-                            <td className="table-box">{item.unitValue}</td>
-                            <td className="table-box">{item.totalValue}</td>
+                            <td className="table-box">{item.unitValue.toFixed(2)}</td>
+                            <td className="table-box">{item.totalValue.toFixed(2)}</td>
                             <td className="table-box">{item.packageQuantity}</td>
+                            <td className="table-box">
+                                <Link to={'/update-by-item'}>
+                                <button className="gerencg-update-btn">Atualizar</button>
+                                </Link>
+                                </td>
                         </tr>
                     ))}
                 </tbody>

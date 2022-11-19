@@ -35,14 +35,14 @@ public class CommissionCodeService implements ICommissionCodeService {
     }
 
     @Override
-    public CommissionCodeDTO sumItemValues(CommissionCodeDTO dto) {
+    public CommissionCodeDTO commissionTotalValues(CommissionCodeDTO dto) {
         CommissionCode code = codeRepository.findById(dto.getCode()).get();
 
         double sumValues = 0;
         int sumQuantity = 0;
         int sumPackages = 0;
         for (CommissionItem i : code.getCommissions()) {
-            sumValues = sumValues + i.getItemTotalValue();
+            sumValues = sumValues + i.getTotalValue();
             sumQuantity = sumQuantity + i.getItemQuantity();
             sumPackages = sumPackages + i.getPackageQuantity();
         }

@@ -118,18 +118,28 @@
     }
 }
 
+.max-bar-container {
+    margin-top: 8px;
+    height: 400px;
+}
+
+.max-bar-container h3 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
 .bar-container {
-    margin-top: 5px;
+    padding: 10px;
     height: 100px;
-    justify-content: center;
     justify-items: center;
     align-items: center;
     display: grid;
     grid-template-columns: repeat(3, auto);
-    border: solid;
+    margin-bottom: 8px;
 }
 
 .bar-option {
+    width: 100%;
     padding: 20px;
     height: 80px;
     justify-content: center;
@@ -137,4 +147,9 @@
     font-size: 22px;
     font-weight: 800;
     transition: all 0.3s ease-in;
+    border: 1px solid;
+}
+
+h4 {
+    font-weight: 900;
 }

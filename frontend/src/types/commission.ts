@@ -1,6 +1,6 @@
 import { Product } from "./product";
 
-export type Commission = {
+export type Item = {
   id: number;
   commissionCode: string;
   unitValue: number;
@@ -13,8 +13,8 @@ export type Commission = {
   productMeasureValue: number;
 };
 
-export type CommissionPage = {
-  content?: Commission[];
+export type ItemPage = {
+  content?: Item[];
   last?: boolean;
   totalElements?: number;
   totalPages?: number;
@@ -23,6 +23,10 @@ export type CommissionPage = {
   first?: boolean;
   numberOfElements?: number;
   empty?: boolean;
+};
+
+export type ItemProps = {
+  itemId: string;
 };
 
 export type Code = {

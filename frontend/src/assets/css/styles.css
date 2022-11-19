@@ -39,3 +39,22 @@ body {
 .bg-primary {
     background-color: var(--dark-tert) !important;
 }
+
+.gerencg-update-btn {
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 20px;
+    border: 2.5px solid transparent;
+    color: var(--quin);
+    cursor: pointer;
+    background-color: var(--sena);
+    transition: all 0.3s ease-out;
+}
+
+.gerencg-update-btn:hover {
+    padding: 8px;
+    background-color: var(--blue-prim);
+    color: var(--quin);
+    border-radius: 5px;
+    border: 2.5px solid var(--blue-prim);
+}
