@@ -107,18 +107,12 @@ public class CommissionItemService implements ICommissionItemService {
 
 
     @Override
-    public ProductDTO updateProductByItem(CommissionDataDTO dto) {
-        Product product = productRepository.findById(dto.getProductId()).get();
-        CommissionItem item = itemRepository.findById(dto.getItemId()).get();
+    public ProductDTO updateProductByItem(CommissionItemDTO dto) {
+        Product product = productRepository.findById(dto.getProduct()).get();
+        CommissionItem item = itemRepository.findById(dto.getId()).get();
 
-        CommissionData data = new CommissionData();
-        data.setCommission(item);
-        data.setProduct(product);
-        dataRepository.saveAndFlush(data);
-
-        int sum = item.getItemQuantity();
-        sum = sum + product.getQuantity();
-        product.setQuantity(sum);
+        int quantity = item.getItemQuantity();
+        product.setQuantity(quantity);
         productRepository.save(product);
 
         return new ProductDTO(product);

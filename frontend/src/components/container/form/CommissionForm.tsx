@@ -2,18 +2,19 @@ import axios, { AxiosRequestConfig } from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Item, ItemProps } from "types/commission";
+import { ProductProps } from "types/product";
 import { BASE_URL } from "utils/requests";
 
-export function UpdateByItemForm({ itemId }: ItemProps) {
+export function UpdateByItemForm({ productId, itemId }: ItemProps) {
 const navigate = useNavigate();
     const [item, setItem] = useState<Item>();
     
     useEffect(() => {
-    axios.get(`${BASE_URL}/item/${itemId}`)
+    axios.put(`${BASE_URL}/update-by-item?product=${productId}?id=${itemId}`)
     .then((response) => {
         setItem(response.data);
     })
-}, [itemId])
+}, [productId, itemId])
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const itemId = (event.target as any).commissionId.value;
@@ -23,14 +24,14 @@ const navigate = useNavigate();
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
             method: "PUT",
-            url: "/update-by-item",
+            url: ``,
             data: {
                 itemId: itemId,
                 productId: productId
             }
         }
-        axios(config).then(response => {
-navigate(`product/${item?.product}`)
+        axios(config).then((response) => {
+navigate(`/product/${item?.product}`)
         })
     }
 
@@ -40,7 +41,8 @@ navigate(`product/${item?.product}`)
                 <h3>Deseja atualizar o produto com os dados deste pedido ?</h3>
                 <form className="gerencg-form" onSubmit={handleSubmit}>
                     <div className="form-group gerencg-form-group">
-                        <label htmlFor="description">Produto: {item?.productDescription}</label>
+                        <label htmlFor="productId">Produto: {item?.productDescription}</label>
+                       
                     </div>
                     <div className="form-btn-container">
                         <button type="submit" className="gerencg-btn">

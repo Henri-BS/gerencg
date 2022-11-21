@@ -1,12 +1,12 @@
-import {Dashboard, ProductDashboard} from "pages/DashboardPages";
 import Home from "pages/Home";
 import { ProductsList, ProductValidateList } from "pages/Listings/ProductListing";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { ProductProfile, CategoryProfile, MeasureProfile, SaveProduct, UpdateProduct, SaveCategoryStats} from "pages/Profiles";
+import { ProductProfile, MeasureProfile, SaveProduct, UpdateProduct, ProductDashboard} from "pages/Profiles/ProductProfile";
 import { CategoryList } from "pages/Listings/CategoryListing";
 import { MeasureList } from "pages/Listings/MeasureListing";
 import { CommissionCodeList } from "pages/Listings/CommissionListing";
 import { CommissionProfile, UpdateProductByItem } from "pages/Profiles/CommissionProfile";
+import { CategoryProfile, CategoryStatsDashboard, SaveCategoryStats } from "pages/Profiles/CategoryProfile";
 
 
 function PageRoutes() {
@@ -33,7 +33,7 @@ function PageRoutes() {
                 </Route>
 
                 <Route path="/category/list" element={<CategoryList />} />
-                <Route path="/category-stats" element={<Dashboard />} />
+                <Route path="/category-stats" element={<CategoryStatsDashboard />} />
                 <Route path="/category-stats/add" element={<SaveCategoryStats />} />
 
                 <Route path="/category">
@@ -52,7 +52,7 @@ function PageRoutes() {
                 </Route>
 
                 <Route path="/update-by-item">
-                    <Route path=":itemId" element={<UpdateProductByItem />} />
+                    <Route path=":productId" element={<UpdateProductByItem />} />
                 </Route>
 
             </Routes>
@@ -61,3 +61,4 @@ function PageRoutes() {
 }
 
 export default PageRoutes;
+

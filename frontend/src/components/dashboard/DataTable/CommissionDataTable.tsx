@@ -15,9 +15,6 @@ function ItemDataTable({ codeId }: CodeProps) {
     }, [codeId]);
 
     
-
-
-
     return (
         <div className="table-responsive">
             <table className="table border-table">

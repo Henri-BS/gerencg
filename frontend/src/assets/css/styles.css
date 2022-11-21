@@ -41,9 +41,9 @@ body {
 }
 
 .gerencg-update-btn {
-    padding: 8px;
+    padding: 1px;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 15px;
     border: 2.5px solid transparent;
     color: var(--quin);
     cursor: pointer;
@@ -52,7 +52,6 @@ body {
 }
 
 .gerencg-update-btn:hover {
-    padding: 8px;
     background-color: var(--blue-prim);
     color: var(--quin);
     border-radius: 5px;

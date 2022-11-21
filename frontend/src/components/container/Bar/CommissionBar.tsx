@@ -4,23 +4,23 @@ import { Code, CodeProps } from "types/commission";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 
-export function CommissionMenuBar({ codeId: code }: CodeProps) {
+export function CommissionMenuBar({codeId }: CodeProps) {
 
     const [commission, setCommission] = useState<Code>();
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/commission/${code}`)
+        axios.get(`${BASE_URL}/commission/${codeId}`)
             .then((response) => {
                 setCommission(response.data);
             });
-    }, [code]);
+    }, [codeId]);
 
     useEffect(() => {
-        axios.put(`${BASE_URL}/sum-item-values/${code}`)
+        axios.put(`${BASE_URL}/sum-item-values/${codeId}`)
             .then((response) => {
                 setCommission(response.data);
             });
-    }, [code]);
+    }, [codeId]);
 
     
     return (

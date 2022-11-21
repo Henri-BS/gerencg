@@ -1,18 +1,14 @@
 import { useParams } from "react-router-dom";
 import "./styles.css"
 import { ProductHistoryByProduct } from "pages/Listings/ProductListing";
-import CategoryLateralBar from "components/container/Bar/CategorySideBar";
 import { MeasureInfo } from "components/container/Card/MeasureCard";
 import { AddProduct, ProductFormEdit } from "components/container/Form/ProductForm";
-import { AddCategoryStats } from "components/container/Form/CategoryForm";
 import { QuantityProductChart } from "components/dashboard/Chart/ProductCharts";
 import NavBar from "components/shared/NavBar";
 import Footer from "components/shared/Footer";
-import { ProductCategoryList } from "pages/Listings/CategoryListing";
 import { ProductMeasureList } from "pages/Listings/MeasureListing";
 import { ProductMenuBar, ProductSideBar } from "components/container/Bar/ProductBar";
-import { CommissionMenuBar } from "components/container/Bar/CommissionBar";
-import ItemDataTable from "components/dashboard/DataTable/CommissionDataTable";
+import ProductDataTable from "components/dashboard/DataTable/ProductDataTable";
 
 //Product profile 
 export function ProductProfile() {
@@ -25,11 +21,9 @@ export function ProductProfile() {
         <div className="col-12 col-md-12 col-lg-6 col-xl-4 p-0">
           < ProductSideBar productId={`${params.productId}`} />
         </div>
-        <div className="col-12 col-md-12 col-lg-6 col-xl-8  p-0">
+        <div className="col-12 col-md-12 col-lg-6 col-xl-8  p-4">
           <ProductMenuBar productId={`${params.productId}`} />
-          <div className="container">
-            <h1 className=" py-4">Estatísticas do Produto</h1>
-
+            <h1 className="p-4">Estatísticas do Produto</h1>
             <div className="chart-box">
               <div className="container-chart">
                 <h5 className="text-center">Quantidade do Produto por Data</h5>
@@ -38,32 +32,13 @@ export function ProductProfile() {
             </div>
             <ProductHistoryByProduct productId={`${params.productId}`} />
           </div>
-        </div>
+        
       </div>
       <Footer />
     </>
   );
 }
 
-//Category Profile Function
-export function CategoryProfile() {
-
-  const params = useParams();
-  return (
-    <>
-      <NavBar />
-      <div className="profile row">
-        <div className="col-6-sm col-md-6 col-lg-4 p-0">
-          <CategoryLateralBar categoryId={`${params.categoryId}`} />
-        </div>
-        <div className="col-6-sm col-md-6 col-lg-8 p-0">
-          <ProductCategoryList categoryId={`${params.categoryId}`} />
-        </div>
-      </div>
-      <Footer />
-    </>
-  );
-}
 
 
 //Save product page
@@ -88,16 +63,6 @@ export function UpdateProduct() {
   );
 }
 
-//Save category page
-export function SaveCategoryStats() {
-
-  return (
-    <div className="container-blur">
-      <AddCategoryStats />
-    </div>
-  );
-}
-
 //Measure profile
 export function MeasureProfile() {
 
@@ -117,5 +82,18 @@ export function MeasureProfile() {
   );
 }
 
+//Product Dashboard
+export function ProductDashboard() {
 
+  return (
+    <>
+    <NavBar />
+      <div className="container">
+        <h1 className=" py-4">Registros de Alterações dos Produtos</h1>
+        <ProductDataTable />
+      </div>
+      <Footer />
+    </>
+  );
+}
 

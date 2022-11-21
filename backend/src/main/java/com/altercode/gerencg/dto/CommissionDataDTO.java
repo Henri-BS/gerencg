@@ -3,6 +3,7 @@ package com.altercode.gerencg.dto;
 import com.altercode.gerencg.entity.CommissionData;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class CommissionDataDTO implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -10,12 +11,14 @@ public class CommissionDataDTO implements Serializable {
     private Long productId;
     private Long itemId;
 
+
     public CommissionDataDTO() {
     }
 
     public CommissionDataDTO(CommissionData entity) {
         productId = entity.getProduct().getId();
         itemId = entity.getCommission().getId();
+
     }
 
     public Long getProductId() {

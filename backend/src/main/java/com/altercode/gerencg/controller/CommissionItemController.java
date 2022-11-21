@@ -68,7 +68,7 @@ public class CommissionItemController {
     }
 
     @PutMapping("/update-by-item")
-    public ProductDTO updateProductByItem(@RequestBody CommissionDataDTO data) {
+    public ProductDTO updateProductByItem(CommissionItemDTO data, Long product, Long id) {
         return commissionItemService.updateProductByItem(data);
     }
 }

@@ -183,7 +183,7 @@ export function ProductFormEdit({ productId }: ProductProps) {
                 validate: validate
             },
         }
-        axios(config).then(response => {
+        axios(config).then((response) => {
             navigate("/")
         })
         const productData = { description, price, quantity, validate };

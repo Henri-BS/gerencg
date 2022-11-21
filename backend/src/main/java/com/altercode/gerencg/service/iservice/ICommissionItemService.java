@@ -29,6 +29,6 @@ public interface ICommissionItemService {
 
     List<CommissionResultsDTO> commissionResults();
 
-    ProductDTO updateProductByItem(CommissionDataDTO dto);
+    ProductDTO updateProductByItem(CommissionItemDTO dto);
 
 }

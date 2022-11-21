@@ -27,6 +27,7 @@ export type ItemPage = {
 
 export type ItemProps = {
   itemId: string;
+  productId: string;
 };
 
 export type Code = {

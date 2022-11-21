@@ -50,3 +50,42 @@
         width: 580px;
     }
 }
+
+
+/*Dashboard Styled*/
+
+.max-container-charts {
+    border-bottom: 2px solid var(--dark-seco);
+    align-items: center;
+    padding: 10px;
+    display: block;
+}
+
+.container-chart {
+    color: var(--quin);
+    border-radius: 12px;
+    background: #2a323a;
+    height: 360px;
+    width: 100%;
+}
+
+.chart-box {
+    padding: 20px;
+}
+
+.container-chart h5 {
+    font-size: 26px;
+    font-weight: 500;
+    margin: 0;
+}
+
+@media screen and (max-width: 450px) {
+    .chart-box {
+        align-items: center;
+        justify-content: center;
+    }
+    .container-chart {
+        height: 400px;
+        overflow-x: scroll;
+    }
+}
