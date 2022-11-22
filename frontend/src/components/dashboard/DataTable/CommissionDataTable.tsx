@@ -1,12 +1,13 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { CodeProps, Item } from "types/commission";
+import { CodeProps, Item, ItemProps } from "types/commission";
 import { BASE_URL } from "utils/requests";
 
 function ItemDataTable({ codeId }: CodeProps) {
 
     const [pageItem, setPageItem] = useState<Item[]>();
+
     useEffect(() => {
         axios.get(`${BASE_URL}/find-code?code=${codeId}`)
             .then((response) => {
@@ -14,7 +15,6 @@ function ItemDataTable({ codeId }: CodeProps) {
             });
     }, [codeId]);
 
-    
     return (
         <div className="table-responsive">
             <table className="table border-table">
@@ -41,7 +41,7 @@ function ItemDataTable({ codeId }: CodeProps) {
                             <td className="table-box">{item.totalValue.toFixed(2)}</td>
                             <td className="table-box">{item.packageQuantity}</td>
                             <td className="table-box">
-                                <Link to={'/update-by-item'}>
+                                <Link to={`/update-by-item?item=${item.id}&product=${item.product}`}>
                                 <button className="gerencg-update-btn">Atualizar</button>
                                 </Link>
                                 </td>

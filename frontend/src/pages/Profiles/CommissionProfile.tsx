@@ -30,7 +30,7 @@ export function CommissionProfile() {
     return(
     <>
       <div className="container-blur">
-        <UpdateByItemForm productId={`${params.productId}`} itemId={`${params.itemId}`}/>
+        <UpdateByItemForm productId={`${params.productId}`} itemId={`${params.productId}`}/>
       </div>
       
     </>

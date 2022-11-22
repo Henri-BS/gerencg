@@ -51,9 +51,8 @@ function PageRoutes() {
                     <Route path=":code" element={<CommissionProfile />} />
                 </Route>
 
-                <Route path="/update-by-item">
-                    <Route path=":productId" element={<UpdateProductByItem />} />
-                </Route>
+                <Route path="/update-by-item" element={<UpdateProductByItem />} />
+                
 
             </Routes>
         </BrowserRouter>

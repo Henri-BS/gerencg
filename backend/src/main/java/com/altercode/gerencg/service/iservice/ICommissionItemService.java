@@ -5,6 +5,7 @@ import com.altercode.gerencg.dto.CommissionItemDTO;
 import com.altercode.gerencg.dto.CommissionResultsDTO;
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.CommissionCode;
+import com.altercode.gerencg.entity.CommissionItem;
 import com.altercode.gerencg.entity.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

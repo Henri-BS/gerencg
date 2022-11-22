@@ -2,53 +2,38 @@ import axios, { AxiosRequestConfig } from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Item, ItemProps } from "types/commission";
-import { ProductProps } from "types/product";
+import { Product } from "types/product";
 import { BASE_URL } from "utils/requests";
 
-export function UpdateByItemForm({ productId, itemId }: ItemProps) {
+
+export function UpdateByItemForm({ itemId, productId }: ItemProps) {
 const navigate = useNavigate();
-    const [item, setItem] = useState<Item>();
-    
-    useEffect(() => {
-    axios.put(`${BASE_URL}/update-by-item?product=${productId}?id=${itemId}`)
+         const [item, setItem] = useState<Item>();
+         const [product, setProduct] = useState<Product>();
+
+
+
+const updateProductByItem = () => {
+
+axios.put(`${BASE_URL}/update-by-item?id=${itemId}&product=${productId}`)
     .then((response) => {
-        setItem(response.data);
-    })
-}, [productId, itemId])
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        const itemId = (event.target as any).commissionId.value;
-        const productId = (event.target as any).productId.value;
-
-
-        const config: AxiosRequestConfig = {
-            baseURL: BASE_URL,
-            method: "PUT",
-            url: ``,
-            data: {
-                itemId: itemId,
-                productId: productId
-            }
-        }
-        axios(config).then((response) => {
-navigate(`/product/${item?.product}`)
-        })
-    }
-
+    setItem(response.data);
+})
+}
+    
     return (
         <div className="form-container">
             <div className="form-card-container">
                 <h3>Deseja atualizar o produto com os dados deste pedido ?</h3>
-                <form className="gerencg-form" onSubmit={handleSubmit}>
+                <form className="gerencg-form">
                     <div className="form-group gerencg-form-group">
-                        <label htmlFor="productId">Produto: {item?.productDescription}</label>
-                       
+                        <label htmlFor="productId">Produto: {product?.description}</label>
                     </div>
-                    <div className="form-btn-container">
-                        <button type="submit" className="gerencg-btn">
+                    <Link to={`/product/${productId}`} className="form-btn-container">
+                        <button type="submit" className="gerencg-btn" onClick={() => updateProductByItem()}>
                             Atualizar
                         </button>
-                    </div>
+                    </Link>
                     <Link className="form-btn-container" to="/product/list">
                         <button className="btn gerencg-btn mt-3">Cancelar</button>
                     </Link>

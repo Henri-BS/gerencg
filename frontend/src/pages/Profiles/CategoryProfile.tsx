@@ -1,4 +1,4 @@
-import CategoryLateralBar from "components/container/Bar/CategorySideBar";
+import CategoryLateralBar from "components/container/Bar/CategoryBar";
 import { AddCategoryStats } from "components/container/Form/CategoryForm";
 import { AddedProductsChart, ExpenseChart, IncomeChart, RemovedProductsChart } from "components/dashboard/Chart/CategoryChart";
 import { ProductCategoryList } from "pages/Listings/CategoryListing";
