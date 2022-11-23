@@ -112,7 +112,9 @@ public class CommissionItemService implements ICommissionItemService {
         CommissionItem item = itemRepository.findById(dto.getId()).get();
 
         int quantity = item.getItemQuantity();
+        double price = item.getUnitValue();
         product.setQuantity(quantity);
+        product.setPrice(price);
         productRepository.save(product);
 
         return new ProductDTO(product);
