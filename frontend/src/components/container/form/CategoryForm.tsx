@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CategoryPage } from "types/category";
-import { CategoryStats } from "types/categoryStats";
+import { CategoryStats } from "types/category";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 
@@ -99,7 +99,7 @@ export function AddCategoryStats() {
 
                     <div className="form-btn-container">
                         <button type="submit" className="gerencg-btn" >
-                            Adicionar Produto
+                            Adicionar Registro
                         </button>
                     </div>
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts'
-import { CategoryValue, FlowCategory } from 'types/categoryStats';
+import { CategoryValue, FlowCategory } from 'types/category';
 import { BASE_URL } from 'utils/requests';
 
 /**  Periodic income record of each category */

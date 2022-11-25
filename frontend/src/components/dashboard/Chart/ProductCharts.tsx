@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { ProductProps } from "types/product";
 import { BASE_URL } from "utils/requests";
 import Chart from 'react-apexcharts'
-import { ProductHistoryPage } from "types/productHistory";
+import { ProductHistoryPage } from "types/product";
 import moment from "moment";
 
 type SeriesData = {

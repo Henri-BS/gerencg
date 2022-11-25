@@ -1,6 +1,7 @@
 package com.altercode.gerencg.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "tb_commission_item")
@@ -20,6 +21,9 @@ public class CommissionItem {
     @Column(name = "total_value")
     private Double totalValue;
 
+    @Column(name = "validate")
+    private LocalDate itemValidate;
+
     @Column(name = "package_quantity")
     private Integer packageQuantity;
 
@@ -34,11 +38,12 @@ public class CommissionItem {
     public CommissionItem() {
     }
 
-    public CommissionItem(Long id, Double totalValue, Integer itemQuantity, Double unitValue, Integer packageQuantity, CommissionCode code, Product product) {
+    public CommissionItem(Long id, Double totalValue, Integer itemQuantity, Double unitValue, LocalDate itemValidate, Integer packageQuantity, CommissionCode code, Product product) {
         this.id = id;
         this.totalValue = totalValue;
         this.itemQuantity = itemQuantity;
         this.unitValue = unitValue;
+        this.itemValidate = itemValidate;
         this.packageQuantity = packageQuantity;
         this.code = code;
         this.product = product;
@@ -82,6 +87,14 @@ public class CommissionItem {
 
     public void setUnitValue(Double unitValue) {
         this.unitValue = unitValue;
+    }
+
+    public LocalDate getItemValidate() {
+        return itemValidate;
+    }
+
+    public void setItemValidate(LocalDate itemValidate) {
+        this.itemValidate = itemValidate;
     }
 
     public Integer getPackageQuantity() {

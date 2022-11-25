@@ -1,6 +1,5 @@
 package com.altercode.gerencg.controller;
 
-import com.altercode.gerencg.dto.CommissionDataDTO;
 import com.altercode.gerencg.dto.CommissionItemDTO;
 import com.altercode.gerencg.dto.CommissionResultsDTO;
 import com.altercode.gerencg.dto.ProductDTO;
@@ -23,8 +22,8 @@ public class CommissionItemController {
     private CommissionItemService commissionItemService;
 
     @GetMapping("/items-list")
-    public Page<CommissionItemDTO> findAllCommissions(Pageable pageable) {
-      return commissionItemService.findAllCommissions(pageable);
+    public Page<CommissionItemDTO> findAllItems(Pageable pageable) {
+      return commissionItemService.findAllItems(pageable);
     }
 
     @GetMapping("/find-code")
@@ -68,7 +67,7 @@ public class CommissionItemController {
     }
 
     @PutMapping("/update-by-item")
-    public ProductDTO updateProductByItem(CommissionItemDTO data, Product product, Long id) {
-        return commissionItemService.updateProductByItem(data);
+    public ProductDTO updateProductByItem(CommissionItemDTO item, Long id, Product product) {
+        return commissionItemService.updateProductByItem(item);
     }
     }

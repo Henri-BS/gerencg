@@ -14,6 +14,7 @@ public class ProductDTO implements Serializable {
 	private Double price;
 	private Integer quantity;
 	private LocalDate validate;
+	private LocalDate lastUpdateDate;
 	private Double measureValue;
 
 	private String measure;
@@ -23,13 +24,14 @@ public class ProductDTO implements Serializable {
 	}
 
 	public ProductDTO(Long id, String description, String image, Double price, Integer quantity, LocalDate validate,
-			Double measureValue, String measure, String category) {
+			LocalDate lastUpdateDate,Double measureValue, String measure, String category) {
 		this.id = id;
 		this.description = description;
 		this.image = image;
 		this.price = price;
 		this.quantity = quantity;
 		this.validate = validate;
+		this.lastUpdateDate = lastUpdateDate;
 		this.measureValue = measureValue;
 		this.measure = measure;
 		this.category = category;
@@ -42,6 +44,7 @@ public class ProductDTO implements Serializable {
 		price = entity.getPrice();
 		quantity = entity.getQuantity();
 		validate = entity.getValidate();
+		lastUpdateDate = entity.getLastUpdateDate();
 		measureValue = entity.getMeasureValue();
 		measure = entity.getMeasure().getAbbreviation();
 		category = entity.getCategory().getName();
@@ -97,6 +100,14 @@ public class ProductDTO implements Serializable {
 
 	public Double getMeasureValue() {
 		return measureValue;
+	}
+
+	public LocalDate getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(LocalDate lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
 	}
 
 	public void setMeasureValue(Double measureValue) {

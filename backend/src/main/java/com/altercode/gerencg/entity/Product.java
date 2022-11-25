@@ -35,6 +35,11 @@ public class Product {
 
     private LocalDate validate;
 
+    private Integer alteration;
+
+    @Column(name = "last_update_date")
+    private LocalDate lastUpdateDate;
+
     @Column(name = "measure_value")
     private Double measureValue;
 
@@ -46,7 +51,7 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    private Integer alteration;
+
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
     private final Set<Calculator> calculators = new HashSet<>();
@@ -135,6 +140,13 @@ public class Product {
         this.validate = validate;
     }
 
+    public LocalDate getLastUpdateDate() {
+        return lastUpdateDate;
+    }
+
+    public void setLastUpdateDate(LocalDate lastUpdateDate) {
+        this.lastUpdateDate = lastUpdateDate;
+    }
 
     public Double getMeasureValue() {
         return measureValue;
@@ -148,16 +160,13 @@ public class Product {
         return measure;
     }
 
-
     public void setMeasure(Measure measure) {
         this.measure = measure;
     }
 
-
     public Category getCategory() {
         return category;
     }
-
 
     public void setCategory(Category category) {
         this.category = category;

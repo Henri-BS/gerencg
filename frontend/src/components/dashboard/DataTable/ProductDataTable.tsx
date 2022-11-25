@@ -3,7 +3,7 @@ import Pagination from "components/shared/Pagination";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ProductHistoryPage } from "types/productHistory";
+import { ProductHistoryPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 
 function ProductDataTable() {

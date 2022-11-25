@@ -3,7 +3,7 @@ import Pagination from "components/shared/Pagination";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { StatsPage } from "types/categoryStats";
+import { StatsPage } from "types/category";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 

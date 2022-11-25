@@ -5,7 +5,7 @@ import { ProductProfile, MeasureProfile, SaveProduct, UpdateProduct, ProductDash
 import { CategoryList } from "pages/Listings/CategoryListing";
 import { MeasureList } from "pages/Listings/MeasureListing";
 import { CommissionCodeList } from "pages/Listings/CommissionListing";
-import { CommissionProfile, UpdateProductByItem } from "pages/Profiles/CommissionProfile";
+import { CommissionProfile, SaveCommission, UpdateProductByItem } from "pages/Profiles/CommissionProfile";
 import { CategoryProfile, CategoryStatsDashboard, SaveCategoryStats } from "pages/Profiles/CategoryProfile";
 
 
@@ -46,6 +46,7 @@ function PageRoutes() {
                 <Route path="/measure/list" element={<MeasureList />} />
 
                 <Route path="/commission/list" element={<CommissionCodeList />} />
+                <Route path="/save-commission" element={<SaveCommission />} />
 
                 <Route path="/commission">
                     <Route path=":code" element={<CommissionProfile />} />

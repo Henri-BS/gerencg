@@ -1,7 +1,7 @@
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { Product } from "types/product";
-import { ProductHistory } from "types/productHistory";
+import { ProductHistory } from "types/product";
 import "./styles.css"
 
 type Props = {

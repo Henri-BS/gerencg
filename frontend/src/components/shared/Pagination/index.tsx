@@ -1,9 +1,8 @@
-import { CategoryPage } from "types/category";
-import { StatsPage } from "types/categoryStats";
+import { CategoryPage, StatsPage } from "types/category";
 import { CodePage, ItemPage } from "types/commission";
 import { MeasurePage } from "types/measure";
-import { ProductPage } from "types/product";
-import { ProductHistoryPage } from "types/productHistory";
+import { ProductPage,  ProductHistoryPage} from "types/product";
+
 type Props = {
     page: 
     ProductPage | StatsPage | CategoryPage | MeasurePage |

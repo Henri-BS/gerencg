@@ -52,6 +52,9 @@ export function ProductSideBar({ productId }: ProductProps) {
                         <h3>Category: {product?.category} </h3>
                     </Link>
                 </div>
+                <div className="column-card-bottom"> 
+                <h4>Última Atualização: {moment(product?.lastUpdateDate).format('DD/MM/YYYY')}</h4>
+                </div>
             </div>
         </>
     );

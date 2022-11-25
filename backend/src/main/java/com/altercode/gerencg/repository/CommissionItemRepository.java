@@ -19,6 +19,4 @@ public interface CommissionItemRepository extends JpaRepository<CommissionItem, 
 
     List<CommissionItem> findItemByProduct(Product product);
 
-    CommissionItem findByIdAndProduct(Long id, Product product);
-
 }

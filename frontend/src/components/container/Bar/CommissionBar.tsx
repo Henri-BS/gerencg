@@ -28,7 +28,6 @@ export function CommissionMenuBar({codeId }: CodeProps) {
         <div className="max-bar-container">
         <h3><b>Informações de Identificação</b></h3>
             <div className="bar-container">
-            
                 <div className="bar-option">
                     Código do Pedido: {commission?.code}
                 </div>

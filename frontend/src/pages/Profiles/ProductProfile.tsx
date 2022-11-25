@@ -45,8 +45,10 @@ export function ProductProfile() {
 export function SaveProduct() {
 
   return (
+    <div className="container p-0">
     <div className="container-blur">
       <AddProduct />
+    </div>
     </div>
   );
 }

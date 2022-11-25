@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { ProductPage, ProductProps } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css";
-import { ProductHistoryPage } from "types/productHistory";
+import { ProductHistoryPage } from "types/product";
 import * as FaIcons from 'react-icons/fa';
 import "react-datepicker/dist/react-datepicker.css";
 import ReactDatePicker from "react-datepicker";

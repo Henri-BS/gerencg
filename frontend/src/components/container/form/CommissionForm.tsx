@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 import moment from "moment";
-import { useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Item, ItemProps } from "types/commission";
@@ -8,53 +8,73 @@ import { Product } from "types/product";
 import { BASE_URL } from "utils/requests";
 
 
-export function UpdateByItemForm({ itemId }: ItemProps) {
+export function AddCommissionForm() {
     const navigate = useNavigate();
-    const [item, setItem] = useState<Item>();
-    const [product, setProduct] = useState<Product>();
 
-    useEffect(() => {
-        axios.get(`${BASE_URL}/item/${itemId}`)
-        .then((response) => {
-            setItem(response.data);
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        const code = (event.target as any).code.value;
+        const commissionDate = (event.target as any).commissionDate.value;
+        const distributor = (event.target as any).distributor.value;
+
+        const config: AxiosRequestConfig = {
+            baseURL: BASE_URL,
+            url: "/save-commission",
+            method: "POST",
+            data: {
+                code: code,
+                commissionDate: commissionDate,
+                distributor: distributor
+            }
+        }
+        axios(config).then((response) => {
+            navigate("/commission-list");
         })
-    }, [itemId])
-
-    const updateProductByItem = () => {
-        axios.put(`${BASE_URL}/update-by-item?id=${itemId}&product=${item?.product}`)
-            .then((response) => {
-                setItem(response.data);
-            })               
-
     }
-
-    return (
+    return(
         <div className="form-container">
-            <div className="product-history-box  border-dark">
-                <h2>Código do Pedido: {item?.commissionCode}</h2>
-            </div>
-            <div className="product-history-box">
-                <h4>Descrição: {item?.productDescription}</h4>
-            </div>
-            <div className="product-history-box">
-                <h3>Medida: {item?.productMeasureValue} {item?.productMeasure}</h3>
-            </div>
-            <div className="product-history-box">
-                <h3>Quantidade: {item?.quantity}</h3>
-            </div>
-            <div className="product-history-box ">
-                <h3>Valor por Unidade: {item?.unitValue.toFixed(2)}</h3>
-            </div>
-            <div className="product-history-box ">
-                <h3>Valor Total: {item?.totalValue.toFixed(2)}</h3>
-            </div>
-            <div className="product-history-box border-0">
-                <h3>Quantidade de Pacotes: {item?.packageQuantity}</h3>
-            </div>
+            <div className="form-card-container">
+                <h1>Resgistrar um novo pedido</h1>
+                <form className="gerencg-form" onSubmit={handleSubmit}>
+                <div className="form-group gerencg-form-group">
+                        <label htmlFor="code">Código do Pedido: </label>
+                        <input 
+                        type="text" 
+                        className="form-control" 
+                        id="code" 
+                        placeholder="ex: 00.00.0000.00-aa"
+                        />
+                    </div>
+                    <div className="form-group gerencg-form-group">
+                        <label htmlFor="commissionDate">Data do Pedido: </label>
+                        <input 
+                        type="text" 
+                        className="form-control" 
+                        id="commissionDate" 
+                        placeholder="0000-00-00"
+                        />
+                    </div>
+                    <div className="form-group gerencg-form-group">
+                        <label htmlFor="distributor">Distribuidora: </label>
+                        <input 
+                        type="text" 
+                        className="form-control" 
+                        id="distributor" 
+                        placeholder="ex: Comercial Novo"
+                        />
+                    </div>
 
-            <Link to={`/product/${item?.product}`} className="form-btn-container">
-                        <button onClick={() => updateProductByItem()} type="submit" className="gerencg-update-btn"> Atualizar Produto </button>
-            </Link>
+                    <div className="form-btn-container">
+                        <button type="submit" className="gerencg-btn" >
+                            Registrar Pedido
+                        </button>
+                    </div>
+                
+                <Link to="/commission-list">
+                    <h5 className=" form-links mt-5">Ir para a Lista de Pedidos</h5>
+                </Link>
+                </form>
+            </div>
         </div>
     );
 }
+

@@ -23,8 +23,8 @@ public class CommissionCodeService implements ICommissionCodeService {
     private CommissionItemRepository itemRepository;
 
     @Override
-    public Page<CommissionCodeDTO> findAllCommissionsByCode(Pageable pageable, String code) {
-        Page<CommissionCode> result = codeRepository.findAllCommissionsByCode(pageable, code);
+    public Page<CommissionCodeDTO> findItemsByCode(Pageable pageable, String code) {
+        Page<CommissionCode> result = codeRepository.findItemsByCode(pageable, code);
         return result.map(x -> new CommissionCodeDTO(x));
     }
 
@@ -49,6 +49,7 @@ public class CommissionCodeService implements ICommissionCodeService {
 
         code.setTotalValue(sumValues);
         code.setTotalQuantity(sumQuantity);
+        code.setTotalPackage(sumPackages);
         codeRepository.save(code);
 
         return new CommissionCodeDTO(code);

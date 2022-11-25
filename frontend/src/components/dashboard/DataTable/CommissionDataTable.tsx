@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { CodeProps, Item, ItemProps } from "types/commission";
+import { CodeProps, Item } from "types/commission";
 import { BASE_URL } from "utils/requests";
 
 function ItemDataTable({ codeId }: CodeProps) {

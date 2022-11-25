@@ -7,7 +7,7 @@ INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUE
 INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Ferramentas', 'https://media.istockphoto.com/vectors/screwdriver-and-hammer-icon-vector-id481293820?k=6&m=481293820&s=170667a&w=0&h=cLTroYQVvkzjyHNNG6qQJp4J3E1qKx3JuGV_I2pxTe0=', now());
 INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Limpeza', 'https://img.freepik.com/vector-gratis/fregona-ilustracion-icono-cubo-concepto-icono-herramienta-limpieza-aislado-estilo-plano-dibujos-animados_138676-1336.jpg?size=338&ext=jpg', now());
 INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Papelaria e Escolar', 'https://www.945enet.com.tw/945enet/img/pic02.jpg', now());
-INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Tecidos e Acessórios', 'https://item.itembox.design/item/images/index/icon-cat-hab-yousai.png', now());
+INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Vestuário e Acessórios', 'https://item.itembox.design/item/images/index/icon-cat-hab-yousai.png', now());
 INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Variados', 'https://www.teccuro.com/wp-content/uploads/2021/01/Special-Projects-2.jpg', now());
 
 
@@ -33,7 +33,7 @@ INSERT INTO tb_category_stats (category_id, added_products, removed_products, ex
 INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES ('Tecidos e Acessórios', 243, 324, 3132.00, 3912.00, '2021-11-20');
 
 
-INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('quilo', 'kg');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('quilograma', 'kg');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('grama', 'g');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('litro', 'l');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('mililitro', 'ml');
@@ -45,7 +45,10 @@ INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('volt', 'v');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('gigabyte', 'gb');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('megabyte', 'mb');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('caixa', 'cx');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('fardo', 'fd');
+INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('unidade', 'un');
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('indefinido', '~');
+
 
 
 
@@ -199,6 +202,30 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Cola De Isopor Polar Compactor', 'https://cdn1.iconfinder.com/data/icons/stationery-items-3/64/Glue_Icon-512.png', 3.85, 21, '2032-07-01', 40, 'g', 'Papelaria e Escolar');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Tinta Guache Koala', 'https://cdn1.iconfinder.com/data/icons/fine-arts-4/64/ink_pen-ink-pen-writing-512.png', 5.60, 20, '2024-05-01', 15, 'ml', 'Papelaria e Escolar');
 
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Toalha De Rosto', 'https://cdn3.iconfinder.com/data/icons/bath-room-filled-outline/64/Clotheshanger-towel-bathroom-512.png', 0, 0, '2999-12-30', 60, 'cm', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Pano De Chão J.A Alvejado', 'https://images.vexels.com/media/users/3/208090/isolated/preview/9683aa8859f5ba8655a95b95a85d52cc-ilustra-ccedil-atilde-o-de-tapete-azul-ondulado-by-vexels.png', 0, 0, '2999-12-30', 65, 'cm', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Saco Alvejado R.Gomes', 'https://images.vexels.com/media/users/3/208090/isolated/preview/9683aa8859f5ba8655a95b95a85d52cc-ilustra-ccedil-atilde-o-de-tapete-azul-ondulado-by-vexels.png', 0, 0, '2999-12-30', 70, 'cm', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Flanela São João Vermelha', 'https://cdn1.iconfinder.com/data/icons/tailor-filled-outline/100/tailor-14-512.png', 0, 0, '2999-12-30', 79, 'cm', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Flanela São João Laranja', 'https://cdn1.iconfinder.com/data/icons/tailor-filled-outline/100/tailor-14-512.png', 0, 0, '2999-12-30', 79, 'cm', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Flanela São João Vermelha', 'https://cdn1.iconfinder.com/data/icons/tailor-filled-outline/100/tailor-14-512.png', 0, 0, '2999-12-30', 59, 'cm', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Flanela São João Laranja', 'https://cdn1.iconfinder.com/data/icons/tailor-filled-outline/100/tailor-14-512.png', 0, 0, '2999-12-30', 59, 'cm', 'Limpeza');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Shampoo Grupy Kids Hidrata De Montão', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 0, 0, '2999-12-30', 250, 'ml', 'Cosméticos e Higiene');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Shampoo Grupy Kids Xô Embaraço', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 0, 0, '2999-12-30', 250, 'ml', 'Cosméticos e Higiene');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Shampoo e Condicionador Salon Line Hidra', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 0, 0, '2999-12-30', 300, 'ml', 'Cosméticos e Higiene');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Shampoo e Condicionador Kit Skala Crespinho', 'https://cdn.shopify.com/s/files/1/0475/3883/1521/files/soap.png?v=1618167882', 0, 0, '2999-12-30', 325, 'ml', 'Cosméticos e Higiene');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Suco Pronto Alegria Fruit Laranja', 'https://cdn3.iconfinder.com/data/icons/drinks-filled-1/64/drinks_beverage-15-512.png', 0, 0, '2999-12-30', 200, 'ml', 'Alimentícios');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Suco Pronto Alegria Fruit Uva', 'https://cdn3.iconfinder.com/data/icons/drinks-filled-1/64/drinks_beverage-15-512.png', 0, 0, '2999-12-30', 310, 'ml', 'Alimentícios');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Suco Pronto Alegria Fruit Laranja', 'https://cdn3.iconfinder.com/data/icons/drinks-filled-1/64/drinks_beverage-15-512.png', 0, 0, '2999-12-30', 250, 'ml', 'Alimentícios');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Suco Pronto Alegria Fruit Laranja', 'https://cdn3.iconfinder.com/data/icons/drinks-filled-1/64/drinks_beverage-15-512.png', 0, 0, '2999-12-30', 320, 'ml', 'Alimentícios');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Baby Óleo Infantil Muriel Menino', 'https://cdn1.iconfinder.com/data/icons/culture-communities-set-2/24/culture_civilization_community_communities_nation_tequila_mexican-512.png', 0, 0, '2999-12-30', 100, 'ml', 'Cosméticos e Higiene');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sfera Kit Alisamento Abacate e Queratina', 'https://cdn2.iconfinder.com/data/icons/beauty-and-spa-2-4/65/84-512.png', 0, 0, '2999-12-30', 200, 'ml', 'Cosméticos e Higiene');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sfera Kit Alisamento Karité e Queratina', 'https://cdn2.iconfinder.com/data/icons/beauty-and-spa-2-4/65/84-512.png', 0, 0, '2999-12-30', 200, 'ml', 'Cosméticos e Higiene');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sfera Kit Alisamento Argan', 'https://cdn2.iconfinder.com/data/icons/beauty-and-spa-2-4/65/84-512.png', 0, 0, '2999-12-30', 200, 'ml', 'Cosméticos e Higiene');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Sfera Kit Alisamento Solta Cachos', 'https://cdn2.iconfinder.com/data/icons/beauty-and-spa-2-4/65/84-512.png', 0, 0, '2999-12-30', 200, 'ml', 'Cosméticos e Higiene');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Tintura Bigen 47 Castanho Médio', 'https://cdn2.iconfinder.com/data/icons/beauty-and-spa-2-4/65/84-512.png', 0, 0, '2999-12-30', 200, 'ml', 'Cosméticos e Higiene');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Tintura Bigen 48 Castanho Escuro', 'https://cdn2.iconfinder.com/data/icons/beauty-and-spa-2-4/65/84-512.png', 0, 0, '2999-12-30', 200, 'ml', 'Cosméticos e Higiene');
+INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Tintura Bigen 59 Preto Azulado', 'https://cdn2.iconfinder.com/data/icons/beauty-and-spa-2-4/65/84-512.png', 0, 0, '2999-12-30', 200, 'ml', 'Cosméticos e Higiene');
+
 
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(1, 'Arroz Doura', 23, 3.60, '2023-04-02', 1, 'kg', 'Alimentícios', now());
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(1, 'Arroz Doura', 35, 3.60, '2023-06-30', 1, 'kg', 'Alimentícios', now());
@@ -213,12 +240,17 @@ INSERT INTO tb_product_history(product_id, description, quantity, price, validat
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(2, 'Arroz Catarinão', 70, 4.75, '2023-09-10', 1, 'kg', 'Alimentícios', now());
 INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(2, 'Arroz Catarinão', 88, 4.75, '2024-02-02', 1, 'kg', 'Alimentícios', now());
 
-INSERT INTO tb_commission_code (code, commission_date, distributor, total_package, package_type) VALUES ('20.10.2022.01-mt', '2022-10-20', 'Matheus', 4, '~');
-INSERT INTO tb_commission_code (code, commission_date, distributor, total_package, package_type) VALUES ('14.11.2022.01-al', '2022-11-14', 'Aldenir', 14, 'cx');
-INSERT INTO tb_commission_code (code, commission_date, distributor, total_package, package_type) VALUES ('05.11.2022.01-mt', '2022-11-05', 'Matheus', 5, 'cx');
-INSERT INTO tb_commission_code (code, commission_date, distributor, total_package, package_type) VALUES ('05.11.2022.01-yd', '2022-11-05', 'York Distribuidora', 8, 'cx');
+INSERT INTO tb_commission_code (code, commission_date, distributor, package_type) VALUES ('20.10.2022.01-mt', '2022-10-20', 'Matheus', 'fd');
+INSERT INTO tb_commission_code (code, commission_date, distributor, package_type) VALUES ('14.11.2022.01-al', '2022-11-14', 'Aldenir', 'cx');
+INSERT INTO tb_commission_code (code, commission_date, distributor, package_type) VALUES ('05.11.2022.01-yd', '2022-11-05', 'York Distribuidora', 'cx');
+INSERT INTO tb_commission_code (code, commission_date, distributor, package_type) VALUES ('05.11.2022.01-mt', '2022-11-05', 'Matheus', 'cx');
+INSERT INTO tb_commission_code (code, commission_date, distributor, package_type) VALUES ('18.11.2022.01-pef', '2022-11-18', 'Comercial Pai e Filho', 'un');
+INSERT INTO tb_commission_code (code, commission_date, distributor, package_type) VALUES ('09.11.2022.01-jb', '2022-11-09', 'Grupo Jorge Batista', 'cx');
+INSERT INTO tb_commission_code (code, commission_date, distributor, package_type) VALUES ('18.11.2022.01-jb', '2022-11-18', 'Grupo Jorge Batista', 'un');
+INSERT INTO tb_commission_code (code, commission_date, distributor, package_type) VALUES ('18.11.2022.02-jb', '2022-11-18', 'Grupo Jorge Batista', 'cx');
 
-INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (60, 3.50, 204, 2,'20.10.2022.01-mt', 3);
+
+INSERT INTO tb_commission_item (quantity, unit_value, total_value,  package_quantity, code_id, product_id) VALUES (60, 3.50, 204, 2,'20.10.2022.01-mt', 3);
 INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (30, 4.20, 120, 1, '20.10.2022.01-mt', 5);
 INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (30, 3.80, 110, 1, '20.10.2022.01-mt', 1);
 INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (12, 2.85, 23.80, 1, '05.11.2022.01-mt', 94);
@@ -239,4 +271,30 @@ INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quant
 INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 7.10, 31.50, 1, '14.11.2022.01-al', 118);
 INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 7.10, 31.50, 1, '14.11.2022.01-al', 119);
 INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 7.10, 31.50, 1, '14.11.2022.01-al', 120);
-INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 7.10, 31.50, 1, '14.11.2022.01-al', 121)
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 7.10, 31.50, 1, '14.11.2022.01-al', 121);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (18, 9.40, 120.60, 3, '18.11.2022.01-pef', 137);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (24, 5.90, 90.00, 4, '18.11.2022.01-pef', 138);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (36, 6.40, 165.60, 6, '18.11.2022.01-pef', 139);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (12, 4.40, 37.20, 2, '18.11.2022.01-pef', 140);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (12, 4.40, 37.20, 2, '18.11.2022.01-pef', 141);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (25, 3.90, 50.00, 4, '18.11.2022.01-pef', 142);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (25, 3.90, 50.00, 4, '18.11.2022.01-pef', 143);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (3, 8.20, 17.76, 1, '18.11.2022.01-jb', 144);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (3, 8.20, 17.76, 1, '18.11.2022.01-jb', 145);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (4, 9.90, 13.13, 1, '18.11.2022.01-jb', 146);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (5, 9.90, 11.19, 1, '18.11.2022.01-jb', 147);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (15, 2.85, 20.25, 2, '09.11.2022.01-jb', 148);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (15, 2.85, 25.35, 2, '09.11.2022.01-jb', 149);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (36, 2.85, 62.28, 2, '09.11.2022.01-jb', 150);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (36, 2.85, 60.84, 2, '09.11.2022.01-jb', 151);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 8.90, 38.82, 1, '18.11.2022.02-jb', 152);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (12, 11.15, 103.20, 2, '18.11.2022.02-jb', 153);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (12, 11.15, 103.20, 2, '18.11.2022.02-jb', 154);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (12, 11.15, 103.20, 2, '18.11.2022.02-jb', 155);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (12, 11.15, 103.20, 2, '18.11.2022.02-jb', 156);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 11.90, 52.08, 1, '18.11.2022.02-jb', 157);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (12, 11.90, 104.16, 2, '18.11.2022.02-jb', 158);
+INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 11.90, 52.08, 1, '18.11.2022.02-jb', 159);
+
+
+

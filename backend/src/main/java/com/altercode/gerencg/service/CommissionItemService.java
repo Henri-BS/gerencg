@@ -1,12 +1,10 @@
 package com.altercode.gerencg.service;
 
-import com.altercode.gerencg.dto.CommissionDataDTO;
 import com.altercode.gerencg.dto.CommissionItemDTO;
 import com.altercode.gerencg.dto.CommissionResultsDTO;
 import com.altercode.gerencg.dto.ProductDTO;
-import com.altercode.gerencg.entity.CommissionData;
-import com.altercode.gerencg.entity.CommissionItem;
 import com.altercode.gerencg.entity.CommissionCode;
+import com.altercode.gerencg.entity.CommissionItem;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.CommissionCodeRepository;
 import com.altercode.gerencg.repository.CommissionDataRepository;
@@ -19,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,7 +39,7 @@ public class CommissionItemService implements ICommissionItemService {
 
 
     @Override
-    public Page<CommissionItemDTO> findAllCommissions(Pageable pageable) {
+    public Page<CommissionItemDTO> findAllItems(Pageable pageable) {
         Page<CommissionItem> result = itemRepository.findAll(pageable);
         return result.map(x -> new CommissionItemDTO(x));
     }
@@ -73,7 +72,6 @@ public class CommissionItemService implements ICommissionItemService {
         add.setItemQuantity(dto.getQuantity());
         add.setProduct(product);
 
-
         return new CommissionItemDTO(itemRepository.saveAndFlush(add));
     }
 
@@ -104,8 +102,6 @@ public class CommissionItemService implements ICommissionItemService {
         return itemRepository.commissionResults();
     }
 
-
-
     @Override
     public ProductDTO updateProductByItem(CommissionItemDTO dto) {
         Product product = productRepository.findById(dto.getProduct()).get();
@@ -113,8 +109,11 @@ public class CommissionItemService implements ICommissionItemService {
 
         int quantity = item.getItemQuantity();
         double price = item.getUnitValue();
+        LocalDate date = item.getCode().getCommissionDate();
+
         product.setQuantity(quantity);
         product.setPrice(price);
+        product.setLastUpdateDate(date);
         productRepository.save(product);
 
         return new ProductDTO(product);

@@ -15,9 +15,9 @@ public class CommissionCodeController {
     @Autowired
     private CommissionCodeService codeService;
 
-    @GetMapping("/code-list")
-    public ResponseEntity<Page<CommissionCodeDTO>> findAllCommissionsByCode(Pageable pageable, String code) {
-        Page<CommissionCodeDTO> page = codeService.findAllCommissionsByCode(pageable, code);
+    @GetMapping("/commission-list")
+    public ResponseEntity<Page<CommissionCodeDTO>> findItemsByCode(Pageable pageable, String code) {
+        Page<CommissionCodeDTO> page = codeService.findItemsByCode(pageable, code);
         return ResponseEntity.ok(page);
     }
 
@@ -31,7 +31,7 @@ public class CommissionCodeController {
         return codeService.commissionTotalValues(dto);
     }
 
-    @PostMapping("/save-code")
+    @PostMapping("/save-commission")
     public ResponseEntity<CommissionCodeDTO> saveCommissionCode(@RequestBody CommissionCodeDTO dto) {
         CommissionCodeDTO addCode = codeService.saveCommissionCode(dto);
         return new ResponseEntity<>(addCode, HttpStatus.CREATED);
