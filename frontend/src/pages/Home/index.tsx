@@ -1,13 +1,7 @@
 
 import { category, categoryStats, product, commission } from "components/shared/MenuList";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./styles.css"
-import axios, { AxiosRequestConfig } from "axios";
-import { BASE_URL } from "utils/requests";
-import NavBar from "components/shared/NavBar";
-import Footer from "components/shared/Footer";
-import { User } from "types/user";
 
 
 function Home() {
@@ -41,7 +35,6 @@ function Home() {
 */     
     return (
         <>
-        <NavBar />
             <div className="container"  >
                 <div className="jumbotron" >
                     <h1 className="display-5 mt-3">Gerenciador Comercial </h1>
@@ -82,7 +75,6 @@ function Home() {
                     <hr className="mb-0 mt-5" />
                 </div>
             </div> 
-            <Footer />
         </>
     );
 }

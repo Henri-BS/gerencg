@@ -4,8 +4,6 @@ import { ProductHistoryByProduct } from "pages/Listings/ProductListing";
 import { MeasureInfo } from "components/container/Card/MeasureCard";
 import { AddProduct, ProductFormEdit } from "components/container/Form/ProductForm";
 import { QuantityProductChart } from "components/dashboard/Chart/ProductCharts";
-import NavBar from "components/shared/NavBar";
-import Footer from "components/shared/Footer";
 import { ProductMeasureList } from "pages/Listings/MeasureListing";
 import { ProductMenuBar, ProductSideBar } from "components/container/Bar/ProductBar";
 import ProductDataTable from "components/dashboard/DataTable/ProductDataTable";
@@ -16,7 +14,6 @@ export function ProductProfile() {
 
   return (
     <>
-      <NavBar />
       <div className="profile row">
         <div className="col-12 col-md-12 col-lg-6 col-xl-4 p-0">
           < ProductSideBar productId={`${params.productId}`} />
@@ -34,7 +31,6 @@ export function ProductProfile() {
           </div>
         
       </div>
-      <Footer />
     </>
   );
 }
@@ -45,10 +41,8 @@ export function ProductProfile() {
 export function SaveProduct() {
 
   return (
-    <div className="container p-0">
     <div className="container-blur">
       <AddProduct />
-    </div>
     </div>
   );
 }
@@ -72,14 +66,12 @@ export function MeasureProfile() {
 
   return (
     <>
-      <NavBar />
       <div className="container-blur">
         <div>
           <MeasureInfo measureId={`${params.measureId}`} />
         </div>
         <ProductMeasureList measureId={`${params.measureId}`} />
       </div>
-      <Footer />
     </>
   );
 }
@@ -89,12 +81,10 @@ export function ProductDashboard() {
 
   return (
     <>
-    <NavBar />
       <div className="container">
         <h1 className=" py-4">Registros de Alterações dos Produtos</h1>
         <ProductDataTable />
       </div>
-      <Footer />
     </>
   );
 }

@@ -35,13 +35,15 @@
 }
 
 .container-blur {
+    position: relative;
+    height: 100%;
+    width: 100%;
     color: var(--dark-seco);
     max-inline-size: 100%;
     margin: 0;
-    background: linear-gradient(135deg, rgba(102, 96, 96, 0.452), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(10px);
+    background: linear-gradient(135deg, rgba(37, 35, 35, 0.616), rgba(102, 96, 96, 0.452), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 @media screen and (max-width: 450px) {

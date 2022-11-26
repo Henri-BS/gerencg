@@ -1,8 +1,6 @@
 import axios from "axios";
 import { MeasureCard } from "components/container/Card/MeasureCard";
 import { ProductCard } from "components/container/Card/ProductCard";
-import Footer from "components/shared/Footer";
-import NavBar from "components/shared/NavBar";
 import Pagination from "components/shared/Pagination";
 import { useEffect, useState } from "react";
 import { MeasurePage, MeasureProps } from "types/measure";
@@ -29,7 +27,6 @@ export function MeasureList() {
 
     return (
         <>
-            <NavBar />
             <div className="container">
                 <div className="header-container">
                     <h2>Lista de Medidas</h2>
@@ -42,7 +39,6 @@ export function MeasureList() {
                     ))}
                 </div>
             </div>
-            <Footer />
         </>
     );
 }
@@ -89,7 +85,6 @@ export function ProductMeasureList({ measureId }: MeasureProps) {
                     ))}
                 </div>
             </div>
-
         </>
     );
 }

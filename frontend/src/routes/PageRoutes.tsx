@@ -7,6 +7,8 @@ import { MeasureList } from "pages/Listings/MeasureListing";
 import { CommissionCodeList } from "pages/Listings/CommissionListing";
 import { CommissionProfile, SaveCommission, UpdateProductByItem } from "pages/Profiles/CommissionProfile";
 import { CategoryProfile, CategoryStatsDashboard, SaveCategoryStats } from "pages/Profiles/CategoryProfile";
+import NavBar from "components/shared/NavBar";
+import Footer from "components/shared/Footer";
 
 
 function PageRoutes() {
@@ -14,6 +16,7 @@ function PageRoutes() {
 
     return (
         <BrowserRouter>
+        <NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />
@@ -57,6 +60,7 @@ function PageRoutes() {
                 </Route>
 
             </Routes>
+            <Footer />
         </BrowserRouter>
     );
 }

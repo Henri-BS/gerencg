@@ -4,7 +4,7 @@ import { Code, CodeProps } from "types/commission";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 
-export function CommissionMenuBar({codeId }: CodeProps) {
+export function CommissionMenuBar({ codeId }: CodeProps) {
 
     const [commission, setCommission] = useState<Code>();
 
@@ -22,34 +22,42 @@ export function CommissionMenuBar({codeId }: CodeProps) {
             });
     }, [codeId]);
 
-    
+
     return (
         <>
-        <div className="max-bar-container">
-        <h3><b>Informações de Identificação</b></h3>
-            <div className="bar-container">
-                <div className="bar-option">
-                    Código do Pedido: {commission?.code}
+            <div className="max-bar-container ">
+                <div className="bar-container">
+                    <h3>Informações de Identificação</h3>
+                    <div className="bar-card row">
+                        <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 m">
+                            Código: {commission?.code}
+                        </div>
+                        <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 m">
+                            Data de Emissão: {commission?.commissionDate}
+                        </div>
+                        <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 m">
+                            Distribuidora: {commission?.distributor}
+                        </div>
+                    </div>
                 </div>
-                <div className="bar-option">
-                    Data de Emissão: {commission?.commissionDate}
+
+                <div className="bar-container">
+                    <h3>Valores Totais do Produtos</h3>
+                    <div className="bar-card row">
+                        <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 m">
+                            Valor Total do Pedido: {commission?.totalValue.toFixed(2)}
+                        </div>
+                        <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 m">
+                            Quantidade Total de Items: {commission?.totalQuantity}
+                        </div>
+                        <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 m">
+                            Total de Pacotes: {commission?.totalPackage}
+                        </div>
+                        <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 m">
+                            Tipo de Pacote: {commission?.packageType}
+                        </div>
+                    </div>
                 </div>
-                <div className="bar-option">
-                    Distribuidora: {commission?.distributor}
-                </div>
-            </div>
-            <h3><b>Valores Totais do Produto</b></h3>
-            <div className="bar-container">
-                <div className="bar-option">
-                    Valor Total do Pedido: {commission?.totalValue.toFixed(2)}
-                </div>
-                <div className="bar-option">
-                    Quantidade Total de Items: {commission?.totalQuantity}
-                </div>
-                <div className="bar-option">
-                    Total de Pacotes: {commission?.totalPackage}
-                </div>
-            </div>
             </div>
         </>
     );

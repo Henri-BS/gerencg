@@ -4,7 +4,6 @@ import Logo from 'assets/img/logo-g.png'
 import * as AiIcons from 'react-icons/ai'
 import { useState } from "react";
 
-
 function NavBar() {
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
@@ -35,6 +34,12 @@ function NavBar() {
                 </li>
 
                 <li className="navbar-item">
+                    <Link className="navbar-link" to="/save-commission" onClick={closeMobileMenu}>
+                        <AiIcons.AiOutlineProfile /> Novo Pedido
+                    </Link>
+                </li>
+
+                <li className="navbar-item">
                     <Link className="navbar-link" to="/find-by-validate" onClick={closeMobileMenu}>
                         <AiIcons.AiFillClockCircle /> Validades
                     </Link>
@@ -45,9 +50,7 @@ function NavBar() {
                         <AiIcons.AiOutlineDashboard /> Medidas
                     </Link>
                 </li>
-
             </ul>
-
         </nav>
 
     );

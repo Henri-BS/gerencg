@@ -22,7 +22,7 @@ public class CommissionCodeController {
     }
 
     @GetMapping("/commission/{id}")
-    public CommissionCodeDTO findById(@PathVariable String id) {
+    public CommissionCodeDTO findCodeById(@PathVariable String id) {
         return codeService.findCodeById(id);
     }
 

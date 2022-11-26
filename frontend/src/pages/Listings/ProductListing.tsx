@@ -9,8 +9,6 @@ import { ProductHistoryPage } from "types/product";
 import * as FaIcons from 'react-icons/fa';
 import "react-datepicker/dist/react-datepicker.css";
 import ReactDatePicker from "react-datepicker";
-import NavBar from "components/shared/NavBar";
-import Footer from "components/shared/Footer";
 
 //Product list with description filter 
 export function ProductsList() {
@@ -34,7 +32,6 @@ export function ProductsList() {
 
     return (
         <>
-            <NavBar />
             <div className="container">
                 <nav className="row header-container">
                     <h2 className="col-3 col-sm-4 col-md-4 col-xl-4 ">Lista de Produtos</h2>
@@ -82,7 +79,6 @@ export function ProductsList() {
                         ))}
                 </div>
             </div>
-            <Footer />
         </>
     );
 }
@@ -123,7 +119,6 @@ export function ProductValidateList() {
 
     return (
         <>
-            <NavBar />
             <div className="container">
                 <nav className="row header-container">
                     <h2 className="col-12 col-sm-3 col-md-3 border-0">Próximos da data de validade</h2>
@@ -174,7 +169,6 @@ export function ProductValidateList() {
                     ))}
                 </div>
             </div>
-            <Footer />
         </>
     );
 }
@@ -197,7 +191,6 @@ export function ProductHistoryList() {
 
     return (
         <>
-            <NavBar />
             <div className="container ">
                 <div className="header-container ">
                     <h4>Histórico de Alterações:</h4>
@@ -210,7 +203,6 @@ export function ProductHistoryList() {
                     ))}
                 </div>
             </div>
-            <Footer />
         </>
     );
 }

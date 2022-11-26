@@ -1,8 +1,6 @@
 import axios from "axios";
 import CategoryCard from "components/container/Card/CategoryCard";
 import { ProductCard } from "components/container/Card/ProductCard";
-import Footer from "components/shared/Footer";
-import NavBar from "components/shared/NavBar";
 import Pagination from "components/shared/Pagination";
 import { useEffect, useState } from "react";
 import { CategoryPage, CategoryProps } from "types/category";
@@ -26,7 +24,6 @@ export function CategoryList() {
 
     return (
         <>
-            <NavBar />
             <div className="container">
                 <div className="header-container">
                     <h2>Lista de Categorias</h2>
@@ -41,7 +38,6 @@ export function CategoryList() {
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     );
 }

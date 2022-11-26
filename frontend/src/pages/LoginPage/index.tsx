@@ -1,5 +1,4 @@
 import LoginForm from "components/container/Form/LoginForm";
-import Footer from "components/shared/Footer";
 import ILogo from "assets/img/full-logo.png"
 import "./styles.css"
 export function Login() {
@@ -12,7 +11,6 @@ export function Login() {
                 </div>
                 <LoginForm />
             </div>
-            <Footer />
         </>
     );
 }

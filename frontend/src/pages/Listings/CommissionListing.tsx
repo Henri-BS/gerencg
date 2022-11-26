@@ -1,6 +1,4 @@
 import axios from "axios";
-import Footer from "components/shared/Footer";
-import NavBar from "components/shared/NavBar";
 import { useEffect, useState } from "react";
 import { CodePage } from "types/commission";
 import { BASE_URL } from "utils/requests";
@@ -32,7 +30,6 @@ export function CommissionCodeList() {
     return (
         <>
             <div>
-                <NavBar />
                 <div className="container">
                     <nav className="row header-container">
                         <h2 className="col-3 col-sm-4 col-md-4 col-xl-4">Lista de Pedidos</h2>
@@ -72,7 +69,6 @@ export function CommissionCodeList() {
                             ))}
                     </div>
                 </div>
-                <Footer />
             </div>
         </>
     );

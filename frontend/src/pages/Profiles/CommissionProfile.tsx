@@ -1,8 +1,5 @@
 import { CommissionMenuBar } from "components/container/Bar/CommissionBar";
 import ItemDataTable from "components/dashboard/DataTable/CommissionDataTable";
-import NavBar from "components/shared/NavBar";
-import Footer from "components/shared/Footer";
-
 import { useParams } from "react-router-dom";
 import { CommissionItemCard } from "components/container/Card/CommissionCards";
 import { AddCommissionForm } from "components/container/Form/CommissionForm";
@@ -12,7 +9,6 @@ export function CommissionProfile() {
 
   return (
     <>
-      <NavBar />
       <div className="container">
         <div className="container-data">
 
@@ -20,7 +16,6 @@ export function CommissionProfile() {
         </div>
         <ItemDataTable codeId={`${params.code}`} />
       </div>
-      <Footer />
     </>
   );
 }
@@ -30,11 +25,9 @@ export function UpdateProductByItem() {
 
   return (
     <>
-      <NavBar />
       <div className="container">
         <CommissionItemCard itemId={`${params.itemId}`} />
       </div>
-      <Footer />
     </>
   );
 }
@@ -42,11 +35,13 @@ export function UpdateProductByItem() {
 //Add commission page
 export function SaveCommission() {
 
-  return (
-    <div className="container p-0">
-      <div className="container-blur">
+  return ( 
+    <>
+  <div className="container-blur">
+      
         <AddCommissionForm />
-      </div>
+    
     </div>
+    </>
   );
 }
