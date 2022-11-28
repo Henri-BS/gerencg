@@ -55,6 +55,7 @@ public class CommissionCodeService implements ICommissionCodeService {
         code.setTotalValue(sumValues);
         code.setTotalQuantity(sumQuantity);
         code.setTotalPackage(sumPackages);
+        code.setAmountItems(code.getCommissions().size());
         codeRepository.save(code);
 
         return new CommissionCodeDTO(code);

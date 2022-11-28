@@ -17,7 +17,7 @@ export function CommissionCodeList() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/commission-list?code=${value}&page=${pageNumber}`)
+        axios.get(`${BASE_URL}/commission-list?code=${value}&page=${pageNumber}&sort=commissionDate,DESC`)
             .then((response) => {
                 setCodePage(response.data);
             });

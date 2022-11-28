@@ -6,6 +6,7 @@ import CategoryDataTable from "components/dashboard/DataTable/CategoryDataTable"
 import Footer from "components/shared/Footer";
 import NavBar from "components/shared/NavBar";
 import { useParams } from "react-router-dom";
+import "./styles.css";
 
 //Category Profile 
 export function CategoryProfile() {

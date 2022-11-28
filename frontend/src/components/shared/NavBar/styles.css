@@ -16,7 +16,7 @@
 
 .fa-list {
     color: var(--blue-prim);
-    font-size: 2.3rem;
+    font-size: 2.1rem;
 }
 
 .navbar-menu {
@@ -72,7 +72,7 @@
         flex-direction: column;
         width: 100%;
         position: absolute;
-        top: 66px;
+        top: 76px;
         left: -100%;
         opacity: 1;
         transition: all 0.9s ease;
@@ -98,8 +98,8 @@
     }
     .fa-times {
         color: var(--blue-prim);
-        font-size: 2.3rem;
-        margin-right: 4px;
+        font-size: 2.1rem;
+        margin-right: 4.5px;
     }
     .navbar-link {
         font-size: 20px;

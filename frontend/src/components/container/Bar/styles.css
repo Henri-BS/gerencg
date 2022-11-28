@@ -128,28 +128,13 @@
 
 .max-bar-container {
     margin-top: 8px;
-    min-height: 500px;
-}
-
-.max-bar-container h3 {
-    font-size: 28px;
-    font-weight: 700;
-    padding: 2px;
 }
 
 .bar-container {
-    padding: 20px;
     width: 100%;
     font-size: large;
-}
-
-.bar-card {
     padding: 10px;
-    height: 100px;
-    justify-items: center;
-    align-items: center;
-    display: flex;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .bar-item {
@@ -167,8 +152,4 @@
 .bar-item::-webkit-scrollbar {
     width: 0px;
     height: 0px;
-}
-
-h4 {
-    font-weight: 900;
 }

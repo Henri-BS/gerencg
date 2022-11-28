@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CodeProps, Item } from "types/commission";
 import { BASE_URL } from "utils/requests";
+import "./styles.css";
 
 function ItemDataTable({ codeId }: CodeProps) {
 
@@ -16,6 +17,7 @@ function ItemDataTable({ codeId }: CodeProps) {
     }, [codeId]);
 
     return (
+        <>
         <div className="table-responsive">
             <table className="table border-table">
                 <thead className="bg-primary text-primary">
@@ -50,6 +52,7 @@ function ItemDataTable({ codeId }: CodeProps) {
                 </tbody>
             </table>
         </div>
+        </>
     );
 }
 

@@ -23,6 +23,9 @@ public class CommissionCode {
     @Column(name = "total_quantity")
     private Integer totalQuantity;
 
+    @Column(name = "amount_items")
+    private Integer amountItems;
+
     @Column(name = "total_package")
     private Integer totalPackage;
 
@@ -100,4 +103,11 @@ public class CommissionCode {
         return commissionItems;
     }
 
+    public Integer getAmountItems() {
+        return amountItems;
+    }
+
+    public void setAmountItems(Integer amountItems) {
+        this.amountItems = amountItems;
+    }
 }

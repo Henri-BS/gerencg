@@ -35,6 +35,7 @@ export type Code = {
   distributor: string;
   totalValue: number;
   totalQuantity: number;
+  amountItems: number;
   totalPackage: number;
   packageType: string;
 };

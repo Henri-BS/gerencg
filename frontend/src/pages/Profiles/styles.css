@@ -34,6 +34,13 @@
     text-align: center;
 }
 
+.menu-option {
+    padding: 30px 10px;
+    display: grid;
+    grid-template-columns: 2.4fr 0.6fr;
+    width: 700px;
+}
+
 .container-blur {
     position: relative;
     height: 100%;
@@ -55,6 +62,10 @@
 
 
 /*Dashboard Styled*/
+
+.data-table-container {
+    padding: 10px;
+}
 
 .max-container-charts {
     border-bottom: 2px solid var(--dark-seco);
