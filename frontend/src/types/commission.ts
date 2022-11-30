@@ -6,7 +6,8 @@ export type Item = {
   unitValue: number;
   totalValue: number;
   quantity: number;
-  packageQuantity: string;
+  packageQuantity: number;
+  itemValidate: string;
   product: Product;
   productDescription: string;
   productMeasure: string;

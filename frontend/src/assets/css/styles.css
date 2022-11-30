@@ -6,11 +6,13 @@
     --blue-prim: #1d878d;
     --blue-seco: #28c1c9;
     --blue-tert: #08565a49;
+    --blue-quat: #086c85;
+    --green-prim: #088574;
+    --green-seco: #0aa18d;
+    --red-prim: #8d031a;
+    --red-seco: #ac0420;
     --quat: #e0e0e9;
     --quin: #fcf6f6;
-    --sena: rgb(8, 108, 133);
-    --sept: rgb(8, 133, 116);
-    --octa: rgb(141, 3, 26);
 }
 
 html,
@@ -40,20 +42,67 @@ body {
     background-color: var(--dark-tert) !important;
 }
 
-.gerencg-update-btn {
+.gerencg-sm-btn {
     padding: 1px;
+    border-radius: 5px;
+    font-size: 12px;
+    border: 2.5px solid transparent;
+    color: var(--quin);
+    cursor: pointer;
+    background-color: var(--blue-quat);
+    transition: all 0.3s ease-out;
+}
+
+.gerencg-sm-btn:hover {
+    background-color: var(--blue-prim);
+    color: var(--quin);
+    border: 2.5px solid var(--blue-prim);
+}
+
+.gerencg-blue-btn {
+    padding: 12px 16px;
     border-radius: 5px;
     font-size: 15px;
     border: 2.5px solid transparent;
     color: var(--quin);
     cursor: pointer;
-    background-color: var(--sena);
+    background-color: var(--blue-quat);
     transition: all 0.3s ease-out;
 }
 
-.gerencg-update-btn:hover {
+.gerencg-blue-btn:hover {
     background-color: var(--blue-prim);
-    color: var(--quin);
+    color: var(--quat);
+}
+
+.gerencg-green-btn {
+    padding: 12px 16px;
     border-radius: 5px;
-    border: 2.5px solid var(--blue-prim);
+    font-size: 15px;
+    color: var(--quin);
+    cursor: pointer;
+    background-color: var(--green-prim);
+    transition: all 0.3s ease-out;
+    border: 0;
+}
+
+.gerencg-green-btn:hover {
+    background-color: var(--green-seco);
+    color: var(--quat);
+}
+
+.gerencg-red-btn {
+    padding: 12px 16px;
+    border-radius: 5px;
+    font-size: 15px;
+    color: var(--quin);
+    cursor: pointer;
+    background-color: var(--red-prim);
+    transition: all 0.3s ease-out;
+    border: 0;
+}
+
+.gerencg-red-btn:hover {
+    background-color: var(--red-seco);
+    color: var(--quat);
 }

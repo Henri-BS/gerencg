@@ -56,27 +56,30 @@ public class CommissionItemService implements ICommissionItemService {
     }
 
     @Override
-    public CommissionItemDTO findCommissionById(Long id) {
+    public CommissionItemDTO findItemById(Long id) {
         CommissionItem result = itemRepository.findById(id).get();
         return new CommissionItemDTO(result);
     }
 
     @Override
-    public CommissionItemDTO saveCommission(CommissionItemDTO dto) {
+    public CommissionItemDTO saveItem(CommissionItemDTO dto) {
         Product product = productRepository.findById(dto.getProduct()).get();
         CommissionCode code = commissionCodeRepository.findById(dto.getCommissionCode()).get();
 
         CommissionItem add = new CommissionItem();
         add.setCode(code);
-        add.setTotalValue(dto.getTotalValue());
         add.setItemQuantity(dto.getQuantity());
+        add.setPackageQuantity(dto.getPackageQuantity());
+        add.setUnitValue(dto.getUnitValue());
+        add.setTotalValue(dto.getTotalValue());
+        add.setItemValidate(dto.getItemValidate());
         add.setProduct(product);
 
         return new CommissionItemDTO(itemRepository.saveAndFlush(add));
     }
 
     @Override
-    public CommissionItemDTO updateCommission(CommissionItemDTO dto) {
+    public CommissionItemDTO updateItem(CommissionItemDTO dto) {
 
         Product product = productRepository.findById(dto.getProduct()).get();
         CommissionItem edit = itemRepository.findById(dto.getId()).get();
@@ -93,8 +96,8 @@ public class CommissionItemService implements ICommissionItemService {
     }
 
     @Override
-    public void deleteCommission(Long id) {
-        this.itemRepository.findById(id);
+    public void deleteItem(Long id) {
+        this.itemRepository.deleteById(id);
     }
 
     @Override

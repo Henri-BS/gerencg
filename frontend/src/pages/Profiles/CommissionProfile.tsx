@@ -11,15 +11,15 @@ export function CommissionProfile() {
   return (
     <>
       <div className="container">
-          <CommissionMenuBar codeId={`${params.code}`} />
-          <nav className="menu-option">
-          <h2>Lista de Produtos Solicitados </h2>
-          <Link to={"/save-item"}>
-                        <button className="gerencg-update-btn">
-                            Registrar Pedido
-                        </button>
-                        </Link>
-</nav>
+        <CommissionMenuBar codeId={`${params.code}`} />
+        <div className="menu-option row">
+          <h2 className="col-7 col-md-10">Lista de Produtos Solicitados </h2>
+          <Link className="col-5  col-md-2" to={"/save-item"}>
+            <button className="gerencg-green-btn">
+              Adicionar Item
+            </button>
+          </Link>
+        </div>
         <ItemDataTable codeId={`${params.code}`} />
       </div>
     </>
@@ -41,11 +41,11 @@ export function UpdateProductByItem() {
 //Add commission page
 export function SaveCommission() {
 
-  return ( 
+  return (
     <>
-  <div className="container-blur">
+      <div className="container-blur">
         <AddCommissionForm />
-    </div>
+      </div>
     </>
   );
 }
@@ -53,11 +53,11 @@ export function SaveCommission() {
 //Add item in commission page
 export function SaveItem() {
 
-  return ( 
+  return (
     <>
-  <div className="container-blur">
+      <div className="container-blur">
         <AddItemForm />
-    </div>
+      </div>
     </>
   );
 }

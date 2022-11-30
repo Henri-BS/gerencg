@@ -44,7 +44,7 @@ function ItemDataTable({ codeId }: CodeProps) {
                             <td className="table-box">{item.packageQuantity}</td>
                             <td className="table-box">
                                 <Link to={`/item/${item.id}`}>
-                                <button className="gerencg-update-btn">Atualizar</button>
+                                <button className="gerencg-sm-btn">Atualizar</button>
                                 </Link>
                                 </td>
                         </tr>

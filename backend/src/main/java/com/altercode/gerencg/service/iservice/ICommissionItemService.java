@@ -18,13 +18,13 @@ public interface ICommissionItemService {
 
     List<CommissionItemDTO> findItemByProduct(Product product);
 
-    CommissionItemDTO findCommissionById(Long id);
+    CommissionItemDTO findItemById(Long id);
 
-    CommissionItemDTO saveCommission(CommissionItemDTO dto);
+    CommissionItemDTO saveItem(CommissionItemDTO dto);
 
-    CommissionItemDTO updateCommission(CommissionItemDTO dto);
+    CommissionItemDTO updateItem(CommissionItemDTO dto);
 
-    void deleteCommission(Long id);
+    void deleteItem(Long id);
 
     List<CommissionResultsDTO> commissionResults();
 

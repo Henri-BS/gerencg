@@ -30,7 +30,6 @@ function PageRoutes() {
                 <Route path="/product">
                     <Route path=":productId" element={<ProductProfile />} />
                 </Route>
-
                 <Route path="/product/edit" >
                     <Route path=":productId" element={<UpdateProduct />} />
                 </Route>
@@ -48,7 +47,7 @@ function PageRoutes() {
                 </Route>
                 <Route path="/measure/list" element={<MeasureList />} />
 
-                <Route path="/commission/list" element={<CommissionCodeList />} />
+                <Route path="/commission-list" element={<CommissionCodeList />} />
                 <Route path="/save-commission" element={<SaveCommission />} />
 
                 <Route path="/commission">

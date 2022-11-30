@@ -40,24 +40,25 @@ public class CommissionItemController {
 
     @GetMapping("/item/{id}")
     public CommissionItemDTO findOrderById(@PathVariable Long id) {
-        return commissionItemService.findCommissionById(id);
+        return commissionItemService.findItemById(id);
     }
 
-    @PutMapping("/item/add")
-    public CommissionItemDTO saveOrder(@RequestBody CommissionItemDTO item) {
-        return commissionItemService.saveCommission(item);
+    @PostMapping("/save-item")
+    public ResponseEntity<CommissionItemDTO> saveItem(@RequestBody CommissionItemDTO item) {
+        CommissionItemDTO newItem = commissionItemService.saveItem(item);
+        return new ResponseEntity<>(newItem, HttpStatus.CREATED);
     }
 
-    @PutMapping("/item/update")
-    public ResponseEntity<CommissionItemDTO> updateOrder(@RequestBody CommissionItemDTO item) {
-        CommissionItemDTO edit = commissionItemService.updateCommission(item);
+    @PutMapping("/update-item")
+    public ResponseEntity<CommissionItemDTO> updateItem(@RequestBody CommissionItemDTO item) {
+        CommissionItemDTO edit = commissionItemService.updateItem(item);
         return new ResponseEntity<>(edit, HttpStatus.OK);
     }
 
-    @DeleteMapping("/item/delete/{id}")
+    @DeleteMapping("/delete-item/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteOrder(@PathVariable Long id) {
-        this.commissionItemService.deleteCommission(id);
+    public void deleteItem(@PathVariable Long id) {
+        this.commissionItemService.deleteItem(id);
     }
 
     @GetMapping("/item-info")
@@ -66,8 +67,9 @@ public class CommissionItemController {
         return ResponseEntity.ok(list);
     }
 
-    @PutMapping("/update-by-item")
+    @PutMapping("/update-product-by-item")
     public ProductDTO updateProductByItem(CommissionItemDTO item, Long id, Product product) {
         return commissionItemService.updateProductByItem(item);
     }
+
     }

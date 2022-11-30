@@ -57,7 +57,7 @@
     background-color: var(--quin);
 }
 
-.product-history-card {
+.gerencg-history-card {
     max-height: 340px;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
@@ -69,19 +69,19 @@
     align-items: center;
 }
 
-.product-history-box {
+.gerencg-box {
     display: flex;
     width: 100%;
     padding: 5px;
     border-bottom: 1px solid #ccc;
 }
 
-.product-history-box h2 {
+.gerencg-box h2 {
     font-size: 24px;
     font-weight: 700;
 }
 
-.product-history-box h3 {
+.gerencg-box h3 {
     font-size: 20px;
 }
 
@@ -232,4 +232,17 @@
 
 .commission-box h3 {
     font-size: 20px;
+}
+
+.gerencg-item-card {
+    margin: 16px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.gerencg-item-bar {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
 }

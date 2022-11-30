@@ -36,15 +36,13 @@
 
 .menu-option {
     padding: 30px 10px;
-    display: grid;
-    grid-template-columns: 2.4fr 0.6fr;
-    width: 700px;
+}
+
+.menu-option h2 {
+    font-size: x-large;
 }
 
 .container-blur {
-    position: relative;
-    height: 100%;
-    width: 100%;
     color: var(--dark-seco);
     max-inline-size: 100%;
     margin: 0;
@@ -53,10 +51,13 @@
     -webkit-backdrop-filter: blur(10px);
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 650px) {
     .profile {
         display: flex;
         width: 580px;
+    }
+    .menu-option {
+        display: flex;
     }
 }
 

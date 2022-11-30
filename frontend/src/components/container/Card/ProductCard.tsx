@@ -54,20 +54,20 @@ type Cons = {
 
 export function ProductHistoryCard({ history }: Cons) {
     return (
-        <div className="product-history-card">
-            <div className="product-history-box  border-dark">
+        <div className="gerencg-history-card">
+            <div className="gerencg-box  border-dark">
                 <h2>Data da Atualização: {moment(history.createdDate).format("DD/MM/YYYY")}</h2>
             </div>
-            <div className="product-history-box">
+            <div className="gerencg-box">
                 <h4>Descrição: {history.description}</h4>
             </div>
-            <div className="product-history-box">
+            <div className="gerencg-box">
                 <h3>Preço: {history.price.toFixed(2)}</h3>
             </div>
-            <div className="product-history-box">
+            <div className="gerencg-box">
                 <h3>Quantidade: {history.quantity}</h3>
             </div>
-            <div className="product-history-box border-0">
+            <div className="gerencg-box border-0">
                 <h3>Validade: {moment(history.validate).format("DD/MM/YYYY")}</h3>
             </div>
         </div>

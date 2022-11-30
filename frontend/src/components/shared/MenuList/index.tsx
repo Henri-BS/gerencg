@@ -8,7 +8,7 @@ export const product = {
 
 export const commission = {
     title: 'Pedidos',
-    path: '/commission/list',
+    path: '/commission-list',
     image: "https://www.playingfire.com/wp-content/uploads/2020/08/874889_clipboard_512x512-1-300x300.png",
     cName: 'menu-link'
 }
