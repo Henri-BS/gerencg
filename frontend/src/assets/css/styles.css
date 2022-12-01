@@ -11,8 +11,8 @@
     --green-seco: #0aa18d;
     --red-prim: #8d031a;
     --red-seco: #ac0420;
-    --quat: #e0e0e9;
-    --quin: #fcf6f6;
+    --white-prim: #e0e0e9;
+    --white-seco: #fcf6f6;
 }
 
 html,
@@ -47,7 +47,7 @@ body {
     border-radius: 5px;
     font-size: 12px;
     border: 2.5px solid transparent;
-    color: var(--quin);
+    color: var(--white-seco);
     cursor: pointer;
     background-color: var(--blue-quat);
     transition: all 0.3s ease-out;
@@ -55,7 +55,7 @@ body {
 
 .gerencg-sm-btn:hover {
     background-color: var(--blue-prim);
-    color: var(--quin);
+    color: var(--white-seco);
     border: 2.5px solid var(--blue-prim);
 }
 
@@ -64,7 +64,7 @@ body {
     border-radius: 5px;
     font-size: 15px;
     border: 2.5px solid transparent;
-    color: var(--quin);
+    color: var(--white-seco);
     cursor: pointer;
     background-color: var(--blue-quat);
     transition: all 0.3s ease-out;
@@ -72,14 +72,14 @@ body {
 
 .gerencg-blue-btn:hover {
     background-color: var(--blue-prim);
-    color: var(--quat);
+    color: var(--white-prim);
 }
 
 .gerencg-green-btn {
     padding: 12px 16px;
     border-radius: 5px;
     font-size: 15px;
-    color: var(--quin);
+    color: var(--white-seco);
     cursor: pointer;
     background-color: var(--green-prim);
     transition: all 0.3s ease-out;
@@ -88,14 +88,14 @@ body {
 
 .gerencg-green-btn:hover {
     background-color: var(--green-seco);
-    color: var(--quat);
+    color: var(--white-prim);
 }
 
 .gerencg-red-btn {
     padding: 12px 16px;
     border-radius: 5px;
     font-size: 15px;
-    color: var(--quin);
+    color: var(--white-seco);
     cursor: pointer;
     background-color: var(--red-prim);
     transition: all 0.3s ease-out;
@@ -104,5 +104,5 @@ body {
 
 .gerencg-red-btn:hover {
     background-color: var(--red-seco);
-    color: var(--quat);
+    color: var(--white-prim);
 }

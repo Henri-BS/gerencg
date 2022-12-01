@@ -9,7 +9,7 @@
 
 .column-container {
     text-align: center;
-    color: var(--quat);
+    color: var(--white-prim);
 }
 
 .column-item-container {
@@ -34,7 +34,7 @@
     font-size: 30px;
     height: 50px;
     width: 50px;
-    color: var(--quat);
+    color: var(--white-prim);
 }
 
 .column-item-container h1 {
@@ -51,7 +51,7 @@
     padding: 5px;
     font-size: 19px;
     text-align: center;
-    color: var(--quat);
+    color: var(--white-prim);
 }
 
 .column-image-container {
@@ -73,7 +73,7 @@
 .column-card-bottom {
     text-align: center;
     font-weight: 800;
-    color: var(--quat);
+    color: var(--white-prim);
     padding: 10px;
     margin-top: 40px;
 }
@@ -95,16 +95,19 @@
     align-items: center;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    text-decoration: none;
 }
 
 .menu-bar-option {
-    height: 80px;
-    width: 100px;
-    justify-content: center;
+    display: flexbox;
+    background-color: transparent;
+    height: 100px;
+    width: 124px;
+    justify-content: space-around;
     align-items: center;
     border-radius: 8px;
-    font-size: 18px;
     transition: all 0.3s ease-in;
+    border: solid transparent;
 }
 
 .menu-bar-option:hover {
@@ -112,8 +115,9 @@
 }
 
 .option-card-img {
-    padding: 10px;
-    width: 94%;
+    padding: 20px;
+    width: 74px;
+    height: 74px;
 }
 
 @media screen and (max-width: 550px) {

@@ -15,7 +15,7 @@
 
 .gerencg-form-group label {
     font-size: 18px;
-    color: var(--quin);
+    color: var(--white-seco);
 }
 
 .form-links {
@@ -26,7 +26,7 @@
 }
 
 .form-links:hover {
-    color: var(--quin);
+    color: var(--white-seco);
 }
 
 .form-card-container {
@@ -40,7 +40,7 @@
 }
 
 .form-card-container h3 {
-    color: var(--quin);
+    color: var(--white-seco);
     text-align: center;
     font-size: 14px;
     font-weight: 700;
@@ -58,9 +58,9 @@
     border-radius: 5px;
     font-size: 20px;
     border: 2.5px solid transparent;
-    color: var(--quin);
+    color: var(--white-seco);
     cursor: pointer;
-    background-color: var(--sena);
+    background-color: var(--blue-quat);
 }
 
 .gerencg-btn:hover {
@@ -69,7 +69,7 @@
     background-color: transparent;
     color: #fff;
     border-radius: 5px;
-    border: 2.5px solid var(--quat);
+    border: 2.5px solid var(--white-prim);
 }
 
 .msg-container {

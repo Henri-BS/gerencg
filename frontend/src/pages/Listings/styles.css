@@ -1,6 +1,6 @@
 .pagination-max-container {
     display: grid;
-    background-color: var(--quin);
+    background-color: var(--white-seco);
     width: 400px;
 }
 
@@ -10,7 +10,7 @@
     display: grid;
     padding: 30px;
     height: 90px;
-    background-color: var(--quat);
+    background-color: var(--white-prim);
 }
 
 .pagination-box {
@@ -24,7 +24,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid #ccc;
-    background-color: var(--quat);
+    background-color: var(--white-prim);
 }
 
 .header-container h2 {
@@ -90,16 +90,16 @@
 .gerencg-btn-sec {
     padding: 6px;
     border-radius: 7px;
-    color: var(--quin);
+    color: var(--white-seco);
     cursor: pointer;
     border: 4px solid transparent;
-    background: var(--sena);
+    background: var(--blue-quat);
     transition: all 0.4s ease-out;
 }
 
 .gerencg-btn-sec:hover {
     border-radius: 13px;
-    border: 4px solid var(--sena);
+    border: 4px solid var(--blue-quat);
     color: rgb(3, 58, 80);
     background: transparent;
 }

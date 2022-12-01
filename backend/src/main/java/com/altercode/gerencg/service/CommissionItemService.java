@@ -7,7 +7,6 @@ import com.altercode.gerencg.entity.CommissionCode;
 import com.altercode.gerencg.entity.CommissionItem;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.CommissionCodeRepository;
-import com.altercode.gerencg.repository.CommissionDataRepository;
 import com.altercode.gerencg.repository.CommissionItemRepository;
 import com.altercode.gerencg.repository.ProductRepository;
 import com.altercode.gerencg.service.iservice.ICommissionItemService;
@@ -33,9 +32,6 @@ public class CommissionItemService implements ICommissionItemService {
 
     @Autowired
     private ProductRepository productRepository;
-
-    @Autowired
-    private CommissionDataRepository dataRepository;
 
 
     @Override

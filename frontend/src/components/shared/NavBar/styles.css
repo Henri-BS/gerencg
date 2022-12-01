@@ -117,11 +117,11 @@
         padding: 1.7rem;
         border-radius: 20px;
         text-decoration: none;
-        color: var(--sena);
+        color: var(--blue-quat);
         font-size: 20px;
         display: table;
         width: 100%;
-        background-color: var(--quat);
+        background-color: var(--white-prim);
     }
     .navbar-link-mobile:hover {
         background-color: var(--dark-tert);

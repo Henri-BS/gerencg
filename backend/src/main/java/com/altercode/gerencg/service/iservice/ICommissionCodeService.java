@@ -14,4 +14,5 @@ public interface ICommissionCodeService {
 
     CommissionCodeDTO saveCommissionCode(CommissionCodeDTO code);
 
+    void deleteCommission(String id);
 }

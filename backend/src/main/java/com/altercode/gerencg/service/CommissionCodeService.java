@@ -72,4 +72,11 @@ Measure packageType = measureRepository.findById(dto.getPackageType()).get();
 
         return new CommissionCodeDTO(codeRepository.saveAndFlush(add));
     }
+
+    @Override
+    public void deleteCommission(String id) {
+        this.codeRepository.deleteById(id);
+    }
+
+
 }

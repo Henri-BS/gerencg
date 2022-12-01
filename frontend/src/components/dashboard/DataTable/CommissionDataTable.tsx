@@ -18,40 +18,40 @@ function ItemDataTable({ codeId }: CodeProps) {
 
     return (
         <>
-        <div className="table-responsive">
-            <table className="table border-table">
-                <thead className="bg-primary text-primary">
-                    <tr>
-                        <th className="table-box"><h5>Descrição do Produto</h5></th>
-                        <th className="table-box"><h5>Medida</h5></th>
-                        <th className="table-box"><h5>Quantidade</h5></th>
-                        <th className="table-box"><h5>Valor por Unidade</h5></th>
-                        <th className="table-box"><h5>Valor Total</h5></th>
-                        <th className="table-box"><h5>Quantidade de Pacotes</h5></th>
-                        <th className="table-box"><h5>Atualizar Produto</h5></th>
-                    </tr>
-                </thead>
-                <tbody className="border-0">
-                    {pageItem?.map(item => (
-                        <tr key={item.id}>
-                            <Link to={`/product/${item.product}`} className="table-box-title">
-                                <td>{item.productDescription}</td>
-                            </Link>
-                            <td className="table-box">{item.productMeasureValue}{item.productMeasure}</td>
-                            <td className="table-box">{item.quantity}</td>
-                            <td className="table-box">{item.unitValue.toFixed(2)}</td>
-                            <td className="table-box">{item.totalValue.toFixed(2)}</td>
-                            <td className="table-box">{item.packageQuantity}</td>
-                            <td className="table-box">
-                                <Link to={`/item/${item.id}`}>
-                                <button className="gerencg-sm-btn">Atualizar</button>
-                                </Link>
-                                </td>
+            <div className="table-responsive">
+                <table className="table border-table">
+                    <thead className="bg-primary text-primary">
+                        <tr>
+                            <th className="table-box"><h5>Descrição do Produto</h5></th>
+                            <th className="table-box"><h5>Medida</h5></th>
+                            <th className="table-box"><h5>Quantidade</h5></th>
+                            <th className="table-box"><h5>Valor de Unidade</h5></th>
+                            <th className="table-box"><h5>Valor Total</h5></th>
+                            <th className="table-box"><h5>Quantidade de Pacotes</h5></th>
+                            <th className="table-box"><h5>Detalhes</h5></th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody className="border-0">
+                        {pageItem?.map(item => (
+                            <tr key={item.id}>
+                                <Link to={`/product/${item.product}`} className="table-box-title">
+                                    <td>{item.productDescription}</td>
+                                </Link>
+                                <td className="table-box">{item.productMeasureValue}{item.productMeasure}</td>
+                                <td className="table-box">{item.quantity}</td>
+                                <td className="table-box">{item.unitValue.toFixed(2)}</td>
+                                <td className="table-box">{item.totalValue.toFixed(2)}</td>
+                                <td className="table-box">{item.packageQuantity}</td>
+                                <td className="table-box">
+                                    <Link to={`/item/${item.id}`}>
+                                        <button className="gerencg-sm-btn">Acessar</button>
+                                    </Link>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </>
     );
 }

@@ -15,7 +15,7 @@
 }
 
 .footer-title {
-    color: var(--quat);
+    color: var(--white-prim);
     padding: 12px;
     display: flex;
     margin: 4px 0px;
@@ -38,7 +38,7 @@
 }
 
 .footer-box a:hover {
-    color: var(--quin);
+    color: var(--white-seco);
     border-bottom: solid var(--blue-prim);
 }
 

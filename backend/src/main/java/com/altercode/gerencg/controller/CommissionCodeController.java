@@ -26,14 +26,20 @@ public class CommissionCodeController {
         return codeService.findCodeById(id);
     }
 
-    @PutMapping("/sum-item-values/{code}")
-    public CommissionCodeDTO commissionTotalValues(CommissionCodeDTO dto, @PathVariable String code) {
-        return codeService.commissionTotalValues(dto);
-    }
-
     @PostMapping("/save-commission")
     public ResponseEntity<CommissionCodeDTO> saveCommissionCode(@RequestBody CommissionCodeDTO dto) {
         CommissionCodeDTO addCode = codeService.saveCommissionCode(dto);
         return new ResponseEntity<>(addCode, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/delete-commission/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCommission(String id){
+        this.codeService.deleteCommission(id);
+    }
+
+    @PutMapping("/sum-item-values/{code}")
+    public CommissionCodeDTO commissionTotalValues(CommissionCodeDTO dto, @PathVariable String code) {
+        return codeService.commissionTotalValues(dto);
     }
 }

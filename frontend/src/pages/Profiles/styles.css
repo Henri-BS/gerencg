@@ -3,7 +3,7 @@
     margin: 0;
     max-inline-size: 100%;
     color: var(--dark-prim);
-    background-color: var(--quat);
+    background-color: var(--white-prim);
 }
 
 .profile hr {
@@ -76,7 +76,7 @@
 }
 
 .container-chart {
-    color: var(--quin);
+    color: var(--white-seco);
     border-radius: 12px;
     background: #2a323a;
     height: 360px;
