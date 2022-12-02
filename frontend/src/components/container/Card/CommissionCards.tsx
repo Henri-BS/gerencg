@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Code, Item, ItemProps } from "types/commission";
 import { BASE_URL } from "utils/requests";
+import * as MdIcons from 'react-icons/md';
 import "./styles.css"
+
 
 type Commission = {
     commission: Code;
@@ -54,38 +56,61 @@ export function CommissionItemCard({ itemId }: ItemProps) {
             })
     }
     return (
-        <div className="gerencg-item-card">
-            <div className="gerencg-box  border-dark">
-                <h2>Código do Pedido: {item?.commissionCode}</h2>
-            </div>
-            <div className="gerencg-box">
-                <h4>Descrição: {item?.productDescription}</h4>
-            </div>
-            <div className="gerencg-box">
-                <h3>Medida: {item?.productMeasureValue} {item?.productMeasure}</h3>
-            </div>
-            <div className="gerencg-box">
-                <h3>Quantidade: {item?.quantity}</h3>
-            </div>
-            <div className="gerencg-box ">
-                <h3>Valor por Unidade: {item?.unitValue.toFixed(2)}</h3>
-            </div>
-            <div className="gerencg-box ">
-                <h3>Valor Total: {item?.totalValue.toFixed(2)}</h3>
-            </div>
-            <div className="gerencg-box">
-                <h3>Quantidade de Pacotes: {item?.packageQuantity}</h3>
-            </div>
-            <div className="gerencg-item-bar">
-                <Link to={`/product/${item?.product}`} className="form-btn-container">
-                    <button onClick={() => updateProductByItem()} className="gerencg-blue-btn"> Atualizar Produto </button>
-                </Link>
+        <>
+            <div className="gerencg-item-card">
+                <div className="gerencg-box  border-dark">
+                    <h2>Código do Pedido: {item?.commissionCode}</h2>
+                </div>
+                <div className="gerencg-box">
+                    <h4>Descrição: {item?.productDescription}</h4>
+                </div>
+                <div className="gerencg-box">
+                    <h3>Medida: {item?.productMeasureValue} {item?.productMeasure}</h3>
+                </div>
+                <div className="gerencg-box">
+                    <h3>Quantidade: {item?.quantity}</h3>
+                </div>
+                <div className="gerencg-box ">
+                    <h3>Valor por Unidade: {item?.unitValue.toFixed(2)}</h3>
+                </div>
+                <div className="gerencg-box ">
+                    <h3>Valor Total: {item?.totalValue.toFixed(2)}</h3>
+                </div>
+                <div className="gerencg-box">
+                    <h3>Quantidade de Pacotes: {item?.packageQuantity}</h3>
+                </div>
+                <div className="gerencg-item-bar">
+                    <Link to={`/product/${item?.product}`} className="form-btn-container">
+                        <button onClick={() => updateProductByItem()} className="btn-confirm"> Atualizar Produto </button>
+                    </Link>
 
-                <button onClick={() => deleteItem()} className="gerencg-red-btn">
-                    Deletar Item
-                </button>                    
+                    <button className="btn-primary">
+                        Atualizar Item
+                    </button>
+
+                    <button className="btn-danger" data-bs-toggle="modal" data-bs-target="#commissionModal">
+                        Deletar Item
+                    </button>
+                </div>
             </div>
-        </div>
+
+            <div className="modal fade" role="dialog" id="commissionModal" >
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="commissionLabel">Deseja deletar este item ?</h5>
+                            <button className="close " data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><MdIcons.MdClose/></span>
+                            </button>
+                        </div>
+                        <div className="modal-body">O item referente ao produto {item?.productDescription} será removido permanentemente.</div>
+                        <div className="modal-footer">
+                            <button className="border-0 bg-transparent" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" onClick={() => deleteItem()} className="btn btn-danger">Deletar Item</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
     );
 }
-

@@ -35,3 +35,14 @@
     background: rgba(5, 5, 5, 0.753);
     color: #fff;
 }
+
+.table-links {
+    color: var(--blue-prim);
+    font-size: large;
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+}
+
+.table-links:hover {
+    color: var(--blue-seco);
+}

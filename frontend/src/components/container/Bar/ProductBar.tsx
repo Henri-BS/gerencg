@@ -91,12 +91,12 @@ export function ProductMenuBar({ productId }: ProductProps) {
             <Link to={`/product/edit/${productId}`}>
                 <button className="menu-bar-option" >
                     <img className="option-card-img" src={IUpdateProduct} alt="update-product" />
-                    Editar produto
+                    Editar 
                 </button>
             </Link>
             <button className="menu-bar-option" onClick={() => deleteProduct()}>
                 <img className="option-card-img" src={IDeleteProduct} alt="delete-product" />
-                Deletar produto
+                Deletar
             </button>
             <button className="menu-bar-option" onClick={() => handleCLick()}>
                 <img className="option-card-img" src={INotifications} alt="notification" />

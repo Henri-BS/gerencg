@@ -1,10 +1,8 @@
-import CategoryLateralBar from "components/container/Bar/CategoryBar";
+import CategorySideBar from "components/container/Bar/CategoryBar";
 import { AddCategoryStats } from "components/container/Form/CategoryForm";
 import { AddedProductsChart, ExpenseChart, IncomeChart, RemovedProductsChart } from "components/dashboard/Chart/CategoryChart";
 import { ProductCategoryList } from "pages/Listings/CategoryListing";
 import CategoryDataTable from "components/dashboard/DataTable/CategoryDataTable";
-import Footer from "components/shared/Footer";
-import NavBar from "components/shared/NavBar";
 import { useParams } from "react-router-dom";
 import "./styles.css";
 
@@ -14,16 +12,14 @@ export function CategoryProfile() {
     const params = useParams();
     return (
       <>
-        <NavBar />
         <div className="profile row">
           <div className="col-6-sm col-md-6 col-lg-4 p-0">
-            <CategoryLateralBar categoryId={`${params.categoryId}`} />
+            <CategorySideBar categoryId={`${params.categoryId}`} />
           </div>
           <div className="col-6-sm col-md-6 col-lg-8 p-0">
             <ProductCategoryList categoryId={`${params.categoryId}`} />
           </div>
         </div>
-        <Footer />
       </>
     );
   }

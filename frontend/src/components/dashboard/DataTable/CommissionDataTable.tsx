@@ -43,8 +43,8 @@ function ItemDataTable({ codeId }: CodeProps) {
                                 <td className="table-box">{item.totalValue.toFixed(2)}</td>
                                 <td className="table-box">{item.packageQuantity}</td>
                                 <td className="table-box">
-                                    <Link to={`/item/${item.id}`}>
-                                        <button className="gerencg-sm-btn">Acessar</button>
+                                    <Link to={`/item/${item.id}`}className="table-links">
+                                       Ver mais
                                     </Link>
                                 </td>
                             </tr>

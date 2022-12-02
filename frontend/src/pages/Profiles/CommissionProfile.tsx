@@ -15,7 +15,7 @@ export function CommissionProfile() {
         <div className="menu-option row">
           <h2 className="col-7 col-md-10">Lista de Produtos Solicitados </h2>
           <Link className="col-5  col-md-2" to={"/save-item"}>
-            <button className="gerencg-green-btn">
+            <button className="btn-confirm">
               Adicionar Item
             </button>
           </Link>
