@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { Item } from "types/commission";
+import { Item, ItemProps } from "types/commission";
 import { MeasurePage } from "types/measure";
 import { Product } from "types/product";
 import { BASE_URL } from "utils/requests";
@@ -188,31 +188,36 @@ export function AddItemForm() {
     );
 } 
 
-export const EditItemForm = () => {
+export const EditItemForm = ({itemId}: ItemProps) => {
     const [item, setItem] = useState<Item>();
     const navigate = useNavigate(); 
 
+    useEffect(() => {
+axios.get(`${BASE_URL}/item/${itemId}`)
+.then((response) => {
+    setItem(response.data);
+})
+    }, [itemId])
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        const commissionCode = (event.target as any).commissionCode.value;
+        const id = (event.target as any).id.value;
         const quantity = (event.target as any).quantity.value;
         const unitValue = (event.target as any).unitValue.value;
         const totalValue = (event.target as any).totalValue.value;
         const itemValidate = (event.target as any).itemValidate.value;
         const packageQuantity = (event.target as any).packageQuantity.value;
-        const product = (event.target as any).product.value;
 
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
             url: `update/item`,
             method: "PUT",
             data: {
-                commissionCode: commissionCode,
+                id: id,
                 quantity: quantity,
                 unitValue: unitValue,
                 totalValue: totalValue,
                 itemValidate: itemValidate,
                 packageQuantity: packageQuantity,
-                product: product
             }
         }
         axios(config).then((response) => {
@@ -222,12 +227,7 @@ export const EditItemForm = () => {
     return (
         <div className="form-container">
             <div className="form-card-container">
-                <h3>Alterar o item do pedido</h3>
                 <form className="gerencg-form" onSubmit={handleSubmit}>
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="commissionCode">Código do Pedido: </label>
-                        <input id="commissionCode" type="text" className="form-control"/>
-                    </div>
                     
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="quantity">Quantidade em Unidades: </label>
@@ -254,18 +254,12 @@ export const EditItemForm = () => {
                         <input id="itemValidate" type="text" className="form-control"/>
                     </div>
 
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="product">Produto: </label>
-                        <input id="product" type="text" className="form-control"/>
-                    </div>
-
                     <div className="form-btn-container">
-                        <button type="submit" className="gerencg-btn" >Editar</button>
+                        <button type="submit" className="btn-primary" >Editar</button>
                     </div>
 
-                </form>  <Link to="/commission-list">
-                    <h5 className=" form-links mt-5">Ir para a Lista de Pedidos</h5>
-                </Link>
+                </form>  
+                
             </div>
         </div>
     );

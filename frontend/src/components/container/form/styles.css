@@ -18,6 +18,16 @@
     color: var(--white-seco);
 }
 
+.gerencg-form-group input {
+    color: var(--white-seco);
+    background-color: transparent;
+}
+
+.gerencg-form-group input:focus {
+    color: var(--white-seco);
+    background-color: transparent;
+}
+
 .form-links {
     color: var(--blue-seco);
     font-size: large;
@@ -31,7 +41,6 @@
 
 .form-card-container {
     background-color: var(--dark-tert);
-    border: 1px solid var(--dark-prim);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,8 +51,8 @@
 .form-card-container h3 {
     color: var(--white-seco);
     text-align: center;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 600;
     min-height: 40px;
 }
 

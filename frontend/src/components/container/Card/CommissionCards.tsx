@@ -1,7 +1,7 @@
 import axios from "axios";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Code, Item, ItemProps } from "types/commission";
 import { BASE_URL } from "utils/requests";
 import IUpdateProduct from "assets/img/update.png"
@@ -37,6 +37,7 @@ export function CommissionCard({ commission }: Commission) {
 export function CommissionItemCard({ itemId }: ItemProps) {
     const [item, setItem] = useState<Item>();
     const navigate = useNavigate();
+    const params = useParams(); 
 
     useEffect(() => {
         axios.get(`${BASE_URL}/item/${itemId}`)
@@ -108,11 +109,11 @@ export function CommissionItemCard({ itemId }: ItemProps) {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="commissionLabel">Deseja alterar o produto do item ?</h5>
-                            <button className="close " data-bs-dismiss="modal" aria-label="Close">
+                            <button className="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><MdIcons.MdClose/></span>
                             </button>
                         </div>
-                        <div className="modal-body"><EditItemForm/></div>
+                        <div className="modal-body"><EditItemForm itemId={`${params.itemId}`}/></div>
                         
                     </div>
                 </div>
@@ -129,7 +130,7 @@ export function CommissionItemCard({ itemId }: ItemProps) {
                         </div>
                         <div className="modal-body">Item referente ao produto {item?.productDescription} será removido permanentemente.</div>
                         <div className="modal-footer">
-                            <button className="border-0 bg-transparent" data-bs-dismiss="modal">Cancelar</button>
+                            <button className="text-close" data-bs-dismiss="modal">Cancelar</button>
                             <button onClick={() => deleteItem()} className="btn btn-danger" data-bs-dismiss="modal">Deletar Item</button>
                         </div>
                     </div>

@@ -246,19 +246,3 @@
     display: flex;
     justify-content: space-around;
 }
-
-.pop-up-background {
-    width: 100%;
-    height: 100%;
-    background: var(--dark-seco);
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.pop-up-modal-wrapper {
-    width: 500px;
-    height: 300px;
-    box-sizing: 0 5px 16px var(--dark-seco);
-}

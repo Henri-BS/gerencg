@@ -44,9 +44,24 @@ body {
     background-color: var(--dark-tert) !important;
 }
 
+.text-close {
+    border: 0;
+    background-color: transparent;
+    color: var(--white-prim);
+}
+
+.text-close:hover {
+    color: var(--white-seco);
+    text-decoration: underline;
+}
+
 .modal-content {
-    background-color: var(--white-prim);
-    color: var(--dark-tert);
+    background-color: var(--dark-tert);
+    color: var(--white-prim);
+}
+
+.modal-header span {
+    color: var(--white-prim);
 }
 
 .close {
@@ -54,10 +69,11 @@ body {
     border-radius: 100%;
     border: none;
     transition: all 0.2s ease-in;
+    font-size: large;
 }
 
 .close:hover {
-    background-color: #ccccccc7;
+    background-color: #cccccc34;
     border-radius: 100%;
 }
 
