@@ -4,8 +4,11 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Code, Item, ItemProps } from "types/commission";
 import { BASE_URL } from "utils/requests";
+import IUpdateProduct from "assets/img/update.png"
+import IDeleteProduct from "assets/img/delete-img.png"
 import * as MdIcons from 'react-icons/md';
 import "./styles.css"
+import { EditItemForm } from "../Form/CommissionForm";
 
 
 type Commission = {
@@ -45,18 +48,32 @@ export function CommissionItemCard({ itemId }: ItemProps) {
     const updateProductByItem = () => {
         axios.put(`${BASE_URL}/update-product-by-item?id=${itemId}&product=${item?.product}`)
             .then((response) => {
-                setItem(response.data);
+                navigate(`/product/${item?.product}`)
             })
     }
 
     const deleteItem = () => {
         axios.delete(`${BASE_URL}/delete-item/${itemId}`)
             .then((response) => {
-                navigate(`/commission/${item?.commissionCode}`);
+                navigate(`/commission/${item?.commissionCode}`)
             })
     }
     return (
         <>
+        <div className="menu-bar-container">
+                    <div>
+                        <h2><b>Item de Pedido</b></h2>
+                        <p>Detalhes sobre o item do pedido.</p>
+                    </div>
+                    <button data-bs-toggle="modal" data-bs-target="#updateItemModal" className="menu-bar-option" >
+                        <img className="option-card-img" src={IUpdateProduct} alt="update-product" />
+                        <h6>Editar</h6>
+                    </button>
+                    <button data-bs-toggle="modal" data-bs-target="#deleteItemModal" className="menu-bar-option" >
+                        <img className="option-card-img" src={IDeleteProduct} alt="delete-product" />
+                        <h6>Deletar</h6>
+                    </button>
+                </div>
             <div className="gerencg-item-card">
                 <div className="gerencg-box  border-dark">
                     <h2>Código do Pedido: {item?.commissionCode}</h2>
@@ -80,21 +97,28 @@ export function CommissionItemCard({ itemId }: ItemProps) {
                     <h3>Quantidade de Pacotes: {item?.packageQuantity}</h3>
                 </div>
                 <div className="gerencg-item-bar">
-                    <Link to={`/product/${item?.product}`} className="form-btn-container">
-                        <button onClick={() => updateProductByItem()} className="btn-confirm"> Atualizar Produto </button>
-                    </Link>
-
-                    <button className="btn-primary">
-                        Atualizar Item
-                    </button>
-
-                    <button className="btn-danger" data-bs-toggle="modal" data-bs-target="#commissionModal">
-                        Deletar Item
-                    </button>
+                        <button data-bs-toggle="modal" data-bs-target="#updateProductModal" className="btn-confirm"> 
+                        Atualizar Produto 
+                        </button>
                 </div>
             </div>
 
-            <div className="modal fade" role="dialog" id="commissionModal" >
+            <div className="modal fade" role="dialog" id="updateItemModal" >
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="commissionLabel">Deseja alterar o produto do item ?</h5>
+                            <button className="close " data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><MdIcons.MdClose/></span>
+                            </button>
+                        </div>
+                        <div className="modal-body"><EditItemForm/></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div className="modal fade" role="dialog" id="deleteItemModal" >
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -103,10 +127,28 @@ export function CommissionItemCard({ itemId }: ItemProps) {
                                 <span aria-hidden="true"><MdIcons.MdClose/></span>
                             </button>
                         </div>
-                        <div className="modal-body">O item referente ao produto {item?.productDescription} será removido permanentemente.</div>
+                        <div className="modal-body">Item referente ao produto {item?.productDescription} será removido permanentemente.</div>
                         <div className="modal-footer">
                             <button className="border-0 bg-transparent" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" onClick={() => deleteItem()} className="btn btn-danger">Deletar Item</button>
+                            <button onClick={() => deleteItem()} className="btn btn-danger" data-bs-dismiss="modal">Deletar Item</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div className="modal fade" role="dialog" id="updateProductModal" >
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="commissionLabel">Deseja alterar o produto do item ?</h5>
+                            <button className="close " data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><MdIcons.MdClose/></span>
+                            </button>
+                        </div>
+                        <div className="modal-body">O produto {item?.productDescription} será alterado com os dados deste item.</div>
+                        <div className="modal-footer">
+                            <button className="border-0 bg-transparent" data-bs-dismiss="modal">Cancelar</button>
+                            <button onClick={() => updateProductByItem()} className="btn btn-primary" data-bs-dismiss="modal">Atualizar Produto</button>
                         </div>
                     </div>
                 </div>

@@ -84,9 +84,11 @@ public class CommissionItemService implements ICommissionItemService {
         edit.setId(dto.getId());
         edit.setCode(code);
         edit.setItemQuantity(dto.getQuantity());
+        edit.setPackageQuantity(dto.getPackageQuantity());
+        edit.setUnitValue(dto.getUnitValue());
         edit.setTotalValue(dto.getTotalValue());
+        edit.setItemValidate(dto.getItemValidate());
         edit.setProduct(product);
-        edit = itemRepository.save(edit);
 
         return new CommissionItemDTO(edit);
     }

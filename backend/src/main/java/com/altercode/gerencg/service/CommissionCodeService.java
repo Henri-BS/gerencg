@@ -40,6 +40,23 @@ public class CommissionCodeService implements ICommissionCodeService {
     }
 
     @Override
+    public CommissionCodeDTO saveCommissionCode(CommissionCodeDTO dto) {
+        Measure packageType = measureRepository.findById(dto.getPackageType()).get();
+        CommissionCode add = new CommissionCode();
+        add.setCode(dto.getCode());
+        add.setCommissionDate(dto.getCommissionDate());
+        add.setDistributor(dto.getDistributor());
+        add.setPackageType(packageType);
+
+        return new CommissionCodeDTO(codeRepository.saveAndFlush(add));
+    }
+
+    @Override
+    public void deleteCommission(String id) {
+        this.codeRepository.deleteById(id);
+    }
+
+    @Override
     public CommissionCodeDTO commissionTotalValues(CommissionCodeDTO dto) {
         CommissionCode code = codeRepository.findById(dto.getCode()).get();
 
@@ -60,23 +77,4 @@ public class CommissionCodeService implements ICommissionCodeService {
 
         return new CommissionCodeDTO(code);
     }
-
-    @Override
-    public CommissionCodeDTO saveCommissionCode(CommissionCodeDTO dto) {
-Measure packageType = measureRepository.findById(dto.getPackageType()).get();
-        CommissionCode add = new CommissionCode();
-        add.setCode(dto.getCode());
-        add.setCommissionDate(dto.getCommissionDate());
-        add.setDistributor(dto.getDistributor());
-        add.setPackageType(packageType);
-
-        return new CommissionCodeDTO(codeRepository.saveAndFlush(add));
-    }
-
-    @Override
-    public void deleteCommission(String id) {
-        this.codeRepository.deleteById(id);
-    }
-
-
 }

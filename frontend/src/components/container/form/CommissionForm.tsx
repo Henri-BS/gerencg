@@ -2,6 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Item } from "types/commission";
 import { MeasurePage } from "types/measure";
 import { Product } from "types/product";
 import { BASE_URL } from "utils/requests";
@@ -94,7 +95,7 @@ export function AddCommissionForm() {
                         </button>
                     </div>
 
-                    <Link to="/commission/list">
+                    <Link to="/commission-list">
                         <h5 className=" form-links mt-5">Ir para a Lista de Pedidos</h5>
                     </Link>
                 </form>
@@ -179,10 +180,93 @@ export function AddItemForm() {
                         <button type="submit" className="gerencg-btn" >Adicionar</button>
                     </div>
 
-                </form>  <Link to="/commission/list">
+                </form>  <Link to="/commission-list">
                     <h5 className=" form-links mt-5">Ir para a Lista de Pedidos</h5>
                 </Link>
             </div>
         </div>
     );
 } 
+
+export const EditItemForm = () => {
+    const [item, setItem] = useState<Item>();
+    const navigate = useNavigate(); 
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        const commissionCode = (event.target as any).commissionCode.value;
+        const quantity = (event.target as any).quantity.value;
+        const unitValue = (event.target as any).unitValue.value;
+        const totalValue = (event.target as any).totalValue.value;
+        const itemValidate = (event.target as any).itemValidate.value;
+        const packageQuantity = (event.target as any).packageQuantity.value;
+        const product = (event.target as any).product.value;
+
+        const config: AxiosRequestConfig = {
+            baseURL: BASE_URL,
+            url: `update/item`,
+            method: "PUT",
+            data: {
+                commissionCode: commissionCode,
+                quantity: quantity,
+                unitValue: unitValue,
+                totalValue: totalValue,
+                itemValidate: itemValidate,
+                packageQuantity: packageQuantity,
+                product: product
+            }
+        }
+        axios(config).then((response) => {
+            navigate(`/item/${item}`)
+        })
+    }
+    return (
+        <div className="form-container">
+            <div className="form-card-container">
+                <h3>Alterar o item do pedido</h3>
+                <form className="gerencg-form" onSubmit={handleSubmit}>
+                    <div className="form-group gerencg-form-group">
+                        <label htmlFor="commissionCode">Código do Pedido: </label>
+                        <input id="commissionCode" type="text" className="form-control"/>
+                    </div>
+                    
+                    <div className="form-group gerencg-form-group">
+                        <label htmlFor="quantity">Quantidade em Unidades: </label>
+                        <input id="quantity" type="text" className="form-control"/>
+                    </div>
+
+                    <div className="form-group gerencg-form-group">
+                        <label htmlFor="packageQuantiy">Quantidade por Pacotes: </label>
+                        <input id="packageQuantity" type="text" className="form-control"/>
+                    </div>
+
+                    <div className="form-group gerencg-form-group">
+                        <label htmlFor="unitValue">Valor por Unidade: </label>
+                        <input id="unitValue" type="text" className="form-control"/>
+                    </div>
+
+                    <div className="form-group gerencg-form-group">
+                        <label htmlFor="totalValue">Valor Total: </label>
+                        <input id="totalValue" type="text" className="form-control"/>
+                    </div>
+
+                    <div className="form-group gerencg-form-group">
+                        <label htmlFor="itemValidate">Validade: </label>
+                        <input id="itemValidate" type="text" className="form-control"/>
+                    </div>
+
+                    <div className="form-group gerencg-form-group">
+                        <label htmlFor="product">Produto: </label>
+                        <input id="product" type="text" className="form-control"/>
+                    </div>
+
+                    <div className="form-btn-container">
+                        <button type="submit" className="gerencg-btn" >Editar</button>
+                    </div>
+
+                </form>  <Link to="/commission-list">
+                    <h5 className=" form-links mt-5">Ir para a Lista de Pedidos</h5>
+                </Link>
+            </div>
+        </div>
+    );
+}

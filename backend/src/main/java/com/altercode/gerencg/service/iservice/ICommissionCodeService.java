@@ -10,9 +10,11 @@ public interface ICommissionCodeService {
 
     CommissionCodeDTO findCodeById(String id);
 
-    CommissionCodeDTO commissionTotalValues(CommissionCodeDTO dto);
-
     CommissionCodeDTO saveCommissionCode(CommissionCodeDTO code);
 
     void deleteCommission(String id);
+
+    CommissionCodeDTO commissionTotalValues(CommissionCodeDTO dto);
+
+
 }
