@@ -51,7 +51,7 @@ export function AddProduct() {
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
             method: "POST",
-            url: "/product/add",
+            url: "/product-add",
             data: {
                 description: description,
                 image: image,
@@ -65,7 +65,7 @@ export function AddProduct() {
         };
         axios(config).then(response => {
             setMsg("Produto Adicionado");
-            navigate("/product/list");
+            navigate("/product-list");
         }).catch(() => {
             setMsg("Erro");
         })
@@ -75,8 +75,6 @@ export function AddProduct() {
     return (
         <div className="form-container">
             <div className="form-card-container">
-                <h3>Adicionar um Novo Produto</h3>
-
                 <form className="gerencg-form" onSubmit={handleSubmit}>
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="description">Descrição: </label>
@@ -131,13 +129,10 @@ export function AddProduct() {
                     </div>
 
                     <div className="form-btn-container">
-                        <button type="submit" className="gerencg-btn">
+                        <button type="submit" className="btn-confirm">
                             Adicionar Produto
                         </button>
                     </div>
-                    <Link className="form-btn-container" to="/product/list">
-                        <button className="btn gerencg-btn mt-3">Cancelar</button>
-                    </Link>
                 </form>
 
                 <div className="msg-container">
@@ -149,7 +144,7 @@ export function AddProduct() {
 }
 
 
-export function ProductFormEdit({ productId }: ProductProps) {
+export const ProductFormEdit = ({ productId }: ProductProps) => {
 
     //Get Product 
     const [product, setProduct] = useState<Product>();
@@ -193,7 +188,6 @@ export function ProductFormEdit({ productId }: ProductProps) {
     return (
         <div className="form-container">
             <div className="form-card-container">
-                <h3>Editar Produto: {product?.description}</h3>
 
                 <form className="gerencg-form" onSubmit={handleSubmit}>
                     <div className="form-group gerencg-form-group">

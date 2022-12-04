@@ -22,9 +22,9 @@ function NavBar() {
 
             <ul className={click ? "navbar-menu active" : "navbar-menu"}>
                 <li className="navbar-item">
-                    <Link className="navbar-link " to="/product/add" onClick={closeMobileMenu}>
+                    <div className="navbar-link " data-bs-toggle="modal" data-bs-target="#saveProductModal" onClick={closeMobileMenu}>
                         <AiIcons.AiOutlinePlus />  Novo Produto
-                    </Link>
+                    </div>
                 </li>
 
                 <li className="navbar-item">

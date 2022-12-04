@@ -15,7 +15,6 @@ import com.altercode.gerencg.service.ProductService;
 import com.altercode.gerencg.service.SmsService;
 
 @RestController
-@RequestMapping(value = "/product")
 public class ProductController {
 
 	@Autowired
@@ -24,13 +23,13 @@ public class ProductController {
 	@Autowired
 	private SmsService smsService;
 	
-	@GetMapping("/search")
+	@GetMapping("/product-search")
 	public ResponseEntity<Page<ProductDTO>> findByDescription(Pageable pageable, String description) {
 		Page<ProductDTO> page = service.findAll(pageable, description);
 		return ResponseEntity.ok(page);
 	}
 
-	@GetMapping("/validate")
+	@GetMapping("/product-validate")
 	public ResponseEntity<Page<ProductDTO>> findAllByValidate(
 			@RequestParam(value = "minValidate", defaultValue = "") String minValidate, 
 			@RequestParam(value = "maxValidate", defaultValue = "") String maxValidate, 
@@ -40,43 +39,43 @@ public class ProductController {
 		return ResponseEntity.ok(list);
 	}
 
-	@GetMapping("/find-category/{category}")
+	@GetMapping("/find-products-by-category/{category}")
 	public ResponseEntity<Page<ProductDTO>> findByCategory(Pageable pageable, Category category) {
 		Page<ProductDTO> list = service.findByCategory(pageable, category);
 		return ResponseEntity.ok(list);
 	}
 
-	@GetMapping("/find-measure/{measure}")
+	@GetMapping("/find-products-by-measure/{measure}")
 	public ResponseEntity<Page<ProductDTO>> findByMeasure(Pageable pageable, Measure measure) {
 		Page<ProductDTO> list = service.findByMeasure(pageable, measure);
 		return ResponseEntity.ok(list);
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/product/{id}")
 	public ProductDTO findById(@PathVariable Long id) {
 		return service.findById(id);
 	}
 
-	@PostMapping("/add")
+	@PostMapping("/product-add")
 	public ResponseEntity<ProductDTO> addProduct(@RequestBody ProductDTO product) {
 		ProductDTO newProduct = service.saveProduct(product);
 		return new ResponseEntity<ProductDTO>(newProduct, HttpStatus.CREATED);
 	}
 
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/product-delete/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteProduct(@PathVariable Long id) {
 		this.service.deleteProduct(id);
 	}
 
 
-	@GetMapping("/{id}/notification")
+	@GetMapping("/product/{id}/notification")
 	public void notifySms(@PathVariable Long id) {
 		smsService.sendSms(id);
 	}
 
 
-	@PutMapping("/update-quantity")
+	@PutMapping("/product-update-quantity")
 	public ProductDTO updateProductByCommission(@RequestBody CommissionItemDTO dto) {
 		return service.updateProductByCommission(dto);
 	}

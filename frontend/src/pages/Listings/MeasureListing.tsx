@@ -52,7 +52,7 @@ export function ProductMeasureList({ measureId }: MeasureProps) {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/product/find-measure/${measureId}/?page=${pageNumber}`)
+        axios.get(`${BASE_URL}/find-products-by-measure/${measureId}/?page=${pageNumber}`)
             .then(response => {
                 const data = response.data as ProductPage;
                 setProductPage(data);

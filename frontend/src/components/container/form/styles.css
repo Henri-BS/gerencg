@@ -6,26 +6,24 @@
 
 .form {
     width: calc(100% - 20px);
+    background-color: transparent;
+    color: var(--white-seco);
 }
 
 .gerencg-form-group {
     margin-bottom: 20px;
     max-width: 300px;
-}
-
-.gerencg-form-group label {
-    font-size: 18px;
     color: var(--white-seco);
 }
 
-.gerencg-form-group input {
+.form-control {
+    background-color: var(--dark-tert);
     color: var(--white-seco);
-    background-color: transparent;
 }
 
-.gerencg-form-group input:focus {
+.form-control:focus {
+    background-color: var(--dark-tert);
     color: var(--white-seco);
-    background-color: transparent;
 }
 
 .form-links {

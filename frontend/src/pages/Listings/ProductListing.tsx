@@ -20,7 +20,7 @@ export function ProductsList() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/product/search?description=${value}&size=21&page=${pageNumber}`)
+        axios.get(`${BASE_URL}/product-search?description=${value}&size=21&page=${pageNumber}`)
             .then(response => {
                 setProductPage(response.data);
             });
@@ -103,7 +103,7 @@ export function ProductValidateList() {
         const maxDate = maxValidate.toISOString().slice(0, 10);
 
         axios.get(
-            `${BASE_URL}/product/validate?page=${pageNumber}&size=40
+            `${BASE_URL}/product-validate?page=${pageNumber}&size=40
             &minValidate=${minDate}&maxValidate=${maxDate}`
         )
             .then(response => {

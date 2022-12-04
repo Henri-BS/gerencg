@@ -106,6 +106,9 @@ export function AddCommissionForm() {
 
 export function AddItemForm() {
     const [productPage, setProductPage] = useState<Product[]>();
+    useEffect(() => {
+        axios.get(`${BASE_URL}/product/`)
+    })
     const navigate = useNavigate();
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const commissionCode = (event.target as any).commissionCode.value;
@@ -257,9 +260,7 @@ axios.get(`${BASE_URL}/item/${itemId}`)
                     <div className="form-btn-container">
                         <button type="submit" className="btn-primary" >Editar</button>
                     </div>
-
                 </form>  
-                
             </div>
         </div>
     );

@@ -1,38 +1,13 @@
 
+import { AddProduct } from "components/container/Form/ProductForm";
 import { category, categoryStats, product, commission } from "components/shared/MenuList";
+import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
 import "./styles.css"
 
 
 function Home() {
-/** 
-    const getToken = () => {
-        return localStorage.getItem('USER_KEY');
-    }
 
-    const [data, setData] = useState<User>();
-
-    const navigate = useNavigate();
-       const config: AxiosRequestConfig = {
-            baseURL: BASE_URL,
-            method: "GET",
-            url: "/auth/user-info",
-            headers: {
-                'Authorization': 'Bearer '+getToken()
-            }
-        };
-        axios(config).then((response) => {
-            setData(response.data);
-        }).catch((e) => {
-            localStorage.clear();
-             navigate("/");
-        })
-
-        const logOut = () => {
-            localStorage.clear();
-            navigate("/");
-        }
-*/     
     return (
         <>
             <div className="container"  >
@@ -75,6 +50,20 @@ function Home() {
                     <hr className="mb-0 mt-5" />
                 </div>
             </div> 
+            
+            <div className="modal fade" role="dialog" id="saveProductModal">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <div className="modal-title" id="productLabel">Adicionar um novo produto</div>
+                            <button className="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><MdClose /></span>
+                            </button>
+                        </div>
+                        <div className="modal-body"><AddProduct/></div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }

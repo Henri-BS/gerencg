@@ -21,16 +21,16 @@ function PageRoutes() {
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />
 
-                <Route path="/product/list"element={<ProductsList/>}/>
+                <Route path="/product-list"element={<ProductsList/>}/>
                 <Route path="/products-stats" element={<ProductDashboard />} />
 
-                <Route path="/product/add" element={<SaveProduct />} />
+                <Route path="/product-add" element={<SaveProduct />} />
                 <Route path="/find-by-validate" element={<ProductValidateList />} />
 
                 <Route path="/product">
                     <Route path=":productId" element={<ProductProfile />} />
                 </Route>
-                <Route path="/product/edit" >
+                <Route path="/product-edit" >
                     <Route path=":productId" element={<UpdateProduct />} />
                 </Route>
 

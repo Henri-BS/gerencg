@@ -53,7 +53,7 @@ export function ProductCategoryList({ categoryId }: CategoryProps) {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/product/find-category/${categoryId}/?page=${pageNumber}&size=6`)
+        axios.get(`${BASE_URL}/find-products-by-category/${categoryId}/?page=${pageNumber}&size=6`)
             .then(response => {
                 const data = response.data as ProductPage;
                 setProductPage(data);

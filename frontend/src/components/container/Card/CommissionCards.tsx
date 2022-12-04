@@ -6,9 +6,9 @@ import { Code, Item, ItemProps } from "types/commission";
 import { BASE_URL } from "utils/requests";
 import IUpdateProduct from "assets/img/update.png"
 import IDeleteProduct from "assets/img/delete-img.png"
-import * as MdIcons from 'react-icons/md';
 import "./styles.css"
 import { EditItemForm } from "../Form/CommissionForm";
+import { MdClose } from "react-icons/md";
 
 
 type Commission = {
@@ -108,13 +108,12 @@ export function CommissionItemCard({ itemId }: ItemProps) {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="commissionLabel">Deseja alterar o produto do item ?</h5>
+                            <h5 className="modal-title" id="itemLabel">Deseja alterar o produto do item ?</h5>
                             <button className="close" data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"><MdIcons.MdClose/></span>
+                                <span aria-hidden="true"><MdClose/></span>
                             </button>
                         </div>
                         <div className="modal-body"><EditItemForm itemId={`${params.itemId}`}/></div>
-                        
                     </div>
                 </div>
             </div>
@@ -123,9 +122,9 @@ export function CommissionItemCard({ itemId }: ItemProps) {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="commissionLabel">Deseja deletar este item ?</h5>
+                            <h5 className="modal-title" id="itemLabel">Deseja deletar este item ?</h5>
                             <button className="close " data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"><MdIcons.MdClose/></span>
+                                <span aria-hidden="true"><MdClose/></span>
                             </button>
                         </div>
                         <div className="modal-body">Item referente ao produto {item?.productDescription} será removido permanentemente.</div>
@@ -141,12 +140,12 @@ export function CommissionItemCard({ itemId }: ItemProps) {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="commissionLabel">Deseja alterar o produto do item ?</h5>
+                            <h5 className="modal-title" id="itemLabel">Deseja alterar o produto realcionado ao item ?</h5>
                             <button className="close " data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"><MdIcons.MdClose/></span>
+                                <span aria-hidden="true"><MdClose/></span>
                             </button>
                         </div>
-                        <div className="modal-body">O produto {item?.productDescription} será alterado com os dados deste item.</div>
+                        <div className="modal-body">O produto {item?.productDescription} será atualizado com os dados deste item.</div>
                         <div className="modal-footer">
                             <button className="border-0 bg-transparent" data-bs-dismiss="modal">Cancelar</button>
                             <button onClick={() => updateProductByItem()} className="btn btn-primary" data-bs-dismiss="modal">Atualizar Produto</button>
