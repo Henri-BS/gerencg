@@ -15,12 +15,11 @@ public class CommissionItemDTO implements Serializable {
     private Integer quantity;
     private Integer packageQuantity;
     private LocalDate itemValidate;
-    private Long product;
+
+    private Long productId;
     private String productDescription;
     private Double productMeasureValue;
     private String productMeasure;
-
-
 
     public CommissionItemDTO() {
     }
@@ -33,7 +32,7 @@ public class CommissionItemDTO implements Serializable {
         quantity = entity.getItemQuantity();
         packageQuantity = entity.getPackageQuantity();
         itemValidate = entity.getItemValidate();
-        product = entity.getProduct().getId();
+        productId = entity.getProduct().getId();
         productDescription = entity.getProduct().getDescription();
         productMeasureValue = entity.getProduct().getMeasureValue();
         productMeasure = entity.getProduct().getMeasure().getAbbreviation();
@@ -95,12 +94,12 @@ public class CommissionItemDTO implements Serializable {
         this.itemValidate = itemValidate;
     }
 
-    public Long getProduct() {
-        return product;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setProduct(Long product) {
-        this.product = product;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public String getProductDescription() {

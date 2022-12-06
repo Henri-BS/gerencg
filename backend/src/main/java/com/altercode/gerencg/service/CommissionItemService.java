@@ -59,7 +59,7 @@ public class CommissionItemService implements ICommissionItemService {
 
     @Override
     public CommissionItemDTO saveItem(CommissionItemDTO dto) {
-        Product product = productRepository.findById(dto.getProduct()).get();
+        Product product = productRepository.findByDescription(dto.getProductDescription());
         CommissionCode code = commissionCodeRepository.findById(dto.getCommissionCode()).get();
 
         CommissionItem add = new CommissionItem();
@@ -78,7 +78,6 @@ public class CommissionItemService implements ICommissionItemService {
     public CommissionItemDTO updateItem(CommissionItemDTO dto) {
 
         CommissionItem edit = itemRepository.findById(dto.getId()).get();
-
 
         edit.setId(dto.getId());
         edit.setItemQuantity(dto.getQuantity());
@@ -102,7 +101,7 @@ public class CommissionItemService implements ICommissionItemService {
 
     @Override
     public ProductDTO updateProductByItem(CommissionItemDTO dto) {
-        Product product = productRepository.findById(dto.getProduct()).get();
+        Product product = productRepository.findById(dto.getProductId()).get();
         CommissionItem item = itemRepository.findById(dto.getId()).get();
 
         int quantity = item.getItemQuantity();

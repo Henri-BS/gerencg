@@ -56,7 +56,12 @@ public class ProductController {
 		return service.findById(id);
 	}
 
-	@PostMapping("/product-add")
+	@GetMapping("/product/{description}")
+	public ProductDTO findByDescription(@PathVariable String description) {
+	return service.findByDescription(description);
+	}
+
+		@PostMapping("/product-add")
 	public ResponseEntity<ProductDTO> addProduct(@RequestBody ProductDTO product) {
 		ProductDTO newProduct = service.saveProduct(product);
 		return new ResponseEntity<ProductDTO>(newProduct, HttpStatus.CREATED);

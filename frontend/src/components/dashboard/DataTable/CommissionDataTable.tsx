@@ -34,7 +34,7 @@ function ItemDataTable({ codeId }: CodeProps) {
                     <tbody className="border-0">
                         {pageItem?.map(item => (
                             <tr key={item.id}>
-                                <Link to={`/product/${item.product}`} className="table-box-title">
+                                <Link to={`/product/${item.productId}`} className="table-box-title">
                                     <td>{item.productDescription}</td>
                                 </Link>
                                 <td className="table-box">{item.productMeasureValue}{item.productMeasure}</td>

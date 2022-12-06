@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { CommissionItemCard } from "components/container/Card/CommissionCards";
 import { AddCommissionForm, AddItemForm } from "components/container/Form/CommissionForm";
 import { Link } from "react-router-dom";
+import { MdClose } from "react-icons/md";
+
 
 export function CommissionProfile() {
   const params = useParams();
@@ -11,22 +13,36 @@ export function CommissionProfile() {
   return (
     <>
       <div className="container">
-        <CommissionMenuBar codeId={`${params.code}`} />
+        <CommissionMenuBar codeId={`${params.codeId}`} />
         <div className="menu-option row">
           <h2 className="col-7 col-md-10">Lista de Produtos Solicitados </h2>
-          <Link className="col-5  col-md-2" to={"/save-item"}>
-            <button className="btn-confirm">
+          <div className="col-5  col-md-2" >
+            <button className="btn-confirm" data-bs-toggle="modal" data-bs-target="#saveItemModal">
               Adicionar Item
             </button>
-          </Link>
+          </div>
         </div>
-        <ItemDataTable codeId={`${params.code}`} />
+        <ItemDataTable codeId={`${params.codeId}`} />
       </div>
+
+      <div className="modal fade" role="dialog" id="saveItemModal">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <div className="modal-title" id="itemLabel">Adnicionar novo item</div>
+                        <button className="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><MdClose/></span>
+                        </button>
+                    </div>
+                    <div className="modal-body"><AddItemForm codeId={`${params.codeId}`}/></div>
+                </div>
+            </div>
+        </div>
     </>
   );
 }
 
-export function UpdateProductByItem() {
+export function ItemProfile() {
   const params = useParams();
 
   return (
@@ -50,14 +66,3 @@ export function SaveCommission() {
   );
 }
 
-//Add item in commission page
-export function SaveItem() {
-
-  return (
-    <>
-      <div className="container-blur">
-        <AddItemForm />
-      </div>
-    </>
-  );
-}

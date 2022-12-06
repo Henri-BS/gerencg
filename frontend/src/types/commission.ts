@@ -8,7 +8,7 @@ export type Item = {
   quantity: number;
   packageQuantity: number;
   itemValidate: string;
-  product: Product;
+  productId: Product;
   productDescription: string;
   productMeasure: string;
   productMeasureValue: number;

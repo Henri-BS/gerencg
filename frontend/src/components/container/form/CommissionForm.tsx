@@ -2,9 +2,9 @@ import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { Item, ItemProps } from "types/commission";
+import { Code, CodeProps, Item, ItemProps } from "types/commission";
 import { MeasurePage } from "types/measure";
-import { Product } from "types/product";
+import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css";
 
@@ -101,17 +101,35 @@ export function AddCommissionForm() {
                 </form>
             </div>
         </div>
+
     );
 }
 
-export function AddItemForm() {
-    const [productPage, setProductPage] = useState<Product[]>();
-    useEffect(() => {
-        axios.get(`${BASE_URL}/product/`)
-    })
+export function AddItemForm({ codeId }: CodeProps) {
     const navigate = useNavigate();
+
+    const [commission, setCommission] = useState<Code>();
+    useEffect(() => {
+        axios.get(`${BASE_URL}/commission/${codeId}`)
+            .then((response) => {
+                setCommission(response.data);
+            });
+    }, [codeId]);
+
+    const [productPage, setProductPage] = useState<ProductPage>({
+        content: [],
+        number: 0,
+    })
+    const [value, setValue] = useState("");
+    useEffect(() => {
+        axios.get(`${BASE_URL}/product-search?description=${value}`)
+            .then(response => {
+                setProductPage(response.data);
+            });
+    }, [value])
+
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        const commissionCode = (event.target as any).commissionCode.value;
         const quantity = (event.target as any).quantity.value;
         const unitValue = (event.target as any).unitValue.value;
         const totalValue = (event.target as any).totalValue.value;
@@ -124,82 +142,94 @@ export function AddItemForm() {
             url: "/save-item",
             method: "POST",
             data: {
-                commissionCode: commissionCode,
+                commissionCode: codeId,
                 quantity: quantity,
                 unitValue: unitValue,
                 totalValue: totalValue,
                 itemValidate: itemValidate,
                 packageQuantity: packageQuantity,
-                product: product
+                productDescription: product
             }
         }
 
         axios(config).then((response) => {
-            navigate(`/commission/${commissionCode}`);
         })
     }
 
     return (
-        <div className="form-container">
-            <div className="form-card-container">
-                <h3>Adicionar um item ao pedido</h3>
-                <form className="gerencg-form" onSubmit={handleSubmit}>
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="commissionCode">Código do Pedido: </label>
-                        <input id="commissionCode" type="text" className="form-control"/>
-                    </div>
-                    
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="quantity">Quantidade em Unidades: </label>
-                        <input id="quantity" type="text" className="form-control"/>
-                    </div>
+        <>
+            <div className="form-container">
+                <div className="form-card-container">
+                    <form className="gerencg-form" onSubmit={handleSubmit}>
 
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="packageQuantiy">Quantidade por Pacotes: </label>
-                        <input id="packageQuantity" type="text" className="form-control"/>
-                    </div>
+                        <div className="form-group gerencg-form-group">
+                            <input id={codeId} type="hidden" className="form-control" />
+                        </div>
 
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="unitValue">Valor por Unidade: </label>
-                        <input id="unitValue" type="text" className="form-control"/>
-                    </div>
+                        <div className="form-group gerencg-form-group">
+                            <label htmlFor="quantity">Quantidade em Unidades: </label>
+                            <input id="quantity" type="text" className="form-control" />
+                        </div>
 
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="totalValue">Valor Total: </label>
-                        <input id="totalValue" type="text" className="form-control"/>
-                    </div>
+                        <div className="form-group gerencg-form-group">
+                            <label htmlFor="packageQuantiy">Quantidade por Pacotes: </label>
+                            <input id="packageQuantity" type="text" className="form-control" />
+                        </div>
 
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="itemValidate">Validade: </label>
-                        <input id="itemValidate" type="text" className="form-control"/>
-                    </div>
+                        <div className="form-group gerencg-form-group">
+                            <label htmlFor="unitValue">Valor por Unidade: </label>
+                            <input id="unitValue" type="text" className="form-control" />
+                        </div>
 
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="product">Produto: </label>
-                        <input id="product" type="text" className="form-control"/>
-                    </div>
+                        <div className="form-group gerencg-form-group">
+                            <label htmlFor="totalValue">Valor Total: </label>
+                            <input id="totalValue" type="text" className="form-control" />
+                        </div>
 
-                    <div className="form-btn-container">
-                        <button type="submit" className="gerencg-btn" >Adicionar</button>
-                    </div>
+                        <div className="form-group gerencg-form-group">
+                            <label htmlFor="itemValidate">Validade: </label>
+                            <input id="itemValidate" type="text" className="form-control" />
+                        </div>
 
-                </form>  <Link to="/commission-list">
-                    <h5 className=" form-links mt-5">Ir para a Lista de Pedidos</h5>
-                </Link>
+                        <div className="form-group gerencg-form-group">
+                            <label htmlFor="product">Produto: </label>
+                            <input type="text" value={value} onChange={(e) => setValue(e.target.value)} id="value" className="form-control" placeholder="busque pelo produto..."/>
+                            <select  className="form-control">
+                                {productPage.content?.filter((product) => 
+                                    product.description.includes(value))
+                                    .map((product) => (
+                                        <option id="product"key={product.id}>
+                                            {product.description} - {product.measureValue} {product.measure}
+                                        </option>
+                                    ))}
+                            </select>
+
+                        </div>
+
+                        <div className="form-btn-container">
+                            <button type="submit" className="gerencg-btn" >Adicionar</button>
+                        </div>
+
+                    </form>  <Link to="/commission-list">
+                        <h5 className=" form-links mt-5">Ir para a Lista de Pedidos</h5>
+                    </Link>
+                </div>
             </div>
-        </div>
-    );
-} 
 
-export const EditItemForm = ({itemId}: ItemProps) => {
+
+        </>
+    );
+}
+
+export const EditItemForm = ({ itemId }: ItemProps) => {
     const [item, setItem] = useState<Item>();
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     useEffect(() => {
-axios.get(`${BASE_URL}/item/${itemId}`)
-.then((response) => {
-    setItem(response.data);
-})
+        axios.get(`${BASE_URL}/item/${itemId}`)
+            .then((response) => {
+                setItem(response.data);
+            })
     }, [itemId])
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -231,36 +261,36 @@ axios.get(`${BASE_URL}/item/${itemId}`)
         <div className="form-container">
             <div className="form-card-container">
                 <form className="gerencg-form" onSubmit={handleSubmit}>
-                    
+
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="quantity">Quantidade em Unidades: </label>
-                        <input id="quantity" type="text" className="form-control"/>
+                        <input id="quantity" type="text" className="form-control" />
                     </div>
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="packageQuantiy">Quantidade por Pacotes: </label>
-                        <input id="packageQuantity" type="text" className="form-control"/>
+                        <input id="packageQuantity" type="text" className="form-control" />
                     </div>
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="unitValue">Valor por Unidade: </label>
-                        <input id="unitValue" type="text" className="form-control"/>
+                        <input id="unitValue" type="text" className="form-control" />
                     </div>
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="totalValue">Valor Total: </label>
-                        <input id="totalValue" type="text" className="form-control"/>
+                        <input id="totalValue" type="text" className="form-control" />
                     </div>
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="itemValidate">Validade: </label>
-                        <input id="itemValidate" type="text" className="form-control"/>
+                        <input id="itemValidate" type="text" className="form-control" />
                     </div>
 
                     <div className="form-btn-container">
                         <button type="submit" className="btn-primary" >Editar</button>
                     </div>
-                </form>  
+                </form>
             </div>
         </div>
     );

@@ -21,6 +21,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
+
 @Service
 @Transactional
 public class ProductService implements IProductService {
@@ -71,7 +72,11 @@ public class ProductService implements IProductService {
     // Find products by id
     public ProductDTO findById(Long id) {
         Product result = productRepository.findById(id).get();
+        return new ProductDTO(result);
+    }
 
+    public ProductDTO findByDescription(String description) {
+        Product result = productRepository.findByDescription(description);
         return new ProductDTO(result);
     }
 
@@ -104,10 +109,10 @@ public class ProductService implements IProductService {
     }
 
     public ProductDTO updateProductByCommission(CommissionItemDTO dto) {
-        Product product = productRepository.findById(dto.getProduct()).get();
+        Product product = productRepository.findById(dto.getProductId()).get();
 
         int sumQuantity = product.getQuantity();
-        for (CommissionItem c : product.getOrders()) {
+        for (CommissionItem c : product.getCommissionItems()) {
             sumQuantity = sumQuantity + c.getItemQuantity();
         }
 

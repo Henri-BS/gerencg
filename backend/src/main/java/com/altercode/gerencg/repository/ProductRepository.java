@@ -17,6 +17,8 @@ import com.altercode.gerencg.entity.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product>{
 
+	Product findByDescription(String description);
+
 	@Query("SELECT obj FROM Product obj WHERE obj.description LIKE %?1%")
 	Page<Product> findAll(Pageable pageable, String description);
 	

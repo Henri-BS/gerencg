@@ -32,6 +32,7 @@
 .navbar-item {
     margin: 2px;
     align-self: center;
+    cursor: pointer;
 }
 
 .navbar-link {
@@ -44,6 +45,12 @@
 }
 
 .navbar-link:hover {
+    color: var(--blue-seco);
+    background-color: var(--blue-tert);
+    border-radius: 8px;
+}
+
+.navbar-link:focus {
     color: var(--blue-seco);
     background-color: var(--blue-tert);
     border-radius: 8px;

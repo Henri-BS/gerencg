@@ -47,9 +47,9 @@ export function CommissionItemCard({ itemId }: ItemProps) {
     }, [itemId])
 
     const updateProductByItem = () => {
-        axios.put(`${BASE_URL}/update-product-by-item?id=${itemId}&product=${item?.product}`)
+        axios.put(`${BASE_URL}/update-product-by-item?id=${itemId}&product=${item?.productId}`)
             .then((response) => {
-                navigate(`/product/${item?.product}`)
+                navigate(`/product/${item?.productId}`)
             })
     }
 
