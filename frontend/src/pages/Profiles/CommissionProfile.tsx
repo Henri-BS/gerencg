@@ -26,18 +26,19 @@ export function CommissionProfile() {
       </div>
 
       <div className="modal fade" role="dialog" id="saveItemModal">
-            <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <div className="modal-title" id="itemLabel">Adnicionar novo item</div>
-                        <button className="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"><MdClose/></span>
-                        </button>
-                    </div>
-                    <div className="modal-body"><AddItemForm codeId={`${params.codeId}`}/></div>
-                </div>
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <div className="modal-title" id="itemLabel">Adnicionar novo item</div>
+              <button className="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"><MdClose /></span>
+              </button>
             </div>
+            <div className="modal-body"><AddItemForm codeId={`${params.codeId}`} /></div>
+          </div>
         </div>
+      </div>
+      
     </>
   );
 }
@@ -54,15 +55,4 @@ export function ItemProfile() {
   );
 }
 
-//Add commission page
-export function SaveCommission() {
-
-  return (
-    <>
-      <div className="container-blur">
-        <AddCommissionForm />
-      </div>
-    </>
-  );
-}
 

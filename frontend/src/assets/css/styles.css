@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100;0,300;0,500;1,100&family=Nanum+Gothic&family=Nunito:wght@300&display=swap');
-:root {
+#root {
     --dark-prim: rgb(73, 73, 73);
     --dark-seco: #1b1a1a;
     --dark-tert: #1c2022;
@@ -15,6 +15,9 @@
     --white-prim: #e0e0e9;
     --white-seco: #fcf8f8;
     --white-tert: #ddd2d2;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 html,
@@ -23,12 +26,6 @@ body {
     font-family: 'Nunito', sans-serif;
     color: var(--dark-seco);
     background-color: var(--dark-tert);
-}
-
-#root {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
 }
 
 .content {
@@ -75,23 +72,6 @@ body {
 .close:hover {
     background-color: #cccccc34;
     border-radius: 100%;
-}
-
-.gerencg-sm-btn {
-    padding: 1px;
-    border-radius: 5px;
-    font-size: 12px;
-    border: 2.5px solid transparent;
-    color: var(--white-seco);
-    cursor: pointer;
-    background-color: var(--blue-quat);
-    transition: all 0.3s ease-out;
-}
-
-.gerencg-sm-btn:hover {
-    background-color: var(--blue-prim);
-    color: var(--white-seco);
-    border: 2.5px solid var(--blue-prim);
 }
 
 .btn-primary {

@@ -34,7 +34,7 @@ export function CommissionCodeList() {
                     <nav className="row header-container">
                         <h2 className="col-3 col-sm-4 col-md-4 col-xl-4">Lista de Pedidos</h2>
                         <nav className="option-item col-3 col-sm-4 col-md-4 col-xl-4">
-                            <h5><b>Total:</b>{codePage.totalElements} Pedidos</h5>
+                            <h5><b>Total:</b> {codePage.totalElements} Pedidos</h5>
                         </nav>
                         <form className="col-5 col-sm-4 col-md-4 col-xl-4 search-container">
                             <label>

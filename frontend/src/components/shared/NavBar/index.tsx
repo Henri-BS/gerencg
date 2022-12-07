@@ -3,6 +3,9 @@ import "./styles.css"
 import Logo from 'assets/img/logo-g.png'
 import * as AiIcons from 'react-icons/ai'
 import { useState } from "react";
+import { MdClose } from "react-icons/md";
+import { AddProduct } from "components/container/Form/ProductForm";
+import { AddCommissionForm } from "components/container/Form/CommissionForm";
 
 function NavBar() {
     const [click, setClick] = useState(false);
@@ -10,6 +13,7 @@ function NavBar() {
     const closeMobileMenu = () => setClick(false);
 
     return (
+        <>
         <nav className='navbar'>
 
             <Link to="/" onClick={closeMobileMenu}>
@@ -22,7 +26,7 @@ function NavBar() {
 
             <ul className={click ? "navbar-menu active" : "navbar-menu"}>
                 <li className="navbar-item">
-                    <div className="navbar-link " data-bs-toggle="modal" data-bs-target="#saveProductModal" onClick={closeMobileMenu}>
+                    <div data-bs-toggle="modal" data-bs-target="#saveProductModal" className="navbar-link " onClick={closeMobileMenu}>
                         <AiIcons.AiOutlinePlus />  Novo Produto
                     </div>
                 </li>
@@ -34,9 +38,9 @@ function NavBar() {
                 </li>
 
                 <li className="navbar-item">
-                    <Link className="navbar-link" to="/save-commission" onClick={closeMobileMenu}>
+                    <div data-bs-toggle="modal" data-bs-target="#saveCommissionModal" className="navbar-link" onClick={closeMobileMenu}>
                         <AiIcons.AiOutlineProfile /> Novo Pedido
-                    </Link>
+                    </div>
                 </li>
 
                 <li className="navbar-item">
@@ -52,6 +56,34 @@ function NavBar() {
                 </li>
             </ul>
         </nav>
+        <div className="modal fade" role="dialog" id="saveProductModal">
+        <div className="modal-dialog" role="document">
+            <div className="modal-content">
+                <div className="modal-header">
+                    <div className="modal-title" id="productLabel">Adicionar um novo produto</div>
+                    <button className="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><MdClose /></span>
+                    </button>
+                </div>
+                <div className="modal-body"><AddProduct/></div>
+            </div>
+        </div>
+    </div>
+
+    <div className="modal fade" role="dialog" id="saveCommissionModal">
+<div className="modal-dialog" role="document">
+  <div className="modal-content">
+    <div className="modal-header" >
+      <label className="modal-title" id="commissionLabel">Adicionar um novo pedido</label>
+      <button className="close" data-bs-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true"><MdClose /></span>
+      </button>
+    </div>
+    <div className="modal-body"><AddCommissionForm /></div>
+  </div>
+</div>
+</div>
+</>
 
     );
 }

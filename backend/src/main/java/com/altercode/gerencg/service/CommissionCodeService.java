@@ -40,7 +40,7 @@ public class CommissionCodeService implements ICommissionCodeService {
     }
 
     @Override
-    public CommissionCodeDTO saveCommissionCode(CommissionCodeDTO dto) {
+    public CommissionCodeDTO saveCommission(CommissionCodeDTO dto) {
         Measure packageType = measureRepository.findById(dto.getPackageType()).get();
         CommissionCode add = new CommissionCode();
         add.setCode(dto.getCode());

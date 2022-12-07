@@ -10,7 +10,7 @@ public interface ICommissionCodeService {
 
     CommissionCodeDTO findCodeById(String id);
 
-    CommissionCodeDTO saveCommissionCode(CommissionCodeDTO code);
+    CommissionCodeDTO saveCommission(CommissionCodeDTO code);
 
     void deleteCommission(String id);
 

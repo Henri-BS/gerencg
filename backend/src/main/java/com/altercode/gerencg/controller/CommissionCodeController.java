@@ -28,7 +28,7 @@ public class CommissionCodeController {
 
     @PostMapping("/save-commission")
     public ResponseEntity<CommissionCodeDTO> saveCommissionCode(@RequestBody CommissionCodeDTO dto) {
-        CommissionCodeDTO addCode = codeService.saveCommissionCode(dto);
+        CommissionCodeDTO addCode = codeService.saveCommission(dto);
         return new ResponseEntity<>(addCode, HttpStatus.CREATED);
     }
 

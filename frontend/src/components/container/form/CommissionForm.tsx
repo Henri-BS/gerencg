@@ -58,13 +58,13 @@ export function AddCommissionForm() {
                             type="text"
                             className="form-control"
                             id="code"
-                            placeholder="ex: 00.00.0000.00-aa"
+                            placeholder="00.00.0000.00-aa"
                         />
                     </div>
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="commissionDate">Data do Pedido: </label>
                         <input
-                            type="text"
+                            type="date"
                             className="form-control"
                             id="commissionDate"
                         />
@@ -90,14 +90,10 @@ export function AddCommissionForm() {
                     </div>
 
                     <div className="form-btn-container">
-                        <button type="submit" className="gerencg-btn" >
+                        <button type="submit" className="btn-primary" >
                             Registrar Pedido
                         </button>
                     </div>
-
-                    <Link to="/commission-list">
-                        <h5 className=" form-links mt-5">Ir para a Lista de Pedidos</h5>
-                    </Link>
                 </form>
             </div>
         </div>
@@ -106,8 +102,6 @@ export function AddCommissionForm() {
 }
 
 export function AddItemForm({ codeId }: CodeProps) {
-    const navigate = useNavigate();
-
     const [commission, setCommission] = useState<Code>();
     useEffect(() => {
         axios.get(`${BASE_URL}/commission/${codeId}`)
@@ -153,6 +147,7 @@ export function AddItemForm({ codeId }: CodeProps) {
         }
 
         axios(config).then((response) => {
+            console.log(response.data)
         })
     }
 
@@ -193,30 +188,24 @@ export function AddItemForm({ codeId }: CodeProps) {
 
                         <div className="form-group gerencg-form-group">
                             <label htmlFor="product">Produto: </label>
-                            <input type="text" value={value} onChange={(e) => setValue(e.target.value)} id="value" className="form-control" placeholder="busque pelo produto..."/>
-                            <select  className="form-control">
+                            <input type="text" list="productDescription" value={value} onChange={(e) => setValue(e.target.value)} id="product" className="form-control" placeholder="busque pelo produto..."/>
+                            <datalist id="productDescription" >
                                 {productPage.content?.filter((product) => 
-                                    product.description.includes(value))
+                                    product.description.toLowerCase().includes(value.toLocaleLowerCase()))
                                     .map((product) => (
-                                        <option id="product"key={product.id}>
+                                        <option id="value" key={product.id} value={product.description}>
                                             {product.description} - {product.measureValue} {product.measure}
                                         </option>
                                     ))}
-                            </select>
-
+                            </datalist>
                         </div>
 
                         <div className="form-btn-container">
-                            <button type="submit" className="gerencg-btn" >Adicionar</button>
+                            <button type="submit" className="btn-primary" >Adicionar</button>
                         </div>
-
-                    </form>  <Link to="/commission-list">
-                        <h5 className=" form-links mt-5">Ir para a Lista de Pedidos</h5>
-                    </Link>
+                    </form>  
                 </div>
             </div>
-
-
         </>
     );
 }

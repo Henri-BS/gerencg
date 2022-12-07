@@ -1,4 +1,5 @@
 
+import { AddCommissionForm } from "components/container/Form/CommissionForm";
 import { AddProduct } from "components/container/Form/ProductForm";
 import { category, categoryStats, product, commission } from "components/shared/MenuList";
 import { MdClose } from "react-icons/md";
@@ -51,19 +52,7 @@ function Home() {
                 </div>
             </div> 
             
-            <div className="modal fade" role="dialog" id="saveProductModal">
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <div className="modal-title" id="productLabel">Adicionar um novo produto</div>
-                            <button className="close" data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"><MdClose /></span>
-                            </button>
-                        </div>
-                        <div className="modal-body"><AddProduct/></div>
-                    </div>
-                </div>
-            </div>
+            
         </>
     );
 }
