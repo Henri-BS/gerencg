@@ -86,7 +86,7 @@ public class CommissionItemService implements ICommissionItemService {
         edit.setTotalValue(dto.getTotalValue());
         edit.setItemValidate(dto.getItemValidate());
 
-        return new CommissionItemDTO(edit);
+        return new CommissionItemDTO(itemRepository.save(edit));
     }
 
     @Override

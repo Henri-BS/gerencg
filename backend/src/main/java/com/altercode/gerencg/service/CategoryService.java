@@ -42,7 +42,7 @@ public class CategoryService implements ICategoryService {
 		
 		category.setTotalProducts(category.getProducts().size());
 		category.setTotalRegisters(category.getCategoryStats().size());
-		category = categoryRepository.save(category);
+		categoryRepository.save(category);
 
 		return new CategoryDTO(categoryRepository.saveAndFlush(add));
 	}
@@ -58,8 +58,7 @@ public class CategoryService implements ICategoryService {
 		edit.setTotalRegisters(edit.getCategoryStats().size());
 		edit = categoryRepository.save(edit);
 
-		Category update = categoryRepository.save(edit);
-		return new CategoryDTO(update);
+		return new CategoryDTO(categoryRepository.save(edit));
 	}
 
 	public void deleteCategory(String id) {

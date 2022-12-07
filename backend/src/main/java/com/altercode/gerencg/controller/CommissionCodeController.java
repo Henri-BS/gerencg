@@ -32,6 +32,12 @@ public class CommissionCodeController {
         return new ResponseEntity<>(addCode, HttpStatus.CREATED);
     }
 
+    @PutMapping("/update-commission/{id}")
+    public ResponseEntity<CommissionCodeDTO> updateCommission(@RequestBody CommissionCodeDTO dto, @PathVariable String id) {
+        CommissionCodeDTO editCode = codeService.updateCommission(dto);
+        return new ResponseEntity<>(editCode, HttpStatus.OK);
+    }
+
     @DeleteMapping("/delete-commission/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCommission(String id){

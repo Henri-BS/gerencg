@@ -52,6 +52,18 @@ public class CommissionCodeService implements ICommissionCodeService {
     }
 
     @Override
+    public CommissionCodeDTO updateCommission(CommissionCodeDTO dto) {
+        CommissionCode edit = codeRepository.findById(dto.getCode()).get();
+        Measure packageType = measureRepository.findById(dto.getPackageType()).get();
+
+        edit.setCode(dto.getCode());
+        edit.setCommissionDate(dto.getCommissionDate());
+edit.setDistributor(dto.getDistributor());
+edit.setPackageType(packageType);
+ return new CommissionCodeDTO(codeRepository.save(edit));
+    }
+
+    @Override
     public void deleteCommission(String id) {
         this.codeRepository.deleteById(id);
     }
