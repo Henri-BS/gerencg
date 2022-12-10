@@ -134,7 +134,6 @@ export function AddProduct() {
                         </button>
                     </div>
                 </form>
-
                 <div className="msg-container">
                     <h3>{msg}</h3>
                 </div>
@@ -192,52 +191,32 @@ export const ProductFormEdit = ({ productId }: ProductProps) => {
                 <form className="gerencg-form" onSubmit={handleSubmit}>
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="description">Descrição: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="description"
-                            placeholder={product?.description}
-                        />
+                        <input className="form-control" id="description" placeholder={product?.description}/>
                     </div>
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="price">Preço: </label>
-                        <input
-                            className="form-control"
-                            id="price"
-                            placeholder={product?.price.toFixed(2)}
-                        />
+                        <input className="form-control" id="price" placeholder={product?.price.toFixed(2)}/>
                     </div>
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="quantity">Quantidade: </label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            id="quantity"
-                            placeholder={product?.quantity.toFixed()}
-                        />
+                        <input className="form-control" id="quantity" placeholder={product?.quantity.toFixed()}/>
                     </div>
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="validate">Validade: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="validate"
-                            placeholder={product?.validate}
-
-                        />
+                        <input type="date" className="form-control" id="validate" placeholder={product?.validate}/>
                     </div>
 
                     <div className="form-btn-container">
-                        <button type="submit" className=" gerencg-btn" >
+                        <button type="submit" className=" btn-confirm" >
                             Editar Produto
                         </button>
                     </div>
 
                     <Link className="form-btn-container" to={`/product/${productId}`}>
-                        <button className=" gerencg-btn mt-3">
+                        <button className=" text-close mt-3">
                             Retornar
                         </button>
                     </Link>

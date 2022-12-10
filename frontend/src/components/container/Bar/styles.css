@@ -142,6 +142,8 @@
 }
 
 .bar-item {
+    text-decoration: none;
+    color: var(--dark-tert);
     padding: 20px;
     height: 80px;
     justify-content: center;
@@ -150,10 +152,15 @@
     font-weight: 800;
     transition: all 0.3s ease-in;
     border: 1px solid;
-    overflow: scroll;
+    overflow-y: hidden;
 }
 
 .bar-item::-webkit-scrollbar {
     width: 0px;
     height: 0px;
+}
+
+.bar-item-border {
+    border: 1px solid;
+    padding: 0;
 }

@@ -56,13 +56,13 @@ public class ProductController {
 		return service.findById(id);
 	}
 
-	@GetMapping("/product/{description}")
+	@GetMapping("/product-description/{description}")
 	public ProductDTO findByDescription(@PathVariable String description) {
 	return service.findByDescription(description);
 	}
 
 		@PostMapping("/product-add")
-	public ResponseEntity<ProductDTO> addProduct(@RequestBody ProductDTO product) {
+	public ResponseEntity<ProductDTO> saveProduct(@RequestBody ProductDTO product) {
 		ProductDTO newProduct = service.saveProduct(product);
 		return new ResponseEntity<ProductDTO>(newProduct, HttpStatus.CREATED);
 	}

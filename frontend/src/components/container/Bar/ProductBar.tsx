@@ -75,9 +75,8 @@ export function ProductMenuBar({ productId }: ProductProps) {
     }, [productId]);
 
     const deleteProduct = () => {
-        axios.delete(`${BASE_URL}/product/delete/${productId}`)
+        axios.delete(`${BASE_URL}/product-delete/${productId}`)
             .then((response) => {
-                setProduct(response.data);
                 navigate("/product-list");
             })
     }

@@ -56,11 +56,11 @@ public class CommissionCodeService implements ICommissionCodeService {
         CommissionCode edit = codeRepository.findById(dto.getCode()).get();
         Measure packageType = measureRepository.findById(dto.getPackageType()).get();
 
-        edit.setCode(dto.getCode());
+        edit.setCode(edit.getCode());
         edit.setCommissionDate(dto.getCommissionDate());
-edit.setDistributor(dto.getDistributor());
-edit.setPackageType(packageType);
- return new CommissionCodeDTO(codeRepository.save(edit));
+        edit.setDistributor(dto.getDistributor());
+        edit.setPackageType(packageType);
+        return new CommissionCodeDTO(codeRepository.save(edit));
     }
 
     @Override

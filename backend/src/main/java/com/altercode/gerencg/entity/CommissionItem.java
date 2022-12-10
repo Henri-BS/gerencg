@@ -9,7 +9,7 @@ public class CommissionItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "commission_id")
+    @Column(name = "item_id")
     private Long id;
 
     @Column(name = "quantity")
@@ -21,7 +21,7 @@ public class CommissionItem {
     @Column(name = "total_value")
     private Double totalValue;
 
-    @Column(name = "validate")
+    @Column(name = "item_validate")
     private LocalDate itemValidate;
 
     @Column(name = "package_quantity")
