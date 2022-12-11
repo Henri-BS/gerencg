@@ -3,7 +3,7 @@ import ItemDataTable from "components/dashboard/DataTable/CommissionDataTable";
 import { useParams } from "react-router-dom";
 import { CommissionItemCard } from "components/container/Card/CommissionCards";
 import { AddItemForm, EditCommissionForm } from "components/container/Form/CommissionForm";
-import { MdClose } from "react-icons/md";
+import { MdClose} from "react-icons/md";
 
 
 export function CommissionProfile() {
@@ -38,19 +38,6 @@ export function CommissionProfile() {
         </div>
       </div>
 
-      <div className="modal fade" role="dialog" id="updateCommissionModal">
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <label className="modal-title" id="commissionLabel">Alterar pedido</label>
-              <button className="close" data-bs-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true"><MdClose/></span>
-                </button>
-            </div>
-            <div className="modal-body"><EditCommissionForm codeId={`${params.codeId}`}/></div>
-          </div>
-        </div>
-      </div>
       
     </>
   );

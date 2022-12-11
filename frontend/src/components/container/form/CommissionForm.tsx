@@ -138,7 +138,6 @@ export function EditCommissionForm({ codeId }: CodeProps) {
     return (
         <div className="form-container">
             <div className="form-card-container">
-                <h3>Resgistrar um novo pedido</h3>
                 <form className="gerencg-form" onSubmit={handleSubmit}>
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="commissionDate">Data do Pedido: </label>
@@ -158,13 +157,8 @@ export function EditCommissionForm({ codeId }: CodeProps) {
                             ))}
                         </select>
                     </div>
-
-                    <div className="form-btn-container">
-                        <button type="submit" className="btn-confirm" >
-                            Editar Pedido
-                        </button>
-                    </div>
                 </form>
+                
             </div>
         </div>
     );
@@ -302,7 +296,7 @@ export const EditItemForm = ({ itemId }: ItemProps) => {
 
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
-            url: `update/item`,
+            url: "/update/item",
             method: "PUT",
             data: {
                 id: id,

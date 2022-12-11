@@ -45,6 +45,8 @@ body {
     border: 0;
     background-color: transparent;
     color: var(--white-prim);
+    font-size: large;
+    transition: all 0.2s ease-in-out;
 }
 
 .text-close:hover {

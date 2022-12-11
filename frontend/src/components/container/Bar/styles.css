@@ -142,17 +142,12 @@
 }
 
 .bar-item {
-    text-decoration: none;
-    color: var(--dark-tert);
-    padding: 20px;
+    padding: 24px 8px;
     height: 80px;
-    justify-content: center;
-    align-items: center;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 800;
-    transition: all 0.3s ease-in;
     border: 1px solid;
-    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .bar-item::-webkit-scrollbar {

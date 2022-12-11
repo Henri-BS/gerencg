@@ -2,15 +2,18 @@ import axios from "axios";
 import IUpdateProduct from "assets/img/update.png"
 import IDeleteProduct from "assets/img/delete-img.png"
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Code, CodeProps } from "types/commission";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
+import { MdClose } from "react-icons/md";
+import { EditCommissionForm } from "../Form/CommissionForm";
 
 export function CommissionMenuBar({ codeId }: CodeProps) {
 
     const [commission, setCommission] = useState<Code>();
     const navigate = useNavigate();
+    const params = useParams();
 
     useEffect(() => {
         axios.get(`${BASE_URL}/commission/${codeId}`)
@@ -37,10 +40,10 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
         <>
             <div className="max-bar-container ">
                 <div className="menu-bar-container">
-                    <div>
-                        <h2><b>Pedido de Compra</b></h2>
+                    <span>
+                        <h2><b>Pedido de Produtos</b></h2>
                         <p>Infornações sobre produtos solicitados.</p>
-                    </div>
+                    </span>
                     <button data-bs-toggle="modal" data-bs-target="#updateCommissionModal" className="menu-bar-option" >
                         <img className="option-card-img" src={IUpdateProduct} alt="update-product" />
                         <h6>Editar</h6>
@@ -50,6 +53,41 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
                         <h6>Deletar</h6>
                     </button>
                 </div>
+
+                <div className="modal fade" role="dialog" id="updateCommissionModal">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <label className="modal-title" id="commissionLabel">Alterar pedido</label>
+                                <button className="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span className="text-close" aria-hidden="true"><MdClose /></span>
+                                </button>
+                            </div>
+                            <div className="modal-body"><EditCommissionForm codeId={`${params.codeId}`} /></div>
+                            <div className="modal-footer">
+                                <button className="text-close">cancelar</button>
+                                <button type="submit" className="btn-confirm">Editar Pedido</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="modal fade" role="dialog" id="deleteCommissionModal">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <div className="modal-title" id="commissonModal">Desejar deletar o pedido de produtos ?</div>
+                                <button className="close" data-bs-dismiss="modal" aria-label="commissionModal">
+                                    <span aria-hidden="true"><MdClose /></span>
+                                </button>
+                            </div>
+                            <div className="modal-footer">
+                                <button className="text-close">cancelar</button>
+                                <button onClick={() => deleteCommission()} className="btn-danger" dat-bs-dismiss="modal">Deletar Pedido</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="bar-container">
                     <h2>Informações de Identificação</h2>
                     <div className="bar-item-border row">
