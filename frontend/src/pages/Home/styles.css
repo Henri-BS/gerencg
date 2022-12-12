@@ -9,6 +9,19 @@
     color: var(--dark-prim);
 }
 
+.container::-webkit-scrollbar {
+    border-radius: 0px 8px 8px 0px;
+    background-color: var(--dark-tert);
+    width: 10px;
+    margin: 4px;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background-color: var(--dark-prim);
+    border: 1px solid var(--dark-tert);
+    border-radius: 8px;
+}
+
 .container-menu {
     margin: 0;
     justify-content: center;

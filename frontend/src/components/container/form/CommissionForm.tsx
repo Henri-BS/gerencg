@@ -48,10 +48,8 @@ export function AddCommissionForm() {
         })
     }
     return (
-        <div className="form-container">
+        <form className="form-container"  onSubmit={handleSubmit}> 
             <div className="form-card-container">
-                <h3>Resgistrar um novo pedido</h3>
-                <form className="gerencg-form" onSubmit={handleSubmit}>
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="code">Código do Pedido: </label>
                         <input className="form-control" id="code" placeholder="00.00.0000.00-aa" />
@@ -74,15 +72,13 @@ export function AddCommissionForm() {
                             ))}
                         </select>
                     </div>
+        </div>  
+        <div className="modal-footer">
+                <button className="text-close">cancelar</button>
+                <button type="submit" className="btn-confirm">Adicionar Pedido</button>
+            </div>           
 
-                    <div className="form-btn-container">
-                        <button type="submit" className="btn-confirm" >
-                            Registrar Pedido
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
+    </form>
     );
 }
 
@@ -136,37 +132,39 @@ export function EditCommissionForm({ codeId }: CodeProps) {
     }
 
     return (
-        <div className="form-container">
+        <form className="form-container" onSubmit={handleSubmit}>
             <div className="form-card-container">
-                <form className="gerencg-form" onSubmit={handleSubmit}>
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="commissionDate">Data do Pedido: </label>
-                        <input type="date" className="form-control" id="commissionDate" />
-                    </div>
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="distributor">Distribuidora: </label>
-                        <input className="form-control" id="distributor" placeholder="ex: Comercial Novo" />
-                    </div>
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="packageType">Tipo de Pacote: </label>
-                        <select className="form-control" id="packageType">
-                            {measureList.content?.map(item => (
-                                <option key={item.abbreviation}>
-                                    {item.abbreviation}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                </form>
-                
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="commissionDate">Data do Pedido: </label>
+                    <input type="date" className="form-control" id="commissionDate" />
+                </div>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="distributor">Distribuidora: </label>
+                    <input className="form-control" id="distributor" placeholder="ex: Comercial Novo" />
+                </div>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="packageType">Tipo de Pacote: </label>
+                    <select className="form-control" id="packageType">
+                        {measureList.content?.map(item => (
+                            <option key={item.abbreviation}>
+                                {item.abbreviation}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
-        </div>
+            <div className="modal-footer">
+                <button className="text-close">cancelar</button>
+                <button type="submit" className="btn-confirm">Editar Pedido</button>
+            </div>
+        </form>
     );
 }
 
 
 //Item Forms
 export function AddItemForm({ codeId }: CodeProps) {
+    const navigate = useNavigate();
     const [commission, setCommission] = useState<Code>();
     useEffect(() => {
         axios.get(`${BASE_URL}/commission/${codeId}`)
@@ -210,67 +208,60 @@ export function AddItemForm({ codeId }: CodeProps) {
                 productDescription: product
             }
         }
-
         axios(config).then((response) => {
-            console.log(response.data)
+navigate(`/commission/${codeId}`)
         })
     }
 
     return (
         <>
-            <div className="form-container">
-                <div className="form-card-container">
-                    <form className="gerencg-form" onSubmit={handleSubmit}>
+            <form className="form-container" onSubmit={handleSubmit}>
+                <div className="form-card-container" >
+                   
+                    <div className="form-group gerencg-form-group">
+                        <label htmlFor="quantity">Quantidade em Unidades: </label>
+                        <input id="quantity" type="text" className="form-control" />
+                    </div>
 
-                        <div className="form-group gerencg-form-group">
-                            <input id={codeId} type="hidden" className="form-control" />
-                        </div>
+                    <div className="form-group gerencg-form-group">
+                        <label htmlFor="packageQuantiy">Quantidade de Pacotes: </label>
+                        <input id="packageQuantity" type="text" className="form-control" />
+                    </div>
 
-                        <div className="form-group gerencg-form-group">
-                            <label htmlFor="quantity">Quantidade em Unidades: </label>
-                            <input id="quantity" type="text" className="form-control" />
-                        </div>
+                    <div className="form-group gerencg-form-group">
+                        <label htmlFor="unitValue">Valor Unitário: </label>
+                        <input id="unitValue" type="text" className="form-control" />
+                    </div>
 
-                        <div className="form-group gerencg-form-group">
-                            <label htmlFor="packageQuantiy">Quantidade por Pacotes: </label>
-                            <input id="packageQuantity" type="text" className="form-control" />
-                        </div>
+                    <div className="form-group gerencg-form-group">
+                        <label htmlFor="totalValue">Valor Total: </label>
+                        <input id="totalValue" type="text" className="form-control" />
+                    </div>
 
-                        <div className="form-group gerencg-form-group">
-                            <label htmlFor="unitValue">Valor por Unidade: </label>
-                            <input id="unitValue" type="text" className="form-control" />
-                        </div>
+                    <div className="form-group gerencg-form-group">
+                        <label htmlFor="itemValidate">Validade: </label>
+                        <input id="itemValidate" type="text" className="form-control" />
+                    </div>
 
-                        <div className="form-group gerencg-form-group">
-                            <label htmlFor="totalValue">Valor Total: </label>
-                            <input id="totalValue" type="text" className="form-control" />
-                        </div>
-
-                        <div className="form-group gerencg-form-group">
-                            <label htmlFor="itemValidate">Validade: </label>
-                            <input id="itemValidate" type="text" className="form-control" />
-                        </div>
-
-                        <div className="form-group gerencg-form-group">
-                            <label htmlFor="product">Produto: </label>
-                            <input type="text" list="productDescription" value={value} onChange={(e) => setValue(e.target.value)} id="product" className="form-control" placeholder="busque pelo produto..." />
-                            <datalist id="productDescription" >
-                                {productPage.content?.filter((product) =>
-                                    product.description.toLowerCase().includes(value.toLocaleLowerCase()))
-                                    .map((product) => (
-                                        <option id="value" key={product.id} value={product.description}>
-                                            {product.description} - {product.measureValue} {product.measure}
-                                        </option>
-                                    ))}
-                            </datalist>
-                        </div>
-
-                        <div className="form-btn-container">
-                            <button type="submit" className="btn-confirm" >Adicionar</button>
-                        </div>
-                    </form>
+                    <div className="form-group gerencg-form-group">
+                        <label htmlFor="product">Produto: </label>
+                        <input type="text" list="productDescription" value={value} onChange={(e) => setValue(e.target.value)} id="product" className="form-control" placeholder="busque pelo produto..." />
+                        <datalist id="productDescription" >
+                            {productPage.content?.filter((product) =>
+                                product.description.toLowerCase().includes(value.toLocaleLowerCase()))
+                                .map((product) => (
+                                    <option id="value" key={product.id} value={product.description}>
+                                        {product.description} - {product.measureValue} {product.measure}
+                                    </option>
+                                ))}
+                        </datalist>
+                    </div>
                 </div>
-            </div>
+                <div className="modal-footer">
+                    <button className="text-close">cancelar</button>
+                    <button type="submit" className="btn-confirm">Adicionar</button>
+                </div>
+            </form>
         </>
     );
 }
@@ -342,7 +333,7 @@ export const EditItemForm = ({ itemId }: ItemProps) => {
                     </div>
 
                     <div className="form-btn-container">
-                        <button type="submit" className="btn-confirm" >Editar</button>
+                        <button type="submit" className="btn-confirm">Editar</button>
                     </div>
                 </form>
             </div>

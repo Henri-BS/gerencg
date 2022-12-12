@@ -130,7 +130,7 @@ export function CommissionItemCard({ itemId }: ItemProps) {
                         <div className="modal-body">Item referente ao produto {item?.productDescription} será removido permanentemente.</div>
                         <div className="modal-footer">
                             <button className="text-close" data-bs-dismiss="modal">Cancelar</button>
-                            <button onClick={() => deleteItem()} className="btn btn-danger" data-bs-dismiss="modal">Deletar Item</button>
+                            <button onClick={() => deleteItem()} className="btn-danger" data-bs-dismiss="modal">Deletar Item</button>
                         </div>
                     </div>
                 </div>

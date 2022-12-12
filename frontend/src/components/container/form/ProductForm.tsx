@@ -108,7 +108,7 @@ export function AddProduct() {
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="measure">Tipo de Medida: </label>
-                        <select className="form-control" id="measure">
+                        <select className="form-control" id="measure" placeholder="buscar medida">
                             {measureList.content?.map(item => (
                                 <option key={item.abbreviation}>
                                     {item.abbreviation}
@@ -158,8 +158,7 @@ export const ProductFormEdit = ({ productId }: ProductProps) => {
     //Creating submission event for html form to update the product
     const navigate = useNavigate();
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-
+        
         const description = (event.target as any).description.value;
         const price = (event.target as any).price.value;
         const quantity = (event.target as any).quantity.value;
@@ -170,7 +169,7 @@ export const ProductFormEdit = ({ productId }: ProductProps) => {
             method: "PUT",
             url: "/history",
             data: {
-                productId: productId,
+                product: productId,
                 description: description,
                 price: price,
                 quantity: quantity,

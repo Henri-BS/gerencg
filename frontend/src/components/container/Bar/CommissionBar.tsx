@@ -64,10 +64,6 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
                                 </button>
                             </div>
                             <div className="modal-body"><EditCommissionForm codeId={`${params.codeId}`} /></div>
-                            <div className="modal-footer">
-                                <button className="text-close">cancelar</button>
-                                <button type="submit" className="btn-confirm">Editar Pedido</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -82,7 +78,7 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
                             </div>
                             <div className="modal-footer">
                                 <button className="text-close">cancelar</button>
-                                <button onClick={() => deleteCommission()} className="btn-danger" dat-bs-dismiss="modal">Deletar Pedido</button>
+                                <button onClick={() => deleteCommission()} className="btn-danger" data-bs-dismiss="modal">Deletar Pedido</button>
                             </div>
                         </div>
                     </div>
@@ -97,7 +93,7 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
                             Data de Emissão: {commission?.commissionDate}
                         </div>
-                        <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
+                        <div className="bar-item col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 ">
                             Distribuidora: {commission?.distributor}
                         </div>
                     </div>
@@ -119,7 +115,7 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
                             Total de Unidades: {commission?.totalQuantity}
                         </div>
 
-                        <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <div className="bar-item col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                             Valor Total do Pedido: {commission?.totalValue.toFixed(2)}
                         </div>
                     </div>

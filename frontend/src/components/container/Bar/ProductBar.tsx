@@ -129,7 +129,7 @@ export function ProductMenuBar({ productId }: ProductProps) {
                     </div>
                     <div className="modal-footer">
                         <button className="text-close" data-bs-dismiss="modal">Cancelar</button>
-                        <button className="btn-danger" onClick={() => deleteProduct()}> Deletar Produto</button>
+                        <button className="btn-danger" data-bs-dismiss="modal" onClick={() => deleteProduct()}> Deletar Produto</button>
                     </div>
                 </div>
             </div>

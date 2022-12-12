@@ -1,6 +1,4 @@
 .form-container {
-    max-width: 580px;
-    margin: 40px auto;
     padding: 20px;
 }
 
@@ -46,7 +44,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 12px;
     border-radius: 8px;
 }
 

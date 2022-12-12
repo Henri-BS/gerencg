@@ -40,7 +40,7 @@ public class CommissionCodeController {
 
     @DeleteMapping("/delete-commission/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCommission(String id){
+    public void deleteCommission(@PathVariable String id){
         this.codeService.deleteCommission(id);
     }
 

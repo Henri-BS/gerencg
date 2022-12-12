@@ -3,7 +3,7 @@ import "./styles.css"
 import Logo from 'assets/img/logo-g.png'
 import * as AiIcons from 'react-icons/ai'
 import { useState } from "react";
-import { MdClose } from "react-icons/md";
+import { MdClose, MdLibraryAdd, MdLibraryBooks, MdList, MdListAlt } from "react-icons/md";
 import { AddProduct } from "components/container/Form/ProductForm";
 import { AddCommissionForm } from "components/container/Form/CommissionForm";
 
@@ -74,7 +74,8 @@ function NavBar() {
 <div className="modal-dialog" role="document">
   <div className="modal-content">
     <div className="modal-header" >
-      <label className="modal-title" id="commissionLabel">Adicionar um novo pedido</label>
+      <label className="modal-title" id="commissionLabel" data-bs-dismiss="modal">Adicionar um novo pedido <Link to="/commission-list" className="form-links" ><MdLibraryBooks/></Link></label>
+      
       <button className="close" data-bs-dismiss="modal" aria-label="Close">
         <span aria-hidden="true"><MdClose /></span>
       </button>

@@ -34,7 +34,7 @@
 }
 
 .table-box-title:hover {
-    background: var(--dark-prim);
+    background: var(--dark-quat);
     color: #fff;
 }
 
