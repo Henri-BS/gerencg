@@ -1,6 +1,6 @@
 
 import { AddCommissionForm } from "components/container/Form/CommissionForm";
-import { AddProduct } from "components/container/Form/ProductForm";
+import { AddProductForm } from "components/container/Form/ProductForm";
 import { category, categoryStats, product, commission } from "components/shared/MenuList";
 import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";

@@ -31,8 +31,8 @@
 .form-links {
     color: var(--blue-seco);
     font-size: large;
-    text-decoration: underline;
     transition: all 0.3s ease-out;
+    text-decoration: none;
 }
 
 .form-links:hover {

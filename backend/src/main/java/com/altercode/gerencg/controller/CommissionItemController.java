@@ -49,8 +49,8 @@ public class CommissionItemController {
         return new ResponseEntity<>(newItem, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update-item/{id}")
-    public ResponseEntity<CommissionItemDTO> updateItem(@RequestBody CommissionItemDTO item, @PathVariable Long id) {
+    @PutMapping("/update-item")
+    public ResponseEntity<CommissionItemDTO> updateItem(@RequestBody CommissionItemDTO item) {
         CommissionItemDTO edit = commissionItemService.updateItem(item);
         return new ResponseEntity<>(edit, HttpStatus.OK);
     }

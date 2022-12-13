@@ -45,8 +45,8 @@ function ProductDataTable() {
                     <tbody className="border-0">
                         {page.content?.map(item => (
                             <tr key={item.id}>
-                                <Link to={`/product/${item.product}`} className="table-box-title">
-                                    <h5>{item.product}</h5>
+                                <Link to={`/product/${item.productId}`} className="table-box-title">
+                                    <h5>{item.productId}</h5>
                                 </Link>
 
                                 <td className="table-box">{item.description}</td>

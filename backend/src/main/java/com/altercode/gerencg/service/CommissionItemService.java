@@ -106,10 +106,12 @@ public class CommissionItemService implements ICommissionItemService {
 
         int quantity = item.getItemQuantity();
         double price = item.getUnitValue();
+        LocalDate validate = item.getItemValidate();
         LocalDate date = item.getCode().getCommissionDate();
 
         product.setQuantity(quantity);
         product.setPrice(price);
+        product.setValidate(validate);
         product.setLastUpdateDate(date);
         productRepository.save(product);
 

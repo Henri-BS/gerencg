@@ -17,13 +17,9 @@ public class ProductHistoryDTO implements Serializable {
 
 	private Long productId;
 	private String description;
-	private String image;
 	private Double price;
 	private Integer quantity;
 	private LocalDate validate;
-	private Double measureValue;
-	private String measure;
-	private String category;
 	private LocalDateTime createdDate;
 
 	public ProductHistoryDTO() {
@@ -32,13 +28,10 @@ public class ProductHistoryDTO implements Serializable {
 	public ProductHistoryDTO(ProductHistory entity) {
 		productId = entity.getProduct().getId();
 		description = entity.getDescription();
-		image = entity.getImage();
 		price = entity.getPrice();
 		quantity = entity.getQuantity();
 		validate = entity.getValidate();
-		measureValue = entity.getMeasureValue();
-		measure = entity.getMeasure().getAbbreviation();
-		category = entity.getCategory().getName();
+
 		createdDate = entity.getCreatedDate();
 	}
 
@@ -59,16 +52,6 @@ public class ProductHistoryDTO implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-
-	public String getImage() {
-		return image;
-	}
-
-
-	public void setImage(String image) {
-		this.image = image;
 	}
 
 
@@ -101,29 +84,6 @@ public class ProductHistoryDTO implements Serializable {
 		this.validate = validate;
 	}
 
-	public Double getMeasureValue() {
-		return measureValue;
-	}
-
-	public void setMeasureValue(Double measureValue) {
-		this.measureValue = measureValue;
-	}
-
-	public String getMeasure() {
-		return measure;
-	}
-
-	public void setMeasure(String measure) {
-		this.measure = measure;
-	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
 
 	public LocalDateTime getCreatedDate() {
 		return createdDate;
@@ -133,8 +93,4 @@ public class ProductHistoryDTO implements Serializable {
 	public void setCreatedDate(LocalDateTime createdDate) {
 		this.createdDate = createdDate;
 	}
-
-
-
-
 }

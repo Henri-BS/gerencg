@@ -52,6 +52,5 @@ public class CategoryController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCategory(@PathVariable String id) {
     	this.categoryService.deleteCategory(id);
-    	
     }
 }

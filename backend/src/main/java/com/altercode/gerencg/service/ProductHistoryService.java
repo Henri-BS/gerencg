@@ -46,30 +46,20 @@ public class ProductHistoryService {
 
 	public ProductDTO updateProduct(ProductHistoryDTO dto) {
 		Product product = productRepository.findById(dto.getProductId()).get();
-		Measure measure = measureRepository.findById(dto.getMeasure()).get();
-		Category category = categoryRepository.findById(dto.getCategory()).get();
 
 		ProductHistory history = new ProductHistory();
 		history.setProduct(product);
 		history.setDescription(dto.getDescription());
-		history.setImage(dto.getImage());
 		history.setPrice(dto.getPrice());
 		history.setQuantity(dto.getQuantity());
 		history.setValidate(dto.getValidate());
-		history.setMeasureValue(dto.getMeasureValue());
-		history.setMeasure(measure);
-		history.setCategory(category);
 		history.setCreatedDate(history.getCreatedDate());
 		history = historyRepository.saveAndFlush(history);
 		
 		product.setDescription(history.getDescription());
-		product.setImage(history.getImage());
 		product.setPrice(history.getPrice());
 		product.setQuantity(history.getQuantity());
 		product.setValidate(history.getValidate());
-		product.setMeasureValue(history.getMeasureValue());
-		product.setMeasure(history.getMeasure());
-		product.setCategory(history.getCategory());
 		product.setAlteration(product.getAllHistory().size());
 		product = productRepository.save(product);
 		

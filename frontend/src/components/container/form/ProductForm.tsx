@@ -1,13 +1,12 @@
 import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { CategoryPage } from "types/category";
 import { MeasurePage } from "types/measure";
 import { Product, ProductProps } from "types/product";
 import { BASE_URL } from "utils/requests";
 
-export function AddProduct() {
+export function AddProductForm() {
     const navigate = useNavigate();
     const [msg, setMsg] = useState('')
 
@@ -37,7 +36,7 @@ export function AddProduct() {
             })
     }, [])
 
-    
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const description = (event.target as any).description.value;
         const image = (event.target as any).image.value;
@@ -73,72 +72,70 @@ export function AddProduct() {
 
 
     return (
-        <div className="form-container">
+        <form className="form-container" onSubmit={handleSubmit}>
             <div className="form-card-container">
-                <form className="gerencg-form" onSubmit={handleSubmit}>
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="description">Descrição: </label>
-                        <input type="text" className="form-control" id="description" />
-                    </div>
 
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="image">Image: </label>
-                        <input type="text" className="form-control" id="image" />
-                    </div>
-
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="price">Preço: </label>
-                        <input className="form-control" id="price" />
-                    </div>
-
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="quantity">Quantidade: </label>
-                        <input type="number" className="form-control" id="quantity" />
-                    </div>
-
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="validate">Validade: </label>
-                        <input type="text" className="form-control" id="validate" />
-                    </div>
-
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="measureValue">Valor de Medida: </label>
-                        <input className="form-control" id="measureValue" />
-                    </div>
-
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="measure">Tipo de Medida: </label>
-                        <select className="form-control" id="measure" placeholder="buscar medida">
-                            {measureList.content?.map(item => (
-                                <option key={item.abbreviation}>
-                                    {item.abbreviation}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="category">Categoria: </label>
-                        <select className="form-control" id="category">
-                            {categoryList.content?.map(item => (
-                                <option key={item.name}>
-                                    {item.name}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-
-                    <div className="form-btn-container">
-                        <button type="submit" className="btn-confirm">
-                            Adicionar Produto
-                        </button>
-                    </div>
-                </form>
-                <div className="msg-container">
-                    <h3>{msg}</h3>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="description">Descrição: </label>
+                    <input type="text" className="form-control" id="description" />
                 </div>
+
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="image">Image: </label>
+                    <input type="text" className="form-control" id="image" />
+                </div>
+
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="price">Preço: </label>
+                    <input className="form-control" id="price" />
+                </div>
+
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="quantity">Quantidade: </label>
+                    <input type="text" className="form-control" id="quantity" />
+                </div>
+
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="validate">Validade: </label>
+                    <input type="date" className="form-control" id="validate" />
+                </div>
+
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="measureValue">Valor de Medida: </label>
+                    <input className="form-control" id="measureValue" />
+                </div>
+
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="measure">Tipo de Medida: </label>
+                    <select className="form-control" id="measure">
+                        {measureList.content?.map(item => (
+                            <option key={item.abbreviation}>
+                                {item.abbreviation}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="category">Categoria: </label>
+                    <select className="form-control" id="category">
+                        {categoryList.content?.map(item => (
+                            <option key={item.name}>
+                                {item.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
             </div>
-        </div>
+            <div className="modal-footer">
+                <button className="text-close" data-bs-dismiss="modal">cancelar</button>
+                <button type="submit" className="btn-confirm">Adicionar Produto</button>
+            </div>
+            <div className="msg-container">
+                <h3>{msg}</h3>
+            </div>
+        </form>
     );
 }
 
@@ -147,7 +144,6 @@ export const ProductFormEdit = ({ productId }: ProductProps) => {
 
     //Get Product 
     const [product, setProduct] = useState<Product>();
-
     useEffect(() => {
         axios.get(`${BASE_URL}/product/${productId}`)
             .then((response) => {
@@ -158,7 +154,7 @@ export const ProductFormEdit = ({ productId }: ProductProps) => {
     //Creating submission event for html form to update the product
     const navigate = useNavigate();
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        
+
         const description = (event.target as any).description.value;
         const price = (event.target as any).price.value;
         const quantity = (event.target as any).quantity.value;
@@ -169,7 +165,7 @@ export const ProductFormEdit = ({ productId }: ProductProps) => {
             method: "PUT",
             url: "/history",
             data: {
-                product: productId,
+                productId: productId,
                 description: description,
                 price: price,
                 quantity: quantity,
@@ -184,44 +180,32 @@ export const ProductFormEdit = ({ productId }: ProductProps) => {
     };
 
     return (
-        <div className="form-container">
+        <form className="form-container" onSubmit={handleSubmit}>
             <div className="form-card-container">
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="description">Descrição: </label>
+                    <input className="form-control" id="description" defaultValue={product?.description} placeholder={product?.description} />
+                </div>
 
-                <form className="gerencg-form" onSubmit={handleSubmit}>
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="description">Descrição: </label>
-                        <input className="form-control" id="description" placeholder={product?.description}/>
-                    </div>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="price">Preço: </label>
+                    <input className="form-control" id="price" defaultValue={product?.price} placeholder={product?.price.toString()} />
+                </div>
 
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="price">Preço: </label>
-                        <input className="form-control" id="price" placeholder={product?.price.toFixed(2)}/>
-                    </div>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="quantity">Quantidade: </label>
+                    <input className="form-control" id="quantity" defaultValue={product?.quantity} placeholder={product?.quantity.toString()} />
+                </div>
 
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="quantity">Quantidade: </label>
-                        <input className="form-control" id="quantity" placeholder={product?.quantity.toFixed()}/>
-                    </div>
-
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="validate">Validade: </label>
-                        <input type="date" className="form-control" id="validate" placeholder={product?.validate}/>
-                    </div>
-
-                    <div className="form-btn-container">
-                        <button type="submit" className=" btn-confirm" >
-                            Editar Produto
-                        </button>
-                    </div>
-
-                    <Link className="form-btn-container" to={`/product/${productId}`}>
-                        <button className=" text-close mt-3">
-                            Retornar
-                        </button>
-                    </Link>
-                    
-                </form>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="validate">Validade: </label>
+                    <input type="date" className="form-control" id="validate" defaultValue={product?.validate} placeholder={product?.validate} />
+                </div>
+            </div> <div className="modal-footer">
+                <button className="text-close" data-bs-dismiss="modal">cancelar</button>
+                <button type="submit" className="btn-confirm">Editar Produto</button>
             </div>
-        </div>
+        </form>
     );
 }
+

@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import "./styles.css"
 import { ProductHistoryByProduct } from "pages/Listings/ProductListing";
 import { MeasureInfo } from "components/container/Card/MeasureCard";
-import { AddProduct, ProductFormEdit } from "components/container/Form/ProductForm";
+import { AddProductForm, ProductFormEdit } from "components/container/Form/ProductForm";
 import { QuantityProductChart } from "components/dashboard/Chart/ProductCharts";
 import { ProductMeasureList } from "pages/Listings/MeasureListing";
 import { ProductMenuBar, ProductSideBar } from "components/container/Bar/ProductBar";
@@ -42,7 +42,7 @@ export function SaveProduct() {
 
   return (
     <div className="container-blur">
-      <AddProduct />
+      <AddProductForm />
     </div>
   );
 }

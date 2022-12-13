@@ -1,15 +1,13 @@
 import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CategoryPage } from "types/category";
-import { CategoryStats } from "types/category";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 
 export function AddCategoryStats() {
 
     const navigate = useNavigate();
-    const [stats, setStats] = useState<CategoryStats>()
     const [msg, setMsg] = useState('')
 
     //Get CategoryList for the category selector    
@@ -55,62 +53,53 @@ export function AddCategoryStats() {
 
 
     return (
-        <div className="form-container">
+        <form className="form-container" onSubmit={handleSubmit}>
             <div className="form-card-container">
-                <h3>Adicionar um Novo Registro de Categoria</h3>
-                <form className="gerencg-form" onSubmit={handleSubmit}>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="registrationDate">Data de Registro: </label>
+                    <input type="text" className="form-control" id="registrationDate" />
+                </div>
 
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="registrationDate">Data de Registro: </label>
-                        <input type="text" className="form-control" id="registrationDate" />
-                    </div>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="addedProducts">Produtos Adicionados: </label>
+                    <input className="form-control" id="addedProducts" />
+                </div>
 
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="addedProducts">Produtos Adicionados: </label>
-                        <input className="form-control" id="addedProducts" />
-                    </div>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="removedProducts">Produtos Removidos: </label>
+                    <input type="number" className="form-control" id="removedProducts" />
+                </div>
 
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="removedProducts">Produtos Removidos: </label>
-                        <input type="number" className="form-control" id="removedProducts" />
-                    </div>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="income">Renda: </label>
+                    <input type="text" className="form-control" id="income" />
+                </div>
 
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="income">Renda: </label>
-                        <input type="text" className="form-control" id="income" />
-                    </div>
-
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="expense">Despesas: </label>
-                        <input className="form-control" id="expense" />
-                    </div>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="expense">Despesas: </label>
+                    <input className="form-control" id="expense" />
+                </div>
 
 
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="category">Categoria: </label>
-                        <select className="form-control" id="category">
-                            {categoryList.content?.map(item => (
-                                <option key={item.name}>
-                                    {item.name}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-
-                    <div className="form-btn-container">
-                        <button type="submit" className="gerencg-btn" >
-                            Adicionar Registro
-                        </button>
-                    </div>
-
-                </form>
-                <Link to="/category-stats">
-                    <h5 className=" form-links mt-5">Ir para a Lista de Registros</h5>
-                </Link>
-                 <div className="msg-container">
-                    <h3>{msg}</h3>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="category">Categoria: </label>
+                    <select className="form-control" id="category">
+                        {categoryList.content?.map(item => (
+                            <option key={item.name}>
+                                {item.name}
+                            </option>
+                        ))}
+                    </select>
                 </div>
             </div>
-        </div>
+            <div className="modal-footer">
+<button className="text-close" data-bs-dismiss="modal">cancelar</button>
+                <button type="submit" className="gerencg-btn" >Adicionar Registro</button>
+
+            </div>
+            <div className="msg-container">
+                <h3>{msg}</h3>
+            </div>
+        </form>
     );
 }
