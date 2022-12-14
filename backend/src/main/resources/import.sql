@@ -26,11 +26,11 @@ INSERT INTO tb_category_stats (category_id, added_products, removed_products, ex
 INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES ('Variados', 123, 96, 4031.00, 6320.50, '2021-11-24'); 
 INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES ('Cosméticos e Higiene', 324, 123, 1921.00, 2041.30, '2021-11-23'); 
 INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES ('Cozinha', 231, 242, 2311.00, 4192.75, '2021-11-23'); 
-INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES ('Tecidos e Acessórios', 432, 231, 2421.00, 3985.90, '2021-11-23'); 
+INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES ('Vestuário e Acessórios', 432, 231, 2421.00, 3985.90, '2021-11-23');
 INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES ('Brinquedos', 321, 213, 2234.00, 4024.00, '2021-11-21');
 INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES ('Eletrônicos', 54, 32, 5231.00, 6203.80, '2021-11-21');
 INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES ('Alimentícios', 745, 535, 8323.00, 10329.00, '2021-11-20'); 
-INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES ('Tecidos e Acessórios', 243, 324, 3132.00, 3912.00, '2021-11-20');
+INSERT INTO tb_category_stats (category_id, added_products, removed_products, expense, income, registration_date) VALUES ('Vestuário e Acessórios', 243, 324, 3132.00, 3912.00, '2021-11-20');
 
 
 INSERT INTO tb_measure(measure_description, abbreviation) VALUES ('quilograma', 'kg');
@@ -226,20 +226,6 @@ INSERT INTO tb_product (description, image, price, quantity, validate, measure_v
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Tintura Bigen 48 Castanho Escuro', 'https://cdn2.iconfinder.com/data/icons/beauty-and-spa-2-4/65/84-512.png', 0, 0, '2999-12-30', 200, 'ml', 'Cosméticos e Higiene');
 INSERT INTO tb_product (description, image, price, quantity, validate, measure_value, measure_id, category_id) VALUES ('Tintura Bigen 59 Preto Azulado', 'https://cdn2.iconfinder.com/data/icons/beauty-and-spa-2-4/65/84-512.png', 0, 0, '2999-12-30', 200, 'ml', 'Cosméticos e Higiene');
 
-
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(1, 'Arroz Doura', 23, 3.60, '2023-04-02', 1, 'kg', 'Alimentícios', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(1, 'Arroz Doura', 35, 3.60, '2023-06-30', 1, 'kg', 'Alimentícios', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(1, 'Arroz Doura', 50, 3.80, '2023-09-10', 1, 'kg', 'Alimentícios', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(1, 'Arroz Doura', 49, 3.90, '2024-02-02', 1, 'kg', 'Alimentícios', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(1, 'Arroz Doura', 14, 3.90, '2024-04-30', 1, 'kg', 'Alimentícios', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(1, 'Arroz Doura', 44, 3.90, '2024-05-22', 1, 'kg', 'Alimentícios', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(1, 'Arroz Doura', 20, 3.80, '2024-08-04', 1, 'kg', 'Alimentícios', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(1, 'Arroz Doura', 80, 3.80, '2024-11-16', 1, 'kg', 'Alimentícios', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(2, 'Arroz Catarinão', 72, 4.50, '2023-04-02', 1, 'kg', 'Alimentícios', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(2, 'Arroz Catarinão', 64, 4.60, '2023-06-30', 1, 'kg', 'Alimentícios', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(2, 'Arroz Catarinão', 70, 4.75, '2023-09-10', 1, 'kg', 'Alimentícios', now());
-INSERT INTO tb_product_history(product_id, description, quantity, price, validate, measure_value, measure_id, category_id, created_date) VALUES(2, 'Arroz Catarinão', 88, 4.75, '2024-02-02', 1, 'kg', 'Alimentícios', now());
-
 INSERT INTO tb_commission_code (code, commission_date, distributor, package_type) VALUES ('20.10.2022.01-mt', '2022-10-20', 'Matheus', 'fd');
 INSERT INTO tb_commission_code (code, commission_date, distributor, package_type) VALUES ('14.11.2022.01-al', '2022-11-14', 'Aldenir', 'cx');
 INSERT INTO tb_commission_code (code, commission_date, distributor, package_type) VALUES ('05.11.2022.01-yd', '2022-11-05', 'York Distribuidora', 'cx');
@@ -295,6 +281,11 @@ INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quant
 INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 11.90, 52.08, 1, '18.11.2022.02-jb', 157);
 INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (12, 11.90, 104.16, 2, '18.11.2022.02-jb', 158);
 INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 11.90, 52.08, 1, '18.11.2022.02-jb', 159);
+
+INSERT INTO tb_tag (title, abbreviation) VALUES ('bebida', 'bbd');
+INSERT INTO tb_tag (title, abbreviation) VALUES ('suco', 'sc');
+INSERT INTO tb_category_tag (tag_id, category_id) VALUES ('bebida', 'Alimentícios');
+INSERT INTO tb_category_tag (tag_id, category_id) VALUES ('suco', 'Alimentícios');
 
 
 

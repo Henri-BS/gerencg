@@ -1,8 +1,5 @@
 
-import { AddCommissionForm } from "components/container/Form/CommissionForm";
-import { AddProductForm } from "components/container/Form/ProductForm";
 import { category, categoryStats, product, commission } from "components/shared/MenuList";
-import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
 import "./styles.css"
 
@@ -14,9 +11,11 @@ function Home() {
             <div className="container"  >
                 <div className="jumbotron" >
                     <h1 className="display-5 mt-3">Gerenciador Comercial </h1>
-                    <p className="lead">Acompanhe a lista de produtos e tenham acesso as atuais informações de cada produto,
-                        tenha acesso a lista de categorias e veja as atuais estatísticas</p>
-                        <h4>Bem Vindo </h4>
+                    <p className="lead">
+                        Navegue pela lista de produtos e tenha acesso as atuais informações de cada um deles,
+                        mantenha a organização através das lista de categorias e
+                        consulte os seus pedidos encomendados e veja as atuais estatísticas</p>
+                        
                     <hr />
                     <div className="container-menu row">
                         <Link className="menu-item col-sm-3" to={product.path}>

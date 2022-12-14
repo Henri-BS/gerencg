@@ -8,7 +8,7 @@ import IUpdateProduct from "assets/img/update.png"
 import IDeleteProduct from "assets/img/delete-img.png"
 import "./styles.css"
 import { EditItemForm } from "../Form/CommissionForm";
-import { MdClose } from "react-icons/md";
+import { MdClose, MdLink } from "react-icons/md";
 
 
 type Commission = {
@@ -77,7 +77,7 @@ export function CommissionItemCard({ itemId }: ItemProps) {
                 </div>
             <div className="gerencg-item-card">
                 <div className="gerencg-box  border-dark">
-                    <h2>Código do Pedido: {item?.commissionCode}</h2>
+                    <h2>Código do Pedido: {item?.commissionCode} <Link to={`/commission/${item?.commissionCode}`} className="link-primary"> <MdLink/></Link></h2>
                 </div>
                 <div className="gerencg-box">
                     <h4>Descrição: {item?.productDescription}</h4>
@@ -140,15 +140,15 @@ export function CommissionItemCard({ itemId }: ItemProps) {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="itemLabel">Deseja alterar o produto realcionado ao item ?</h5>
+                            <h5 className="modal-title" id="itemLabel">Deseja alterar o produto relacionado ao item ?</h5>
                             <button className="close " data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><MdClose/></span>
                             </button>
                         </div>
                         <div className="modal-body">O produto {item?.productDescription} será atualizado com os dados deste item.</div>
                         <div className="modal-footer">
-                            <button className="border-0 bg-transparent" data-bs-dismiss="modal">Cancelar</button>
-                            <button onClick={() => updateProductByItem()} className="btn btn-primary" data-bs-dismiss="modal">Atualizar Produto</button>
+                            <button className="text-close" data-bs-dismiss="modal">cancelar</button>
+                            <button onClick={() => updateProductByItem()} className="btn btn-primary" data-bs-dismiss="modal">Atualizar</button>
                         </div>
                     </div>
                 </div>

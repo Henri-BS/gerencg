@@ -1,5 +1,7 @@
 package com.altercode.gerencg.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -35,6 +37,15 @@ public class CommissionCode {
 
     @OneToMany(mappedBy = "code", cascade = CascadeType.ALL)
     private final Set<CommissionItem> commissionItems = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "tb_commission_tag",
+            joinColumns = @JoinColumn(name = "code_id", referencedColumnName = "code"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "title")
+    )
+    @JsonManagedReference
+    private Set<Tag> tags;
 
     public CommissionCode() {
     }

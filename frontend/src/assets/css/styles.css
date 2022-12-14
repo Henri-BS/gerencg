@@ -55,6 +55,17 @@ body {
     text-decoration: underline;
 }
 
+.link-primary {
+    color: var(--blue-prim);
+    font-size: x-large;
+    transition: all 0.3s ease-out;
+    text-decoration: none;
+}
+
+.link-primary:hover {
+    color: var(--blue-quin);
+}
+
 
 /*modal styled*/
 

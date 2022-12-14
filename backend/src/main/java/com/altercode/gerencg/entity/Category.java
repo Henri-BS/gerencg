@@ -2,16 +2,13 @@ package com.altercode.gerencg.entity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
@@ -37,10 +34,19 @@ public class Category {
 	private LocalDateTime lastModifiedDate;
 	
 	@OneToMany(mappedBy = "category")
-	private List<CategoryStats> categoryStats = new ArrayList<>();
+	private final List<CategoryStats> categoryStats = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "category")
-	private List<Product> products = new ArrayList<>();
+	private final List<Product> products = new ArrayList<>();
+
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(
+			name = "tb_category_tag",
+			joinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_name"),
+			inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "title"))
+	@JsonManagedReference
+	private Set<Tag> tags;
 	
 	public Category() {
 	}
