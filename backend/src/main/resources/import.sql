@@ -282,10 +282,90 @@ INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quant
 INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (12, 11.90, 104.16, 2, '18.11.2022.02-jb', 158);
 INSERT INTO tb_commission_item (quantity, unit_value, total_value, package_quantity, code_id, product_id) VALUES (6, 11.90, 52.08, 1, '18.11.2022.02-jb', 159);
 
-INSERT INTO tb_tag (title, abbreviation) VALUES ('bebida', 'bbd');
-INSERT INTO tb_tag (title, abbreviation) VALUES ('suco', 'sc');
-INSERT INTO tb_category_tag (tag_id, category_id) VALUES ('bebida', 'Alimentícios');
-INSERT INTO tb_category_tag (tag_id, category_id) VALUES ('suco', 'Alimentícios');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Bebida', 'Produtos líquidos para o consumo');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Suco', 'Bebidas extraídas de frutas');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Água Mineral', 'Água mineral em garrafa');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Refrigerante', 'Bebidas gaseficadas com o extrato de frutas');
+
+INSERT INTO tb_tag (title, tag_description) VALUES ('Água Sanitária', 'Limpeza e agente clareador');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Limpeza Multiuso', 'Limpeza e desinfecção');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Desinfetante', 'Desinfecção e odorização');
+
+INSERT INTO tb_tag (title, tag_description) VALUES ('Óleo Capilar', 'Tratamento capilar');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Alisamento Capilar', 'Química capilar');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Tintura Capilar', 'Química capilar');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Shampoo', 'Tratamento capilar');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Condicionador', 'Tratamento capilar');
+
+INSERT INTO tb_tag (title, tag_description) VALUES ('Toalha', 'Higiene pessoal');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Pano De Chão', 'Pano para limpeza');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Flanela', 'Pano para limpeza');
 
 
+INSERT INTO tb_tag (title, tag_description) VALUES ('Higiene Íntima', 'Produtos de Higiene íntima');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Fralda', 'Hígiene íntima');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Fralda', '26.11.2022.01-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Higiene Íntima', '26.11.2022.01-mt');
 
+
+INSERT INTO tb_tag (title, tag_description) VALUES ('Cosmético Capilar', 'Produto cosmético capilar');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Shampoo', '26.11.2022.05-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Cosmético Capilar', '26.11.2022.05-mt');
+
+INSERT INTO tb_tag (title, tag_description) VALUES ('Desodorante Antitranspirante', 'Cosméticos desorizadores');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Cosmético Desorizador', 'Produtos de cosméticos desorizadores');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Desodorante Antitranspirante', '26.11.2022.04-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Cosmético Desorizador', '26.11.2022.04-mt');
+
+INSERT INTO tb_tag (title, tag_description) VALUES ('Lavanderia', 'Produtos para limpeza de roupas');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Amaciante De Roupas', 'Limpeza de roupas');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Lavanderia', '26.11.2022.02-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Amaciante De Roupas', '26.11.2022.02-mt');
+
+INSERT INTO tb_tag (title, tag_description) VALUES ('Doce', 'Produtos de doces em geral');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Achocolatado', 'Bebida Láctea');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Doce', '26.11.2022.10-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Bebida', '26.11.2022.10-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Achocolatado', '26.11.2022.10-mt');
+
+INSERT INTO tb_tag (title, tag_description) VALUES ('Massas', 'Produtos alimentícios de massas');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Macarrão', 'Alimentícios de massa');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Laticínios', 'Produtos alimentícios com leite e derivados');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Leite Condensado', 'Produtos alimentícios de massas');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Massas', '26.11.2022.09-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Macarrão', '26.11.2022.09-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Laticínios', '26.11.2022.09-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Leite Condensado', '26.11.2022.09-mt');
+
+
+INSERT INTO tb_tag (title, tag_description) VALUES ('Papel', 'Produtos feitos de papel');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Papel Crepom', 'Papel colorido');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Marcadores', 'Produtos de pincéis para escrever');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Princel Para Caderno', 'Pincéis para escrever');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Papel', '26.11.2022.12-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Papel Crepom', '26.11.2022.12-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Marcadores', '26.11.2022.12-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Princel Para Caderno', '26.11.2022.12-mt');
+
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Bebida', '26.11.2022.08-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Refrigerante', '26.11.2022.08-mt');
+
+INSERT INTO tb_tag (title, tag_description) VALUES ('Recipiente De Cozinha', 'Produtos de recipientes para cozinha');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Tigela', 'Recipiente para cozinha');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Recipiente De Cozinha', '26.11.2022.13-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Tigela', '26.11.2022.13-mt');
+
+INSERT INTO tb_tag (title, tag_description) VALUES ('Carnes', 'Produtos de carne em geral');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Galinha Congelada', 'Carnes');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Galinha Congelada', '26.11.2022.07-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Carnes', '26.11.2022.07-mt');
+
+INSERT INTO tb_tag (title, tag_description) VALUES ('Higiene Pessoal', 'Produtos para higiene pessoal');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Sabonete', 'Limpeza para as mãos');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Sabonete', '26.11.2022.06-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Higiene Pessoal', '26.11.2022.06-mt');
+
+INSERT INTO tb_tag (title, tag_description) VALUES ('Manicure e Pedicure', 'Produtos de cosméticos para mãos e pés');
+INSERT INTO tb_tag (title, tag_description) VALUES ('Esmalte', 'Cosméticos para mãos e pés');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Esmalte', '26.11.2022.11-mt');
+INSERT INTO tb_commission_tag (tag_id, code_id) VALUES ('Manicure e Pedicure', '26.11.2022.06-mt');

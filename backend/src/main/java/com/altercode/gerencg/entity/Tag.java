@@ -1,9 +1,6 @@
 package com.altercode.gerencg.entity;
 
-import com.altercode.gerencg.dto.CommissionCodeDTO;
-
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -13,20 +10,21 @@ public class Tag {
     @Id
     private String title;
 
-    private String abbreviation;
+    @Column(name = "tag_description")
+    private String description;
 
     @ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
     private Set<Category> categories;
 
-@ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
-private Set<CommissionCode> commissions;
+    @ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
+    private Set<CommissionCode> commissions;
 
     public Tag() {
     }
 
-    public Tag(String title, String abbreviation) {
+    public Tag(String title, String description) {
         this.title = title;
-        this.abbreviation = abbreviation;
+        this.description = description;
     }
 
     public String getTitle() {
@@ -37,12 +35,12 @@ private Set<CommissionCode> commissions;
         this.title = title;
     }
 
-    public String getAbbreviation() {
-        return abbreviation;
+    public String getDescription() {
+        return description;
     }
 
-    public void setAbbreviation(String abbreviation) {
-        this.abbreviation = abbreviation;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Set<Category> getCategories() {
