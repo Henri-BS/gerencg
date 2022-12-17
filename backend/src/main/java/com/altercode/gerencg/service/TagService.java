@@ -10,6 +10,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @Transactional
 public class TagService implements ITagService {
@@ -18,8 +21,14 @@ public class TagService implements ITagService {
     private TagRepository tagRepository;
 
     @Override
-    public Page<TagDTO> findTagsByTitle(Pageable pageable, String title) {
-        Page<Tag> list = tagRepository.findTagsByTitle(pageable, title);
+    public Page<TagDTO> findAllTags(Pageable pageable, String title) {
+        Page<Tag> list = tagRepository.findAllTags(pageable, title);
         return list.map(x -> new TagDTO(x));
+    }
+
+    @Override
+    public List<TagDTO> getAllTags(List<String> title) {
+        List<Tag> result = tagRepository.findAllById(title);
+        return result.stream().map(x -> new TagDTO(x)).collect(Collectors.toList());
     }
 }

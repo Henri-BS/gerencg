@@ -8,9 +8,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface TagRepository extends JpaRepository<Tag, String> {
 
     @Query("SELECT obj FROM Tag obj WHERE obj.title LIKE %?1%")
-    Page<Tag> findTagsByTitle(Pageable pageable, String title);
+    Page<Tag> findAllTags(Pageable pageable, String title);
+
+/*
+    List<Tag> findAllByTitle(List<String> title);
+*/
 }

@@ -12,6 +12,11 @@ public class TagDTO implements Serializable {
     public TagDTO() {
     }
 
+    public TagDTO(String title) {
+        this.title = title;
+    }
+
+
     public TagDTO(Tag entity) {
        title = entity.getTitle();
        description = entity.getDescription();
