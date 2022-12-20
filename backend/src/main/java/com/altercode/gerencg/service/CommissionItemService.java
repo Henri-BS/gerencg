@@ -1,7 +1,6 @@
 package com.altercode.gerencg.service;
 
 import com.altercode.gerencg.dto.CommissionItemDTO;
-import com.altercode.gerencg.dto.CommissionResultsDTO;
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.CommissionCode;
 import com.altercode.gerencg.entity.CommissionItem;
@@ -40,8 +39,9 @@ public class CommissionItemService implements ICommissionItemService {
         return result.map(x -> new CommissionItemDTO(x));
     }
 
+    @Override
     public List<CommissionItemDTO> findItemsByCode(CommissionCode code) {
-        List<CommissionItem> result = itemRepository.findAllCommissionsByCode(code);
+        List<CommissionItem> result = itemRepository.findItemsByCode(code);
         return result.stream().map(x -> new CommissionItemDTO(x)).collect(Collectors.toList());
     }
 
@@ -92,11 +92,6 @@ public class CommissionItemService implements ICommissionItemService {
     @Override
     public void deleteItem(Long id) {
         this.itemRepository.deleteById(id);
-    }
-
-    @Override
-    public List<CommissionResultsDTO> commissionResults() {
-        return itemRepository.commissionResults();
     }
 
     @Override

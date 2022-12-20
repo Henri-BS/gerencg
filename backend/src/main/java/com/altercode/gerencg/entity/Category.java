@@ -33,20 +33,11 @@ public class Category {
 	@Column(name = "last_modified_date")
 	private LocalDateTime lastModifiedDate;
 	
-	@OneToMany(mappedBy = "category")
-	private final List<CategoryStats> categoryStats = new ArrayList<>();
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+	private List<CategoryStats> categoryStats = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "category")
-	private final List<Product> products = new ArrayList<>();
-
-
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(
-			name = "tb_category_tag",
-			joinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_name"),
-			inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "title"))
-	@JsonManagedReference
-	private Set<Tag> tags;
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+	private List<Product> products = new ArrayList<>();
 	
 	public Category() {
 	}
@@ -106,6 +97,6 @@ public class Category {
 	public void setTotalRegisters(Integer totalRegisters) {
 		this.totalRegisters = totalRegisters;
 	}
-	
-	
+
+
 }

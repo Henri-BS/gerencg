@@ -42,15 +42,13 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-
-
-    @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private final Set<Calculator> calculators = new HashSet<>();
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private final Set<ProductHistory> history = new HashSet<>();
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private final Set<CommissionItem> commissionItems = new HashSet<>();
 
     public Product() {
@@ -66,10 +64,6 @@ public class Product {
         this.validate = validate;
         this.measure = measure;
         this.category = category;
-    }
-
-
-    public Product(String description2, String image2, Double price2, Integer quantity2, LocalDate validate2, Double measureValue2, Measure measure2, Category category2) {
     }
 
     public Long getId() {

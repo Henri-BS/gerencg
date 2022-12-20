@@ -1,7 +1,11 @@
 package com.altercode.gerencg.entity;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+
+import static org.hibernate.annotations.CascadeType.REFRESH;
 
 @Entity
 @Table(name = "tb_commission_item")
@@ -27,7 +31,8 @@ public class CommissionItem {
     @Column(name = "package_quantity")
     private Integer packageQuantity;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @Cascade({REFRESH})
     @JoinColumn(name = "code_id")
     private CommissionCode code;
 

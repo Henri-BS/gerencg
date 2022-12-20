@@ -4,6 +4,7 @@ import com.altercode.gerencg.entity.CommissionCode;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Set;
 
 public class CommissionCodeDTO implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -16,6 +17,7 @@ public class CommissionCodeDTO implements Serializable {
     private Integer totalPackage;
     private String packageType;
     private Integer amountItems;
+
 
     public CommissionCodeDTO() {
     }
@@ -94,4 +96,5 @@ public class CommissionCodeDTO implements Serializable {
     public void setAmountItems(Integer amountItems) {
         this.amountItems = amountItems;
     }
+
 }

@@ -13,12 +13,6 @@ public class Tag {
     @Column(name = "tag_description")
     private String description;
 
-    @ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
-    private Set<Category> categories;
-
-    @ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
-    private Set<CommissionCode> commissions;
-
     public Tag() {
     }
 
@@ -41,10 +35,6 @@ public class Tag {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Set<Category> getCategories() {
-        return categories;
     }
 
 }

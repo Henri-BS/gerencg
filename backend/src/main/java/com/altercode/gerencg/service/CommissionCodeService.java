@@ -7,6 +7,7 @@ import com.altercode.gerencg.entity.Measure;
 import com.altercode.gerencg.repository.CommissionCodeRepository;
 import com.altercode.gerencg.repository.CommissionItemRepository;
 import com.altercode.gerencg.repository.MeasureRepository;
+import com.altercode.gerencg.repository.TagRepository;
 import com.altercode.gerencg.service.iservice.ICommissionCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,9 +28,12 @@ public class CommissionCodeService implements ICommissionCodeService {
     @Autowired
     private MeasureRepository measureRepository;
 
+    @Autowired
+    private TagRepository tagRepository;
+
     @Override
     public Page<CommissionCodeDTO> findItemsByCode(Pageable pageable, String code) {
-        Page<CommissionCode> result = codeRepository.findItemsByCode(pageable, code);
+        Page<CommissionCode> result = codeRepository.findCommissionsByCode(pageable, code);
         return result.map(x -> new CommissionCodeDTO(x));
     }
 
@@ -42,6 +46,7 @@ public class CommissionCodeService implements ICommissionCodeService {
     @Override
     public CommissionCodeDTO saveCommission(CommissionCodeDTO dto) {
         Measure packageType = measureRepository.findById(dto.getPackageType()).get();
+
         CommissionCode add = new CommissionCode();
         add.setCode(dto.getCode());
         add.setCommissionDate(dto.getCommissionDate());

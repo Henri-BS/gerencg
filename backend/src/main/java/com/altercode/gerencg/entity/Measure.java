@@ -3,13 +3,7 @@ package com.altercode.gerencg.entity;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_measure")
@@ -23,10 +17,10 @@ public class Measure {
 	@Column(name = "measure_description")
 	private String description;
 	
-	@OneToMany(mappedBy = "measure")
+	@OneToMany(mappedBy = "measure", cascade = CascadeType.ALL)
 	private Set<Product> product = new HashSet<>();
 
-	@OneToMany(mappedBy = "code")
+	@OneToMany(mappedBy = "packageType", cascade = CascadeType.ALL)
 	private Set<CommissionCode> codes = new HashSet<>();
 	
 	public Measure() {
@@ -62,6 +56,11 @@ public class Measure {
 		this.product = product;
 	}
 
-	
-	
+	public Set<CommissionCode> getCodes() {
+		return codes;
+	}
+
+	public void setCodes(Set<CommissionCode> codes) {
+		this.codes = codes;
+	}
 }

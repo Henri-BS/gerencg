@@ -1,7 +1,6 @@
 package com.altercode.gerencg.service.iservice;
 
 import com.altercode.gerencg.dto.CommissionItemDTO;
-import com.altercode.gerencg.dto.CommissionResultsDTO;
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.CommissionCode;
 import com.altercode.gerencg.entity.Product;
@@ -12,6 +11,7 @@ import java.util.List;
 
 
 public interface ICommissionItemService {
+
     Page<CommissionItemDTO> findAllItems(Pageable pageable);
 
     List<CommissionItemDTO> findItemsByCode(CommissionCode code);
@@ -25,8 +25,6 @@ public interface ICommissionItemService {
     CommissionItemDTO updateItem(CommissionItemDTO dto);
 
     void deleteItem(Long id);
-
-    List<CommissionResultsDTO> commissionResults();
 
     ProductDTO updateProductByItem(CommissionItemDTO dto);
 

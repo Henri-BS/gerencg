@@ -1,0 +1,99 @@
+package com.altercode.gerencg.entity;
+
+import org.hibernate.annotations.GeneratorType;
+
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "tb_commission_stats")
+public class CommissionStats {
+    @Id
+    @Column(name = "stats_id", length = 10)
+    private String id;
+
+    @Column(name = "initial_date")
+    private LocalDate initialDate;
+
+    @Column(name = "final_date")
+    private LocalDate finalDate;
+
+    @Column(name = "total_value")
+    private Double totalValue;
+
+    @Column(name = "amount_commission")
+    private Integer amountCommission;
+
+    @Column(name = "amount_items")
+    private Integer amountItems;
+
+    @OneToMany(mappedBy = "stats", cascade = CascadeType.ALL)
+    private final Set<CommissionCode> codes = new HashSet<>();
+
+    public CommissionStats() {
+    }
+
+    public CommissionStats(String id, LocalDate initialDate, LocalDate finalDate, Double totalValue,
+            Integer amountCommission, Integer amountItems, Set<CommissionCode> codes) {
+        this.id = id;
+        this.initialDate = initialDate;
+        this.finalDate = finalDate;
+        this.totalValue = totalValue;
+        this.amountCommission = amountCommission;
+        this.amountItems = amountItems;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public LocalDate getInitialDate() {
+        return initialDate;
+    }
+
+    public void setInitialDate(LocalDate initialDate) {
+        this.initialDate = initialDate;
+    }
+
+    public LocalDate getFinalDate() {
+        return finalDate;
+    }
+
+    public void setFinalDate(LocalDate finalDate) {
+        this.finalDate = finalDate;
+    }
+
+    public Double getTotalValue() {
+        return totalValue;
+    }
+
+    public void setTotalValue(Double totalValue) {
+        this.totalValue = totalValue;
+    }
+
+    public Integer getAmountCommission() {
+        return amountCommission;
+    }
+
+    public void setAmountCommission(Integer amountCommission) {
+        this.amountCommission = amountCommission;
+    }
+
+    public Integer getAmountItems() {
+        return amountItems;
+    }
+
+    public void setAmountItems(Integer amountItems) {
+        this.amountItems = amountItems;
+    }
+
+    public Set<CommissionCode> getCodes() {
+        return codes;
+    }
+}

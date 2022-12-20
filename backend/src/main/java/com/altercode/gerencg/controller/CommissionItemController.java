@@ -1,7 +1,6 @@
 package com.altercode.gerencg.controller;
 
 import com.altercode.gerencg.dto.CommissionItemDTO;
-import com.altercode.gerencg.dto.CommissionResultsDTO;
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.CommissionCode;
 import com.altercode.gerencg.entity.Product;
@@ -59,12 +58,6 @@ public class CommissionItemController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteItem(@PathVariable Long id) {
         this.commissionItemService.deleteItem(id);
-    }
-
-    @GetMapping("/item-info")
-    public ResponseEntity<List<CommissionResultsDTO>> orderResults() {
-        List<CommissionResultsDTO> list = commissionItemService.commissionResults();
-        return ResponseEntity.ok(list);
     }
 
     @PutMapping("/update-product-by-item")

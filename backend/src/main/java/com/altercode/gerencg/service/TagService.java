@@ -31,4 +31,11 @@ public class TagService implements ITagService {
         List<Tag> result = tagRepository.findAllById(title);
         return result.stream().map(x -> new TagDTO(x)).collect(Collectors.toList());
     }
+
+    public TagDTO saveTag(TagDTO dto) {
+        Tag add = new Tag();
+        add.setTitle(dto.getTitle());
+        add.setDescription(dto.getDescription());
+        return new TagDTO(tagRepository.saveAndFlush(add));
+    }
 }

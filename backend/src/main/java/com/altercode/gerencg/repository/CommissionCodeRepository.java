@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface CommissionCodeRepository extends JpaRepository<CommissionCode, String> {
 
 @Query("SELECT obj FROM CommissionCode obj WHERE obj.code LIKE %?1%")
-Page<CommissionCode> findItemsByCode(Pageable pageable, String code);
+Page<CommissionCode> findCommissionsByCode(Pageable pageable, String code);
 
 }
