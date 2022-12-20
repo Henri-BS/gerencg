@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
+
+
 
 @Service
 @Transactional
@@ -20,7 +23,8 @@ public class CommissionStatsService implements ICommissionStatsService {
 
     @Override
     public List<CommissionStatsDTO> findAllStats(String id) {
-        return null;
+        List<CommissionStats> result = statsRepository.findAllStats(id);
+        return result.stream().map(x -> new CommissionStatsDTO(x)).collect(Collectors.toList());
     }
 
     @Override
