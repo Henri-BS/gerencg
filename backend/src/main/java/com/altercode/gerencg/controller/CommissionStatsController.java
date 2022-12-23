@@ -28,4 +28,9 @@ public class CommissionStatsController {
         return new ResponseEntity<>(addStats, HttpStatus.CREATED);
     }
 
+    @PutMapping("/commission-stats-update/{id}")
+    public CommissionStatsDTO updateCommissionStats( CommissionStatsDTO dto, @PathVariable String id){
+        return statsService.updateStatsValues(dto);
+    }
+
 }

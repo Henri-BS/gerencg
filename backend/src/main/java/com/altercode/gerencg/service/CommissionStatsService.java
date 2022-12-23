@@ -1,6 +1,5 @@
 package com.altercode.gerencg.service;
 
-import com.altercode.gerencg.dto.CommissionCodeDTO;
 import com.altercode.gerencg.dto.CommissionStatsDTO;
 import com.altercode.gerencg.entity.CommissionCode;
 import com.altercode.gerencg.entity.CommissionStats;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,6 +40,23 @@ public class CommissionStatsService implements ICommissionStatsService {
         return new CommissionStatsDTO(statsRepository.saveAndFlush(add));
     }
 
+    @Override
+    public CommissionStatsDTO updateStatsValues(CommissionStatsDTO dto) {
+        CommissionStats stats = statsRepository.findById(dto.getId()).get();
 
+        double sumValues = 0;
+        int sumItems = 0;
+        for (CommissionCode i : stats.getCodes()) {
+            sumValues = sumValues + i.getTotalValue();
+            sumItems = sumItems + i.getAmountItems();
+        }
+
+        stats.setTotalValue(sumValues);
+        stats.setAmountCommission(stats.getCodes().size());
+        stats.setAmountItems(sumItems);
+        statsRepository.save(stats);
+
+        return new CommissionStatsDTO(stats);
+    }
 
 }

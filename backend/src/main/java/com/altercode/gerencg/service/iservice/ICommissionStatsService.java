@@ -10,4 +10,5 @@ public interface ICommissionStatsService {
 
     CommissionStatsDTO saveCommissionStats(CommissionStatsDTO dto);
 
+    CommissionStatsDTO updateStatsValues(CommissionStatsDTO dto);
 }

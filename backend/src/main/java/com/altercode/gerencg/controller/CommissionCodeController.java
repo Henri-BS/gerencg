@@ -58,8 +58,6 @@ public class CommissionCodeController {
         return codeService.commissionTotalValues(dto);
     }
 
-
-
     @DeleteMapping("/delete-commission/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCommission(@PathVariable String id){

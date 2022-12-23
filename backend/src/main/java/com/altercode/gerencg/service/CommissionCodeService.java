@@ -114,5 +114,4 @@ public class CommissionCodeService implements ICommissionCodeService {
         return result.stream().map(x -> new CommissionCodeDTO(x)).collect(Collectors.toList());
 
     }
-
 }
