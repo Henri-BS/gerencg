@@ -1,6 +1,7 @@
 package com.altercode.gerencg.controller;
 
 import com.altercode.gerencg.dto.CommissionCodeDTO;
+import com.altercode.gerencg.entity.CommissionStats;
 import com.altercode.gerencg.service.CommissionCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,6 +29,18 @@ public class CommissionCodeController {
         return codeService.findCodeById(id);
     }
 
+    @GetMapping("/find-commissions-by-stats/{stats}")
+    public ResponseEntity<List<CommissionCodeDTO>> findCommissionsByStats(@PathVariable CommissionStats stats) {
+        List<CommissionCodeDTO> list = codeService.findCommissionsByStats(stats);
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/update-period-stats/{stats}")
+    public ResponseEntity<List<CommissionCodeDTO>> findCommissionsByPeriod(@PathVariable CommissionStats stats){
+        List<CommissionCodeDTO> list = codeService.findCommissionsByPeriod(stats);
+        return ResponseEntity.ok(list);
+    }
+
     @PostMapping("/save-commission")
     public ResponseEntity<CommissionCodeDTO> saveCommissionCode(@RequestBody CommissionCodeDTO dto) {
         CommissionCodeDTO addCode = codeService.saveCommission(dto);
@@ -40,19 +53,19 @@ public class CommissionCodeController {
         return new ResponseEntity<>(editCode, HttpStatus.OK);
     }
 
+    @PutMapping("/sum-item-values/{code}")
+    public CommissionCodeDTO commissionTotalValues(CommissionCodeDTO dto, @PathVariable String code) {
+        return codeService.commissionTotalValues(dto);
+    }
+
+
+
     @DeleteMapping("/delete-commission/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCommission(@PathVariable String id){
         this.codeService.deleteCommission(id);
     }
 
-    @PutMapping("/sum-item-values/{code}")
-    public CommissionCodeDTO commissionTotalValues(CommissionCodeDTO dto, @PathVariable String code) {
-        return codeService.commissionTotalValues(dto);
-    }
-    @GetMapping("/find-commissions-by-stats/{stats}")
-    public ResponseEntity<List<CommissionCodeDTO>> findCommissionsByStats(@PathVariable String stats) {
-        List<CommissionCodeDTO> list = codeService.findCommissionsByStats(stats);
-        return ResponseEntity.ok(list);
-    }
+
+
 }

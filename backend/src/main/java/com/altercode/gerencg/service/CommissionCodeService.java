@@ -3,6 +3,7 @@ package com.altercode.gerencg.service;
 import com.altercode.gerencg.dto.CommissionCodeDTO;
 import com.altercode.gerencg.entity.CommissionCode;
 import com.altercode.gerencg.entity.CommissionItem;
+import com.altercode.gerencg.entity.CommissionStats;
 import com.altercode.gerencg.entity.Measure;
 import com.altercode.gerencg.repository.*;
 import com.altercode.gerencg.service.iservice.ICommissionCodeService;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -78,7 +80,7 @@ public class CommissionCodeService implements ICommissionCodeService {
         double sumValues = 0;
         int sumQuantity = 0;
         int sumPackages = 0;
-        for (CommissionItem i : code.getCommissions()) {
+        for (CommissionItem i : code.getItems()) {
             sumValues = sumValues + i.getTotalValue();
             sumQuantity = sumQuantity + i.getItemQuantity();
             sumPackages = sumPackages + i.getPackageQuantity();
@@ -87,16 +89,30 @@ public class CommissionCodeService implements ICommissionCodeService {
         code.setTotalValue(sumValues);
         code.setTotalQuantity(sumQuantity);
         code.setTotalPackage(sumPackages);
-        code.setAmountItems(code.getCommissions().size());
+        code.setAmountItems(code.getItems().size());
         codeRepository.save(code);
 
         return new CommissionCodeDTO(code);
     }
 
     @Override
-    public List<CommissionCodeDTO> findCommissionsByStats(String stats) {
-        List<CommissionCode> result = codeRepository.findComissionsByStats(stats);
+    public List<CommissionCodeDTO> findCommissionsByStats(CommissionStats stats) {
+        List<CommissionCode> result = codeRepository.findCommissionsByStats(stats);
         return result.stream().map(x -> new CommissionCodeDTO(x)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<CommissionCodeDTO> findCommissionsByPeriod(CommissionStats statsId) {
+
+        CommissionStats stats = statsRepository.findById(statsId.getId()).get();
+
+        LocalDate initialDate = stats.getInitialDate();
+        LocalDate finalDate = stats.getFinalDate();
+        codeRepository.findByCommissionDate(initialDate, finalDate);
+        List<CommissionCode> result = codeRepository.findCommissionsByStats(statsId);
+
+        return result.stream().map(x -> new CommissionCodeDTO(x)).collect(Collectors.toList());
+
     }
 
 }

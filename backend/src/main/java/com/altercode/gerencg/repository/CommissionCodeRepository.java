@@ -1,6 +1,6 @@
 package com.altercode.gerencg.repository;
 import com.altercode.gerencg.entity.CommissionCode;
-import com.altercode.gerencg.entity.Product;
+import com.altercode.gerencg.entity.CommissionStats;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,5 +19,5 @@ Page<CommissionCode> findCommissionsByCode(Pageable pageable, String code);
     @Query("SELECT obj FROM CommissionCode obj WHERE obj.commissionDate BETWEEN :min AND :max ")
     List<CommissionCode> findByCommissionDate(LocalDate min, LocalDate max);
 
-    List<CommissionCode> findComissionsByStats(String stats);
+    List<CommissionCode> findCommissionsByStats(CommissionStats stats);
 }

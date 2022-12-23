@@ -17,7 +17,6 @@ public class CommissionCodeDTO implements Serializable {
     private Integer totalPackage;
     private String packageType;
     private Integer amountItems;
-    private String categoryId;
     private String statsId;
 
 
@@ -33,7 +32,6 @@ public class CommissionCodeDTO implements Serializable {
         amountItems = entity.getAmountItems();
         totalPackage = entity.getTotalPackage();
         packageType = entity.getPackageType().getAbbreviation();
-        categoryId = entity.getCategory().getName();
         statsId = entity.getStats().getId();
 
     }
@@ -100,14 +98,6 @@ public class CommissionCodeDTO implements Serializable {
 
     public void setAmountItems(Integer amountItems) {
         this.amountItems = amountItems;
-    }
-
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
     }
 
     public String getStatsId() {

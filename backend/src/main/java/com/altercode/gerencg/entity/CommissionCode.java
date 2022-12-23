@@ -43,7 +43,7 @@ public class CommissionCode {
     private CommissionStats stats;
 
     @OneToMany(mappedBy = "code", cascade = CascadeType.ALL)
-    private final Set<CommissionItem> commissionItems = new HashSet<>();
+    private final Set<CommissionItem> items = new HashSet<>();
 
     public CommissionCode() {
     }
@@ -132,7 +132,7 @@ public class CommissionCode {
         this.stats = stats;
     }
 
-    public Set<CommissionItem> getCommissions() {
-        return commissionItems;
+    public Set<CommissionItem> getItems() {
+        return items;
     }
 }

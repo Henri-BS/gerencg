@@ -1,7 +1,7 @@
 package com.altercode.gerencg.service.iservice;
 
 import com.altercode.gerencg.dto.CommissionCodeDTO;
-import com.altercode.gerencg.dto.CommissionStatsDTO;
+import com.altercode.gerencg.entity.CommissionStats;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -21,5 +21,7 @@ public interface ICommissionCodeService {
 
     CommissionCodeDTO commissionTotalValues(CommissionCodeDTO dto);
 
-    List<CommissionCodeDTO> findCommissionsByStats(String stats);
+    List<CommissionCodeDTO> findCommissionsByStats(CommissionStats stats);
+
+    List<CommissionCodeDTO> findCommissionsByPeriod(CommissionStats statsDto);
 }
