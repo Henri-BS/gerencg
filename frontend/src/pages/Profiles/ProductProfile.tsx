@@ -15,10 +15,10 @@ export function ProductProfile() {
   return (
     <>
       <div className="profile row">
-        <div className="col-12 col-md-12 col-lg-6 col-xl-4 p-0">
+        <div className="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-4 p-0">
           < ProductSideBar productId={`${params.productId}`} />
         </div>
-        <div className="col-12 col-md-12 col-lg-6 col-xl-8  p-4">
+        <div className="col-12 col-md-6 col-lg-7 col-xl-8  p-4">
           <ProductMenuBar productId={`${params.productId}`} />
             <h1 className="p-4">Estatísticas do Produto</h1>
             <div className="chart-box">

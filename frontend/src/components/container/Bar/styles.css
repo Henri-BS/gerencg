@@ -2,7 +2,7 @@
     align-items: flex-start;
     display: grid;
     height: 100%;
-    width: 430px;
+    min-width: 430px;
     background-color: var(--dark-tert);
     align-content: space-between;
 }

@@ -38,6 +38,9 @@ public class Category {
 	
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
 	private List<Product> products = new ArrayList<>();
+
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+	private List<CommissionCode> codes = new ArrayList<>();
 	
 	public Category() {
 	}
@@ -82,14 +85,6 @@ public class Category {
 		this.lastModifiedDate = lastModifiedDate;
 	}
 
-	public List<CategoryStats> getCategoryStats() {
-		return categoryStats;
-	}
-
-	public List<Product> getProducts() {
-		return products;
-	}
-
 	public Integer getTotalRegisters() {
 		return totalRegisters;
 	}
@@ -98,5 +93,15 @@ public class Category {
 		this.totalRegisters = totalRegisters;
 	}
 
+	public List<CategoryStats> getCategoryStats() {
+		return categoryStats;
+	}
 
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public List<CommissionCode> getCodes() {
+		return codes;
+	}
 }

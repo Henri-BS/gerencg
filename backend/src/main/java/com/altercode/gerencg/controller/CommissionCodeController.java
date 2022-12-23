@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class CommissionCodeController {
 
@@ -47,5 +49,10 @@ public class CommissionCodeController {
     @PutMapping("/sum-item-values/{code}")
     public CommissionCodeDTO commissionTotalValues(CommissionCodeDTO dto, @PathVariable String code) {
         return codeService.commissionTotalValues(dto);
+    }
+    @GetMapping("/find-commissions-by-stats/{stats}")
+    public ResponseEntity<List<CommissionCodeDTO>> findCommissionsByStats(@PathVariable String stats) {
+        List<CommissionCodeDTO> list = codeService.findCommissionsByStats(stats);
+        return ResponseEntity.ok(list);
     }
 }

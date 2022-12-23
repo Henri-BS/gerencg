@@ -4,6 +4,7 @@
     max-inline-size: 100%;
     color: var(--dark-prim);
     background-color: var(--white-prim);
+    width: 100%;
 }
 
 .profile hr {

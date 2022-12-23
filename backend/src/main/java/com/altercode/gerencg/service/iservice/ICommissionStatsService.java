@@ -8,6 +8,6 @@ public interface ICommissionStatsService {
 
     List<CommissionStatsDTO> findAllStats(String id);
 
-     CommissionStatsDTO saveCommissionStats(CommissionStatsDTO dto);
+    CommissionStatsDTO saveCommissionStats(CommissionStatsDTO dto);
 
 }

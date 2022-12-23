@@ -4,16 +4,16 @@ import com.altercode.gerencg.dto.CommissionCodeDTO;
 import com.altercode.gerencg.entity.CommissionCode;
 import com.altercode.gerencg.entity.CommissionItem;
 import com.altercode.gerencg.entity.Measure;
-import com.altercode.gerencg.repository.CommissionCodeRepository;
-import com.altercode.gerencg.repository.CommissionItemRepository;
-import com.altercode.gerencg.repository.MeasureRepository;
-import com.altercode.gerencg.repository.TagRepository;
+import com.altercode.gerencg.repository.*;
 import com.altercode.gerencg.service.iservice.ICommissionCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -23,13 +23,11 @@ public class CommissionCodeService implements ICommissionCodeService {
     private CommissionCodeRepository codeRepository;
 
     @Autowired
-    private CommissionItemRepository itemRepository;
+    private CommissionStatsRepository statsRepository;
 
     @Autowired
     private MeasureRepository measureRepository;
 
-    @Autowired
-    private TagRepository tagRepository;
 
     @Override
     public Page<CommissionCodeDTO> findItemsByCode(Pageable pageable, String code) {
@@ -94,4 +92,11 @@ public class CommissionCodeService implements ICommissionCodeService {
 
         return new CommissionCodeDTO(code);
     }
+
+    @Override
+    public List<CommissionCodeDTO> findCommissionsByStats(String stats) {
+        List<CommissionCode> result = codeRepository.findComissionsByStats(stats);
+        return result.stream().map(x -> new CommissionCodeDTO(x)).collect(Collectors.toList());
+    }
+
 }

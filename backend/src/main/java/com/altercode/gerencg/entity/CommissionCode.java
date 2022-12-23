@@ -35,6 +35,10 @@ public class CommissionCode {
     private Measure packageType;
 
     @ManyToOne
+    @JoinColumn(name= "category_id")
+    private Category category;
+
+    @ManyToOne
     @JoinColumn(name = "stats_id")
     private CommissionStats stats;
 
@@ -96,6 +100,14 @@ public class CommissionCode {
         this.totalPackage = totalPackage;
     }
 
+    public Integer getAmountItems() {
+        return amountItems;
+    }
+
+    public void setAmountItems(Integer amountItems) {
+        this.amountItems = amountItems;
+    }
+
     public Measure getPackageType() {
         return packageType;
     }
@@ -104,15 +116,23 @@ public class CommissionCode {
         this.packageType = packageType;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public CommissionStats getStats() {
+        return stats;
+    }
+
+    public void setStats(CommissionStats stats) {
+        this.stats = stats;
+    }
+
     public Set<CommissionItem> getCommissions() {
         return commissionItems;
-    }
-
-    public Integer getAmountItems() {
-        return amountItems;
-    }
-
-    public void setAmountItems(Integer amountItems) {
-        this.amountItems = amountItems;
     }
 }
