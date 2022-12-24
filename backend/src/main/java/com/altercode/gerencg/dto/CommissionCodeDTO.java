@@ -33,7 +33,6 @@ public class CommissionCodeDTO implements Serializable {
         totalPackage = entity.getTotalPackage();
         packageType = entity.getPackageType().getAbbreviation();
         statsId = entity.getStats().getId();
-
     }
 
     public String getCode() {

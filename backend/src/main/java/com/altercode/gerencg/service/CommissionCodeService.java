@@ -1,6 +1,7 @@
 package com.altercode.gerencg.service;
 
 import com.altercode.gerencg.dto.CommissionCodeDTO;
+import com.altercode.gerencg.dto.CommissionStatsValuesDTO;
 import com.altercode.gerencg.entity.CommissionCode;
 import com.altercode.gerencg.entity.CommissionItem;
 import com.altercode.gerencg.entity.CommissionStats;
@@ -112,6 +113,9 @@ public class CommissionCodeService implements ICommissionCodeService {
         List<CommissionCode> result = codeRepository.findCommissionsByStats(statsId);
 
         return result.stream().map(x -> new CommissionCodeDTO(x)).collect(Collectors.toList());
-
+    }
+    @Override
+    public List<CommissionStatsValuesDTO> statsValues(){
+        return codeRepository.statsValues();
     }
 }

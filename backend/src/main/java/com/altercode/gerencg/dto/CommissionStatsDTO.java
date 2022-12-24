@@ -16,6 +16,8 @@ public class CommissionStatsDTO implements Serializable {
 
         private Double totalValue;
 
+        private Double averageWeek;
+
         private Integer amountCommission;
 
         private Integer amountItems;
@@ -28,6 +30,7 @@ public class CommissionStatsDTO implements Serializable {
         initialDate = entity.getInitialDate();
         finalDate = entity.getFinalDate();
         totalValue = entity.getTotalValue();
+        averageWeek = entity.getAverageWeek();
         amountCommission = entity.getAmountCommission();
         amountItems = entity.getAmountItems();
 
@@ -63,6 +66,14 @@ public class CommissionStatsDTO implements Serializable {
 
     public void setTotalValue(Double totalValue) {
         this.totalValue = totalValue;
+    }
+
+    public Double getAverageWeek() {
+        return averageWeek;
+    }
+
+    public void setAverageWeek(Double averageWeek) {
+        this.averageWeek = averageWeek;
     }
 
     public Integer getAmountCommission() {

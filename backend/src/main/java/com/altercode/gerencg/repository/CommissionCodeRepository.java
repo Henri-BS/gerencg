@@ -1,4 +1,5 @@
 package com.altercode.gerencg.repository;
+import com.altercode.gerencg.dto.CommissionStatsValuesDTO;
 import com.altercode.gerencg.entity.CommissionCode;
 import com.altercode.gerencg.entity.CommissionStats;
 import org.springframework.data.domain.Page;
@@ -20,4 +21,8 @@ Page<CommissionCode> findCommissionsByCode(Pageable pageable, String code);
     List<CommissionCode> findByCommissionDate(LocalDate min, LocalDate max);
 
     List<CommissionCode> findCommissionsByStats(CommissionStats stats);
+
+    @Query("SELECT new com.altercode.gerencg.dto.CommissionStatsValuesDTO(obj.stats, MAX(obj.totalValue), MIN(obj.totalValue))"
+            + "FROM CommissionCode AS obj GROUP BY obj.stats")
+    List<CommissionStatsValuesDTO> statsValues();
 }

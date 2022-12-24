@@ -1,6 +1,7 @@
 package com.altercode.gerencg.controller;
 
 import com.altercode.gerencg.dto.CommissionCodeDTO;
+import com.altercode.gerencg.dto.CommissionStatsValuesDTO;
 import com.altercode.gerencg.entity.CommissionStats;
 import com.altercode.gerencg.service.CommissionCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,11 @@ public class CommissionCodeController {
         return ResponseEntity.ok(list);
     }
 
+    @GetMapping("/commission-stats-values")
+    public List<CommissionStatsValuesDTO> statsValues(){
+        return codeService.statsValues();
+    }
+
     @PostMapping("/save-commission")
     public ResponseEntity<CommissionCodeDTO> saveCommissionCode(@RequestBody CommissionCodeDTO dto) {
         CommissionCodeDTO addCode = codeService.saveCommission(dto);
@@ -63,7 +69,4 @@ public class CommissionCodeController {
     public void deleteCommission(@PathVariable String id){
         this.codeService.deleteCommission(id);
     }
-
-
-
 }

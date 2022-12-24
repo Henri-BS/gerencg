@@ -23,6 +23,9 @@ public class CommissionStats {
     @Column(name = "total_value")
     private Double totalValue;
 
+    @Column(name = "average_week")
+    private Double averageWeek;
+
     @Column(name = "amount_commission")
     private Integer amountCommission;
 
@@ -36,11 +39,12 @@ public class CommissionStats {
     }
 
     public CommissionStats(String id, LocalDate initialDate, LocalDate finalDate, Double totalValue,
-            Integer amountCommission, Integer amountItems, Set<CommissionCode> codes) {
+            Double averageWeek, Integer amountCommission, Integer amountItems) {
         this.id = id;
         this.initialDate = initialDate;
         this.finalDate = finalDate;
         this.totalValue = totalValue;
+        this.averageWeek = averageWeek;
         this.amountCommission = amountCommission;
         this.amountItems = amountItems;
     }
@@ -75,6 +79,14 @@ public class CommissionStats {
 
     public void setTotalValue(Double totalValue) {
         this.totalValue = totalValue;
+    }
+
+    public Double getAverageWeek() {
+        return averageWeek;
+    }
+
+    public void setAverageWeek(Double averageWeek) {
+        this.averageWeek = averageWeek;
     }
 
     public Integer getAmountCommission() {

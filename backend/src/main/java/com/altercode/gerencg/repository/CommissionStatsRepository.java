@@ -16,4 +16,6 @@ public interface CommissionStatsRepository extends JpaRepository<CommissionStats
 
     @Query("SELECT obj FROM CommissionStats obj WHERE obj.id BETWEEN :initialDate AND :finalDate")
     List<CommissionStats> findCommissionsByPeriod(LocalDate initialDate, LocalDate finalDate);
+
+
 }

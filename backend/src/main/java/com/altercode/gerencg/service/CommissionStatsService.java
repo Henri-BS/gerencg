@@ -51,12 +51,17 @@ public class CommissionStatsService implements ICommissionStatsService {
             sumItems = sumItems + i.getAmountItems();
         }
 
+        double avgWeeks;
+        avgWeeks = sumValues / 4;
+
         stats.setTotalValue(sumValues);
+        stats.setAverageWeek(avgWeeks);
         stats.setAmountCommission(stats.getCodes().size());
         stats.setAmountItems(sumItems);
         statsRepository.save(stats);
 
         return new CommissionStatsDTO(stats);
     }
+
 
 }
