@@ -1,13 +1,11 @@
 package com.altercode.gerencg.service;
 
-import com.altercode.gerencg.dto.CommissionItemDTO;
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.Category;
-import com.altercode.gerencg.entity.CommissionItem;
 import com.altercode.gerencg.entity.Measure;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.CategoryRepository;
-import com.altercode.gerencg.repository.CommissionItemRepository;
+import com.altercode.gerencg.repository.OrderItemRepository;
 import com.altercode.gerencg.repository.MeasureRepository;
 import com.altercode.gerencg.repository.ProductRepository;
 import com.altercode.gerencg.service.iservice.IProductService;
@@ -36,7 +34,7 @@ public class ProductService implements IProductService {
     private MeasureRepository measureRepository;
 
     @Autowired
-    private CommissionItemRepository itemRepository;
+    private OrderItemRepository itemRepository;
 
     // Find all products by page and description
 

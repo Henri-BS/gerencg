@@ -1,7 +1,5 @@
 package com.altercode.gerencg.entity;
 
-import org.hibernate.annotations.GeneratorType;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -9,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "tb_commission_stats")
-public class CommissionStats {
+public class OrderStats {
     @Id
     @Column(name = "stats_id", length = 10)
     private String id;
@@ -33,13 +31,13 @@ public class CommissionStats {
     private Integer amountItems;
 
     @OneToMany(mappedBy = "stats", cascade = CascadeType.ALL)
-    private final Set<CommissionCode> codes = new HashSet<>();
+    private final Set<OrderCode> codes = new HashSet<>();
 
-    public CommissionStats() {
+    public OrderStats() {
     }
 
-    public CommissionStats(String id, LocalDate initialDate, LocalDate finalDate, Double totalValue,
-            Double averageWeek, Integer amountCommission, Integer amountItems) {
+    public OrderStats(String id, LocalDate initialDate, LocalDate finalDate, Double totalValue,
+                      Double averageWeek, Integer amountCommission, Integer amountItems) {
         this.id = id;
         this.initialDate = initialDate;
         this.finalDate = finalDate;
@@ -105,7 +103,7 @@ public class CommissionStats {
         this.amountItems = amountItems;
     }
 
-    public Set<CommissionCode> getCodes() {
+    public Set<OrderCode> getCodes() {
         return codes;
     }
 }

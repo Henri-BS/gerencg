@@ -1,11 +1,11 @@
 package com.altercode.gerencg.dto;
 
-import com.altercode.gerencg.entity.CommissionItem;
+import com.altercode.gerencg.entity.OrderItem;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class CommissionItemDTO implements Serializable {
+public class OrderItemDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
@@ -21,10 +21,10 @@ public class CommissionItemDTO implements Serializable {
     private Double productMeasureValue;
     private String productMeasure;
 
-    public CommissionItemDTO() {
+    public OrderItemDTO() {
     }
 
-    public CommissionItemDTO(CommissionItem entity) {
+    public OrderItemDTO(OrderItem entity) {
         id = entity.getId();
         commissionCode = entity.getCode().getCode();
         unitValue = entity.getUnitValue();

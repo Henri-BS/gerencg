@@ -11,11 +11,11 @@ import { EditItemForm } from "../Form/CommissionForm";
 import { MdClose, MdLink } from "react-icons/md";
 
 
-type Commission = {
+type CommissionCode = {
     commission: Code;
 }
 
-export function CommissionCard({ commission }: Commission) {
+export function CommissionCard({ commission }: CommissionCode) {
 
     return (
         <Link to={`/commission/${commission.code}`}>
@@ -156,3 +156,4 @@ export function CommissionItemCard({ itemId }: ItemProps) {
         </>
     );
 }
+

@@ -1,12 +1,11 @@
 package com.altercode.gerencg.dto;
 
-import com.altercode.gerencg.entity.CommissionCode;
+import com.altercode.gerencg.entity.OrderCode;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Set;
 
-public class CommissionCodeDTO implements Serializable {
+public class OrderCodeDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String code;
@@ -18,12 +17,13 @@ public class CommissionCodeDTO implements Serializable {
     private String packageType;
     private Integer amountItems;
     private String statsId;
+    private String categoryId;
 
 
-    public CommissionCodeDTO() {
+    public OrderCodeDTO() {
     }
 
-    public CommissionCodeDTO(CommissionCode entity) {
+    public OrderCodeDTO(OrderCode entity) {
         code = entity.getCode();
         commissionDate = entity.getCommissionDate();
         distributor = entity.getDistributor();
@@ -33,6 +33,7 @@ public class CommissionCodeDTO implements Serializable {
         totalPackage = entity.getTotalPackage();
         packageType = entity.getPackageType().getAbbreviation();
         statsId = entity.getStats().getId();
+        categoryId = entity.getCategory().getName();
     }
 
     public String getCode() {
@@ -105,5 +106,13 @@ public class CommissionCodeDTO implements Serializable {
 
     public void setStatsId(String statsId) {
         this.statsId = statsId;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 }

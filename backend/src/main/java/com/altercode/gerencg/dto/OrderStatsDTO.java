@@ -1,11 +1,11 @@
 package com.altercode.gerencg.dto;
 
-import com.altercode.gerencg.entity.CommissionStats;
+import com.altercode.gerencg.entity.OrderStats;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class CommissionStatsDTO implements Serializable {
+public class OrderStatsDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
         private String id;
@@ -22,10 +22,10 @@ public class CommissionStatsDTO implements Serializable {
 
         private Integer amountItems;
 
-    public CommissionStatsDTO() {
+    public OrderStatsDTO() {
     }
 
-    public CommissionStatsDTO(CommissionStats entity) {
+    public OrderStatsDTO(OrderStats entity) {
         id = entity.getId();
         initialDate = entity.getInitialDate();
         finalDate = entity.getFinalDate();

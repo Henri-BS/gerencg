@@ -2,13 +2,10 @@ package com.altercode.gerencg.entity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
@@ -40,7 +37,7 @@ public class Category {
 	private List<Product> products = new ArrayList<>();
 
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-	private List<CommissionCode> codes = new ArrayList<>();
+	private List<OrderCode> codes = new ArrayList<>();
 	
 	public Category() {
 	}
@@ -101,7 +98,7 @@ public class Category {
 		return products;
 	}
 
-	public List<CommissionCode> getCodes() {
+	public List<OrderCode> getCodes() {
 		return codes;
 	}
 }

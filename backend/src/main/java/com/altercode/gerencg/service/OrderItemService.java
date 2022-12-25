@@ -1,14 +1,14 @@
 package com.altercode.gerencg.service;
 
-import com.altercode.gerencg.dto.CommissionItemDTO;
+import com.altercode.gerencg.dto.OrderItemDTO;
 import com.altercode.gerencg.dto.ProductDTO;
-import com.altercode.gerencg.entity.CommissionCode;
-import com.altercode.gerencg.entity.CommissionItem;
+import com.altercode.gerencg.entity.OrderCode;
+import com.altercode.gerencg.entity.OrderItem;
 import com.altercode.gerencg.entity.Product;
-import com.altercode.gerencg.repository.CommissionCodeRepository;
-import com.altercode.gerencg.repository.CommissionItemRepository;
+import com.altercode.gerencg.repository.OrderCodeRepository;
+import com.altercode.gerencg.repository.OrderItemRepository;
 import com.altercode.gerencg.repository.ProductRepository;
-import com.altercode.gerencg.service.iservice.ICommissionItemService;
+import com.altercode.gerencg.service.iservice.IOrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,48 +21,48 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
-public class CommissionItemService implements ICommissionItemService {
+public class OrderItemService implements IOrderItemService {
 
     @Autowired
-    private CommissionItemRepository itemRepository;
+    private OrderItemRepository itemRepository;
 
     @Autowired
-    private CommissionCodeRepository commissionCodeRepository;
+    private OrderCodeRepository codeRepository;
 
     @Autowired
     private ProductRepository productRepository;
 
 
     @Override
-    public Page<CommissionItemDTO> findAllItems(Pageable pageable) {
-        Page<CommissionItem> result = itemRepository.findAll(pageable);
-        return result.map(x -> new CommissionItemDTO(x));
+    public Page<OrderItemDTO> findAllItems(Pageable pageable) {
+        Page<OrderItem> result = itemRepository.findAll(pageable);
+        return result.map(x -> new OrderItemDTO(x));
     }
 
     @Override
-    public List<CommissionItemDTO> findItemsByCode(CommissionCode code) {
-        List<CommissionItem> result = itemRepository.findItemsByCode(code);
-        return result.stream().map(x -> new CommissionItemDTO(x)).collect(Collectors.toList());
+    public List<OrderItemDTO> findItemsByCode(OrderCode code) {
+        List<OrderItem> result = itemRepository.findItemsByCode(code);
+        return result.stream().map(x -> new OrderItemDTO(x)).collect(Collectors.toList());
     }
 
     @Override
-    public List<CommissionItemDTO> findItemByProduct(Product product) {
-        List<CommissionItem> result = itemRepository.findItemByProduct(product);
-        return result.stream().map(x -> new CommissionItemDTO(x)).collect(Collectors.toList());
+    public List<OrderItemDTO> findItemByProduct(Product product) {
+        List<OrderItem> result = itemRepository.findItemByProduct(product);
+        return result.stream().map(x -> new OrderItemDTO(x)).collect(Collectors.toList());
     }
 
     @Override
-    public CommissionItemDTO findItemById(Long id) {
-        CommissionItem result = itemRepository.findById(id).get();
-        return new CommissionItemDTO(result);
+    public OrderItemDTO findItemById(Long id) {
+        OrderItem result = itemRepository.findById(id).get();
+        return new OrderItemDTO(result);
     }
 
     @Override
-    public CommissionItemDTO saveItem(CommissionItemDTO dto) {
+    public OrderItemDTO saveItem(OrderItemDTO dto) {
         Product product = productRepository.findByDescription(dto.getProductDescription());
-        CommissionCode code = commissionCodeRepository.findById(dto.getCommissionCode()).get();
+        OrderCode code = codeRepository.findById(dto.getCommissionCode()).get();
 
-        CommissionItem add = new CommissionItem();
+        OrderItem add = new OrderItem();
         add.setCode(code);
         add.setItemQuantity(dto.getQuantity());
         add.setPackageQuantity(dto.getPackageQuantity());
@@ -71,13 +71,13 @@ public class CommissionItemService implements ICommissionItemService {
         add.setItemValidate(dto.getItemValidate());
         add.setProduct(product);
 
-        return new CommissionItemDTO(itemRepository.saveAndFlush(add));
+        return new OrderItemDTO(itemRepository.saveAndFlush(add));
     }
 
     @Override
-    public CommissionItemDTO updateItem(CommissionItemDTO dto) {
+    public OrderItemDTO updateItem(OrderItemDTO dto) {
 
-        CommissionItem edit = itemRepository.findById(dto.getId()).get();
+        OrderItem edit = itemRepository.findById(dto.getId()).get();
 
         edit.setId(dto.getId());
         edit.setItemQuantity(dto.getQuantity());
@@ -86,7 +86,7 @@ public class CommissionItemService implements ICommissionItemService {
         edit.setTotalValue(dto.getTotalValue());
         edit.setItemValidate(dto.getItemValidate());
 
-        return new CommissionItemDTO(itemRepository.save(edit));
+        return new OrderItemDTO(itemRepository.save(edit));
     }
 
     @Override
@@ -95,9 +95,9 @@ public class CommissionItemService implements ICommissionItemService {
     }
 
     @Override
-    public ProductDTO updateProductByItem(CommissionItemDTO dto) {
+    public ProductDTO updateProductByItem(OrderItemDTO dto) {
         Product product = productRepository.findById(dto.getProductId()).get();
-        CommissionItem item = itemRepository.findById(dto.getId()).get();
+        OrderItem item = itemRepository.findById(dto.getId()).get();
 
         int quantity = item.getItemQuantity();
         double price = item.getUnitValue();
@@ -112,6 +112,4 @@ public class CommissionItemService implements ICommissionItemService {
 
         return new ProductDTO(product);
     }
-
-
 }

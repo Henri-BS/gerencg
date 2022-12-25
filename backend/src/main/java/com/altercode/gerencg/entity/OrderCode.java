@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "tb_commission_code")
-public class CommissionCode {
+public class OrderCode {
 
     @Id
     @Column(name = "code_id")
@@ -40,15 +40,15 @@ public class CommissionCode {
 
     @ManyToOne
     @JoinColumn(name = "stats_id")
-    private CommissionStats stats;
+    private OrderStats stats;
 
     @OneToMany(mappedBy = "code", cascade = CascadeType.ALL)
-    private final Set<CommissionItem> items = new HashSet<>();
+    private final Set<OrderItem> items = new HashSet<>();
 
-    public CommissionCode() {
+    public OrderCode() {
     }
 
-    public CommissionCode(String code) {
+    public OrderCode(String code) {
         this.code = code;
     }
 
@@ -124,15 +124,15 @@ public class CommissionCode {
         this.category = category;
     }
 
-    public CommissionStats getStats() {
+    public OrderStats getStats() {
         return stats;
     }
 
-    public void setStats(CommissionStats stats) {
+    public void setStats(OrderStats stats) {
         this.stats = stats;
     }
 
-    public Set<CommissionItem> getItems() {
+    public Set<OrderItem> getItems() {
         return items;
     }
 }

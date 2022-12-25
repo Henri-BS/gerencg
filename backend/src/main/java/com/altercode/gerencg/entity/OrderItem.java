@@ -9,7 +9,7 @@ import static org.hibernate.annotations.CascadeType.REFRESH;
 
 @Entity
 @Table(name = "tb_commission_item")
-public class CommissionItem {
+public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,16 +34,16 @@ public class CommissionItem {
     @ManyToOne(fetch = FetchType.LAZY)
     @Cascade({REFRESH})
     @JoinColumn(name = "code_id")
-    private CommissionCode code;
+    private OrderCode code;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
-    public CommissionItem() {
+    public OrderItem() {
     }
 
-    public CommissionItem(Long id, Double totalValue, Integer itemQuantity, Double unitValue, LocalDate itemValidate, Integer packageQuantity, CommissionCode code, Product product) {
+    public OrderItem(Long id, Double totalValue, Integer itemQuantity, Double unitValue, LocalDate itemValidate, Integer packageQuantity, OrderCode code, Product product) {
         this.id = id;
         this.totalValue = totalValue;
         this.itemQuantity = itemQuantity;
@@ -62,11 +62,11 @@ public class CommissionItem {
         this.id = id;
     }
 
-    public CommissionCode getCode() {
+    public OrderCode getCode() {
         return code;
     }
 
-    public void setCode(CommissionCode code) {
+    public void setCode(OrderCode code) {
         this.code = code;
     }
 

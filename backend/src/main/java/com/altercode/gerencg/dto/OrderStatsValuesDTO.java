@@ -1,15 +1,15 @@
 package com.altercode.gerencg.dto;
 
-import com.altercode.gerencg.entity.CommissionStats;
+import com.altercode.gerencg.entity.OrderStats;
 
 import java.io.Serializable;
 
-public class CommissionStatsValuesDTO implements Serializable {
+public class OrderStatsValuesDTO implements Serializable {
     private String statsId;
     private Double maxValueCommission;
     private Double minValueCommission;
 
-    public CommissionStatsValuesDTO(CommissionStats statsId, Double maxValueCommission, Double minValueCommission) {
+    public OrderStatsValuesDTO(OrderStats statsId, Double maxValueCommission, Double minValueCommission) {
         this.statsId = statsId.getId();
         this.maxValueCommission = maxValueCommission;
         this.minValueCommission = minValueCommission;

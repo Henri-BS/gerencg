@@ -49,7 +49,7 @@ public class Product {
     private final Set<ProductHistory> history = new HashSet<>();
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private final Set<CommissionItem> commissionItems = new HashSet<>();
+    private final Set<OrderItem> orderItems = new HashSet<>();
 
     public Product() {
     }
@@ -173,7 +173,7 @@ public class Product {
         return history;
     }
 
-    public Set<CommissionItem> getCommissionItems() {
-        return commissionItems;
+    public Set<OrderItem> getCommissionItems() {
+        return orderItems;
     }
 }

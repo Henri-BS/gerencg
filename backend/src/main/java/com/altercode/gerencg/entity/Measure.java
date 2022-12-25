@@ -21,7 +21,7 @@ public class Measure {
 	private Set<Product> product = new HashSet<>();
 
 	@OneToMany(mappedBy = "packageType", cascade = CascadeType.ALL)
-	private Set<CommissionCode> codes = new HashSet<>();
+	private Set<OrderCode> codes = new HashSet<>();
 	
 	public Measure() {
 	}
@@ -56,11 +56,11 @@ public class Measure {
 		this.product = product;
 	}
 
-	public Set<CommissionCode> getCodes() {
+	public Set<OrderCode> getCodes() {
 		return codes;
 	}
 
-	public void setCodes(Set<CommissionCode> codes) {
+	public void setCodes(Set<OrderCode> codes) {
 		this.codes = codes;
 	}
 }

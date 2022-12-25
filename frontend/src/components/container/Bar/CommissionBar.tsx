@@ -3,7 +3,7 @@ import IUpdateProduct from "assets/img/update.png"
 import IDeleteProduct from "assets/img/delete-img.png"
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Code, CodeProps } from "types/commission";
+import { Code, CodeProps, CommissionStats } from "types/commission";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 import { MdClose } from "react-icons/md";
@@ -123,4 +123,38 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
             </div>
         </>
     );
+}
+
+type Stats = {
+    stats: CommissionStats;
+}
+
+export function CommissionStatsBar({ stats }: Stats) {
+    return (
+        <div className="max-bar-container">
+            <div className="bar-container">
+                <div className="bar-item-border row">
+                    <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
+                        Data Inicial: {stats.initialDate}
+                    </div>
+                    <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
+                        Data Final: {stats.amountCommission}
+                    </div>
+                    <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
+                        Total de Pedidos: {stats.amountCommission}
+                    </div>
+                    <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
+                        Total de Items: {stats.amountItems}
+                    </div>
+                    <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
+                        Total de Despesas: {stats.totalValue}
+                    </div>
+                    <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
+                        Média Semanal de Despesas: {stats.averageWeek}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    )
 }
