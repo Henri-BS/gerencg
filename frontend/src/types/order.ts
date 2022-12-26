@@ -1,8 +1,10 @@
 import { Product } from "./product";
 
+//Code
+
 export type Code = {
   code: string;
-  commissionDate: string;
+  orderDate: string;
   distributor: string;
   totalValue: number;
   totalQuantity: number;
@@ -29,9 +31,11 @@ export type CodeProps = {
   codeId: string;
 };
 
+//Item
+
 export type Item = {
   id: number;
-  commissionCode: string;
+  orderCode: string;
   unitValue: number;
   totalValue: number;
   quantity: number;
@@ -59,17 +63,32 @@ export type ItemProps = {
   itemId: string;
 };
 
-export type CommissionStats = {
+//Stats
+
+export type OrderStats = {
+  id: string;
   initialDate: string;
   finalDate: string;
   totalValue: number;
   averageWeek: number;
-  amountCommission: number;
+  amountOrder: number;
   amountItems: number;
-}
+};
+
+export type OrderStatsPage = {
+  content: OrderStats[];
+  last?: boolean;
+  totalElements: number;
+  totalPages?: number;
+  size?: number;
+  number: number;
+  first?: boolean;
+  numberOfElements?: number;
+  empty?: boolean;
+};
 
 export type CommissionResults = {
   commissionCode: string;
   totalQuantity: number;
   totalValue: number;
-}
+};

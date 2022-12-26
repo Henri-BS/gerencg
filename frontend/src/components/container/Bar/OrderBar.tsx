@@ -3,7 +3,7 @@ import IUpdateProduct from "assets/img/update.png"
 import IDeleteProduct from "assets/img/delete-img.png"
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Code, CodeProps, CommissionStats } from "types/commission";
+import { Code, CodeProps, OrderStats, OrderStatsPage } from "types/order";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 import { MdClose } from "react-icons/md";
@@ -91,7 +91,7 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
                             Código: {commission?.code}
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                            Data de Emissão: {commission?.commissionDate}
+                            Data de Emissão: {commission?.orderDate}
                         </div>
                         <div className="bar-item col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 ">
                             Distribuidora: {commission?.distributor}
@@ -126,10 +126,23 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
 }
 
 type Stats = {
-    stats: CommissionStats;
+    stats: OrderStats;
 }
 
 export function CommissionStatsBar({ stats }: Stats) {
+
+const [statsPage, setStatsPage] = useState<OrderStatsPage>({
+content: [],
+number: 0,
+totalElements: 0,
+
+});
+useEffect(() => {
+    axios.get(`${BASE_URL}/order-stats/page`)
+    .then((response) => {
+        setStatsPage(response.data);
+    })
+})
     return (
         <div className="max-bar-container">
             <div className="bar-container">
@@ -138,10 +151,10 @@ export function CommissionStatsBar({ stats }: Stats) {
                         Data Inicial: {stats.initialDate}
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                        Data Final: {stats.amountCommission}
+                        Data Final: {stats.amountOrder}
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                        Total de Pedidos: {stats.amountCommission}
+                        Total de Pedidos: {stats.amountOrder}
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
                         Total de Items: {stats.amountItems}

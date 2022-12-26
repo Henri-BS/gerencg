@@ -60,7 +60,7 @@ public class OrderItemService implements IOrderItemService {
     @Override
     public OrderItemDTO saveItem(OrderItemDTO dto) {
         Product product = productRepository.findByDescription(dto.getProductDescription());
-        OrderCode code = codeRepository.findById(dto.getCommissionCode()).get();
+        OrderCode code = codeRepository.findById(dto.getOrderCode()).get();
 
         OrderItem add = new OrderItem();
         add.setCode(code);
@@ -102,7 +102,7 @@ public class OrderItemService implements IOrderItemService {
         int quantity = item.getItemQuantity();
         double price = item.getUnitValue();
         LocalDate validate = item.getItemValidate();
-        LocalDate date = item.getCode().getCommissionDate();
+        LocalDate date = item.getCode().getOrderDate();
 
         product.setQuantity(quantity);
         product.setPrice(price);

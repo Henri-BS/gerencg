@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import static org.hibernate.annotations.CascadeType.REFRESH;
 
 @Entity
-@Table(name = "tb_commission_item")
+@Table(name = "tb_order_item")
 public class OrderItem {
 
     @Id

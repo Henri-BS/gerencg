@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { Code, CodeProps, Item, ItemProps } from "types/commission";
+import { Code, CodeProps, Item, ItemProps } from "types/order";
 import { MeasurePage } from "types/measure";
 import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";

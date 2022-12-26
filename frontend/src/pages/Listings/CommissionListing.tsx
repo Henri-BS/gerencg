@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { CodePage } from "types/commission";
+import { CodePage, OrderStatsPage } from "types/order";
 import { BASE_URL } from "utils/requests";
 import * as FaIcons from 'react-icons/fa';
 import "./styles.css";
 import Pagination from "components/shared/Pagination";
-import { CommissionCard } from "components/container/Card/CommissionCards";
+import { CommissionCard, OrderStatsCard } from "components/container/Card/OrderCard";
 
-export function CommissionCodeList() {
+export function OrderCodeList() {
     const [value, setValue] = useState("");
     const [pageNumber, setPageNumber] = useState(0);
     const [codePage, setCodePage] = useState<CodePage>({
@@ -71,5 +71,31 @@ export function CommissionCodeList() {
                 </div>
             </div>
         </>
+    );
+}
+
+export function OrderStatsList() {
+    const [pageNumber, setPageNumber] = useState(0);
+    const [statsPage, setStatsPage] = useState<OrderStatsPage>({
+        content: [],
+        number: 0,
+        totalElements: 0,
+    });
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/order-stats/page?size=12`)
+            .then((response) => {
+                setStatsPage(response.data);
+            });
+    }, [pageNumber]);
+
+    return (
+        <div className="row p-20">
+            {statsPage.content?.map((x) => (
+                <div key={x.id} className="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1">
+<OrderStatsCard stats={x}/>
+                </div>
+            ))}
+        </div>
     );
 }

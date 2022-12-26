@@ -1,5 +1,5 @@
 import { CategoryPage, StatsPage } from "types/category";
-import { CodePage, ItemPage } from "types/commission";
+import { CodePage, ItemPage } from "types/order";
 import { MeasurePage } from "types/measure";
 import { ProductPage,  ProductHistoryPage} from "types/product";
 

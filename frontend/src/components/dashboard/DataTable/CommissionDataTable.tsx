@@ -2,7 +2,7 @@ import axios from "axios";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { CodeProps, Item } from "types/commission";
+import { CodeProps, Item } from "types/order";
 import { BASE_URL } from "utils/requests";
 import "./styles.css";
 

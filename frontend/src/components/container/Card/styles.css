@@ -246,3 +246,28 @@
     display: flex;
     justify-content: space-around;
 }
+
+
+/*Stats*/
+
+.stats-card-container {
+    background-color: var(--dark-quat);
+    padding: 8px;
+    height: 40px;
+    width: 90px;
+    color: var(--white-seco);
+    border: solid 1px var(--blue-prim);
+    text-align: center;
+    border-radius: 12px;
+}
+
+.stats-card-container {
+    background-color: var(--dark-quat);
+    padding: 8px;
+    height: 40px;
+    width: 90px;
+    color: var(--white-seco);
+    border: solid 1px var(--blue-prim);
+    text-align: center;
+    border-radius: 12px;
+}

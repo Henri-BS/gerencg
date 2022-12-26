@@ -5,6 +5,7 @@ import { ProductCategoryList } from "pages/Listings/CategoryListing";
 import CategoryDataTable from "components/dashboard/DataTable/CategoryDataTable";
 import { useParams } from "react-router-dom";
 import "./styles.css";
+import { OrderStatsList } from "pages/Listings/CommissionListing";
 
 //Category Profile 
 export function CategoryProfile() {
@@ -39,8 +40,8 @@ export function CategoryStatsDashboard() {
     return (
       <>
         <div className="container">
+          <OrderStatsList/>
           <h1 className=" py-4">Estatísticas das Categorias</h1>
-  
           <div className="max-container-charts ">
             <div className="row ">
               <div className="chart-box col-lg-6">

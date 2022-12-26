@@ -7,11 +7,11 @@ import com.altercode.gerencg.repository.OrderCodeRepository;
 import com.altercode.gerencg.repository.OrderStatsRepository;
 import com.altercode.gerencg.service.iservice.IOrderStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -25,13 +25,13 @@ public class OrderStatsService implements IOrderStatsService {
     OrderCodeRepository codeRepository;
 
     @Override
-    public List<OrderStatsDTO> findAllStats(String id) {
-        List<OrderStats> result = statsRepository.findAllStats(id);
-        return result.stream().map(x -> new OrderStatsDTO(x)).collect(Collectors.toList());
+    public Page<OrderStatsDTO> findAllStats(Pageable pageable) {
+        Page<OrderStats> result = statsRepository.findAll(pageable);
+        return result.map(x -> new OrderStatsDTO(x));
     }
 
     @Override
-    public OrderStatsDTO saveCommissionStats(OrderStatsDTO dto) {
+    public OrderStatsDTO saveOrderStats(OrderStatsDTO dto) {
         OrderStats add = new OrderStats();
         add.setId(dto.getId());
         add.setInitialDate(dto.getInitialDate());

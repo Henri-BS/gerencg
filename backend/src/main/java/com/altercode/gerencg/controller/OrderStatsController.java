@@ -3,32 +3,33 @@ package com.altercode.gerencg.controller;
 import com.altercode.gerencg.dto.OrderStatsDTO;
 import com.altercode.gerencg.service.OrderStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
+@RequestMapping("/order-stats")
 public class OrderStatsController {
 
     @Autowired
     private OrderStatsService statsService;
 
-    @GetMapping("/commission-stats-list")
-    public ResponseEntity<List<OrderStatsDTO>> findAllStats(String id){
-        List<OrderStatsDTO> list = statsService.findAllStats(id);
-        return ResponseEntity.ok(list);
+    @GetMapping("/page")
+    public Page<OrderStatsDTO> findAllStats( Pageable pageable){
+        return statsService.findAllStats(pageable);
     }
 
-    @PostMapping("/commission-stats-save")
-    public ResponseEntity<OrderStatsDTO> saveCommissionStats(@RequestBody OrderStatsDTO dto) {
-        OrderStatsDTO addStats = statsService.saveCommissionStats(dto);
-        return new ResponseEntity<>(addStats, HttpStatus.CREATED);
+    @PostMapping("/save")
+    @ResponseStatus(value = HttpStatus.CREATED, reason = "Order stats was created")
+    public OrderStatsDTO saveOrderStats(@RequestBody OrderStatsDTO dto) {
+        return statsService.saveOrderStats(dto);
     }
 
-    @PutMapping("/commission-stats-update/{id}")
-    public OrderStatsDTO updateCommissionStats(OrderStatsDTO dto, @PathVariable String id){
+    @PutMapping("/update/{id}")
+    @ResponseStatus(value = HttpStatus.OK, reason = "Total order quantity has been updated")
+    public OrderStatsDTO updateStatsValues(OrderStatsDTO dto, @PathVariable String id){
         return statsService.updateStatsValues(dto);
     }
 

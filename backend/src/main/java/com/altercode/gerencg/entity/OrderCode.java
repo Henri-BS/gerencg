@@ -6,15 +6,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "tb_commission_code")
+@Table(name = "tb_order_code")
 public class OrderCode {
 
     @Id
     @Column(name = "code_id")
     private String code;
 
-    @Column(name = "commission_date")
-    private LocalDate commissionDate;
+    @Column(name = "order_date")
+    private LocalDate orderDate;
 
     private String distributor;
 
@@ -60,12 +60,12 @@ public class OrderCode {
         this.code = code;
     }
 
-    public LocalDate getCommissionDate() {
-        return commissionDate;
+    public LocalDate getOrderDate() {
+        return orderDate;
     }
 
-    public void setCommissionDate(LocalDate commissionDate) {
-        this.commissionDate = commissionDate;
+    public void setOrderDate(LocalDate orderDate) {
+        this.orderDate = orderDate;
     }
 
     public String getDistributor() {

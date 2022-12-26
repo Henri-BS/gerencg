@@ -1,14 +1,15 @@
 package com.altercode.gerencg.service.iservice;
 
 import com.altercode.gerencg.dto.OrderStatsDTO;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface IOrderStatsService {
 
-    List<OrderStatsDTO> findAllStats(String id);
+  Page<OrderStatsDTO> findAllStats(Pageable pageable);
 
-    OrderStatsDTO saveCommissionStats(OrderStatsDTO dto);
+
+    OrderStatsDTO saveOrderStats(OrderStatsDTO dto);
 
     OrderStatsDTO updateStatsValues(OrderStatsDTO dto);
 }

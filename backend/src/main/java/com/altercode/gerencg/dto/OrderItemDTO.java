@@ -9,7 +9,7 @@ public class OrderItemDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
-    private String commissionCode;
+    private String orderCode;
     private Double unitValue;
     private Double totalValue;
     private Integer quantity;
@@ -26,7 +26,7 @@ public class OrderItemDTO implements Serializable {
 
     public OrderItemDTO(OrderItem entity) {
         id = entity.getId();
-        commissionCode = entity.getCode().getCode();
+        orderCode = entity.getCode().getCode();
         unitValue = entity.getUnitValue();
         totalValue = entity.getTotalValue();
         quantity = entity.getItemQuantity();
@@ -46,12 +46,12 @@ public class OrderItemDTO implements Serializable {
         this.id = id;
     }
 
-    public String getCommissionCode() {
-        return commissionCode;
+    public String getOrderCode() {
+        return orderCode;
     }
 
-    public void setCommissionCode(String orderCode) {
-        this.commissionCode = orderCode;
+    public void setOrderCode(String orderCode) {
+        this.orderCode = orderCode;
     }
 
     public Double getUnitValue() {

@@ -2,7 +2,7 @@ import axios from "axios";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Code, Item, ItemProps } from "types/commission";
+import { Code, Item, ItemProps, OrderStats } from "types/order";
 import { BASE_URL } from "utils/requests";
 import IUpdateProduct from "assets/img/update.png"
 import IDeleteProduct from "assets/img/delete-img.png"
@@ -24,7 +24,7 @@ export function CommissionCard({ commission }: CommissionCode) {
                     <h2>Código do Pedido: <p>{commission.code}</p></h2>
                 </div>
                 <div className="commission-box">
-                    <h3>Data do Pedido: {moment(commission.commissionDate).format("DD/MM/YYYY")}</h3>
+                    <h3>Data do Pedido: {moment(commission.orderDate).format("DD/MM/YYYY")}</h3>
                 </div>
                 <div className="commission-box border-0">
                     <h3>Distribuidora: {commission.distributor}</h3>
@@ -56,7 +56,7 @@ export function CommissionItemCard({ itemId }: ItemProps) {
     const deleteItem = () => {
         axios.delete(`${BASE_URL}/delete-item/${itemId}`)
             .then((response) => {
-                navigate(`/commission/${item?.commissionCode}`)
+                navigate(`/commission/${item?.orderCode}`)
             })
     }
     return (
@@ -77,7 +77,7 @@ export function CommissionItemCard({ itemId }: ItemProps) {
                 </div>
             <div className="gerencg-item-card">
                 <div className="gerencg-box  border-dark">
-                    <h2>Código do Pedido: {item?.commissionCode} <Link to={`/commission/${item?.commissionCode}`} className="link-primary"> <MdLink/></Link></h2>
+                    <h2>Código do Pedido: {item?.orderCode} <Link to={`/commission/${item?.orderCode}`} className="link-primary"> <MdLink/></Link></h2>
                 </div>
                 <div className="gerencg-box">
                     <h4>Descrição: {item?.productDescription}</h4>
@@ -156,4 +156,16 @@ export function CommissionItemCard({ itemId }: ItemProps) {
         </>
     );
 }
+
+type Props = {
+    stats: OrderStats;
+}
+
+export function OrderStatsCard({stats}: Props){
+    return (
+    <div className="stats-card-container">
+        {stats.id}
+    </div>
+);
+};
 

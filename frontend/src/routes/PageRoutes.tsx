@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { ProductProfile, MeasureProfile, SaveProduct, UpdateProduct, ProductDashboard} from "pages/Profiles/ProductProfile";
 import { CategoryList } from "pages/Listings/CategoryListing";
 import { MeasureList } from "pages/Listings/MeasureListing";
-import { CommissionCodeList } from "pages/Listings/CommissionListing";
+import { OrderCodeList } from "pages/Listings/CommissionListing";
 import { CommissionProfile, ItemProfile } from "pages/Profiles/CommissionProfile";
 import { CategoryProfile, CategoryStatsDashboard, SaveCategoryStats } from "pages/Profiles/CategoryProfile";
 import NavBar from "components/shared/NavBar";
@@ -47,7 +47,7 @@ function PageRoutes() {
                 </Route>
                 <Route path="/measure/list" element={<MeasureList />} />
 
-                <Route path="/commission-list" element={<CommissionCodeList />} />
+                <Route path="/commission-list" element={<OrderCodeList />} />
 
                 <Route path="/commission">
                     <Route path=":codeId" element={<CommissionProfile />} />

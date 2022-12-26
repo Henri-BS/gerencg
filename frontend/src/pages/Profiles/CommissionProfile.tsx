@@ -1,7 +1,7 @@
-import { CommissionMenuBar } from "components/container/Bar/CommissionBar";
+import { CommissionMenuBar } from "components/container/Bar/OrderBar";
 import ItemDataTable from "components/dashboard/DataTable/CommissionDataTable";
 import { useParams } from "react-router-dom";
-import { CommissionItemCard } from "components/container/Card/CommissionCards";
+import { CommissionItemCard } from "components/container/Card/OrderCard";
 import { AddItemForm } from "components/container/Form/CommissionForm";
 import { MdClose } from "react-icons/md";
 

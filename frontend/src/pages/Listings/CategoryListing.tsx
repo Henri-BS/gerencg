@@ -78,7 +78,7 @@ export function ProductCategoryList({ categoryId }: CategoryProps) {
                 </div>
                 <div className="row">
                     {productPage.content?.map(product => (
-                        <div key={product.category.name} className="  col-sm-12 col-lg-6 col-xl-6 mb-3">
+                        <div key={product.category.name} className="col-sm-12 col-lg-6 col-xl-6 mb-3">
                             <ProductCard product={product} />
                         </div>
                     ))}
