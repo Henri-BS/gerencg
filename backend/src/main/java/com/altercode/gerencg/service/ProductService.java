@@ -36,14 +36,13 @@ public class ProductService implements IProductService {
     @Autowired
     private OrderItemRepository itemRepository;
 
-    // Find all products by page and description
-
+    @Override
     public Page<ProductDTO> findAll(Pageable pageable, String description) {
         Page<Product> result = productRepository.findAll(pageable, description);
         return result.map(x -> new ProductDTO(x));
     }
 
-    // Find all products by page, minimum date and max date of validate
+    @Override
     public Page<ProductDTO> findAllByValidate(String minValidate, String maxValidate, Pageable pageable) {
         LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
         LocalDate min = minValidate.equals("") ? today.minusMonths(1) : LocalDate.parse(minValidate);
@@ -53,32 +52,31 @@ public class ProductService implements IProductService {
         return result.map(x -> new ProductDTO(x));
     }
 
-    // Find all products by page and category
+    @Override
     public Page<ProductDTO> findByCategory(Pageable pageable, Category category) {
-
         Page<Product> result = productRepository.findByCategory(pageable, category);
         return result.map(x -> new ProductDTO(x));
     }
 
-    // Find all products by page and measure
+    @Override
     public Page<ProductDTO> findByMeasure(Pageable pageable, Measure measure) {
-
         Page<Product> result = productRepository.findByMeasure(pageable, measure);
         return result.map(x -> new ProductDTO(x));
     }
 
-    // Find products by id
+    @Override
     public ProductDTO findById(Long id) {
         Product result = productRepository.findById(id).get();
         return new ProductDTO(result);
     }
 
+    @Override
     public ProductDTO findByDescription(String description) {
         Product result = productRepository.findByDescription(description);
         return new ProductDTO(result);
     }
 
-    // Save new product
+    @Override
     public ProductDTO saveProduct(ProductDTO dto) {
 
         Category category = categoryRepository.findById(dto.getCategory()).get();
@@ -101,7 +99,7 @@ public class ProductService implements IProductService {
         return new ProductDTO(productRepository.saveAndFlush(add));
     }
 
-    // Delete product
+    @Override
     public void deleteProduct(Long id) {
         this.productRepository.deleteById(id);
     }

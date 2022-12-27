@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface IProductService {
+
     Page<ProductDTO> findAll(Pageable pageable, String description);
 
     Page<ProductDTO> findAllByValidate(String minValidate, String maxValidate, Pageable pageable);
@@ -16,6 +17,8 @@ public interface IProductService {
     Page<ProductDTO> findByMeasure(Pageable pageable, Measure measure);
 
     ProductDTO findById(Long id);
+
+    ProductDTO findByDescription(String description);
 
     ProductDTO saveProduct(ProductDTO dto);
 

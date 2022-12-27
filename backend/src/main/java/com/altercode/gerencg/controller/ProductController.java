@@ -1,5 +1,6 @@
 package com.altercode.gerencg.controller;
 
+import com.altercode.gerencg.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,66 +17,67 @@ import com.altercode.gerencg.service.SmsService;
 @RestController
 public class ProductController {
 
-	@Autowired
-	private ProductService service;
+    @Autowired
+    private ProductService service;
 
-	@Autowired
-	private SmsService smsService;
-	
-	@GetMapping("/product-search")
-	public ResponseEntity<Page<ProductDTO>> findByDescription(Pageable pageable, String description) {
-		Page<ProductDTO> page = service.findAll(pageable, description);
-		return ResponseEntity.ok(page);
-	}
+    @Autowired
+    private SmsService smsService;
 
-	@GetMapping("/product-validate")
-	public ResponseEntity<Page<ProductDTO>> findAllByValidate(
-			@RequestParam(value = "minValidate", defaultValue = "") String minValidate, 
-			@RequestParam(value = "maxValidate", defaultValue = "") String maxValidate, 
-			Pageable pageable) {
-		
-		Page<ProductDTO> list = service.findAllByValidate(minValidate, maxValidate, pageable);
-		return ResponseEntity.ok(list);
-	}
+    @GetMapping("/product-search")
+    public ResponseEntity<Page<ProductDTO>> findByDescription(Pageable pageable, String description) {
+        Page<ProductDTO> page = service.findAll(pageable, description);
+        return ResponseEntity.ok(page);
+    }
 
-	@GetMapping("/find-products-by-category/{category}")
-	public ResponseEntity<Page<ProductDTO>> findByCategory(Pageable pageable, Category category) {
-		Page<ProductDTO> list = service.findByCategory(pageable, category);
-		return ResponseEntity.ok(list);
-	}
+    @GetMapping("/product-validate")
+    public ResponseEntity<Page<ProductDTO>> findAllByValidate(
+            @RequestParam(value = "minValidate", defaultValue = "") String minValidate,
+            @RequestParam(value = "maxValidate", defaultValue = "") String maxValidate,
+            Pageable pageable) {
 
-	@GetMapping("/find-products-by-measure/{measure}")
-	public ResponseEntity<Page<ProductDTO>> findByMeasure(Pageable pageable, Measure measure) {
-		Page<ProductDTO> list = service.findByMeasure(pageable, measure);
-		return ResponseEntity.ok(list);
-	}
+        Page<ProductDTO> list = service.findAllByValidate(minValidate, maxValidate, pageable);
+        return ResponseEntity.ok(list);
+    }
 
-	@GetMapping("/product/{id}")
-	public ProductDTO findById(@PathVariable Long id) {
-		return service.findById(id);
-	}
+    @GetMapping("/find-products-by-category/{category}")
+    public ResponseEntity<Page<ProductDTO>> findByCategory(Pageable pageable, Category category) {
+        Page<ProductDTO> list = service.findByCategory(pageable, category);
+        return ResponseEntity.ok(list);
+    }
 
-	@GetMapping("/product-description/{description}")
-	public ProductDTO findByDescription(@PathVariable String description) {
-	return service.findByDescription(description);
-	}
+    @GetMapping("/find-products-by-measure/{measure}")
+    public ResponseEntity<Page<ProductDTO>> findByMeasure(Pageable pageable, Measure measure) {
+        Page<ProductDTO> list = service.findByMeasure(pageable, measure);
+        return ResponseEntity.ok(list);
+    }
 
-		@PostMapping("/product-add")
-	public ResponseEntity<ProductDTO> saveProduct(@RequestBody ProductDTO product) {
-		ProductDTO newProduct = service.saveProduct(product);
-		return new ResponseEntity<ProductDTO>(newProduct, HttpStatus.CREATED);
-	}
+    @GetMapping("/product/{id}")
+    public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
+        ProductDTO findProduct = service.findById(id);
+        return ResponseEntity.ok(findProduct);
+    }
 
-	@DeleteMapping("/product-delete/{id}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deleteProduct(@PathVariable Long id) {
-		this.service.deleteProduct(id);
-	}
+    @GetMapping("/product-description/{description}")
+    public ResponseEntity<ProductDTO> findByDescription(@PathVariable String description) {
+        ProductDTO findProduct = service.findByDescription(description);
+        return ResponseEntity.ok(findProduct);
+    }
 
+    @GetMapping("/product/{id}/notification")
+    public void notifySms(@PathVariable Long id) {
+        smsService.sendSms(id);
+    }
 
-	@GetMapping("/product/{id}/notification")
-	public void notifySms(@PathVariable Long id) {
-		smsService.sendSms(id);
-	}
+    @PostMapping("/product-add")
+    public ResponseEntity<ProductDTO> saveProduct(@RequestBody ProductDTO product) {
+        ProductDTO newProduct = service.saveProduct(product);
+        return new ResponseEntity<ProductDTO>(newProduct, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/product-delete/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteProduct(@PathVariable Long id) {
+        this.service.deleteProduct(id);
+    }
 
 }

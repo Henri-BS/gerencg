@@ -63,5 +63,9 @@ public class OrderStatsService implements IOrderStatsService {
         return new OrderStatsDTO(stats);
     }
 
-
+    @Override
+    public OrderStatsDTO findOrderStatsById(String id) {
+        OrderStats stats = statsRepository.findById(id).get();
+        return new OrderStatsDTO(stats);
+    }
 }
