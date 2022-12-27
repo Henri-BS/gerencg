@@ -57,6 +57,10 @@ function PageRoutes() {
                     <Route path=":itemId" element={<ItemProfile />} />
                 </Route>
 
+                <Route path="/stats">
+                    <Route path=":statsId" element={<CategoryStatsDashboard/>}/>
+                    </Route> 
+
             </Routes>
             <Footer />
         </BrowserRouter>

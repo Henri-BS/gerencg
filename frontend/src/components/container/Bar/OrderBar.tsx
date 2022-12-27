@@ -3,7 +3,7 @@ import IUpdateProduct from "assets/img/update.png"
 import IDeleteProduct from "assets/img/delete-img.png"
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Code, CodeProps, OrderStats, OrderStatsPage } from "types/order";
+import { Code, CodeProps, OrderStats, OrderStatsProps } from "types/order";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 import { MdClose } from "react-icons/md";
@@ -125,47 +125,46 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
     );
 }
 
-type Stats = {
-    stats: OrderStats;
-}
 
-export function CommissionStatsBar({ stats }: Stats) {
+export function OrderStatsBar({ statsId }: OrderStatsProps) {
 
-const [statsPage, setStatsPage] = useState<OrderStatsPage>({
-content: [],
-number: 0,
-totalElements: 0,
-
-});
+const [stats, setStats] = useState<OrderStats>();
 useEffect(() => {
-    axios.get(`${BASE_URL}/order-stats/page`)
+    axios.get(`${BASE_URL}/order-stats/${statsId}`)
     .then((response) => {
-        setStatsPage(response.data);
-    })
-})
+        setStats(response.data);
+    });
+}, [statsId])
+
+useEffect(() => {
+    axios.get(`${BASE_URL}/order-stats/update/${statsId}`)
+    .then((response) => {
+        setStats(response.data);
+    });
+}, [statsId])
+
     return (
         <div className="max-bar-container">
             <div className="bar-container">
                 <div className="bar-item-border row">
                     <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                        Data Inicial: {stats.initialDate}
+                        Data Inicial: {stats?.initialDate}
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                        Data Final: {stats.amountOrder}
+                        Data Final: {stats?.finalDate}
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                        Total de Pedidos: {stats.amountOrder}
+                        Total de Pedidos: {stats?.amountOrder}
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                        Total de Items: {stats.amountItems}
+                        Total de Items: {stats?.amountItems}
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                        Total de Despesas: {stats.totalValue}
+                        Total de Despesas: {stats?.totalValue}
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                        Média Semanal de Despesas: {stats.averageWeek}
+                        Média Semanal de Despesas: {stats?.averageWeek}
                     </div>
-                    
                 </div>
             </div>
         </div>

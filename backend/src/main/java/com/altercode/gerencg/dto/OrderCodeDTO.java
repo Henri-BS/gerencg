@@ -9,7 +9,7 @@ public class OrderCodeDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String code;
-    private LocalDate commissionDate;
+    private LocalDate orderDate;
     private String distributor;
     private Double totalValue;
     private Integer totalQuantity;
@@ -25,7 +25,7 @@ public class OrderCodeDTO implements Serializable {
 
     public OrderCodeDTO(OrderCode entity) {
         code = entity.getCode();
-        commissionDate = entity.getOrderDate();
+        orderDate = entity.getOrderDate();
         distributor = entity.getDistributor();
         totalValue = entity.getTotalValue();
         totalQuantity = entity.getTotalQuantity();
@@ -44,12 +44,12 @@ public class OrderCodeDTO implements Serializable {
         this.code = code;
     }
 
-    public LocalDate getCommissionDate() {
-        return commissionDate;
+    public LocalDate getOrderDate() {
+        return orderDate;
     }
 
-    public void setCommissionDate(LocalDate commissionDate) {
-        this.commissionDate = commissionDate;
+    public void setOrderDate(LocalDate orderDate) {
+        this.orderDate = orderDate;
     }
 
     public String getDistributor() {

@@ -49,7 +49,7 @@ public class OrderCodeService implements IOrderCodeService {
 
         OrderCode add = new OrderCode();
         add.setCode(dto.getCode());
-        add.setOrderDate(dto.getCommissionDate());
+        add.setOrderDate(dto.getOrderDate());
         add.setDistributor(dto.getDistributor());
         add.setPackageType(packageType);
 
@@ -62,7 +62,7 @@ public class OrderCodeService implements IOrderCodeService {
         Measure packageType = measureRepository.findById(dto.getPackageType()).get();
 
         edit.setCode(edit.getCode());
-        edit.setOrderDate(dto.getCommissionDate());
+        edit.setOrderDate(dto.getOrderDate());
         edit.setDistributor(dto.getDistributor());
         edit.setPackageType(packageType);
         return new OrderCodeDTO(codeRepository.save(edit));

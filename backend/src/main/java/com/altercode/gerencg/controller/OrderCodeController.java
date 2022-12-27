@@ -31,7 +31,7 @@ public class OrderCodeController {
     }
 
     @GetMapping("/find-commissions-by-stats/{stats}")
-    public ResponseEntity<List<OrderCodeDTO>> findCommissionsByStats(@PathVariable OrderStats stats) {
+    public ResponseEntity<List<OrderCodeDTO>> findOrderByStats(@PathVariable OrderStats stats) {
         List<OrderCodeDTO> list = codeService.findOrdersByStats(stats);
         return ResponseEntity.ok(list);
     }
@@ -42,25 +42,26 @@ public class OrderCodeController {
     }
 
     @PostMapping("/save-commission")
-    public ResponseEntity<OrderCodeDTO> saveCommissionCode(@RequestBody OrderCodeDTO dto) {
+    public ResponseEntity<OrderCodeDTO> saveOrderCode(@RequestBody OrderCodeDTO dto) {
         OrderCodeDTO addCode = codeService.saveOrder(dto);
         return new ResponseEntity<>(addCode, HttpStatus.CREATED);
     }
 
     @PutMapping("/update-commission")
-    public ResponseEntity<OrderCodeDTO> updateCommission(@RequestBody OrderCodeDTO dto) {
+    public ResponseEntity<OrderCodeDTO> updateOrder(@RequestBody OrderCodeDTO dto) {
         OrderCodeDTO editCode = codeService.updateOrder(dto);
         return new ResponseEntity<>(editCode, HttpStatus.OK);
     }
 
     @PutMapping("/sum-item-values/{code}")
-    public OrderCodeDTO commissionTotalValues(OrderCodeDTO dto, @PathVariable String code) {
-        return codeService.orderTotalValues(dto);
+    public ResponseEntity<OrderCodeDTO> orderTotalValues(OrderCodeDTO dto, @PathVariable String code) {
+        OrderCodeDTO update = codeService.orderTotalValues(dto);
+        return new ResponseEntity<>(update, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete-commission/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCommission(@PathVariable String id){
+    public void deleteOrder(@PathVariable String id){
         this.codeService.deleteOrder(id);
     }
 }

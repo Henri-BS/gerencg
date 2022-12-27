@@ -12,7 +12,7 @@ export type Code = {
   totalPackage: number;
   packageType: string;
   statsId: string;
-categoryId: string;
+  categoryId: string;
 };
 
 export type CodePage = {
@@ -86,6 +86,10 @@ export type OrderStatsPage = {
   numberOfElements?: number;
   empty?: boolean;
 };
+
+export type OrderStatsProps = {
+  statsId: string;
+}
 
 export type CommissionResults = {
   commissionCode: string;

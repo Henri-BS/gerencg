@@ -17,7 +17,7 @@ export function OrderCodeList() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/commission-list?code=${value}&page=${pageNumber}&sort=commissionDate,desc&size=21`)
+        axios.get(`${BASE_URL}/commission-list?code=${value}&page=${pageNumber}&size=21`)
             .then((response) => {
                 setCodePage(response.data);
             });
@@ -93,7 +93,7 @@ export function OrderStatsList() {
         <div className="row p-20">
             {statsPage.content?.map((x) => (
                 <div key={x.id} className="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1">
-<OrderStatsCard stats={x}/>
+                    <OrderStatsCard stats={x} />
                 </div>
             ))}
         </div>

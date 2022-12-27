@@ -163,9 +163,11 @@ type Props = {
 
 export function OrderStatsCard({stats}: Props){
     return (
+        <Link to={`/stats/${stats.id}`}>
     <div className="stats-card-container">
         {stats.id}
     </div>
+    </Link>
 );
 };
 

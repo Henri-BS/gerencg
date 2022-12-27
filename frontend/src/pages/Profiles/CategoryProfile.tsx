@@ -6,6 +6,7 @@ import CategoryDataTable from "components/dashboard/DataTable/CategoryDataTable"
 import { useParams } from "react-router-dom";
 import "./styles.css";
 import { OrderStatsList } from "pages/Listings/CommissionListing";
+import { OrderStatsBar } from "components/container/Bar/OrderBar";
 
 //Category Profile 
 export function CategoryProfile() {
@@ -37,10 +38,12 @@ export function SaveCategoryStats() {
 
 
 export function CategoryStatsDashboard() {
+  const params = useParams();
     return (
       <>
         <div className="container">
           <OrderStatsList/>
+          <OrderStatsBar statsId={`${params.statsId}`}/>
           <h1 className=" py-4">Estatísticas das Categorias</h1>
           <div className="max-container-charts ">
             <div className="row ">
