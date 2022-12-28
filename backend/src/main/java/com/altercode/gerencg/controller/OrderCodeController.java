@@ -36,10 +36,10 @@ public class OrderCodeController {
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/commission-stats-values")
+/*    @GetMapping("/commission-stats-values")
     public List<OrderStatsValuesDTO> statsValues(){
         return codeService.statsValues();
-    }
+    }*/
 
     @PostMapping("/save-commission")
     public ResponseEntity<OrderCodeDTO> saveOrderCode(@RequestBody OrderCodeDTO dto) {

@@ -8,6 +8,7 @@ import { BASE_URL } from "utils/requests";
 import "./styles.css"
 import { MdClose } from "react-icons/md";
 import { EditCommissionForm } from "../Form/CommissionForm";
+import { OrderStatsList } from "pages/Listings/CommissionListing";
 
 export function CommissionMenuBar({ codeId }: CodeProps) {
 
@@ -86,37 +87,37 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
 
                 <div className="bar-container">
                     <h2>Informações de Identificação</h2>
-                    <div className="bar-item-border row">
+                    <div className="row">
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                            Código: {commission?.code}
+                            <div className="bar-item-content"> Código: {commission?.code}</div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                            Data de Emissão: {commission?.orderDate}
+                            <div className="bar-item-content"> Data de Emissão: {commission?.orderDate}</div>
                         </div>
                         <div className="bar-item col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 ">
-                            Distribuidora: {commission?.distributor}
+                            <div className="bar-item-content"> Distribuidora: {commission?.distributor}</div>
                         </div>
                     </div>
                 </div>
 
                 <div className="bar-container">
                     <h2>Valores Totais do Produtos</h2>
-                    <div className="bar-item-border row">
+                    <div className="row">
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                            Quantidade de Items: {commission?.amountItems}
+                            <div className="bar-item-content"> Quantidade de Items: {commission?.amountItems}</div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                            Tipo de Pacote: {commission?.packageType}
+                            <div className="bar-item-content"> Tipo de Pacote: {commission?.packageType} </div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                            Total de Pacotes: {commission?.totalPackage}
+                            <div className="bar-item-content"> Total de Pacotes: {commission?.totalPackage} </div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            Total de Unidades: {commission?.totalQuantity}
+                            <div className="bar-item-content"> Total de Unidades: {commission?.totalQuantity} </div>
                         </div>
 
                         <div className="bar-item col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                            Valor Total do Pedido: {commission?.totalValue.toFixed(2)}
+                            <div className="bar-item-content"> Valor Total do Pedido: {commission?.totalValue.toFixed(2)} </div>
                         </div>
                     </div>
                 </div>
@@ -128,45 +129,47 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
 
 export function OrderStatsBar({ statsId }: OrderStatsProps) {
 
-const [stats, setStats] = useState<OrderStats>();
-useEffect(() => {
-    axios.get(`${BASE_URL}/order-stats/${statsId}`)
-    .then((response) => {
-        setStats(response.data);
-    });
-}, [statsId])
+    const [stats, setStats] = useState<OrderStats>();
+    useEffect(() => {
+        axios.get(`${BASE_URL}/order-stats/${statsId}`)
+            .then((response) => {
+                setStats(response.data);
+            });
+    }, [statsId])
 
-useEffect(() => {
-    axios.get(`${BASE_URL}/order-stats/update/${statsId}`)
-    .then((response) => {
-        setStats(response.data);
-    });
-}, [statsId])
+    useEffect(() => {
+        axios.get(`${BASE_URL}/order-stats/update/${statsId}`)
+            .then((response) => {
+                setStats(response.data);
+            });
+    }, [statsId])
 
     return (
-        <div className="max-bar-container">
-            <div className="bar-container">
-                <div className="bar-item-border row">
-                    <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                        Data Inicial: {stats?.initialDate}
+        <>
+            <div className="max-bar-container">
+                <OrderStatsList />
+                <div className="bar-container row">
+                    <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
+                        <div className="bar-item-content"> Data Inicial: {stats?.initialDate}</div>
                     </div>
-                    <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                        Data Final: {stats?.finalDate}
+                    <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
+                        <div className="bar-item-content"> Data Final: {stats?.finalDate} </div>
                     </div>
-                    <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                        Total de Pedidos: {stats?.amountOrder}
+                    <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
+                        <div className="bar-item-content"> Total de Pedidos: {stats?.amountOrder}</div>
                     </div>
-                    <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                        Total de Items: {stats?.amountItems}
+                    <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
+                        <div className="bar-item-content"> Total de Items: {stats?.amountItems}</div>
                     </div>
-                    <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                        Total de Despesas: {stats?.totalValue}
+                    <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
+                        <div className="bar-item-content"> Total de Despesas: {stats?.totalValue.toFixed(2)}</div>
                     </div>
-                    <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                        Média Semanal de Despesas: {stats?.averageWeek}
+                    <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
+                        <div className="bar-item-content"> Média Semanal de Despesas: {stats?.averageWeek.toFixed(2)}</div>
                     </div>
+
                 </div>
             </div>
-        </div>
+        </>
     )
 }

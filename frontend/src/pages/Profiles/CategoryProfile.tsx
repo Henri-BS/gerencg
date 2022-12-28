@@ -42,7 +42,7 @@ export function CategoryStatsDashboard() {
     return (
       <>
         <div className="container">
-          <OrderStatsList/>
+     
           <OrderStatsBar statsId={`${params.statsId}`}/>
           <h1 className=" py-4">Estatísticas das Categorias</h1>
           <div className="max-container-charts ">

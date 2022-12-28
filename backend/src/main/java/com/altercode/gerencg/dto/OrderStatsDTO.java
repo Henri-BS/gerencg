@@ -18,7 +18,7 @@ public class OrderStatsDTO implements Serializable {
 
         private Double averageWeek;
 
-        private Integer amountCommission;
+        private Integer amountOrder;
 
         private Integer amountItems;
 
@@ -31,7 +31,7 @@ public class OrderStatsDTO implements Serializable {
         finalDate = entity.getFinalDate();
         totalValue = entity.getTotalValue();
         averageWeek = entity.getAverageWeek();
-        amountCommission = entity.getAmountCommission();
+        amountOrder = entity.getAmountOrder();
         amountItems = entity.getAmountItems();
 
     }
@@ -76,12 +76,12 @@ public class OrderStatsDTO implements Serializable {
         this.averageWeek = averageWeek;
     }
 
-    public Integer getAmountCommission() {
-        return amountCommission;
+    public Integer getAmountOrder() {
+        return amountOrder;
     }
 
-    public void setAmountCommission(Integer amountCommission) {
-        this.amountCommission = amountCommission;
+    public void setAmountOrder(Integer amountOrder) {
+        this.amountOrder = amountOrder;
     }
 
     public Integer getAmountItems() {

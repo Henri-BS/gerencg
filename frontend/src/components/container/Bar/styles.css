@@ -135,27 +135,38 @@
 }
 
 .bar-container {
-    width: 100%;
     font-size: large;
     padding: 10px;
     margin-bottom: 10px;
 }
 
 .bar-item {
-    padding: 24px 8px;
-    height: 80px;
-    font-size: 20px;
-    font-weight: 800;
-    border: 1px solid;
-    overflow-x: hidden;
+    align-items: center;
+    margin-bottom: 4px;
+    padding: 4px;
 }
 
-.bar-item::-webkit-scrollbar {
+.bar-item-content {
+    padding: 24px 8px;
+    height: 80px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 800;
+    overflow-x: scroll;
+    transition: all 0.2s ease-in;
+    background-color: var(--white-prim);
+    color: var(--dark-seco);
+    border: 1px solid var(--dark-prim);
+    border-radius: 8px;
+}
+
+.bar-item-content::-webkit-scrollbar {
     width: 0px;
     height: 0px;
 }
 
 .bar-item-border {
     border: 1px solid;
+    border-radius: 8px;
     padding: 0;
 }

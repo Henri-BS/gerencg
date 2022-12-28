@@ -256,18 +256,18 @@
     height: 40px;
     width: 90px;
     color: var(--white-seco);
-    border: solid 1px var(--blue-prim);
+    border: solid 2px var(--blue-prim);
     text-align: center;
     border-radius: 12px;
+    transition: all 0.2s ease-out;
 }
 
-.stats-card-container {
-    background-color: var(--dark-quat);
-    padding: 8px;
-    height: 40px;
-    width: 90px;
-    color: var(--white-seco);
-    border: solid 1px var(--blue-prim);
-    text-align: center;
-    border-radius: 12px;
+.stats-card-container:hover {
+    border: solid 2px var(--blue-seco);
+    background-color: var(--dark-prim);
+}
+
+.stats-card-container:focus {
+    border: solid 2px var(--blue-seco);
+    background-color: var(--dark-prim);
 }

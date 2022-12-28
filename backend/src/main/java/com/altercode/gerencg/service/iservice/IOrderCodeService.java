@@ -24,5 +24,5 @@ public interface IOrderCodeService {
 
     List<OrderCodeDTO> findOrdersByStats(OrderStats stats);
 
-    List<OrderStatsValuesDTO> statsValues();
+/*    List<OrderStatsValuesDTO> statsValues();*/
 }

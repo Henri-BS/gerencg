@@ -37,7 +37,7 @@ export function CommissionCard({ commission }: CommissionCode) {
 export function CommissionItemCard({ itemId }: ItemProps) {
     const [item, setItem] = useState<Item>();
     const navigate = useNavigate();
-    const params = useParams(); 
+    const params = useParams();
 
     useEffect(() => {
         axios.get(`${BASE_URL}/item/${itemId}`)
@@ -61,23 +61,23 @@ export function CommissionItemCard({ itemId }: ItemProps) {
     }
     return (
         <>
-        <div className="menu-bar-container">
-                    <div>
-                        <h2><b>Item de Pedido</b></h2>
-                        <p>Detalhes sobre o item do pedido.</p>
-                    </div>
-                    <button data-bs-toggle="modal" data-bs-target="#updateItemModal" className="menu-bar-option" >
-                        <img className="option-card-img" src={IUpdateProduct} alt="update-product" />
-                        <h6>Editar</h6>
-                    </button>
-                    <button data-bs-toggle="modal" data-bs-target="#deleteItemModal" className="menu-bar-option" >
-                        <img className="option-card-img" src={IDeleteProduct} alt="delete-product" />
-                        <h6>Deletar</h6>
-                    </button>
+            <div className="menu-bar-container">
+                <div>
+                    <h2><b>Item de Pedido</b></h2>
+                    <p>Detalhes sobre o item do pedido.</p>
                 </div>
+                <button data-bs-toggle="modal" data-bs-target="#updateItemModal" className="menu-bar-option" >
+                    <img className="option-card-img" src={IUpdateProduct} alt="update-product" />
+                    <h6>Editar</h6>
+                </button>
+                <button data-bs-toggle="modal" data-bs-target="#deleteItemModal" className="menu-bar-option" >
+                    <img className="option-card-img" src={IDeleteProduct} alt="delete-product" />
+                    <h6>Deletar</h6>
+                </button>
+            </div>
             <div className="gerencg-item-card">
                 <div className="gerencg-box  border-dark">
-                    <h2>Código do Pedido: {item?.orderCode} <Link to={`/commission/${item?.orderCode}`} className="link-primary"> <MdLink/></Link></h2>
+                    <h2>Código do Pedido: {item?.orderCode} <Link to={`/commission/${item?.orderCode}`} className="link-primary"> <MdLink /></Link></h2>
                 </div>
                 <div className="gerencg-box">
                     <h4>Descrição: {item?.productDescription}</h4>
@@ -98,9 +98,9 @@ export function CommissionItemCard({ itemId }: ItemProps) {
                     <h3>Quantidade de Pacotes: {item?.packageQuantity}</h3>
                 </div>
                 <div className="gerencg-item-bar">
-                        <button data-bs-toggle="modal" data-bs-target="#updateProductModal" className="btn-confirm"> 
-                        Atualizar Produto 
-                        </button>
+                    <button data-bs-toggle="modal" data-bs-target="#updateProductModal" className="btn-confirm">
+                        Atualizar Produto
+                    </button>
                 </div>
             </div>
 
@@ -110,10 +110,10 @@ export function CommissionItemCard({ itemId }: ItemProps) {
                         <div className="modal-header">
                             <h5 className="modal-title" id="itemLabel">Deseja alterar o produto do item ?</h5>
                             <button className="close" data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"><MdClose/></span>
+                                <span aria-hidden="true"><MdClose /></span>
                             </button>
                         </div>
-                        <div className="modal-body"><EditItemForm itemId={`${params.itemId}`}/></div>
+                        <div className="modal-body"><EditItemForm itemId={`${params.itemId}`} /></div>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@ export function CommissionItemCard({ itemId }: ItemProps) {
                         <div className="modal-header">
                             <h5 className="modal-title" id="itemLabel">Deseja deletar este item ?</h5>
                             <button className="close " data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"><MdClose/></span>
+                                <span aria-hidden="true"><MdClose /></span>
                             </button>
                         </div>
                         <div className="modal-body">Item referente ao produto {item?.productDescription} será removido permanentemente.</div>
@@ -135,14 +135,14 @@ export function CommissionItemCard({ itemId }: ItemProps) {
                     </div>
                 </div>
             </div>
-            
+
             <div className="modal fade" role="dialog" id="updateProductModal" >
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="itemLabel">Deseja alterar o produto relacionado ao item ?</h5>
                             <button className="close " data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"><MdClose/></span>
+                                <span aria-hidden="true"><MdClose /></span>
                             </button>
                         </div>
                         <div className="modal-body">O produto {item?.productDescription} será atualizado com os dados deste item.</div>
@@ -161,13 +161,13 @@ type Props = {
     stats: OrderStats;
 }
 
-export function OrderStatsCard({stats}: Props){
+export function OrderStatsCard({ stats }: Props) {
     return (
-        <Link to={`/stats/${stats.id}`}>
-    <div className="stats-card-container">
-        {stats.id}
-    </div>
-    </Link>
-);
+        <Link to={`/stats/${stats.id}`} className="text-decoration-none">
+            <div className="stats-card-container">
+                {stats.id}
+            </div>
+        </Link>
+    );
 };
 

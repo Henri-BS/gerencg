@@ -5,38 +5,52 @@ import com.altercode.gerencg.entity.OrderStats;
 import java.io.Serializable;
 
 public class OrderStatsValuesDTO implements Serializable {
-    private String statsId;
-    private Double maxValueCommission;
-    private Double minValueCommission;
+    private Double totalValue;
+    private Double maxValue;
+    private Long amountOrders;
+    private Long amountItems;
 
-    public OrderStatsValuesDTO(OrderStats statsId, Double maxValueCommission, Double minValueCommission) {
-        this.statsId = statsId.getId();
-        this.maxValueCommission = maxValueCommission;
-        this.minValueCommission = minValueCommission;
+    public OrderStatsValuesDTO() {
     }
 
-    public String getStatsId() {
-        return statsId;
+    public OrderStatsValuesDTO(Double totalValue, Double maxValue, Long amountOrders, Long amountItems) {
+        this.totalValue = totalValue;
+        this.maxValue = maxValue;
+        this.amountOrders = amountOrders;
+        this.amountItems = amountItems;
     }
 
-    public void setStatsId(String statsId) {
-        this.statsId = statsId;
+    public Double getMaxValue() {
+        return maxValue;
     }
 
-    public Double getMaxValueCommission() {
-        return maxValueCommission;
+    public void setMaxValue(Double maxValue) {
+        this.maxValue = maxValue;
     }
 
-    public void setMaxValueCommission(Double maxValueCommission) {
-        this.maxValueCommission = maxValueCommission;
+    public Long getAmountOrders() {
+        return amountOrders;
     }
 
-    public Double getMinValueCommission() {
-        return minValueCommission;
+    public void setAmountOrders(Long amountOrders) {
+        this.amountOrders = amountOrders;
     }
 
-    public void setMinValueCommission(Double minValueCommission) {
-        this.minValueCommission = minValueCommission;
+    public Long getAmountItems() {
+        return amountItems;
     }
+
+    public void setAmountItems(Long amountItems) {
+        this.amountItems = amountItems;
+    }
+
+    public Double getTotalValue() {
+        return totalValue;
+    }
+
+    public void setTotalValue(Double totalValue) {
+        this.totalValue = totalValue;
+    }
+
 }
 

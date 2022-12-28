@@ -24,8 +24,8 @@ public class OrderStats {
     @Column(name = "average_week")
     private Double averageWeek;
 
-    @Column(name = "amount_commission")
-    private Integer amountCommission;
+    @Column(name = "amount_order")
+    private Integer amountOrder;
 
     @Column(name = "amount_items")
     private Integer amountItems;
@@ -37,13 +37,13 @@ public class OrderStats {
     }
 
     public OrderStats(String id, LocalDate initialDate, LocalDate finalDate, Double totalValue,
-                      Double averageWeek, Integer amountCommission, Integer amountItems) {
+                      Double averageWeek, Integer amountOrder, Integer amountItems) {
         this.id = id;
         this.initialDate = initialDate;
         this.finalDate = finalDate;
         this.totalValue = totalValue;
         this.averageWeek = averageWeek;
-        this.amountCommission = amountCommission;
+        this.amountOrder = amountOrder;
         this.amountItems = amountItems;
     }
 
@@ -87,12 +87,12 @@ public class OrderStats {
         this.averageWeek = averageWeek;
     }
 
-    public Integer getAmountCommission() {
-        return amountCommission;
+    public Integer getAmountOrder() {
+        return amountOrder;
     }
 
-    public void setAmountCommission(Integer amountCommission) {
-        this.amountCommission = amountCommission;
+    public void setAmountOrder(Integer amountOrder) {
+        this.amountOrder = amountOrder;
     }
 
     public Integer getAmountItems() {

@@ -1,6 +1,7 @@
 package com.altercode.gerencg.controller;
 
 import com.altercode.gerencg.dto.OrderStatsDTO;
+import com.altercode.gerencg.dto.OrderStatsValuesDTO;
 import com.altercode.gerencg.service.OrderStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,7 +18,7 @@ public class OrderStatsController {
     @Autowired
     private OrderStatsService statsService;
 
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<OrderStatsDTO> findOrderStatsById(@PathVariable String id){
         OrderStatsDTO findStats = statsService.findOrderStatsById(id);
         return ResponseEntity.ok(findStats);
@@ -41,4 +42,9 @@ public class OrderStatsController {
         return new ResponseEntity<>(edit, HttpStatus.OK);
     }
 
-}
+    @GetMapping("/total-values")
+    public OrderStatsValuesDTO orderStatsTotalValues(OrderStatsDTO dto) {
+return statsService.orderStatsTotalValues();
+    }
+
+    }

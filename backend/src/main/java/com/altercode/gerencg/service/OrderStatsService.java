@@ -1,6 +1,7 @@
 package com.altercode.gerencg.service;
 
 import com.altercode.gerencg.dto.OrderStatsDTO;
+import com.altercode.gerencg.dto.OrderStatsValuesDTO;
 import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.OrderStats;
 import com.altercode.gerencg.repository.OrderCodeRepository;
@@ -56,11 +57,16 @@ public class OrderStatsService implements IOrderStatsService {
 
         stats.setTotalValue(sumValues);
         stats.setAverageWeek(avgWeeks);
-        stats.setAmountCommission(stats.getCodes().size());
+        stats.setAmountOrder(stats.getCodes().size());
         stats.setAmountItems(sumItems);
         statsRepository.save(stats);
 
         return new OrderStatsDTO(stats);
+    }
+
+    @Override
+    public OrderStatsValuesDTO orderStatsTotalValues(){
+        return statsRepository.statsTotalValues();
     }
 
     @Override
