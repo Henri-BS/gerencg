@@ -91,6 +91,13 @@ export type OrderStatsProps = {
   statsId: string;
 }
 
+export type OrderStatsTotalValue = {
+  totalValue: number;
+  maxValue:number;
+  amountOrders: number;
+  amountItems: number;
+};
+
 export type CommissionResults = {
   commissionCode: string;
   totalQuantity: number;

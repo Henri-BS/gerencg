@@ -3,12 +3,11 @@ import IUpdateProduct from "assets/img/update.png"
 import IDeleteProduct from "assets/img/delete-img.png"
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Code, CodeProps, OrderStats, OrderStatsProps } from "types/order";
+import { Code, CodeProps, OrderStats, OrderStatsProps, OrderStatsTotalValue } from "types/order";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 import { MdClose } from "react-icons/md";
 import { EditCommissionForm } from "../Form/CommissionForm";
-import { OrderStatsList } from "pages/Listings/CommissionListing";
 
 export function CommissionMenuBar({ codeId }: CodeProps) {
 
@@ -147,7 +146,6 @@ export function OrderStatsBar({ statsId }: OrderStatsProps) {
     return (
         <>
             <div className="max-bar-container">
-                <OrderStatsList />
                 <div className="bar-container row">
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
                         <div className="bar-item-content"> Data Inicial: {stats?.initialDate}</div>
@@ -156,7 +154,40 @@ export function OrderStatsBar({ statsId }: OrderStatsProps) {
                         <div className="bar-item-content"> Data Final: {stats?.finalDate} </div>
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
-                        <div className="bar-item-content"> Total de Pedidos: {stats?.amountOrder}</div>
+                        <div className="bar-item-content"> Total de Pedidos do Mês: {stats?.amountOrder}</div>
+                    </div>
+                    <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
+                        <div className="bar-item-content"> Total de Items do Mês: {stats?.amountItems}</div>
+                    </div>
+                    <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
+                        <div className="bar-item-content"> Total de Despesas do Mês: {stats?.totalValue.toFixed(2)}</div>
+                    </div>
+                    <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
+                        <div className="bar-item-content"> Média Semanal de Despesas: {stats?.averageWeek.toFixed(2)}</div>
+                    </div>
+
+                </div>
+            </div>
+        </>
+    )
+}
+
+export function OrderStatsTotalValuesBar() {
+
+    const [stats, setStats] = useState<OrderStatsTotalValue>();
+    useEffect(() => {
+        axios.get(`${BASE_URL}/order-stats/total-value`)
+            .then((response) => {
+                setStats(response.data);
+            });
+    }, [])
+
+    return (
+        <>
+            <div className="max-bar-container">
+                <div className="bar-container row">
+                    <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
+                        <div className="bar-item-content"> Total de Pedidos: {stats?.amountOrders}</div>
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
                         <div className="bar-item-content"> Total de Items: {stats?.amountItems}</div>
@@ -165,7 +196,7 @@ export function OrderStatsBar({ statsId }: OrderStatsProps) {
                         <div className="bar-item-content"> Total de Despesas: {stats?.totalValue.toFixed(2)}</div>
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
-                        <div className="bar-item-content"> Média Semanal de Despesas: {stats?.averageWeek.toFixed(2)}</div>
+                        <div className="bar-item-content"> Maior Despesa: {stats?.maxValue.toFixed(2)}</div>
                     </div>
 
                 </div>

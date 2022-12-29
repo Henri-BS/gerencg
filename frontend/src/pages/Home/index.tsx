@@ -1,5 +1,5 @@
 
-import { category, categoryStats, product, commission } from "components/shared/MenuList";
+import { category, categoryStats as stats, product, commission } from "components/shared/MenuList";
 import { Link } from "react-router-dom";
 import "./styles.css"
 
@@ -39,10 +39,10 @@ function Home() {
                             </div>
                         </Link>
 
-                        <Link className="menu-item col-sm-3" to={categoryStats.path}>
+                        <Link className="menu-item col-sm-3" to={stats.path}>
                             <div className="item-card-bottom-container">
-                                <img className="item-card-image" src={categoryStats.image} alt={categoryStats.title} />
-                                <h3>{categoryStats.title}</h3>
+                                <img className="item-card-image" src={stats.image} alt={stats.title} />
+                                <h3>{stats.title}</h3>
                             </div>
                         </Link>
 

@@ -65,8 +65,8 @@ public class OrderStatsService implements IOrderStatsService {
     }
 
     @Override
-    public OrderStatsValuesDTO orderStatsTotalValues(){
-        return statsRepository.statsTotalValues();
+    public OrderStatsValuesDTO getOrderStatsTotalValues(){
+        return statsRepository.getOrderStatsTotalValues();
     }
 
     @Override

@@ -37,12 +37,13 @@ export function SaveCategoryStats() {
   }
 
 
+
 export function CategoryStatsDashboard() {
   const params = useParams();
     return (
       <>
         <div className="container">
-     
+     <div className="m-4"><OrderStatsList /></div>
           <OrderStatsBar statsId={`${params.statsId}`}/>
           <h1 className=" py-4">Estatísticas das Categorias</h1>
           <div className="max-container-charts ">

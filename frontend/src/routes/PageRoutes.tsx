@@ -5,7 +5,7 @@ import { ProductProfile, MeasureProfile, SaveProduct, UpdateProduct, ProductDash
 import { CategoryList } from "pages/Listings/CategoryListing";
 import { MeasureList } from "pages/Listings/MeasureListing";
 import { OrderCodeList } from "pages/Listings/CommissionListing";
-import { CommissionProfile, ItemProfile } from "pages/Profiles/CommissionProfile";
+import { CommissionProfile, ItemProfile, OrderStatsDashboard, OrderStatsProfile } from "pages/Profiles/CommissionProfile";
 import { CategoryProfile, CategoryStatsDashboard, SaveCategoryStats } from "pages/Profiles/CategoryProfile";
 import NavBar from "components/shared/NavBar";
 import Footer from "components/shared/Footer";
@@ -57,10 +57,11 @@ function PageRoutes() {
                     <Route path=":itemId" element={<ItemProfile />} />
                 </Route>
 
-                <Route path="/stats">
-                    <Route path=":statsId" element={<CategoryStatsDashboard/>}/>
-                    </Route> 
+                <Route path="/stats" element={<OrderStatsDashboard/>} />
 
+                <Route path="/stats">
+                    <Route path=":statsId" element={<OrderStatsProfile/>} />
+                    </Route> 
             </Routes>
             <Footer />
         </BrowserRouter>

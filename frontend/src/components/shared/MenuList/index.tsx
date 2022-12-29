@@ -21,8 +21,8 @@ export const category = {
 }
 
 export const categoryStats = {
-    title: 'Estatísticas de Categorias',
-    path: '/category-stats',
+    title: 'Estatísticas',
+    path: '/stats',
     image: "https://cdn1.iconfinder.com/data/icons/web-design-and-development-2-2/512/66-512.png",
     cName: 'menu-link'
 }

@@ -19,13 +19,13 @@ public class OrderStatsController {
     private OrderStatsService statsService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrderStatsDTO> findOrderStatsById(@PathVariable String id){
+    public ResponseEntity<OrderStatsDTO> findOrderStatsById(@PathVariable String id) {
         OrderStatsDTO findStats = statsService.findOrderStatsById(id);
         return ResponseEntity.ok(findStats);
     }
 
     @GetMapping("/page")
-    public ResponseEntity<Page<OrderStatsDTO>> findAllStats( Pageable pageable){
+    public ResponseEntity<Page<OrderStatsDTO>> findAllStats(Pageable pageable) {
         Page<OrderStatsDTO> page = statsService.findAllStats(pageable);
         return ResponseEntity.ok(page);
     }
@@ -37,14 +37,15 @@ public class OrderStatsController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<OrderStatsDTO> updateStatsValues(OrderStatsDTO dto, @PathVariable String id){
+    public ResponseEntity<OrderStatsDTO> updateStatsValues(OrderStatsDTO dto, @PathVariable String id) {
         OrderStatsDTO edit = statsService.updateStatsValues(dto);
         return new ResponseEntity<>(edit, HttpStatus.OK);
     }
 
-    @GetMapping("/total-values")
-    public OrderStatsValuesDTO orderStatsTotalValues(OrderStatsDTO dto) {
-return statsService.orderStatsTotalValues();
+    @GetMapping("/total-value")
+    public ResponseEntity<OrderStatsValuesDTO> getOrderStatsTotalValues() {
+        OrderStatsValuesDTO getStats = statsService.getOrderStatsTotalValues();
+        return ResponseEntity.ok(getStats);
     }
 
-    }
+}

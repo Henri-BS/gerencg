@@ -14,7 +14,7 @@ public interface IOrderStatsService {
 
     OrderStatsDTO updateStatsValues(OrderStatsDTO dto);
 
-  OrderStatsValuesDTO orderStatsTotalValues();
+  OrderStatsValuesDTO getOrderStatsTotalValues();
 
   OrderStatsDTO findOrderStatsById(String id);
 }
