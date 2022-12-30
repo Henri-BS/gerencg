@@ -10,13 +10,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface OrderStatsRepository extends JpaRepository<OrderStats,  String> {
+public interface OrderStatsRepository extends JpaRepository<OrderStats, String> {
 
     @Query("SELECT new com.altercode.gerencg.dto.OrderStatsValuesDTO (SUM(obj.totalValue), MAX(obj.totalValue), SUM(amountOrder), SUM(amountItems))" +
             "FROM OrderStats AS obj")
     public OrderStatsValuesDTO getOrderStatsTotalValues();
 
-
-    public List<OrderStatsSumOrderDTO> getOrderStatsQuantity();
-
+    @Query("SELECT new com.altercode.gerencg.dto.OrderStatsSumOrderDTO (obj.id, SUM(obj.amountOrder))" +
+            "FROM OrderStats AS obj GROUP BY obj.id")
+    public List<OrderStatsSumOrderDTO> getStatsOrdersGroup();
 }

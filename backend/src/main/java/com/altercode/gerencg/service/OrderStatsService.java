@@ -1,6 +1,7 @@
 package com.altercode.gerencg.service;
 
 import com.altercode.gerencg.dto.OrderStatsDTO;
+import com.altercode.gerencg.dto.OrderStatsSumOrderDTO;
 import com.altercode.gerencg.dto.OrderStatsValuesDTO;
 import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.OrderStats;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 
 @Service
@@ -73,5 +75,10 @@ public class OrderStatsService implements IOrderStatsService {
     public OrderStatsDTO findOrderStatsById(String id) {
         OrderStats stats = statsRepository.findById(id).get();
         return new OrderStatsDTO(stats);
+    }
+
+    @Override
+    public List<OrderStatsSumOrderDTO> getStatsOrdersGroup() {
+        return statsRepository.getStatsOrdersGroup();
     }
 }

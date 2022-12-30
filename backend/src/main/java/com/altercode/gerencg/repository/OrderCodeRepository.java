@@ -19,6 +19,8 @@ public interface OrderCodeRepository extends JpaRepository<OrderCode, String> {
 
     List<OrderCode> findOrdersByStats(OrderStats stats);
 
+
+
   /*  @Query("SELECT new com.altercode.gerencg.dto.OrderStatsValuesDTO(obj.stats, MAX(obj.totalValue), MIN(obj.totalValue))"
             + "FROM OrderCode AS obj GROUP BY obj.stats")
     List<OrderStatsValuesDTO> statsValues();*/
