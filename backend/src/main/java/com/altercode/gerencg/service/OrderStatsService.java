@@ -1,8 +1,9 @@
 package com.altercode.gerencg.service;
 
 import com.altercode.gerencg.dto.OrderStatsDTO;
-import com.altercode.gerencg.dto.StatsSumOrderDTO;
+import com.altercode.gerencg.dto.SumQuantityOrderDTO;
 import com.altercode.gerencg.dto.OrderStatsValuesDTO;
+import com.altercode.gerencg.dto.SumValueOrderDTO;
 import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.OrderStats;
 import com.altercode.gerencg.repository.OrderCodeRepository;
@@ -79,8 +80,14 @@ public class OrderStatsService implements IOrderStatsService {
     }
 
     @Override
-    public List<StatsSumOrderDTO> getStatsOrdersGroup() {
+    public List<SumQuantityOrderDTO> getOrderStatsQuantityGroup() {
         Sort sort = Sort.by("id").ascending();
-        return statsRepository.getStatsSumOrdersGroup(sort);
+        return statsRepository.getSumOrderStatsGroup(sort);
+    }
+
+    @Override
+    public List<SumValueOrderDTO> getOrderStatsValueGroup() {
+        Sort sort = Sort.by("id").ascending();
+        return statsRepository.getSumValuesStats(sort);
     }
 }

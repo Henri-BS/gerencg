@@ -65,7 +65,7 @@ export function OrderStatsDashboard() {
         <div className="row ">
           <div className="chart-box col-lg-6">
             <div className="container-chart">
-              <h5 className="text-center">Total de Produtos Adicionados</h5>
+              <h5 className="text-center">Total de Pedidos por Mês</h5>
               <AmountOrderChart />
             </div>
           </div>

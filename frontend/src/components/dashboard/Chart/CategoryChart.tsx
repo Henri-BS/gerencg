@@ -109,7 +109,7 @@ export function AmountOrderChart() {
         ]
     });
     useEffect(() => {
-        axios.get(`${BASE_URL}/order-stats/sum-orders`)
+        axios.get(`${BASE_URL}/order-stats/sum-order-quantity`)
             .then((response) => {
                 const data = response.data as StatsSumOrderGroup[];
                 const myLabels = data.map(x => x.statsId);

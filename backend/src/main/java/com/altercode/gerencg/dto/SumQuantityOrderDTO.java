@@ -2,16 +2,16 @@ package com.altercode.gerencg.dto;
 
 import java.io.Serializable;
 
-public class StatsSumOrderDTO implements Serializable {
+public class SumQuantityOrderDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String statsId;
     private Long sumOrders;
 
-    public StatsSumOrderDTO() {
+    public SumQuantityOrderDTO() {
     }
 
-    public StatsSumOrderDTO(String stats, Long amountOrder) {
+    public SumQuantityOrderDTO(String stats, Long amountOrder) {
         statsId = stats;
         this.sumOrders = amountOrder;
     }
