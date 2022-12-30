@@ -1,7 +1,7 @@
 package com.altercode.gerencg.controller;
 
 import com.altercode.gerencg.dto.OrderStatsDTO;
-import com.altercode.gerencg.dto.OrderStatsSumOrderDTO;
+import com.altercode.gerencg.dto.StatsSumOrderDTO;
 import com.altercode.gerencg.dto.OrderStatsValuesDTO;
 import com.altercode.gerencg.service.OrderStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +52,8 @@ public class OrderStatsController {
     }
 
     @GetMapping("/sum-orders")
-    public ResponseEntity<List<OrderStatsSumOrderDTO>> getOrderStatsQuantity() {
-        List<OrderStatsSumOrderDTO> getStats = statsService.getStatsOrdersGroup();
+    public ResponseEntity<List<StatsSumOrderDTO>> getOrderStatsQuantity() {
+        List<StatsSumOrderDTO> getStats = statsService.getStatsOrdersGroup();
         return ResponseEntity.ok(getStats);
     }
 

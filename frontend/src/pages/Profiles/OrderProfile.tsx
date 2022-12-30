@@ -5,6 +5,7 @@ import { CommissionItemCard } from "components/container/Card/OrderCard";
 import { AddItemForm } from "components/container/Form/CommissionForm";
 import { MdClose } from "react-icons/md";
 import { OrderStatsList } from "pages/Listings/CommissionListing";
+import { AmountOrderChart } from "components/dashboard/Chart/CategoryChart";
 
 
 export function CommissionProfile() {
@@ -54,24 +55,34 @@ export function ItemProfile() {
   );
 }
 
-export function OrderStatsDashboard(){
+export function OrderStatsDashboard() {
 
-  return(
-  <div className="container">
-    <div className="m-4"><OrderStatsList/></div>
-    <OrderStatsTotalValuesBar/>
-  </div>
+  return (
+    <div className="container">
+      <div className="m-4"><OrderStatsList /></div>
+      <OrderStatsTotalValuesBar />
+      <div className="max-container-charts ">
+        <div className="row ">
+          <div className="chart-box col-lg-6">
+            <div className="container-chart">
+              <h5 className="text-center">Total de Produtos Adicionados</h5>
+              <AmountOrderChart />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
-export function OrderStatsProfile(){
-const params = useParams();
-return (
-  <>
-    <div className="container">
- <div className="m-4"><OrderStatsList /></div>
-      <OrderStatsBar statsId={`${params.statsId}`}/>
+export function OrderStatsProfile() {
+  const params = useParams();
+  return (
+    <>
+      <div className="container">
+        <div className="m-4"><OrderStatsList /></div>
+        <OrderStatsBar statsId={`${params.statsId}`} />
       </div>
-      </>
-);
+    </>
+  );
 }

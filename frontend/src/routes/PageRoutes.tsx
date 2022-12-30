@@ -5,7 +5,7 @@ import { ProductProfile, MeasureProfile, SaveProduct, UpdateProduct, ProductDash
 import { CategoryList } from "pages/Listings/CategoryListing";
 import { MeasureList } from "pages/Listings/MeasureListing";
 import { OrderCodeList } from "pages/Listings/CommissionListing";
-import { CommissionProfile, ItemProfile, OrderStatsDashboard, OrderStatsProfile } from "pages/Profiles/CommissionProfile";
+import { CommissionProfile, ItemProfile, OrderStatsDashboard, OrderStatsProfile } from "pages/Profiles/OrderProfile";
 import { CategoryProfile, CategoryStatsDashboard, SaveCategoryStats } from "pages/Profiles/CategoryProfile";
 import NavBar from "components/shared/NavBar";
 import Footer from "components/shared/Footer";

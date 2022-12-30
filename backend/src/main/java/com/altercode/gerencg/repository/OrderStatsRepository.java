@@ -1,8 +1,9 @@
 package com.altercode.gerencg.repository;
 
-import com.altercode.gerencg.dto.OrderStatsSumOrderDTO;
+import com.altercode.gerencg.dto.StatsSumOrderDTO;
 import com.altercode.gerencg.dto.OrderStatsValuesDTO;
 import com.altercode.gerencg.entity.OrderStats;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -16,7 +17,7 @@ public interface OrderStatsRepository extends JpaRepository<OrderStats, String> 
             "FROM OrderStats AS obj")
     public OrderStatsValuesDTO getOrderStatsTotalValues();
 
-    @Query("SELECT new com.altercode.gerencg.dto.OrderStatsSumOrderDTO (obj.id, SUM(obj.amountOrder))" +
+    @Query("SELECT new com.altercode.gerencg.dto.StatsSumOrderDTO (obj.id, SUM(obj.amountOrder))" +
             "FROM OrderStats AS obj GROUP BY obj.id")
-    public List<OrderStatsSumOrderDTO> getStatsOrdersGroup();
+    public List<StatsSumOrderDTO> getStatsSumOrdersGroup(Sort sort);
 }

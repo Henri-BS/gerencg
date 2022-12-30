@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts'
 import { CategoryValue, FlowCategory } from 'types/category';
+import { OrderStats, StatsSumOrderGroup } from 'types/order';
 import { BASE_URL } from 'utils/requests';
 
 /**  Periodic income record of each category */
@@ -95,6 +96,56 @@ type QuantityChartData = {
     series: SeriesData[];
 }
 
+export function AmountOrderChart() {
+    const [chartData, setChartData] = useState<QuantityChartData>({
+        labels: {
+            categories: []
+        },
+        series: [
+            {
+                name: "",
+                data: []
+            }
+        ]
+    });
+    useEffect(() => {
+        axios.get(`${BASE_URL}/order-stats/sum-orders`)
+            .then((response) => {
+                const data = response.data as StatsSumOrderGroup[];
+                const myLabels = data.map(x => x.statsId);
+                const mySeries = data.map(x => x.sumOrders);
+                setChartData({
+                    labels: { categories: myLabels },
+                    series: [{
+                        name: "Quantidade de Pedidos",
+                        data: mySeries
+                    }]
+                });
+            });
+    }, [])
+const opt = {
+     plotOptions: {
+            bar: { horizontal: true }
+        }
+}
+return(
+    <Chart
+    options={{
+        ...opt,
+        xaxis: chartData.labels,
+        theme: { mode: "dark" },
+        colors: ["#1a6"],
+        chart: { background: "#2a323a" },
+        grid: { borderColor: "#139acf" },
+    }}
+    labels={chartData.labels}
+    series={chartData.series}
+    type="line"
+    height="300"
+    />
+);
+}
+
 export function AddedProductsChart() {
 
     const [chartData, setChartData] = useState<QuantityChartData>({
@@ -132,9 +183,8 @@ export function AddedProductsChart() {
 
     const opitions = {
         plotOptions: {
-
             bar: { horizontal: true }
-        },
+        }
     }
 
     return (
@@ -152,12 +202,11 @@ export function AddedProductsChart() {
             type="bar"
             height="300"
         />
-
     );
 }
 
-/** Periodic removed products registration of each category */
 
+/** Periodic removed products registration of each category */
 export function RemovedProductsChart() {
     const [chartData, setChartData] = useState<QuantityChartData>({
 
