@@ -98,10 +98,16 @@ export type OrderStatsTotalValue = {
   amountItems: number;
 };
 
-export type StatsSumOrderGroup = {
+export type OrderStatsQuantityGroup = {
   statsId: string;
   sumOrders: number;
 }
+
+export type OrderStatsValueGroup = {
+  date: string;
+  value: number;
+}
+
 
 export type CommissionResults = {
   commissionCode: string;

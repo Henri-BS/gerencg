@@ -5,7 +5,7 @@ import { ProductCategoryList } from "pages/Listings/CategoryListing";
 import CategoryDataTable from "components/dashboard/DataTable/CategoryDataTable";
 import { useParams } from "react-router-dom";
 import "./styles.css";
-import { OrderStatsList } from "pages/Listings/CommissionListing";
+import { OrderStatsList } from "pages/Listings/OrderListing";
 import { OrderStatsBar } from "components/container/Bar/OrderBar";
 
 //Category Profile 

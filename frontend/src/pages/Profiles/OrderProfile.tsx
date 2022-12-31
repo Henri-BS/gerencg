@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 import { CommissionItemCard } from "components/container/Card/OrderCard";
 import { AddItemForm } from "components/container/Form/CommissionForm";
 import { MdClose } from "react-icons/md";
-import { OrderStatsList } from "pages/Listings/CommissionListing";
-import { AmountOrderChart } from "components/dashboard/Chart/CategoryChart";
+import { OrderStatsList } from "pages/Listings/OrderListing";
+import { AmountOrderChart, OrderStatsValueChart } from "components/dashboard/Chart/CategoryChart";
 
 
 export function CommissionProfile() {
@@ -64,9 +64,15 @@ export function OrderStatsDashboard() {
       <div className="max-container-charts ">
         <div className="row ">
           <div className="chart-box col-lg-6">
-            <div className="container-chart">
-              <h5 className="text-center">Total de Pedidos por Mês</h5>
+          <div className="container-chart text-center p-2">
+              <h5>Quantitdade de Pedidos por Mês</h5>
               <AmountOrderChart />
+            </div>
+          </div>
+          <div className="chart-box col-lg-6">
+            <div className="container-chart text-center p-2">
+              <h5>Custo dos Pedidos por Mês</h5>
+              <OrderStatsValueChart />
             </div>
           </div>
         </div>

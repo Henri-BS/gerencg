@@ -76,31 +76,46 @@
     display: block;
 }
 
+.chart-box {
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
 .container-chart {
     color: var(--white-seco);
-    border-radius: 12px;
+    border-radius: 8px;
     background: #2a323a;
     height: 360px;
     width: 100%;
 }
 
-.chart-box {
-    padding: 20px;
-}
-
 .container-chart h5 {
-    font-size: 26px;
+    padding: 4px;
+    font-size: 22px;
     font-weight: 500;
     margin: 0;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
     .chart-box {
-        align-items: center;
-        justify-content: center;
+        padding: 30px;
     }
     .container-chart {
         height: 400px;
         overflow-x: scroll;
+    }
+    .container-chart::-webkit-scrollbar {
+        border-radius: 0px 12px 12px 0px;
+        width: 6px;
+        margin: 4px;
+    }
+    .container-chart::-webkit-scrollbar-thumb {
+        background-color: var(--dark-prim);
+        border: 1px solid transparent;
+        border-radius: 12px;
+    }
+    .container-chart::-webkit-scrollbar-corner {
+        color: transparent;
     }
 }

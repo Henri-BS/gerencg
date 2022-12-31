@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { ProductProfile, MeasureProfile, SaveProduct, UpdateProduct, ProductDashboard} from "pages/Profiles/ProductProfile";
 import { CategoryList } from "pages/Listings/CategoryListing";
 import { MeasureList } from "pages/Listings/MeasureListing";
-import { OrderCodeList } from "pages/Listings/CommissionListing";
+import { OrderCodeList } from "pages/Listings/OrderListing";
 import { CommissionProfile, ItemProfile, OrderStatsDashboard, OrderStatsProfile } from "pages/Profiles/OrderProfile";
 import { CategoryProfile, CategoryStatsDashboard, SaveCategoryStats } from "pages/Profiles/CategoryProfile";
 import NavBar from "components/shared/NavBar";

@@ -1,6 +1,7 @@
 package com.altercode.gerencg.repository;
 
 import com.altercode.gerencg.dto.OrderStatsValuesDTO;
+import com.altercode.gerencg.dto.ValuesOrderDateDTO;
 import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.OrderStats;
 import org.springframework.data.domain.Page;
@@ -19,9 +20,7 @@ public interface OrderCodeRepository extends JpaRepository<OrderCode, String> {
 
     List<OrderCode> findOrdersByStats(OrderStats stats);
 
-
-
-  /*  @Query("SELECT new com.altercode.gerencg.dto.OrderStatsValuesDTO(obj.stats, MAX(obj.totalValue), MIN(obj.totalValue))"
+    @Query("SELECT new com.altercode.gerencg.dto.ValuesOrderDateDTO(obj.stats, MAX(obj.totalValue), SUM(obj.amountOrder), SUM(obj.amountItems))"
             + "FROM OrderCode AS obj GROUP BY obj.stats")
-    List<OrderStatsValuesDTO> statsValues();*/
+    ValuesOrderDateDTO getOrderValueGroupDate();
 }

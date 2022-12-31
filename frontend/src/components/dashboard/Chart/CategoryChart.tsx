@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts'
 import { CategoryValue, FlowCategory } from 'types/category';
-import { OrderStats, StatsSumOrderGroup } from 'types/order';
+import { OrderStats, OrderStatsQuantityGroup, OrderStatsValueGroup } from 'types/order';
 import { BASE_URL } from 'utils/requests';
 
 /**  Periodic income record of each category */
@@ -82,6 +82,39 @@ export function ExpenseChart() {
     );
 }
 
+export function OrderStatsValueChart() {
+    const [chartData, setChartData] = useState<ProportionChartData>({ labels: [], series: [] });
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/order-stats/sum-order-value`)
+            .then((response) => {
+                const data = response.data as OrderStatsValueGroup[];
+                const myLabels = data.map(x => x.date);
+                const mySeries = data.map(x => x.value);
+                setChartData({ labels: myLabels, series: mySeries });
+            });
+    }, []);
+
+    const options = {
+        legend: { show: true }
+    }
+
+    return (
+        <Chart
+            options={{
+                ...options,
+                labels: chartData.labels,
+                theme: { mode: "dark" },
+                chart: { background: "#2a323a" }
+            }}
+            series={chartData.series}
+            type="pie"
+            height="300"
+        />
+    );
+}
+
+
 /** Periodic added products registration of each category */
 
 type SeriesData = {
@@ -111,39 +144,36 @@ export function AmountOrderChart() {
     useEffect(() => {
         axios.get(`${BASE_URL}/order-stats/sum-order-quantity`)
             .then((response) => {
-                const data = response.data as StatsSumOrderGroup[];
+                const data = response.data as OrderStatsQuantityGroup[];
                 const myLabels = data.map(x => x.statsId);
                 const mySeries = data.map(x => x.sumOrders);
                 setChartData({
                     labels: { categories: myLabels },
-                    series: [{
-                        name: "Quantidade de Pedidos",
-                        data: mySeries
-                    }]
+                    series: [{ name: "Quantidade de Pedidos", data: mySeries }]
                 });
             });
-    }, [])
-const opt = {
-     plotOptions: {
+    }, []);
+    const opt = {
+        plotOptions: {
             bar: { horizontal: true }
         }
-}
-return(
-    <Chart
-    options={{
-        ...opt,
-        xaxis: chartData.labels,
-        theme: { mode: "dark" },
-        colors: ["#1a6"],
-        chart: { background: "#2a323a" },
-        grid: { borderColor: "#139acf" },
-    }}
-    labels={chartData.labels}
-    series={chartData.series}
-    type="line"
-    height="300"
-    />
-);
+    }
+    return (
+        <Chart
+            options={{
+                ...opt,
+                xaxis: chartData.labels,
+                theme: { mode: "dark" },
+                colors: ["#1a6"],
+                chart: { background: "#2a323a" },
+                grid: { borderColor: "#139acf" },
+            }}
+            labels={chartData.labels}
+            series={chartData.series}
+            type="line"
+            height="300"
+        />
+    );
 }
 
 export function AddedProductsChart() {

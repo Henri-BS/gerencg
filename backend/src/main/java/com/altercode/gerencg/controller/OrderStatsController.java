@@ -63,5 +63,4 @@ public class OrderStatsController {
         List<SumValueOrderDTO> getStats = statsService.getOrderStatsValueGroup();
         return ResponseEntity.ok((getStats));
     }
-
 }
