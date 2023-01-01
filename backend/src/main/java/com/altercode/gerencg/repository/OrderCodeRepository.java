@@ -18,9 +18,10 @@ public interface OrderCodeRepository extends JpaRepository<OrderCode, String> {
     @Query("SELECT obj FROM OrderCode obj WHERE obj.code LIKE %?1%")
     Page<OrderCode> findOrdersByCode(Pageable pageable, String code);
 
-    List<OrderCode> findOrdersByStats(OrderStats stats);
+    Page<OrderCode> findOrdersByStats(Pageable pageable, OrderStats stats);
 
-    @Query("SELECT new com.altercode.gerencg.dto.ValuesOrderDateDTO(obj.stats, MAX(obj.totalValue), SUM(obj.amountOrder), SUM(obj.amountItems))"
-            + "FROM OrderCode AS obj GROUP BY obj.stats")
-    ValuesOrderDateDTO getOrderValueGroupDate();
+    @Query("SELECT new com.altercode.gerencg.dto.OrderStatsValuesDTO ( obj.totalValue)" +
+            "FROM OrderCode AS obj ")
+    List<OrderStatsValuesDTO> getOrderValueByStats(String stats);
+
 }

@@ -4,6 +4,7 @@ import com.altercode.gerencg.dto.OrderStatsDTO;
 import com.altercode.gerencg.dto.SumQuantityOrderDTO;
 import com.altercode.gerencg.dto.OrderStatsValuesDTO;
 import com.altercode.gerencg.dto.SumValueOrderDTO;
+import com.altercode.gerencg.entity.OrderStats;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -25,4 +26,5 @@ public interface IOrderStatsService {
   List<SumQuantityOrderDTO> getOrderStatsQuantityGroup();
 
   List<SumValueOrderDTO> getOrderStatsValueGroup();
+
 }

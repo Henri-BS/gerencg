@@ -16,7 +16,7 @@ export type Code = {
 };
 
 export type CodePage = {
-  content?: Code[];
+  content: Code[];
   last?: boolean;
   totalElements?: number;
   totalPages?: number;

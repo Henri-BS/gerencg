@@ -1,6 +1,6 @@
 import CategorySideBar from "components/container/Bar/CategoryBar";
 import { AddCategoryStats } from "components/container/Form/CategoryForm";
-import { AddedProductsChart, ExpenseChart, IncomeChart, RemovedProductsChart } from "components/dashboard/Chart/CategoryChart";
+import { AddedProductsChart, ExpenseChart, IncomeChart, RemovedProductsChart } from "components/dashboard/Chart/StatsChart";
 import { ProductCategoryList } from "pages/Listings/CategoryListing";
 import CategoryDataTable from "components/dashboard/DataTable/CategoryDataTable";
 import { useParams } from "react-router-dom";

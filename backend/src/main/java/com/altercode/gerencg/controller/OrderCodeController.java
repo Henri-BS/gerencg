@@ -30,16 +30,18 @@ public class OrderCodeController {
         return codeService.findCodeById(id);
     }
 
-    @GetMapping("/find-commissions-by-stats/{stats}")
-    public ResponseEntity<List<OrderCodeDTO>> findOrderByStats(@PathVariable OrderStats stats) {
-        List<OrderCodeDTO> list = codeService.findOrdersByStats(stats);
+    @GetMapping("/find-order-by-stats/{stats}")
+    public ResponseEntity<Page<OrderCodeDTO>> findOrderByStats(Pageable pageable, @PathVariable OrderStats stats) {
+        Page<OrderCodeDTO> list = codeService.findOrdersByStats(pageable, stats);
         return ResponseEntity.ok(list);
     }
 
-/*    @GetMapping("/commission-stats-values")
-    public List<OrderStatsValuesDTO> statsValues(){
-        return codeService.statsValues();
-    }*/
+    @GetMapping("/order-values-by-stats")
+    public ResponseEntity<List<OrderStatsValuesDTO>> getOrderValuesByStats(@PathVariable String stats) {
+        List<OrderStatsValuesDTO> list = codeService.getOrderValuesByStats(stats);
+        return ResponseEntity.ok(list);
+    }
+
 
     @PostMapping("/save-commission")
     public ResponseEntity<OrderCodeDTO> saveOrderCode(@RequestBody OrderCodeDTO dto) {

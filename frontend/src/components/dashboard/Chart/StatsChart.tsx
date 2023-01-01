@@ -2,8 +2,9 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts'
 import { CategoryValue, FlowCategory } from 'types/category';
-import { OrderStats, OrderStatsQuantityGroup, OrderStatsValueGroup } from 'types/order';
+import { CodePage, OrderStats, OrderStatsPage, OrderStatsProps, OrderStatsQuantityGroup, OrderStatsValueGroup } from 'types/order';
 import { BASE_URL } from 'utils/requests';
+import { QuantityProductChart } from './ProductCharts';
 
 /**  Periodic income record of each category */
 
@@ -12,6 +13,17 @@ type ProportionChartData = {
     series: number[];
 }
 
+type SeriesData = {
+    name: string;
+    data: number[];
+}
+
+type QuantityChartData = {
+    labels: {
+        categories: string[];
+    };
+    series: SeriesData[];
+}
 export function IncomeChart() {
 
     const [chartData, setChartData] = useState<ProportionChartData>({ labels: [], series: [] });
@@ -114,32 +126,91 @@ export function OrderStatsValueChart() {
     );
 }
 
+export function OrderStatsChartsByPediod({ statsId }: OrderStatsProps) {
+    const [chartData, setChartData] = useState<ProportionChartData>({ labels: [], series: [] });
+    const [quantityChart, setQuantityChart] = useState<QuantityChartData>({
+        labels: { categories: [] },
+        series: [{ name: "", data: [] }]
+    });
 
-/** Periodic added products registration of each category */
+    useEffect(() => {
+        axios.get(`${BASE_URL}/find-order-by-stats/${statsId}?size=10&sort=totalValue`)
+            .then((response) => {
+                const data = response.data as CodePage;
+                const myLabels = data.content?.map(x => x.code);
+                const mySeries = data.content?.map(x => x.totalValue);
+                setChartData({ labels: myLabels, series: mySeries });
+            });
+    }, [statsId])
 
-type SeriesData = {
-    name: string;
-    data: number[];
+    useEffect(() => {
+        axios.get(`${BASE_URL}/find-order-by-stats/${statsId}?size=10&sort=amountItems,desc`)
+            .then((response) => {
+                const data = response.data as CodePage;
+                const myLabels = data.content.map(x => x.code);
+                const mySeries = data.content.map(x => x.amountItems);
+                setQuantityChart({
+                    labels: { categories: myLabels },
+                    series: [{ name: "Quantidade de Items", data: mySeries }]
+                });
+            });
+    }, [statsId]);
+
+    const options = {
+        plotOptions: { 
+            bar:{horizontal: true} 
+        }
+    }
+
+    return (
+        <div className="row ">
+            <div className="chart-box col-lg-6">
+                <div className="container-chart">
+                    <h5 className="text-center">Pedidos com maior custo</h5>
+                    <Chart
+                        options={{
+                            ...options,
+                            labels: chartData.labels,
+                            theme: { mode: "dark" },
+                            chart: { background: "#2a323a" }
+                        }}
+                        series={chartData.series}
+                        type="pie"
+                        height="300"
+                    />
+                </div>
+            </div>
+            <div className="chart-box col-lg-6">
+                <div className="container-chart">
+                    <h5 className="text-center">Pedidos com maior quantidade de items</h5>
+                    <Chart
+                        options={{
+                            ...options,
+                            xaxis: quantityChart.labels,
+                            theme: { mode: "dark" },
+                            colors: ["#1a6"],
+                            chart: { background: "#2a323a" }
+                        }}
+                        labels={quantityChart.labels}
+                        series={quantityChart.series}
+                        type="bar"
+                        height="300"
+                    />
+                </div>
+            </div>
+        </div>
+    );
 }
 
-type QuantityChartData = {
-    labels: {
-        categories: string[];
-    };
-    series: SeriesData[];
-}
 
-export function AmountOrderChart() {
+// Periodic added products registration of each category 
+
+
+
+export function OrderStatsQuantityChart() {
     const [chartData, setChartData] = useState<QuantityChartData>({
-        labels: {
-            categories: []
-        },
-        series: [
-            {
-                name: "",
-                data: []
-            }
-        ]
+        labels: { categories: [] },
+        series: [{ name: "", data: [] }]
     });
     useEffect(() => {
         axios.get(`${BASE_URL}/order-stats/sum-order-quantity`)

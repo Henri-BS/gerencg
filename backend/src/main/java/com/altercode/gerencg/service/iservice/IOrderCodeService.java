@@ -22,7 +22,7 @@ public interface IOrderCodeService {
 
     OrderCodeDTO orderTotalValues(OrderCodeDTO dto);
 
-    List<OrderCodeDTO> findOrdersByStats(OrderStats stats);
+    Page<OrderCodeDTO> findOrdersByStats(Pageable pageable, OrderStats stats);
 
-/*    List<OrderStatsValuesDTO> statsValues();*/
+    List<OrderStatsValuesDTO> getOrderValuesByStats(String stats);
 }

@@ -5,7 +5,7 @@ import { CommissionItemCard } from "components/container/Card/OrderCard";
 import { AddItemForm } from "components/container/Form/CommissionForm";
 import { MdClose } from "react-icons/md";
 import { OrderStatsList } from "pages/Listings/OrderListing";
-import { AmountOrderChart, OrderStatsValueChart } from "components/dashboard/Chart/CategoryChart";
+import { OrderStatsChartsByPediod, OrderStatsQuantityChart, OrderStatsValueChart } from "components/dashboard/Chart/StatsChart";
 
 
 export function CommissionProfile() {
@@ -66,7 +66,7 @@ export function OrderStatsDashboard() {
           <div className="chart-box col-lg-6">
           <div className="container-chart text-center p-2">
               <h5>Quantitdade de Pedidos por Mês</h5>
-              <AmountOrderChart />
+              <OrderStatsQuantityChart />
             </div>
           </div>
           <div className="chart-box col-lg-6">
@@ -88,7 +88,11 @@ export function OrderStatsProfile() {
       <div className="container">
         <div className="m-4"><OrderStatsList /></div>
         <OrderStatsBar statsId={`${params.statsId}`} />
+        <div className="max-container-charts ">
+          <OrderStatsChartsByPediod statsId={`${params.statsId}`}/>
+        </div>
       </div>
+
     </>
   );
 }

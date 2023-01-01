@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -23,9 +22,6 @@ public class OrderCodeService implements IOrderCodeService {
 
     @Autowired
     private OrderCodeRepository codeRepository;
-
-    @Autowired
-    private OrderStatsRepository statsRepository;
 
     @Autowired
     private MeasureRepository measureRepository;
@@ -96,14 +92,13 @@ public class OrderCodeService implements IOrderCodeService {
     }
 
     @Override
-    public List<OrderCodeDTO> findOrdersByStats(OrderStats stats) {
-        List<OrderCode> result = codeRepository.findOrdersByStats(stats);
-        return result.stream().map(x -> new OrderCodeDTO(x)).collect(Collectors.toList());
+    public Page<OrderCodeDTO> findOrdersByStats(Pageable pageable, OrderStats stats) {
+        Page<OrderCode> result = codeRepository.findOrdersByStats(pageable, stats);
+        return result.map(x -> new OrderCodeDTO(x));
     }
 
-
-  /*  @Override
-    public List<OrderStatsValuesDTO> statsValues(){
-        return codeRepository.statsValues();
-    }*/
+    @Override
+    public List<OrderStatsValuesDTO> getOrderValuesByStats(String stats) {
+        return codeRepository.getOrderValueByStats(stats);
+    }
 }

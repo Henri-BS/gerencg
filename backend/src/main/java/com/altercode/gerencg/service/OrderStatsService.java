@@ -69,14 +69,14 @@ public class OrderStatsService implements IOrderStatsService {
     }
 
     @Override
-    public OrderStatsValuesDTO getOrderStatsTotalValues(){
-        return statsRepository.getOrderStatsTotalValues();
-    }
-
-    @Override
     public OrderStatsDTO findOrderStatsById(String id) {
         OrderStats stats = statsRepository.findById(id).get();
         return new OrderStatsDTO(stats);
+    }
+
+    @Override
+    public OrderStatsValuesDTO getOrderStatsTotalValues(){
+        return statsRepository.getOrderStatsTotalValues();
     }
 
     @Override
@@ -90,4 +90,6 @@ public class OrderStatsService implements IOrderStatsService {
         Sort sort = Sort.by("id").ascending();
         return statsRepository.getSumValuesStats(sort);
     }
+
+
 }

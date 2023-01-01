@@ -20,22 +20,15 @@ export function QuantityProductChart({ productId }: ProductProps) {
 
     const [chartData, setChartData] = useState<QuantityChartData>({
         labels: [],
-        series: [
-            {
-                name: "",
-                data: []
-            }
-        ]
+        series: [{ name: "", data: [] }]
     });
 
     useEffect(() => {
-
         axios.get(`${BASE_URL}/history/${productId}`)
             .then((response) => {
                 const data = response.data as ProductHistoryPage;
                 const myLabels = data.content.map(x => moment(x.createdDate).format("DD/MM/YYYY"))
                 const mySeries = data.content.map(x => x.quantity);
-
                 setChartData({
                     labels: myLabels,
                     series: [{
