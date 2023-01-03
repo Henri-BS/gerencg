@@ -2,6 +2,7 @@ package com.altercode.gerencg.service.iservice;
 
 import com.altercode.gerencg.dto.OrderCodeDTO;
 import com.altercode.gerencg.dto.OrderStatsValuesDTO;
+import com.altercode.gerencg.dto.SumOrderValueCategoryDTO;
 import com.altercode.gerencg.entity.OrderStats;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,5 +25,5 @@ public interface IOrderCodeService {
 
     Page<OrderCodeDTO> findOrdersByStats(Pageable pageable, OrderStats stats);
 
-    List<OrderStatsValuesDTO> getOrderValuesByStats(String stats);
+    List<SumOrderValueCategoryDTO> getOrderValueGroupByCategory();
 }

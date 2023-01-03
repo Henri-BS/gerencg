@@ -1,11 +1,11 @@
 package com.altercode.gerencg.repository;
 
-import com.altercode.gerencg.dto.OrderStatsValuesDTO;
-import com.altercode.gerencg.dto.ValuesOrderDateDTO;
+import com.altercode.gerencg.dto.SumOrderValueCategoryDTO;
 import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.OrderStats;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -20,8 +20,8 @@ public interface OrderCodeRepository extends JpaRepository<OrderCode, String> {
 
     Page<OrderCode> findOrdersByStats(Pageable pageable, OrderStats stats);
 
-    @Query("SELECT new com.altercode.gerencg.dto.OrderStatsValuesDTO ( obj.totalValue)" +
-            "FROM OrderCode AS obj ")
-    List<OrderStatsValuesDTO> getOrderValueByStats(String stats);
+    @Query("SELECT new com.altercode.gerencg.dto.SumOrderValueCategoryDTO(obj.category, SUM(obj.totalValue))" +
+            "FROM OrderCode AS obj GROUP BY obj.category")
+    List<SumOrderValueCategoryDTO> getOrderValueGroupByCategory(Sort sort);
 
 }

@@ -116,7 +116,7 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
                         </div>
 
                         <div className="bar-item col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                            <div className="bar-item-content"> Valor Total do Pedido: {commission?.totalValue.toFixed(2)} </div>
+                            <div className="bar-item-content"> Valor Total do Pedido: {commission?.totalValue} </div>
                         </div>
                     </div>
                 </div>

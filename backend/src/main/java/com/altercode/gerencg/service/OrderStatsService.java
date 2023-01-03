@@ -90,6 +90,4 @@ public class OrderStatsService implements IOrderStatsService {
         Sort sort = Sort.by("id").ascending();
         return statsRepository.getSumValuesStats(sort);
     }
-
-
 }

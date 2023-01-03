@@ -1,7 +1,7 @@
 package com.altercode.gerencg.service;
 
 import com.altercode.gerencg.dto.OrderCodeDTO;
-import com.altercode.gerencg.dto.OrderStatsValuesDTO;
+import com.altercode.gerencg.dto.SumOrderValueCategoryDTO;
 import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.OrderItem;
 import com.altercode.gerencg.entity.OrderStats;
@@ -11,10 +11,13 @@ import com.altercode.gerencg.service.iservice.IOrderCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
+import static java.lang.Double.valueOf;
 
 @Service
 @Transactional
@@ -36,6 +39,10 @@ public class OrderCodeService implements IOrderCodeService {
     @Override
     public OrderCodeDTO findCodeById(String id) {
         OrderCode result = codeRepository.findById(id).get();
+        double sumValuesRound = Math.round(result.getTotalValue() *100)/100.00;
+        result.setTotalValue(sumValuesRound);
+        codeRepository.save(result);
+
         return new OrderCodeDTO(result);
     }
 
@@ -73,6 +80,7 @@ public class OrderCodeService implements IOrderCodeService {
     public OrderCodeDTO orderTotalValues(OrderCodeDTO dto) {
         OrderCode code = codeRepository.findById(dto.getCode()).get();
 
+
         double sumValues = 0;
         int sumQuantity = 0;
         int sumPackages = 0;
@@ -82,7 +90,8 @@ public class OrderCodeService implements IOrderCodeService {
             sumPackages = sumPackages + i.getPackageQuantity();
         }
 
-        code.setTotalValue(sumValues);
+        double sumValuesRound = Math.round(sumValues *100)/100.00;
+        code.setTotalValue(sumValuesRound);
         code.setTotalQuantity(sumQuantity);
         code.setTotalPackage(sumPackages);
         code.setAmountItems(code.getItems().size());
@@ -98,7 +107,8 @@ public class OrderCodeService implements IOrderCodeService {
     }
 
     @Override
-    public List<OrderStatsValuesDTO> getOrderValuesByStats(String stats) {
-        return codeRepository.getOrderValueByStats(stats);
+    public List<SumOrderValueCategoryDTO> getOrderValueGroupByCategory() {
+        Sort sort = Sort.by("category").ascending();
+        return codeRepository.getOrderValueGroupByCategory(sort);
     }
 }

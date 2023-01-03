@@ -2,6 +2,8 @@ package com.altercode.gerencg.controller;
 
 import com.altercode.gerencg.dto.OrderCodeDTO;
 import com.altercode.gerencg.dto.OrderStatsValuesDTO;
+import com.altercode.gerencg.dto.SumOrderValueCategoryDTO;
+import com.altercode.gerencg.dto.SumValueOrderDTO;
 import com.altercode.gerencg.entity.OrderStats;
 import com.altercode.gerencg.service.OrderCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +38,11 @@ public class OrderCodeController {
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/order-values-by-stats")
-    public ResponseEntity<List<OrderStatsValuesDTO>> getOrderValuesByStats(@PathVariable String stats) {
-        List<OrderStatsValuesDTO> list = codeService.getOrderValuesByStats(stats);
-        return ResponseEntity.ok(list);
+    @GetMapping("/sum-value-by-category")
+    public ResponseEntity<List<SumOrderValueCategoryDTO>> getOrderValueGroupByCategory() {
+        List<SumOrderValueCategoryDTO> getOrders = codeService.getOrderValueGroupByCategory();
+        return ResponseEntity.ok(getOrders);
     }
-
 
     @PostMapping("/save-commission")
     public ResponseEntity<OrderCodeDTO> saveOrderCode(@RequestBody OrderCodeDTO dto) {

@@ -5,7 +5,7 @@ import { CommissionItemCard } from "components/container/Card/OrderCard";
 import { AddItemForm } from "components/container/Form/CommissionForm";
 import { MdClose } from "react-icons/md";
 import { OrderStatsList } from "pages/Listings/OrderListing";
-import { OrderStatsChartsByPediod, OrderStatsQuantityChart, OrderStatsValueChart } from "components/dashboard/Chart/StatsChart";
+import { OrderStatsChartsByPediod, OrderStatsCharts } from "components/dashboard/Chart/StatsChart";
 
 
 export function CommissionProfile() {
@@ -45,7 +45,6 @@ export function CommissionProfile() {
 
 export function ItemProfile() {
   const params = useParams();
-
   return (
     <>
       <div className="container">
@@ -56,26 +55,12 @@ export function ItemProfile() {
 }
 
 export function OrderStatsDashboard() {
-
   return (
     <div className="container">
       <div className="m-4"><OrderStatsList /></div>
       <OrderStatsTotalValuesBar />
       <div className="max-container-charts ">
-        <div className="row ">
-          <div className="chart-box col-lg-6">
-          <div className="container-chart text-center p-2">
-              <h5>Quantitdade de Pedidos por Mês</h5>
-              <OrderStatsQuantityChart />
-            </div>
-          </div>
-          <div className="chart-box col-lg-6">
-            <div className="container-chart text-center p-2">
-              <h5>Custo dos Pedidos por Mês</h5>
-              <OrderStatsValueChart />
-            </div>
-          </div>
-        </div>
+        <OrderStatsCharts />
       </div>
     </div>
   );
@@ -89,7 +74,7 @@ export function OrderStatsProfile() {
         <div className="m-4"><OrderStatsList /></div>
         <OrderStatsBar statsId={`${params.statsId}`} />
         <div className="max-container-charts ">
-          <OrderStatsChartsByPediod statsId={`${params.statsId}`}/>
+          <OrderStatsChartsByPediod statsId={`${params.statsId}`} />
         </div>
       </div>
 
