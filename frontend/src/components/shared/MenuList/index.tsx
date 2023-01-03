@@ -6,9 +6,9 @@ export const product = {
     cName: 'menu-link'
 }
 
-export const commission = {
+export const order = {
     title: 'Pedidos',
-    path: '/commission-list',
+    path: '/order/list',
     image: "https://www.playingfire.com/wp-content/uploads/2020/08/874889_clipboard_512x512-1-300x300.png",
     cName: 'menu-link'
 }

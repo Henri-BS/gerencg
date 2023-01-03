@@ -1,11 +1,11 @@
 import { CommissionMenuBar, OrderStatsBar, OrderStatsTotalValuesBar } from "components/container/Bar/OrderBar";
-import ItemDataTable from "components/dashboard/DataTable/CommissionDataTable";
+import ItemDataTable from "components/dashboard/DataTable/OrderDataTable";
 import { useParams } from "react-router-dom";
 import { CommissionItemCard } from "components/container/Card/OrderCard";
-import { AddItemForm } from "components/container/Form/CommissionForm";
+import { AddItemForm } from "components/container/Form/OrderForm";
 import { MdClose } from "react-icons/md";
 import { OrderStatsList } from "pages/Listings/OrderListing";
-import { OrderStatsChartsByPediod, OrderStatsCharts } from "components/dashboard/Chart/StatsChart";
+import { OrderStatsChartsByPediod, OrderStatsCharts, OrderStatsChartByCategory } from "components/dashboard/Chart/StatsChart";
 
 
 export function CommissionProfile() {
@@ -61,6 +61,7 @@ export function OrderStatsDashboard() {
       <OrderStatsTotalValuesBar />
       <div className="max-container-charts ">
         <OrderStatsCharts />
+        <OrderStatsChartByCategory />
       </div>
     </div>
   );
@@ -75,6 +76,7 @@ export function OrderStatsProfile() {
         <OrderStatsBar statsId={`${params.statsId}`} />
         <div className="max-container-charts ">
           <OrderStatsChartsByPediod statsId={`${params.statsId}`} />
+          
         </div>
       </div>
 

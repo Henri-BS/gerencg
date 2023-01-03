@@ -17,7 +17,7 @@ export function OrderCodeList() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/commission-list?code=${value}&page=${pageNumber}&size=21`)
+        axios.get(`${BASE_URL}/order/list?code=${value}&page=${pageNumber}&size=21`)
             .then((response) => {
                 setCodePage(response.data);
             });
@@ -60,11 +60,11 @@ export function OrderCodeList() {
                     </div>
 
                     <div className="row">
-                        {codePage.content?.filter((commission) =>
-                            commission.code.includes(value))
-                            .map((commission) => (
-                                <div key={commission.code} className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-3">
-                                    <CommissionCard commission={commission} />
+                        {codePage.content?.filter((order) =>
+                            order.code.includes(value))
+                            .map((order) => (
+                                <div key={order.code} className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-3">
+                                    <CommissionCard order={order} />
                                 </div>
                             ))}
                     </div>

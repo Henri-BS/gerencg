@@ -29,7 +29,6 @@ function ItemDataTable({ codeId }: CodeProps) {
                             <th className="table-box"><h5>Valor Unitário</h5></th>
                             <th className="table-box"><h5>Valor Total</h5></th>
                             <th className="table-box"><h5>Validade</h5></th>
-                            
                             <th className="table-box"><h5>Detalhes</h5></th>
                         </tr>
                     </thead>

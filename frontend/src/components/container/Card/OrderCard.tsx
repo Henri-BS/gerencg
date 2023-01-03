@@ -7,27 +7,27 @@ import { BASE_URL } from "utils/requests";
 import IUpdateProduct from "assets/img/update.png"
 import IDeleteProduct from "assets/img/delete-img.png"
 import "./styles.css"
-import { EditItemForm } from "../Form/CommissionForm";
+import { EditItemForm } from "../Form/OrderForm";
 import { MdClose, MdLink } from "react-icons/md";
 
 
-type CommissionCode = {
-    commission: Code;
+type OrderCode = {
+    order: Code;
 }
 
-export function CommissionCard({ commission }: CommissionCode) {
+export function CommissionCard({ order }: OrderCode) {
 
     return (
-        <Link to={`/commission/${commission.code}`}>
+        <Link to={`/order/${order.code}`}>
             <div className="commission-card">
                 <div className="commission-box border-dark">
-                    <h2>Código do Pedido: <p>{commission.code}</p></h2>
+                    <h2>Código do Pedido: <p>{order.code}</p></h2>
                 </div>
                 <div className="commission-box">
-                    <h3>Data do Pedido: {moment(commission.orderDate).format("DD/MM/YYYY")}</h3>
+                    <h3>Data do Pedido: {moment(order.orderDate).format("DD/MM/YYYY")}</h3>
                 </div>
                 <div className="commission-box border-0">
-                    <h3>Distribuidora: {commission.distributor}</h3>
+                    <h3>Distribuidora: {order.distributor}</h3>
                 </div>
             </div>
         </Link>
@@ -56,7 +56,7 @@ export function CommissionItemCard({ itemId }: ItemProps) {
     const deleteItem = () => {
         axios.delete(`${BASE_URL}/delete-item/${itemId}`)
             .then((response) => {
-                navigate(`/commission/${item?.orderCode}`)
+                navigate(`/order/${item?.orderCode}`)
             })
     }
     return (

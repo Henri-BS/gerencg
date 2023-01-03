@@ -1,9 +1,7 @@
 package com.altercode.gerencg.controller;
 
 import com.altercode.gerencg.dto.OrderCodeDTO;
-import com.altercode.gerencg.dto.OrderStatsValuesDTO;
 import com.altercode.gerencg.dto.SumOrderValueCategoryDTO;
-import com.altercode.gerencg.dto.SumValueOrderDTO;
 import com.altercode.gerencg.entity.OrderStats;
 import com.altercode.gerencg.service.OrderCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,23 +14,24 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/order")
 public class OrderCodeController {
 
     @Autowired
     private OrderCodeService codeService;
 
-    @GetMapping("/commission-list")
+    @GetMapping("/list")
     public ResponseEntity<Page<OrderCodeDTO>> findItemsByCode(Pageable pageable, String code) {
         Page<OrderCodeDTO> page = codeService.findItemsByCode(pageable, code);
         return ResponseEntity.ok(page);
     }
 
-    @GetMapping("/commission/{id}")
+    @GetMapping("/{id}")
     public OrderCodeDTO findCodeById(@PathVariable String id) {
         return codeService.findCodeById(id);
     }
 
-    @GetMapping("/find-order-by-stats/{stats}")
+    @GetMapping("/find-by-stats/{stats}")
     public ResponseEntity<Page<OrderCodeDTO>> findOrderByStats(Pageable pageable, @PathVariable OrderStats stats) {
         Page<OrderCodeDTO> list = codeService.findOrdersByStats(pageable, stats);
         return ResponseEntity.ok(list);
@@ -44,13 +43,13 @@ public class OrderCodeController {
         return ResponseEntity.ok(getOrders);
     }
 
-    @PostMapping("/save-commission")
+    @PostMapping("/save")
     public ResponseEntity<OrderCodeDTO> saveOrderCode(@RequestBody OrderCodeDTO dto) {
         OrderCodeDTO addCode = codeService.saveOrder(dto);
         return new ResponseEntity<>(addCode, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update-commission")
+    @PutMapping("/update")
     public ResponseEntity<OrderCodeDTO> updateOrder(@RequestBody OrderCodeDTO dto) {
         OrderCodeDTO editCode = codeService.updateOrder(dto);
         return new ResponseEntity<>(editCode, HttpStatus.OK);
@@ -62,7 +61,7 @@ public class OrderCodeController {
         return new ResponseEntity<>(update, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete-commission/{id}")
+    @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteOrder(@PathVariable String id){
         this.codeService.deleteOrder(id);

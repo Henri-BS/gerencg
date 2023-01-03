@@ -7,32 +7,32 @@ import { Code, CodeProps, OrderStats, OrderStatsProps, OrderStatsTotalValue } fr
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 import { MdClose } from "react-icons/md";
-import { EditCommissionForm } from "../Form/CommissionForm";
+import { EditCommissionForm } from "../Form/OrderForm";
 
 export function CommissionMenuBar({ codeId }: CodeProps) {
 
-    const [commission, setCommission] = useState<Code>();
+    const [order, setOrder] = useState<Code>();
     const navigate = useNavigate();
     const params = useParams();
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/commission/${codeId}`)
+        axios.get(`${BASE_URL}/order/${codeId}`)
             .then((response) => {
-                setCommission(response.data);
+                setOrder(response.data);
             });
     }, [codeId]);
 
     useEffect(() => {
-        axios.put(`${BASE_URL}/sum-item-values/${codeId}`)
+        axios.put(`${BASE_URL}/order/sum-item-values/${codeId}`)
             .then((response) => {
-                setCommission(response.data);
+                setOrder(response.data);
             });
     }, [codeId]);
 
     const deleteCommission = () => {
-        axios.delete(`${BASE_URL}/delete-commission/${codeId}`)
+        axios.delete(`${BASE_URL}/order/delete/${codeId}`)
             .then((response) => {
-                navigate("/commission-list")
+                navigate("/order/list")
             })
     }
 
@@ -88,13 +88,13 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
                     <h2>Informações de Identificação</h2>
                     <div className="row">
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                            <div className="bar-item-content"> Código: {commission?.code}</div>
+                            <div className="bar-item-content"> Código: {order?.code}</div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                            <div className="bar-item-content"> Data de Emissão: {commission?.orderDate}</div>
+                            <div className="bar-item-content"> Data de Emissão: {order?.orderDate}</div>
                         </div>
                         <div className="bar-item col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 ">
-                            <div className="bar-item-content"> Distribuidora: {commission?.distributor}</div>
+                            <div className="bar-item-content"> Distribuidora: {order?.distributor}</div>
                         </div>
                     </div>
                 </div>
@@ -103,20 +103,20 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
                     <h2>Valores Totais do Produtos</h2>
                     <div className="row">
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                            <div className="bar-item-content"> Quantidade de Items: {commission?.amountItems}</div>
+                            <div className="bar-item-content"> Quantidade de Items: {order?.amountItems}</div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                            <div className="bar-item-content"> Tipo de Pacote: {commission?.packageType} </div>
+                            <div className="bar-item-content"> Tipo de Pacote: {order?.packageType} </div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                            <div className="bar-item-content"> Total de Pacotes: {commission?.totalPackage} </div>
+                            <div className="bar-item-content"> Total de Pacotes: {order?.totalPackage} </div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <div className="bar-item-content"> Total de Unidades: {commission?.totalQuantity} </div>
+                            <div className="bar-item-content"> Total de Unidades: {order?.totalQuantity} </div>
                         </div>
 
                         <div className="bar-item col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                            <div className="bar-item-content"> Valor Total do Pedido: {commission?.totalValue} </div>
+                            <div className="bar-item-content"> Valor Total do Pedido: {order?.totalValue} </div>
                         </div>
                     </div>
                 </div>

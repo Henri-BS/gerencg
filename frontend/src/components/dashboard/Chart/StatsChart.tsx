@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts'
-import { CategoryValue, FlowCategory } from 'types/category';
-import { CodePage, OrderStats, OrderStatsPage, OrderStatsProps, OrderStatsQuantityGroup, OrderStatsValueGroup } from 'types/order';
+import { CategoryProps, CategoryValue, FlowCategory } from 'types/category';
+import { CodePage, OrderStats, OrderStatsPage, OrderStatsProps, OrderStatsQuantityGroup, OrderStatsTotalValue, OrderStatsValueGroup, OrderStatsValueGroupByCategory } from 'types/order';
 import { BASE_URL } from 'utils/requests';
 import { QuantityProductChart } from './ProductCharts';
 
@@ -42,7 +42,7 @@ export function OrderStatsCharts() {
         labels: { categories: [] },
         series: [{ name: "", data: [] }]
     });
-    
+
     useEffect(() => {
         axios.get(`${BASE_URL}/order-stats/sum-order-quantity`)
             .then((response) => {
@@ -95,7 +95,7 @@ export function OrderStatsCharts() {
                             grid: { borderColor: "#139acf" },
                         }}
                         labels={quantityChart.labels}
-                        series={quantityChart.series} 
+                        series={quantityChart.series}
                         type="line"
                         height="300"
                     />
@@ -109,7 +109,7 @@ export function OrderStatsChartsByPediod({ statsId }: OrderStatsProps) {
     const [chartData, setChartData] = useState<ProportionChartData>({ labels: [], series: [] });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/find-order-by-stats/${statsId}?size=10&sort=totalValue,desc`)
+        axios.get(`${BASE_URL}/order/find-by-stats/${statsId}?size=10&sort=totalValue,desc`)
             .then((response) => {
                 const data = response.data as CodePage;
                 const myLabels = data.content?.map(x => x.code);
@@ -124,7 +124,7 @@ export function OrderStatsChartsByPediod({ statsId }: OrderStatsProps) {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/find-order-by-stats/${statsId}?size=10&sort=amountItems,desc`)
+        axios.get(`${BASE_URL}/order/find-by-stats/${statsId}?size=10&sort=amountItems,desc`)
             .then((response) => {
                 const data = response.data as CodePage;
                 const myLabels = data.content.map(x => x.code);
@@ -183,21 +183,50 @@ export function OrderStatsChartsByPediod({ statsId }: OrderStatsProps) {
     );
 }
 
+export function OrderStatsChartByCategory() {
+    const [proportionChart, setProportionChart] = useState<ProportionChartData>({ labels: [], series: [] });
+const mock = ["dadad", "sdadad", "ewbduwbdw", "sdsdsa"]
+    useEffect(() => {
+        axios.get(`${BASE_URL}/order/sum-value-by-category`)
+            .then((response) => {
+                const data = response.data as OrderStatsValueGroupByCategory[];
+                const myLabels = data.map(x => x.categoryName);
+                const mySeries = data.map(x => x.totalValue);
+                setProportionChart({ labels: myLabels, series: mySeries });
+            });
+    }, []);
+
+    const options = {
+        legend: { show: true }
+    }
+
+    return (
+        <div className="row ">
+            <div className="chart-box col-lg-6">
+                <div className="container-chart">
+                    <h5 className="text-center">Despesas por Categoria</h5>
+                    <Chart
+                        options={{
+                            ...options,
+                            labels: proportionChart.labels,
+                            theme: { mode: "dark" },
+                            chart: { background: "#2a323a" }
+                        }}
+                        series={proportionChart.series}
+                        type="donut"
+                        height="300"
+                    />
+                </div>
+            </div>
+        </div>
+    );
+}
+
 export function AddedProductsChart() {
 
     const [chartData, setChartData] = useState<QuantityChartData>({
-
-        labels: {
-            categories: []
-        },
-
-        series: [
-            {
-                name: "",
-                data: []
-            }
-        ]
-
+        labels: { categories: []},
+        series: [{name: "", data: []}]
     });
 
     useEffect(() => {

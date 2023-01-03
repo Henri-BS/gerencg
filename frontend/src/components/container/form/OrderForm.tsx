@@ -34,7 +34,7 @@ export function AddCommissionForm() {
 
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
-            url: "/save-commission",
+            url: "/order/save",
             method: "POST",
             data: {
                 code: code,
@@ -44,7 +44,7 @@ export function AddCommissionForm() {
             }
         }
         axios(config).then((response) => {
-            navigate("/commission-list");
+            navigate("/order-list");
         })
     }
     return (
@@ -103,7 +103,7 @@ export function EditCommissionForm({ codeId }: CodeProps) {
     const [commission, setCommission] = useState<Code>();
 
     useEffect(() => {
-        axios.get(`/commmission/${codeId}`)
+        axios.get(`/order/${codeId}`)
             .then((response) => {
                 setCommission(response.data);
             })
@@ -117,7 +117,7 @@ export function EditCommissionForm({ codeId }: CodeProps) {
 
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
-            url: "/update-commission",
+            url: "/order/update",
             method: "PUT",
             data: {
                 code: codeId,
@@ -127,7 +127,7 @@ export function EditCommissionForm({ codeId }: CodeProps) {
             }
         }
         axios(config).then((response) => {
-            navigate(`/commission/${codeId}`)
+            navigate(`/order/${codeId}`)
         });
     }
 
@@ -167,7 +167,7 @@ export function AddItemForm({ codeId }: CodeProps) {
     const navigate = useNavigate();
     const [commission, setCommission] = useState<Code>();
     useEffect(() => {
-        axios.get(`${BASE_URL}/commission/${codeId}`)
+        axios.get(`${BASE_URL}/order/${codeId}`)
             .then((response) => {
                 setCommission(response.data);
             });
@@ -209,7 +209,7 @@ export function AddItemForm({ codeId }: CodeProps) {
             }
         }
         axios(config).then((response) => {
-            navigate(`/commission/${codeId}`)
+            navigate(`/order/${codeId}`)
         })
     }
 
