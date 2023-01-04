@@ -3,20 +3,20 @@ package com.altercode.gerencg.dto;
 import java.io.Serializable;
 
 public class SumValueOrderDTO implements Serializable  {
-    private String date;
+    private String statsId;
     private Double value;
 
-    public SumValueOrderDTO(String date, Double value) {
-        this.date = date;
+    public SumValueOrderDTO(String statsId, Double value) {
+        this.statsId = statsId;
         this.value = value;
     }
 
-    public String getDate() {
-        return date;
+    public String getStatsId() {
+        return statsId;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setStatsId(String statsId) {
+        this.statsId = statsId;
     }
 
     public Double getValue() {

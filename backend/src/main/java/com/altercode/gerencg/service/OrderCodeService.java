@@ -1,6 +1,7 @@
 package com.altercode.gerencg.service;
 
 import com.altercode.gerencg.dto.OrderCodeDTO;
+import com.altercode.gerencg.dto.SumOrderQuantityCategoryDTO;
 import com.altercode.gerencg.dto.SumOrderValueCategoryDTO;
 import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.OrderItem;
@@ -79,8 +80,6 @@ public class OrderCodeService implements IOrderCodeService {
     @Override
     public OrderCodeDTO orderTotalValues(OrderCodeDTO dto) {
         OrderCode code = codeRepository.findById(dto.getCode()).get();
-
-
         double sumValues = 0;
         int sumQuantity = 0;
         int sumPackages = 0;
@@ -108,7 +107,11 @@ public class OrderCodeService implements IOrderCodeService {
 
     @Override
     public List<SumOrderValueCategoryDTO> getOrderValueGroupByCategory() {
-        Sort sort = Sort.by("category").ascending();
-        return codeRepository.getOrderValueGroupByCategory(sort);
+        return codeRepository.getOrderValueGroupByCategory();
+    }
+
+    @Override
+    public List<SumOrderQuantityCategoryDTO> getOrderQuantityGroupByCategory() {
+        return codeRepository.getOrderQuantityGroupByCategory();
     }
 }

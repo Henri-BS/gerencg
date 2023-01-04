@@ -19,15 +19,18 @@ export function CommissionCard({ order }: OrderCode) {
 
     return (
         <Link to={`/order/${order.code}`}>
-            <div className="commission-card">
-                <div className="commission-box border-dark">
+            <div className="commission-card ">
+                <div className="commission-box  border-dark">
                     <h2>Código do Pedido: <p>{order.code}</p></h2>
                 </div>
-                <div className="commission-box">
+                <div className="commission-box ">
                     <h3>Data do Pedido: {moment(order.orderDate).format("DD/MM/YYYY")}</h3>
                 </div>
-                <div className="commission-box border-0">
+                <div className="commission-box ">
                     <h3>Distribuidora: {order.distributor}</h3>
+                </div>
+                <div className="commission-box  border-0">
+                    <h3>Categoria: {order.categoryId}</h3>
                 </div>
             </div>
         </Link>

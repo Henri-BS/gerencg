@@ -33,7 +33,7 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
         axios.delete(`${BASE_URL}/order/delete/${codeId}`)
             .then((response) => {
                 navigate("/order/list")
-            })
+            });
     }
 
     return (
@@ -88,13 +88,13 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
                     <h2>Informações de Identificação</h2>
                     <div className="row">
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                            <div className="bar-item-content"> Código: {order?.code}</div>
+                            <div className="bar-item-content"> <b>Código:</b> {order?.code}</div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                            <div className="bar-item-content"> Data de Emissão: {order?.orderDate}</div>
+                            <div className="bar-item-content"> <b>Data de Emissão:</b> {order?.orderDate}</div>
                         </div>
                         <div className="bar-item col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 ">
-                            <div className="bar-item-content"> Distribuidora: {order?.distributor}</div>
+                            <div className="bar-item-content"> <b>Distribuidora:</b> {order?.distributor}</div>
                         </div>
                     </div>
                 </div>
@@ -103,20 +103,19 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
                     <h2>Valores Totais do Produtos</h2>
                     <div className="row">
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                            <div className="bar-item-content"> Quantidade de Items: {order?.amountItems}</div>
+                            <div className="bar-item-content"> <b>Quantidade de Items:</b> {order?.amountItems}</div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                            <div className="bar-item-content"> Tipo de Pacote: {order?.packageType} </div>
+                            <div className="bar-item-content"> <b>Tipo de Pacote:</b> {order?.packageType} </div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                            <div className="bar-item-content"> Total de Pacotes: {order?.totalPackage} </div>
+                            <div className="bar-item-content"> <b>Total de Pacotes:</b> {order?.totalPackage} </div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <div className="bar-item-content"> Total de Unidades: {order?.totalQuantity} </div>
+                            <div className="bar-item-content"> <b>Total de Unidades:</b> {order?.totalQuantity} </div>
                         </div>
-
                         <div className="bar-item col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                            <div className="bar-item-content"> Valor Total do Pedido: {order?.totalValue} </div>
+                            <div className="bar-item-content"> <b>Valor Total do Pedido:</b> {order?.totalValue} </div>
                         </div>
                     </div>
                 </div>
@@ -148,22 +147,22 @@ export function OrderStatsBar({ statsId }: OrderStatsProps) {
             <div className="max-bar-container">
                 <div className="bar-container row">
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
-                        <div className="bar-item-content"> Data Inicial: {stats?.initialDate}</div>
+                        <div className="bar-item-content"> <b>Data Inicial:</b> {stats?.initialDate} </div>
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
-                        <div className="bar-item-content"> Data Final: {stats?.finalDate} </div>
+                        <div className="bar-item-content"> <b>Data Final:</b> {stats?.finalDate} </div>
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
-                        <div className="bar-item-content"> Total de Pedidos do Mês: {stats?.amountOrder}</div>
+                        <div className="bar-item-content"> <b>Total de Pedidos do Mês:</b> {stats?.amountOrder} </div>
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
-                        <div className="bar-item-content"> Total de Items do Mês: {stats?.amountItems}</div>
+                        <div className="bar-item-content"> <b>Total de Items do Mês:</b> {stats?.amountItems}</div>
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
-                        <div className="bar-item-content"> Total de Despesas do Mês: {stats?.totalValue.toFixed(2)}</div>
+                        <div className="bar-item-content"> <b>Total de Despesas do Mês:</b> {stats?.totalValue.toFixed(2)}</div>
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
-                        <div className="bar-item-content"> Média Semanal de Despesas: {stats?.averageWeek.toFixed(2)}</div>
+                        <div className="bar-item-content"> <b>Média Semanal de Despesas:</b> {stats?.averageWeek.toFixed(2)}</div>
                     </div>
 
                 </div>
@@ -187,16 +186,16 @@ export function OrderStatsTotalValuesBar() {
             <div className="max-bar-container">
                 <div className="bar-container row">
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
-                        <div className="bar-item-content"> Total de Pedidos: {stats?.amountOrders}</div>
+                        <div className="bar-item-content"> <b>Total de Pedidos:</b> {stats?.amountOrders}</div>
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
-                        <div className="bar-item-content"> Total de Items: {stats?.amountItems}</div>
+                        <div className="bar-item-content"> <b>Total de Items:</b> {stats?.amountItems}</div>
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
-                        <div className="bar-item-content"> Total de Despesas: {stats?.totalValue.toFixed(2)}</div>
+                        <div className="bar-item-content"> <b>Total de Despesas:</b> {stats?.totalValue.toFixed(2)}</div>
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
-                        <div className="bar-item-content"> Maior Despesa: {stats?.maxValue.toFixed(2)}</div>
+                        <div className="bar-item-content"> <b>Maior Despesa:</b> {stats?.maxValue.toFixed(2)}</div>
                     </div>
 
                 </div>

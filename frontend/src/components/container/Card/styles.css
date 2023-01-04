@@ -200,12 +200,12 @@
 /*Commission card styles*/
 
 .commission-card {
+    min-height: 300px;
     display: grid;
-    grid-template-rows: 1fr 0.5fr 0.5fr;
-    padding: 10px;
+    padding: 6px;
     background-color: var(--white-seco);
     border: 3px solid #ccc;
-    border-radius: 20px;
+    border-radius: 12px;
     transition: all 0.2s ease-out;
     justify-content: center;
     align-items: center;
@@ -226,7 +226,7 @@
 }
 
 .commission-box h2 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
 }
 

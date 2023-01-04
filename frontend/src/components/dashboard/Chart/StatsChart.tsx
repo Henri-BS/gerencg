@@ -1,10 +1,9 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts'
-import { CategoryProps, CategoryValue, FlowCategory } from 'types/category';
-import { CodePage, OrderStats, OrderStatsPage, OrderStatsProps, OrderStatsQuantityGroup, OrderStatsTotalValue, OrderStatsValueGroup, OrderStatsValueGroupByCategory } from 'types/order';
+import { CategoryValue, FlowCategory } from 'types/category';
+import { CodePage, OrderStatsProps, OrderStatsQuantityGroup, OrderStatsValueGroup, OrderStatsValueGroupByCategory } from 'types/order';
 import { BASE_URL } from 'utils/requests';
-import { QuantityProductChart } from './ProductCharts';
 
 
 type ProportionChartData = {
@@ -32,7 +31,7 @@ export function OrderStatsCharts() {
         axios.get(`${BASE_URL}/order-stats/sum-order-value`)
             .then((response) => {
                 const data = response.data as OrderStatsValueGroup[];
-                const myLabels = data.map(x => x.date);
+                const myLabels = data.map(x => x.statsId);
                 const mySeries = data.map(x => x.value);
                 setChartData({ labels: myLabels, series: mySeries });
             });
@@ -84,7 +83,7 @@ export function OrderStatsCharts() {
             </div>
             <div className="chart-box col-lg-6">
                 <div className="container-chart">
-                    <h5 className="text-center">Pedidos com maior custo</h5>
+                    <h5 className="text-center">Maior Quantidade de Items Por Pedido</h5>
                     <Chart
                         options={{
                             ...options,
@@ -185,13 +184,12 @@ export function OrderStatsChartsByPediod({ statsId }: OrderStatsProps) {
 
 export function OrderStatsChartByCategory() {
     const [proportionChart, setProportionChart] = useState<ProportionChartData>({ labels: [], series: [] });
-const mock = ["dadad", "sdadad", "ewbduwbdw", "sdsdsa"]
     useEffect(() => {
         axios.get(`${BASE_URL}/order/sum-value-by-category`)
             .then((response) => {
                 const data = response.data as OrderStatsValueGroupByCategory[];
                 const myLabels = data.map(x => x.categoryName);
-                const mySeries = data.map(x => x.totalValue);
+                const mySeries = data.map(x => x.value);
                 setProportionChart({ labels: myLabels, series: mySeries });
             });
     }, []);

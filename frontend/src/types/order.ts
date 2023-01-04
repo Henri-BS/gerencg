@@ -104,13 +104,13 @@ export type OrderStatsQuantityGroup = {
 }
 
 export type OrderStatsValueGroup = {
-  date: string;
+  statsId: string;
   value: number;
 }
 
 export type OrderStatsValueGroupByCategory = {
   categoryName: string;
-  totalValue: number;
+  value: number;
 }
 
 

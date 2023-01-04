@@ -151,10 +151,8 @@
     height: 80px;
     width: 100%;
     font-size: 20px;
-    font-weight: 800;
     overflow-x: scroll;
     transition: all 0.2s ease-in;
-    background-color: var(--white-prim);
     color: var(--dark-seco);
     border: 1px solid var(--dark-prim);
     border-radius: 8px;

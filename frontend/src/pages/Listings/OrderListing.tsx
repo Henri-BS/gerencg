@@ -75,7 +75,6 @@ export function OrderCodeList() {
 }
 
 export function OrderStatsList() {
-    const [pageNumber, setPageNumber] = useState(0);
     const [statsPage, setStatsPage] = useState<OrderStatsPage>({
         content: [],
         number: 0,
@@ -87,11 +86,10 @@ export function OrderStatsList() {
             .then((response) => {
                 setStatsPage(response.data);
             });
-    }, [pageNumber]);
+    }, []);
 
     return (
         <div className="row p-20">
-            <h3>Estatísticas por mês</h3>
             {statsPage.content?.map((x) => (
                 <div key={x.id} className="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1">
                     <OrderStatsCard stats={x} />

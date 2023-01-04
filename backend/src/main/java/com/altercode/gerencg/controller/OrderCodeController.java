@@ -1,12 +1,14 @@
 package com.altercode.gerencg.controller;
 
 import com.altercode.gerencg.dto.OrderCodeDTO;
+import com.altercode.gerencg.dto.SumOrderQuantityCategoryDTO;
 import com.altercode.gerencg.dto.SumOrderValueCategoryDTO;
 import com.altercode.gerencg.entity.OrderStats;
 import com.altercode.gerencg.service.OrderCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +42,12 @@ public class OrderCodeController {
     @GetMapping("/sum-value-by-category")
     public ResponseEntity<List<SumOrderValueCategoryDTO>> getOrderValueGroupByCategory() {
         List<SumOrderValueCategoryDTO> getOrders = codeService.getOrderValueGroupByCategory();
+        return ResponseEntity.ok(getOrders);
+    }
+
+    @GetMapping("/sum-quantity-by-category")
+    public ResponseEntity<List<SumOrderQuantityCategoryDTO>> getOrderQuantityGroupByCategory() {
+        List<SumOrderQuantityCategoryDTO> getOrders = codeService.getOrderQuantityGroupByCategory();
         return ResponseEntity.ok(getOrders);
     }
 
