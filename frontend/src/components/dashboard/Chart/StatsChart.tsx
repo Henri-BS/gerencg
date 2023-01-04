@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts'
 import { CategoryValue, FlowCategory } from 'types/category';
-import { CodePage, OrderStatsProps, OrderStatsQuantityGroup, OrderStatsValueGroup, OrderStatsValueGroupByCategory } from 'types/order';
+import { CodePage, OrderStatsProps, OrderStatsQuantityGroup, OrderStatsQuantityGroupByCategory, OrderStatsValueGroup, OrderStatsValueGroupByCategory } from 'types/order';
 import { BASE_URL } from 'utils/requests';
 
 
@@ -105,7 +105,7 @@ export function OrderStatsCharts() {
 }
 
 export function OrderStatsChartsByPediod({ statsId }: OrderStatsProps) {
-    const [chartData, setChartData] = useState<ProportionChartData>({ labels: [], series: [] });
+    const [proportionChart, setProportionChart] = useState<ProportionChartData>({ labels: [], series: [] });
 
     useEffect(() => {
         axios.get(`${BASE_URL}/order/find-by-stats/${statsId}?size=10&sort=totalValue,desc`)
@@ -113,7 +113,7 @@ export function OrderStatsChartsByPediod({ statsId }: OrderStatsProps) {
                 const data = response.data as CodePage;
                 const myLabels = data.content?.map(x => x.code);
                 const mySeries = data.content?.map(x => x.totalValue);
-                setChartData({ labels: myLabels, series: mySeries });
+                setProportionChart({ labels: myLabels, series: mySeries });
             });
     }, [statsId])
 
@@ -150,11 +150,11 @@ export function OrderStatsChartsByPediod({ statsId }: OrderStatsProps) {
                     <Chart
                         options={{
                             ...options,
-                            labels: chartData.labels,
+                            labels: proportionChart.labels,
                             theme: { mode: "dark" },
                             chart: { background: "#2a323a" }
                         }}
-                        series={chartData.series}
+                        series={proportionChart.series}
                         type="pie"
                         height="300"
                     />
@@ -183,6 +183,7 @@ export function OrderStatsChartsByPediod({ statsId }: OrderStatsProps) {
 }
 
 export function OrderStatsChartByCategory() {
+
     const [proportionChart, setProportionChart] = useState<ProportionChartData>({ labels: [], series: [] });
     useEffect(() => {
         axios.get(`${BASE_URL}/order/sum-value-by-category`)
@@ -194,8 +195,26 @@ export function OrderStatsChartByCategory() {
             });
     }, []);
 
+    const [quantityChart, setQuantityChart] = useState<QuantityChartData>({
+        labels: { categories: [] },
+        series: [{ name: "", data: []}]
+    })
+    useEffect(() => {
+        axios.get(`${BASE_URL}/order/sum-quantity-by-category`)
+            .then((response) => {
+                const data = response.data as OrderStatsQuantityGroupByCategory[];
+                const myLabels = data.map(x => x.categoryName);
+                const mySeries = data.map(x => x.quantity);
+                setQuantityChart({
+                    labels: { categories: myLabels },
+                    series: [{ name: "Quantidade de Items por Pedido", data: mySeries }]
+                });
+            });
+    }, []);
+
     const options = {
-        legend: { show: true }
+        legend: { show: true },
+        plotOptions: { bar: { horizontal: true }}
     }
 
     return (
@@ -216,6 +235,25 @@ export function OrderStatsChartByCategory() {
                     />
                 </div>
             </div>
+            <div className="chart-box col-lg-6">
+                <div className="container-chart">
+                    <h5 className="text-center">Despesas por Categoria</h5>
+                    <Chart
+                        options={{
+                            ...options,
+                            xaxis: quantityChart.labels,
+                            theme: { mode: "dark" },
+                            chart: { background: "#2a323a" },
+                            grid: { borderColor: "#139acf" }
+
+                        }}
+                        labels={quantityChart.labels}
+                        series={quantityChart.series}
+                        type="bar"
+                        height="300"
+                    />
+                </div>
+            </div>
         </div>
     );
 }
@@ -223,8 +261,8 @@ export function OrderStatsChartByCategory() {
 export function AddedProductsChart() {
 
     const [chartData, setChartData] = useState<QuantityChartData>({
-        labels: { categories: []},
-        series: [{name: "", data: []}]
+        labels: { categories: [] },
+        series: [{ name: "", data: [] }]
     });
 
     useEffect(() => {

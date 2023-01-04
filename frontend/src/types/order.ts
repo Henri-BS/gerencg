@@ -101,18 +101,22 @@ export type OrderStatsTotalValue = {
 export type OrderStatsQuantityGroup = {
   statsId: string;
   sumOrders: number;
-}
+};
 
 export type OrderStatsValueGroup = {
   statsId: string;
   value: number;
-}
+};
 
 export type OrderStatsValueGroupByCategory = {
   categoryName: string;
   value: number;
-}
+};
 
+export type OrderStatsQuantityGroupByCategory = {
+  categoryName: string;
+  quantity: number;
+};
 
 export type CommissionResults = {
   commissionCode: string;
