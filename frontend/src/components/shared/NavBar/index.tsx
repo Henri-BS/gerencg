@@ -5,7 +5,7 @@ import * as AiIcons from 'react-icons/ai'
 import { useState } from "react";
 import { MdClose, MdLibraryBooks } from "react-icons/md";
 import { AddProductForm } from "components/container/Form/ProductForm";
-import { AddCommissionForm } from "components/container/Form/OrderForm";
+import { SaveOrderForm } from "components/container/Form/OrderForm";
 import { AddCategoryStats } from "components/container/Form/CategoryForm";
 
 function NavBar() {
@@ -89,7 +89,7 @@ function NavBar() {
                                 <span aria-hidden="true"><MdClose /></span>
                             </button>
                         </div>
-                        <div className="modal-body"><AddCommissionForm /></div>
+                        <div className="modal-body"><SaveOrderForm /></div>
                     </div>
                 </div>
             </div>

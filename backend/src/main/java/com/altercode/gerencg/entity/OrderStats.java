@@ -18,17 +18,17 @@ public class OrderStats {
     @Column(name = "final_date")
     private LocalDate finalDate;
 
-    @Column(name = "total_value")
-    private Double totalValue;
+    @Column(name = "total_value", precision = 12, scale = 2)
+    private Double totalValue = 0.00;
 
-    @Column(name = "average_week")
-    private Double averageWeek;
+    @Column(name = "average_week", precision = 12, scale = 2)
+    private Double averageWeek = 0.00;
 
     @Column(name = "amount_order")
-    private Integer amountOrder;
+    private Integer amountOrder = 0;
 
     @Column(name = "amount_items")
-    private Integer amountItems;
+    private Integer amountItems = 0;
 
     @OneToMany(mappedBy = "stats", cascade = CascadeType.ALL)
     private final Set<OrderCode> codes = new HashSet<>();

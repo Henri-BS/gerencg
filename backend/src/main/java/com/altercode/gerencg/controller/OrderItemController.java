@@ -40,7 +40,7 @@ public class OrderItemController {
 
     @GetMapping("/item/{id}")
     public ResponseEntity<OrderItemDTO> findOrderById(@PathVariable Long id) {
-        OrderItemDTO findItem =  itemService.findItemById(id);
+        OrderItemDTO findItem = itemService.findItemById(id);
         return ResponseEntity.ok(findItem);
     }
 

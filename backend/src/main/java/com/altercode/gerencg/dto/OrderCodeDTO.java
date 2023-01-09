@@ -19,7 +19,6 @@ public class OrderCodeDTO implements Serializable {
     private String statsId;
     private String categoryId;
 
-
     public OrderCodeDTO() {
     }
 
@@ -27,7 +26,7 @@ public class OrderCodeDTO implements Serializable {
         code = entity.getCode();
         orderDate = entity.getOrderDate();
         distributor = entity.getDistributor();
-        totalValue = Math.round(entity.getTotalValue() *100)/100.00;
+        totalValue = entity.getTotalValue();
         totalQuantity = entity.getTotalQuantity();
         amountItems = entity.getAmountItems();
         totalPackage = entity.getTotalPackage();

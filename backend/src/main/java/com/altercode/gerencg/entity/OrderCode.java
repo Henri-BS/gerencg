@@ -18,7 +18,7 @@ public class OrderCode {
 
     private String distributor;
 
-    @Column(name = "total_value")
+    @Column(name = "total_value", precision = 12, scale = 2)
     private Double totalValue;
 
     @Column(name = "total_quantity")

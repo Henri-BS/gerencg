@@ -57,17 +57,14 @@ export function OrderStatsCharts() {
     }, []);
 
     const options = {
-        legend: { show: true },
-        plotOptions: {
-            bar: { horizontal: true }
-        }
+        legend: { show: true }
     }
 
     return (
         <div className="row ">
             <div className="chart-box col-lg-6">
                 <div className="container-chart">
-                    <h5 className="text-center">Pedidos com maior custo</h5>
+                    <h5 className="text-center">Custo Total de Pedidos por Mês</h5>
                     <Chart
                         options={{
                             ...options,
@@ -83,7 +80,7 @@ export function OrderStatsCharts() {
             </div>
             <div className="chart-box col-lg-6">
                 <div className="container-chart">
-                    <h5 className="text-center">Maior Quantidade de Items Por Pedido</h5>
+                    <h5 className="text-center">Quantidade de Pedidos por Mês</h5>
                     <Chart
                         options={{
                             ...options,
@@ -95,7 +92,7 @@ export function OrderStatsCharts() {
                         }}
                         labels={quantityChart.labels}
                         series={quantityChart.series}
-                        type="line"
+                        type="bar"
                         height="300"
                     />
                 </div>
@@ -237,7 +234,7 @@ export function OrderStatsChartByCategory() {
             </div>
             <div className="chart-box col-lg-6">
                 <div className="container-chart">
-                    <h5 className="text-center">Despesas por Categoria</h5>
+                    <h5 className="text-center">Quantidade de Items por Categoria</h5>
                     <Chart
                         options={{
                             ...options,

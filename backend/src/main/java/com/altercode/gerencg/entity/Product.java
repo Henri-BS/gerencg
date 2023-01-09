@@ -173,7 +173,7 @@ public class Product {
         return history;
     }
 
-    public Set<OrderItem> getCommissionItems() {
+    public Set<OrderItem> getOrderItems() {
         return orderItems;
     }
 }

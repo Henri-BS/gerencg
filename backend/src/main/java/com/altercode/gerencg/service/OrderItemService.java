@@ -5,8 +5,10 @@ import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.OrderItem;
 import com.altercode.gerencg.entity.Product;
+import com.altercode.gerencg.entity.ProductHistory;
 import com.altercode.gerencg.repository.OrderCodeRepository;
 import com.altercode.gerencg.repository.OrderItemRepository;
+import com.altercode.gerencg.repository.ProductHistoryRepository;
 import com.altercode.gerencg.repository.ProductRepository;
 import com.altercode.gerencg.service.iservice.IOrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,8 @@ public class OrderItemService implements IOrderItemService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private ProductHistoryRepository historyRepository;
 
     @Override
     public Page<OrderItemDTO> findAllItems(Pageable pageable) {
@@ -103,6 +107,12 @@ public class OrderItemService implements IOrderItemService {
         double price = item.getUnitValue();
         LocalDate validate = item.getItemValidate();
         LocalDate date = item.getCode().getOrderDate();
+
+        ProductHistory history = new ProductHistory();
+        history.setPrice(price);
+        history.setQuantity(quantity);
+        history.setValidate(validate);
+        historyRepository.saveAndFlush(history);
 
         product.setQuantity(quantity);
         product.setPrice(price);

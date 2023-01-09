@@ -1,4 +1,4 @@
-import { CommissionMenuBar, OrderStatsBar, OrderStatsTotalValuesBar } from "components/container/Bar/OrderBar";
+import { OrderMenuBar, OrderStatsBar, OrderStatsTotalValuesBar } from "components/container/Bar/OrderBar";
 import ItemDataTable from "components/dashboard/DataTable/OrderDataTable";
 import { useParams } from "react-router-dom";
 import { CommissionItemCard } from "components/container/Card/OrderCard";
@@ -14,7 +14,7 @@ export function CommissionProfile() {
   return (
     <>
       <div className="container">
-        <CommissionMenuBar codeId={`${params.codeId}`} />
+        <OrderMenuBar codeId={`${params.codeId}`} />
         <div className="menu-option row">
           <h2 className="col-7 col-md-10">Lista de Produtos Solicitados </h2>
           <div className="col-5  col-md-2" >

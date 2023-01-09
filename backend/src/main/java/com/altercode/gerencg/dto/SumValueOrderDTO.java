@@ -8,7 +8,7 @@ public class SumValueOrderDTO implements Serializable  {
 
     public SumValueOrderDTO(String statsId, Double value) {
         this.statsId = statsId;
-        this.value = value;
+        this.value = value ;
     }
 
     public String getStatsId() {

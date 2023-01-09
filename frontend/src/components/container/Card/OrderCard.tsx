@@ -80,7 +80,7 @@ export function CommissionItemCard({ itemId }: ItemProps) {
             </div>
             <div className="gerencg-item-card">
                 <div className="gerencg-box  border-dark">
-                    <h2>Código do Pedido: {item?.orderCode} <Link to={`/commission/${item?.orderCode}`} className="link-primary"> <MdLink /></Link></h2>
+                    <h2>Código do Pedido: {item?.orderCode} <Link to={`/order/${item?.orderCode}`} className="link-primary"> <MdLink /></Link></h2>
                 </div>
                 <div className="gerencg-box">
                     <h4>Descrição: {item?.productDescription}</h4>

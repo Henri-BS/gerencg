@@ -82,7 +82,7 @@ export function OrderStatsList() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/order-stats/page?size=12`)
+        axios.get(`${BASE_URL}/order-stats/page?size=12&sort=id,desc`)
             .then((response) => {
                 setStatsPage(response.data);
             });

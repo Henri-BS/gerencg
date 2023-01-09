@@ -9,7 +9,7 @@ import { BASE_URL } from "utils/requests";
 import "./styles.css";
 
 
-export function AddCommissionForm() {
+export function SaveOrderForm() {
     const navigate = useNavigate();
 
     //Get MeasureList for the measure type selector        
@@ -28,7 +28,7 @@ export function AddCommissionForm() {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const code = (event.target as any).code.value;
-        const commissionDate = (event.target as any).commissionDate.value;
+        const orderDate = (event.target as any).orderDate.value;
         const distributor = (event.target as any).distributor.value;
         const packageType = (event.target as any).packageType.value;
 
@@ -38,7 +38,7 @@ export function AddCommissionForm() {
             method: "POST",
             data: {
                 code: code,
-                commissionDate: commissionDate,
+                orderDate: orderDate,
                 distributor: distributor,
                 packageType: packageType
             }
@@ -55,8 +55,8 @@ export function AddCommissionForm() {
                     <input className="form-control" id="code" placeholder="00.00.0000.00-aa" />
                 </div>
                 <div className="form-group gerencg-form-group">
-                    <label htmlFor="commissionDate">Data do Pedido: </label>
-                    <input type="date" className="form-control" id="commissionDate" />
+                    <label htmlFor="orderDate">Data do Pedido: </label>
+                    <input type="date" className="form-control" id="orderDate" />
                 </div>
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="distributor">Distribuidora: </label>
@@ -82,7 +82,7 @@ export function AddCommissionForm() {
     );
 }
 
-export function EditCommissionForm({ codeId }: CodeProps) {
+export function EditOrderForm({ codeId }: CodeProps) {
     const navigate = useNavigate();
 
     //Get MeasureList for the measure type selector        
@@ -100,17 +100,17 @@ export function EditCommissionForm({ codeId }: CodeProps) {
     }, [])
 
 
-    const [commission, setCommission] = useState<Code>();
+    const [order, setOrder] = useState<Code>();
 
     useEffect(() => {
         axios.get(`/order/${codeId}`)
             .then((response) => {
-                setCommission(response.data);
+                setOrder(response.data);
             })
     }, [codeId])
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        const commissionDate = (event.target as any).commissionDate.value;
+        const orderDate = (event.target as any).orderDate.value;
         const distributor = (event.target as any).distributor.value;
         const packageType = (event.target as any).packageType.value;
 
@@ -121,7 +121,7 @@ export function EditCommissionForm({ codeId }: CodeProps) {
             method: "PUT",
             data: {
                 code: codeId,
-                commissionDate: commissionDate,
+                orderDate: orderDate,
                 distributor: distributor,
                 packageType: packageType
             }
@@ -135,12 +135,12 @@ export function EditCommissionForm({ codeId }: CodeProps) {
         <form className="form-container" onSubmit={handleSubmit}>
             <div className="form-card-container">
                 <div className="form-group gerencg-form-group">
-                    <label htmlFor="commissionDate">Data do Pedido: </label>
-                    <input type="date" className="form-control" id="commissionDate" />
+                    <label htmlFor="orderDate">Data do Pedido: </label>
+                    <input type="date" className="form-control" id="orderDate" />
                 </div>
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="distributor">Distribuidora: </label>
-                    <input className="form-control" id="distributor" placeholder="ex: Comercial Novo" defaultValue={commission?.distributor} />
+                    <input className="form-control" id="distributor" placeholder="ex: Comercial Novo" defaultValue={order?.distributor} />
                 </div>
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="packageType">Tipo de Pacote: </label>
@@ -165,11 +165,11 @@ export function EditCommissionForm({ codeId }: CodeProps) {
 //Item Forms
 export function AddItemForm({ codeId }: CodeProps) {
     const navigate = useNavigate();
-    const [commission, setCommission] = useState<Code>();
+    const [order, setOrder] = useState<Code>();
     useEffect(() => {
         axios.get(`${BASE_URL}/order/${codeId}`)
             .then((response) => {
-                setCommission(response.data);
+                setOrder(response.data);
             });
     }, [codeId]);
 
@@ -185,7 +185,6 @@ export function AddItemForm({ codeId }: CodeProps) {
             });
     }, [value])
 
-
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const quantity = (event.target as any).quantity.value;
         const unitValue = (event.target as any).unitValue.value;
@@ -199,7 +198,7 @@ export function AddItemForm({ codeId }: CodeProps) {
             url: "/save-item",
             method: "POST",
             data: {
-                commissionCode: codeId,
+                orderCode: codeId,
                 quantity: quantity,
                 unitValue: unitValue,
                 totalValue: totalValue,
@@ -240,7 +239,7 @@ export function AddItemForm({ codeId }: CodeProps) {
 
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="itemValidate">Validade: </label>
-                        <input id="itemValidate" type="text" className="form-control" />
+                        <input id="itemValidate" type="date" className="form-control" />
                     </div>
 
                     <div className="form-group gerencg-form-group">

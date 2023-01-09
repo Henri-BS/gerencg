@@ -7,9 +7,10 @@ import { Code, CodeProps, OrderStats, OrderStatsProps, OrderStatsTotalValue } fr
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 import { MdClose } from "react-icons/md";
-import { EditCommissionForm } from "../Form/OrderForm";
+import { EditOrderForm } from "../Form/OrderForm";
+import moment from "moment";
 
-export function CommissionMenuBar({ codeId }: CodeProps) {
+export function OrderMenuBar({ codeId }: CodeProps) {
 
     const [order, setOrder] = useState<Code>();
     const navigate = useNavigate();
@@ -29,7 +30,7 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
             });
     }, [codeId]);
 
-    const deleteCommission = () => {
+    const deleteOrder = () => {
         axios.delete(`${BASE_URL}/order/delete/${codeId}`)
             .then((response) => {
                 navigate("/order/list")
@@ -58,12 +59,12 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <label className="modal-title" id="commissionLabel">Alterar pedido</label>
+                                <label className="modal-title" id="orderLabel">Alterar pedido</label>
                                 <button className="close" data-bs-dismiss="modal" aria-label="Close">
                                     <span className="text-close" aria-hidden="true"><MdClose /></span>
                                 </button>
                             </div>
-                            <div className="modal-body"><EditCommissionForm codeId={`${params.codeId}`} /></div>
+                            <div className="modal-body"><EditOrderForm codeId={`${params.codeId}`} /></div>
                         </div>
                     </div>
                 </div>
@@ -71,14 +72,14 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <div className="modal-title" id="commissonModal">Desejar deletar o pedido de produtos ?</div>
+                                <div className="modal-title" id="orderLabel">Desejar deletar o pedido de produtos ?</div>
                                 <button className="close" data-bs-dismiss="modal" aria-label="commissionModal">
                                     <span aria-hidden="true"><MdClose /></span>
                                 </button>
                             </div>
                             <div className="modal-footer">
                                 <button className="text-close">cancelar</button>
-                                <button onClick={() => deleteCommission()} className="btn-danger" data-bs-dismiss="modal">Deletar Pedido</button>
+                                <button onClick={() => deleteOrder()} className="btn-danger" data-bs-dismiss="modal">Deletar Pedido</button>
                             </div>
                         </div>
                     </div>
@@ -91,7 +92,7 @@ export function CommissionMenuBar({ codeId }: CodeProps) {
                             <div className="bar-item-content"> <b>Código:</b> {order?.code}</div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-                            <div className="bar-item-content"> <b>Data de Emissão:</b> {order?.orderDate}</div>
+                            <div className="bar-item-content"> <b>Data de Emissão:</b> {moment(order?.orderDate).format('DD/MM/YYYY')}</div>
                         </div>
                         <div className="bar-item col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 ">
                             <div className="bar-item-content"> <b>Distribuidora:</b> {order?.distributor}</div>
