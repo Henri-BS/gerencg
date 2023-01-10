@@ -9,6 +9,7 @@ import IDeleteProduct from "assets/img/delete-img.png"
 import "./styles.css"
 import { EditItemForm } from "../Form/OrderForm";
 import { MdClose, MdLink } from "react-icons/md";
+import { Product } from "types/product";
 
 
 type OrderCode = {
@@ -37,8 +38,9 @@ export function CommissionCard({ order }: OrderCode) {
     );
 }
 
-export function CommissionItemCard({ itemId }: ItemProps) {
+export function OrderItemCard({ itemId }: ItemProps) {
     const [item, setItem] = useState<Item>();
+    const [product, setProduct] = useState<Product>();
     const navigate = useNavigate();
     const params = useParams();
 
@@ -50,8 +52,9 @@ export function CommissionItemCard({ itemId }: ItemProps) {
     }, [itemId])
 
     const updateProductByItem = () => {
-        axios.put(`${BASE_URL}/update-product-by-item?id=${itemId}&product=${item?.productId}`)
+        axios.put(`${BASE_URL}/update-product-by-item?id=${itemId}&product=${itemId}`)
             .then((response) => {
+                setProduct(response.data);
                 navigate(`/product/${item?.productId}`)
             })
     }

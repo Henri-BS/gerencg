@@ -5,7 +5,6 @@ import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.OrderItem;
 import com.altercode.gerencg.entity.Product;
-import com.altercode.gerencg.entity.ProductHistory;
 import com.altercode.gerencg.repository.OrderCodeRepository;
 import com.altercode.gerencg.repository.OrderItemRepository;
 import com.altercode.gerencg.repository.ProductHistoryRepository;
@@ -99,21 +98,15 @@ public class OrderItemService implements IOrderItemService {
     }
 
     @Override
-    public ProductDTO updateProductByItem(OrderItemDTO dto) {
-        Product product = productRepository.findById(dto.getProductId()).get();
-        OrderItem item = itemRepository.findById(dto.getId()).get();
+    public ProductDTO updateProductByItem(OrderItemDTO dto, Product productId) {
 
+        OrderItem item = itemRepository.findById(dto.getId()).get();
         int quantity = item.getItemQuantity();
         double price = item.getUnitValue();
         LocalDate validate = item.getItemValidate();
         LocalDate date = item.getCode().getOrderDate();
 
-        ProductHistory history = new ProductHistory();
-        history.setPrice(price);
-        history.setQuantity(quantity);
-        history.setValidate(validate);
-        historyRepository.saveAndFlush(history);
-
+        Product product = productRepository.findById(productId.getId()).get();
         product.setQuantity(quantity);
         product.setPrice(price);
         product.setValidate(validate);

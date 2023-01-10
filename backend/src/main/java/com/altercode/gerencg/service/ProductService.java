@@ -100,9 +100,27 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public ProductDTO updateProduct(ProductDTO dto) {
+        Product edit = productRepository.findById(dto.getId()).get();
+        Category category = categoryRepository.findById(dto.getCategory()).get();
+        Measure measure = measureRepository.findById(dto.getMeasure()).get();
+
+        edit.setDescription(dto.getDescription());
+        edit.setPrice(dto.getPrice());
+        edit.setQuantity(dto.getQuantity());
+        edit.setValidate(dto.getValidate());
+        edit.setMeasureValue(dto.getMeasureValue());
+        edit.setMeasure(measure);
+        edit.setCategory(category);
+
+        return new ProductDTO(productRepository.save(edit));
+    }
+
+    @Override
     public void deleteProduct(Long id) {
         this.productRepository.deleteById(id);
     }
+
 
 
 }

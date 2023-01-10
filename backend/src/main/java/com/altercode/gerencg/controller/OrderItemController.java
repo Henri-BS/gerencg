@@ -22,8 +22,8 @@ public class OrderItemController {
 
     @GetMapping("/items-list")
     public ResponseEntity<Page<OrderItemDTO>> findAllItems(Pageable pageable) {
-      Page<OrderItemDTO> page = itemService.findAllItems(pageable);
-      return ResponseEntity.ok(page);
+        Page<OrderItemDTO> page = itemService.findAllItems(pageable);
+        return ResponseEntity.ok(page);
     }
 
     @GetMapping("/find-code")
@@ -64,8 +64,7 @@ public class OrderItemController {
 
     @PutMapping("/update-product-by-item")
     public ResponseEntity<ProductDTO> updateProductByItem(OrderItemDTO item, Long id, Product product) {
-        ProductDTO update = itemService.updateProductByItem(item);
+        ProductDTO update = itemService.updateProductByItem(item, product);
         return ResponseEntity.ok(update);
     }
-
-    }
+}

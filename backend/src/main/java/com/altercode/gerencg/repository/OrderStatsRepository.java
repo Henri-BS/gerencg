@@ -19,10 +19,10 @@ public interface OrderStatsRepository extends JpaRepository<OrderStats, String> 
     public OrderStatsValuesDTO getOrderStatsTotalValues();
 
     @Query("SELECT new com.altercode.gerencg.dto.SumQuantityOrderDTO (obj.id, SUM(obj.amountOrder))" +
-            "FROM OrderStats AS obj GROUP BY obj.id")
+            "FROM OrderStats AS obj GROUP BY obj.id ORDER BY obj.initialDate DESC")
     public List<SumQuantityOrderDTO> getSumOrderStatsGroup(Sort sort);
 
     @Query("SELECT new com.altercode.gerencg.dto.SumValueOrderDTO (obj.id, SUM(obj.totalValue))" +
-            "FROM OrderStats AS obj GROUP BY obj.id")
+            "FROM OrderStats AS obj GROUP BY obj.id ORDER BY obj.initialDate DESC")
     public List<SumValueOrderDTO> getSumValuesStats(Sort sort);
 }

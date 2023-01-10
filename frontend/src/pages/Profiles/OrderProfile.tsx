@@ -1,7 +1,7 @@
 import { OrderMenuBar, OrderStatsBar, OrderStatsTotalValuesBar } from "components/container/Bar/OrderBar";
 import ItemDataTable from "components/dashboard/DataTable/OrderDataTable";
 import { useParams } from "react-router-dom";
-import { CommissionItemCard } from "components/container/Card/OrderCard";
+import { OrderItemCard } from "components/container/Card/OrderCard";
 import { AddItemForm } from "components/container/Form/OrderForm";
 import { MdClose } from "react-icons/md";
 import { OrderStatsList } from "pages/Listings/OrderListing";
@@ -48,7 +48,7 @@ export function ItemProfile() {
   return (
     <>
       <div className="container">
-        <CommissionItemCard itemId={`${params.itemId}`} />
+        <OrderItemCard itemId={`${params.itemId}`} />
       </div>
     </>
   );

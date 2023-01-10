@@ -137,7 +137,7 @@ export function OrderStatsBar({ statsId }: OrderStatsProps) {
     }, [statsId])
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/order-stats/update/${statsId}`)
+        axios.put(`${BASE_URL}/order-stats/update/${statsId}`)
             .then((response) => {
                 setStats(response.data);
             });
