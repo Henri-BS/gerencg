@@ -26,5 +26,5 @@ public interface IOrderItemService {
 
     void deleteItem(Long id);
 
-    ProductDTO updateProductByItem(OrderItemDTO dto, Product productId);
+    ProductDTO updateProductByItem(OrderItemDTO dto);
 }

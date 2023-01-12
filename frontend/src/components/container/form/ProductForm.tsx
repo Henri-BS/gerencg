@@ -139,7 +139,6 @@ export function AddProductForm() {
     );
 }
 
-
 export const ProductFormEdit = ({ productId }: ProductProps) => {
 
         //Get MeasureList for the category selector    

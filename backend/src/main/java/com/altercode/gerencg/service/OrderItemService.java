@@ -33,9 +33,6 @@ public class OrderItemService implements IOrderItemService {
     @Autowired
     private ProductRepository productRepository;
 
-    @Autowired
-    private ProductHistoryRepository historyRepository;
-
     @Override
     public Page<OrderItemDTO> findAllItems(Pageable pageable) {
         Page<OrderItem> result = itemRepository.findAll(pageable);
@@ -98,7 +95,7 @@ public class OrderItemService implements IOrderItemService {
     }
 
     @Override
-    public ProductDTO updateProductByItem(OrderItemDTO dto, Product productId) {
+    public ProductDTO updateProductByItem(OrderItemDTO dto) {
 
         OrderItem item = itemRepository.findById(dto.getId()).get();
         int quantity = item.getItemQuantity();
@@ -106,7 +103,7 @@ public class OrderItemService implements IOrderItemService {
         LocalDate validate = item.getItemValidate();
         LocalDate date = item.getCode().getOrderDate();
 
-        Product product = productRepository.findById(productId.getId()).get();
+        Product product = item.getProduct();
         product.setQuantity(quantity);
         product.setPrice(price);
         product.setValidate(validate);

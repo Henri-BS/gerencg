@@ -4,14 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.dto.ProductHistoryDTO;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.service.ProductHistoryService;
@@ -24,11 +18,16 @@ public class ProductHistoryController {
 	@Autowired
 	private ProductHistoryService productHistoryService;
 
-	@PutMapping
-	public ProductDTO updateProductHistory(@RequestBody ProductHistoryDTO dto) {
-		return productHistoryService.updateProduct(dto);
+	@PostMapping
+	public ProductHistoryDTO saveProductInHistory(@RequestBody ProductHistoryDTO dto) {
+		return productHistoryService.saveHistory(dto);
 	}
 
+	@PostMapping("/save-item/{id}")
+	public ProductHistoryDTO saveItemInHistory(@PathVariable Long id) {
+		return productHistoryService.saveItemInHistory(id);
+	}
+	
 	@GetMapping("/list")
 	public ResponseEntity<Page<ProductHistoryDTO>> findAll(Pageable pageable) {
 		Page<ProductHistoryDTO> page = productHistoryService.findAll(pageable);

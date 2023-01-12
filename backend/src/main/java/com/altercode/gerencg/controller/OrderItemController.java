@@ -63,8 +63,8 @@ public class OrderItemController {
     }
 
     @PutMapping("/update-product-by-item")
-    public ResponseEntity<ProductDTO> updateProductByItem(OrderItemDTO item, Long id, Product product) {
-        ProductDTO update = itemService.updateProductByItem(item, product);
+    public ResponseEntity<ProductDTO> updateProductByItem(OrderItemDTO item, Long id) {
+        ProductDTO update = itemService.updateProductByItem(item);
         return ResponseEntity.ok(update);
     }
 }

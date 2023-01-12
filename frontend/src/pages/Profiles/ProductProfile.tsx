@@ -27,9 +27,7 @@ export function ProductProfile() {
                 <QuantityProductChart productId={`${params.productId}`} />
               </div>
             </div>
-            <ProductHistoryByProduct productId={`${params.productId}`} />
           </div>
-        
       </div>
     </>
   );

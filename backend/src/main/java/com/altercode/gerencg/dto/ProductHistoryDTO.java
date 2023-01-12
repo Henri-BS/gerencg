@@ -16,7 +16,6 @@ public class ProductHistoryDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long productId;
-	private String description;
 	private Double price;
 	private Integer quantity;
 	private LocalDate validate;
@@ -27,11 +26,9 @@ public class ProductHistoryDTO implements Serializable {
 
 	public ProductHistoryDTO(ProductHistory entity) {
 		productId = entity.getProduct().getId();
-		description = entity.getDescription();
 		price = entity.getPrice();
 		quantity = entity.getQuantity();
 		validate = entity.getValidate();
-
 		createdDate = entity.getCreatedDate();
 	}
 
@@ -43,17 +40,6 @@ public class ProductHistoryDTO implements Serializable {
 	public void setProductId(Long productId) {
 		this.productId = productId;
 	}
-
-
-	public String getDescription() {
-		return description;
-	}
-
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 
 	public Double getPrice() {
 		return price;

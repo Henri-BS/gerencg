@@ -23,26 +23,11 @@ public class ProductHistory {
 	@Column(name = "history_id")
 	private Long id;
 
-	private String description;
-
-	private String image;
-
 	private Double price;
 
 	private Integer quantity;
 
 	private LocalDate validate;
-
-    @Column(name = "measure_value")
-    private Double measureValue;
-
-    @ManyToOne
-    @JoinColumn(name = "measure_id")
-    private Measure measure;
-
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
 
 	@CreatedDate
 	@Column(name = "created_date")
@@ -52,22 +37,16 @@ public class ProductHistory {
 	@JoinColumn(name = "product_id")
 	private Product product;
 
-
 	public ProductHistory() {
 	}
 
-    public ProductHistory(Long id, String description, String image, Double price,
-                          Integer quantity, LocalDate validate, Double measureValue, Measure measure,
-                          Category category, LocalDateTime createdDate, Product product) {
+    public ProductHistory(Long id, String description, Double price,
+                          Integer quantity, LocalDate validate,
+                          LocalDateTime createdDate, Product product) {
         this.id = id;
-        this.description = description;
-        this.image = image;
         this.price = price;
         this.quantity = quantity;
         this.validate = validate;
-        this.measureValue = measureValue;
-        this.measure = measure;
-        this.category = category;
         this.createdDate = createdDate;
         this.product = product;
     }
@@ -79,26 +58,6 @@ public class ProductHistory {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-
-	public String getDescription() {
-		return description;
-	}
-
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-
-	public String getImage() {
-		return image;
-	}
-
-
-	public void setImage(String image) {
-		this.image = image;
 	}
 
 
@@ -126,35 +85,9 @@ public class ProductHistory {
 		return validate;
 	}
 
-
-
 	public void setValidate(LocalDate validate) {
 		this.validate = validate;
 	}
-
-    public Double getMeasureValue() {
-        return measureValue;
-    }
-
-    public void setMeasureValue(Double measureValue) {
-        this.measureValue = measureValue;
-    }
-
-    public Measure getMeasure() {
-        return measure;
-    }
-
-    public void setMeasure(Measure measure) {
-        this.measure = measure;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 
     public LocalDateTime getCreatedDate() {
 		return createdDate;

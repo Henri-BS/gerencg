@@ -52,7 +52,7 @@ export function OrderItemCard({ itemId }: ItemProps) {
     }, [itemId])
 
     const updateProductByItem = () => {
-        axios.put(`${BASE_URL}/update-product-by-item?id=${itemId}&product=${itemId}`)
+        axios.put(`${BASE_URL}/update-product-by-item?id=${itemId}`)
             .then((response) => {
                 setProduct(response.data);
                 navigate(`/product/${item?.productId}`)
