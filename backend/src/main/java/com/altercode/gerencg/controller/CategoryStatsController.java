@@ -55,13 +55,7 @@ public class CategoryStatsController {
 	
 	@GetMapping("/value-of-category")
 	public ResponseEntity<List<CategoryValueDTO>> valueGroupedByCategory(){
-		List<CategoryValueDTO> list = service.valueGroupedByCategory();
-		return ResponseEntity.ok(list);
-	}
-	
-	@GetMapping("/flow-of-category")
-	public ResponseEntity<List<CategoryFlowDTO>> flowGroupedByCategory(){
-		List<CategoryFlowDTO> list = service.flowGroupedByCategory();
+		List<CategoryValueDTO> list = service.priceGroupByCategory();
 		return ResponseEntity.ok(list);
 	}
 	

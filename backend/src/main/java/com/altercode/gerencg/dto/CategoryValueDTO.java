@@ -9,14 +9,10 @@ public class CategoryValueDTO implements Serializable{
 	
 	private String categoryName;
 	private Double income;
-	private Double expense;
-	
-	public CategoryValueDTO(){}
 
-	public CategoryValueDTO(Category category, Double income, Double expense) {
-		this.categoryName = category.getName();
+	public CategoryValueDTO(Category category, Double income) {
+		categoryName = category.getName();
 		this.income = income;
-		this.expense = expense;
 	}
 
 	public String getCategoryName() {
@@ -35,13 +31,4 @@ public class CategoryValueDTO implements Serializable{
 		this.income = income;
 	}
 
-	public Double getExpense() {
-		return expense;
-	}
-
-	public void setExpense(Double expense) {
-		this.expense = expense;
-	}
-
-	
 }

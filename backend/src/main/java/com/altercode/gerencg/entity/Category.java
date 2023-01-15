@@ -29,9 +29,9 @@ public class Category {
 	@LastModifiedDate
 	@Column(name = "last_modified_date")
 	private LocalDateTime lastModifiedDate;
-	
-	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-	private List<CategoryStats> categoryStats = new ArrayList<>();
+
+	@OneToOne(mappedBy = "category")
+	private CategoryStats categoryStats;
 	
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
 	private List<Product> products = new ArrayList<>();
@@ -43,11 +43,12 @@ public class Category {
 	}
 
 	public Category( String name, String image, Integer totalProducts,
-			LocalDateTime lastModifiedDate) {
+			LocalDateTime lastModifiedDate, CategoryStats categoryStats) {
 		this.name = name;
 		this.image = image;
 		this.totalProducts = totalProducts;
 		this.lastModifiedDate = lastModifiedDate;
+		this.categoryStats = categoryStats;
 	}
 
 		public String getName() {
@@ -90,7 +91,7 @@ public class Category {
 		this.totalRegisters = totalRegisters;
 	}
 
-	public List<CategoryStats> getCategoryStats() {
+	public CategoryStats getCategoryStats() {
 		return categoryStats;
 	}
 

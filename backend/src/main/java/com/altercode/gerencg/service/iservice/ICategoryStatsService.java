@@ -11,13 +11,12 @@ import java.util.List;
 public interface ICategoryStatsService {
     Page<CategoryStatsDTO> findAll(Pageable pageable);
 
+    List<CategoryValueDTO> priceGroupByCategory();
+
     CategoryStatsDTO saveStats(CategoryStatsDTO dto);
 
     CategoryStatsDTO updateStats(CategoryStatsDTO dto);
 
     void deleteStats(Long id);
 
-    List<CategoryValueDTO> valueGroupedByCategory();
-
-    List<CategoryFlowDTO> flowGroupedByCategory();
 }

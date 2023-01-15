@@ -81,13 +81,11 @@ public class OrderStatsService implements IOrderStatsService {
 
     @Override
     public List<SumQuantityOrderDTO> getOrderStatsQuantityGroup() {
-        Sort sort = Sort.by("id").ascending();
-        return statsRepository.getSumOrderStatsGroup(sort);
+        return statsRepository.getSumOrderStatsGroup();
     }
 
     @Override
     public List<SumValueOrderDTO> getOrderStatsValueGroup() {
-        Sort sort = Sort.by("id").ascending();
-        return statsRepository.getSumValuesStats(sort);
+        return statsRepository.getSumValuesStats();
     }
 }

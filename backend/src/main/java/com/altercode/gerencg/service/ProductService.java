@@ -82,7 +82,6 @@ public class ProductService implements IProductService {
         Category category = categoryRepository.findById(dto.getCategory()).get();
         Measure measure = measureRepository.findById(dto.getMeasure()).get();
 
-
         Product add = new Product();
         add.setDescription(dto.getDescription());
         add.setImage(dto.getImage());
@@ -94,7 +93,6 @@ public class ProductService implements IProductService {
         add.setCategory(category);
 
         category.setTotalProducts(category.getProducts().size());
-        category.setTotalRegisters(category.getCategoryStats().size());
         categoryRepository.save(category);
 
         return new ProductDTO(productRepository.saveAndFlush(add));

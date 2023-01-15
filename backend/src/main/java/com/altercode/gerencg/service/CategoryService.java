@@ -24,24 +24,22 @@ public class CategoryService implements ICategoryService {
 	}
 
 	public CategoryDTO findById(String id) {
-		Category category = categoryRepository.findById(id).get();
 
+		Category category = categoryRepository.findById(id).get();
 		category.setTotalProducts(category.getProducts().size());
-		category.setTotalRegisters(category.getCategoryStats().size());
 		category = categoryRepository.save(category);
 
 		return new CategoryDTO(category);
 	}
 
 	public CategoryDTO addCategory(CategoryDTO dto) {
-		Category category = categoryRepository.findById(dto.getName()).get();
-		
+
 		Category add = new Category();
 		add.setName(dto.getName());
 		add.setImage(dto.getImage());
-		
+
+		Category category = categoryRepository.findById(dto.getName()).get();
 		category.setTotalProducts(category.getProducts().size());
-		category.setTotalRegisters(category.getCategoryStats().size());
 		categoryRepository.save(category);
 
 		return new CategoryDTO(categoryRepository.saveAndFlush(add));
@@ -50,12 +48,9 @@ public class CategoryService implements ICategoryService {
 	public CategoryDTO updateCategory(CategoryDTO dto) {
 
 		Category edit = categoryRepository.findById(dto.getName()).get();
-
 		edit.setName(dto.getName());
 		edit.setImage(dto.getImage());
-
 		edit.setTotalProducts(edit.getProducts().size());
-		edit.setTotalRegisters(edit.getCategoryStats().size());
 		edit = categoryRepository.save(edit);
 
 		return new CategoryDTO(categoryRepository.save(edit));

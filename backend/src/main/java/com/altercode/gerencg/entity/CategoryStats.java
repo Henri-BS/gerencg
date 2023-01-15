@@ -2,14 +2,7 @@ package com.altercode.gerencg.entity;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
@@ -25,29 +18,28 @@ public class CategoryStats {
 	
 	@Column(name = "removed_products")
 	private Integer removedProducts;
-	
-	private Double expense;
 
-	private Double income;
+	private Double income = 0.0;
+
+	@Column(name = "max_income")
+	private Double maxIncome = 0.0;
 
 	@Column(name = "registration_date")
 	private LocalDate registrationDate;
-	
-	@ManyToOne
+
+	@OneToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
 	
 	public CategoryStats(){}
 	
-	public CategoryStats(Long id, Integer addedProducts, Integer removedProducts, 
-			Double categoryValue, LocalDate registrationDate, 
-			Double expense, Double income,  Category category) {
+	public CategoryStats(Long id, Integer addedProducts,
+			LocalDate registrationDate, Double income, Double maxIncome,  Category category) {
 		this.id = id;
 		this.registrationDate = registrationDate;
 		this.addedProducts = addedProducts;
-		this.removedProducts = removedProducts;		
 		this.income = income;
-		this.expense = expense;
+		this.maxIncome = maxIncome;
 		this.category = category;
 	}
 
@@ -75,12 +67,12 @@ public class CategoryStats {
 		this.removedProducts = removedProducts;
 	}
 
-	public Double getExpense() {
-		return expense;
+	public Double getMaxIncome() {
+		return maxIncome;
 	}
 
-	public void setExpense(Double expense) {
-		this.expense = expense;
+	public void setMaxIncome(Double maxIncome) {
+		this.maxIncome = maxIncome;
 	}
 
 	public Double getIncome() {
