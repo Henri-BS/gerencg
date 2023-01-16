@@ -2,6 +2,7 @@ package com.altercode.gerencg.service;
 
 import java.util.List;
 
+import com.altercode.gerencg.dto.CategoryStatsTotalValueDTO;
 import com.altercode.gerencg.entity.Category;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.ProductRepository;
@@ -45,6 +46,11 @@ public class CategoryStatsService implements ICategoryStatsService {
 	}
 
 	@Override
+	public CategoryStatsTotalValueDTO getCategoryStatsTotalValue(){
+		return statsRepository.getCategoryStatsTotalValue();
+	}
+
+	@Override
 	public CategoryStatsDTO saveStats(CategoryStatsDTO dto) {
 		Category category = categoryRepository.findById(dto.getCategory()).get();
 
@@ -65,7 +71,9 @@ public class CategoryStatsService implements ICategoryStatsService {
 		for(Product i : stats.getCategory().getProducts()) {
 			sumQuantity = sumQuantity + i.getQuantity();
 			categoryValue = sumQuantity * i.getPrice();
+
 		}
+
 		stats.setCategory(stats.getCategory());
 		stats.setAddedProducts(sumQuantity);
 		stats.setIncome(categoryValue);

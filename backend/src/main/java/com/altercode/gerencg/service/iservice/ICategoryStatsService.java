@@ -2,6 +2,7 @@ package com.altercode.gerencg.service.iservice;
 
 import com.altercode.gerencg.dto.CategoryFlowDTO;
 import com.altercode.gerencg.dto.CategoryStatsDTO;
+import com.altercode.gerencg.dto.CategoryStatsTotalValueDTO;
 import com.altercode.gerencg.dto.CategoryValueDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +13,8 @@ public interface ICategoryStatsService {
     Page<CategoryStatsDTO> findAll(Pageable pageable);
 
     List<CategoryValueDTO> priceGroupByCategory();
+
+    CategoryStatsTotalValueDTO getCategoryStatsTotalValue();
 
     CategoryStatsDTO saveStats(CategoryStatsDTO dto);
 

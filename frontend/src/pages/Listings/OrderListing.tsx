@@ -91,7 +91,7 @@ export function OrderStatsList() {
     return (
         <div className="row p-20">
             {statsPage.content?.map((x) => (
-                <div key={x.id} className="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1">
+                <div key={x.id} className="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 mb-2">
                     <OrderStatsCard stats={x} />
                 </div>
             ))}

@@ -2,18 +2,19 @@ package com.altercode.gerencg.dto;
 
 import java.io.Serializable;
 
-public class OrderStatsValuesDTO implements Serializable {
+public class OrderStatsTotalValueDTO implements Serializable {
     private String statsId;
     private Double totalValue;
     private Double maxValue;
     private Long amountOrders;
     private Long amountItems;
 
-    public OrderStatsValuesDTO( Double totalValue) {
+    public OrderStatsTotalValueDTO(Double totalValue, Double maxValue) {
         this.totalValue = totalValue;
+        this.maxValue = maxValue;
     }
 
-    public OrderStatsValuesDTO(Double totalValue, Double maxValue, Long amountOrders, Long amountItems) {
+    public OrderStatsTotalValueDTO(Double totalValue, Double maxValue, Long amountOrders, Long amountItems) {
         this.totalValue = totalValue;
         this.maxValue = maxValue;
         this.amountOrders = amountOrders;

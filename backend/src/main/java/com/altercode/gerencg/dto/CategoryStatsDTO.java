@@ -11,19 +11,23 @@ public class CategoryStatsDTO implements Serializable {
     private Long id;
     private LocalDate registrationDate;
     private Integer addedProducts;
-    private Integer removedProducts;
     private Double income;
-    private Double maxIncome;
-
     private String category;
+
+    public CategoryStatsDTO(Long id, LocalDate registrationDate, Integer addedProducts, Integer removedProducts,
+                            Double income, String category) {
+        this.id = id;
+        this.registrationDate = registrationDate;
+        this.addedProducts = addedProducts;
+        this.income = income;
+        this.category = category;
+    }
 
     public CategoryStatsDTO(CategoryStats entity) {
         id = entity.getId();
         registrationDate = entity.getRegistrationDate();
         addedProducts = entity.getAddedProducts();
-        removedProducts = entity.getRemovedProducts();
         income = entity.getIncome();
-        maxIncome = entity.getMaxIncome();
         category = entity.getCategory().getName();
     }
 
@@ -43,29 +47,12 @@ public class CategoryStatsDTO implements Serializable {
         this.addedProducts = addedProducts;
     }
 
-    public Integer getRemovedProducts() {
-        return removedProducts;
-    }
-
-    public void setRemovedProducts(Integer removedProducts) {
-        this.removedProducts = removedProducts;
-    }
-
-
     public Double getIncome() {
         return income;
     }
 
     public void setIncome(Double income) {
         this.income = income;
-    }
-
-    public Double getMaxIncome() {
-        return maxIncome;
-    }
-
-    public void setMaxIncome(Double maxIncome) {
-        this.maxIncome = maxIncome;
     }
 
     public LocalDate getRegistrationDate() {
