@@ -3,14 +3,14 @@ import Pagination from "components/shared/Pagination";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { StatsPage } from "types/category";
+import { CategoryStatsPage } from "types/category";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 
 function CategoryDataTable() {
 
     const [pageNumber, setPageNumber] = useState(0);
-    const [page, setPage] = useState<StatsPage>({
+    const [page, setPage] = useState<CategoryStatsPage>({
         content:[],
         number: 0
     });

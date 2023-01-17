@@ -27,6 +27,7 @@ public class CategoryService implements ICategoryService {
 
 		Category category = categoryRepository.findById(id).get();
 		category.setTotalProducts(category.getProducts().size());
+		category.setTotalRegisters(category.getCodes().size());
 		category = categoryRepository.save(category);
 
 		return new CategoryDTO(category);

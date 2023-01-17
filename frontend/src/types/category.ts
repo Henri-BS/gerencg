@@ -33,11 +33,11 @@ export type CategoryStats = {
   removedProducts: number;
   income: number;
   expense: number;
-  category: Category;
+  category: string;
 };
 
-export type StatsPage = {
-  content?: CategoryStats[];
+export type CategoryStatsPage = {
+  content: CategoryStats[];
   last?: boolean;
   totalElements?: number;
   totalPages?: number;
@@ -54,8 +54,7 @@ export type CategoryValue = {
   expense: number;
 };
 
-export type FlowCategory = {
-  categoryName: string;
-  addedProduct: number;
-  removedProduct: number;
+export type CategoryStatsValue = {
+  maxValue: number;
+  totalValue: number;
 };

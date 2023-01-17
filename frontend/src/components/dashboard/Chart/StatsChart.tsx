@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts'
-import { CategoryValue, FlowCategory } from 'types/category';
+import { CategoryProps, CategoryStats, CategoryStatsPage, CategoryValue } from 'types/category';
 import { CodePage, OrderStatsProps, OrderStatsQuantityGroup, OrderStatsQuantityGroupByCategory, OrderStatsValueGroup, OrderStatsValueGroupByCategory } from 'types/order';
 import { BASE_URL } from 'utils/requests';
 
@@ -255,111 +255,50 @@ export function OrderStatsChartByCategory() {
     );
 }
 
-export function AddedProductsChart() {
+export function CateogryStatsChart() {
 
-    const [chartData, setChartData] = useState<QuantityChartData>({
-        labels: { categories: [] },
-        series: [{ name: "", data: [] }]
-    });
+    const [proportionChart, setProportionChart] = useState<ProportionChartData>({labels: [] , series: []});
 
     useEffect(() => {
-
-        axios.get(`${BASE_URL}/category-stats/flow-of-category`)
+        axios.get(`${BASE_URL}/category-stats/list`)
             .then((response) => {
-                const data = response.data as FlowCategory[];
-                const myLabels = data.map(x => x.categoryName);
-                const mySeries = data.map(x => x.addedProduct);
-
-                setChartData({
-                    labels: { categories: myLabels },
-                    series: [{
-                        name: "Adicionados",
-                        data: mySeries
-                    }]
+                const data = response.data as CategoryStatsPage;
+                const myLabels = data.content?.map(x => x.category);
+                const mySeries = data.content?.map(x => x.income);
+                setProportionChart({labels: myLabels, series: mySeries})
                 });
-            });
     }, []);
 
     const opitions = {
+        legends: {show: true},
         plotOptions: {
             bar: { horizontal: true }
         }
     }
 
     return (
+        <div className="row ">
+              <div className="chart-box col-lg-6">
+                <div className="container-chart">
+                  <h5 className="text-center">Expectativa de Renda Por Categoria</h5>
         <Chart
             options={{
                 ...opitions,
-                xaxis: chartData.labels,
+                labels: proportionChart.labels,
                 theme: { mode: "dark" },
-                colors: ["#1a6"],
                 chart: { background: "#2a323a" },
                 grid: { borderColor: "#139acf" },
             }}
-            labels={chartData.labels}
-            series={chartData.series}
-            type="bar"
+            series={proportionChart.series}
+            type="donut"
             height="300"
         />
+        </div>
+        </div>
+        </div>
     );
 }
 
-export function RemovedProductsChart() {
-    const [chartData, setChartData] = useState<QuantityChartData>({
-
-        labels: { categories: [] },
-
-        series: [{
-            name: "",
-            data: []
-        }]
-    });
-
-    useEffect(() => {
-
-        axios.get(`${BASE_URL}/category-stats/flow-of-category`)
-            .then(response => {
-                const data = response.data as FlowCategory[];
-                const myLabels = data.map(x => x.categoryName);
-                const mySeries = data.map(x => x.removedProduct);
-
-                setChartData({
-                    labels: { categories: myLabels },
-                    series: [{
-                        name: "Removidos",
-                        data: mySeries
-                    }]
-                });
-            });
-    }, []);
-
-    const opitions = {
-        plotOptions: {
-            bar: { horizontal: true }
-        },
-    }
-
-    return (
-        <Chart
-            options={{
-                ...opitions,
-                xaxis: chartData.labels,
-
-                theme: { mode: "dark" },
-
-                colors: ["#ad1321"],
-
-                chart: { background: "#2a323a" },
-
-                grid: { borderColor: "#139acf" },
-            }}
-            labels={chartData.labels}
-            series={chartData.series}
-            type="bar"
-            height="300"
-        />
-    );
-}
 
 export function IncomeChart() {
 

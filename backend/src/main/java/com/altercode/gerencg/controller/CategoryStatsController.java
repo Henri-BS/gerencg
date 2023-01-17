@@ -3,6 +3,7 @@ package com.altercode.gerencg.controller;
 import java.util.List;
 
 import com.altercode.gerencg.dto.CategoryStatsTotalValueDTO;
+import com.altercode.gerencg.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,6 +34,12 @@ public class CategoryStatsController {
 	public ResponseEntity<Page<CategoryStatsDTO>> findAll(Pageable pageable){
 		Page<CategoryStatsDTO> page = statsService.findAll(pageable);
 		return ResponseEntity.ok(page);
+	}
+
+	@GetMapping("/{category}")
+	public ResponseEntity<CategoryStatsDTO> findByCategory(Category category){
+		CategoryStatsDTO find = statsService.findByCategory(category);
+		return ResponseEntity.ok(find);
 	}
 
 	@GetMapping("/total-value")

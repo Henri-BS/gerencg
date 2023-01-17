@@ -38,22 +38,27 @@
     width: 100%;
     height: 100%;
     background-color: var(--white-seco);
+    justify-content: space-between;
     align-items: center;
     text-decoration-color: transparent;
     padding: 10px;
     display: grid;
-    overflow-x: scroll;
     border-left: 2px solid var(--dark-prim);
     margin-left: 2px;
 }
 
-.product-info-box::-webkit-scrollbar {
+.product-info-title {
+    overflow-x: scroll;
+}
+
+.product-info-title::-webkit-scrollbar {
     width: 0;
     height: 0;
 }
 
 .product-info-item {
-    height: 40px;
+    height: 24px;
+    text-align: center;
     background-color: var(--white-seco);
 }
 

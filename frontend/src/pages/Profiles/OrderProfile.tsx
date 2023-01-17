@@ -6,6 +6,7 @@ import { AddItemForm } from "components/container/Form/OrderForm";
 import { MdClose } from "react-icons/md";
 import { OrderStatsList } from "pages/Listings/OrderListing";
 import { OrderStatsChartsByPediod, OrderStatsCharts, OrderStatsChartByCategory } from "components/dashboard/Chart/StatsChart";
+import { CategoryStatsDashboard } from "./CategoryProfile";
 
 
 export function CommissionProfile() {
@@ -63,6 +64,7 @@ export function OrderStatsDashboard() {
         <OrderStatsCharts />
         <OrderStatsChartByCategory />
       </div>
+      <CategoryStatsDashboard/>
     </div>
   );
 }

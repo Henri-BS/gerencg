@@ -41,6 +41,12 @@ public class CategoryStatsService implements ICategoryStatsService {
 	}
 
 	@Override
+	public CategoryStatsDTO findByCategory(Category category) {
+		CategoryStats find = statsRepository.findByCategory(category);
+		return new CategoryStatsDTO(find);
+	}
+
+	@Override
 	public List<CategoryValueDTO> priceGroupByCategory(){
 		return productRepository.priceGroupByCategory();
 	}
@@ -62,7 +68,6 @@ public class CategoryStatsService implements ICategoryStatsService {
 
 	@Override
 	public CategoryStatsDTO updateStats(CategoryStatsDTO dto) {
-		
 		CategoryStats stats = statsRepository.findById(dto.getId()).get();
 
 		int sumQuantity = 0;
@@ -85,4 +90,6 @@ public class CategoryStatsService implements ICategoryStatsService {
 	public void deleteStats(Long id) {
 		this.statsRepository.findById(id);
 	}
+
+
 }

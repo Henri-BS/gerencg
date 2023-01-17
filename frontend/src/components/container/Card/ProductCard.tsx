@@ -15,7 +15,7 @@ export function ProductCard({ product }: Props) {
             <div className="product-card-container">
                 <img className="product-card-image" src={product?.image} alt={product?.description} />
                 <div className="product-info-box">
-                    <h3>{product?.description} • {product?.measureValue} {product?.measure}</h3>
+                    <h3 className="product-info-title">{product?.description} • {product?.measureValue} {product?.measure}</h3>
 
                     <div className="product-info-item">
                         <h6>Preço: {product?.price.toFixed(2)} R$</h6>

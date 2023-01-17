@@ -1,6 +1,7 @@
 package com.altercode.gerencg.repository;
 
 import com.altercode.gerencg.dto.CategoryStatsTotalValueDTO;
+import com.altercode.gerencg.entity.Category;
 import com.altercode.gerencg.entity.CategoryStats;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,5 +12,7 @@ public interface CategoryStatsRepository extends JpaRepository<CategoryStats, Lo
 
     @Query("SELECT new com.altercode.gerencg.dto.CategoryStatsTotalValueDTO (SUM(obj.income), MAX(obj.income))" +
             "FROM CategoryStats AS obj")
-    public CategoryStatsTotalValueDTO getCategoryStatsTotalValue();
+    CategoryStatsTotalValueDTO getCategoryStatsTotalValue();
+
+    CategoryStats findByCategory(Category category);
 }
