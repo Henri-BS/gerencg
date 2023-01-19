@@ -55,9 +55,7 @@ function CategoryDataTable() {
                                 </Link>
                                 <td className="table-box">{moment(item.registrationDate).format("DD/MM/YYYY")}</td>
                                 <td className="table-box">{item.addedProducts}</td>
-                                <td className="table-box">{item.removedProducts}</td>
                                 <td className="table-box">{item.income.toFixed(2)}</td>
-                                <td className="table-box">{item.expense.toFixed(2)}</td>
                             </tr>
                         ))}
                     </tbody>

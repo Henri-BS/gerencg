@@ -1,5 +1,5 @@
 import axios from "axios";
-import CategoryCard from "components/container/Card/CategoryCard";
+import {CategoryCard} from "components/container/Card/CategoryCard";
 import { ProductCard } from "components/container/Card/ProductCard";
 import Pagination from "components/shared/Pagination";
 import { useEffect, useState } from "react";

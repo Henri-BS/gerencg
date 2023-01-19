@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts'
-import { CategoryProps, CategoryStats, CategoryStatsPage, CategoryValue } from 'types/category';
+import { CategoryStatsPage, CategoryValue } from 'types/category';
 import { CodePage, OrderStatsProps, OrderStatsQuantityGroup, OrderStatsQuantityGroupByCategory, OrderStatsValueGroup, OrderStatsValueGroupByCategory } from 'types/order';
 import { BASE_URL } from 'utils/requests';
 

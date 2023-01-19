@@ -30,9 +30,7 @@ export type CategoryStats = {
   id: number; 
   registrationDate: string;
   addedProducts: number;
-  removedProducts: number;
   income: number;
-  expense: number;
   category: string;
 };
 

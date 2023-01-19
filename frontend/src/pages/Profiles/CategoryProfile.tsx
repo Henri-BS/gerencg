@@ -1,4 +1,4 @@
-import CategorySideBar from "components/container/Bar/CategoryBar";
+import { CategorySideBar, CategoryStatsMenuBar } from "components/container/Bar/CategoryBar";
 import { AddCategoryStats } from "components/container/Form/CategoryForm";
 import { CateogryStatsChart } from "components/dashboard/Chart/StatsChart";
 import { ProductCategoryList } from "pages/Listings/CategoryListing";
@@ -12,11 +12,14 @@ export function CategoryProfile() {
   return (
     <>
       <div className="profile row">
-        <div className="col-6-sm col-md-6 col-lg-4 p-0">
+        <div className="col-12 col-sm-12 col-md-6 col-lg-4 p-0">
           <CategorySideBar categoryId={`${params.categoryId}`} />
         </div>
-        <div className="col-6-sm col-md-6 col-lg-8 p-0">
+        <div className="col-12 col-sm-12 col-md-6 col-lg-8">
           <ProductCategoryList categoryId={`${params.categoryId}`} />
+          <div className="container">   
+            <CategoryStatsMenuBar categoryId={`${params.categoryId}`} />
+          </div>
         </div>
       </div>
     </>
@@ -34,7 +37,6 @@ export function SaveCategoryStats() {
 }
 
 export function CategoryStatsDashboard() {
-  const params = useParams();
   return (
     <>
       <div className="container">

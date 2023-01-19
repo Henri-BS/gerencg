@@ -71,12 +71,11 @@ public class CategoryStatsService implements ICategoryStatsService {
 		CategoryStats stats = statsRepository.findById(dto.getId()).get();
 
 		int sumQuantity = 0;
-		double categoryValue = 0;
+		double categoryValue = 0.0;
 
 		for(Product i : stats.getCategory().getProducts()) {
 			sumQuantity = sumQuantity + i.getQuantity();
-			categoryValue = sumQuantity * i.getPrice();
-
+			categoryValue = categoryValue + i.getPrice();
 		}
 
 		stats.setCategory(stats.getCategory());
@@ -90,6 +89,5 @@ public class CategoryStatsService implements ICategoryStatsService {
 	public void deleteStats(Long id) {
 		this.statsRepository.findById(id);
 	}
-
 
 }

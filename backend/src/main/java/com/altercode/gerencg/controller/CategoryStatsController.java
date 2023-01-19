@@ -54,8 +54,8 @@ public class CategoryStatsController {
 		return new ResponseEntity<CategoryStatsDTO>( newStats, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/update/{id}")
-	public ResponseEntity<CategoryStatsDTO> updateStats(@PathVariable Long id, @RequestBody CategoryStatsDTO dto) {
+	@PutMapping("/update")
+	public ResponseEntity<CategoryStatsDTO> updateStats( @RequestBody CategoryStatsDTO dto) {
 		CategoryStatsDTO updateStats = statsService.updateStats(dto);
 		return new ResponseEntity<>(updateStats, HttpStatus.OK);
 	}
