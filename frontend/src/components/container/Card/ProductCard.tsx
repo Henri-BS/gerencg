@@ -53,13 +53,11 @@ type Cons = {
 }
 
 export function ProductHistoryCard({ history }: Cons) {
+
     return (
         <div className="gerencg-history-card">
             <div className="gerencg-box  border-dark">
                 <h2>Data da Atualização: {moment(history.createdDate).format("DD/MM/YYYY")}</h2>
-            </div>
-            <div className="gerencg-box">
-                <h4>Descrição: {history.description}</h4>
             </div>
             <div className="gerencg-box">
                 <h3>Preço: {history.price.toFixed(2)}</h3>

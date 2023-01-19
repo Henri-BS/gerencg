@@ -31,7 +31,7 @@ export function CommissionProfile() {
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <div className="modal-title" id="itemLabel">Adnicionar novo item</div>
+              <div className="modal-title" id="itemLabel">Adicionar novo item</div>
               <button className="close" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true"><MdClose /></span>
               </button>

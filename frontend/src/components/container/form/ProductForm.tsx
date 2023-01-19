@@ -266,3 +266,14 @@ export const ProductFormEdit = ({ productId }: ProductProps) => {
     );
 }
 
+
+export function SaveHistory(){
+    
+
+    useEffect(() => {
+        axios.post(`${BASE_URL}/history`)
+        .then((response) => {
+
+        })
+    }, [])
+}

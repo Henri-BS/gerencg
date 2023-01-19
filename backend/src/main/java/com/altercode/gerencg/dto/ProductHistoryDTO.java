@@ -4,13 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import com.altercode.gerencg.entity.Category;
-import com.altercode.gerencg.entity.Measure;
 import com.altercode.gerencg.entity.ProductHistory;
-
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 public class ProductHistoryDTO implements Serializable {
 	private static final long serialVersionUID = 1L;

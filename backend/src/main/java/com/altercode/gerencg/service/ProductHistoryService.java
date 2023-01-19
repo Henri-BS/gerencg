@@ -2,6 +2,7 @@ package com.altercode.gerencg.service;
 
 import com.altercode.gerencg.entity.OrderItem;
 import com.altercode.gerencg.repository.*;
+import com.altercode.gerencg.service.iservice.IProductHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,7 +18,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class ProductHistoryService {
+public class ProductHistoryService implements IProductHistoryService {
 
     @Autowired
     private ProductRepository productRepository;
@@ -28,16 +29,19 @@ public class ProductHistoryService {
     @Autowired
     private OrderItemRepository itemRepository;
 
+    @Override
     public Page<ProductHistoryDTO> findAll(Pageable pageable) {
         Page<ProductHistory> result = historyRepository.findAll(pageable);
         return result.map(x -> new ProductHistoryDTO(x));
     }
 
+    @Override
     public Page<ProductHistoryDTO> findByProduct(Pageable pageable, Product product) {
         Page<ProductHistory> result = historyRepository.findByProduct(pageable, product);
         return result.map(x -> new ProductHistoryDTO(x));
     }
 
+    @Override
     public ProductHistoryDTO saveHistory(ProductHistoryDTO dto) {
         Product product = productRepository.findById(dto.getProductId()).get();
 
@@ -52,6 +56,7 @@ public class ProductHistoryService {
         return new ProductHistoryDTO(history);
     }
 
+    @Override
     public ProductHistoryDTO saveItemInHistory(Long id) {
         OrderItem item = itemRepository.findById(id).get();
 
