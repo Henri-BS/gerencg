@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { CategoryPage } from "types/category";
 import { MeasurePage } from "types/measure";
 import { Product, ProductProps } from "types/product";
@@ -141,7 +141,7 @@ export function AddProductForm() {
 
 export const ProductFormEdit = ({ productId }: ProductProps) => {
 
-        //Get MeasureList for the category selector    
+    //Get MeasureList for the category selector    
     const [measureList, setMeasure] = useState<MeasurePage>({
         content: [],
         number: 0,
@@ -267,13 +267,54 @@ export const ProductFormEdit = ({ productId }: ProductProps) => {
 }
 
 
-export function SaveHistory(){
-    
+export function SaveHistory({ productId }: ProductProps) {
 
+    const [product, setProduct] = useState<Product>();
     useEffect(() => {
-        axios.post(`${BASE_URL}/history`)
-        .then((response) => {
+        axios.get(`${BASE_URL}/product/${productId}`)
+            .then((response) => {
+                setProduct(response.data);
+            });
+    }, [productId]);
 
-        })
-    }, [])
+    const navigate = useNavigate();
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
+        const config: AxiosRequestConfig = {
+            baseURL: BASE_URL,
+            url: "/history",
+            method: "POST",
+            data: {
+                productId: productId
+            }
+        }
+        axios(config).then((response) => {
+            navigate(`/product/${productId}`)
+        });
+    }
+
+    return (
+        <form className="form-container" onSubmit={handleSubmit}>
+
+            <div className="form-card-container">
+                <span>Informações Atuais</span>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="product">Produto: {product?.description}</label>
+                </div>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="quantity">Quantidade: {product?.quantity}</label>
+                </div>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="price">Price: {product?.price}</label>
+                </div>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="validate">Validade: {product?.validate}</label>
+                </div>
+            </div>
+            <div className="modal-footer">
+                <button className="text-close">cancelar</button>
+                <button type="submit" className="btn-confirm">Salvar</button>
+            </div>
+        </form>
+    );
 }

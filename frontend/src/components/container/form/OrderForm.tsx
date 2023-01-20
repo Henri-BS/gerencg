@@ -1,6 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Code, CodeProps, Item, ItemProps } from "types/order";
 import { MeasurePage } from "types/measure";
@@ -164,6 +163,7 @@ export function EditOrderForm({ codeId }: CodeProps) {
 
 //Item Forms
 export function AddItemForm({ codeId }: CodeProps) {
+    
     const navigate = useNavigate();
     const [order, setOrder] = useState<Code>();
     useEffect(() => {
@@ -175,7 +175,7 @@ export function AddItemForm({ codeId }: CodeProps) {
 
     const [productPage, setProductPage] = useState<ProductPage>({
         content: [],
-        number: 0,
+        number: 0
     })
     const [value, setValue] = useState("");
     useEffect(() => {
@@ -183,7 +183,7 @@ export function AddItemForm({ codeId }: CodeProps) {
             .then(response => {
                 setProductPage(response.data);
             });
-    }, [value])
+    }, [value]);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const quantity = (event.target as any).quantity.value;
@@ -209,7 +209,7 @@ export function AddItemForm({ codeId }: CodeProps) {
         }
         axios(config).then((response) => {
             navigate(`/order/${codeId}`)
-        })
+        });
     }
 
     return (

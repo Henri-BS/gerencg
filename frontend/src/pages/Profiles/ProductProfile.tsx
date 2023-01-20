@@ -48,9 +48,8 @@ export function ProductProfile() {
                 <span aria-hidden="true"><MdClose /></span>
               </button>
               </div>
-              <div className="modal-footer">
-                <button className="text-close">cancelar</button>
-                <button onClick={() => SaveHistory()} className="btn-confirm" data-bs-dismiss="modal">Deletar Pedido</button>
+              <div className="modal-body">
+                <SaveHistory productId={`${params.productId}`}/>
               </div>
             
           </div>
