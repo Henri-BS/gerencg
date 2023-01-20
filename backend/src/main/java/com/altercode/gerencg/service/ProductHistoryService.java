@@ -13,9 +13,6 @@ import com.altercode.gerencg.dto.ProductHistoryDTO;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.entity.ProductHistory;
 
-import java.time.LocalDate;
-import java.util.List;
-
 @Service
 @Transactional
 public class ProductHistoryService implements IProductHistoryService {
@@ -68,5 +65,10 @@ public class ProductHistoryService implements IProductHistoryService {
         historyRepository.saveAndFlush(history);
 
         return new ProductHistoryDTO(history);
+    }
+
+    @Override
+    public void deleteProductHistory(Long id) {
+        this.historyRepository.deleteById(id);
     }
 }

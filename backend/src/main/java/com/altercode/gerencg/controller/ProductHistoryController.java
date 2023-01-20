@@ -3,6 +3,7 @@ package com.altercode.gerencg.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,7 @@ public class ProductHistoryController {
 	public ProductHistoryDTO saveItemInHistory(@PathVariable Long id) {
 		return productHistoryService.saveItemInHistory(id);
 	}
-	
+
 	@GetMapping("/list")
 	public ResponseEntity<Page<ProductHistoryDTO>> findAll(Pageable pageable) {
 		Page<ProductHistoryDTO> page = productHistoryService.findAll(pageable);
@@ -38,5 +39,11 @@ public class ProductHistoryController {
 	public ResponseEntity<Page<ProductHistoryDTO>> findByProduct(Pageable pageable, @PathVariable Product product) {
 		Page<ProductHistoryDTO> page = productHistoryService.findByProduct(pageable, product);
 		return ResponseEntity.ok(page);
+	}
+
+	@DeleteMapping("/delete/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deleteProductHistory(Long id) {
+		this.productHistoryService.deleteProductHistory(id);
 	}
 }

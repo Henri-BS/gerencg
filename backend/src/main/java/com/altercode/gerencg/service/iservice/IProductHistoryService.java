@@ -13,4 +13,6 @@ public interface IProductHistoryService {
     ProductHistoryDTO saveHistory(ProductHistoryDTO dto);
 
     ProductHistoryDTO saveItemInHistory(Long id);
+
+    void deleteProductHistory(Long id);
 }

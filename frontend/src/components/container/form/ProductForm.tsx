@@ -267,7 +267,7 @@ export const ProductFormEdit = ({ productId }: ProductProps) => {
 }
 
 
-export function SaveHistory({ productId }: ProductProps) {
+export function SaveValuesHistory({ productId }: ProductProps) {
 
     const [product, setProduct] = useState<Product>();
     useEffect(() => {
