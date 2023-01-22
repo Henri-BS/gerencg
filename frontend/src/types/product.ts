@@ -42,7 +42,6 @@ export type QuantityTimelineChart = {
 
 export type ProductHistory = {
   id: number;
-  description: string;
   price: number;
   quantity: number;
   validate: string;
@@ -62,3 +61,7 @@ export type ProductHistoryPage = {
   first?: boolean;
   last?: boolean;
 };
+
+export type HistoryProps = {
+  historyId: string;
+}

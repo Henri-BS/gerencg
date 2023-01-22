@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./styles.css"
 import { ProductHistoryByProduct } from "pages/Listings/ProductListing";
 import { MeasureInfo } from "components/container/Card/MeasureCard";

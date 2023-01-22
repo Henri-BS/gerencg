@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CategoryPage } from "types/category";
 import { MeasurePage } from "types/measure";
 import { Product, ProductProps } from "types/product";

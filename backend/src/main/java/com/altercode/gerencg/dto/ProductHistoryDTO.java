@@ -9,6 +9,7 @@ import com.altercode.gerencg.entity.ProductHistory;
 public class ProductHistoryDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	private Long id;
 	private Long productId;
 	private Double price;
 	private Integer quantity;
@@ -19,11 +20,20 @@ public class ProductHistoryDTO implements Serializable {
 	}
 
 	public ProductHistoryDTO(ProductHistory entity) {
+		id = entity.getId();
 		productId = entity.getProduct().getId();
 		price = entity.getPrice();
 		quantity = entity.getQuantity();
 		validate = entity.getValidate();
 		createdDate = entity.getCreatedDate();
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Long getProductId() {

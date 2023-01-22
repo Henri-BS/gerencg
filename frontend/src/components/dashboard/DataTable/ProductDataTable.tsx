@@ -35,7 +35,6 @@ function ProductDataTable() {
                     <thead className="bg-primary text-primary">
                         <tr>
                             <th className="table-box"><h5>Id</h5></th>
-                            <th className="table-box"><h5>Descrição do Produto</h5></th>
                             <th className="table-box"><h5>Data de Registro</h5></th>
                             <th className="table-box"><h5>Quantidade</h5></th>
                             <th className="table-box"><h5>Preço</h5></th>
@@ -48,8 +47,6 @@ function ProductDataTable() {
                                 <Link to={`/product/${item.productId}`} className="table-box-title">
                                     <h5>{item.productId}</h5>
                                 </Link>
-
-                                <td className="table-box">{item.description}</td>
                                 <td className="table-box">{moment(item.createdDate).format("DD/MM/YYYY")}</td>
                                 <td className="table-box">{item.quantity}</td>
                                 <td className="table-box">{item.price}</td>

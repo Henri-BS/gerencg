@@ -43,7 +43,7 @@ public class ProductHistoryController {
 
 	@DeleteMapping("/delete/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deleteProductHistory(Long id) {
+	public void deleteProductHistory(@PathVariable Long id) {
 		this.productHistoryService.deleteProductHistory(id);
 	}
 }

@@ -65,7 +65,7 @@
 .gerencg-history-card {
     max-height: 340px;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     padding: 10px;
     background-color: var(--white-seco);
     border: 3px solid #ccc;
@@ -74,16 +74,36 @@
     align-items: center;
 }
 
+.history-card-header {
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+    font-weight: 700;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid var(--dark-prim);
+}
+
+.history-delete-container {
+    height: 34px;
+    width: 34px;
+    border-radius: 100%;
+    margin-left: 10px;
+    color: var(--red-prim);
+    font-size: 18px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.history-delete-container:hover {
+    color: var(--red-seco);
+}
+
 .gerencg-box {
     display: flex;
     width: 100%;
     padding: 5px;
     border-bottom: 1px solid #ccc;
-}
-
-.gerencg-box h2 {
-    font-size: 24px;
-    font-weight: 700;
 }
 
 .gerencg-box h3 {

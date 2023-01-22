@@ -215,8 +215,8 @@ export function AddItemForm({ codeId }: CodeProps) {
     return (
         <>
             <form className="form-container" onSubmit={handleSubmit}>
+<span>CódigoPedido: {order?.code}</span>
                 <div className="form-card-container" >
-
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="quantity">Quantidade em Unidades: </label>
                         <input id="quantity" type="text" className="form-control" />
