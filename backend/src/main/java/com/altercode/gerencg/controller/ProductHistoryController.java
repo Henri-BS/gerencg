@@ -19,7 +19,25 @@ public class ProductHistoryController {
 	@Autowired
 	private ProductHistoryService productHistoryService;
 
-	@PostMapping
+	@GetMapping("/list")
+	public ResponseEntity<Page<ProductHistoryDTO>> findAll(Pageable pageable) {
+		Page<ProductHistoryDTO> page = productHistoryService.findAll(pageable);
+		return ResponseEntity.ok(page);
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<ProductHistoryDTO> findHistoryById(@PathVariable Long id) {
+		ProductHistoryDTO findHistory = productHistoryService.findHistoryById(id);
+		return ResponseEntity.ok(findHistory);
+	}
+
+	@GetMapping("/product/{product}")
+	public ResponseEntity<Page<ProductHistoryDTO>> findByProduct(Pageable pageable, @PathVariable Product product) {
+		Page<ProductHistoryDTO> page = productHistoryService.findByProduct(pageable, product);
+		return ResponseEntity.ok(page);
+	}
+
+	@PostMapping("/save-product")
 	public ProductHistoryDTO saveProductInHistory(@RequestBody ProductHistoryDTO dto) {
 		return productHistoryService.saveHistory(dto);
 	}
@@ -29,17 +47,7 @@ public class ProductHistoryController {
 		return productHistoryService.saveItemInHistory(id);
 	}
 
-	@GetMapping("/list")
-	public ResponseEntity<Page<ProductHistoryDTO>> findAll(Pageable pageable) {
-		Page<ProductHistoryDTO> page = productHistoryService.findAll(pageable);
-		return ResponseEntity.ok(page);
-	}
 
-	@GetMapping("/{product}")
-	public ResponseEntity<Page<ProductHistoryDTO>> findByProduct(Pageable pageable, @PathVariable Product product) {
-		Page<ProductHistoryDTO> page = productHistoryService.findByProduct(pageable, product);
-		return ResponseEntity.ok(page);
-	}
 
 	@DeleteMapping("/delete/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)

@@ -1,7 +1,7 @@
 import Home from "pages/Home";
 import { ProductsList, ProductValidateList } from "pages/Listings/ProductListing";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { ProductProfile, MeasureProfile, SaveProduct, UpdateProduct, ProductDashboard} from "pages/Profiles/ProductProfile";
+import { ProductProfile, MeasureProfile, SaveProduct, ProductDashboard, ProductHistoryProfile} from "pages/Profiles/ProductProfile";
 import { CategoryList } from "pages/Listings/CategoryListing";
 import { MeasureList } from "pages/Listings/MeasureListing";
 import { OrderCodeList } from "pages/Listings/OrderListing";
@@ -9,6 +9,7 @@ import { CommissionProfile, ItemProfile, OrderStatsDashboard, OrderStatsProfile 
 import { CategoryProfile, CategoryStatsDashboard, SaveCategoryStats } from "pages/Profiles/CategoryProfile";
 import NavBar from "components/shared/NavBar";
 import Footer from "components/shared/Footer";
+import { GetHistoryCard } from "components/container/Card/ProductCard";
 
 
 function PageRoutes() {
@@ -30,8 +31,8 @@ function PageRoutes() {
                 <Route path="/product">
                     <Route path=":productId" element={<ProductProfile />} />
                 </Route>
-                <Route path="/product-edit" >
-                    <Route path=":productId" element={<UpdateProduct />} />
+                <Route path="/history" >
+                    <Route path=":historyId" element={<ProductHistoryProfile />} />
                 </Route>
 
                 <Route path="/category/list" element={<CategoryList />} />

@@ -62,47 +62,41 @@
     background-color: var(--white-seco);
 }
 
-.gerencg-history-card {
-    max-height: 340px;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    padding: 10px;
-    background-color: var(--white-seco);
-    border: 3px solid #ccc;
-    border-radius: 20px;
-    justify-content: center;
-    align-items: center;
-}
-
 .history-card-header {
-    display: flex;
-    height: 50px;
-    justify-content: space-between;
-    font-weight: 700;
+    border-radius: 12px;
+    background-color: var(--white-seco);
+    min-height: 50px;
+    align-items: center;
     width: 100%;
     padding: 10px;
-    border-bottom: 1px solid var(--dark-prim);
+    border: 1px solid var(--white-tert);
 }
 
-.history-delete-container {
-    height: 34px;
-    width: 34px;
-    border-radius: 100%;
+.history-card-header h5 {
+    text-align: center;
+}
+
+.history-icon-container {
+    height: 100%;
+    align-items: center;
     margin-left: 10px;
-    color: var(--red-prim);
-    font-size: 18px;
+    color: var(--blue-prim);
+    font-size: 24px;
     border: 1px solid transparent;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
 
-.history-delete-container:hover {
-    color: var(--red-seco);
+.history-icon-container:hover {
+    color: var(--blue-seco);
 }
 
 .gerencg-box {
+    text-align: center;
+    align-items: center;
     display: flex;
     width: 100%;
-    padding: 5px;
+    padding: 20px 8px;
     border-bottom: 1px solid #ccc;
 }
 

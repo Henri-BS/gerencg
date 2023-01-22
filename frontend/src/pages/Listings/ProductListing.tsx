@@ -208,7 +208,7 @@ export function ProductHistoryList() {
 }
 
 //Find product history by product
-export function ProductHistoryByProduct({ productId }: ProductProps) {
+export function ListHistoryByProduct({ productId }: ProductProps) {
     const [historyPage, setHistoryPage] = useState<ProductHistoryPage>({
         content: [],
         size: 10,
@@ -216,7 +216,7 @@ export function ProductHistoryByProduct({ productId }: ProductProps) {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/history/${productId}?sort=createdDate&size=10`)
+        axios.get(`${BASE_URL}/history/product/${productId}?sort=createdDate&size=10`)
             .then((response) => {
                 setHistoryPage(response.data);
             });

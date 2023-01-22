@@ -282,7 +282,7 @@ export function SaveValuesHistory({ productId }: ProductProps) {
 
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
-            url: "/history",
+            url: "/history/save-product",
             method: "POST",
             data: {
                 productId: productId

@@ -39,6 +39,12 @@ public class ProductHistoryService implements IProductHistoryService {
     }
 
     @Override
+    public ProductHistoryDTO findHistoryById(Long id) {
+        ProductHistory findHistory = historyRepository.findById(id).get();
+        return new ProductHistoryDTO(findHistory);
+    }
+
+    @Override
     public ProductHistoryDTO saveHistory(ProductHistoryDTO dto) {
         Product product = productRepository.findById(dto.getProductId()).get();
 
@@ -71,4 +77,6 @@ public class ProductHistoryService implements IProductHistoryService {
     public void deleteProductHistory(Long id) {
         this.historyRepository.deleteById(id);
     }
+
+
 }

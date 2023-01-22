@@ -1,7 +1,7 @@
 import axios from "axios";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { MdClose } from "react-icons/md";
+import { MdClose, MdInfo, MdInfoOutline, MdMenu, MdMenuBook, MdMenuOpen } from "react-icons/md";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { HistoryProps, Product } from "types/product";
 import { ProductHistory } from "types/product";
@@ -60,20 +60,11 @@ export function ProductHistoryCard({ history }: Cons) {
     const params = useParams();
     return (
         <>
-            <div className="gerencg-history-card">
                 <div className="history-card-header">
-                    <h4>Data da Atualização: {moment(history.createdDate).format("DD/MM/YYYY")}</h4>
-                    <span className="history-delete-container" data-bs-toggle="modal" data-bs-target="#deleteHistoryModal"><MdClose /></span>
-                </div>
-                <div className="gerencg-box">
-                    <h3>Preço: {history.price.toFixed(2)}</h3>
-                </div>
-                <div className="gerencg-box">
-                    <h3>Quantidade: {history.quantity}</h3>
-                </div>
-                <div className="gerencg-box border-0">
-                    <h3>Validade: {moment(history.validate).format("DD/MM/YYYY")}</h3>
-                </div>
+                    <h5>Data de Registro: {moment(history.createdDate).format("DD/MM/YYYY")}<Link to={`/history/${history.id}`}>
+                        <span className="history-icon-container"><MdInfoOutline /></span>
+                    </Link>   </h5>
+                           
             </div>
             <div className="modal fade" role="dialog" id="deleteHistoryModal">
                 <div className="modal-dialog" role="document">
@@ -94,6 +85,14 @@ export function ProductHistoryCard({ history }: Cons) {
 
 export function GetHistoryCard({ historyId }: HistoryProps) {
 
+    const [history, setHistory] = useState<ProductHistory>();
+    useEffect(() => {
+        axios.get(`${BASE_URL}/history/${historyId}`)
+            .then((response) => {
+                setHistory(response.data);
+            });
+    }, [historyId]);
+
     const navigate = useNavigate();
     const deleteHistory = () => {
         axios.delete(`${BASE_URL}/history/delete/${historyId}`)
@@ -102,9 +101,21 @@ export function GetHistoryCard({ historyId }: HistoryProps) {
             });
     }
     return (
-        <div className="modal-footer">
-            <button className="text-close">cancelar</button>
-            <button onClick={() => deleteHistory()} className="btn-danger" data-bs-dismiss="modal">Deletar</button>
-        </div>
+        <>
+            <div className="gerencg-item-card">
+            <div className="gerencg-box">
+                    Produto: {history?.productId}
+                </div>
+                <div className="gerencg-box">
+                    Quantidade: {history?.quantity}
+                </div>
+                <div className="gerencg-box">
+                    Preço: {history?.price}
+                </div>
+                <div className="gerencg-box">
+                    Validade: {history?.validate}
+                </div>
+            </div>
+        </>
     );
 }

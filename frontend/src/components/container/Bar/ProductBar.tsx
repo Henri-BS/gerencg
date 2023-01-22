@@ -137,3 +137,23 @@ export function ProductMenuBar({ productId }: ProductProps) {
         </>
     );
 }
+
+export function HistoryMenuBar(){
+
+return(
+<div className="menu-bar-container">
+<div>
+    <h2><b>Valores do Produto</b></h2>
+    <p>Detalhes sobre os valores do produto.</p>
+</div>
+<button data-bs-toggle="modal" data-bs-target="#updateItemModal" className="menu-bar-option" >
+    <img className="option-card-img" src={IUpdateProduct} alt="update-product" />
+    <h6>Editar</h6>
+</button>
+<button data-bs-toggle="modal" data-bs-target="#deleteItemModal" className="menu-bar-option" >
+    <img className="option-card-img" src={IDeleteProduct} alt="delete-product" />
+    <h6>Deletar</h6>
+</button>
+</div>
+);
+}

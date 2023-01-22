@@ -39,11 +39,11 @@ export function CommissionCard({ order }: OrderCode) {
 }
 
 export function OrderItemCard({ itemId }: ItemProps) {
-    const [item, setItem] = useState<Item>();
-    const [product, setProduct] = useState<Product>();
+
     const navigate = useNavigate();
     const params = useParams();
 
+    const [item, setItem] = useState<Item>();
     useEffect(() => {
         axios.get(`${BASE_URL}/item/${itemId}`)
             .then((response) => {
@@ -51,6 +51,7 @@ export function OrderItemCard({ itemId }: ItemProps) {
             })
     }, [itemId])
 
+    const [product, setProduct] = useState<Product>();
     const updateProductByItem = () => {
         axios.put(`${BASE_URL}/update-product-by-item?id=${itemId}`)
             .then((response) => {

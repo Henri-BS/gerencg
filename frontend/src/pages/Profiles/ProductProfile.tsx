@@ -1,13 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
 import "./styles.css"
-import { ProductHistoryByProduct } from "pages/Listings/ProductListing";
+import { ListHistoryByProduct } from "pages/Listings/ProductListing";
 import { MeasureInfo } from "components/container/Card/MeasureCard";
 import { AddProductForm, ProductFormEdit, SaveValuesHistory } from "components/container/Form/ProductForm";
 import { QuantityProductChart } from "components/dashboard/Chart/ProductCharts";
 import { ProductMeasureList } from "pages/Listings/MeasureListing";
-import { ProductMenuBar, ProductSideBar } from "components/container/Bar/ProductBar";
+import { HistoryMenuBar, ProductMenuBar, ProductSideBar } from "components/container/Bar/ProductBar";
 import ProductDataTable from "components/dashboard/DataTable/ProductDataTable";
 import { MdClose } from "react-icons/md";
+import { GetHistoryCard } from "components/container/Card/ProductCard";
 
 //Product profile 
 export function ProductProfile() {
@@ -35,7 +36,7 @@ export function ProductProfile() {
               <QuantityProductChart productId={`${params.productId}`} />
             </div>
           </div>
-          <ProductHistoryByProduct productId={`${params.productId}`} />
+          <ListHistoryByProduct productId={`${params.productId}`} />
         </div>
       </div>
 
@@ -51,7 +52,6 @@ export function ProductProfile() {
               <div className="modal-body">
                 <SaveValuesHistory productId={`${params.productId}`}/>
               </div>
-            
           </div>
         </div>
       </div>
@@ -71,14 +71,13 @@ export function SaveProduct() {
   );
 }
 
-//Update product page
-export function UpdateProduct() {
+export function ProductHistoryProfile() {
 
   const params = useParams();
-
   return (
-    <div className="container-blur">
-      <ProductFormEdit productId={`${params.productId}`} />
+    <div className="container">
+      <HistoryMenuBar/>
+      <GetHistoryCard historyId={`${params.historyId}`} />
     </div>
   );
 }
