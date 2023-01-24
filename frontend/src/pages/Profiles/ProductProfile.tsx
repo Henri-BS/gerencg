@@ -1,8 +1,8 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./styles.css"
 import { ListHistoryByProduct } from "pages/Listings/ProductListing";
 import { MeasureInfo } from "components/container/Card/MeasureCard";
-import { AddProductForm, ProductFormEdit, SaveValuesHistory } from "components/container/Form/ProductForm";
+import { AddProductForm, SaveValuesHistory } from "components/container/Form/ProductForm";
 import { QuantityProductChart } from "components/dashboard/Chart/ProductCharts";
 import { ProductMeasureList } from "pages/Listings/MeasureListing";
 import { HistoryMenuBar, ProductMenuBar, ProductSideBar } from "components/container/Bar/ProductBar";
@@ -76,7 +76,7 @@ export function ProductHistoryProfile() {
   const params = useParams();
   return (
     <div className="container">
-      <HistoryMenuBar/>
+      <HistoryMenuBar historyId={`${params.historyId}`} />
       <GetHistoryCard historyId={`${params.historyId}`} />
     </div>
   );

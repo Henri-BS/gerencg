@@ -38,16 +38,20 @@ public class ProductHistoryController {
 	}
 
 	@PostMapping("/save-product")
-	public ProductHistoryDTO saveProductInHistory(@RequestBody ProductHistoryDTO dto) {
+	public ProductHistoryDTO saveProductHistory(@RequestBody ProductHistoryDTO dto) {
 		return productHistoryService.saveHistory(dto);
 	}
 
 	@PostMapping("/save-item/{id}")
-	public ProductHistoryDTO saveItemInHistory(@PathVariable Long id) {
-		return productHistoryService.saveItemInHistory(id);
+	public ProductHistoryDTO saveItemHistory(@PathVariable Long id) {
+		return productHistoryService.saveItemHistory(id);
 	}
 
-
+	@PutMapping("/update-value/{id}")
+	public ResponseEntity<ProductHistoryDTO> updateProductHistoryValue(ProductHistoryDTO dto, @PathVariable Long id) {
+		ProductHistoryDTO update = productHistoryService.updateProductHistoryValue(dto);
+		return new ResponseEntity<>(update, HttpStatus.OK);
+	}
 
 	@DeleteMapping("/delete/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)

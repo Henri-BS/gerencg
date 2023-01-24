@@ -29,6 +29,11 @@ public class ProductHistory {
 
 	private LocalDate validate;
 
+	private Double income = 0.0;
+
+	@Column(name = "removed_products")
+	private Integer removedProducts = 0;
+
 	@CreatedDate
 	@Column(name = "created_date")
 	private LocalDateTime createdDate = LocalDateTime.now();
@@ -40,17 +45,18 @@ public class ProductHistory {
 	public ProductHistory() {
 	}
 
-    public ProductHistory(Long id, Double price, Integer quantity, LocalDate validate,
-						 LocalDateTime createdDate, Product product) {
-        this.id = id;
-        this.price = price;
-        this.quantity = quantity;
-        this.validate = validate;
-        this.createdDate = createdDate;
-        this.product = product;
-    }
+	public ProductHistory(Long id, Double price, Integer quantity, LocalDate validate, Double income, Integer removedProducts, LocalDateTime createdDate, Product product) {
+		this.id = id;
+		this.price = price;
+		this.quantity = quantity;
+		this.validate = validate;
+		this.income = income;
+		this.removedProducts = removedProducts;
+		this.createdDate = createdDate;
+		this.product = product;
+	}
 
-    public Long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -86,6 +92,22 @@ public class ProductHistory {
 
 	public void setValidate(LocalDate validate) {
 		this.validate = validate;
+	}
+
+	public Double getIncome() {
+		return income;
+	}
+
+	public void setIncome(Double income) {
+		this.income = income;
+	}
+
+	public Integer getRemovedProducts() {
+		return removedProducts;
+	}
+
+	public void setRemovedProducts(Integer removedProducts) {
+		this.removedProducts = removedProducts;
 	}
 
 	public LocalDateTime getCreatedDate() {

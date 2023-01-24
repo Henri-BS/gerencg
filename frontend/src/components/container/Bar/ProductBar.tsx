@@ -1,7 +1,7 @@
 
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Product, ProductProps } from 'types/product';
+import { HistoryProps, Product, ProductProps } from 'types/product';
 import axios from 'axios';
 import { BASE_URL } from 'utils/requests';
 import moment from "moment";
@@ -9,7 +9,7 @@ import { productIcons } from "components/shared/MenuIcons";
 import IUpdateProduct from "assets/img/update.png";
 import IDeleteProduct from "assets/img/delete-img.png";
 import INotifications from "assets/img/notifications.png";
-import {MdClose} from "react-icons/md";
+import { MdClose } from "react-icons/md";
 import "./styles.css";
 import { ProductFormEdit } from '../Form/ProductForm';
 
@@ -54,8 +54,8 @@ export function ProductSideBar({ productId }: ProductProps) {
                         <h3>Category: {product?.category} </h3>
                     </Link>
                 </div>
-                <div className="column-card-bottom"> 
-                <h4>Última Atualização: {moment(product?.lastUpdateDate).format('DD/MM/YYYY')}</h4>
+                <div className="column-card-bottom">
+                    <h4>Última Atualização: {moment(product?.lastUpdateDate).format('DD/MM/YYYY')}</h4>
                 </div>
             </div>
         </>
@@ -90,70 +90,94 @@ export function ProductMenuBar({ productId }: ProductProps) {
 
     return (
         <>
-        <div className="menu-bar-container">
-            
+            <div className="menu-bar-container">
+
                 <button data-bs-toggle="modal" data-bs-target="#updateProductModal" className="menu-bar-option">
                     <img className="option-card-img" src={IUpdateProduct} alt="update-product" />
-                    Editar 
+                    Editar
                 </button>
-            <button data-bs-toggle="modal" data-bs-target="#deleteProductModal" className="menu-bar-option">
-                <img className="option-card-img" src={IDeleteProduct} alt="delete-product" />
-                Deletar
-            </button>
-            <button className="menu-bar-option" onClick={() => notifyProduct()}>
-                <img className="option-card-img" src={INotifications} alt="notification" />
-                Notificar
-            </button>
-        </div>
-
-        <div className="modal fade" role="dialog" id="updateProductModal">
-            <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <div className="modal-title" id="productLabel">Editar produto: {product?.description}</div>
-                        <button className="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"><MdClose/></span>
-                        </button>
-                    </div>
-                    <div className="modal-body"><ProductFormEdit productId={`${params.productId}`}/></div>
-                </div>
+                <button data-bs-toggle="modal" data-bs-target="#deleteProductModal" className="menu-bar-option">
+                    <img className="option-card-img" src={IDeleteProduct} alt="delete-product" />
+                    Deletar
+                </button>
+                <button className="menu-bar-option" onClick={() => notifyProduct()}>
+                    <img className="option-card-img" src={INotifications} alt="notification" />
+                    Notificar
+                </button>
             </div>
-        </div>
 
-        <div className="modal fade" role="dialog" id="deleteProductModal">
-            <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <div className="modal-title">Deseja deletar este produto ?</div>
-                        <button className="close" data-bs-dismiss="modal" aria-label="Close"><MdClose/></button>
-                    </div>
-                    <div className="modal-footer">
-                        <button className="text-close" data-bs-dismiss="modal">Cancelar</button>
-                        <button className="btn-danger" data-bs-dismiss="modal" onClick={() => deleteProduct()}> Deletar Produto</button>
+            <div className="modal fade" role="dialog" id="updateProductModal">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <div className="modal-title" id="productLabel">Editar produto: {product?.description}</div>
+                            <button className="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><MdClose /></span>
+                            </button>
+                        </div>
+                        <div className="modal-body"><ProductFormEdit productId={`${params.productId}`} /></div>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <div className="modal fade" role="dialog" id="deleteProductModal">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <div className="modal-title">Deseja deletar este produto ?</div>
+                            <button className="close" data-bs-dismiss="modal" aria-label="Close"><MdClose /></button>
+                        </div>
+                        <div className="modal-footer">
+                            <button className="text-close" data-bs-dismiss="modal">Cancelar</button>
+                            <button className="btn-danger" data-bs-dismiss="modal" onClick={() => deleteProduct()}> Deletar Produto</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
 
-export function HistoryMenuBar(){
-
-return(
-<div className="menu-bar-container">
-<div>
-    <h2><b>Valores do Produto</b></h2>
-    <p>Detalhes sobre os valores do produto.</p>
-</div>
-<button data-bs-toggle="modal" data-bs-target="#updateItemModal" className="menu-bar-option" >
-    <img className="option-card-img" src={IUpdateProduct} alt="update-product" />
-    <h6>Editar</h6>
-</button>
-<button data-bs-toggle="modal" data-bs-target="#deleteItemModal" className="menu-bar-option" >
-    <img className="option-card-img" src={IDeleteProduct} alt="delete-product" />
-    <h6>Deletar</h6>
-</button>
-</div>
-);
+export function HistoryMenuBar({historyId}: HistoryProps) {
+    const navigate = useNavigate();
+    const deleteHistory = () => {
+        axios.delete(`${BASE_URL}/history/delete/${historyId}`)
+            .then((response) => {
+                navigate("/product/list")
+            });
+    }
+    return (
+        <>
+            <div className="menu-bar-container">
+                <div>
+                    <h2><b>Valores do Produto</b></h2>
+                    <p>Detalhes sobre os valores salvos no hitórico do produto.</p>
+                </div>
+                <button data-bs-toggle="modal" data-bs-target="#updateItemModal" className="menu-bar-option" >
+                    <img className="option-card-img" src={IUpdateProduct} alt="update-product" />
+                    <h6>Editar</h6>
+                </button>
+                <button data-bs-toggle="modal" data-bs-target="#deleteHistoryModal" className="menu-bar-option" >
+                    <img className="option-card-img" src={IDeleteProduct} alt="delete-product" />
+                    <h6>Deletar</h6>
+                </button>
+            </div>
+            <div className="modal fade" role="dialog" id="deleteHistoryModal">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <label className="modal-title" id="historyLabel">Deseja deletar esses dados do histórico ?</label>
+                            <button className="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><MdClose /></span>
+                            </button>
+                        </div>
+                        <div className="modal-footer">
+                            <button className="text-close" data-bs-dismiss="modal">cancelar</button>
+                            <button onClick={() => deleteHistory()} className="btn-danger" data-bs-dismiss="modal" >Deletar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
 }

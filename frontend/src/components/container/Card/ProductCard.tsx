@@ -93,21 +93,15 @@ export function GetHistoryCard({ historyId }: HistoryProps) {
             });
     }, [historyId]);
 
-    const navigate = useNavigate();
-    const deleteHistory = () => {
-        axios.delete(`${BASE_URL}/history/delete/${historyId}`)
-            .then((response) => {
-                navigate("/product/list")
-            });
-    }
+    
     return (
         <>
             <div className="gerencg-item-card">
-            <div className="gerencg-box">
-                    Produto: {history?.productId}
+            <div className="gerencg-box border-dark">
+                    <h4>Data de registro: {moment(history?.createdDate).format("DD/MM/YYYY")}</h4>
                 </div>
                 <div className="gerencg-box">
-                    Quantidade: {history?.quantity}
+                    Quantidade em estoque: {history?.quantity}
                 </div>
                 <div className="gerencg-box">
                     Preço: {history?.price}
@@ -116,6 +110,6 @@ export function GetHistoryCard({ historyId }: HistoryProps) {
                     Validade: {history?.validate}
                 </div>
             </div>
-        </>
+        </> 
     );
 }

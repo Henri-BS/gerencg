@@ -64,6 +64,7 @@ export function OrderItemCard({ itemId }: ItemProps) {
         axios.delete(`${BASE_URL}/delete-item/${itemId}`)
             .then((response) => {
                 navigate(`/order/${item?.orderCode}`)
+                console.log(response.status);
             })
     }
     return (

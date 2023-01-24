@@ -12,7 +12,9 @@ public interface IProductHistoryService {
 
     ProductHistoryDTO saveHistory(ProductHistoryDTO dto);
 
-    ProductHistoryDTO saveItemInHistory(Long id);
+    ProductHistoryDTO saveItemHistory(Long id);
+
+    ProductHistoryDTO updateProductHistoryValue(ProductHistoryDTO dto);
 
     void deleteProductHistory(Long id);
 

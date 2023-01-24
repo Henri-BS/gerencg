@@ -60,7 +60,7 @@ public class ProductHistoryService implements IProductHistoryService {
     }
 
     @Override
-    public ProductHistoryDTO saveItemInHistory(Long id) {
+    public ProductHistoryDTO saveItemHistory(Long id) {
         OrderItem item = itemRepository.findById(id).get();
 
         ProductHistory history = new ProductHistory();
@@ -70,6 +70,17 @@ public class ProductHistoryService implements IProductHistoryService {
         history.setValidate(item.getItemValidate());
         historyRepository.saveAndFlush(history);
 
+        return new ProductHistoryDTO(history);
+    }
+
+    @Override
+    public ProductHistoryDTO updateProductHistoryValue(ProductHistoryDTO dto) {
+        ProductHistory history = historyRepository.findById(dto.getId()).get();
+
+        double income;
+        income = history.getQuantity() * history.getPrice();
+        history.setIncome(income);
+        historyRepository.save(history);
         return new ProductHistoryDTO(history);
     }
 
