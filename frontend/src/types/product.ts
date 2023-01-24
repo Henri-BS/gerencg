@@ -45,6 +45,7 @@ export type ProductHistory = {
   price: number;
   quantity: number;
   validate: string;
+  income: number;
   createdDate: string;
   productId: number;
 };

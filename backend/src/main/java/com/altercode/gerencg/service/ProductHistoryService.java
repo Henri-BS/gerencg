@@ -74,6 +74,18 @@ public class ProductHistoryService implements IProductHistoryService {
     }
 
     @Override
+    public ProductHistoryDTO updateHistory(ProductHistoryDTO dto) {
+        ProductHistory edit = historyRepository.findById(dto.getId()).get();
+
+        edit.setPrice(dto.getPrice());
+        edit.setQuantity(dto.getQuantity());
+        edit.setValidate(dto.getValidate());
+        historyRepository.save(edit);
+
+        return new ProductHistoryDTO(edit);
+    }
+
+    @Override
     public ProductHistoryDTO updateProductHistoryValue(ProductHistoryDTO dto) {
         ProductHistory history = historyRepository.findById(dto.getId()).get();
 
@@ -88,6 +100,7 @@ public class ProductHistoryService implements IProductHistoryService {
     public void deleteProductHistory(Long id) {
         this.historyRepository.deleteById(id);
     }
+
 
 
 }

@@ -47,6 +47,12 @@ public class ProductHistoryController {
 		return productHistoryService.saveItemHistory(id);
 	}
 
+	@PutMapping("/update/{id}")
+	public ResponseEntity<ProductHistoryDTO> updateHistory(@RequestBody ProductHistoryDTO dto, @PathVariable Long id) {
+		ProductHistoryDTO update = productHistoryService.updateHistory(dto);
+		return new ResponseEntity<>(update, HttpStatus.OK);
+	}
+
 	@PutMapping("/update-value/{id}")
 	public ResponseEntity<ProductHistoryDTO> updateProductHistoryValue(ProductHistoryDTO dto, @PathVariable Long id) {
 		ProductHistoryDTO update = productHistoryService.updateProductHistoryValue(dto);

@@ -14,6 +14,7 @@ public class ProductHistoryDTO implements Serializable {
 	private Double price;
 	private Integer quantity;
 	private LocalDate validate;
+	private Double income;
 	private LocalDateTime createdDate;
 
 	public ProductHistoryDTO() {
@@ -25,6 +26,7 @@ public class ProductHistoryDTO implements Serializable {
 		price = entity.getPrice();
 		quantity = entity.getQuantity();
 		validate = entity.getValidate();
+		income = entity.getIncome();
 		createdDate = entity.getCreatedDate();
 	}
 
@@ -74,6 +76,13 @@ public class ProductHistoryDTO implements Serializable {
 		this.validate = validate;
 	}
 
+	public Double getIncome() {
+		return income;
+	}
+
+	public void setIncome(Double income) {
+		this.income = income;
+	}
 
 	public LocalDateTime getCreatedDate() {
 		return createdDate;

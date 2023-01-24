@@ -93,6 +93,12 @@ export function GetHistoryCard({ historyId }: HistoryProps) {
             });
     }, [historyId]);
 
+    useEffect(() => {
+        axios.put(`${BASE_URL}/history/update-value/${historyId}`)
+            .then((response) => {
+                setHistory(response.data);
+            });
+    }, [historyId]);
     
     return (
         <>
@@ -108,6 +114,9 @@ export function GetHistoryCard({ historyId }: HistoryProps) {
                 </div>
                 <div className="gerencg-box">
                     Validade: {history?.validate}
+                </div>
+                <div className="gerencg-box">
+                    Expectativa de Renda: {history?.income}
                 </div>
             </div>
         </> 
