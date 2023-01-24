@@ -9,7 +9,6 @@ import { CommissionProfile, ItemProfile, OrderStatsDashboard, OrderStatsProfile 
 import { CategoryProfile, CategoryStatsDashboard, SaveCategoryStats } from "pages/Profiles/CategoryProfile";
 import NavBar from "components/shared/NavBar";
 import Footer from "components/shared/Footer";
-import { GetHistoryCard } from "components/container/Card/ProductCard";
 
 
 function PageRoutes() {

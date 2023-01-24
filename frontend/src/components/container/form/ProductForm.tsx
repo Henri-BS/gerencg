@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CategoryPage } from "types/category";
 import { MeasurePage } from "types/measure";
-import { Product, ProductProps } from "types/product";
+import { HistoryProps, Product, ProductHistory, ProductProps } from "types/product";
 import { BASE_URL } from "utils/requests";
 
 export function AddProductForm() {
@@ -266,7 +266,6 @@ export const ProductFormEdit = ({ productId }: ProductProps) => {
     );
 }
 
-
 export function SaveValuesHistory({ productId }: ProductProps) {
 
     const [product, setProduct] = useState<Product>();
@@ -314,6 +313,62 @@ export function SaveValuesHistory({ productId }: ProductProps) {
             <div className="modal-footer">
                 <button className="text-close">cancelar</button>
                 <button type="submit" className="btn-confirm">Salvar</button>
+            </div>
+        </form>
+    );
+}
+
+export function EditHistoryForm({ historyId }: HistoryProps) {
+
+    const [history, setHistory] = useState<ProductHistory>();
+    useEffect(() => {
+        axios.get(`${BASE_URL}/history/${historyId}`)
+            .then((response) => {
+                setHistory(response.data);
+            });
+    }, [historyId]);
+
+    const navigate = useNavigate();
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        const price = (event.target as any).price.value;
+        const quantity = (event.target as any).quantity.value;
+        const validate = (event.target as any).validate.value;
+
+
+        const config: AxiosRequestConfig = {
+            baseURL: BASE_URL,
+            url: "history/update",
+            method: "PUT",
+            data: {
+                id: historyId,
+                price: price,
+                quantity: quantity,
+                validate: validate
+            }
+        }
+        axios(config).then((response) => {
+            navigate(`/history/${historyId}`)
+        });
+    }
+
+    return (
+        <form onSubmit={handleSubmit} className="form-container">
+            <div className="form-card-container">
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="price">Preço</label>
+                    <input className="form-control" id="price" defaultValue={history?.price}/>
+                </div>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="quantity">Quantidade em estoque</label>
+                    <input className="form-control" id="quantity" defaultValue={history?.quantity}/>
+                </div>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="validate">Validate</label>
+                    <input className="form-control" id="validate" defaultValue={history?.validate}/>
+                </div>
+            </div>
+            <div className="modal-footer">
+                <button type="submit" className="btn-confirm" >Editar</button>
             </div>
         </form>
     );

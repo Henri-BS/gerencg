@@ -11,7 +11,7 @@ import IDeleteProduct from "assets/img/delete-img.png";
 import INotifications from "assets/img/notifications.png";
 import { MdClose } from "react-icons/md";
 import "./styles.css";
-import { ProductFormEdit } from '../Form/ProductForm';
+import { EditHistoryForm, ProductFormEdit } from '../Form/ProductForm';
 
 export function ProductSideBar({ productId }: ProductProps) {
 
@@ -139,6 +139,8 @@ export function ProductMenuBar({ productId }: ProductProps) {
 }
 
 export function HistoryMenuBar({historyId}: HistoryProps) {
+
+const params = useParams();
     const navigate = useNavigate();
     const deleteHistory = () => {
         axios.delete(`${BASE_URL}/history/delete/${historyId}`)
@@ -146,6 +148,7 @@ export function HistoryMenuBar({historyId}: HistoryProps) {
                 navigate("/product/list")
             });
     }
+
     return (
         <>
             <div className="menu-bar-container">
@@ -153,7 +156,7 @@ export function HistoryMenuBar({historyId}: HistoryProps) {
                     <h2><b>Valores do Produto</b></h2>
                     <p>Detalhes sobre os valores salvos no hitórico do produto.</p>
                 </div>
-                <button data-bs-toggle="modal" data-bs-target="#updateItemModal" className="menu-bar-option" >
+                <button data-bs-toggle="modal" data-bs-target="#editHistoryModal" className="menu-bar-option" >
                     <img className="option-card-img" src={IUpdateProduct} alt="update-product" />
                     <h6>Editar</h6>
                 </button>
@@ -162,11 +165,28 @@ export function HistoryMenuBar({historyId}: HistoryProps) {
                     <h6>Deletar</h6>
                 </button>
             </div>
+
+            <div className="modal fade" role="dialog" id="editHistoryModal">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <label className="modal-title" id="historyLabel">Deseja alterar os dados no histórico do produto ?</label>
+                            <button className="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><MdClose /></span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <EditHistoryForm historyId={`${params.historyId}`}/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div className="modal fade" role="dialog" id="deleteHistoryModal">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <label className="modal-title" id="historyLabel">Deseja deletar esses dados do histórico ?</label>
+                            <label className="modal-title" id="historyLabel">Deseja deletar os dados do histórico do produto?</label>
                             <button className="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><MdClose /></span>
                             </button>
