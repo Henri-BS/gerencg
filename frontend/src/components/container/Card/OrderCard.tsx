@@ -8,7 +8,7 @@ import IUpdateProduct from "assets/img/update.png"
 import IDeleteProduct from "assets/img/delete-img.png"
 import "./styles.css"
 import { EditItemForm } from "../Form/OrderForm";
-import { MdClose, MdLink } from "react-icons/md";
+import { MdClose, MdInfoOutline, MdLink } from "react-icons/md";
 import { Product } from "types/product";
 
 
@@ -179,3 +179,18 @@ export function OrderStatsCard({ stats }: Props) {
     );
 };
 
+type Cons = {
+    item: Item;
+}
+
+export function SmallItemCard({ item }: Cons) {
+    return (
+        <div className="small-card-container">
+            <h5>Código do Pedido: {item.orderCode}
+                <Link to={`/item/${item.id}`}>
+                    <span className="history-icon-container"><MdInfoOutline /></span>
+                </Link>
+            </h5>
+        </div>
+    );
+}

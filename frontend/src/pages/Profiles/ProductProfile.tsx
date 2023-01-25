@@ -2,13 +2,14 @@ import { useParams } from "react-router-dom";
 import "./styles.css"
 import { ListHistoryByProduct } from "pages/Listings/ProductListing";
 import { MeasureInfo } from "components/container/Card/MeasureCard";
-import { AddProductForm, SaveValuesHistory } from "components/container/Form/ProductForm";
+import { SaveValuesHistory } from "components/container/Form/ProductForm";
 import { QuantityProductChart } from "components/dashboard/Chart/ProductCharts";
 import { ProductMeasureList } from "pages/Listings/MeasureListing";
 import { HistoryMenuBar, ProductMenuBar, ProductSideBar } from "components/container/Bar/ProductBar";
 import ProductDataTable from "components/dashboard/DataTable/ProductDataTable";
 import { MdClose } from "react-icons/md";
 import { GetHistoryCard } from "components/container/Card/ProductCard";
+import { OrderItemListByProduct } from "pages/Listings/OrderListing";
 
 //Product profile 
 export function ProductProfile() {
@@ -30,13 +31,15 @@ export function ProductProfile() {
               </button>
             </div>
           </div>
+          <ListHistoryByProduct productId={`${params.productId}`} />
           <div className="chart-box">
             <div className="container-chart">
               <h5 className="text-center">Quantidade do Produto por Data</h5>
               <QuantityProductChart productId={`${params.productId}`} />
             </div>
           </div>
-          <ListHistoryByProduct productId={`${params.productId}`} />
+          <h4>Registro de Pedidos do Produto</h4>
+          <OrderItemListByProduct productId={`${params.productId}`}/>
         </div>
       </div>
 
@@ -56,18 +59,6 @@ export function ProductProfile() {
         </div>
       </div>
     </>
-  );
-}
-
-
-
-//Save product page
-export function SaveProduct() {
-
-  return (
-    <div className="container-blur">
-      <AddProductForm />
-    </div>
   );
 }
 

@@ -34,9 +34,8 @@ public class ProductHistory {
 	@Column(name = "removed_products")
 	private Integer removedProducts = 0;
 
-	@CreatedDate
 	@Column(name = "created_date")
-	private LocalDateTime createdDate = LocalDateTime.now();
+	private LocalDate createdDate = LocalDate.now();
 
 	@ManyToOne
 	@JoinColumn(name = "product_id")
@@ -45,7 +44,7 @@ public class ProductHistory {
 	public ProductHistory() {
 	}
 
-	public ProductHistory(Long id, Double price, Integer quantity, LocalDate validate, Double income, Integer removedProducts, LocalDateTime createdDate, Product product) {
+	public ProductHistory(Long id, Double price, Integer quantity, LocalDate validate, Double income, Integer removedProducts, LocalDate createdDate, Product product) {
 		this.id = id;
 		this.price = price;
 		this.quantity = quantity;
@@ -110,11 +109,11 @@ public class ProductHistory {
 		this.removedProducts = removedProducts;
 	}
 
-	public LocalDateTime getCreatedDate() {
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(LocalDateTime createdDate) {
+	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
 

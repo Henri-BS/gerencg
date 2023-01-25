@@ -60,11 +60,12 @@ export function ProductHistoryCard({ history }: Cons) {
     const params = useParams();
     return (
         <>
-                <div className="history-card-header">
-                    <h5>Data de Registro: {moment(history.createdDate).format("DD/MM/YYYY")}<Link to={`/history/${history.id}`}>
+            <div className="small-card-container">
+                <h5>Data de Registro: {moment(history.createdDate).format("DD/MM/YYYY")}
+                    <Link to={`/history/${history.id}`}>
                         <span className="history-icon-container"><MdInfoOutline /></span>
-                    </Link>   </h5>
-                           
+                    </Link>
+                </h5>
             </div>
             <div className="modal fade" role="dialog" id="deleteHistoryModal">
                 <div className="modal-dialog" role="document">
@@ -99,11 +100,11 @@ export function GetHistoryCard({ historyId }: HistoryProps) {
                 setHistory(response.data);
             });
     }, [historyId]);
-    
+
     return (
         <>
             <div className="gerencg-item-card">
-            <div className="gerencg-box border-dark">
+                <div className="gerencg-box border-dark">
                     <h4>Data de registro: {moment(history?.createdDate).format("DD/MM/YYYY")}</h4>
                 </div>
                 <div className="gerencg-box">
@@ -113,12 +114,12 @@ export function GetHistoryCard({ historyId }: HistoryProps) {
                     Preço: {history?.price}
                 </div>
                 <div className="gerencg-box">
-                    Validade: {history?.validate}
+                    Validade: {moment(history?.validate).format("DD/MM/YYYY")}
                 </div>
                 <div className="gerencg-box">
                     Expectativa de Renda: {history?.income}
                 </div>
             </div>
-        </> 
+        </>
     );
 }

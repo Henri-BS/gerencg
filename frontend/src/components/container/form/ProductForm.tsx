@@ -204,10 +204,8 @@ export const ProductFormEdit = ({ productId }: ProductProps) => {
             },
         }
         axios(config).then((response) => {
-            navigate("/")
+            navigate(`/product/${productId}`)
         })
-        const productData = { description, price, quantity, validate };
-        console.log(productData)
     };
 
     return (
@@ -284,7 +282,7 @@ export function SaveValuesHistory({ productId }: ProductProps) {
             url: "/history/save-product",
             method: "POST",
             data: {
-                productId: productId
+                productId: productId,
             }
         }
         axios(config).then((response) => {
@@ -294,9 +292,7 @@ export function SaveValuesHistory({ productId }: ProductProps) {
 
     return (
         <form className="form-container" onSubmit={handleSubmit}>
-
             <div className="form-card-container">
-                <span>Informações Atuais</span>
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="product">Produto: {product?.description}</label>
                 </div>
@@ -333,7 +329,7 @@ export function EditHistoryForm({ historyId }: HistoryProps) {
         const price = (event.target as any).price.value;
         const quantity = (event.target as any).quantity.value;
         const validate = (event.target as any).validate.value;
-
+        const createdDate = (event.target as any).createdDate.value;
 
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
@@ -343,7 +339,8 @@ export function EditHistoryForm({ historyId }: HistoryProps) {
                 id: historyId,
                 price: price,
                 quantity: quantity,
-                validate: validate
+                validate: validate,
+                createdDate: createdDate
             }
         }
         axios(config).then((response) => {
@@ -356,15 +353,19 @@ export function EditHistoryForm({ historyId }: HistoryProps) {
             <div className="form-card-container">
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="price">Preço</label>
-                    <input className="form-control" id="price" defaultValue={history?.price}/>
+                    <input className="form-control" id="price" defaultValue={history?.price} />
                 </div>
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="quantity">Quantidade em estoque</label>
-                    <input className="form-control" id="quantity" defaultValue={history?.quantity}/>
+                    <input className="form-control" id="quantity" defaultValue={history?.quantity} />
                 </div>
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="validate">Validate</label>
-                    <input className="form-control" id="validate" defaultValue={history?.validate}/>
+                    <input type="date" className="form-control" id="validate" defaultValue={history?.validate} />
+                </div>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="createdDate">Data de Registro</label>
+                    <input type="date" className="form-control" id="createdDate" defaultValue={history?.createdDate} />
                 </div>
             </div>
             <div className="modal-footer">

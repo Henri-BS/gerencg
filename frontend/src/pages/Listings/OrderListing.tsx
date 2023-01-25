@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { CodePage, OrderStatsPage } from "types/order";
+import { CodePage, Item, OrderStatsPage } from "types/order";
 import { BASE_URL } from "utils/requests";
 import * as FaIcons from 'react-icons/fa';
 import "./styles.css";
 import Pagination from "components/shared/Pagination";
-import { CommissionCard, OrderStatsCard } from "components/container/Card/OrderCard";
+import { CommissionCard, OrderStatsCard, SmallItemCard } from "components/container/Card/OrderCard";
+import { ProductProps } from "types/product";
 
 export function OrderCodeList() {
     const [value, setValue] = useState("");
@@ -93,6 +94,27 @@ export function OrderStatsList() {
             {statsPage.content?.map((x) => (
                 <div key={x.id} className="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 mb-2">
                     <OrderStatsCard stats={x} />
+                </div>
+            ))}
+        </div>
+    );
+}
+
+export function OrderItemListByProduct({ productId }: ProductProps) {
+
+    const [item, setItem] = useState<Item[]>();
+    useEffect(() => {
+        axios.get(`${BASE_URL}/find-item-by-product/${productId}`)
+            .then((response) => {
+                setItem(response.data);
+            });
+    }, [productId]);
+
+    return (
+        <div className="horizontal-list">
+            {item?.map(x => (
+                <div key={x.id} className="list-item">
+                    <SmallItemCard item={x} />
                 </div>
             ))}
         </div>

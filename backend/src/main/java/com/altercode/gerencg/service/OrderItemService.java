@@ -7,7 +7,6 @@ import com.altercode.gerencg.entity.OrderItem;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.OrderCodeRepository;
 import com.altercode.gerencg.repository.OrderItemRepository;
-import com.altercode.gerencg.repository.ProductHistoryRepository;
 import com.altercode.gerencg.repository.ProductRepository;
 import com.altercode.gerencg.service.iservice.IOrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;

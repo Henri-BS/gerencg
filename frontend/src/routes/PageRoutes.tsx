@@ -1,7 +1,7 @@
 import Home from "pages/Home";
 import { ProductsList, ProductValidateList } from "pages/Listings/ProductListing";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { ProductProfile, MeasureProfile, SaveProduct, ProductDashboard, ProductHistoryProfile} from "pages/Profiles/ProductProfile";
+import { ProductProfile, MeasureProfile, ProductDashboard, ProductHistoryProfile} from "pages/Profiles/ProductProfile";
 import { CategoryList } from "pages/Listings/CategoryListing";
 import { MeasureList } from "pages/Listings/MeasureListing";
 import { OrderCodeList } from "pages/Listings/OrderListing";
@@ -24,7 +24,6 @@ function PageRoutes() {
                 <Route path="/product-list"element={<ProductsList/>}/>
                 <Route path="/products-stats" element={<ProductDashboard />} />
 
-                <Route path="/product-add" element={<SaveProduct />} />
                 <Route path="/find-by-validate" element={<ProductValidateList />} />
 
                 <Route path="/product">

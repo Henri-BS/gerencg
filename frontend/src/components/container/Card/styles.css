@@ -62,7 +62,7 @@
     background-color: var(--white-seco);
 }
 
-.history-card-header {
+.small-card-container {
     border-radius: 12px;
     background-color: var(--white-seco);
     min-height: 50px;
@@ -72,7 +72,7 @@
     border: 1px solid var(--white-tert);
 }
 
-.history-card-header h5 {
+.small-card-container h5 {
     text-align: center;
 }
 

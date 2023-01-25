@@ -15,7 +15,7 @@ public class ProductHistoryDTO implements Serializable {
 	private Integer quantity;
 	private LocalDate validate;
 	private Double income;
-	private LocalDateTime createdDate;
+	private LocalDate createdDate;
 
 	public ProductHistoryDTO() {
 	}
@@ -84,12 +84,12 @@ public class ProductHistoryDTO implements Serializable {
 		this.income = income;
 	}
 
-	public LocalDateTime getCreatedDate() {
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
 
-	public void setCreatedDate(LocalDateTime createdDate) {
+	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
 }

@@ -80,6 +80,7 @@ public class ProductHistoryService implements IProductHistoryService {
         edit.setPrice(dto.getPrice());
         edit.setQuantity(dto.getQuantity());
         edit.setValidate(dto.getValidate());
+        edit.setCreatedDate(dto.getCreatedDate());
         historyRepository.save(edit);
 
         return new ProductHistoryDTO(edit);
