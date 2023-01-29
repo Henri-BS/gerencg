@@ -240,7 +240,7 @@ export const ProductFormEdit = ({ productId }: ProductProps) => {
                     <label htmlFor="measure">Tipo de Medida: ({product?.measure})</label>
                     <select className="form-control" id="measure">
                         {measureList.content?.map(x => (
-                            <option key={x.abbreviation} defaultValue={product?.measure.abbreviation}>
+                            <option key={x.abbreviation} defaultValue={x.abbreviation}>
                                 {x.abbreviation}
                             </option>
                         ))}
@@ -249,9 +249,9 @@ export const ProductFormEdit = ({ productId }: ProductProps) => {
 
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="category">Categoria: ({product?.category}) </label>
-                    <select className="form-control" id="category">
+                    <select  className="form-control" id="category">
                         {categoryList.content?.map(x => (
-                            <option key={x.name}>{x.name}</option>
+                            <option key={x.name}  >{x.name}</option>
                         ))}
                     </select>
                 </div>

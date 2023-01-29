@@ -8,7 +8,7 @@ import { ProductMeasureList } from "pages/Listings/MeasureListing";
 import { HistoryMenuBar, ProductMenuBar, ProductSideBar } from "components/container/Bar/ProductBar";
 import ProductDataTable from "components/dashboard/DataTable/ProductDataTable";
 import { MdClose } from "react-icons/md";
-import { GetHistoryCard } from "components/container/Card/ProductCard";
+import { GetHistoryCard as LargeHistoryCard } from "components/container/Card/ProductCard";
 import { OrderItemListByProduct } from "pages/Listings/OrderListing";
 
 //Product profile 
@@ -68,7 +68,7 @@ export function ProductHistoryProfile() {
   return (
     <div className="container">
       <HistoryMenuBar historyId={`${params.historyId}`} />
-      <GetHistoryCard historyId={`${params.historyId}`} />
+      <LargeHistoryCard historyId={`${params.historyId}`} />
     </div>
   );
 }

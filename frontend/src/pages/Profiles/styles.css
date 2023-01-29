@@ -23,6 +23,7 @@
     display: flex;
     padding: 10px;
     overflow-x: scroll;
+    border-radius: 20px;
 }
 
 .horizontal-list::-webkit-scrollbar {
@@ -33,6 +34,7 @@
 .list-item {
     min-width: 340px;
     text-align: center;
+    padding: 2px;
 }
 
 .menu-option {

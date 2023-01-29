@@ -26,7 +26,7 @@ public class ProductHistoryDTO implements Serializable {
 		price = entity.getPrice();
 		quantity = entity.getQuantity();
 		validate = entity.getValidate();
-		income = entity.getIncome();
+		income = Math.round(entity.getIncome() *100) /100.0;
 		createdDate = entity.getCreatedDate();
 	}
 

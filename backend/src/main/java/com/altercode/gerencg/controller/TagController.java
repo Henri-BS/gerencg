@@ -17,9 +17,9 @@ public class TagController {
     @Autowired
     private TagService tagService;
 
-    @GetMapping("/tag-list/{title}")
-    public ResponseEntity<Page<TagDTO>> findTagsByTitle(Pageable pageable, @PathVariable String title) {
-        Page<TagDTO> list = tagService.findAllTags(pageable, title);
+    @GetMapping("/tag-list/{tagId}")
+    public ResponseEntity<Page<TagDTO>> findTagsByTitle(Pageable pageable, @PathVariable String tagId) {
+        Page<TagDTO> list = tagService.findAllTags(pageable, tagId);
         return ResponseEntity.ok(list);
     }
 
@@ -28,8 +28,14 @@ public class TagController {
     public List<TagDTO> findAllByTitle(@RequestBody List<TagDTO> dto) {
         List<String> titles = new ArrayList<>();
         for (TagDTO title : dto) {
-            titles.add(title.getTitle());
+            titles.add(title.getTagId());
         }
         return (List<TagDTO>) tagService.getAllTags(titles);
     }
+
+/*    @GetMapping("/get-by-tags/{tagId}")
+    public ResponseEntity<List<OrderCodeDTO>> findAllOrdersByTags(@PathVariable String tagId) {
+        List<OrderCodeDTO> list = tagService.findAllOrdersByTag(tagId);
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }*/
 }

@@ -3,10 +3,7 @@ package com.altercode.gerencg.service;
 import com.altercode.gerencg.dto.OrderCodeDTO;
 import com.altercode.gerencg.dto.SumOrderQuantityCategoryDTO;
 import com.altercode.gerencg.dto.SumOrderValueCategoryDTO;
-import com.altercode.gerencg.entity.OrderCode;
-import com.altercode.gerencg.entity.OrderItem;
-import com.altercode.gerencg.entity.OrderStats;
-import com.altercode.gerencg.entity.Measure;
+import com.altercode.gerencg.entity.*;
 import com.altercode.gerencg.repository.*;
 import com.altercode.gerencg.service.iservice.IOrderCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +12,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.lang.Double.valueOf;
 

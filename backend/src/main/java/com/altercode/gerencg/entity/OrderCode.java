@@ -19,7 +19,7 @@ public class OrderCode {
     private String distributor;
 
     @Column(name = "total_value", precision = 12, scale = 2)
-    private Double totalValue;
+    private Double totalValue = 0.0;
 
     @Column(name = "total_quantity")
     private Integer totalQuantity;
@@ -35,7 +35,7 @@ public class OrderCode {
     private Measure packageType;
 
     @ManyToOne
-    @JoinColumn(name= "category_id")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToOne
@@ -44,6 +44,17 @@ public class OrderCode {
 
     @OneToMany(mappedBy = "code", cascade = CascadeType.ALL)
     private final Set<OrderItem> items = new HashSet<>();
+
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
+    )
+    @JoinTable(
+            name = "tb_order_tag",
+            joinColumns = @JoinColumn(name = "code_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private Set<Tag> tags = new HashSet<>();
 
     public OrderCode() {
     }
@@ -134,5 +145,13 @@ public class OrderCode {
 
     public Set<OrderItem> getItems() {
         return items;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
     }
 }

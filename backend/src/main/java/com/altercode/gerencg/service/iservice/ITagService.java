@@ -1,5 +1,6 @@
 package com.altercode.gerencg.service.iservice;
 
+import com.altercode.gerencg.dto.OrderCodeDTO;
 import com.altercode.gerencg.dto.TagDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,4 +11,6 @@ public interface ITagService {
     Page<TagDTO> findAllTags(Pageable pageable, String title);
 
     List<TagDTO> getAllTags(List<String> title);
+
+//    List<OrderCodeDTO> findAllOrdersByTag(String title);
 }

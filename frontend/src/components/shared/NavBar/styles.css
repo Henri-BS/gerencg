@@ -74,6 +74,7 @@
 @media screen and (max-width: 860px) {
     .navbar-item {
         position: relative;
+        width: 100%;
     }
     .navbar-menu {
         display: flex;
@@ -113,8 +114,8 @@
         font-size: 20px;
         text-align: center;
         padding: 2rem;
-        width: 100%;
         display: table;
+        width: 100%;
     }
     .navbar-link:hover {
         background-color: var(--dark-prim);
@@ -128,7 +129,6 @@
         color: var(--blue-quat);
         font-size: 20px;
         display: table;
-        width: 100%;
         background-color: var(--white-prim);
     }
     .navbar-link-mobile:hover {

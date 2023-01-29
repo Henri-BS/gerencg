@@ -111,7 +111,7 @@ export function GetHistoryCard({ historyId }: HistoryProps) {
                     Quantidade em estoque: {history?.quantity}
                 </div>
                 <div className="gerencg-box">
-                    Preço: {history?.price}
+                    Preço: {history?.price.toFixed(2)}
                 </div>
                 <div className="gerencg-box">
                     Validade: {moment(history?.validate).format("DD/MM/YYYY")}

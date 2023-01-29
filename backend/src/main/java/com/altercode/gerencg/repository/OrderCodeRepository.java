@@ -4,6 +4,7 @@ import com.altercode.gerencg.dto.SumOrderQuantityCategoryDTO;
 import com.altercode.gerencg.dto.SumOrderValueCategoryDTO;
 import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.OrderStats;
+import com.altercode.gerencg.entity.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,4 +28,6 @@ public interface OrderCodeRepository extends JpaRepository<OrderCode, String> {
     @Query("SELECT new com.altercode.gerencg.dto.SumOrderQuantityCategoryDTO(obj.category, SUM(obj.amountItems))" +
             "FROM OrderCode AS obj GROUP BY obj.category ORDER BY SUM(obj.amountItems) DESC")
     List<SumOrderQuantityCategoryDTO> getOrderQuantityGroupByCategory();
+
+//    List<OrderCode> findAllOrdersByTag(String tagId);
 }
