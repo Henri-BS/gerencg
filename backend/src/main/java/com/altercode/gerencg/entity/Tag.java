@@ -21,6 +21,9 @@ public class Tag {
     )
     private Set<OrderCode> orders = new HashSet<>();
 
+    @OneToMany(mappedBy = "tag")
+    Set<OrderTag> orderTags;
+
     public Tag() {
     }
 

@@ -56,6 +56,9 @@ public class OrderCode {
     )
     private Set<Tag> tags = new HashSet<>();
 
+    @OneToMany(mappedBy = "code")
+    private Set<OrderTag> orderTags;
+
     public OrderCode() {
     }
 
