@@ -13,7 +13,7 @@ public class OrderTag {
 
     @ManyToOne
     @JoinColumn(name = "code_id")
-    private OrderCode orderCode;
+    private OrderCode code;
 
     @ManyToOne
     @JoinColumn(name = "tag_id")
@@ -22,9 +22,9 @@ public class OrderTag {
     public OrderTag() {
     }
 
-    public OrderTag(Long id, OrderCode orderCode, Tag tag) {
+    public OrderTag(Long id, OrderCode code, Tag tag) {
         this.id = id;
-        this.orderCode = orderCode;
+        this.code = code;
         this.tag = tag;
     }
 
@@ -36,12 +36,12 @@ public class OrderTag {
         this.id = id;
     }
 
-    public OrderCode getOrderCode() {
-        return orderCode;
+    public OrderCode getCode() {
+        return code;
     }
 
-    public void setOrderCode(OrderCode orderCode) {
-        this.orderCode = orderCode;
+    public void setCode(OrderCode code) {
+        this.code = code;
     }
 
     public Tag getTag() {

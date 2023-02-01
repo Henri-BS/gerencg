@@ -1,12 +1,17 @@
 package com.altercode.gerencg.service.iservice;
 
 import com.altercode.gerencg.dto.OrderTagDTO;
+import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.Tag;
 
 import java.util.List;
 
 public interface IOrderTagService {
-    List<OrderTagDTO> findAllOrderTags();
+    List<OrderTagDTO> findAll();
 
-    List<OrderTagDTO> findAllOrdersByTag(Tag tag);
+    List<OrderTagDTO> findAllByTag(Tag tag);
+
+    List<OrderTagDTO> findAllByCode(OrderCode orderCode);
+
+    OrderTagDTO findOrderTagById(Long id);
 }

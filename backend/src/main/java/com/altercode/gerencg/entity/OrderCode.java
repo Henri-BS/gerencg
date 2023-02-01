@@ -45,7 +45,7 @@ public class OrderCode {
     @OneToMany(mappedBy = "code", cascade = CascadeType.ALL)
     private final Set<OrderItem> items = new HashSet<>();
 
-    @OneToMany( mappedBy = "orderCode", cascade = CascadeType.ALL)
+    @OneToMany( mappedBy = "code", cascade = CascadeType.ALL)
     private Set<OrderTag> orderTags = new HashSet<>();
 
     public OrderCode() {

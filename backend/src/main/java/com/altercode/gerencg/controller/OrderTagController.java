@@ -1,6 +1,7 @@
 package com.altercode.gerencg.controller;
 
 import com.altercode.gerencg.dto.OrderTagDTO;
+import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.Tag;
 import com.altercode.gerencg.service.OrderTagService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +22,26 @@ public class OrderTagController {
     private OrderTagService orderTagService;
 
     @GetMapping("/list")
-    public ResponseEntity<List<OrderTagDTO>> findAllOrderTags() {
-        List<OrderTagDTO> list = orderTagService.findAllOrderTags();
+    public ResponseEntity<List<OrderTagDTO>> findAll() {
+        List<OrderTagDTO> list = orderTagService.findAll();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @GetMapping("/orders-by-tag/{tag}")
+    @GetMapping("/find-by-tag/{tag}")
     public ResponseEntity<List<OrderTagDTO>> findAllOrdersByTag(@PathVariable Tag tag) {
-        List<OrderTagDTO> list = orderTagService.findAllOrdersByTag(tag);
+        List<OrderTagDTO> list = orderTagService.findAllByTag(tag);
         return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/find-by-code/{code}")
+    public ResponseEntity<List<OrderTagDTO>> findAllByCode(@PathVariable OrderCode code) {
+        List<OrderTagDTO> list = orderTagService.findAllByCode(code);
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<OrderTagDTO> findOrderTagById(@PathVariable Long id) {
+        OrderTagDTO find = orderTagService.findOrderTagById(id);
+        return ResponseEntity.ok(find);
     }
 }

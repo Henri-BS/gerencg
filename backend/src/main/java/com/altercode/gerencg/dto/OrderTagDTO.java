@@ -5,13 +5,13 @@ import com.altercode.gerencg.entity.OrderTag;
 public class OrderTagDTO {
 
     private Long id;
-    private String code;
-    private String tag;
+    private String codeId;
+    private String tagId;
 
     public OrderTagDTO(OrderTag entity) {
         id = entity.getId();
-        code = entity.getOrderCode().getCode();
-        tag = entity.getTag().getTagId();
+        codeId = entity.getCode().getCode();
+        tagId = entity.getTag().getTagId();
     }
 
 
@@ -23,19 +23,19 @@ public class OrderTagDTO {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getCodeId() {
+        return codeId;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setCodeId(String codeId) {
+        this.codeId = codeId;
     }
 
-    public String getTag() {
-        return tag;
+    public String getTagId() {
+        return tagId;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setTagId(String tagId) {
+        this.tagId = tagId;
     }
 }
