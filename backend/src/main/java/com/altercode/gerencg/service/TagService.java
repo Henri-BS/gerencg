@@ -1,8 +1,11 @@
 package com.altercode.gerencg.service;
 
+import com.altercode.gerencg.dto.OrderTagDTO;
 import com.altercode.gerencg.dto.TagDTO;
+import com.altercode.gerencg.entity.OrderTag;
 import com.altercode.gerencg.entity.Tag;
 import com.altercode.gerencg.repository.OrderCodeRepository;
+import com.altercode.gerencg.repository.OrderTagRepository;
 import com.altercode.gerencg.repository.TagRepository;
 import com.altercode.gerencg.service.iservice.ITagService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,8 @@ public class TagService implements ITagService {
     @Autowired
     private OrderCodeRepository codeRepository;
 
+    @Autowired
+    private OrderTagRepository orderTagRepository;
 
     @Override
     public Page<TagDTO> findAllTags(Pageable pageable, String title) {
@@ -37,11 +42,11 @@ public class TagService implements ITagService {
         return result.stream().map(x -> new TagDTO(x)).collect(Collectors.toList());
     }
 
-    /*@Override
-    public List<OrderCodeDTO> findAllOrdersByTag(String title) {
-        List<OrderCode> list = codeRepository.findAllOrdersByTag(title);
-        return list.stream().map(x -> new OrderCodeDTO(x)).collect(Collectors.toList());
-    }*/
+    @Override
+    public List<OrderTagDTO> findAllOrdersByTag() {
+        List<OrderTag> list = orderTagRepository.findAll();
+        return list.stream().map(x -> new OrderTagDTO(x)).collect(Collectors.toList());
+    }
 
     public TagDTO saveTag(TagDTO dto) {
         Tag add = new Tag();

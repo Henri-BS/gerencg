@@ -15,14 +15,8 @@ public class Tag {
     @Column(name = "tag_description")
     private String description;
 
-    @ManyToMany(
-            mappedBy = "tags", fetch = FetchType.LAZY,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
-    )
-    private Set<OrderCode> orders = new HashSet<>();
-
-    @OneToMany(mappedBy = "tag")
-    Set<OrderTag> orderTags;
+    @OneToMany(mappedBy = "tag", cascade = CascadeType.ALL)
+    private Set<OrderTag> orderTags = new HashSet<>();
 
     public Tag() {
     }
@@ -48,5 +42,12 @@ public class Tag {
         this.description = description;
     }
 
+    public Set<OrderTag> getOrderTags() {
+        return orderTags;
+    }
+
+    public void setOrderTags(Set<OrderTag> orderTags) {
+        this.orderTags = orderTags;
+    }
 }
 

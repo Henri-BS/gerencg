@@ -1,10 +1,14 @@
 package com.altercode.gerencg.controller;
 
+import com.altercode.gerencg.dto.OrderCodeDTO;
+import com.altercode.gerencg.dto.OrderTagDTO;
 import com.altercode.gerencg.dto.TagDTO;
+import com.altercode.gerencg.entity.Tag;
 import com.altercode.gerencg.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,10 +36,4 @@ public class TagController {
         }
         return (List<TagDTO>) tagService.getAllTags(titles);
     }
-
-/*    @GetMapping("/get-by-tags/{tagId}")
-    public ResponseEntity<List<OrderCodeDTO>> findAllOrdersByTags(@PathVariable String tagId) {
-        List<OrderCodeDTO> list = tagService.findAllOrdersByTag(tagId);
-        return new ResponseEntity<>(list, HttpStatus.OK);
-    }*/
 }

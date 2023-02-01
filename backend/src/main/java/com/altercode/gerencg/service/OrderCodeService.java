@@ -3,6 +3,7 @@ package com.altercode.gerencg.service;
 import com.altercode.gerencg.dto.OrderCodeDTO;
 import com.altercode.gerencg.dto.SumOrderQuantityCategoryDTO;
 import com.altercode.gerencg.dto.SumOrderValueCategoryDTO;
+import com.altercode.gerencg.dto.TagDTO;
 import com.altercode.gerencg.entity.*;
 import com.altercode.gerencg.repository.*;
 import com.altercode.gerencg.service.iservice.IOrderCodeService;
@@ -28,6 +29,8 @@ public class OrderCodeService implements IOrderCodeService {
     @Autowired
     private MeasureRepository measureRepository;
 
+    @Autowired
+    private TagRepository tagRepository;
 
     @Override
     public Page<OrderCodeDTO> findItemsByCode(Pageable pageable, String code) {

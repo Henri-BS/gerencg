@@ -45,19 +45,8 @@ public class OrderCode {
     @OneToMany(mappedBy = "code", cascade = CascadeType.ALL)
     private final Set<OrderItem> items = new HashSet<>();
 
-    @ManyToMany(
-            fetch = FetchType.LAZY,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
-    )
-    @JoinTable(
-            name = "tb_order_tag",
-            joinColumns = @JoinColumn(name = "code_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id")
-    )
-    private Set<Tag> tags = new HashSet<>();
-
-    @OneToMany(mappedBy = "code")
-    private Set<OrderTag> orderTags;
+    @OneToMany( mappedBy = "orderCode", cascade = CascadeType.ALL)
+    private Set<OrderTag> orderTags = new HashSet<>();
 
     public OrderCode() {
     }
@@ -150,11 +139,12 @@ public class OrderCode {
         return items;
     }
 
-    public Set<Tag> getTags() {
-        return tags;
+    public Set<OrderTag> getOrderTags() {
+        return orderTags;
     }
 
-    public void setTags(Set<Tag> tags) {
-        this.tags = tags;
+    public void setOrderTags(Set<OrderTag> orderTags) {
+        this.orderTags = orderTags;
     }
+
 }
