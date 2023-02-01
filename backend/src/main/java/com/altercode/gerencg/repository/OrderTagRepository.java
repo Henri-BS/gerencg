@@ -11,4 +11,5 @@ import java.util.List;
 
 @Repository
 public interface OrderTagRepository extends JpaRepository<OrderTag, String> {
+    List<OrderTag> findAllOrdersByTag(Tag tag);
 }

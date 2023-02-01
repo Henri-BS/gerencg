@@ -8,14 +8,19 @@ public class OrderTagDTO {
     private String code;
     private String tag;
 
-    public OrderTagDTO(String code, String tag) {
-        this.code = code;
-        this.tag = tag;
-    }
-
     public OrderTagDTO(OrderTag entity) {
+        id = entity.getId();
         code = entity.getOrderCode().getCode();
         tag = entity.getTag().getTagId();
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCode() {
