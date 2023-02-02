@@ -75,7 +75,7 @@ public class CategoryStatsService implements ICategoryStatsService {
 
 		for(Product i : stats.getCategory().getProducts()) {
 			sumQuantity = sumQuantity + i.getQuantity();
-			categoryValue = categoryValue + i.getPrice();
+			categoryValue = categoryValue + i.getIncome();
 		}
 
 		stats.setCategory(stats.getCategory());

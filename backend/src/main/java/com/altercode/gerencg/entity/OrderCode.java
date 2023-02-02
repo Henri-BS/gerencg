@@ -18,17 +18,17 @@ public class OrderCode {
 
     private String distributor;
 
-    @Column(name = "total_value", precision = 12, scale = 2)
+    @Column(name = "total_value")
     private Double totalValue = 0.0;
 
     @Column(name = "total_quantity")
-    private Integer totalQuantity;
+    private Integer totalQuantity = 0;
 
     @Column(name = "amount_items")
-    private Integer amountItems;
+    private Integer amountItems = 0;
 
     @Column(name = "total_package")
-    private Integer totalPackage;
+    private Integer totalPackage = 0;
 
     @ManyToOne
     @JoinColumn(name = "package_type")

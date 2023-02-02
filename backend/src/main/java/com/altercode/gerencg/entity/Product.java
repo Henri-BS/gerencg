@@ -1,9 +1,7 @@
 package com.altercode.gerencg.entity;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -28,7 +26,7 @@ public class Product {
 
     private LocalDate validate;
 
-    private Integer alteration;
+    private Double income = 0.0;
 
     @Column(name = "last_update_date")
     private LocalDate lastUpdateDate;
@@ -159,12 +157,12 @@ public class Product {
         this.category = category;
     }
 
-    public Integer getAlteration() {
-        return alteration;
+    public Double getIncome() {
+        return income;
     }
 
-    public void setAlteration(Integer alteration) {
-        this.alteration = alteration;
+    public void setIncome(Double income) {
+        this.income = income;
     }
 
     public Set<Calculator> getCalculators() {

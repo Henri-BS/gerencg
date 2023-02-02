@@ -18,10 +18,10 @@ public class OrderStats {
     @Column(name = "final_date")
     private LocalDate finalDate;
 
-    @Column(name = "total_value", precision = 10, scale = 2)
+    @Column(name = "total_value")
     private Double totalValue = 0.00;
 
-    @Column(name = "average_week", precision = 10, scale = 2)
+    @Column(name = "average_week")
     private Double averageWeek = 0.00;
 
     @Column(name = "amount_order")

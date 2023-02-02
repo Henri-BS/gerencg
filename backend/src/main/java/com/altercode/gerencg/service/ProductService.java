@@ -55,6 +55,7 @@ public class ProductService implements IProductService {
     @Override
     public Page<ProductDTO> findByCategory(Pageable pageable, Category category) {
         Page<Product> result = productRepository.findByCategory(pageable, category);
+
         return result.map(x -> new ProductDTO(x));
     }
 
@@ -67,6 +68,8 @@ public class ProductService implements IProductService {
     @Override
     public ProductDTO findById(Long id) {
         Product result = productRepository.findById(id).get();
+        double income = result.getPrice() * result.getQuantity();
+        result.setIncome(income);
         return new ProductDTO(result);
     }
 

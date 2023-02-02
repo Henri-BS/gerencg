@@ -31,7 +31,7 @@ public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpec
 	
 	Page<Product> findByMeasure(Pageable pageable, Measure measure);
 
-	@Query("SELECT new com.altercode.gerencg.dto.CategoryValueDTO (obj.category, SUM(obj.price))" +
-			"FROM Product AS obj GROUP BY obj.category")
+	@Query("SELECT new com.altercode.gerencg.dto.CategoryValueDTO (obj.category, SUM(obj.quantity * obj.price))" +
+			"FROM Product AS obj GROUP BY obj.category ORDER BY SUM(obj.quantity * obj.price) DESC")
 	List<CategoryValueDTO> priceGroupByCategory();
 }

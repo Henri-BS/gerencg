@@ -186,16 +186,16 @@ export function OrderStatsTotalValuesBar() {
         <>
             <div className="max-bar-container">
                 <div className="bar-container row">
-                    <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
+                    <div className="bar-item col-12 col-sm-6 col-xl-3 ">
                         <div className="bar-item-content"> <b>Total de Pedidos:</b> {stats?.amountOrders}</div>
                     </div>
-                    <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
+                    <div className="bar-item col-12 col-sm-6 col-xl-3 ">
                         <div className="bar-item-content"> <b>Total de Items:</b> {stats?.amountItems}</div>
                     </div>
-                    <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
+                    <div className="bar-item col-12 col-sm-6 col-xl-3 ">
                         <div className="bar-item-content"> <b>Total de Despesas:</b> {stats?.totalValue.toFixed(2)}</div>
                     </div>
-                    <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
+                    <div className="bar-item col-12 col-sm-6 col-xl-3 ">
                         <div className="bar-item-content"> <b>Maior Despesa:</b> {stats?.maxValue.toFixed(2)}</div>
                     </div>
 

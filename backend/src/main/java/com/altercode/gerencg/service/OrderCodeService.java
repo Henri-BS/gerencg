@@ -41,10 +41,6 @@ public class OrderCodeService implements IOrderCodeService {
     @Override
     public OrderCodeDTO findCodeById(String id) {
         OrderCode result = codeRepository.findById(id).get();
-        double sumValuesRound = Math.round(result.getTotalValue() *100)/100.00;
-        result.setTotalValue(sumValuesRound);
-        codeRepository.save(result);
-
         return new OrderCodeDTO(result);
     }
 

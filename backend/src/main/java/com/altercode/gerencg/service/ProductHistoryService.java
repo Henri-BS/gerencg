@@ -13,6 +13,8 @@ import com.altercode.gerencg.dto.ProductHistoryDTO;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.entity.ProductHistory;
 
+import java.math.BigDecimal;
+
 @Service
 @Transactional
 public class ProductHistoryService implements IProductHistoryService {
@@ -90,10 +92,6 @@ public class ProductHistoryService implements IProductHistoryService {
     public ProductHistoryDTO updateProductHistoryValue(ProductHistoryDTO dto) {
         ProductHistory history = historyRepository.findById(dto.getId()).get();
 
-        double income;
-        income = history.getQuantity() * history.getPrice();
-        history.setIncome(income);
-        historyRepository.save(history);
         return new ProductHistoryDTO(history);
     }
 
@@ -101,7 +99,5 @@ public class ProductHistoryService implements IProductHistoryService {
     public void deleteProductHistory(Long id) {
         this.historyRepository.deleteById(id);
     }
-
-
 
 }

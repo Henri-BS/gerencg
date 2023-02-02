@@ -49,7 +49,6 @@ export type CategoryStatsPage = {
 export type CategoryValue = {
   categoryName: string;
   income: number;
-  expense: number;
 };
 
 export type CategoryStatsValue = {

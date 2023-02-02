@@ -194,7 +194,7 @@ export function OrderStatsChartByCategory() {
 
     const [quantityChart, setQuantityChart] = useState<QuantityChartData>({
         labels: { categories: [] },
-        series: [{ name: "", data: []}]
+        series: [{ name: "", data: [] }]
     })
     useEffect(() => {
         axios.get(`${BASE_URL}/order/sum-quantity-by-category`)
@@ -211,7 +211,7 @@ export function OrderStatsChartByCategory() {
 
     const options = {
         legend: { show: true },
-        plotOptions: { bar: { horizontal: true }}
+        plotOptions: { bar: { horizontal: true } }
     }
 
     return (
@@ -257,20 +257,20 @@ export function OrderStatsChartByCategory() {
 
 export function CateogryStatsChart() {
 
-    const [proportionChart, setProportionChart] = useState<ProportionChartData>({labels: [] , series: []});
+    const [proportionChart, setProportionChart] = useState<ProportionChartData>({ labels: [], series: [] });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/category-stats/list`)
+        axios.get(`${BASE_URL}/category-stats/value-of-category`)
             .then((response) => {
-                const data = response.data as CategoryStatsPage;
-                const myLabels = data.content?.map(x => x.category);
-                const mySeries = data.content?.map(x => x.income);
-                setProportionChart({labels: myLabels, series: mySeries})
-                });
+                const data = response.data as CategoryValue[];
+                const myLabels = data.map(x => x.categoryName);
+                const mySeries = data.map(x => x.income);
+                setProportionChart({ labels: myLabels, series: mySeries })
+            });
     }, []);
 
     const opitions = {
-        legends: {show: true},
+        legends: { show: true },
         plotOptions: {
             bar: { horizontal: true }
         }
@@ -278,23 +278,23 @@ export function CateogryStatsChart() {
 
     return (
         <div className="row ">
-              <div className="chart-box col-lg-6">
+            <div className="chart-box col-lg-6">
                 <div className="container-chart">
-                  <h5 className="text-center">Expectativa de Renda Por Categoria</h5>
-        <Chart
-            options={{
-                ...opitions,
-                labels: proportionChart.labels,
-                theme: { mode: "dark" },
-                chart: { background: "#2a323a" },
-                grid: { borderColor: "#139acf" },
-            }}
-            series={proportionChart.series}
-            type="donut"
-            height="300"
-        />
-        </div>
-        </div>
+                    <h5 className="text-center">Expectativa de Renda Por Categoria</h5>
+                    <Chart
+                        options={{
+                            ...opitions,
+                            labels: proportionChart.labels,
+                            theme: { mode: "dark" },
+                            chart: { background: "#2a323a" },
+                            grid: { borderColor: "#139acf" },
+                        }}
+                        series={proportionChart.series}
+                        type="donut"
+                        height="300"
+                    />
+                </div>
+            </div>
         </div>
     );
 }
@@ -334,36 +334,3 @@ export function IncomeChart() {
     );
 }
 
-export function ExpenseChart() {
-
-    const [chartData, setChartData] = useState<ProportionChartData>({ labels: [], series: [] });
-
-    useEffect(() => {
-        axios.get(`${BASE_URL}/category-stats/value-of-category`)
-            .then(response => {
-                const data = response.data as CategoryValue[];
-                const myLabels = data.map(x => x.categoryName);
-                const mySeries = data.map(x => x.expense);
-
-                setChartData({ labels: myLabels, series: mySeries });
-            });
-    }, []);
-
-    const options = {
-        legend: { show: true }
-    }
-
-    return (
-        <Chart
-            options={{
-                ...options,
-                labels: chartData.labels,
-                theme: { mode: "dark" },
-                chart: { background: "#2a323a" }
-            }}
-            series={chartData.series}
-            type="donut"
-            height="300"
-        />
-    );
-}
