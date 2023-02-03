@@ -7,7 +7,7 @@ import com.altercode.gerencg.entity.Tag;
 import com.altercode.gerencg.repository.OrderCodeRepository;
 import com.altercode.gerencg.repository.OrderTagRepository;
 import com.altercode.gerencg.repository.TagRepository;
-import com.altercode.gerencg.service.iservice.ITagService;
+import com.altercode.gerencg.service.interfaceservice.ITagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

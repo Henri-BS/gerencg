@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts'
-import { CategoryStatsPage, CategoryValue } from 'types/category';
-import { CodePage, OrderStatsProps, OrderStatsQuantityGroup, OrderStatsQuantityGroupByCategory, OrderStatsValueGroup, OrderStatsValueGroupByCategory } from 'types/order';
+import { CategoryValue, CategoryQuantity} from 'types/category';
+import { CodePage, OrderStatsProps, OrderStatsQuantityGroup, OrderStatsValueGroup } from 'types/order';
 import { BASE_URL } from 'utils/requests';
 
 
@@ -185,7 +185,7 @@ export function OrderStatsChartByCategory() {
     useEffect(() => {
         axios.get(`${BASE_URL}/order/sum-value-by-category`)
             .then((response) => {
-                const data = response.data as OrderStatsValueGroupByCategory[];
+                const data = response.data as CategoryValue[];
                 const myLabels = data.map(x => x.categoryName);
                 const mySeries = data.map(x => x.value);
                 setProportionChart({ labels: myLabels, series: mySeries });
@@ -199,7 +199,7 @@ export function OrderStatsChartByCategory() {
     useEffect(() => {
         axios.get(`${BASE_URL}/order/sum-quantity-by-category`)
             .then((response) => {
-                const data = response.data as OrderStatsQuantityGroupByCategory[];
+                const data = response.data as CategoryQuantity[];
                 const myLabels = data.map(x => x.categoryName);
                 const mySeries = data.map(x => x.quantity);
                 setQuantityChart({
@@ -258,16 +258,29 @@ export function OrderStatsChartByCategory() {
 export function CateogryStatsChart() {
 
     const [proportionChart, setProportionChart] = useState<ProportionChartData>({ labels: [], series: [] });
-
     useEffect(() => {
         axios.get(`${BASE_URL}/category-stats/value-of-category`)
             .then((response) => {
                 const data = response.data as CategoryValue[];
                 const myLabels = data.map(x => x.categoryName);
-                const mySeries = data.map(x => x.income);
+                const mySeries = data.map(x => x.value);
                 setProportionChart({ labels: myLabels, series: mySeries })
             });
     }, []);
+
+const [quantityChart, setQuantityChart] = useState<QuantityChartData>({labels:{categories:[]}, series:[{name:"", data:[]}]});
+useEffect(() => {
+    axios.get(`${BASE_URL}/category-stats/product-quantity-of-category`)
+    .then((response) =>{
+        const data = response.data as CategoryQuantity[];
+        const myLabels = data.map(x => x.categoryName);
+        const mySeries = data.map(x => x.quantity);
+        setQuantityChart({
+            labels:{categories: myLabels},
+            series:[{name: "Total de Unidades", data: mySeries}]
+        });
+    });
+}, []);
 
     const opitions = {
         legends: { show: true },
@@ -295,42 +308,25 @@ export function CateogryStatsChart() {
                     />
                 </div>
             </div>
+            <div className="chart-box col-lg-6">
+                <div className="container-chart">
+                    <h5 className="text-center">Unidades de Produtos Por Categoria</h5>
+                    <Chart
+                        options={{
+                            ...opitions,
+                            xaxis:quantityChart.labels,
+                            theme: { mode: "dark" },
+                            chart: { background: "#2a323a" },
+                            grid: { borderColor: "#139acf" },
+                        }}
+                        labels={quantityChart.labels}
+                        series={quantityChart.series}
+                        type="bar"
+                        height="300"
+                    />
+                </div>
+            </div>
         </div>
-    );
-}
-
-
-export function IncomeChart() {
-
-    const [chartData, setChartData] = useState<ProportionChartData>({ labels: [], series: [] });
-
-    useEffect(() => {
-        axios.get(`${BASE_URL}/category-stats/value-of-category`)
-            .then(response => {
-                const data = response.data as CategoryValue[];
-                const myLabels = data.map(x => x.categoryName);
-                const mySeries = data.map(x => x.income);
-
-                setChartData({ labels: myLabels, series: mySeries });
-            });
-    }, []);
-
-    const options = {
-        legend: { show: true }
-    }
-
-    return (
-        <Chart
-            options={{
-                ...options,
-                labels: chartData.labels,
-                theme: { mode: "dark" },
-                chart: { background: "#2a323a" }
-            }}
-            series={chartData.series}
-            type="pie"
-            height="300"
-        />
     );
 }
 

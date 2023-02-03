@@ -2,7 +2,7 @@ package com.altercode.gerencg.service;
 
 import javax.transaction.Transactional;
 
-import com.altercode.gerencg.service.iservice.IMeasureService;
+import com.altercode.gerencg.service.interfaceservice.IMeasureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

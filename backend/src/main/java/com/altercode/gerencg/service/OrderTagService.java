@@ -5,7 +5,7 @@ import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.OrderTag;
 import com.altercode.gerencg.entity.Tag;
 import com.altercode.gerencg.repository.OrderTagRepository;
-import com.altercode.gerencg.service.iservice.IOrderTagService;
+import com.altercode.gerencg.service.interfaceservice.IOrderTagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

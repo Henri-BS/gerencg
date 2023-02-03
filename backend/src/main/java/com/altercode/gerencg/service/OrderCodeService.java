@@ -1,21 +1,18 @@
 package com.altercode.gerencg.service;
 
 import com.altercode.gerencg.dto.OrderCodeDTO;
-import com.altercode.gerencg.dto.SumOrderQuantityCategoryDTO;
-import com.altercode.gerencg.dto.SumOrderValueCategoryDTO;
-import com.altercode.gerencg.dto.TagDTO;
+import com.altercode.gerencg.dto.SumCategoryQuantityDTO;
+import com.altercode.gerencg.dto.SumCategoryValueDTO;
 import com.altercode.gerencg.entity.*;
 import com.altercode.gerencg.repository.*;
-import com.altercode.gerencg.service.iservice.IOrderCodeService;
+import com.altercode.gerencg.service.interfaceservice.IOrderCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.lang.Double.valueOf;
 
@@ -103,12 +100,12 @@ public class OrderCodeService implements IOrderCodeService {
     }
 
     @Override
-    public List<SumOrderValueCategoryDTO> getOrderValueGroupByCategory() {
+    public List<SumCategoryValueDTO> getOrderValueGroupByCategory() {
         return codeRepository.getOrderValueGroupByCategory();
     }
 
     @Override
-    public List<SumOrderQuantityCategoryDTO> getOrderQuantityGroupByCategory() {
+    public List<SumCategoryQuantityDTO> getOrderQuantityGroupByCategory() {
         return codeRepository.getOrderQuantityGroupByCategory();
     }
 }

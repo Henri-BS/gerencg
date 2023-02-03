@@ -3,7 +3,6 @@ import { category, categoryStats as stats, product, order } from "components/sha
 import { Link } from "react-router-dom";
 import "./styles.css"
 
-
 function Home() {
 
     return (

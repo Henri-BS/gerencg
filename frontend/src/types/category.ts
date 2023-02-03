@@ -48,7 +48,12 @@ export type CategoryStatsPage = {
 
 export type CategoryValue = {
   categoryName: string;
-  income: number;
+  value: number;
+};
+
+export type CategoryQuantity = {
+  categoryName: string;
+  quantity: number;
 };
 
 export type CategoryStatsValue = {

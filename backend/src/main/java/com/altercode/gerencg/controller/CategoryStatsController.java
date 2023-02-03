@@ -3,6 +3,8 @@ package com.altercode.gerencg.controller;
 import java.util.List;
 
 import com.altercode.gerencg.dto.CategoryStatsTotalValueDTO;
+import com.altercode.gerencg.dto.SumCategoryQuantityDTO;
+import com.altercode.gerencg.dto.SumCategoryValueDTO;
 import com.altercode.gerencg.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.altercode.gerencg.dto.CategoryStatsDTO;
-import com.altercode.gerencg.dto.CategoryValueDTO;
 import com.altercode.gerencg.service.CategoryStatsService;
 
 @RestController
@@ -67,8 +68,14 @@ public class CategoryStatsController {
 	}
 	
 	@GetMapping("/value-of-category")
-	public ResponseEntity<List<CategoryValueDTO>> valueGroupedByCategory(){
-		List<CategoryValueDTO> list = statsService.priceGroupByCategory();
+	public ResponseEntity<List<SumCategoryValueDTO>> productValueGroupByCategory(){
+		List<SumCategoryValueDTO> list = statsService.productValueGroupByCategory();
+		return ResponseEntity.ok(list);
+	}
+
+	@GetMapping("/product-quantity-of-category")
+	public ResponseEntity<List<SumCategoryQuantityDTO>> productQuantityGroupByCategory(){
+		List<SumCategoryQuantityDTO> list = statsService.productQuantityGroupByCategory();
 		return ResponseEntity.ok(list);
 	}
 	

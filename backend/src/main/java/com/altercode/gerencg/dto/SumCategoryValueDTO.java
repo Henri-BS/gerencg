@@ -4,15 +4,18 @@ import com.altercode.gerencg.entity.Category;
 
 import java.io.Serializable;
 
-public class SumOrderQuantityCategoryDTO implements Serializable {
+public class SumCategoryValueDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String categoryName;
-    private Long quantity;
+    private Double value;
 
-    public SumOrderQuantityCategoryDTO(Category category, Long quantity) {
+    public SumCategoryValueDTO() {
+    }
+
+    public SumCategoryValueDTO(Category category, Double value) {
         categoryName = category.getName();
-        this.quantity = quantity;
+        this.value = Math.round(value *100)/100.00;
     }
 
     public String getCategoryName() {
@@ -23,11 +26,11 @@ public class SumOrderQuantityCategoryDTO implements Serializable {
         this.categoryName = categoryName;
     }
 
-    public Long getQuantity() {
-        return quantity;
+    public Double getValue() {
+        return value;
     }
 
-    public void setQuantity(Long quantity) {
-        this.quantity = quantity;
+    public void setValue(Double value) {
+        this.value = value;
     }
 }

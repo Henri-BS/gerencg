@@ -108,15 +108,7 @@ export type OrderStatsValueGroup = {
   value: number;
 };
 
-export type OrderStatsValueGroupByCategory = {
-  categoryName: string;
-  value: number;
-};
 
-export type OrderStatsQuantityGroupByCategory = {
-  categoryName: string;
-  quantity: number;
-};
 
 export type CommissionResults = {
   commissionCode: string;

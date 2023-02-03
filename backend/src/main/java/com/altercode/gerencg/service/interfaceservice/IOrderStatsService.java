@@ -1,4 +1,4 @@
-package com.altercode.gerencg.service.iservice;
+package com.altercode.gerencg.service.interfaceservice;
 
 import com.altercode.gerencg.dto.OrderStatsDTO;
 import com.altercode.gerencg.dto.OrderStatsTotalValueDTO;

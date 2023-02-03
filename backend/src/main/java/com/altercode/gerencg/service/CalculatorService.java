@@ -1,6 +1,6 @@
 package com.altercode.gerencg.service;
 
-import com.altercode.gerencg.service.iservice.ICalculatorService;
+import com.altercode.gerencg.service.interfaceservice.ICalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

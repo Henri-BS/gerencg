@@ -1,4 +1,4 @@
-package com.altercode.gerencg.service.iservice;
+package com.altercode.gerencg.service.interfaceservice;
 
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.Category;
