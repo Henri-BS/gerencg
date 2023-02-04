@@ -67,7 +67,7 @@ public class CategoryStatsService implements ICategoryStatsService {
 		Category category = categoryRepository.findById(dto.getCategory()).get();
 
 		CategoryStats add = new CategoryStats();
-		add.setRegistrationDate(dto.getRegistrationDate());
+		add.setLastModifiedDate(dto.getLastModifiedDate());
 		
 		return new CategoryStatsDTO(statsRepository.saveAndFlush(add));
 	}

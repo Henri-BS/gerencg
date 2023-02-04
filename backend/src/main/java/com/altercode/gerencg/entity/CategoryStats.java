@@ -1,6 +1,9 @@
 package com.altercode.gerencg.entity;
 
+import org.springframework.data.annotation.LastModifiedDate;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.*;
 
@@ -15,17 +18,15 @@ public class CategoryStats {
 	
 	@Column(name = "added_products")
 	private Integer addedProducts;
-	
-	@Column(name = "removed_products")
-	private Integer removedProducts;
 
 	private Double income = 0.0;
 
 	@Column(name = "max_income")
 	private Double maxIncome = 0.0;
 
-	@Column(name = "registration_date")
-	private LocalDate registrationDate;
+	@LastModifiedDate
+	@Column(name = "last_modified_date")
+	private LocalDateTime lastModifiedDate = LocalDateTime.now();
 
 	@OneToOne
 	@JoinColumn(name = "category_id")
@@ -33,10 +34,10 @@ public class CategoryStats {
 	
 	public CategoryStats(){}
 	
-	public CategoryStats(Long id, Integer addedProducts,
-			LocalDate registrationDate, Double income, Double maxIncome,  Category category) {
+	public CategoryStats(Long id, Integer addedProducts, LocalDateTime lastModifiedDate,
+						 Double income, Double maxIncome, Category category) {
 		this.id = id;
-		this.registrationDate = registrationDate;
+		this.lastModifiedDate = lastModifiedDate;
 		this.addedProducts = addedProducts;
 		this.income = income;
 		this.maxIncome = maxIncome;
@@ -59,14 +60,6 @@ public class CategoryStats {
 		this.addedProducts = addedProducts;
 	}
 
-	public Integer getRemovedProducts() {
-		return removedProducts;
-	}
-
-	public void setRemovedProducts(Integer removedProducts) {
-		this.removedProducts = removedProducts;
-	}
-
 	public Double getMaxIncome() {
 		return maxIncome;
 	}
@@ -83,12 +76,12 @@ public class CategoryStats {
 		this.income = income;
 	}
 
-	public LocalDate getRegistrationDate() {
-		return registrationDate;
+	public LocalDateTime getLastModifiedDate() {
+		return lastModifiedDate;
 	}
 
-	public void setRegistrationDate(LocalDate registrationDate) {
-		this.registrationDate = registrationDate;
+	public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
+		this.lastModifiedDate = lastModifiedDate;
 	}
 
 	public Category getCategory() {

@@ -10,9 +10,6 @@ public class SumCategoryValueDTO implements Serializable {
     private String categoryName;
     private Double value;
 
-    public SumCategoryValueDTO() {
-    }
-
     public SumCategoryValueDTO(Category category, Double value) {
         categoryName = category.getName();
         this.value = Math.round(value *100)/100.00;

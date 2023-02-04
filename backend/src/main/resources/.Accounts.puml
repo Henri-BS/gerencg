@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+Client <|-- Divida
+Divida <|-- Product
+
+class Client {
+-name: String
+-divida: Divida
+size()
+}
+
+class Divida {
+-client: Client
+-value: Double
+-quantityItems: Integer
+-products: Products
+}
+
+class Product {
+-description: String
+-price: Integer
+-string:
+}
+
+@enduml

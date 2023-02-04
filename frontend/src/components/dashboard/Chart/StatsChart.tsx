@@ -255,7 +255,7 @@ export function OrderStatsChartByCategory() {
     );
 }
 
-export function CateogryStatsChart() {
+export function CategoryStatsChart() {
 
     const [proportionChart, setProportionChart] = useState<ProportionChartData>({ labels: [], series: [] });
     useEffect(() => {

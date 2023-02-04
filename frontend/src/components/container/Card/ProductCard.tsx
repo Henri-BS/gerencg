@@ -1,8 +1,8 @@
 import axios from "axios";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { MdClose, MdInfo, MdInfoOutline, MdMenu, MdMenuBook, MdMenuOpen } from "react-icons/md";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { MdClose, MdInfoOutline } from "react-icons/md";
+import { Link, useParams } from "react-router-dom";
 import { HistoryProps, Product } from "types/product";
 import { ProductHistory } from "types/product";
 import { BASE_URL } from "utils/requests";

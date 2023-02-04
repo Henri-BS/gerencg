@@ -1,6 +1,6 @@
-import { CategorySideBar, CategoryStatsMenuBar } from "components/container/Bar/CategoryBar";
+import { CategorySideBar } from "components/container/Bar/CategoryBar";
 import { AddCategoryStats } from "components/container/Form/CategoryForm";
-import { CateogryStatsChart } from "components/dashboard/Chart/StatsChart";
+import { CategoryStatsChart } from "components/dashboard/Chart/StatsChart";
 import { ProductCategoryList } from "pages/Listings/CategoryListing";
 import { useParams } from "react-router-dom";
 import "./styles.css";
@@ -17,9 +17,6 @@ export function CategoryProfile() {
         </div>
         <div className="col-12 col-sm-12 col-md-6 col-lg-8">
           <ProductCategoryList categoryId={`${params.categoryId}`} />
-          <div className="container">   
-            <CategoryStatsMenuBar categoryId={`${params.categoryId}`} />
-          </div>
         </div>
       </div>
     </>
@@ -42,7 +39,7 @@ export function CategoryStatsDashboard() {
       <div className="container">
         <h1 className=" py-4">Estatísticas das Categorias</h1>
         <div className="max-container-charts ">
-          <CateogryStatsChart />
+          <CategoryStatsChart />
         </div>
       </div>
     </>

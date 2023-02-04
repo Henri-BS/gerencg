@@ -78,5 +78,4 @@ public class CategoryStatsController {
 		List<SumCategoryQuantityDTO> list = statsService.productQuantityGroupByCategory();
 		return ResponseEntity.ok(list);
 	}
-	
 }

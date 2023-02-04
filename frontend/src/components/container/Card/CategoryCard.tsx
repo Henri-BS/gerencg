@@ -1,9 +1,6 @@
-import axios from "axios";
 import moment from "moment";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Category, CategoryProps, CategoryStats } from "types/category";
-import { BASE_URL } from "utils/requests";
+import { Category } from "types/category";
 import "./styles.css"
 
 type Props = {

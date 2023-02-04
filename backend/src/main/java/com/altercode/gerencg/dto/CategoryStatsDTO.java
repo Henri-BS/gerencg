@@ -1,23 +1,23 @@
 package com.altercode.gerencg.dto;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-
 import com.altercode.gerencg.entity.CategoryStats;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 public class CategoryStatsDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
-    private LocalDate registrationDate;
+    private LocalDateTime lastModifiedDate;
     private Integer addedProducts;
     private Double income;
     private String category;
 
-    public CategoryStatsDTO(Long id, LocalDate registrationDate, Integer addedProducts, Integer removedProducts,
+    public CategoryStatsDTO(Long id, LocalDateTime lastModifiedDate, Integer addedProducts, Integer removedProducts,
                             Double income, String category) {
         this.id = id;
-        this.registrationDate = registrationDate;
+        this.lastModifiedDate = lastModifiedDate;
         this.addedProducts = addedProducts;
         this.income = income;
         this.category = category;
@@ -25,7 +25,7 @@ public class CategoryStatsDTO implements Serializable {
 
     public CategoryStatsDTO(CategoryStats entity) {
         id = entity.getId();
-        registrationDate = entity.getRegistrationDate();
+        lastModifiedDate = entity.getLastModifiedDate();
         addedProducts = entity.getAddedProducts();
         income = entity.getIncome();
         category = entity.getCategory().getName();
@@ -55,12 +55,12 @@ public class CategoryStatsDTO implements Serializable {
         this.income = income;
     }
 
-    public LocalDate getRegistrationDate() {
-        return registrationDate;
+    public LocalDateTime getLastModifiedDate() {
+        return lastModifiedDate;
     }
 
-    public void setRegistrationDate(LocalDate registrationDate) {
-        this.registrationDate = registrationDate;
+    public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public String getCategory() {
