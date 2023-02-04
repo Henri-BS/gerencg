@@ -42,7 +42,6 @@ export function CategoryList() {
     );
 }
 
-
 //Find all products by category
 export function ProductCategoryList({ categoryId }: CategoryProps) {
 

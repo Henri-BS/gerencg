@@ -112,7 +112,7 @@ export function OrderItemListByProduct({ productId }: ProductProps) {
 
     return (
         <div className="horizontal-list">
-            {item?.map(x => (
+            {item?.map((x) => (
                 <div key={x.id} className="list-item">
                     <SmallItemCard item={x} />
                 </div>

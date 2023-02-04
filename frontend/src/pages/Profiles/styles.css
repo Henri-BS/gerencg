@@ -32,7 +32,7 @@
 }
 
 .list-item {
-    min-width: 340px;
+    width: max-content;
     text-align: center;
     padding: 2px;
 }

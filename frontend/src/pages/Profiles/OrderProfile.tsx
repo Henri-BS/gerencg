@@ -7,7 +7,7 @@ import { MdClose } from "react-icons/md";
 import { OrderStatsList } from "pages/Listings/OrderListing";
 import { OrderStatsChartsByPediod, OrderStatsCharts, OrderStatsChartByCategory } from "components/dashboard/Chart/StatsChart";
 import { CategoryStatsDashboard } from "./CategoryProfile";
-
+import { TagListByOrder } from "pages/Listings/TagListing";
 
 export function CommissionProfile() {
   const params = useParams();
@@ -16,9 +16,11 @@ export function CommissionProfile() {
     <>
       <div className="container">
         <OrderMenuBar codeId={`${params.codeId}`} />
+        <h3>Tags</h3>
+        <TagListByOrder codeId={`${params.codeId}`}/>
         <div className="menu-option row">
           <h2 className="col-7 col-md-10">Lista de Produtos Solicitados </h2>
-          <div className="col-5  col-md-2" >
+          <div className="col-5 col-md-2" >
             <button className="btn-primary" data-bs-toggle="modal" data-bs-target="#saveItemModal">
               Adicionar Item
             </button>

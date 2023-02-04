@@ -112,11 +112,14 @@ export function OrderMenuBar({ codeId }: CodeProps) {
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                             <div className="bar-item-content"> <b>Total de Pacotes:</b> {order?.totalPackage} </div>
                         </div>
-                        <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                             <div className="bar-item-content"> <b>Total de Unidades:</b> {order?.totalQuantity} </div>
                         </div>
-                        <div className="bar-item col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                             <div className="bar-item-content"> <b>Valor Total do Pedido:</b> {order?.totalValue} </div>
+                        </div>
+                        <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                            <div className="bar-item-content"> <b>Categoria:</b> {order?.categoryId} </div>
                         </div>
                     </div>
                 </div>

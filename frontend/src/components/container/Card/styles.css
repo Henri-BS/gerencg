@@ -290,3 +290,26 @@
     border: solid 2px var(--blue-seco);
     background-color: var(--dark-prim);
 }
+
+.tag-card-container {
+    height: 40px;
+    border-radius: 12px;
+    background-color: var(--dark-quat);
+    border: solid 2px var(--blue-prim);
+    color: var(--white-seco);
+    width: max-content;
+    padding: 8px;
+    text-align: center;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+}
+
+.tag-card-container:hover {
+    border: solid 2px var(--blue-seco);
+    background-color: var(--dark-prim);
+}
+
+.tag-card-container:focus {
+    border: solid 2px var(--blue-seco);
+    background-color: var(--dark-prim);
+}

@@ -10,6 +10,7 @@ import "./styles.css"
 import { EditItemForm } from "../Form/OrderForm";
 import { MdClose, MdInfoOutline, MdLink } from "react-icons/md";
 import { Product } from "types/product";
+import { TagListByOrder } from "pages/Listings/TagListing";
 
 
 type OrderCode = {
@@ -30,7 +31,7 @@ export function CommissionCard({ order }: OrderCode) {
                 <div className="commission-box ">
                     <h3>Distribuidora: {order.distributor}</h3>
                 </div>
-                <div className="commission-box  border-0">
+                <div className="commission-box border-0">
                     <h3>Categoria: {order.categoryId}</h3>
                 </div>
             </div>
