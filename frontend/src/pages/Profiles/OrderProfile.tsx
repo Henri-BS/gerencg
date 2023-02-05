@@ -7,7 +7,7 @@ import { MdClose } from "react-icons/md";
 import { OrderStatsList } from "pages/Listings/OrderListing";
 import { OrderStatsChartsByPediod, OrderStatsCharts, OrderStatsChartByCategory } from "components/dashboard/Chart/StatsChart";
 import { CategoryStatsDashboard } from "./CategoryProfile";
-import { TagListByOrder } from "pages/Listings/TagListing";
+import { OrderTagList, TagListByOrder } from "pages/Listings/TagListing";
 
 export function CommissionProfile() {
   const params = useParams();
@@ -83,7 +83,17 @@ export function OrderStatsProfile() {
           
         </div>
       </div>
+    </>
+  );
+}
 
+export function OrderTagProfile() {
+  const params = useParams();
+  return (
+    <>
+        <div>
+          <OrderTagList tagId={`${params.tagId}`} />
+      </div>
     </>
   );
 }

@@ -7,6 +7,8 @@ import com.altercode.gerencg.entity.Tag;
 import com.altercode.gerencg.repository.OrderTagRepository;
 import com.altercode.gerencg.service.interfaceservice.IOrderTagService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,9 +23,9 @@ public class OrderTagService implements IOrderTagService {
     private OrderTagRepository orderTagRepository;
 
     @Override
-    public List<OrderTagDTO> findAll(){
-        List<OrderTag> list = orderTagRepository.findAll();
-        return list.stream().map(x -> new OrderTagDTO(x)).collect(Collectors.toList());
+    public Page<OrderTagDTO> findAll(Pageable pageable){
+        Page<OrderTag> list = orderTagRepository.findAll(pageable);
+        return list.map(x -> new OrderTagDTO(x));
     }
 
     @Override

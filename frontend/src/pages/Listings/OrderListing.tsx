@@ -5,8 +5,10 @@ import { BASE_URL } from "utils/requests";
 import * as FaIcons from 'react-icons/fa';
 import "./styles.css";
 import Pagination from "components/shared/Pagination";
-import { CommissionCard, OrderStatsCard, SmallItemCard } from "components/container/Card/OrderCard";
+import { OrderCard, OrderStatsCard, SmallItemCard } from "components/container/Card/OrderCard";
 import { ProductProps } from "types/product";
+import { OrderListByTag } from "./TagListing";
+import { useParams } from "react-router-dom";
 
 export function OrderCodeList() {
     const [value, setValue] = useState("");
@@ -53,7 +55,9 @@ export function OrderCodeList() {
                             </div>
                         </form>
                     </nav>
-
+                    <hr />
+                    <OrderListByTag />
+                    <hr />
                     <div className="pagination-container-menu">
                         <div className="pagination-item">
                             <Pagination page={codePage} onPageChange={handlePageChange} />
@@ -65,7 +69,7 @@ export function OrderCodeList() {
                             order.code.includes(value))
                             .map((order) => (
                                 <div key={order.code} className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-3">
-                                    <CommissionCard order={order} />
+                                    <OrderCard order={order} />
                                 </div>
                             ))}
                     </div>
@@ -120,3 +124,4 @@ export function OrderItemListByProduct({ productId }: ProductProps) {
         </div>
     );
 }
+

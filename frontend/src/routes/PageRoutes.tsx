@@ -1,14 +1,15 @@
 import Home from "pages/Home";
 import { ProductsList, ProductValidateList } from "pages/Listings/ProductListing";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { ProductProfile, MeasureProfile, ProductDashboard, ProductHistoryProfile} from "pages/Profiles/ProductProfile";
+import { ProductProfile, MeasureProfile, ProductDashboard, ProductHistoryProfile } from "pages/Profiles/ProductProfile";
 import { CategoryList } from "pages/Listings/CategoryListing";
 import { MeasureList } from "pages/Listings/MeasureListing";
 import { OrderCodeList } from "pages/Listings/OrderListing";
-import { CommissionProfile, ItemProfile, OrderStatsDashboard, OrderStatsProfile } from "pages/Profiles/OrderProfile";
+import { CommissionProfile as OrderProfile, ItemProfile, OrderStatsDashboard, OrderStatsProfile, OrderTagProfile } from "pages/Profiles/OrderProfile";
 import { CategoryProfile, CategoryStatsDashboard, SaveCategoryStats } from "pages/Profiles/CategoryProfile";
 import NavBar from "components/shared/NavBar";
 import Footer from "components/shared/Footer";
+import { OrderTagList } from "pages/Listings/TagListing";
 
 
 function PageRoutes() {
@@ -16,12 +17,12 @@ function PageRoutes() {
 
     return (
         <BrowserRouter>
-        <NavBar />
+            <NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />
 
-                <Route path="/product-list"element={<ProductsList/>}/>
+                <Route path="/product-list" element={<ProductsList />} />
                 <Route path="/products-stats" element={<ProductDashboard />} />
 
                 <Route path="/find-by-validate" element={<ProductValidateList />} />
@@ -49,23 +50,28 @@ function PageRoutes() {
                 <Route path="/order/list" element={<OrderCodeList />} />
 
                 <Route path="/order">
-                    <Route path=":codeId" element={<CommissionProfile />} />
+                    <Route path=":codeId" element={<OrderProfile />} />
                 </Route>
 
                 <Route path="/item">
                     <Route path=":itemId" element={<ItemProfile />} />
                 </Route>
 
-                <Route path="/stats" element={<OrderStatsDashboard/>} />
+                <Route path="/stats" element={<OrderStatsDashboard />} />
 
                 <Route path="/stats">
-                    <Route path=":statsId" element={<OrderStatsProfile/>} />
-                    </Route> 
+                    <Route path=":statsId" element={<OrderStatsProfile />} />
+                </Route>
+
+                <Route path="/order-tag">
+                    <Route path=":tagId" element={< OrderTagProfile/>} />
+                </Route>
+
             </Routes>
             <Footer />
         </BrowserRouter>
 
-        
+
     );
 }
 

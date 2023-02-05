@@ -21,9 +21,9 @@ public class TagController {
     @Autowired
     private TagService tagService;
 
-    @GetMapping("/tag-list/{tagId}")
-    public ResponseEntity<Page<TagDTO>> findTagsByTitle(Pageable pageable, @PathVariable String tagId) {
-        Page<TagDTO> list = tagService.findAllTags(pageable, tagId);
+    @GetMapping("/tag-list")
+    public ResponseEntity<Page<TagDTO>> findTagsByTitle(Pageable pageable) {
+        Page<TagDTO> list = tagService.findAllTags(pageable);
         return ResponseEntity.ok(list);
     }
 

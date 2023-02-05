@@ -10,34 +10,62 @@ import "./styles.css"
 import { EditItemForm } from "../Form/OrderForm";
 import { MdClose, MdInfoOutline, MdLink } from "react-icons/md";
 import { Product } from "types/product";
-import { TagListByOrder } from "pages/Listings/TagListing";
+import { OrderTag } from "types/tag";
 
 
 type OrderCode = {
     order: Code;
 }
 
-export function CommissionCard({ order }: OrderCode) {
+export function OrderCard({ order }: OrderCode) {
 
     return (
         <Link to={`/order/${order.code}`}>
-            <div className="commission-card ">
-                <div className="commission-box  border-dark">
+            <div className="order-card ">
+                <div className="order-box  border-dark">
                     <h2>Código do Pedido: <p>{order.code}</p></h2>
                 </div>
-                <div className="commission-box ">
+                <div className="order-box ">
                     <h3>Data do Pedido: {moment(order.orderDate).format("DD/MM/YYYY")}</h3>
                 </div>
-                <div className="commission-box ">
+                <div className="order-box ">
                     <h3>Distribuidora: {order.distributor}</h3>
                 </div>
-                <div className="commission-box border-0">
+                <div className="order-box border-0">
                     <h3>Categoria: {order.categoryId}</h3>
                 </div>
             </div>
         </Link>
     );
 }
+
+
+type OrdersTag = {
+    orderTag: OrderTag;
+}
+
+export function OrderCardByTag({ orderTag }: OrdersTag) {
+
+    return (
+        <Link to={`/order/${orderTag.codeId}`}>
+            <div className="order-card ">
+                <div className="order-box  border-dark">
+                    <h2>Código do Pedido: <p>{orderTag.codeId}</p></h2>
+                </div>
+                <div className="order-box ">
+                    <h3>Data do Pedido: {moment(orderTag.orderDate).format("DD/MM/YYYY")}</h3>
+                </div>
+                <div className="order-box ">
+                    <h3>Distribuidora: {orderTag.distributor}</h3>
+                </div>
+                <div className="order-box border-0">
+                    <h3>Categoria: {orderTag.category}</h3>
+                </div>
+            </div>
+        </Link>
+    );
+}
+
 
 export function OrderItemCard({ itemId }: ItemProps) {
 

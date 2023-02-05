@@ -218,7 +218,7 @@
 
 /*Commission card styles*/
 
-.commission-card {
+.order-card {
     min-height: 300px;
     display: grid;
     padding: 6px;
@@ -233,23 +233,23 @@
     color: var(--dark-prim);
 }
 
-.commission-card:hover {
+.order-card:hover {
     border: 3px solid var(--blue-prim);
 }
 
-.commission-box {
+.order-box {
     display: flex;
     width: 100%;
     padding: 5px;
     border-bottom: 1px solid #ccc;
 }
 
-.commission-box h2 {
+.order-box h2 {
     font-size: 22px;
     font-weight: 700;
 }
 
-.commission-box h3 {
+.order-box h3 {
     font-size: 20px;
 }
 

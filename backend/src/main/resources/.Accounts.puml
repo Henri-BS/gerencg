@@ -1,26 +1,42 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-Client <|-- Divida
-Divida <|-- Product
+Cliente -- ContaCliente
+ContaCliente -- Produto
+ContaCliente -- Pago
+ContaCliente -- Divida
+Divida -- Pago
 
-class Client {
--name: String
--divida: Divida
-size()
+class Cliente {
+-nome: String
+-conta: ContaCliente
+
+}
+
+class ContaCliente {
+-data: LocalDate
+-cliente: Cliente
+-valor: Double
+-quantidade: Integer
+-dividas: List<Divida>
+
+}
+
+class Pago {
+-data: LocalDate
+-divida: List<Divida>
+-conta: contaCliente
 }
 
 class Divida {
--client: Client
--value: Double
--quantityItems: Integer
--products: Products
+-data: LocalDate
+-quantidade
+-produto: Produto
 }
 
-class Product {
--description: String
--price: Integer
--string:
+class Produto {
+-descrição: String
+-preço: Double
 }
 
 @enduml

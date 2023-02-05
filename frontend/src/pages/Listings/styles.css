@@ -23,7 +23,6 @@
     min-height: 70px;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #ccc;
     background-color: var(--white-prim);
 }
 
@@ -71,6 +70,7 @@
 }
 
 .search-form-group {
+    border-radius: 8px;
     width: 300px;
     align-items: center;
     color: var(--dark-prim);
