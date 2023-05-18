@@ -9,7 +9,7 @@ import { OrderStatsChartsByPediod, OrderStatsCharts, OrderStatsChartByCategory }
 import { CategoryStatsDashboard } from "./CategoryProfile";
 import { OrderTagList, TagListByOrder } from "pages/Listings/TagListing";
 
-export function CommissionProfile() {
+export function OrderProfile() {
   const params = useParams();
 
   return (
@@ -80,7 +80,6 @@ export function OrderStatsProfile() {
         <OrderStatsBar statsId={`${params.statsId}`} />
         <div className="max-container-charts ">
           <OrderStatsChartsByPediod statsId={`${params.statsId}`} />
-          
         </div>
       </div>
     </>

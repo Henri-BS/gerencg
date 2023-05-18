@@ -8,7 +8,6 @@ import Pagination from "components/shared/Pagination";
 import { OrderCard, OrderStatsCard, SmallItemCard } from "components/container/Card/OrderCard";
 import { ProductProps } from "types/product";
 import { OrderListByTag } from "./TagListing";
-import { useParams } from "react-router-dom";
 
 export function OrderCodeList() {
     const [value, setValue] = useState("");
@@ -32,47 +31,42 @@ export function OrderCodeList() {
 
     return (
         <>
-            <div>
-                <div className="container">
-                    <nav className="row header-container">
-                        <h2 className="col-12 col-sm-4 col-md-4 col-xl-4">Lista de Pedidos</h2>
-                        <nav className="option-item col-12 col-sm-4 col-md-4 col-xl-4">
-                            <h5><b>Total:</b> {codePage.totalElements} Pedidos</h5>
-                        </nav>
-                        <form className="col-12 col-sm-4 col-md-4 col-xl-4 search-container">
-                            <label>
-                                <h5><FaIcons.FaSearch /></h5>
-                            </label>
-                            <div className="form-group search-form-group">
-                                <input
-                                    type="text"
-                                    value={value}
-                                    onChange={(e) => setValue(e.target.value)}
-                                    className="form-control"
-                                    id="value"
-                                    placeholder="Buscar pelo código do pedido..."
-                                />
-                            </div>
-                        </form>
+            <div className="container"> 
+                <nav className="row header-container">
+                    <h2 className="col-12 col-sm-4 col-md-4 col-xl-4">Lista de Pedidos</h2>
+                    <nav className="option-item col-12 col-sm-4 col-md-4 col-xl-4">
+                        <h5><b>Total:</b> {codePage.totalElements} Pedidos</h5>
                     </nav>
-                    <hr />
-                    <OrderListByTag />
-                    <hr />
-                    <div className="pagination-container-menu">
-                        <div className="pagination-item">
-                            <Pagination page={codePage} onPageChange={handlePageChange} />
+                    <form className="col-12 col-sm-4 col-md-4 col-xl-4 search-container">
+                        <label>
+                            <h5><FaIcons.FaSearch /></h5>
+                        </label>
+                        <div className="form-group search-form-group">
+                            <input
+                                type="text"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                className="form-control"
+                                id="value"
+                                placeholder="Buscar pelo código do pedido..."
+                            />
                         </div>
+                    </form>
+                </nav><hr /><OrderListByTag /><hr />
+                <div className="pagination-container-menu">
+                    <div className="pagination-item">
+                        <Pagination page={codePage} onPageChange={handlePageChange} />
                     </div>
+                </div>
 
-                    <div className="row">
-                        {codePage.content?.filter((order) =>
-                            order.code.includes(value))
-                            .map((order) => (
-                                <div key={order.code} className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-3">
-                                    <OrderCard order={order} />
-                                </div>
-                            ))}
-                    </div>
+                <div className="row">
+                    {codePage.content?.filter((order) =>
+                        order.code.includes(value))
+                        .map((order) => (
+                            <div key={order.code} className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-3">
+                                <OrderCard order={order} />
+                            </div>
+                        ))}
                 </div>
             </div>
         </>

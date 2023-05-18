@@ -5,11 +5,10 @@ import { ProductProfile, MeasureProfile, ProductDashboard, ProductHistoryProfile
 import { CategoryList } from "pages/Listings/CategoryListing";
 import { MeasureList } from "pages/Listings/MeasureListing";
 import { OrderCodeList } from "pages/Listings/OrderListing";
-import { CommissionProfile as OrderProfile, ItemProfile, OrderStatsDashboard, OrderStatsProfile, OrderTagProfile } from "pages/Profiles/OrderProfile";
+import { OrderProfile as OrderProfile, ItemProfile, OrderStatsDashboard, OrderStatsProfile, OrderTagProfile } from "pages/Profiles/OrderProfile";
 import { CategoryProfile, CategoryStatsDashboard, SaveCategoryStats } from "pages/Profiles/CategoryProfile";
 import NavBar from "components/shared/NavBar";
 import Footer from "components/shared/Footer";
-import { OrderTagList } from "pages/Listings/TagListing";
 
 
 function PageRoutes() {

@@ -11,7 +11,7 @@ function ItemDataTable({ codeId }: CodeProps) {
     const [pageItem, setPageItem] = useState<Item[]>();
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/find-code?code=${codeId}`)
+        axios.get(`${BASE_URL}/find-code/${codeId}`)
             .then((response) => {
                 setPageItem(response.data);
             });

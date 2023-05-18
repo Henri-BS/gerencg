@@ -1,11 +1,11 @@
 import axios from "axios";
-import { OrderCard, OrderCardByTag } from "components/container/Card/OrderCard";
+import { OrderCardByTag } from "components/container/Card/OrderCard";
 import { OrderTagCard, TagCard } from "components/container/Card/TagCard";
 import { useEffect, useState } from "react";
 import { MdLibraryBooks } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { CodePage, CodeProps } from "types/order";
-import { OrderTag, OrderTagPage, TagPage, TagProps } from "types/tag";
+import { CodeProps } from "types/order";
+import { OrderTag, TagPage, TagProps } from "types/tag";
 import { BASE_URL } from "utils/requests";
 
 export function TagListByOrder({ codeId }: CodeProps) {

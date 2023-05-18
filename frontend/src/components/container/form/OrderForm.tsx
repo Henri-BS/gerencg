@@ -7,7 +7,6 @@ import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css";
 
-
 export function SaveOrderForm() {
     const navigate = useNavigate();
 
@@ -113,7 +112,6 @@ export function EditOrderForm({ codeId }: CodeProps) {
         const distributor = (event.target as any).distributor.value;
         const packageType = (event.target as any).packageType.value;
 
-
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
             url: "/order/update",
@@ -139,7 +137,7 @@ export function EditOrderForm({ codeId }: CodeProps) {
                 </div>
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="distributor">Distribuidora: </label>
-                    <input className="form-control" id="distributor" placeholder="ex: Comercial Novo" defaultValue={order?.distributor} />
+                    <input className="form-control" id="distributor" defaultValue={order?.distributor} />
                 </div>
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="packageType">Tipo de Pacote: </label>
@@ -153,13 +151,11 @@ export function EditOrderForm({ codeId }: CodeProps) {
                 </div>
             </div>
             <div className="modal-footer">
-                <button className="text-close">cancelar</button>
                 <button type="submit" className="btn-confirm">Editar Pedido</button>
             </div>
         </form>
     );
 }
-
 
 //Item Forms
 export function AddItemForm({ codeId }: CodeProps) {
@@ -257,7 +253,6 @@ export function AddItemForm({ codeId }: CodeProps) {
                     </div>
                 </div>
                 <div className="modal-footer">
-                    <button className="text-close">cancelar</button>
                     <button type="submit" className="btn-confirm">Adicionar</button>
                 </div>
             </form>
@@ -341,7 +336,7 @@ export const EditItemForm = ({ itemId }: ItemProps) => {
 
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="itemValidate">Validade: </label>
-                    <input id="itemValidate" type="text" className="form-control" defaultValue={item?.itemValidate} />
+                    <input id="itemValidate" type="date" className="form-control" defaultValue={item?.itemValidate} />
                 </div>
 
                 <div className="form-group gerencg-form-group">
@@ -360,7 +355,6 @@ export const EditItemForm = ({ itemId }: ItemProps) => {
                
             </div> 
             <div className="modal-footer">
-                    <button className="text-close" data-bs-dismiss="modal">cancelar</button>
                     <button type="submit" className="btn-confirm">Editar</button>
                 </div>
         </form>

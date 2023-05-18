@@ -6,7 +6,6 @@ import { useState } from "react";
 import { MdClose, MdLibraryBooks } from "react-icons/md";
 import { AddProductForm } from "components/container/Form/ProductForm";
 import { SaveOrderForm } from "components/container/Form/OrderForm";
-import { AddCategoryStats } from "components/container/Form/CategoryForm";
 
 function NavBar() {
     const [click, setClick] = useState(false);
@@ -29,12 +28,6 @@ function NavBar() {
                     <li className="navbar-item">
                         <div data-bs-toggle="modal" data-bs-target="#saveProductModal" className="navbar-link " onClick={closeMobileMenu}>
                             <AiIcons.AiOutlinePlus />  Novo Produto
-                        </div>
-                    </li>
-
-                    <li className="navbar-item">
-                        <div data-bs-toggle="modal" data-bs-target="#saveStatsModal" className="navbar-link" onClick={closeMobileMenu}>
-                            <AiIcons.AiOutlineOrderedList />  Novo Registro
                         </div>
                     </li>
 
@@ -90,22 +83,6 @@ function NavBar() {
                             </button>
                         </div>
                         <div className="modal-body"><SaveOrderForm /></div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="modal fade" role="dialog" id="saveStatsModal">
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <div className="modal-title" id="statsLabel">Adicionar um novo registro
-                                <span data-bs-dismiss="modal"><Link to="/category-stats" className="form-links"> <MdLibraryBooks /></Link></span>
-                            </div>
-                            <button className="close" data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"><MdClose /></span>
-                            </button>
-                        </div>
-                        <div className="modal-body"><AddCategoryStats /></div>
                     </div>
                 </div>
             </div>

@@ -24,6 +24,9 @@ public class OrderCodeService implements IOrderCodeService {
     private OrderCodeRepository codeRepository;
 
     @Autowired
+    private OrderStatsRepository statsRepository;
+
+    @Autowired
     private MeasureRepository measureRepository;
 
     @Autowired
@@ -38,6 +41,18 @@ public class OrderCodeService implements IOrderCodeService {
     @Override
     public OrderCodeDTO findCodeById(String id) {
         OrderCode result = codeRepository.findById(id).get();
+        if (result.getStats() == null) {
+            String statsId = + result.getOrderDate().getMonthValue() + "-" + result.getOrderDate().getYear();
+            OrderStats stats = statsRepository.findById(statsId).orElseThrow();
+            result.setStats(stats);
+            codeRepository.save(result);
+
+            if(stats.getId() == null){
+                stats = new OrderStats();
+                stats.setId(statsId);
+                statsRepository.saveAndFlush(stats);
+            }
+        }
         return new OrderCodeDTO(result);
     }
 
@@ -50,6 +65,9 @@ public class OrderCodeService implements IOrderCodeService {
         add.setOrderDate(dto.getOrderDate());
         add.setDistributor(dto.getDistributor());
         add.setPackageType(packageType);
+
+        OrderCode code = codeRepository.findById(add.getCode()).orElseThrow();
+
 
         return new OrderCodeDTO(codeRepository.saveAndFlush(add));
     }
@@ -83,7 +101,7 @@ public class OrderCodeService implements IOrderCodeService {
             sumPackages = sumPackages + i.getPackageQuantity();
         }
 
-        double sumValuesRound = Math.round(sumValues *100)/100.00;
+        double sumValuesRound = Math.round(sumValues * 100) / 100.00;
         code.setTotalValue(sumValuesRound);
         code.setTotalQuantity(sumQuantity);
         code.setTotalPackage(sumPackages);

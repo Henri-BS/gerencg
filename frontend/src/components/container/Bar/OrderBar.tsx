@@ -151,10 +151,10 @@ export function OrderStatsBar({ statsId }: OrderStatsProps) {
             <div className="max-bar-container">
                 <div className="bar-container row">
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
-                        <div className="bar-item-content"> <b>Data Inicial:</b> {stats?.initialDate} </div>
+                        <div className="bar-item-content"> <b>Data Inicial:</b> {moment(stats?.initialDate).format("DD/MM/YYYY")} </div>
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
-                        <div className="bar-item-content"> <b>Data Final:</b> {stats?.finalDate} </div>
+                        <div className="bar-item-content"> <b>Data Final:</b> {moment(stats?.finalDate).format("DD/MM/YYYY")} </div>
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
                         <div className="bar-item-content"> <b>Total de Pedidos do Mês:</b> {stats?.amountOrder} </div>

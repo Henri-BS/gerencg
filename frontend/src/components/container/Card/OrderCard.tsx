@@ -80,7 +80,7 @@ export function OrderItemCard({ itemId }: ItemProps) {
             })
     }, [itemId])
 
-    const [product, setProduct] = useState<Product>();
+    const [, setProduct] = useState<Product>();
     const updateProductByItem = () => {
         axios.put(`${BASE_URL}/update-product-by-item?id=${itemId}`)
             .then((response) => {
@@ -117,7 +117,7 @@ export function OrderItemCard({ itemId }: ItemProps) {
                     <h2>Código do Pedido: {item?.orderCode} <Link to={`/order/${item?.orderCode}`} className="link-primary"> <MdLink /></Link></h2>
                 </div>
                 <div className="gerencg-box">
-                    <h4>Descrição: {item?.productDescription}</h4>
+                   <Link to={`/product/${item?.productId}`}> <h4>Descrição: {item?.productDescription}</h4></Link>
                 </div>
                 <div className="gerencg-box">
                     <h3>Medida: {item?.productMeasureValue} {item?.productMeasure}</h3>

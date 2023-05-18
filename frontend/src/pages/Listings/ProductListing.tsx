@@ -33,15 +33,14 @@ export function ProductsList() {
     return (
         <>
             <div className="container">
+
                 <nav className="row header-container">
                     <h2 className="col-3 col-sm-4 col-md-4 col-xl-4 ">Lista de Produtos</h2>
-
                     <nav className="col-4 col-sm-4 col-md-4 col-xl-4" >
                         <div className="option-item" >
                             <h5><b>Total: </b>{productPage.totalElements} Produtos</h5>
                         </div>
                     </nav>
-
                     <form className="col-5 col-sm-4 col-md-4  col-xl-4 search-container">
                         <label >
                             <h5><FaIcons.FaSearch /></h5>
@@ -58,6 +57,7 @@ export function ProductsList() {
                         </div>
                     </form>
                 </nav>
+                <hr className="m-0"/>
 
                 <div className="pagination-container-menu">
                     <div className="pagination-item">

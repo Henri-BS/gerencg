@@ -143,8 +143,5 @@ public class OrderCode {
         return orderTags;
     }
 
-    public void setOrderTags(Set<OrderTag> orderTags) {
-        this.orderTags = orderTags;
-    }
 
 }

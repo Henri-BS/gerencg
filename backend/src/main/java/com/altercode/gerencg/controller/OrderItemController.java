@@ -26,14 +26,14 @@ public class OrderItemController {
         return ResponseEntity.ok(page);
     }
 
-    @GetMapping("/find-code")
-    public ResponseEntity<List<OrderItemDTO>> findItemsByCode(OrderCode code) {
+    @GetMapping("/find-code/{code}")
+    public ResponseEntity<List<OrderItemDTO>> findItemsByCode(@PathVariable OrderCode code) {
         List<OrderItemDTO> list = itemService.findItemsByCode(code);
         return ResponseEntity.ok(list);
     }
 
     @GetMapping("/find-item-by-product/{product}")
-    public ResponseEntity<List<OrderItemDTO>> findItemByProduct(Product product) {
+    public ResponseEntity<List<OrderItemDTO>> findItemByProduct(@PathVariable Product product) {
         List<OrderItemDTO> list = itemService.findItemByProduct(product);
         return ResponseEntity.ok(list);
     }

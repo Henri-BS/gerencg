@@ -29,6 +29,12 @@ body {
     background-color: var(--dark-tert);
 }
 
+a {
+    text-decoration: none;
+    color: var(--dark-tert);
+    transition: all 0.2s ease-in-out;
+}
+
 .content {
     flex: 1 0 auto;
 }

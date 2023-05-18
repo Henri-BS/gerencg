@@ -48,23 +48,22 @@ public class OrderStatsService implements IOrderStatsService {
     public OrderStatsDTO updateStatsValues(OrderStatsDTO dto) {
         OrderStats stats = statsRepository.findById(dto.getId()).get();
 
-        double sumValues = 0;
-        int sumItems = 0;
-        for (OrderCode i : stats.getCodes()) {
-            sumValues = sumValues + i.getTotalValue();
-            sumItems = sumItems + i.getAmountItems();
-        }
+            for (OrderCode i : stats.getCodes()) {
+                double sumValues = stats.getTotalValue();
+                int sumItems = stats.getAmountItems();
+                sumValues = sumValues + i.getTotalValue();
+                sumItems = sumItems + i.getAmountItems();
 
-        double avgWeeks;
-        avgWeeks = sumValues / 4;
+                double avgWeeks;
+                avgWeeks = sumValues / 4;
+                stats.setAverageWeek(avgWeeks);
+                stats.setAmountItems(sumItems);
+                stats.setTotalValue(sumValues);
+            }
 
-        stats.setTotalValue(sumValues);
-        stats.setAverageWeek(avgWeeks);
         stats.setAmountOrder(stats.getCodes().size());
-        stats.setAmountItems(sumItems);
-        statsRepository.save(stats);
 
-        return new OrderStatsDTO(stats);
+        return new OrderStatsDTO(statsRepository.save(stats));
     }
 
     @Override
