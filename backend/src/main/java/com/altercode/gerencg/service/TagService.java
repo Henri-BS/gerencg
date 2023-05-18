@@ -33,19 +33,19 @@ public class TagService implements ITagService {
     @Override
     public Page<TagDTO> findAllTags(Pageable pageable) {
         Page<Tag> list = tagRepository.findAll(pageable);
-        return list.map(x -> new TagDTO(x));
+        return list.map(TagDTO::new);
     }
 
     @Override
     public List<TagDTO> getAllTags(List<String> title) {
         List<Tag> result = tagRepository.findAllById(title);
-        return result.stream().map(x -> new TagDTO(x)).collect(Collectors.toList());
+        return result.stream().map(TagDTO::new).collect(Collectors.toList());
     }
 
     @Override
     public List<OrderTagDTO> findAllOrdersByTag() {
         List<OrderTag> list = orderTagRepository.findAll();
-        return list.stream().map(x -> new OrderTagDTO(x)).collect(Collectors.toList());
+        return list.stream().map(OrderTagDTO::new).collect(Collectors.toList());
     }
 
     public TagDTO saveTag(TagDTO dto) {

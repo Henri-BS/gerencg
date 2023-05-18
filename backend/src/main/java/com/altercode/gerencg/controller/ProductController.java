@@ -71,7 +71,7 @@ public class ProductController {
     @PostMapping("/product-add")
     public ResponseEntity<ProductDTO> saveProduct(@RequestBody ProductDTO product) {
         ProductDTO newProduct = service.saveProduct(product);
-        return new ResponseEntity<ProductDTO>(newProduct, HttpStatus.CREATED);
+        return new ResponseEntity<>(newProduct, HttpStatus.CREATED);
     }
 
     @PutMapping("/product-update")

@@ -14,8 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static java.lang.Double.valueOf;
-
 @Service
 @Transactional
 public class OrderCodeService implements IOrderCodeService {
@@ -29,20 +27,17 @@ public class OrderCodeService implements IOrderCodeService {
     @Autowired
     private MeasureRepository measureRepository;
 
-    @Autowired
-    private TagRepository tagRepository;
-
     @Override
     public Page<OrderCodeDTO> findItemsByCode(Pageable pageable, String code) {
         Page<OrderCode> result = codeRepository.findOrdersByCode(pageable, code);
-        return result.map(x -> new OrderCodeDTO(x));
+        return result.map(OrderCodeDTO::new);
     }
 
     @Override
     public OrderCodeDTO findCodeById(String id) {
         OrderCode result = codeRepository.findById(id).get();
         if (result.getStats() == null) {
-            String statsId = + result.getOrderDate().getMonthValue() + "-" + result.getOrderDate().getYear();
+            String statsId = result.getOrderDate().getMonthValue() + "-" + result.getOrderDate().getYear();
             OrderStats stats = statsRepository.findById(statsId).orElseThrow();
             result.setStats(stats);
             codeRepository.save(result);
@@ -57,6 +52,12 @@ public class OrderCodeService implements IOrderCodeService {
     }
 
     @Override
+    public Page<OrderCodeDTO> findOrdersByStats(Pageable pageable, OrderStats stats) {
+        Page<OrderCode> result = codeRepository.findOrdersByStats(pageable, stats);
+        return result.map(OrderCodeDTO::new);
+    }
+
+    @Override
     public OrderCodeDTO saveOrder(OrderCodeDTO dto) {
         Measure packageType = measureRepository.findById(dto.getPackageType()).get();
 
@@ -65,9 +66,6 @@ public class OrderCodeService implements IOrderCodeService {
         add.setOrderDate(dto.getOrderDate());
         add.setDistributor(dto.getDistributor());
         add.setPackageType(packageType);
-
-        OrderCode code = codeRepository.findById(add.getCode()).orElseThrow();
-
 
         return new OrderCodeDTO(codeRepository.saveAndFlush(add));
     }
@@ -111,11 +109,7 @@ public class OrderCodeService implements IOrderCodeService {
         return new OrderCodeDTO(code);
     }
 
-    @Override
-    public Page<OrderCodeDTO> findOrdersByStats(Pageable pageable, OrderStats stats) {
-        Page<OrderCode> result = codeRepository.findOrdersByStats(pageable, stats);
-        return result.map(x -> new OrderCodeDTO(x));
-    }
+
 
     @Override
     public List<SumCategoryValueDTO> getOrderValueGroupByCategory() {

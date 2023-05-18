@@ -41,13 +41,13 @@ public class OrderItemService implements IOrderItemService {
     @Override
     public List<OrderItemDTO> findItemsByCode(OrderCode code) {
         List<OrderItem> result = itemRepository.findItemsByCode(code);
-        return result.stream().map(x -> new OrderItemDTO(x)).collect(Collectors.toList());
+        return result.stream().map(OrderItemDTO::new).collect(Collectors.toList());
     }
 
     @Override
     public List<OrderItemDTO> findItemByProduct(Product product) {
         List<OrderItem> result = itemRepository.findItemByProduct(product);
-        return result.stream().map(x -> new OrderItemDTO(x)).collect(Collectors.toList());
+        return result.stream().map(OrderItemDTO::new).collect(Collectors.toList());
     }
 
     @Override

@@ -20,7 +20,7 @@ public class CategoryService implements ICategoryService {
 
 	public Page<CategoryDTO> findAll(Pageable pageable) {
 		Page<Category> result = categoryRepository.findAll(pageable);
-		return result.map(x -> new CategoryDTO(x));
+		return result.map(CategoryDTO::new);
 	}
 
 	public CategoryDTO findById(String id) {

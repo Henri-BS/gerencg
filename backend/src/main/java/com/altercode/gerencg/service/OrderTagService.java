@@ -25,19 +25,19 @@ public class OrderTagService implements IOrderTagService {
     @Override
     public Page<OrderTagDTO> findAll(Pageable pageable){
         Page<OrderTag> list = orderTagRepository.findAll(pageable);
-        return list.map(x -> new OrderTagDTO(x));
+        return list.map(OrderTagDTO::new);
     }
 
     @Override
     public List<OrderTagDTO> findAllByTag(Tag tag){
         List<OrderTag> list = orderTagRepository.findAllByTag(tag);
-        return list.stream().map(x -> new OrderTagDTO(x)).collect(Collectors.toList());
+        return list.stream().map(OrderTagDTO::new).collect(Collectors.toList());
     }
 
     @Override
     public List<OrderTagDTO> findAllByCode(OrderCode orderCode) {
         List<OrderTag> list = orderTagRepository.findAllByCode(orderCode);
-        return list.stream().map(x -> new OrderTagDTO(x)).collect(Collectors.toList());
+        return list.stream().map(OrderTagDTO::new).collect(Collectors.toList());
     }
 
     @Override
@@ -45,5 +45,4 @@ public class OrderTagService implements IOrderTagService {
         OrderTag find = orderTagRepository.findById(id).get();
         return new OrderTagDTO(find);
     }
-
 }

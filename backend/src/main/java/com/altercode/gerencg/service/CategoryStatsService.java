@@ -38,7 +38,7 @@ public class CategoryStatsService implements ICategoryStatsService {
 		categoryRepository.findAll();
 		Page<CategoryStats> result = statsRepository.findAll(pageable);
 
-		return result.map(x -> new CategoryStatsDTO(x));
+		return result.map(CategoryStatsDTO::new);
 	}
 
 	@Override

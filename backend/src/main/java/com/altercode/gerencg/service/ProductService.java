@@ -33,13 +33,11 @@ public class ProductService implements IProductService {
     @Autowired
     private MeasureRepository measureRepository;
 
-    @Autowired
-    private OrderItemRepository itemRepository;
 
     @Override
     public Page<ProductDTO> findAll(Pageable pageable, String description) {
         Page<Product> result = productRepository.findAll(pageable, description);
-        return result.map(x -> new ProductDTO(x));
+        return result.map(ProductDTO::new);
     }
 
     @Override
@@ -49,20 +47,20 @@ public class ProductService implements IProductService {
         LocalDate max = maxValidate.equals("") ? today.plusMonths(1) : LocalDate.parse(maxValidate);
 
         Page<Product> result = productRepository.findByValidate(min, max, pageable);
-        return result.map(x -> new ProductDTO(x));
+        return result.map(ProductDTO::new);
     }
 
     @Override
     public Page<ProductDTO> findByCategory(Pageable pageable, Category category) {
         Page<Product> result = productRepository.findByCategory(pageable, category);
 
-        return result.map(x -> new ProductDTO(x));
+        return result.map(ProductDTO::new);
     }
 
     @Override
     public Page<ProductDTO> findByMeasure(Pageable pageable, Measure measure) {
         Page<Product> result = productRepository.findByMeasure(pageable, measure);
-        return result.map(x -> new ProductDTO(x));
+        return result.map(ProductDTO::new);
     }
 
     @Override

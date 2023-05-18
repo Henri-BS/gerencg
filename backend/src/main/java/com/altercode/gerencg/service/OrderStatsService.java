@@ -6,7 +6,6 @@ import com.altercode.gerencg.dto.SumQuantityOrderDTO;
 import com.altercode.gerencg.dto.SumValueOrderDTO;
 import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.OrderStats;
-import com.altercode.gerencg.repository.OrderCodeRepository;
 import com.altercode.gerencg.repository.OrderStatsRepository;
 import com.altercode.gerencg.service.interfaceservice.IOrderStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +24,6 @@ public class OrderStatsService implements IOrderStatsService {
     @Autowired
     OrderStatsRepository statsRepository;
 
-    @Autowired
-    OrderCodeRepository codeRepository;
 
     @Override
     public Page<OrderStatsDTO> findAllStats(Pageable pageable) {

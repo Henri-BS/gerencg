@@ -22,7 +22,7 @@ public class MeasureService implements IMeasureService {
 	
 	public Page<MeasureDTO> findAll(Pageable pageable) {
 		Page<Measure> result = measureRepository.findAll(pageable);
-		return result.map(x -> new MeasureDTO(x));
+		return result.map(MeasureDTO::new);
 	}
 
 	public MeasureDTO findById(String id) {

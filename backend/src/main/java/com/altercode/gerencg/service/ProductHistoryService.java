@@ -29,13 +29,13 @@ public class ProductHistoryService implements IProductHistoryService {
     @Override
     public Page<ProductHistoryDTO> findAll(Pageable pageable) {
         Page<ProductHistory> result = historyRepository.findAll(pageable);
-        return result.map(x -> new ProductHistoryDTO(x));
+        return result.map(ProductHistoryDTO::new);
     }
 
     @Override
     public Page<ProductHistoryDTO> findByProduct(Pageable pageable, Product product) {
         Page<ProductHistory> result = historyRepository.findByProduct(pageable, product);
-        return result.map(x -> new ProductHistoryDTO(x));
+        return result.map(ProductHistoryDTO::new);
     }
 
     @Override
@@ -89,7 +89,6 @@ public class ProductHistoryService implements IProductHistoryService {
     @Override
     public ProductHistoryDTO updateProductHistoryValue(ProductHistoryDTO dto) {
         ProductHistory history = historyRepository.findById(dto.getId()).get();
-
         return new ProductHistoryDTO(history);
     }
 
