@@ -41,6 +41,6 @@ sobre quantidade por data de atualização. Barra superior disponibiliza as opç
   <img align="center" alt="Henti-Ts" width="400" height="400" src="https://i.postimg.cc/Pxph87bM/product-profile.png">
 --- 
 
-###Categorias
+### Categorias
 
 - ##### Descrição em breve
