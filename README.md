@@ -43,14 +43,4 @@ sobre quantidade por data de atualização. Barra superior disponibiliza as opç
 
 ###Categorias
 
-- #####lista de categorias
-  Decrição em breve
-***
-- #####perfil da categoria 
-  Decrição em breve
-***
-- #####barra de informações
-  Decrição em breve
-***
-
-
+- ##### Descrição em breve
