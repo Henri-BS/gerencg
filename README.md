@@ -38,6 +38,7 @@ acessado na lista
   Ao selecionar um produto na lista é possível visualizar o perfil contendo as atuais informações do produto sendo elas: 
 descrição, preço, quantidade, valor e unidade de medida e a categoria. Também está presente alguns dados estatíticos 
 sobre quantidade por data de atualização. Barra superior disponibiliza as opções de atualizar, deletar ou notificar um produto.
+
   <img align="center" alt="Henti-Ts" width="400" height="400" src="https://i.postimg.cc/Pxph87bM/product-profile.png">
 --- 
 
