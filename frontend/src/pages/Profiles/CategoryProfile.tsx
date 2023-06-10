@@ -5,7 +5,6 @@ import { ProductCategoryList } from "pages/Listings/CategoryListing";
 import { useParams } from "react-router-dom";
 import "./styles.css";
 
-//Category Profile 
 export function CategoryProfile() {
 
   const params = useParams();
@@ -23,7 +22,7 @@ export function CategoryProfile() {
   );
 }
 
-//Save new category
+
 export function SaveCategoryStats() {
 
   return (
@@ -36,12 +35,10 @@ export function SaveCategoryStats() {
 export function CategoryStatsDashboard() {
   return (
     <>
-      <div className="container">
-        <h1 className=" py-4">Estatísticas das Categorias</h1>
-        <div className="max-container-charts ">
+   
+
           <CategoryStatsChart />
-        </div>
-      </div>
+
     </>
   );
 }

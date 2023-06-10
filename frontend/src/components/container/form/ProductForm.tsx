@@ -63,13 +63,9 @@ export function AddProductForm() {
             },
         };
         axios(config).then(response => {
-            setMsg("Produto Adicionado");
             navigate("/product-list");
-        }).catch(() => {
-            setMsg("Erro");
-        })
-    };
-
+    })
+    }
 
     return (
         <form className="form-container" onSubmit={handleSubmit}>
@@ -81,7 +77,7 @@ export function AddProductForm() {
                 </div>
 
                 <div className="form-group gerencg-form-group">
-                    <label htmlFor="image">Image: </label>
+                    <label htmlFor="image">Imagem: </label>
                     <input type="text" className="form-control" id="image" />
                 </div>
 
@@ -132,9 +128,7 @@ export function AddProductForm() {
                 <button className="text-close" data-bs-dismiss="modal">cancelar</button>
                 <button type="submit" className="btn-confirm">Adicionar Produto</button>
             </div>
-            <div className="msg-container">
-                <h3>{msg}</h3>
-            </div>
+         
         </form>
     );
 }

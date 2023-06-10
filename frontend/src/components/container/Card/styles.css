@@ -69,11 +69,19 @@
     align-items: center;
     width: 100%;
     padding: 10px;
-    border: 1px solid var(--white-tert);
+    border: 2px solid var(--white-tert);
+    transition: all 0.2s ease-in;
+    cursor: pointer;
 }
 
 .small-card-container h5 {
     text-align: center;
+    margin: 0;
+    padding: 8px;
+}
+
+.small-card-container:hover {
+    border-color: var(--blue-prim);
 }
 
 .history-icon-container {

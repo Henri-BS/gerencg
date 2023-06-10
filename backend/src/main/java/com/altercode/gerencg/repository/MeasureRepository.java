@@ -9,8 +9,7 @@ import com.altercode.gerencg.entity.Measure;
 
 @Repository
 public interface MeasureRepository extends JpaRepository<Measure, String>{
-	
-	Optional<Measure> findByAbbreviation(String abbreviation);
-	
+
+    Optional<Measure> findByAbbreviation(String abbreviation);
 
 }

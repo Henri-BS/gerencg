@@ -1,50 +1,30 @@
 package com.altercode.gerencg.dto;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import com.altercode.gerencg.entity.Category;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@NoArgsConstructor
+@Getter
+@Setter
 public class CategoryFlowDTO implements Serializable{
+
+	@Serial
 	private static final long serialVersionUID = 1L;
 	
 	private String categoryName;
 	private Long addedProducts;
 	private Long removedProducts;
 
-	public CategoryFlowDTO(){}
 
 	public CategoryFlowDTO(Category category, Long addedProducts, Long removedProducts) {
 		categoryName = category.getName();
 		this.addedProducts = addedProducts;
 		this.removedProducts = removedProducts;
 	}
-
-	public String getCategoryName() {
-		return categoryName;
-	}
-
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
-
-	public Long getAddedProduct() {
-		return addedProducts;
-	}
-
-	public void setAddedProduct(Long addedProduct) {
-		this.addedProducts = addedProduct;
-	}
-
-	public Long getRemovedProduct() {
-		return removedProducts;
-	}
-
-	public void setRemovedProduct(Long removedProduct) {
-		this.removedProducts = removedProduct;
-	}
-
-
-
-	
-		
 }

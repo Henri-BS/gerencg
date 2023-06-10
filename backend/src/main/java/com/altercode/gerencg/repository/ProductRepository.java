@@ -1,6 +1,5 @@
 package com.altercode.gerencg.repository;
 
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,23 +19,23 @@ import com.altercode.gerencg.entity.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product>{
 
-	Product findByDescription(String description);
+    Product findByDescription(String description);
 
-	@Query("SELECT obj FROM Product obj WHERE obj.description LIKE %?1% ORDER BY obj.description ASC")
-	Page<Product> findAll(Pageable pageable, String description);
-	
-	@Query("SELECT obj FROM Product obj WHERE obj.validate BETWEEN :min AND :max ORDER BY obj.validate DESC ")
-	Page<Product> findByValidate(LocalDate min, LocalDate max, Pageable pageable);
+    @Query("SELECT obj FROM Product obj WHERE obj.description LIKE %?1% ORDER BY obj.category ASC")
+    Page<Product> findAll(Pageable pageable, String description);
 
-	Page<Product> findByCategory(Pageable pageable, Category category);
-	
-	Page<Product> findByMeasure(Pageable pageable, Measure measure);
+    @Query("SELECT obj FROM Product obj WHERE obj.validate BETWEEN :min AND :max ORDER BY obj.validate DESC ")
+    Page<Product> findByValidate(LocalDate min, LocalDate max, Pageable pageable);
 
-	@Query("SELECT new com.altercode.gerencg.dto.SumCategoryValueDTO (obj.category, SUM(obj.quantity * obj.price))" +
-			"FROM Product AS obj GROUP BY obj.category ORDER BY SUM(obj.quantity * obj.price) DESC")
-	List<SumCategoryValueDTO> productIncomeGroupByCategory();
+    Page<Product> findByCategory(Pageable pageable, Category category);
 
-	@Query("SELECT new com.altercode.gerencg.dto.SumCategoryQuantityDTO (obj.category, SUM(obj.quantity))" +
-			"FROM Product AS obj GROUP BY obj.category ORDER BY SUM(obj.quantity) DESC")
-	List<SumCategoryQuantityDTO> productQuantityGroupByCategory();
+    Page<Product> findByMeasure(Pageable pageable, Measure measure);
+
+    @Query("SELECT new com.altercode.gerencg.dto.SumCategoryValueDTO (obj.category, SUM(obj.quantity * obj.price))" +
+            "FROM Product AS obj GROUP BY obj.category ORDER BY SUM(obj.quantity * obj.price) DESC")
+    List<SumCategoryValueDTO> productIncomeGroupByCategory();
+
+    @Query("SELECT new com.altercode.gerencg.dto.SumCategoryQuantityDTO (obj.category, SUM(obj.quantity))" +
+            "FROM Product AS obj GROUP BY obj.category ORDER BY SUM(obj.quantity) DESC")
+    List<SumCategoryQuantityDTO> productQuantityGroupByCategory();
 }

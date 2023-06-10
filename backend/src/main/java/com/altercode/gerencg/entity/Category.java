@@ -6,10 +6,18 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Table(name = "tb_category")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Category {
 	
 	@Id
@@ -38,68 +46,5 @@ public class Category {
 
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
 	private List<OrderCode> codes = new ArrayList<>();
-	
-	public Category() {
-	}
 
-	public Category( String name, String image, Integer totalProducts,
-			LocalDateTime lastModifiedDate, CategoryStats categoryStats) {
-		this.name = name;
-		this.image = image;
-		this.totalProducts = totalProducts;
-		this.lastModifiedDate = lastModifiedDate;
-		this.categoryStats = categoryStats;
-	}
-
-		public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public Integer getTotalProducts() {
-		return totalProducts;
-	}
-
-	public void setTotalProducts(Integer totalProducts) {
-		this.totalProducts = totalProducts;
-	}
-
-	public LocalDateTime getLastModifiedDate() {
-		return lastModifiedDate;
-	}
-
-	public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
-		this.lastModifiedDate = lastModifiedDate;
-	}
-
-	public Integer getTotalRegisters() {
-		return totalRegisters;
-	}
-
-	public void setTotalRegisters(Integer totalRegisters) {
-		this.totalRegisters = totalRegisters;
-	}
-
-	public CategoryStats getCategoryStats() {
-		return categoryStats;
-	}
-
-	public List<Product> getProducts() {
-		return products;
-	}
-
-	public List<OrderCode> getCodes() {
-		return codes;
-	}
 }

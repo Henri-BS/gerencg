@@ -11,7 +11,6 @@ import { MdClose } from "react-icons/md";
 import { GetHistoryCard as LargeHistoryCard } from "components/container/Card/ProductCard";
 import { OrderItemListByProduct } from "pages/Listings/OrderListing";
 
-//Product profile 
 export function ProductProfile() {
   const params = useParams();
 
@@ -73,7 +72,6 @@ export function ProductHistoryProfile() {
   );
 }
 
-//Measure profile
 export function MeasureProfile() {
 
   const params = useParams();
@@ -90,7 +88,6 @@ export function MeasureProfile() {
   );
 }
 
-//Product Dashboard
 export function ProductDashboard() {
 
   return (

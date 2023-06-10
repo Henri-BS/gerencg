@@ -2,13 +2,22 @@ package com.altercode.gerencg.dto;
 
 import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.Tag;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+@NoArgsConstructor
+@Getter
+@Setter
 public class OrderCodeDTO implements Serializable {
+
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private String code;
@@ -22,9 +31,6 @@ public class OrderCodeDTO implements Serializable {
     private String statsId;
     private String categoryId;
 
-    public OrderCodeDTO() {
-    }
-
     public OrderCodeDTO(OrderCode entity) {
         code = entity.getCode();
         orderDate = entity.getOrderDate();
@@ -37,86 +43,4 @@ public class OrderCodeDTO implements Serializable {
         statsId = entity.getStats().getId();
         categoryId = entity.getCategory().getName();
     }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public LocalDate getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(LocalDate orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public String getDistributor() {
-        return distributor;
-    }
-
-    public void setDistributor(String distributor) {
-        this.distributor = distributor;
-    }
-
-    public Double getTotalValue() {
-        return totalValue;
-    }
-
-    public void setTotalValue(Double totalValue) {
-        this.totalValue = totalValue;
-    }
-
-    public Integer getTotalQuantity() {
-        return totalQuantity;
-    }
-
-    public void setTotalQuantity(Integer totalQuantity) {
-        this.totalQuantity = totalQuantity;
-    }
-
-    public Integer getTotalPackage() {
-        return totalPackage;
-    }
-
-    public void setTotalPackage(Integer totalPackage) {
-        this.totalPackage = totalPackage;
-    }
-
-    public String getPackageType() {
-        return packageType;
-    }
-
-    public void setPackageType(String packageType) {
-        this.packageType = packageType;
-    }
-
-    public Integer getAmountItems() {
-        return amountItems;
-    }
-
-    public void setAmountItems(Integer amountItems) {
-        this.amountItems = amountItems;
-    }
-
-    public String getStatsId() {
-        return statsId;
-    }
-
-    public void setStatsId(String statsId) {
-        this.statsId = statsId;
-    }
-
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
-    }
-
-
 }

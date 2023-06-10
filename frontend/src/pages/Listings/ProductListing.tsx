@@ -20,7 +20,7 @@ export function ProductsList() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/product-search?description=${value}&size=21&page=${pageNumber}`)
+        axios.get(`${BASE_URL}/product-search?description=${value}&size=12&page=${pageNumber}`)
             .then(response => {
                 setProductPage(response.data);
             });
@@ -83,7 +83,6 @@ export function ProductsList() {
     );
 }
 
-//Find all products by validate
 export function ProductValidateList() {
 
     const min = new Date(new Date().setDate(new Date().getDate() - 30))
@@ -173,8 +172,6 @@ export function ProductValidateList() {
     );
 }
 
-
-//Find all product history
 export function ProductHistoryList() {
     const [historyPage, setHistoryPage] = useState<ProductHistoryPage>({
         content: [],
@@ -207,7 +204,6 @@ export function ProductHistoryList() {
     );
 }
 
-//Find product history by product
 export function ListHistoryByProduct({ productId }: ProductProps) {
     const [historyPage, setHistoryPage] = useState<ProductHistoryPage>({
         content: [],

@@ -1,5 +1,10 @@
 package com.altercode.gerencg.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -7,6 +12,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "tb_order_code")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class OrderCode {
 
     @Id
@@ -47,101 +56,4 @@ public class OrderCode {
 
     @OneToMany( mappedBy = "code", cascade = CascadeType.ALL)
     private Set<OrderTag> orderTags = new HashSet<>();
-
-    public OrderCode() {
-    }
-
-    public OrderCode(String code) {
-        this.code = code;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public LocalDate getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(LocalDate orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public String getDistributor() {
-        return distributor;
-    }
-
-    public void setDistributor(String distributor) {
-        this.distributor = distributor;
-    }
-
-    public Double getTotalValue() {
-        return totalValue;
-    }
-
-    public void setTotalValue(Double totalValue) {
-        this.totalValue = totalValue;
-    }
-
-    public Integer getTotalQuantity() {
-        return totalQuantity;
-    }
-
-    public void setTotalQuantity(Integer totalQuantity) {
-        this.totalQuantity = totalQuantity;
-    }
-
-    public Integer getTotalPackage() {
-        return totalPackage;
-    }
-
-    public void setTotalPackage(Integer totalPackage) {
-        this.totalPackage = totalPackage;
-    }
-
-    public Integer getAmountItems() {
-        return amountItems;
-    }
-
-    public void setAmountItems(Integer amountItems) {
-        this.amountItems = amountItems;
-    }
-
-    public Measure getPackageType() {
-        return packageType;
-    }
-
-    public void setPackageType(Measure packageType) {
-        this.packageType = packageType;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public OrderStats getStats() {
-        return stats;
-    }
-
-    public void setStats(OrderStats stats) {
-        this.stats = stats;
-    }
-
-    public Set<OrderItem> getItems() {
-        return items;
-    }
-
-    public Set<OrderTag> getOrderTags() {
-        return orderTags;
-    }
-
-
 }

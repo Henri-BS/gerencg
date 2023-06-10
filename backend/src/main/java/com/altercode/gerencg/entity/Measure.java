@@ -1,5 +1,10 @@
 package com.altercode.gerencg.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,6 +12,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_measure")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Measure {
 	
 	@Id
@@ -22,45 +31,5 @@ public class Measure {
 
 	@OneToMany(mappedBy = "packageType", cascade = CascadeType.ALL)
 	private Set<OrderCode> codes = new HashSet<>();
-	
-	public Measure() {
-	}
-	
-	public Measure(String abbreviation, String description, Set<Product> product) {
-		this.abbreviation = abbreviation;
-		this.description = description;
-		this.product = product;
-	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getAbbreviation() {
-		return abbreviation;
-	}
-
-	public void setAbbreviation(String abbreviation) {
-		this.abbreviation = abbreviation;
-	}
-
-	public Set<Product> getProduct() {
-		return product;
-	}
-
-	public void setProduct(Set<Product> product) {
-		this.product = product;
-	}
-
-	public Set<OrderCode> getCodes() {
-		return codes;
-	}
-
-	public void setCodes(Set<OrderCode> codes) {
-		this.codes = codes;
-	}
 }

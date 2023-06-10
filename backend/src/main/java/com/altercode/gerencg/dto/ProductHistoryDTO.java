@@ -1,12 +1,21 @@
 package com.altercode.gerencg.dto;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.altercode.gerencg.entity.ProductHistory;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@NoArgsConstructor
+@Getter
+@Setter
 public class ProductHistoryDTO implements Serializable {
+
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
@@ -17,9 +26,6 @@ public class ProductHistoryDTO implements Serializable {
 	private Double income;
 	private LocalDate createdDate;
 
-	public ProductHistoryDTO() {
-	}
-
 	public ProductHistoryDTO(ProductHistory entity) {
 		id = entity.getId();
 		productId = entity.getProduct().getId();
@@ -28,68 +34,5 @@ public class ProductHistoryDTO implements Serializable {
 		validate = entity.getValidate();
 		income = Math.round(entity.getIncome() *100) /100.0;
 		createdDate = entity.getCreatedDate();
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getProductId() {
-		return productId;
-	}
-
-
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
-
-	public Double getPrice() {
-		return price;
-	}
-
-
-	public void setPrice(Double price) {
-		this.price = price;
-	}
-
-
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
-
-
-	public LocalDate getValidate() {
-		return validate;
-	}
-
-
-	public void setValidate(LocalDate validate) {
-		this.validate = validate;
-	}
-
-	public Double getIncome() {
-		return income;
-	}
-
-	public void setIncome(Double income) {
-		this.income = income;
-	}
-
-	public LocalDate getCreatedDate() {
-		return createdDate;
-	}
-
-
-	public void setCreatedDate(LocalDate createdDate) {
-		this.createdDate = createdDate;
 	}
 }

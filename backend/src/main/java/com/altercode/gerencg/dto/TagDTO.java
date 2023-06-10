@@ -2,9 +2,13 @@ package com.altercode.gerencg.dto;
 
 import com.altercode.gerencg.entity.Tag;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class TagDTO implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     private String tagId;
     private String description;

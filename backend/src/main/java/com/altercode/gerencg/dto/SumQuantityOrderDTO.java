@@ -1,15 +1,12 @@
 package com.altercode.gerencg.dto;
 
+import java.io.Serial;
 import java.io.Serializable;
 
-public class SumQuantityOrderDTO implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class SumQuantityOrderDTO  {
 
     private String statsId;
     private Long sumOrders;
-
-    public SumQuantityOrderDTO() {
-    }
 
     public SumQuantityOrderDTO(String stats, Long amountOrder) {
         statsId = stats;

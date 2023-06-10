@@ -213,13 +213,12 @@ type Cons = {
 }
 
 export function SmallItemCard({ item }: Cons) {
-    return (
+    return (  
+    <Link to={`/item/${item.id}`}>
         <div className="small-card-container">
-            <h5>Código do Pedido: {item.orderCode}
-                <Link to={`/item/${item.id}`}>
-                    <span className="history-icon-container"><MdInfoOutline /></span>
-                </Link>
+            <h5>Código do Pedido: {item.orderCode}            
             </h5>
-        </div>
+        </div>    
+        </Link>
     );
 }

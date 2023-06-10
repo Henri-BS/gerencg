@@ -1,8 +1,7 @@
 package com.altercode.gerencg.dto;
 
-import java.io.Serializable;
 
-public class OrderStatsTotalValueDTO implements Serializable {
+public class OrderStatsTotalValueDTO {
     private String statsId;
     private Double totalValue;
     private Double maxValue;

@@ -59,14 +59,11 @@ export function ProductHistoryCard({ history }: Cons) {
 
     const params = useParams();
     return (
-        <>
+        <>   <Link to={`/history/${history.id}`}>
             <div className="small-card-container">
                 <h5>Data de Registro: {moment(history.createdDate).format("DD/MM/YYYY")}
-                    <Link to={`/history/${history.id}`}>
-                        <span className="history-icon-container"><MdInfoOutline /></span>
-                    </Link>
                 </h5>
-            </div>
+            </div> </Link>
             <div className="modal fade" role="dialog" id="deleteHistoryModal">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">

@@ -5,7 +5,6 @@ import com.altercode.gerencg.entity.Category;
 import com.altercode.gerencg.entity.Measure;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.CategoryRepository;
-import com.altercode.gerencg.repository.OrderItemRepository;
 import com.altercode.gerencg.repository.MeasureRepository;
 import com.altercode.gerencg.repository.ProductRepository;
 import com.altercode.gerencg.service.interfaceservice.IProductService;

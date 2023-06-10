@@ -52,7 +52,7 @@ function NavBar() {
             </nav>
 
             <div className="modal fade" role="dialog" id="saveProductModal">
-                <div className="modal-dialog" role="document">
+                <div className="modal-dialog modal-lg" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
                             <div className="modal-title" id="productLabel">Adicionar um novo produto

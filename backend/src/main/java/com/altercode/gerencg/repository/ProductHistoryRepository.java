@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductHistoryRepository extends JpaRepository<ProductHistory, Long>{
 
-	Page<ProductHistory> findByProduct(Pageable pageable, Product product);
-		
+    Page<ProductHistory> findByProduct(Pageable pageable, Product product);
+
 }

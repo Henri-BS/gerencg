@@ -39,7 +39,7 @@ public class CategoryController {
     @PostMapping("/add")
     public ResponseEntity<CategoryDTO> addCategory(@RequestBody CategoryDTO category) {
     	CategoryDTO newCategory = categoryService.addCategory(category);
-    	return new ResponseEntity<CategoryDTO>(newCategory , HttpStatus.CREATED);
+    	return new ResponseEntity<>(newCategory , HttpStatus.CREATED);
     }
     
     @PutMapping("/edit")

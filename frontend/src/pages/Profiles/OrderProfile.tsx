@@ -64,9 +64,11 @@ export function OrderStatsDashboard() {
       <OrderStatsTotalValuesBar />
       <div className="max-container-charts ">
         <OrderStatsCharts />
-        <OrderStatsChartByCategory />
-      </div>
-      <CategoryStatsDashboard/>
+
+      
+      <h1 className=" py-4">Estatísticas por Categoria</h1>
+      <OrderStatsChartByCategory />
+      <CategoryStatsDashboard/> </div>       
     </div>
   );
 }

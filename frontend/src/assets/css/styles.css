@@ -76,7 +76,8 @@ a {
 /*modal styled*/
 
 .modal-content {
-    max-height: 520px;
+    height: 580px;
+    font-size: small;
     border-radius: 8px;
     overflow-y: scroll;
     background-color: var(--dark-tert);

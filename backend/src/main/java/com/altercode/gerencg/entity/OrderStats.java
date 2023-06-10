@@ -1,5 +1,10 @@
 package com.altercode.gerencg.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -7,6 +12,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "tb_order_stats")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class OrderStats {
     @Id
     @Column(name = "stats_id", length = 10)
@@ -32,78 +41,4 @@ public class OrderStats {
 
     @OneToMany(mappedBy = "stats", cascade = CascadeType.ALL)
     private final Set<OrderCode> codes = new HashSet<>();
-
-    public OrderStats() {
-    }
-
-    public OrderStats(String id, LocalDate initialDate, LocalDate finalDate, Double totalValue,
-                      Double averageWeek, Integer amountOrder, Integer amountItems) {
-        this.id = id;
-        this.initialDate = initialDate;
-        this.finalDate = finalDate;
-        this.totalValue = totalValue;
-        this.averageWeek = averageWeek;
-        this.amountOrder = amountOrder;
-        this.amountItems = amountItems;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public LocalDate getInitialDate() {
-        return initialDate;
-    }
-
-    public void setInitialDate(LocalDate initialDate) {
-        this.initialDate = initialDate;
-    }
-
-    public LocalDate getFinalDate() {
-        return finalDate;
-    }
-
-    public void setFinalDate(LocalDate finalDate) {
-        this.finalDate = finalDate;
-    }
-
-    public Double getTotalValue() {
-        return totalValue;
-    }
-
-    public void setTotalValue(Double totalValue) {
-        this.totalValue = totalValue;
-    }
-
-    public Double getAverageWeek() {
-        return averageWeek;
-    }
-
-    public void setAverageWeek(Double averageWeek) {
-        this.averageWeek = averageWeek;
-    }
-
-    public Integer getAmountOrder() {
-        return amountOrder;
-    }
-
-    public void setAmountOrder(Integer amountOrder) {
-        this.amountOrder = amountOrder;
-    }
-
-    public Integer getAmountItems() {
-        return amountItems;
-    }
-
-    public void setAmountItems(Integer amountItems) {
-        this.amountItems = amountItems;
-    }
-
-    public Set<OrderCode> getCodes() {
-        return codes;
-    }
 }

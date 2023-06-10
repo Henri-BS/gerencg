@@ -8,6 +8,23 @@
     color: var(--white-seco);
 }
 
+.form-card-container {
+    background-color: var(--dark-tert);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.form-card-container h3 {
+    color: var(--white-seco);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    min-height: 40px;
+}
+
 .gerencg-form-group option {
     background-color: var(--dark-tert);
 }
@@ -37,23 +54,6 @@
 
 .form-links:hover {
     color: var(--white-seco);
-}
-
-.form-card-container {
-    background-color: var(--dark-tert);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 12px;
-    border-radius: 8px;
-}
-
-.form-card-container h3 {
-    color: var(--white-seco);
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;
-    min-height: 40px;
 }
 
 .form-btn-container {

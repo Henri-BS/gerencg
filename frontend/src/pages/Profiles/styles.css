@@ -42,7 +42,9 @@
 }
 
 .menu-option h2 {
+    margin: 0;
     font-size: x-large;
+    padding: 8px;
 }
 
 .container-blur {

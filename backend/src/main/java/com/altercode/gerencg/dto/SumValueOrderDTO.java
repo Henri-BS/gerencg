@@ -2,7 +2,7 @@ package com.altercode.gerencg.dto;
 
 import java.io.Serializable;
 
-public class SumValueOrderDTO implements Serializable  {
+public class SumValueOrderDTO {
     private String statsId;
     private Double value;
 

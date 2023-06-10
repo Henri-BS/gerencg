@@ -43,9 +43,6 @@ public class Product {
     private Category category;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private final Set<Calculator> calculators = new HashSet<>();
-
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private final Set<ProductHistory> history = new HashSet<>();
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
@@ -163,10 +160,6 @@ public class Product {
 
     public void setIncome(Double income) {
         this.income = income;
-    }
-
-    public Set<Calculator> getCalculators() {
-        return calculators;
     }
 
     public Set<ProductHistory> getAllHistory() {

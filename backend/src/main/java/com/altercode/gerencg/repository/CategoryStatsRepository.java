@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CategoryStatsRepository extends JpaRepository<CategoryStats, Long> {
 
-    @Query("SELECT new com.altercode.gerencg.dto.CategoryStatsTotalValueDTO (SUM(obj.income), MAX(obj.income))" +
+    @Query("SELECT new com.altercode.gerencg.dto.OrderStatsTotalValueDTO (SUM(obj.income), MAX(obj.income))" +
             "FROM CategoryStats AS obj")
     CategoryStatsTotalValueDTO getCategoryStatsTotalValue();
 

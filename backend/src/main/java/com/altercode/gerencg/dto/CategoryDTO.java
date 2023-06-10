@@ -1,11 +1,21 @@
 package com.altercode.gerencg.dto;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import com.altercode.gerencg.entity.Category;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@NoArgsConstructor
+@Getter
+@Setter
 public class CategoryDTO implements Serializable{
+
+	@Serial
 	private static final long serialVersionUID = 1L;
 	
 	private String name;
@@ -13,8 +23,6 @@ public class CategoryDTO implements Serializable{
 	private Integer totalProducts;
 	private Integer totalRegisters;
 	private LocalDateTime lastModifiedDate;
-	
-	public CategoryDTO() {}
 
 	public CategoryDTO(Category entity) {
 		name = entity.getName();
@@ -23,47 +31,4 @@ public class CategoryDTO implements Serializable{
 		totalRegisters = entity.getTotalRegisters();
 		lastModifiedDate = entity.getLastModifiedDate();
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public Integer getTotalProducts() {
-		return totalProducts;
-	}
-
-	public void setTotalProducts(Integer totalProducts) {
-		this.totalProducts = totalProducts;
-	}
-	
-	public Integer getTotalRegisters() {
-		return totalRegisters;
-	}
-
-	public void setTotalRegisters(Integer totalRegisters) {
-		this.totalRegisters = totalRegisters;
-	}
-
-	public LocalDateTime getLastModifiedDate() {
-		return lastModifiedDate;
-	}
-
-	public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
-		this.lastModifiedDate = lastModifiedDate;
-	}
-	
-	
-	
 }

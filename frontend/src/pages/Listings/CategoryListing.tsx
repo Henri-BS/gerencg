@@ -7,7 +7,6 @@ import { CategoryPage, CategoryProps } from "types/category";
 import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 
-//Find all categories
 export function CategoryList() {
 
     const [categoryPage, setCategoryPage] = useState<CategoryPage>({
@@ -31,7 +30,7 @@ export function CategoryList() {
                 <div className="page-container">
                     <div className="list-container row">
                         {categoryPage.content?.map(category => (
-                            <div key={category.name} className="col-sm-12 mb-3">
+                            <div key={category.name} className="col-12 col-md-6 mb-3">
                                 <CategoryCard category={category} />
                             </div>
                         ))}
@@ -42,7 +41,6 @@ export function CategoryList() {
     );
 }
 
-//Find all products by category
 export function ProductCategoryList({ categoryId }: CategoryProps) {
 
     const [pageNumber, setPageNumber] = useState(0);
@@ -54,8 +52,7 @@ export function ProductCategoryList({ categoryId }: CategoryProps) {
     useEffect(() => {
         axios.get(`${BASE_URL}/find-products-by-category/${categoryId}/?page=${pageNumber}&size=6`)
             .then(response => {
-                const data = response.data as ProductPage;
-                setProductPage(data);
+                setProductPage(response.data);
             });
     }, [categoryId, pageNumber]);
 
