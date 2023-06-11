@@ -1,4 +1,4 @@
-package com.altercode.gerencg.service.interfaceservice;
+package com.altercode.gerencg.service.interf;
 
 import com.altercode.gerencg.dto.CategoryDTO;
 import org.springframework.data.domain.Page;

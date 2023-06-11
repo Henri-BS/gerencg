@@ -1,6 +1,6 @@
 package com.altercode.gerencg.service;
 
-import com.altercode.gerencg.service.interfaceservice.ICategoryService;
+import com.altercode.gerencg.service.interf.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

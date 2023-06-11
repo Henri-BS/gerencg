@@ -4,10 +4,9 @@ import com.altercode.gerencg.dto.OrderTagDTO;
 import com.altercode.gerencg.dto.TagDTO;
 import com.altercode.gerencg.entity.OrderTag;
 import com.altercode.gerencg.entity.Tag;
-import com.altercode.gerencg.repository.OrderCodeRepository;
 import com.altercode.gerencg.repository.OrderTagRepository;
 import com.altercode.gerencg.repository.TagRepository;
-import com.altercode.gerencg.service.interfaceservice.ITagService;
+import com.altercode.gerencg.service.interf.ITagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,9 +22,6 @@ public class TagService implements ITagService {
 
     @Autowired
     private TagRepository tagRepository;
-
-    @Autowired
-    private OrderCodeRepository codeRepository;
 
     @Autowired
     private OrderTagRepository orderTagRepository;
@@ -50,7 +46,6 @@ public class TagService implements ITagService {
 
     public TagDTO saveTag(TagDTO dto) {
         Tag add = new Tag();
-        add.setTagId(dto.getTagId());
         add.setDescription(dto.getDescription());
         return new TagDTO(tagRepository.saveAndFlush(add));
     }

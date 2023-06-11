@@ -5,7 +5,7 @@ import com.altercode.gerencg.dto.SumCategoryQuantityDTO;
 import com.altercode.gerencg.dto.SumCategoryValueDTO;
 import com.altercode.gerencg.entity.*;
 import com.altercode.gerencg.repository.*;
-import com.altercode.gerencg.service.interfaceservice.IOrderCodeService;
+import com.altercode.gerencg.service.interf.IOrderCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

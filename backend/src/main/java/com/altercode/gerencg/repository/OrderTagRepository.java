@@ -14,4 +14,5 @@ public interface OrderTagRepository extends JpaRepository<OrderTag, Long> {
 
     List<OrderTag> findAllByCode(OrderCode code);
 
+    void deleteTagByCode(Long id);
 }

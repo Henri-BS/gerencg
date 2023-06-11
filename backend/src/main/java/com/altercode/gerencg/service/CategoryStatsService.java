@@ -8,7 +8,7 @@ import com.altercode.gerencg.dto.SumCategoryValueDTO;
 import com.altercode.gerencg.entity.Category;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.ProductRepository;
-import com.altercode.gerencg.service.interfaceservice.ICategoryStatsService;
+import com.altercode.gerencg.service.interf.ICategoryStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,9 +1,6 @@
 package com.altercode.gerencg.controller;
 
-import com.altercode.gerencg.dto.OrderCodeDTO;
-import com.altercode.gerencg.dto.OrderTagDTO;
 import com.altercode.gerencg.dto.TagDTO;
-import com.altercode.gerencg.entity.Tag;
 import com.altercode.gerencg.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,6 +22,12 @@ public class TagController {
     public ResponseEntity<Page<TagDTO>> findTagsByTitle(Pageable pageable) {
         Page<TagDTO> list = tagService.findAllTags(pageable);
         return ResponseEntity.ok(list);
+    }
+
+    @PostMapping("/tag-add")
+    public ResponseEntity<TagDTO> saveTag(@RequestBody TagDTO dto){
+        TagDTO add = tagService.saveTag(dto);
+        return  new ResponseEntity<>(add, HttpStatus.CREATED);
     }
 
     @PostMapping("/all-tags-by-title")

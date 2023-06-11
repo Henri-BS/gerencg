@@ -4,8 +4,10 @@ import com.altercode.gerencg.dto.OrderTagDTO;
 import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.OrderTag;
 import com.altercode.gerencg.entity.Tag;
+import com.altercode.gerencg.repository.OrderCodeRepository;
 import com.altercode.gerencg.repository.OrderTagRepository;
-import com.altercode.gerencg.service.interfaceservice.IOrderTagService;
+import com.altercode.gerencg.repository.TagRepository;
+import com.altercode.gerencg.service.interf.IOrderTagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +23,12 @@ public class OrderTagService implements IOrderTagService {
 
     @Autowired
     private OrderTagRepository orderTagRepository;
+
+    @Autowired
+    private OrderCodeRepository orderRepository;
+
+    @Autowired
+    private TagRepository tagRepository;
 
     @Override
     public Page<OrderTagDTO> findAll(Pageable pageable){
@@ -44,5 +52,23 @@ public class OrderTagService implements IOrderTagService {
     public OrderTagDTO findOrderTagById(Long id) {
         OrderTag find = orderTagRepository.findById(id).get();
         return new OrderTagDTO(find);
+    }
+
+    @Override
+    public OrderTagDTO saveTagOrder(OrderTagDTO dto) {
+        OrderCode code = orderRepository.findById(dto.getCodeId()).orElseThrow();
+        Tag tag = tagRepository.findById(dto.getTagId()).orElseThrow();
+
+        OrderTag add = new OrderTag();
+        add.setCode(code);
+        add.setTag(tag);
+
+        return new OrderTagDTO(orderTagRepository.saveAndFlush(add));
+
+    }
+
+    @Override
+    public void deleteOrderTag(Long id) {
+        this.orderTagRepository.deleteById(id);
     }
 }

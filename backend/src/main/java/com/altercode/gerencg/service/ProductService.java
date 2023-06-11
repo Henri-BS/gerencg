@@ -7,7 +7,7 @@ import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.CategoryRepository;
 import com.altercode.gerencg.repository.MeasureRepository;
 import com.altercode.gerencg.repository.ProductRepository;
-import com.altercode.gerencg.service.interfaceservice.IProductService;
+import com.altercode.gerencg.service.interf.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

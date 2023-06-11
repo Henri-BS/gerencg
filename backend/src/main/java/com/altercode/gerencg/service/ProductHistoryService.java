@@ -2,7 +2,7 @@ package com.altercode.gerencg.service;
 
 import com.altercode.gerencg.entity.OrderItem;
 import com.altercode.gerencg.repository.*;
-import com.altercode.gerencg.service.interfaceservice.IProductHistoryService;
+import com.altercode.gerencg.service.interf.IProductHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -7,7 +7,7 @@ import com.altercode.gerencg.dto.SumValueOrderDTO;
 import com.altercode.gerencg.entity.OrderCode;
 import com.altercode.gerencg.entity.OrderStats;
 import com.altercode.gerencg.repository.OrderStatsRepository;
-import com.altercode.gerencg.service.interfaceservice.IOrderStatsService;
+import com.altercode.gerencg.service.interf.IOrderStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

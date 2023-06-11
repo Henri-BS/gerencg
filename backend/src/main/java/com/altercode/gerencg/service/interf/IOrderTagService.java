@@ -1,4 +1,4 @@
-package com.altercode.gerencg.service.interfaceservice;
+package com.altercode.gerencg.service.interf;
 
 import com.altercode.gerencg.dto.OrderTagDTO;
 import com.altercode.gerencg.entity.OrderCode;
@@ -16,4 +16,8 @@ public interface IOrderTagService {
     List<OrderTagDTO> findAllByCode(OrderCode orderCode);
 
     OrderTagDTO findOrderTagById(Long id);
+
+    OrderTagDTO saveTagOrder(OrderTagDTO dto);
+
+    void deleteOrderTag(Long id);
 }
