@@ -1,11 +1,12 @@
 import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Code, CodeProps, Item, ItemProps } from "types/order";
 import { MeasurePage } from "types/measure";
 import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css";
+import { MdClose, MdLibraryBooks } from "react-icons/md";
 
 export function SaveOrderForm() {
     const navigate = useNavigate();
@@ -46,7 +47,18 @@ export function SaveOrderForm() {
         })
     }
     return (
+
         <form className="form-container" onSubmit={handleSubmit}>
+               <div className="modal-header" >
+                            <div className="modal-title" id="commissionLabel">Adicionar um novo pedido
+                                <span data-bs-dismiss="modal">
+                                    <Link to="/order/list" className="form-links" > <MdLibraryBooks /></Link>
+                                </span>
+                            </div>
+                            <button className="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><MdClose /></span>
+                            </button>
+                        </div>
             <div className="form-card-container">
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="code">Código do Pedido: </label>
@@ -75,7 +87,6 @@ export function SaveOrderForm() {
                 <button className="text-close">cancelar</button>
                 <button type="submit" className="btn-confirm">Adicionar Pedido</button>
             </div>
-
         </form>
     );
 }
@@ -157,7 +168,6 @@ export function EditOrderForm({ codeId }: CodeProps) {
     );
 }
 
-//Item Forms
 export function AddItemForm({ codeId }: CodeProps) {
     
     const navigate = useNavigate();

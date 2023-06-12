@@ -45,8 +45,8 @@ public class OrderTagController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<OrderTagDTO> saveTagOrder(@RequestBody OrderTagDTO dto) {
-        OrderTagDTO add = orderTagService.saveTagOrder(dto);
+    public ResponseEntity<OrderTagDTO> saveOrderTag(@RequestBody OrderTagDTO dto) {
+        OrderTagDTO add = orderTagService.saveOrderTag(dto);
         return new ResponseEntity<>(add, HttpStatus.CREATED);
     }
 

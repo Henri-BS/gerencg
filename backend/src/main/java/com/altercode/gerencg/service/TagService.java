@@ -44,8 +44,10 @@ public class TagService implements ITagService {
         return list.stream().map(OrderTagDTO::new).collect(Collectors.toList());
     }
 
+    @Override
     public TagDTO saveTag(TagDTO dto) {
         Tag add = new Tag();
+        add.setTagId(dto.getTagId());
         add.setDescription(dto.getDescription());
         return new TagDTO(tagRepository.saveAndFlush(add));
     }

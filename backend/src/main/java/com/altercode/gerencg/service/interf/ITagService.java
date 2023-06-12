@@ -12,4 +12,6 @@ public interface ITagService {
 
     List<TagDTO> getAllTags(List<String> title);
     List<OrderTagDTO> findAllOrdersByTag();
+
+    TagDTO saveTag(TagDTO dto);
 }

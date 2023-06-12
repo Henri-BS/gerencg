@@ -8,9 +8,8 @@ import { BASE_URL } from "utils/requests";
 
 export function AddProductForm() {
     const navigate = useNavigate();
-    const [msg, setMsg] = useState('')
 
-    //Get MeasureList for the measure type selector        
+    //Get MeasueList for the measure type selector        
     const [measureList, setMeasure] = useState<MeasurePage>({
         content: [],
         number: 0,
@@ -60,7 +59,7 @@ export function AddProductForm() {
                 measureValue: measureValue,
                 measure: measure,
                 category: category
-            },
+            }
         };
         axios(config).then(response => {
             navigate("/product-list");

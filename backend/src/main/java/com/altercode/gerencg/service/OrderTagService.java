@@ -55,7 +55,7 @@ public class OrderTagService implements IOrderTagService {
     }
 
     @Override
-    public OrderTagDTO saveTagOrder(OrderTagDTO dto) {
+    public OrderTagDTO saveOrderTag(OrderTagDTO dto) {
         OrderCode code = orderRepository.findById(dto.getCodeId()).orElseThrow();
         Tag tag = tagRepository.findById(dto.getTagId()).orElseThrow();
 

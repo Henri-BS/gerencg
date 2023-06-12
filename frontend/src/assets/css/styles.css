@@ -29,6 +29,19 @@ body {
     background-color: var(--dark-tert);
 }
 
+body::-webkit-scrollbar {
+    border-radius: 0px 8px 8px 0px;
+    background-color: var(--dark-tert);
+    width: 10px;
+    margin: 4px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--dark-prim);
+    border: 1px solid var(--dark-tert);
+    border-radius: 8px;
+}
+
 a {
     text-decoration: none;
     color: var(--dark-tert);
@@ -76,25 +89,12 @@ a {
 /*modal styled*/
 
 .modal-content {
-    height: 580px;
+    max-height: 580px;
     font-size: small;
     border-radius: 8px;
     overflow-y: scroll;
     background-color: var(--dark-tert);
     color: var(--white-prim);
-}
-
-.modal-content::-webkit-scrollbar {
-    border-radius: 0px 8px 8px 0px;
-    background-color: var(--dark-tert);
-    width: 10px;
-    margin: 4px;
-}
-
-.modal-content::-webkit-scrollbar-thumb {
-    background-color: var(--dark-prim);
-    border: 1px solid var(--dark-tert);
-    border-radius: 8px;
 }
 
 .modal-header span {

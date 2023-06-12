@@ -6,6 +6,7 @@ import { useState } from "react";
 import { MdClose, MdLibraryBooks } from "react-icons/md";
 import { AddProductForm } from "components/container/Form/ProductForm";
 import { SaveOrderForm } from "components/container/Form/OrderForm";
+import { TagAddForm } from "components/container/Form/TagForm";
 
 function NavBar() {
     const [click, setClick] = useState(false);
@@ -32,7 +33,7 @@ function NavBar() {
                     </li>
 
                     <li className="navbar-item">
-                        <div data-bs-toggle="modal" data-bs-target="#saveCommissionModal" className="navbar-link" onClick={closeMobileMenu}>
+                        <div data-bs-toggle="modal" data-bs-target="#saveOrderModal" className="navbar-link" onClick={closeMobileMenu}>
                             <AiIcons.AiOutlineProfile /> Novo Pedido
                         </div>
                     </li>
@@ -47,6 +48,12 @@ function NavBar() {
                         <Link className="navbar-link" to="/measure/list" onClick={closeMobileMenu}>
                             <AiIcons.AiOutlineDashboard /> Medidas
                         </Link>
+                    </li>
+
+                    <li className="navbar-item">
+                    <div data-bs-toggle="modal" data-bs-target="#saveTagModal" className="navbar-link" onClick={closeMobileMenu}>
+                            <AiIcons.AiFillTags /> Tags
+                        </div>
                     </li>
                 </ul>
             </nav>
@@ -69,24 +76,33 @@ function NavBar() {
                 </div>
             </div>
 
-            <div className="modal fade" role="dialog" id="saveCommissionModal">
+            <div className="modal fade" role="dialog" id="saveOrderModal">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
-                        <div className="modal-header" >
-                            <div className="modal-title" id="commissionLabel">Adicionar um novo pedido
-                                <span data-bs-dismiss="modal">
-                                    <Link to="/order/list" className="form-links" > <MdLibraryBooks /></Link>
-                                </span>
-                            </div>
-                            <button className="close" data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"><MdClose /></span>
-                            </button>
-                        </div>
+                     
                         <div className="modal-body"><SaveOrderForm /></div>
                     </div>
                 </div>
             </div>
 
+            <div className="modal fade" role="dialog" id="saveTagModal">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header" >
+                            <div className="modal-title" id="commissionLabel">Adicionar Tag 
+                          
+                            </div>
+                           
+                            <button className="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><MdClose /></span>
+                            </button>
+                          
+                        </div>  <div className="modal-body">
+                            <TagAddForm />
+                            </div>
+                    </div>
+                </div>
+            </div>
         </>
 
     );

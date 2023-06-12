@@ -17,7 +17,7 @@ public interface IOrderTagService {
 
     OrderTagDTO findOrderTagById(Long id);
 
-    OrderTagDTO saveTagOrder(OrderTagDTO dto);
+    OrderTagDTO saveOrderTag(OrderTagDTO dto);
 
     void deleteOrderTag(Long id);
 }
