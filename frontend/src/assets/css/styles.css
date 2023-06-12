@@ -48,6 +48,11 @@ a {
     transition: all 0.2s ease-in-out;
 }
 
+abbr {
+    position: relative;
+    transition: all 0.1s ease-in-out;
+}
+
 .content {
     flex: 1 0 auto;
 }
@@ -114,6 +119,13 @@ a {
     border-radius: 100%;
 }
 
+.pagination {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 
 /*button styled*/
 
@@ -128,12 +140,7 @@ a {
     border: none;
 }
 
-.btn-primary:hover {
-    background-color: var(--blue-quin);
-    color: var(--white-tert);
-}
-
-.btn-primary:focus {
+.btn-primary:hover:focus {
     background-color: var(--blue-quin);
     color: var(--white-tert);
 }

@@ -8,12 +8,15 @@ export type Props = {
 export function TagCard({ tag }: Props) {
     return (
         <Link to={`/order-tag/${tag.tagId}`} className="text-decoration-none">
-            <div className="tag-card-container">
+            <abbr title={tag.tagId}>   <div className="tag-card-container ">
                 {tag.tagId}
             </div>
-            </Link>
+            </abbr>
+        </Link>
     );
 }
+
+
 
 export type Cons = {
     orderTag: OrderTag;
@@ -25,6 +28,6 @@ export function OrderTagCard({ orderTag: tag }: Cons) {
             <div className="tag-card-container">
                 {tag.tagId}
             </div>
-            </Link>
+        </Link>
     );
 }

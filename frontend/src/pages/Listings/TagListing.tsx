@@ -1,12 +1,43 @@
 import axios from "axios";
 import { OrderCardByTag } from "components/container/Card/OrderCard";
 import { OrderTagCard, TagCard } from "components/container/Card/TagCard";
+import Pagination from "components/shared/Pagination";
 import { useEffect, useState } from "react";
 import { MdLibraryBooks } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { CodeProps } from "types/order";
 import { OrderTag, TagPage, TagProps } from "types/tag";
 import { BASE_URL } from "utils/requests";
+
+export function TagList() {
+
+    const [pageNumber, setPageNumber] = useState(0);
+
+    const [tagList, setTagList] = useState<TagPage>({ number: 0 });
+    useEffect(() => {
+        axios.get(`${BASE_URL}/tag/list?page=${pageNumber}&size=15&sort=tagId,ASC`)
+            .then((response) => {
+                setTagList(response.data);
+            });
+    }, [pageNumber]);
+
+    const handlePage = (newPageNumber: number) => {
+        setPageNumber(newPageNumber);
+    }
+
+    return (
+        <>
+            <Pagination page={tagList} onPageChange={handlePage} />
+            <div className="row p-2">
+                {tagList.content?.map(x => (
+                    <div key={x.tagId} className="col-lg-4 p-1">
+                        <TagCard tag={x} />
+                    </div>
+                ))}
+            </div>
+        </>
+    );
+}
 
 export function TagListByOrder({ codeId }: CodeProps) {
     const [tagList, setTagList] = useState<OrderTag[]>();
@@ -31,7 +62,7 @@ export function TagListByOrder({ codeId }: CodeProps) {
 
 export type Props = {
     tag: OrderTag;
-    }
+}
 
 export function OrderListByTag() {
     const [orderList, setOrderList] = useState<TagPage>({
@@ -39,10 +70,10 @@ export function OrderListByTag() {
         number: 0
     });
     useEffect(() => {
-        axios.get(`${BASE_URL}/tag-list`)
-        .then((response) => {
-            setOrderList(response.data);
-        });
+        axios.get(`${BASE_URL}/tag/list`)
+            .then((response) => {
+                setOrderList(response.data);
+            });
     }, []);
 
     return (
@@ -56,7 +87,7 @@ export function OrderListByTag() {
     )
 }
 
-export function OrderTagList({tagId}: TagProps) {
+export function OrderTagList({ tagId }: TagProps) {
     const [orderList, setOrderList] = useState<OrderTag[]>();
     useEffect(() => {
         axios.get(`${BASE_URL}/order-tag/find-by-tag/${tagId}`)
@@ -70,12 +101,12 @@ export function OrderTagList({tagId}: TagProps) {
         <>
             <div>
                 <div className="container">
-                    <nav className=" header-container"> 
-                    <Link to={`/order/list`} className=" text-decoration-none">
-                                <h4 className="link-primary"> <MdLibraryBooks />Retornar para a lista completa</h4>
-                            </Link>
+                    <nav className=" header-container">
+                        <Link to={`/order/list`} className=" text-decoration-none">
+                            <h4 className="link-primary"> <MdLibraryBooks />Retornar para a lista completa</h4>
+                        </Link>
                         <h2 >Lista de Pedidos com a tag: {tagId}</h2>
-                           
+
                     </nav>
                     <hr />
                     <OrderListByTag />
@@ -83,10 +114,10 @@ export function OrderTagList({tagId}: TagProps) {
 
                     <div className="row">
                         {orderList?.map((order) => (
-                                <div key={order.codeId} className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-3">
-                                    <OrderCardByTag orderTag={order} />
-                                </div>
-                            ))}
+                            <div key={order.codeId} className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-3">
+                                <OrderCardByTag orderTag={order} />
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

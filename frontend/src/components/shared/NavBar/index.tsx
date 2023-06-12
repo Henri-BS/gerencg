@@ -7,6 +7,7 @@ import { MdClose, MdLibraryBooks } from "react-icons/md";
 import { AddProductForm } from "components/container/Form/ProductForm";
 import { SaveOrderForm } from "components/container/Form/OrderForm";
 import { TagAddForm } from "components/container/Form/TagForm";
+import { TagList } from "pages/Listings/TagListing";
 
 function NavBar() {
     const [click, setClick] = useState(false);
@@ -99,6 +100,8 @@ function NavBar() {
                           
                         </div>  <div className="modal-body">
                             <TagAddForm />
+                            <hr/>
+                            <TagList/>
                             </div>
                     </div>
                 </div>

@@ -305,11 +305,14 @@
     background-color: var(--dark-quat);
     border: solid 2px var(--blue-prim);
     color: var(--white-seco);
-    width: max-content;
+    width: 100px;
     padding: 8px;
     text-align: center;
     transition: all 0.2s ease-out;
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .tag-card-container:hover {

@@ -1,12 +1,7 @@
-import { CategoryPage, CategoryStatsPage } from "types/category";
-import { CodePage, ItemPage } from "types/order";
-import { MeasurePage } from "types/measure";
-import { ProductPage,  ProductHistoryPage} from "types/product";
+import { Page } from "types/page";
 
 type Props = {
-    page: 
-    ProductPage | CategoryStatsPage | CategoryPage | MeasurePage |
-     ProductHistoryPage | CodePage | ItemPage;
+    page: Page;
     onPageChange: Function;
 }
 

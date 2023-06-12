@@ -1,5 +1,4 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "utils/requests";
 
@@ -13,7 +12,7 @@ export function TagAddForm() {
         const config: AxiosRequestConfig = {
             method: "POST",
             baseURL: BASE_URL,
-            url: "/tag-add",
+            url: "/tag/add",
             data: {
                 tagId: tagId,
                 description: description
@@ -32,7 +31,7 @@ export function TagAddForm() {
             <div className="form-group gerencg-form-group">
                 <input id="description" className="form-control" type="text" placeholder="descrição (opcional)" />
             </div>
-            <button type="submit" data-bs-dismiss="modal" className="btn btn-confirm m-2 p-2">Adicionar</button>
+            <button type="submit" className="btn btn-confirm m-2 p-2">Adicionar</button>
         </form>
     );
 

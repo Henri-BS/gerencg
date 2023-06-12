@@ -13,18 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/tag")
 public class TagController {
 
     @Autowired
     private TagService tagService;
 
-    @GetMapping("/tag-list")
+    @GetMapping("/list")
     public ResponseEntity<Page<TagDTO>> findTagsByTitle(Pageable pageable) {
         Page<TagDTO> list = tagService.findAllTags(pageable);
         return ResponseEntity.ok(list);
     }
 
-    @PostMapping("/tag-add")
+    @PostMapping("/add")
     public ResponseEntity<TagDTO> saveTag(@RequestBody TagDTO dto){
         TagDTO add = tagService.saveTag(dto);
         return  new ResponseEntity<>(add, HttpStatus.CREATED);
