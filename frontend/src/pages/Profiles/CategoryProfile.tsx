@@ -22,23 +22,8 @@ export function CategoryProfile() {
   );
 }
 
-
-export function SaveCategoryStats() {
-
-  return (
-    <div className="container-blur">
-      <AddCategoryStats />
-    </div>
-  );
-}
-
 export function CategoryStatsDashboard() {
   return (
-    <>
-   
-
           <CategoryStatsChart />
-
-    </>
   );
 }

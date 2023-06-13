@@ -34,5 +34,4 @@ export function TagAddForm() {
             <button type="submit" className="btn btn-confirm m-2 p-2">Adicionar</button>
         </form>
     );
-
 }

@@ -52,7 +52,7 @@ function NavBar() {
                     </li>
 
                     <li className="navbar-item">
-                    <div data-bs-toggle="modal" data-bs-target="#saveTagModal" className="navbar-link" onClick={closeMobileMenu}>
+                        <div data-bs-toggle="modal" data-bs-target="#saveTagModal" className="navbar-link" onClick={closeMobileMenu}>
                             <AiIcons.AiFillTags /> Tags
                         </div>
                     </li>
@@ -80,7 +80,7 @@ function NavBar() {
             <div className="modal fade" role="dialog" id="saveOrderModal">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
-                     
+
                         <div className="modal-body"><SaveOrderForm /></div>
                     </div>
                 </div>
@@ -90,19 +90,16 @@ function NavBar() {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header" >
-                            <div className="modal-title" id="commissionLabel">Adicionar Tag 
-                          
-                            </div>
-                           
+                            <div className="modal-title" id="commissionLabel">Adicionar Tag</div>
                             <button className="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><MdClose /></span>
                             </button>
-                          
-                        </div>  <div className="modal-body">
+                        </div>
+                        <div className="modal-body">
                             <TagAddForm />
-                            <hr/>
-                            <TagList/>
-                            </div>
+                            <hr />
+                            <TagList />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,40 @@ import { CategoryPage } from "types/category";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 
+export function CategoryAddForm(){
+    const navigate = useNavigate();
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        const name = (event.target as any).name.value;
+        const image = (event.target as any).image.value;
+        
+        const config: AxiosRequestConfig = {
+        method: "POST",
+        baseURL: BASE_URL,
+        url: "/category/add",
+        data: {
+            name: name,
+            image: image
+        }
+    }
+    axios(config).then((response) => {
+        navigate("/")
+    })
+    }
+
+    return(
+        <form onSubmit={handleSubmit} className="form-card-container">
+            <div className="form-group gerencg-form-group">
+                <input id="name" type="text" placeholder="nome da categoria"/>
+            </div>
+            <div className="form-group gerencg-form-group">
+                <input id="image" type="text" placeholder="imagem"/>
+            </div>
+            <button type="submit" className="btn btn-confirm m-2 p-2">Adicionar</button>
+        </form>
+    );
+}
+
 export function AddCategoryStats() {
 
     const navigate = useNavigate();

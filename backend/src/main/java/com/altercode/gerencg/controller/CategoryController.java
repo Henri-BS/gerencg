@@ -19,7 +19,7 @@ import com.altercode.gerencg.dto.CategoryDTO;
 import com.altercode.gerencg.service.CategoryService;
 
 @RestController
-@RequestMapping(value = "/category")
+@RequestMapping("/category")
 public class CategoryController {
 
     @Autowired
@@ -44,8 +44,8 @@ public class CategoryController {
     
     @PutMapping("/edit")
     public ResponseEntity<CategoryDTO> updateCategory(@RequestBody CategoryDTO category) {
-    	CategoryDTO updateCategory = categoryService.updateCategory(category);
-    	return new ResponseEntity<>(updateCategory, HttpStatus.OK);
+    	CategoryDTO edit = categoryService.updateCategory(category);
+    	return new ResponseEntity<>(edit, HttpStatus.OK);
     }
     
     @DeleteMapping("/delete/{id}")
