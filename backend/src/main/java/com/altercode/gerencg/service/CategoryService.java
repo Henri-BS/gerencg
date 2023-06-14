@@ -11,12 +11,19 @@ import com.altercode.gerencg.dto.CategoryDTO;
 import com.altercode.gerencg.entity.Category;
 import com.altercode.gerencg.repository.CategoryRepository;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class CategoryService implements ICategoryService {
 
 	@Autowired
 	private CategoryRepository categoryRepository;
+
+	public CategoryDTO findLastCategory() {
+		List<Category> find = categoryRepository.findAll();
+		return new CategoryDTO(find.get(find.size() -1));
+	}
 
 	public Page<CategoryDTO> findAll(Pageable pageable) {
 		Page<Category> result = categoryRepository.findAll(pageable);

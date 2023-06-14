@@ -29,10 +29,10 @@ export function CategoryAddForm(){
     return(
         <form onSubmit={handleSubmit} className="form-card-container">
             <div className="form-group gerencg-form-group">
-                <input id="name" type="text" placeholder="nome da categoria"/>
+                <input id="name" className="form-control" placeholder="nome da categoria"/>
             </div>
             <div className="form-group gerencg-form-group">
-                <input id="image" type="text" placeholder="imagem"/>
+                <input id="image" type="text" className="form-control" placeholder="imagem"/>
             </div>
             <button type="submit" className="btn btn-confirm m-2 p-2">Adicionar</button>
         </form>

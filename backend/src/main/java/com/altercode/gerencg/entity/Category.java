@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
@@ -33,10 +34,14 @@ public class Category {
 	
 	@Column(name = "total_registers")
 	private Integer totalRegisters = 1;
-	
+
+	@CreatedDate
+	@Column(name = "created_date")
+	private LocalDateTime createdDate;
+
 	@LastModifiedDate
 	@Column(name = "last_modified_date")
-	private LocalDateTime lastModifiedDate;
+	private LocalDateTime lastModifiedDate = LocalDateTime.now();
 
 	@OneToOne(mappedBy = "category")
 	private CategoryStats categoryStats;

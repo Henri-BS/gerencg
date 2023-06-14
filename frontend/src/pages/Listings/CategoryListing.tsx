@@ -27,14 +27,12 @@ export function CategoryList() {
                 <div className="header-container">
                     <h2>Lista de Categorias</h2>
                 </div>
-                <div className="page-container">
                     <div className="list-container row">
                         {categoryPage.content?.map(category => (
                             <div key={category.name} className="col-12 col-md-6 mb-3">
                                 <CategoryCard category={category} />
                             </div>
                         ))}
-                    </div>
                 </div>
             </div>
         </>

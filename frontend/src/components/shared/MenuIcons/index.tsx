@@ -19,5 +19,6 @@ export const categoryIcons = {
     lastUpdateIcon: <MdIcons.MdUpdate />,
     totalProductsIcon: <FaIcons.FaBoxOpen />,
     totalRegistersIcon: <FaIcons.FaRegListAlt />,
+    createdDateIcon: <BiIcons.BiCalendar/>,
     cName: 'nav-text'
 }

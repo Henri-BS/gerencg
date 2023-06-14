@@ -8,6 +8,8 @@ import { AddProductForm } from "components/container/Form/ProductForm";
 import { SaveOrderForm } from "components/container/Form/OrderForm";
 import { TagAddForm } from "components/container/Form/TagForm";
 import { TagList } from "pages/Listings/TagListing";
+import { CategoryAddForm } from "components/container/Form/CategoryForm";
+import { GetLastCategoryCard } from "components/container/Card/CategoryCard";
 
 function NavBar() {
     const [click, setClick] = useState(false);
@@ -29,20 +31,26 @@ function NavBar() {
                 <ul className={click ? "navbar-menu active" : "navbar-menu"}>
                     <li className="navbar-item">
                         <div data-bs-toggle="modal" data-bs-target="#saveProductModal" className="navbar-link " onClick={closeMobileMenu}>
-                            <AiIcons.AiOutlinePlus />  Novo Produto
+                            <AiIcons.AiOutlineInbox /> Produto
                         </div>
                     </li>
 
                     <li className="navbar-item">
                         <div data-bs-toggle="modal" data-bs-target="#saveOrderModal" className="navbar-link" onClick={closeMobileMenu}>
-                            <AiIcons.AiOutlineProfile /> Novo Pedido
+                            <AiIcons.AiOutlineProfile /> Pedido
                         </div>
                     </li>
 
                     <li className="navbar-item">
                         <Link className="navbar-link" to="/find-by-validate" onClick={closeMobileMenu}>
-                            <AiIcons.AiFillClockCircle /> Validades
+                            <AiIcons.AiOutlineClockCircle /> Validades
                         </Link>
+                    </li>
+
+                    <li className="navbar-item">
+                        <div data-bs-toggle="modal" data-bs-target="#saveCategoryModal" className="navbar-link" onClick={closeMobileMenu}>
+                            <AiIcons.AiOutlineMenuUnfold /> Categorias
+                        </div>
                     </li>
 
                     <li className="navbar-item">
@@ -53,7 +61,7 @@ function NavBar() {
 
                     <li className="navbar-item">
                         <div data-bs-toggle="modal" data-bs-target="#saveTagModal" className="navbar-link" onClick={closeMobileMenu}>
-                            <AiIcons.AiFillTags /> Tags
+                            <AiIcons.AiOutlineTags /> Tags
                         </div>
                     </li>
                 </ul>
@@ -80,7 +88,6 @@ function NavBar() {
             <div className="modal fade" role="dialog" id="saveOrderModal">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
-
                         <div className="modal-body"><SaveOrderForm /></div>
                     </div>
                 </div>
@@ -90,7 +97,7 @@ function NavBar() {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header" >
-                            <div className="modal-title" id="commissionLabel">Adicionar Tag</div>
+                            <div className="modal-title" id="tagLabel">Adicionar Tag</div>
                             <button className="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><MdClose /></span>
                             </button>
@@ -99,6 +106,24 @@ function NavBar() {
                             <TagAddForm />
                             <hr />
                             <TagList />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="modal fade" role="dialog" id="saveCategoryModal">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header" >
+                            <div className="modal-title" id="categLabel">Adicionar Categoria</div>
+                            <button className="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><MdClose /></span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <CategoryAddForm />
+                            <hr />
+                            <GetLastCategoryCard/>
                         </div>
                     </div>
                 </div>

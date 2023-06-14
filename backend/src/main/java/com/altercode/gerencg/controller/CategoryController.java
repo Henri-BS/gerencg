@@ -1,5 +1,6 @@
 package com.altercode.gerencg.controller;
 
+import com.altercode.gerencg.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.altercode.gerencg.dto.CategoryDTO;
 import com.altercode.gerencg.service.CategoryService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
@@ -32,10 +35,17 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public CategoryDTO findById(@PathVariable String id) {
-        return categoryService.findById(id);
+    public ResponseEntity<CategoryDTO> findById(@PathVariable String id) {
+        CategoryDTO find = categoryService.findById(id);
+        return ResponseEntity.ok(find);
     }
-    
+
+    @GetMapping("/last")
+    public ResponseEntity<CategoryDTO> findLastCategory() {
+        CategoryDTO find = categoryService.findLastCategory();
+        return ResponseEntity.ok(find);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<CategoryDTO> addCategory(@RequestBody CategoryDTO category) {
     	CategoryDTO newCategory = categoryService.addCategory(category);

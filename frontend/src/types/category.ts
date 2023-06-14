@@ -5,6 +5,7 @@ export type Category = {
   image: string;
   totalProducts: number;
   totalRegisters: number;
+  createdDate: string;
   lastModifiedDate: string;
 };
 

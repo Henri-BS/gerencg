@@ -32,7 +32,12 @@ export function CategorySideBar({ categoryId }: CategoryProps) {
                         <div className="column-icon-container">{categoryIcons.totalRegistersIcon}</div>
                         <h3>Total de Registros: {category?.totalRegisters}</h3>
                     </div>
+                    <div className="column-item-container">
+                        <div className="column-icon-container">{categoryIcons.createdDateIcon}</div>
+                        <h3>Data de Criação: {moment(category?.createdDate).format('DD/MM/YYYY')}</h3>
+                    </div>
                 </div>
+                
                 <div className="column-card-bottom">
                     <h4>Última Alteração: {moment(category?.lastModifiedDate).format('DD/MM/YYYY')} </h4>
                 </div>
