@@ -28,9 +28,13 @@ public class OrderStatsService implements IOrderStatsService {
     @Override
     public Page<OrderStatsDTO> findAllStats(Pageable pageable) {
         Page<OrderStats> result = statsRepository.findAll(pageable);
-        return result.map(x -> new OrderStatsDTO(x));
+        return result.map(OrderStatsDTO::new);
     }
-
+    @Override
+    public OrderStatsDTO findOrderStatsById(String id) {
+        OrderStats stats = statsRepository.findById(id).get();
+        return new OrderStatsDTO(stats);
+    }
     @Override
     public OrderStatsDTO saveOrderStats(OrderStatsDTO dto) {
         OrderStats add = new OrderStats();
@@ -63,11 +67,7 @@ public class OrderStatsService implements IOrderStatsService {
         return new OrderStatsDTO(statsRepository.save(stats));
     }
 
-    @Override
-    public OrderStatsDTO findOrderStatsById(String id) {
-        OrderStats stats = statsRepository.findById(id).get();
-        return new OrderStatsDTO(stats);
-    }
+
 
     @Override
     public OrderStatsTotalValueDTO getOrderStatsTotalValues(){

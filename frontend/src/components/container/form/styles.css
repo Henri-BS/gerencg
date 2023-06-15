@@ -8,6 +8,15 @@ form {
     color: var(--white-seco);
 }
 
+.form-lg-card-container {
+    background-color: var(--dark-tert);
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+}
+
 .form-card-container {
     background-color: var(--dark-tert);
     display: flex;
@@ -25,14 +34,14 @@ form {
     min-height: 40px;
 }
 
-.gerencg-form-group option {
-    background-color: var(--dark-tert);
-}
-
 .gerencg-form-group {
     margin-bottom: 20px;
-    width: 300px;
+    min-width: 300px;
     color: var(--white-seco);
+}
+
+.gerencg-form-group option {
+    background-color: var(--dark-tert);
 }
 
 .form-control {

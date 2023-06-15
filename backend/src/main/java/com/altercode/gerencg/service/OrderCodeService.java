@@ -60,12 +60,21 @@ public class OrderCodeService implements IOrderCodeService {
     @Override
     public OrderCodeDTO saveOrder(OrderCodeDTO dto) {
         Measure packageType = measureRepository.findById(dto.getPackageType()).get();
+        OrderStats stats = statsRepository.findById(dto.getStatsId()).orElseThrow();
 
         OrderCode add = new OrderCode();
         add.setCode(dto.getCode());
         add.setOrderDate(dto.getOrderDate());
         add.setDistributor(dto.getDistributor());
         add.setPackageType(packageType);
+
+        String statsId = add.getOrderDate().getMonthValue() + "-" + add.getOrderDate().getYear();
+
+        if(stats.getId() == null){
+            stats = new OrderStats();
+            stats.setId(statsId);
+            statsRepository.saveAndFlush(stats);
+        }
 
         return new OrderCodeDTO(codeRepository.saveAndFlush(add));
     }
@@ -108,8 +117,6 @@ public class OrderCodeService implements IOrderCodeService {
 
         return new OrderCodeDTO(code);
     }
-
-
 
     @Override
     public List<SumCategoryValueDTO> getOrderValueGroupByCategory() {

@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface IProductService {
 
-    Page<ProductDTO> findAll(Pageable pageable, String description);
+    Page<ProductDTO> findAllByDescription(Pageable pageable, String description);
 
     Page<ProductDTO> findAllByValidate(String minValidate, String maxValidate, Pageable pageable);
 
@@ -25,4 +25,6 @@ public interface IProductService {
     void deleteProduct(Long id);
 
     ProductDTO updateProduct(ProductDTO product);
+
+    Page<ProductDTO> findAllProducts(Pageable pageable);
 }

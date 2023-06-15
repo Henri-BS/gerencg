@@ -71,38 +71,38 @@ export function AddProductForm() {
         
 
         
-            <form className="form-card-container" onSubmit={handleSubmit}>
-                <div className="form-group gerencg-form-group">
+            <form className="form-lg-card-container m-0 row" onSubmit={handleSubmit}>
+                <div className="form-group gerencg-form-group col-6">
                     <label htmlFor="description">Descrição: </label>
                     <input type="text" className="form-control" id="description" />
                 </div>
 
-                <div className="form-group gerencg-form-group">
+                <div className="form-group gerencg-form-group col-6">
                     <label htmlFor="image">Imagem: </label>
                     <input type="text" className="form-control" id="image" />
                 </div>
 
-                <div className="form-group gerencg-form-group">
+                <div className="form-group gerencg-form-group col-6">
                     <label htmlFor="price">Preço: </label>
                     <input className="form-control" id="price" />
                 </div>
 
-                <div className="form-group gerencg-form-group">
+                <div className="form-group gerencg-form-group col-6">
                     <label htmlFor="quantity">Quantidade: </label>
                     <input type="text" className="form-control" id="quantity" />
                 </div>
 
-                <div className="form-group gerencg-form-group">
+                <div className="form-group gerencg-form-group col-6">
                     <label htmlFor="validate">Validade: </label>
                     <input type="date" className="form-control" id="validate" />
                 </div>
 
-                <div className="form-group gerencg-form-group">
+                <div className="form-group gerencg-form-group col-6">
                     <label htmlFor="measureValue">Valor de Medida: </label>
                     <input className="form-control" id="measureValue" />
                 </div>
 
-                <div className="form-group gerencg-form-group">
+                <div className="form-group gerencg-form-group col-6">
                     <label htmlFor="measure">Tipo de Medida: </label>
                     <select className="form-control" id="measure">
                         {measureList.content?.map(item => (
@@ -113,7 +113,7 @@ export function AddProductForm() {
                     </select>
                 </div>
 
-                <div className="form-group gerencg-form-group">
+                <div className="form-group gerencg-form-group col-6">
                     <label htmlFor="category">Categoria: </label>
                     <select className="form-control" id="category">
                         {categoryList.content?.map(item => (

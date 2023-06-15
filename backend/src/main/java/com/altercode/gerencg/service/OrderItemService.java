@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,7 +36,7 @@ public class OrderItemService implements IOrderItemService {
     @Override
     public Page<OrderItemDTO> findAllItems(Pageable pageable) {
         Page<OrderItem> result = itemRepository.findAll(pageable);
-        return result.map(x -> new OrderItemDTO(x));
+        return result.map(OrderItemDTO::new);
     }
 
     @Override
@@ -69,6 +70,9 @@ public class OrderItemService implements IOrderItemService {
         add.setTotalValue(dto.getTotalValue());
         add.setItemValidate(dto.getItemValidate());
         add.setProduct(product);
+
+        code.setLastModifiedDate(LocalDateTime.now());
+        codeRepository.save(code);
 
         return new OrderItemDTO(itemRepository.saveAndFlush(add));
     }

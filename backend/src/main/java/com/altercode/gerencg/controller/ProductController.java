@@ -1,6 +1,5 @@
 package com.altercode.gerencg.controller;
 
-import com.altercode.gerencg.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,7 +24,13 @@ public class ProductController {
 
     @GetMapping("/product-search")
     public ResponseEntity<Page<ProductDTO>> findByDescription(Pageable pageable, String description) {
-        Page<ProductDTO> page = service.findAll(pageable, description);
+        Page<ProductDTO> page = service.findAllByDescription(pageable, description);
+        return ResponseEntity.ok(page);
+    }
+
+    @GetMapping("/product-list")
+    public ResponseEntity<Page<ProductDTO>> findAllProducts(Pageable pageable) {
+        Page<ProductDTO> page = service.findAllProducts(pageable);
         return ResponseEntity.ok(page);
     }
 

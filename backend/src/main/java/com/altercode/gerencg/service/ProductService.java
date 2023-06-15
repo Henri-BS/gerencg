@@ -3,6 +3,7 @@ package com.altercode.gerencg.service;
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.Category;
 import com.altercode.gerencg.entity.Measure;
+import com.altercode.gerencg.entity.OrderItem;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.CategoryRepository;
 import com.altercode.gerencg.repository.MeasureRepository;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 
@@ -34,11 +36,22 @@ public class ProductService implements IProductService {
 
 
     @Override
-    public Page<ProductDTO> findAll(Pageable pageable, String description) {
-        Page<Product> result = productRepository.findAll(pageable, description);
+    public Page<ProductDTO> findAllByDescription(Pageable pageable, String description) {
+        Page<Product> result = productRepository.findAllByDescription(pageable, description);
         return result.map(ProductDTO::new);
     }
 
+    @Override
+    public Page<ProductDTO> findAllProducts(Pageable pageable) {
+        Page<Product> result = productRepository.findAll(pageable);
+        for (Product p : result){
+
+            if(p.getImage() == null) {
+                p.setImage("https://cdn3.iconfinder.com/data/icons/design-thinking-4/64/Product_design_box_packaging-512.png");
+            }
+        }
+        return result.map(ProductDTO::new);
+    }
     @Override
     public Page<ProductDTO> findAllByValidate(String minValidate, String maxValidate, Pageable pageable) {
         LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
@@ -93,6 +106,7 @@ public class ProductService implements IProductService {
         add.setCategory(category);
 
         category.setTotalProducts(category.getProducts().size());
+        category.setLastModifiedDate(LocalDateTime.now());
         categoryRepository.save(category);
 
         return new ProductDTO(productRepository.saveAndFlush(add));

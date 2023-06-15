@@ -10,6 +10,7 @@ import { TagAddForm } from "components/container/Form/TagForm";
 import { TagList } from "pages/Listings/TagListing";
 import { CategoryAddForm } from "components/container/Form/CategoryForm";
 import { GetLastCategoryCard } from "components/container/Card/CategoryCard";
+import { GetLastProductCard } from "components/container/Card/ProductCard";
 
 function NavBar() {
     const [click, setClick] = useState(false);
@@ -80,7 +81,10 @@ function NavBar() {
                                 <span aria-hidden="true"><MdClose /></span>
                             </button>
                         </div>
-                        <div className="modal-body"><AddProductForm /></div>
+                        <div className="modal-body"><AddProductForm />
+                        <hr />
+                            <GetLastProductCard/>
+                        </div>
                     </div>
                 </div>
             </div>

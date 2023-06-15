@@ -1,5 +1,6 @@
 package com.altercode.gerencg.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.altercode.gerencg.dto.CategoryStatsTotalValueDTO;
@@ -67,7 +68,7 @@ public class CategoryStatsService implements ICategoryStatsService {
 		Category category = categoryRepository.findById(dto.getCategory()).get();
 
 		CategoryStats add = new CategoryStats();
-		add.setLastModifiedDate(dto.getLastModifiedDate());
+		add.setLastModifiedDate(LocalDateTime.now());
 		
 		return new CategoryStatsDTO(statsRepository.saveAndFlush(add));
 	}
@@ -80,8 +81,8 @@ public class CategoryStatsService implements ICategoryStatsService {
 		double categoryValue = 0.0;
 
 		for(Product i : stats.getCategory().getProducts()) {
-			sumQuantity = sumQuantity + i.getQuantity();
-			categoryValue = categoryValue + i.getIncome();
+			sumQuantity += i.getQuantity();
+			categoryValue += i.getIncome();
 		}
 
 		stats.setCategory(stats.getCategory());
