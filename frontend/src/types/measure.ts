@@ -1,6 +1,8 @@
 export type Measure = {  
   abbreviation: string;
   description: string;
+  createdDate: string;
+  lastModifiedDate: string;
 };
   
 export type MeasurePage = {
@@ -15,7 +17,7 @@ export type MeasurePage = {
   empty?: boolean;
 }
 
-
 export type MeasureProps = {
-  measureId: string
+  measure: Measure;
 }
+

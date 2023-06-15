@@ -4,6 +4,10 @@ import { Code, Item } from "./order";
 import { Product, ProductHistory } from "./product";
 import { Tag } from "./tag";
 
+export type Props = {
+    id: String
+}
+
 export  type Page = {
     content?:Product[] | CategoryStats[] | Category[] | Measure[] |
     ProductHistory[] | Code[] | Item[] | Tag[];

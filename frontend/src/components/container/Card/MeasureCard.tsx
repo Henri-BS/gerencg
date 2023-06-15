@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import { Measure, MeasureProps } from "types/measure";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
+import { Props } from "types/page";
 
-export function MeasureInfo({ measureId }: MeasureProps) {
+export function MeasureInfo({ id: measureId }: Props) {
 
     const [measure, setMeasure] = useState<Measure>();
 
@@ -32,11 +33,7 @@ export function MeasureInfo({ measureId }: MeasureProps) {
     );
 }
 
-type Cons = {
-    measure: Measure;
-}
-
-export function MeasureCard({measure}: Cons) {
+export function MeasureCard({measure}: MeasureProps) {
 
     return (
         <>

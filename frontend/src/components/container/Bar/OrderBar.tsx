@@ -3,14 +3,15 @@ import IUpdateProduct from "assets/img/update.png"
 import IDeleteProduct from "assets/img/delete-img.png"
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Code, CodeProps, OrderStats, OrderStatsProps, OrderStatsTotalValue } from "types/order";
+import { Code, OrderStats, OrderStatsTotalValue } from "types/order";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 import { MdClose } from "react-icons/md";
-import { EditOrderForm } from "../Form/OrderForm";
+import { OrderEditForm } from "../Form/OrderForm";
 import moment from "moment";
+import { Props } from "types/page";
 
-export function OrderMenuBar({ codeId }: CodeProps) {
+export function OrderMenuBar({ id: codeId }: Props) {
 
     const [order, setOrder] = useState<Code>();
     const navigate = useNavigate();
@@ -64,7 +65,7 @@ export function OrderMenuBar({ codeId }: CodeProps) {
                                     <span className="text-close" aria-hidden="true"><MdClose /></span>
                                 </button>
                             </div>
-                            <div className="modal-body"><EditOrderForm codeId={`${params.codeId}`} /></div>
+                            <div className="modal-body"><OrderEditForm id={`${params.codeId}`} /></div>
                         </div>
                     </div>
                 </div>
@@ -129,7 +130,7 @@ export function OrderMenuBar({ codeId }: CodeProps) {
 }
 
 
-export function OrderStatsBar({ statsId }: OrderStatsProps) {
+export function OrderStatsBar({ id: statsId }: Props) {
 
     const [stats, setStats] = useState<OrderStats>();
     useEffect(() => {

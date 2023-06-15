@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -38,6 +40,10 @@ public class OrderCode {
 
     @Column(name = "total_package")
     private Integer totalPackage = 0;
+
+    @LastModifiedDate
+    @Column(name = "last_modified_date")
+    private LocalDateTime lastModifiedDate = LocalDateTime.now();
 
     @ManyToOne
     @JoinColumn(name = "package_type")

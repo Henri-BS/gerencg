@@ -5,7 +5,7 @@ import * as AiIcons from 'react-icons/ai'
 import { useState } from "react";
 import { MdClose, MdLibraryBooks } from "react-icons/md";
 import { AddProductForm } from "components/container/Form/ProductForm";
-import { SaveOrderForm } from "components/container/Form/OrderForm";
+import { OrderAddForm } from "components/container/Form/OrderForm";
 import { TagAddForm } from "components/container/Form/TagForm";
 import { TagList } from "pages/Listings/TagListing";
 import { CategoryAddForm } from "components/container/Form/CategoryForm";
@@ -88,7 +88,7 @@ function NavBar() {
             <div className="modal fade" role="dialog" id="saveOrderModal">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
-                        <div className="modal-body"><SaveOrderForm /></div>
+                        <div className="modal-body"><OrderAddForm /></div>
                     </div>
                 </div>
             </div>

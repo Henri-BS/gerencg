@@ -3,7 +3,8 @@ import {CategoryCard} from "components/container/Card/CategoryCard";
 import { ProductCard } from "components/container/Card/ProductCard";
 import Pagination from "components/shared/Pagination";
 import { useEffect, useState } from "react";
-import { CategoryPage, CategoryProps } from "types/category";
+import { CategoryPage } from "types/category";
+import { Props } from "types/page";
 import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 
@@ -39,13 +40,10 @@ export function CategoryList() {
     );
 }
 
-export function ProductCategoryList({ categoryId }: CategoryProps) {
+export function ProductCategoryList({ id: categoryId }: Props) {
 
     const [pageNumber, setPageNumber] = useState(0);
-    const [productPage, setProductPage] = useState<ProductPage>({
-        content: [],
-        number: 0
-    });
+    const [productPage, setProductPage] = useState<ProductPage>({ content: [], number: 0});
 
     useEffect(() => {
         axios.get(`${BASE_URL}/find-products-by-category/${categoryId}/?page=${pageNumber}&size=6`)

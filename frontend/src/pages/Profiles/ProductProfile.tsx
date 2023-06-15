@@ -18,10 +18,10 @@ export function ProductProfile() {
     <>
       <div className="profile row">
         <div className="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-4 p-0">
-          < ProductSideBar productId={`${params.productId}`} />
+          < ProductSideBar id={`${params.productId}`} />
         </div>
         <div className="col-12 col-md-6 col-lg-7 col-xl-8  p-4">
-          <ProductMenuBar productId={`${params.productId}`} />
+          <ProductMenuBar id={`${params.productId}`} />
           <div className="menu-option row">
             <h2 className="col-7 col-md-9">Estatísticas do Produto</h2>
             <div className="col-5  col-md-3" >
@@ -30,15 +30,15 @@ export function ProductProfile() {
               </button>
             </div>
           </div>
-          <ListHistoryByProduct productId={`${params.productId}`} />
+          <ListHistoryByProduct id={`${params.productId}`} />
           <div className="chart-box">
             <div className="container-chart">
               <h5 className="text-center">Quantidade do Produto por Data</h5>
-              <QuantityProductChart productId={`${params.productId}`} />
+              <QuantityProductChart id={`${params.productId}`} />
             </div>
           </div>
           <h4>Registro de Pedidos do Produto</h4>
-          <OrderItemListByProduct productId={`${params.productId}`}/>
+          <OrderItemListByProduct id={`${params.productId}`}/>
         </div>
       </div>
 
@@ -52,7 +52,7 @@ export function ProductProfile() {
               </button>
               </div>
               <div className="modal-body">
-                <SaveValuesHistory productId={`${params.productId}`}/>
+                <SaveValuesHistory id={`${params.productId}`}/>
               </div>
           </div>
         </div>
@@ -66,8 +66,8 @@ export function ProductHistoryProfile() {
   const params = useParams();
   return (
     <div className="container">
-      <HistoryMenuBar historyId={`${params.historyId}`} />
-      <LargeHistoryCard historyId={`${params.historyId}`} />
+      <HistoryMenuBar id={`${params.historyId}`} />
+      <LargeHistoryCard id={`${params.historyId}`} />
     </div>
   );
 }
@@ -80,9 +80,9 @@ export function MeasureProfile() {
     <>
       <div className="container-blur">
         <div>
-          <MeasureInfo measureId={`${params.measureId}`} />
+          <MeasureInfo id={`${params.measureId}`} />
         </div>
-        <ProductMeasureList measureId={`${params.measureId}`} />
+        <ProductMeasureList id={`${params.measureId}`} />
       </div>
     </>
   );

@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CategoryPage } from "types/category";
 import { MeasurePage } from "types/measure";
-import { HistoryProps, Product, ProductHistory, ProductProps } from "types/product";
+import { Props } from "types/page";
+import { Product, ProductHistory } from "types/product";
 import { BASE_URL } from "utils/requests";
 
 export function AddProductForm() {
@@ -67,9 +68,10 @@ export function AddProductForm() {
     }
 
     return (
-        <form className="form-container" onSubmit={handleSubmit}>
-            <div className="form-card-container">
+        
 
+        
+            <form className="form-card-container" onSubmit={handleSubmit}>
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="description">Descrição: </label>
                     <input type="text" className="form-control" id="description" />
@@ -122,17 +124,16 @@ export function AddProductForm() {
                     </select>
                 </div>
 
-            </div>
+            
             <div className="modal-footer">
                 <button className="text-close" data-bs-dismiss="modal">cancelar</button>
                 <button type="submit" className="btn-confirm">Adicionar Produto</button>
-            </div>
-         
+         </div>
         </form>
     );
 }
 
-export const ProductFormEdit = ({ productId }: ProductProps) => {
+export function ProductFormEdit ({id: productId }: Props) {
 
     //Get MeasureList for the category selector    
     const [measureList, setMeasure] = useState<MeasurePage>({
@@ -257,7 +258,7 @@ export const ProductFormEdit = ({ productId }: ProductProps) => {
     );
 }
 
-export function SaveValuesHistory({ productId }: ProductProps) {
+export function SaveValuesHistory({id: productId }: Props) {
 
     const [product, setProduct] = useState<Product>();
     useEffect(() => {
@@ -307,7 +308,7 @@ export function SaveValuesHistory({ productId }: ProductProps) {
     );
 }
 
-export function EditHistoryForm({ historyId }: HistoryProps) {
+export function EditHistoryForm({id: historyId }: Props) {
 
     const [history, setHistory] = useState<ProductHistory>();
     useEffect(() => {

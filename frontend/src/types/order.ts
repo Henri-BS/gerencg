@@ -1,6 +1,5 @@
 import { Product } from "./product";
 
-//Code
 
 export type Code = {
   code: string;
@@ -11,6 +10,7 @@ export type Code = {
   amountItems: number;
   totalPackage: number;
   packageType: string;
+  lastModifiedDate: string;
   statsId: string;
   categoryId: string;
 };
@@ -28,10 +28,10 @@ export type CodePage = {
 };
 
 export type CodeProps = {
-  codeId: string;
+  code: Code;
 };
 
-//Item
+
 
 export type Item = {
   id: number;
@@ -60,10 +60,10 @@ export type ItemPage = {
 };
 
 export type ItemProps = {
-  itemId: string;
+  item: Item;
 };
 
-//Stats
+
 
 export type OrderStats = {
   id: string;
@@ -88,7 +88,7 @@ export type OrderStatsPage = {
 };
 
 export type OrderStatsProps = {
-  statsId: string;
+  stats: OrderStats;
 }
 
 export type OrderStatsTotalValue = {
@@ -108,9 +108,7 @@ export type OrderStatsValueGroup = {
   value: number;
 };
 
-
-
-export type CommissionResults = {
+export type OrderResults = {
   commissionCode: string;
   totalQuantity: number;
   totalValue: number;

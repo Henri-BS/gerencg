@@ -2,49 +2,41 @@ import axios from "axios";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Code, Item, ItemProps, OrderStats } from "types/order";
+import { CodeProps, Item, ItemProps, OrderStats, OrderStatsProps } from "types/order";
+import { Props } from "types/page"
 import { BASE_URL } from "utils/requests";
 import IUpdateProduct from "assets/img/update.png"
 import IDeleteProduct from "assets/img/delete-img.png"
 import "./styles.css"
-import { EditItemForm } from "../Form/OrderForm";
-import { MdClose, MdInfoOutline, MdLink } from "react-icons/md";
+import { ItemEditForm } from "../Form/OrderForm";
+import { MdClose, MdLink } from "react-icons/md";
 import { Product } from "types/product";
-import { OrderTag } from "types/tag";
+import { OrdersTagProps } from "types/tag";
 
 
-type OrderCode = {
-    order: Code;
-}
-
-export function OrderCard({ order }: OrderCode) {
+export function OrderCard({ code }: CodeProps) {
 
     return (
-        <Link to={`/order/${order.code}`}>
+        <Link to={`/order/${code.code}`}>
             <div className="order-card ">
                 <div className="order-box  border-dark">
-                    <h2>Código do Pedido: <p>{order.code}</p></h2>
+                    <h2>Código do Pedido: <p>{code.code}</p></h2>
                 </div>
                 <div className="order-box ">
-                    <h3>Data do Pedido: {moment(order.orderDate).format("DD/MM/YYYY")}</h3>
+                    <h3>Data do Pedido: {moment(code.orderDate).format("DD/MM/YYYY")}</h3>
                 </div>
                 <div className="order-box ">
-                    <h3>Distribuidora: {order.distributor}</h3>
+                    <h3>Distribuidora: {code.distributor}</h3>
                 </div>
                 <div className="order-box border-0">
-                    <h3>Categoria: {order.categoryId}</h3>
+                    <h3>Categoria: {code.categoryId}</h3>
                 </div>
             </div>
         </Link>
     );
 }
 
-
-type OrdersTag = {
-    orderTag: OrderTag;
-}
-
-export function OrderCardByTag({ orderTag }: OrdersTag) {
+export function OrderCardByTag({ orderTag }: OrdersTagProps) {
 
     return (
         <Link to={`/order/${orderTag.codeId}`}>
@@ -67,7 +59,7 @@ export function OrderCardByTag({ orderTag }: OrdersTag) {
 }
 
 
-export function OrderItemCard({ itemId }: ItemProps) {
+export function OrderItemCard({ id: itemId }: Props) {
 
     const navigate = useNavigate();
     const params = useParams();
@@ -150,7 +142,7 @@ export function OrderItemCard({ itemId }: ItemProps) {
                                 <span aria-hidden="true"><MdClose /></span>
                             </button>
                         </div>
-                        <div className="modal-body"><EditItemForm itemId={`${params.itemId}`} /></div>
+                        <div className="modal-body"><ItemEditForm id={`${params.itemId}`} /></div>
                     </div>
                 </div>
             </div>
@@ -194,11 +186,8 @@ export function OrderItemCard({ itemId }: ItemProps) {
     );
 }
 
-type Props = {
-    stats: OrderStats;
-}
 
-export function OrderStatsCard({ stats }: Props) {
+export function OrderStatsCard({ stats }: OrderStatsProps) {
     return (
         <Link to={`/stats/${stats.id}`} className="text-decoration-none">
             <div className="stats-card-container">
@@ -208,11 +197,9 @@ export function OrderStatsCard({ stats }: Props) {
     );
 };
 
-type Cons = {
-    item: Item;
-}
 
-export function SmallItemCard({ item }: Cons) {
+
+export function SmallItemCard({ item }: ItemProps) {
     return (  
     <Link to={`/item/${item.id}`}>
         <div className="small-card-container">

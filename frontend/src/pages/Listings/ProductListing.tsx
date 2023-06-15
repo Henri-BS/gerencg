@@ -2,15 +2,15 @@ import axios from "axios";
 import Pagination from "components/shared/Pagination";
 import { ProductCard, ProductHistoryCard, ProductValidateCard } from "components/container/Card/ProductCard";
 import { useEffect, useState } from "react";
-import { ProductPage, ProductProps } from "types/product";
+import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css";
 import { ProductHistoryPage } from "types/product";
 import * as FaIcons from 'react-icons/fa';
 import "react-datepicker/dist/react-datepicker.css";
 import ReactDatePicker from "react-datepicker";
+import { Props } from "types/page";
 
-//Product list with description filter 
 export function ProductsList() {
     const [value, setValue] = useState("");
     const [pageNumber, setPageNumber] = useState(0);
@@ -204,7 +204,7 @@ export function ProductHistoryList() {
     );
 }
 
-export function ListHistoryByProduct({ productId }: ProductProps) {
+export function ListHistoryByProduct({ id: productId }: Props) {
     const [historyPage, setHistoryPage] = useState<ProductHistoryPage>({
         content: [],
         size: 10,

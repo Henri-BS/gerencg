@@ -2,11 +2,12 @@ import axios from "axios";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { CodeProps, Item } from "types/order";
+import { Item } from "types/order";
 import { BASE_URL } from "utils/requests";
 import "./styles.css";
+import { Props } from "types/page";
 
-function ItemDataTable({ codeId }: CodeProps) {
+function ItemDataTable({ id: codeId }: Props) {
 
     const [pageItem, setPageItem] = useState<Item[]>();
 

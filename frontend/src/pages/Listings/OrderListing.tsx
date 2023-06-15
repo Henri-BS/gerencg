@@ -6,8 +6,8 @@ import * as FaIcons from 'react-icons/fa';
 import "./styles.css";
 import Pagination from "components/shared/Pagination";
 import { OrderCard, OrderStatsCard, SmallItemCard } from "components/container/Card/OrderCard";
-import { ProductProps } from "types/product";
 import { OrderListByTag } from "./TagListing";
+import { Props } from "types/page";
 
 export function OrderCodeList() {
     const [value, setValue] = useState("");
@@ -62,9 +62,9 @@ export function OrderCodeList() {
                 <div className="row">
                     {codePage.content?.filter((order) =>
                         order.code.includes(value))
-                        .map((order) => (
-                            <div key={order.code} className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-3">
-                                <OrderCard order={order} />
+                        .map((x) => (
+                            <div key={x.code} className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-3">
+                                <OrderCard code={x} />
                             </div>
                         ))}
                 </div>
@@ -98,7 +98,7 @@ export function OrderStatsList() {
     );
 }
 
-export function OrderItemListByProduct({ productId }: ProductProps) {
+export function OrderItemListByProduct({ id: productId }: Props) {
 
     const [item, setItem] = useState<Item[]>();
     useEffect(() => {

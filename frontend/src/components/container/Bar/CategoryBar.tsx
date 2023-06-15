@@ -2,11 +2,12 @@ import axios from "axios";
 import moment from 'moment';
 import { useEffect, useState } from "react";
 import { BASE_URL } from "utils/requests";
-import { Category, CategoryProps, CategoryStats } from "types/category";
+import { Category, CategoryStats } from "types/category";
 import { categoryIcons } from "components/shared/MenuIcons";
 import "./styles.css";
+import { Props } from "types/page";
 
-export function CategorySideBar({ categoryId }: CategoryProps) {
+export function CategorySideBar({ id: categoryId }: Props) {
 
     const [category, setCategory] = useState<Category>()
     useEffect(() => {
@@ -46,7 +47,7 @@ export function CategorySideBar({ categoryId }: CategoryProps) {
     );
 }
 
-export function CategoryStatsMenuBar({ categoryId }: CategoryProps) {
+export function CategoryStatsMenuBar({ id: categoryId }: Props) {
     const [categoryStats, setCategoryStats] = useState<CategoryStats>();
 
     useEffect(() => {

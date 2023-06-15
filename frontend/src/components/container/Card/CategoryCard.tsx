@@ -1,16 +1,12 @@
 import moment from "moment";
 import { Link } from "react-router-dom";
-import { Category, CategoryPage } from "types/category";
+import { CategoryPage, CategoryProps } from "types/category";
 import "./styles.css"
 import { useEffect, useState } from "react";
 import { BASE_URL } from "utils/requests";
 import axios from "axios";
 
-type Props = {
-    category: Category;
-}
-
-export function CategoryCard({ category }: Props) {
+export function CategoryCard({ category }: CategoryProps) {
 
     return (
         <Link to={`/category/${category?.name}`}>
@@ -32,7 +28,7 @@ export function GetLastCategoryCard() {
 
     const [categoryList, setCategoryList] = useState<CategoryPage>({ content: [], number: 0 });
     useEffect(() => {
-        axios.get(`${BASE_URL}/category/list?size=1&sort=createdDate`)
+        axios.get(`${BASE_URL}/category/list?size=1&sort=createdDate,asc`)
             .then((response) => {
                 setCategoryList(response.data);
             });

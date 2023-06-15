@@ -1,7 +1,8 @@
 
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { HistoryProps, Product, ProductProps } from 'types/product';
+import {Product} from 'types/product';
+import { Props } from 'types/page';
 import axios from 'axios';
 import { BASE_URL } from 'utils/requests';
 import moment from "moment";
@@ -13,7 +14,7 @@ import { MdClose } from "react-icons/md";
 import "./styles.css";
 import { EditHistoryForm, ProductFormEdit } from '../Form/ProductForm';
 
-export function ProductSideBar({ productId }: ProductProps) {
+export function ProductSideBar({ id: productId }: Props) {
 
     const [product, setProduct] = useState<Product>();
 
@@ -55,14 +56,14 @@ export function ProductSideBar({ productId }: ProductProps) {
                     </Link>
                 </div>
                 <div className="column-card-bottom">
-                    <h4>Última Atualização: {moment(product?.lastUpdateDate).format('DD/MM/YYYY')}</h4>
+                    <h4>Última Atualização: {moment(product?.lastModifiedDate).format('DD/MM/YYYY')}</h4>
                 </div>
             </div>
         </>
     );
 }
 
-export function ProductMenuBar({ productId }: ProductProps) {
+export function ProductMenuBar({ id: productId }: Props) {
     const navigate = useNavigate();
     const params = useParams();
     const [product, setProduct] = useState<Product>();
@@ -115,7 +116,7 @@ export function ProductMenuBar({ productId }: ProductProps) {
                                 <span aria-hidden="true"><MdClose /></span>
                             </button>
                         </div>
-                        <div className="modal-body"><ProductFormEdit productId={`${params.productId}`} /></div>
+                        <div className="modal-body"><ProductFormEdit id={`${params.productId}`} /></div>
                     </div>
                 </div>
             </div>
@@ -138,7 +139,7 @@ export function ProductMenuBar({ productId }: ProductProps) {
     );
 }
 
-export function HistoryMenuBar({historyId}: HistoryProps) {
+export function HistoryMenuBar({id: historyId}: Props) {
 
 const params = useParams();
     const navigate = useNavigate();
@@ -176,7 +177,7 @@ const params = useParams();
                             </button>
                         </div>
                         <div className="modal-body">
-                            <EditHistoryForm historyId={`${params.historyId}`}/>
+                            <EditHistoryForm id={`${params.historyId}`}/>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-/** Category types */
+
 
 export type Category = {
   name: string;
@@ -22,10 +22,10 @@ export type CategoryPage = {
 };
 
 export type CategoryProps = {
-  categoryId: string
+  category: Category
 }
 
-/** CategoryStats types */
+
 
 export type CategoryStats = {
   id: number; 

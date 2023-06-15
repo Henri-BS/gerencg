@@ -3,11 +3,11 @@ import { MeasureCard } from "components/container/Card/MeasureCard";
 import { ProductCard } from "components/container/Card/ProductCard";
 import Pagination from "components/shared/Pagination";
 import { useEffect, useState } from "react";
-import { MeasurePage, MeasureProps } from "types/measure";
+import { MeasurePage } from "types/measure";
+import { Props } from "types/page";
 import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 
-//Find all measures
 export function MeasureList() {
 
     const [measurePage, setMeasurePage] = useState<MeasurePage>({
@@ -43,8 +43,7 @@ export function MeasureList() {
     );
 }
 
-//Filter products by measure
-export function ProductMeasureList({ measureId }: MeasureProps) {
+export function ProductMeasureList({ id: measureId }: Props) {
     const [pageNumber, setPageNumber] = useState(0);
     const [productPage, setProductPage] = useState<ProductPage>({
         content: [],

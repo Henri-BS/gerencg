@@ -2,6 +2,7 @@ package com.altercode.gerencg.dto;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import com.altercode.gerencg.entity.Measure;
 import lombok.Getter;
@@ -18,9 +19,13 @@ public class MeasureDTO implements Serializable {
 	
 	private String description;
 	private String abbreviation;
+	private LocalDateTime createdDate;
+	private LocalDateTime lastModifiedDate;
 
 	public MeasureDTO(Measure entity) {
 		description = entity.getDescription();
 		abbreviation = entity.getAbbreviation();
+		createdDate = entity.getCreatedDate();
+		lastModifiedDate = entity.getLastModifiedDate();
 	}
 }

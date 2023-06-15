@@ -2,7 +2,7 @@
     padding: 20px;
 }
 
-.form {
+form {
     width: calc(100% - 20px);
     background-color: transparent;
     color: var(--white-seco);

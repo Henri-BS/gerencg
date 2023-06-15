@@ -5,8 +5,8 @@ import Pagination from "components/shared/Pagination";
 import { useEffect, useState } from "react";
 import { MdLibraryBooks } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { CodeProps } from "types/order";
-import { OrderTag, TagPage, TagProps } from "types/tag";
+import { Props } from "types/page";
+import { OrderTag, TagPage } from "types/tag";
 import { BASE_URL } from "utils/requests";
 
 export function TagList() {
@@ -30,7 +30,7 @@ export function TagList() {
             <Pagination page={tagList} onPageChange={handlePage} />
             <div className="row p-2">
                 {tagList.content?.map(x => (
-                    <div key={x.tagId} className="col-lg-4 p-1">
+                    <div key={x.tagId} className="col-4 p-1">
                         <TagCard tag={x} />
                     </div>
                 ))}
@@ -39,7 +39,7 @@ export function TagList() {
     );
 }
 
-export function TagListByOrder({ codeId }: CodeProps) {
+export function TagListByOrder({ id: codeId }: Props) {
     const [tagList, setTagList] = useState<OrderTag[]>();
 
     useEffect(() => {
@@ -60,9 +60,6 @@ export function TagListByOrder({ codeId }: CodeProps) {
     );
 }
 
-export type Props = {
-    tag: OrderTag;
-}
 
 export function OrderListByTag() {
     const [orderList, setOrderList] = useState<TagPage>({
@@ -87,7 +84,7 @@ export function OrderListByTag() {
     )
 }
 
-export function OrderTagList({ tagId }: TagProps) {
+export function OrderTagList({ id: tagId }: Props) {
     const [orderList, setOrderList] = useState<OrderTag[]>();
     useEffect(() => {
         axios.get(`${BASE_URL}/order-tag/find-by-tag/${tagId}`)

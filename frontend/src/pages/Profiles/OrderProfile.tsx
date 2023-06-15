@@ -2,7 +2,7 @@ import { OrderMenuBar, OrderStatsBar, OrderStatsTotalValuesBar } from "component
 import ItemDataTable from "components/dashboard/DataTable/OrderDataTable";
 import { useParams } from "react-router-dom";
 import { OrderItemCard } from "components/container/Card/OrderCard";
-import { AddItemForm } from "components/container/Form/OrderForm";
+import { ItemAddForm } from "components/container/Form/OrderForm";
 import { MdClose } from "react-icons/md";
 import { OrderStatsList } from "pages/Listings/OrderListing";
 import { OrderStatsChartsByPediod, OrderStatsCharts, OrderStatsChartByCategory } from "components/dashboard/Chart/StatsChart";
@@ -15,9 +15,9 @@ export function OrderProfile() {
   return (
     <>
       <div className="container">
-        <OrderMenuBar codeId={`${params.codeId}`} />
+        <OrderMenuBar id={`${params.codeId}`} />
         <h3>Tags</h3>
-        <TagListByOrder codeId={`${params.codeId}`}/>
+        <TagListByOrder id={`${params.codeId}`}/>
         <div className="menu-option row">
           <h2 className="col-7 col-md-10">Lista de Produtos Solicitados </h2>
           <div className="col-5 col-md-2" >
@@ -26,7 +26,7 @@ export function OrderProfile() {
             </button>
           </div>
         </div>
-        <ItemDataTable codeId={`${params.codeId}`} />
+        <ItemDataTable id={`${params.codeId}`} />
       </div>
 
       <div className="modal fade" role="dialog" id="saveItemModal">
@@ -38,7 +38,7 @@ export function OrderProfile() {
                 <span aria-hidden="true"><MdClose /></span>
               </button>
             </div>
-            <div className="modal-body"><AddItemForm codeId={`${params.codeId}`} /></div>
+            <div className="modal-body"><ItemAddForm id={`${params.codeId}`} /></div>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@ export function ItemProfile() {
   return (
     <>
       <div className="container">
-        <OrderItemCard itemId={`${params.itemId}`} />
+        <OrderItemCard id={`${params.itemId}`} />
       </div>
     </>
   );
@@ -79,9 +79,9 @@ export function OrderStatsProfile() {
     <>
       <div className="container">
         <div className="m-4"><OrderStatsList /></div>
-        <OrderStatsBar statsId={`${params.statsId}`} />
+        <OrderStatsBar id={`${params.statsId}`} />
         <div className="max-container-charts ">
-          <OrderStatsChartsByPediod statsId={`${params.statsId}`} />
+          <OrderStatsChartsByPediod id={`${params.statsId}`} />
         </div>
       </div>
     </>
@@ -93,7 +93,7 @@ export function OrderTagProfile() {
   return (
     <>
         <div>
-          <OrderTagList tagId={`${params.tagId}`} />
+          <OrderTagList id={`${params.tagId}`} />
       </div>
     </>
   );

@@ -1,14 +1,15 @@
 import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Code, CodeProps, Item, ItemProps } from "types/order";
+import { Code, Item } from "types/order";
 import { MeasurePage } from "types/measure";
 import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css";
 import { MdClose, MdLibraryBooks } from "react-icons/md";
+import { Props } from "types/page";
 
-export function SaveOrderForm() {
+export function OrderAddForm() {
     const navigate = useNavigate();
 
     //Get MeasureList for the measure type selector        
@@ -91,7 +92,7 @@ export function SaveOrderForm() {
     );
 }
 
-export function EditOrderForm({ codeId }: CodeProps) {
+export function OrderEditForm({ id: codeId }: Props) {
     const navigate = useNavigate();
 
     //Get MeasureList for the measure type selector        
@@ -168,7 +169,7 @@ export function EditOrderForm({ codeId }: CodeProps) {
     );
 }
 
-export function AddItemForm({ codeId }: CodeProps) {
+export function ItemAddForm({ id: codeId }: Props) {
     
     const navigate = useNavigate();
     const [order, setOrder] = useState<Code>();
@@ -270,7 +271,7 @@ export function AddItemForm({ codeId }: CodeProps) {
     );
 }
 
-export const EditItemForm = ({ itemId }: ItemProps) => {
+export const ItemEditForm = ({ id: itemId }: Props) => {
     const navigate = useNavigate();
 
     const [item, setItem] = useState<Item>();

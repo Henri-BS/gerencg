@@ -9,6 +9,7 @@ import lombok.Setter;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,6 +31,7 @@ public class OrderCodeDTO implements Serializable {
     private Integer amountItems;
     private String statsId;
     private String categoryId;
+    private LocalDateTime lastModifiedDate;
 
     public OrderCodeDTO(OrderCode entity) {
         code = entity.getCode();
@@ -40,6 +42,7 @@ public class OrderCodeDTO implements Serializable {
         amountItems = entity.getAmountItems();
         totalPackage = entity.getTotalPackage();
         packageType = entity.getPackageType().getAbbreviation();
+        lastModifiedDate = entity.getLastModifiedDate();
         statsId = entity.getStats().getId();
         categoryId = entity.getCategory().getName();
     }

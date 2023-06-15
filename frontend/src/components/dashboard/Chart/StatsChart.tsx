@@ -1,8 +1,10 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import Chart from 'react-apexcharts'
 import { CategoryValue, CategoryQuantity} from 'types/category';
-import { CodePage, OrderStatsProps, OrderStatsQuantityGroup, OrderStatsValueGroup } from 'types/order';
+import { CodePage, OrderStatsQuantityGroup, OrderStatsValueGroup } from 'types/order';
+import { Props } from 'types/page';
+
 import { BASE_URL } from 'utils/requests';
 
 
@@ -101,7 +103,7 @@ export function OrderStatsCharts() {
     );
 }
 
-export function OrderStatsChartsByPediod({ statsId }: OrderStatsProps) {
+export function OrderStatsChartsByPediod({ id: statsId }: Props) {
     const [proportionChart, setProportionChart] = useState<ProportionChartData>({ labels: [], series: [] });
 
     useEffect(() => {

@@ -106,7 +106,7 @@ public class OrderItemService implements IOrderItemService {
         product.setQuantity(quantity);
         product.setPrice(price);
         product.setValidate(validate);
-        product.setLastUpdateDate(date);
+        product.setLastModifiedDate(date);
         productRepository.save(product);
 
         return new ProductDTO(product);

@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { ProductProps } from "types/product";
 import { BASE_URL } from "utils/requests";
 import Chart from 'react-apexcharts'
 import { ProductHistoryPage } from "types/product";
 import moment from "moment";
+import { Props } from "types/page";
 
 type SeriesData = {
     name: string;
@@ -16,7 +16,7 @@ type QuantityChartData = {
     series: SeriesData[];
 }
 
-export function QuantityProductChart({ productId }: ProductProps) {
+export function QuantityProductChart({ id: productId }: Props) {
 
     const [chartData, setChartData] = useState<QuantityChartData>({
         labels: [],

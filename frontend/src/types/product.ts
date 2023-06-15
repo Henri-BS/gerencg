@@ -1,12 +1,6 @@
 import { Category } from "./category";
 import { Measure } from "./measure";
 
-/** Product types */
-
-export type ProductProps = {
-  productId: string;
-}
-
 export type Product = {
   id: number;
   description: string;
@@ -14,7 +8,8 @@ export type Product = {
   price: number;
   quantity: number;
   validate: string;
-  lastUpdateDate: string;
+  createdDate: string;
+  lastModifiedDate: string;
   measureValue: number;
   measure: Measure;
   category: Category;
@@ -33,12 +28,14 @@ export type ProductPage = {
   last?: boolean;
 };
 
+export type ProductProps = {
+  product: Product;
+}
+
 export type QuantityTimelineChart = {
   description: string;
   quantity: number;
 };
-
-/** ProductHistory types */
 
 export type ProductHistory = {
   id: number;
@@ -63,6 +60,6 @@ export type ProductHistoryPage = {
   last?: boolean;
 };
 
-export type HistoryProps = {
-  historyId: string;
+export type ProductHistoryProps = {
+  history: ProductHistory
 }

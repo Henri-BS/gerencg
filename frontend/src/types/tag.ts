@@ -6,10 +6,12 @@ export type OrderTag = {
   category: string;
   tagId: string;
 };
+
 export type Tag = {
 tagId: string;
 description: string;
 }
+
 export type TagPage = {
     content?: Tag[];
     size?: number;
@@ -36,6 +38,10 @@ export type OrderTagPage = {
   last?: boolean;
 };
 
+export type OrdersTagProps = {
+  orderTag: OrderTag;
+}
+
 export type TagProps = {
-  tagId: string;
+  tag: Tag;
 };

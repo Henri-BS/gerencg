@@ -22,6 +22,7 @@ public class CategoryDTO implements Serializable{
 	private String image;
 	private Integer totalProducts;
 	private Integer totalRegisters;
+	private LocalDateTime createdDate;
 	private LocalDateTime lastModifiedDate;
 
 	public CategoryDTO(Category entity) {
@@ -29,6 +30,7 @@ public class CategoryDTO implements Serializable{
 		image = entity.getImage();
 		totalProducts = entity.getTotalProducts();
 		totalRegisters = entity.getTotalRegisters();
+		createdDate = entity.getCreatedDate();
 		lastModifiedDate = entity.getLastModifiedDate();
 	}
 }

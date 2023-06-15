@@ -1,18 +1,15 @@
 import axios from "axios";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { MdClose, MdInfoOutline } from "react-icons/md";
+import { MdClose } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
-import { HistoryProps, Product } from "types/product";
-import { ProductHistory } from "types/product";
+import { ProductHistory, ProductHistoryProps, ProductPage, ProductProps } from "types/product";
+import { Props} from "types/page";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 
-type Props = {
-    product: Product;
-}
 
-export function ProductCard({ product }: Props) {
+export function ProductCard({ product }: ProductProps) {
 
     return (
         <Link to={`/product/${product?.id}`}>
@@ -30,9 +27,29 @@ export function ProductCard({ product }: Props) {
     );
 }
 
-//Card with Validate
+export function GetLastProductCard() {
 
-export function ProductValidateCard({ product }: Props) {
+    const [productList, setProductList] = useState<ProductPage>({ content: [], number: 0 });
+    useEffect(() => {
+        axios.get(`${BASE_URL}/product-search?size=1&sort=createdDate,asc`)
+            .then((response) => {
+                setProductList(response.data);
+            });
+    }, []);
+
+
+    return (
+        <div>
+            Último Produto Adcionado:
+            {productList.content?.map(x => (
+                <ProductCard product={x} />
+            ))}
+        </div>
+    );
+}
+
+
+export function ProductValidateCard({ product }: ProductProps) {
 
     return (
         <Link to={`/product/${product?.id}`}>
@@ -50,12 +67,7 @@ export function ProductValidateCard({ product }: Props) {
     );
 }
 
-//Product history card
-type Cons = {
-    history: ProductHistory
-}
-
-export function ProductHistoryCard({ history }: Cons) {
+export function ProductHistoryCard({ history }: ProductHistoryProps) {
 
     const params = useParams();
     return (
@@ -73,7 +85,7 @@ export function ProductHistoryCard({ history }: Cons) {
                                 <span className="text-close" aria-hidden="true"><MdClose /></span>
                             </button>
                         </div>
-                        <GetHistoryCard historyId={`${params.historyId}`} />
+                        <GetHistoryCard id={`${params.historyId}`} />
                     </div>
                 </div>
             </div>
@@ -81,7 +93,7 @@ export function ProductHistoryCard({ history }: Cons) {
     );
 }
 
-export function GetHistoryCard({ historyId }: HistoryProps) {
+export function GetHistoryCard({ id: historyId }: Props) {
 
     const [history, setHistory] = useState<ProductHistory>();
     useEffect(() => {
