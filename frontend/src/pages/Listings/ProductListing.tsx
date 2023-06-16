@@ -123,7 +123,7 @@ export function ProductValidateList() {
                     <h2 className="col-12 col-sm-3 col-md-3 border-0">Próximos da data de validade</h2>
                     <form className="col-12 col-sm-4 col-md-4 search-container">
 
-                        <label className="form-group" >
+                        <label>
                             <h5>Data inicial</h5>
                         </label>
                         <div className="form-group search-form-group">
@@ -138,7 +138,7 @@ export function ProductValidateList() {
 
 
                     <form className="col-12 col-sm-4 col-md-4 search-container">
-                        <label className="form-group" >
+                        <label>
                             <h5>Data final</h5>
                         </label>
                         <div className="form-group search-form-group">

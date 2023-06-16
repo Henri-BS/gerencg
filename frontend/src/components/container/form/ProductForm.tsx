@@ -13,9 +13,8 @@ export function AddProductForm() {
     //Get MeasueList for the measure type selector        
     const [measureList, setMeasure] = useState<MeasurePage>({
         content: [],
-        number: 0,
-        totalElements: 0,
-        totalPages: 0
+        number: 0
+     
     })
     useEffect(() => {
         axios.get(`${BASE_URL}/measure/list`)
@@ -72,6 +71,7 @@ export function AddProductForm() {
 
         
             <form className="form-lg-card-container m-0 row" onSubmit={handleSubmit}>
+
                 <div className="form-group gerencg-form-group col-6">
                     <label htmlFor="description">Descrição: </label>
                     <input type="text" className="form-control" id="description" />

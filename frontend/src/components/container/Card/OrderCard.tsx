@@ -2,7 +2,7 @@ import axios from "axios";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { CodeProps, Item, ItemProps, OrderStats, OrderStatsProps } from "types/order";
+import { CodePage, CodeProps, Item, ItemProps, OrderStatsProps } from "types/order";
 import { Props } from "types/page"
 import { BASE_URL } from "utils/requests";
 import IUpdateProduct from "assets/img/update.png"
@@ -33,6 +33,27 @@ export function OrderCard({ code }: CodeProps) {
                 </div>
             </div>
         </Link>
+    );
+}
+
+export function GetLastOrderCard() {
+
+    const [orderList, setOrderList] = useState<CodePage>({ content: [], number: 0 });
+    useEffect(() => {
+        axios.get(`${BASE_URL}/order/list?size=1&sort=orderDate,desc`)
+            .then((response) => {
+                setOrderList(response.data);
+            });
+    }, []);
+
+
+    return (
+        <div>
+            Último Pedido Adcionado:
+            {orderList.content?.map(x => (
+                <OrderCard code={x} />
+            ))}
+        </div>
     );
 }
 

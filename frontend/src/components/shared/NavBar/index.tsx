@@ -72,17 +72,19 @@ function NavBar() {
                 <div className="modal-dialog modal-lg" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <div className="modal-title" id="productLabel">Adicionar um novo produto
-                                <span data-bs-dismiss="modal">
-                                    <Link to="/product-list" className="form-links"> <MdLibraryBooks /></Link>
+                           
+                            <span data-bs-dismiss="modal ">
+                                    <Link to="/product-list" className="form-links"> <MdLibraryBooks /> Lista de Produtos</Link>
                                 </span>
-                            </div>
+
                             <button className="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><MdClose /></span>
                             </button>
-                        </div>
+                        </div>                                 
+                        <div className="modal-title" id="productLabel">Adicionar um novo produto</div>        
                         <div className="modal-body"><AddProductForm />
-                        <hr />
+                        <hr/>
+                        
                             <GetLastProductCard/>
                         </div>
                     </div>

@@ -29,14 +29,14 @@ body {
     background-color: var(--dark-tert);
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
     border-radius: 0px 8px 8px 0px;
     background-color: var(--dark-tert);
     width: 10px;
     margin: 4px;
 }
 
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background-color: var(--dark-prim);
     border: 1px solid var(--dark-tert);
     border-radius: 8px;
@@ -104,6 +104,13 @@ abbr {
 
 .modal-header span {
     color: var(--white-prim);
+}
+
+.modal-title {
+    width: 100%;
+    text-align: center;
+    font-size: larger;
+    padding: 8px;
 }
 
 .close {

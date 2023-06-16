@@ -8,8 +8,8 @@ export type Measure = {
 export type MeasurePage = {
   content: Measure[];
   last?: boolean;
-  totalElements: number;
-  totalPages: number;
+  totalElements?: number;
+  totalPages?: number;
   size?: number;
   number: number;
   first?: boolean;
