@@ -12,7 +12,7 @@ function ItemDataTable({ id: codeId }: Props) {
     const [pageItem, setPageItem] = useState<Item[]>();
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/find-code/${codeId}`)
+        axios.get(`${BASE_URL}/item/order/${codeId}`)
             .then((response) => {
                 setPageItem(response.data);
             });

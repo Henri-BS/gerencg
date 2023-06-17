@@ -14,13 +14,10 @@ import { Props } from "types/page";
 export function ProductsList() {
     const [value, setValue] = useState("");
     const [pageNumber, setPageNumber] = useState(0);
-    const [productPage, setProductPage] = useState<ProductPage>({
-        content: [],
-        number: 0
-    });
+    const [productPage, setProductPage] = useState<ProductPage>({ content: [], number: 0 });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/product-search?description=${value}&size=12&page=${pageNumber}`)
+        axios.get(`${BASE_URL}/product/search?description=${value}&size=12&page=${pageNumber}`)
             .then(response => {
                 setProductPage(response.data);
             });
@@ -102,7 +99,7 @@ export function ProductValidateList() {
         const maxDate = maxValidate.toISOString().slice(0, 10);
 
         axios.get(
-            `${BASE_URL}/product-validate?page=${pageNumber}&size=40
+            `${BASE_URL}/product/validate?page=${pageNumber}&size=40
             &minValidate=${minDate}&maxValidate=${maxDate}`
         )
             .then(response => {

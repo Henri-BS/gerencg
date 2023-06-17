@@ -31,7 +31,7 @@ export function GetLastProductCard() {
 
     const [productList, setProductList] = useState<ProductPage>({ content: [], number: 0 });
     useEffect(() => {
-        axios.get(`${BASE_URL}/product-list?size=1&sort=createdDate,desc`)
+        axios.get(`${BASE_URL}/product/list?size=1&sort=createdDate,desc`)
             .then((response) => {
                 setProductList(response.data);
             });

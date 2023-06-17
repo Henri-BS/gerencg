@@ -15,56 +15,59 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/item")
 public class OrderItemController {
 
     @Autowired
     private OrderItemService itemService;
 
-    @GetMapping("/items-list")
+    @GetMapping("/list")
     public ResponseEntity<Page<OrderItemDTO>> findAllItems(Pageable pageable) {
         Page<OrderItemDTO> page = itemService.findAllItems(pageable);
         return ResponseEntity.ok(page);
     }
 
-    @GetMapping("/find-code/{code}")
+    @GetMapping("/order/{code}")
     public ResponseEntity<List<OrderItemDTO>> findItemsByCode(@PathVariable OrderCode code) {
         List<OrderItemDTO> list = itemService.findItemsByCode(code);
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/find-item-by-product/{product}")
+    @GetMapping("/find-by-product/{product}")
     public ResponseEntity<List<OrderItemDTO>> findItemByProduct(@PathVariable Product product) {
         List<OrderItemDTO> list = itemService.findItemByProduct(product);
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/item/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<OrderItemDTO> findOrderById(@PathVariable Long id) {
         OrderItemDTO findItem = itemService.findItemById(id);
         return ResponseEntity.ok(findItem);
     }
 
-    @PostMapping("/save-item")
+    @PostMapping("/add")
     public ResponseEntity<OrderItemDTO> saveItem(@RequestBody OrderItemDTO item) {
         OrderItemDTO newItem = itemService.saveItem(item);
         return new ResponseEntity<>(newItem, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update-item")
+    @PutMapping("/edit")
     public ResponseEntity<OrderItemDTO> updateItem(@RequestBody OrderItemDTO item) {
         OrderItemDTO edit = itemService.updateItem(item);
         return new ResponseEntity<>(edit, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete-item/{id}")
+    @PutMapping("/update-product")
+    public ResponseEntity<ProductDTO> updateProductByItem(OrderItemDTO item, Long id) {
+        ProductDTO update = itemService.updateProductByItem(item);
+        return ResponseEntity.ok(update);
+    }
+
+    @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteItem(@PathVariable Long id) {
         this.itemService.deleteItem(id);
     }
 
-    @PutMapping("/update-product-by-item")
-    public ResponseEntity<ProductDTO> updateProductByItem(OrderItemDTO item, Long id) {
-        ProductDTO update = itemService.updateProductByItem(item);
-        return ResponseEntity.ok(update);
-    }
+
 }

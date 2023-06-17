@@ -102,7 +102,7 @@ export function OrderItemListByProduct({ id: productId }: Props) {
 
     const [item, setItem] = useState<Item[]>();
     useEffect(() => {
-        axios.get(`${BASE_URL}/find-item-by-product/${productId}`)
+        axios.get(`${BASE_URL}/item/find-by-product/${productId}`)
             .then((response) => {
                 setItem(response.data);
             });

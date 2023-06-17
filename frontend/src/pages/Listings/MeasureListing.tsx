@@ -45,13 +45,10 @@ export function MeasureList() {
 
 export function ProductMeasureList({ id: measureId }: Props) {
     const [pageNumber, setPageNumber] = useState(0);
-    const [productPage, setProductPage] = useState<ProductPage>({
-        content: [],
-        number: 0
-    });
+    const [productPage, setProductPage] = useState<ProductPage>({ content: [], number: 0 });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/find-products-by-measure/${measureId}/?page=${pageNumber}`)
+        axios.get(`${BASE_URL}/product/measure/${measureId}?page=${pageNumber}`)
             .then(response => {
                 setProductPage(response.data);
             });
@@ -67,11 +64,8 @@ export function ProductMeasureList({ id: measureId }: Props) {
                 <div className="header-container">
                     <h2>Produtos Medidos por: {measureId}</h2>
                 </div>
-
                 <div className="pagination-container-menu">
-                    <div className="pagination-item">
                         <Pagination page={productPage} onPageChange={handlePageChange} />
-                    </div>
                 </div>
                 <div className="row">
                     {productPage.content?.map(product => (

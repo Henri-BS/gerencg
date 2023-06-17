@@ -14,6 +14,7 @@ import com.altercode.gerencg.service.ProductService;
 import com.altercode.gerencg.service.SmsService;
 
 @RestController
+@RequestMapping("/product")
 public class ProductController {
 
     @Autowired
@@ -22,19 +23,19 @@ public class ProductController {
     @Autowired
     private SmsService smsService;
 
-    @GetMapping("/product-search")
+    @GetMapping("/search")
     public ResponseEntity<Page<ProductDTO>> findByDescription(Pageable pageable, String description) {
         Page<ProductDTO> page = service.findAllByDescription(pageable, description);
         return ResponseEntity.ok(page);
     }
 
-    @GetMapping("/product-list")
+    @GetMapping("/list")
     public ResponseEntity<Page<ProductDTO>> findAllProducts(Pageable pageable) {
         Page<ProductDTO> page = service.findAllProducts(pageable);
         return ResponseEntity.ok(page);
     }
 
-    @GetMapping("/product-validate")
+    @GetMapping("/validate")
     public ResponseEntity<Page<ProductDTO>> findAllByValidate(
             @RequestParam(value = "minValidate", defaultValue = "") String minValidate,
             @RequestParam(value = "maxValidate", defaultValue = "") String maxValidate,
@@ -44,48 +45,48 @@ public class ProductController {
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/find-products-by-category/{category}")
-    public ResponseEntity<Page<ProductDTO>> findByCategory(Pageable pageable, Category category) {
-        Page<ProductDTO> list = service.findByCategory(pageable, category);
+    @GetMapping("/category/{categoryId}")
+    public ResponseEntity<Page<ProductDTO>> findByCategory(Pageable pageable, @PathVariable Category categoryId) {
+        Page<ProductDTO> list = service.findByCategory(pageable, categoryId);
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/find-products-by-measure/{measure}")
-    public ResponseEntity<Page<ProductDTO>> findByMeasure(Pageable pageable, Measure measure) {
-        Page<ProductDTO> list = service.findByMeasure(pageable, measure);
+    @GetMapping("/measure/{measureId}")
+    public ResponseEntity<Page<ProductDTO>> findByMeasure(Pageable pageable, @PathVariable Measure measureId) {
+        Page<ProductDTO> list = service.findByMeasure(pageable, measureId);
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/product/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
         ProductDTO findProduct = service.findById(id);
         return ResponseEntity.ok(findProduct);
     }
 
-    @GetMapping("/product-description/{description}")
+    @GetMapping("/description/{description}")
     public ResponseEntity<ProductDTO> findByDescription(@PathVariable String description) {
         ProductDTO findProduct = service.findByDescription(description);
         return ResponseEntity.ok(findProduct);
     }
 
-    @GetMapping("/product/{id}/notification")
+    @GetMapping("/{id}/notification")
     public void notifySms(@PathVariable Long id) {
         smsService.sendSms(id);
     }
 
-    @PostMapping("/product-add")
+    @PostMapping("/add")
     public ResponseEntity<ProductDTO> saveProduct(@RequestBody ProductDTO product) {
         ProductDTO newProduct = service.saveProduct(product);
         return new ResponseEntity<>(newProduct, HttpStatus.CREATED);
     }
 
-    @PutMapping("/product-update")
+    @PutMapping("/edit")
     public ResponseEntity<ProductDTO> updateProduct(@RequestBody ProductDTO product){
     ProductDTO updatedProduct = service.updateProduct(product);
         return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
     }
 
-    @DeleteMapping("/product-delete/{id}")
+    @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteProduct(@PathVariable Long id) {
         this.service.deleteProduct(id);

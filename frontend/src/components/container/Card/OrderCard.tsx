@@ -40,7 +40,7 @@ export function GetLastOrderCard() {
 
     const [orderList, setOrderList] = useState<CodePage>({ content: [], number: 0 });
     useEffect(() => {
-        axios.get(`${BASE_URL}/order/list?size=1&sort=orderDate,desc`)
+        axios.get(`${BASE_URL}/order/list?size=1&sort=orderDate,desc&code=${""}`)
             .then((response) => {
                 setOrderList(response.data);
             });
@@ -48,10 +48,12 @@ export function GetLastOrderCard() {
 
 
     return (
-        <div>
+        <div className="m-2">
             Último Pedido Adcionado:
             {orderList.content?.map(x => (
+                
                 <OrderCard code={x} />
+                
             ))}
         </div>
     );
@@ -95,7 +97,7 @@ export function OrderItemCard({ id: itemId }: Props) {
 
     const [, setProduct] = useState<Product>();
     const updateProductByItem = () => {
-        axios.put(`${BASE_URL}/update-product-by-item?id=${itemId}`)
+        axios.put(`${BASE_URL}/item/update-product?id=${itemId}`)
             .then((response) => {
                 setProduct(response.data);
                 navigate(`/product/${item?.productId}`)
@@ -103,7 +105,7 @@ export function OrderItemCard({ id: itemId }: Props) {
     }
 
     const deleteItem = () => {
-        axios.delete(`${BASE_URL}/delete-item/${itemId}`)
+        axios.delete(`${BASE_URL}/item/delete/${itemId}`)
             .then((response) => {
                 navigate(`/order/${item?.orderCode}`)
                 console.log(response.status);

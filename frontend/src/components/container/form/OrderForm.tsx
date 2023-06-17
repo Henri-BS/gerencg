@@ -1,24 +1,18 @@
 import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Code, Item } from "types/order";
 import { MeasurePage } from "types/measure";
 import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css";
-import { MdClose, MdLibraryBooks } from "react-icons/md";
 import { Props } from "types/page";
 
 export function OrderAddForm() {
     const navigate = useNavigate();
 
     //Get MeasureList for the measure type selector        
-    const [measureList, setMeasure] = useState<MeasurePage>({
-        content: [],
-        number: 0,
-        totalElements: 0,
-        totalPages: 0
-    })
+    const [measureList, setMeasure] = useState<MeasurePage>({ content: [],number: 0 })
     useEffect(() => {
         axios.get(`${BASE_URL}/measure/list`)
             .then((response) => {
@@ -49,18 +43,9 @@ export function OrderAddForm() {
     }
     return (
 
-        <form className="form-container" onSubmit={handleSubmit}>
-               <div className="modal-header" >
-                            <div className="modal-title" id="commissionLabel">Adicionar um novo pedido
-                                <span data-bs-dismiss="modal">
-                                    <Link to="/order/list" className="form-links" > <MdLibraryBooks /></Link>
-                                </span>
-                            </div>
-                            <button className="close" data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"><MdClose /></span>
-                            </button>
-                        </div>
-            <div className="form-card-container">
+        <>
+
+            <form className="form-card-container" onSubmit={handleSubmit}>
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="code">Código do Pedido: </label>
                     <input className="form-control" id="code" placeholder="00.00.0000.00-aa" />
@@ -83,12 +68,12 @@ export function OrderAddForm() {
                         ))}
                     </select>
                 </div>
-            </div>
+            </form>
             <div className="modal-footer">
                 <button className="text-close">cancelar</button>
                 <button type="submit" className="btn-confirm">Adicionar Pedido</button>
             </div>
-        </form>
+        </>
     );
 }
 
@@ -170,7 +155,7 @@ export function OrderEditForm({ id: codeId }: Props) {
 }
 
 export function ItemAddForm({ id: codeId }: Props) {
-    
+
     const navigate = useNavigate();
     const [order, setOrder] = useState<Code>();
     useEffect(() => {
@@ -186,7 +171,7 @@ export function ItemAddForm({ id: codeId }: Props) {
     })
     const [value, setValue] = useState("");
     useEffect(() => {
-        axios.get(`${BASE_URL}/product-search?description=${value}`)
+        axios.get(`${BASE_URL}/product/search?description=${value}`)
             .then(response => {
                 setProductPage(response.data);
             });
@@ -202,7 +187,7 @@ export function ItemAddForm({ id: codeId }: Props) {
 
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
-            url: "/save-item",
+            url: "/item/add",
             method: "POST",
             data: {
                 orderCode: codeId,
@@ -222,7 +207,7 @@ export function ItemAddForm({ id: codeId }: Props) {
     return (
         <>
             <form className="form-container" onSubmit={handleSubmit}>
-<span>CódigoPedido: {order?.code}</span>
+                <span>CódigoPedido: {order?.code}</span>
                 <div className="form-card-container" >
                     <div className="form-group gerencg-form-group">
                         <label htmlFor="quantity">Quantidade em Unidades: </label>
@@ -254,7 +239,7 @@ export function ItemAddForm({ id: codeId }: Props) {
                         <input type="text" list="productDescription" value={value} onChange={(e) => setValue(e.target.value)} id="product" className="form-control" placeholder="busque pelo produto..." />
                         <datalist id="productDescription" >
                             {productPage.content?.filter((product) =>
-                                product.description.toLowerCase().includes(value.toLocaleLowerCase()))
+                                product.description.toLowerCase().includes(value.toLocaleUpperCase().toLocaleLowerCase()))
                                 .map((product) => (
                                     <option id="value" key={product.id} value={product.description}>
                                         {product.description} - {product.measureValue} {product.measure}
@@ -288,7 +273,7 @@ export const ItemEditForm = ({ id: itemId }: Props) => {
     })
     const [value, setValue] = useState("");
     useEffect(() => {
-        axios.get(`${BASE_URL}/product-search?description=${value}`)
+        axios.get(`${BASE_URL}/product/search?description=${value}`)
             .then(response => {
                 setProductPage(response.data);
             });
@@ -305,7 +290,7 @@ export const ItemEditForm = ({ id: itemId }: Props) => {
 
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
-            url: "/update-item",
+            url: "/item/edit",
             method: "PUT",
             data: {
                 id: itemId,
@@ -363,11 +348,11 @@ export const ItemEditForm = ({ id: itemId }: Props) => {
                             ))}
                     </datalist>
                 </div>
-               
-            </div> 
+
+            </div>
             <div className="modal-footer">
-                    <button type="submit" className="btn-confirm">Editar</button>
-                </div>
+                <button type="submit" className="btn-confirm">Editar</button>
+            </div>
         </form>
     );
 }

@@ -49,7 +49,7 @@ export function AddProductForm() {
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
             method: "POST",
-            url: "/product-add",
+            url: "/product/add",
             data: {
                 description: description,
                 image: image,
@@ -185,7 +185,7 @@ export function ProductFormEdit ({id: productId }: Props) {
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
             method: "PUT",
-            url: "/product-update",
+            url: "/product/edit",
             data: {
                 id: productId,
                 description: description,

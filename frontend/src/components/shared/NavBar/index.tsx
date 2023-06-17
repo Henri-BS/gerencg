@@ -11,6 +11,7 @@ import { TagList } from "pages/Listings/TagListing";
 import { CategoryAddForm } from "components/container/Form/CategoryForm";
 import { GetLastCategoryCard } from "components/container/Card/CategoryCard";
 import { GetLastProductCard } from "components/container/Card/ProductCard";
+import { GetLastOrderCard } from "components/container/Card/OrderCard";
 
 function NavBar() {
     const [click, setClick] = useState(false);
@@ -72,20 +73,19 @@ function NavBar() {
                 <div className="modal-dialog modal-lg" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                           
+
                             <span data-bs-dismiss="modal ">
-                                    <Link to="/product-list" className="form-links"> <MdLibraryBooks /> Lista de Produtos</Link>
-                                </span>
+                                <Link to="/product-list" className="form-links"> <MdLibraryBooks /> Lista de Produtos</Link>
+                            </span>
 
                             <button className="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><MdClose /></span>
                             </button>
-                        </div>                                 
-                        <div className="modal-title" id="productLabel">Adicionar um novo produto</div>        
+                        </div>
+                        <div className="modal-title" id="productLabel">Adicionar um novo produto</div>
                         <div className="modal-body"><AddProductForm />
-                        <hr/>
-                        
-                            <GetLastProductCard/>
+                            <hr />
+                            <GetLastProductCard />
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,19 @@ function NavBar() {
             <div className="modal fade" role="dialog" id="saveOrderModal">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
+                        <div className="modal-header" >
+                            <span data-bs-dismiss="modal">
+                                <Link to="/order/list" className="form-links" > <MdLibraryBooks /> Lista de Pedidos</Link>
+                            </span>
+                            <button className="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><MdClose /></span>
+                            </button>
+                        </div>
+                        <div className="modal-title" id="orderLabel">Adicionar um novo pedido</div>
+
                         <div className="modal-body"><OrderAddForm /></div>
+                        <hr/>
+                        <GetLastOrderCard />
                     </div>
                 </div>
             </div>
@@ -129,7 +141,7 @@ function NavBar() {
                         <div className="modal-body">
                             <CategoryAddForm />
                             <hr />
-                            <GetLastCategoryCard/>
+                            <GetLastCategoryCard />
                         </div>
                     </div>
                 </div>

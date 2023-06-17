@@ -48,14 +48,14 @@ function CategoryDataTable() {
                         </tr>
                     </thead>
                     <tbody className="border-0">
-                        {page.content?.map(item => (
-                            <tr key={item.id}>
-                                <Link to={`/category/${item.category}`} className="table-box-title">
-                                    <td>{item.category}</td>
+                        {page.content?.map(x => (
+                            <tr key={x.id}>
+                                <Link to={`/category/${x.category}`} className="table-box-title">
+                                    <td>{x.category}</td>
                                 </Link>
-                                <td className="table-box">{moment(item.registrationDate).format("DD/MM/YYYY")}</td>
-                                <td className="table-box">{item.addedProducts}</td>
-                                <td className="table-box">{item.income.toFixed(2)}</td>
+                                <td className="table-box">{moment(x.registrationDate).format("DD/MM/YYYY")}</td>
+                                <td className="table-box">{x.addedProducts}</td>
+                                <td className="table-box">{x.income.toFixed(2)}</td>
                             </tr>
                         ))}
                     </tbody>
