@@ -5,9 +5,10 @@ import { OrdersTagProps, TagProps } from "types/tag";
 export function TagCard({ tag }: TagProps) {
     return (
         <Link to={`/order-tag/${tag.tagId}`} className="text-decoration-none">
-            <abbr title={tag.tagId}>   <div className="tag-card-container ">
-                {tag.tagId}
-            </div>
+            <abbr title={tag.tagId}>
+                <div className="tag-card-container ">
+                    {tag.tagId}
+                </div>
             </abbr>
         </Link>
     );

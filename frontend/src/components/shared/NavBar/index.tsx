@@ -12,6 +12,8 @@ import { CategoryAddForm } from "components/container/Form/CategoryForm";
 import { GetLastCategoryCard } from "components/container/Card/CategoryCard";
 import { GetLastProductCard } from "components/container/Card/ProductCard";
 import { GetLastOrderCard } from "components/container/Card/OrderCard";
+import { MeasureList } from "pages/Listings/MeasureListing";
+import { MeasureAddForm } from "components/container/Form/MeasureForm";
 
 function NavBar() {
     const [click, setClick] = useState(false);
@@ -60,9 +62,9 @@ function NavBar() {
                         </div>
                     </li>
                     <li className="navbar-item">
-                        <Link className="navbar-link" to="/measure/list" onClick={closeMobileMenu}>
+                        <div data-bs-toggle="modal" data-bs-target="#saveMeasureModal" className="navbar-link" onClick={closeMobileMenu}>
                             <AiIcons.AiOutlineDashboard /> Medidas
-                        </Link>
+                        </div>
                     </li>
                 </ul>
             </nav>
@@ -146,6 +148,7 @@ function NavBar() {
                     </div>
                 </div>
             </div>
+
             <div className="modal fade" role="dialog" id="saveMeasureModal">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
@@ -156,16 +159,16 @@ function NavBar() {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <TagAddForm />
+                            <MeasureAddForm />
                             <hr />
-                            <TagList />
+                            <MeasureList />
                         </div>
                     </div>
                 </div>
             </div>
 
-            
-            
+
+
         </>
 
     );

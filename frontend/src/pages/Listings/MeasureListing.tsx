@@ -10,34 +10,29 @@ import { BASE_URL } from "utils/requests";
 
 export function MeasureList() {
 
-    const [measurePage, setMeasurePage] = useState<MeasurePage>({
-        content: [],
-        number: 0,
-        totalElements: 0,
-        totalPages: 0
-    });
+    const [pageNumber, setPageNumber] = useState(0);
 
+    const [measureList, setTagList] = useState<MeasurePage>({ content: [], number: 0 });
     useEffect(() => {
-
-        axios.get(`${BASE_URL}/measure/list?size=30`)
-            .then(response => {
-                setMeasurePage(response.data);
+        axios.get(`${BASE_URL}/measure/list?page=${pageNumber}&size=15&sort=abbreviation,ASC`)
+            .then((response) => {
+                setTagList(response.data);
             });
-    }, []);
+    }, [pageNumber]);
+
+    const handlePage = (newPageNumber: number) => {
+        setPageNumber(newPageNumber);
+    }
 
     return (
         <>
-            <div className="container">
-                <div className="header-container">
-                    <h2>Lista de Medidas</h2>
-                </div>
-                <div className=" row">
-                    {measurePage.content?.map(measure => (
-                        <div key={measure.abbreviation} className="col-12 col-md-6 col-xl-4 mb-3">
-                            <MeasureCard measure={measure} />
-                        </div>
-                    ))}
-                </div>
+            <Pagination page={measureList} onPageChange={handlePage} />
+            <div className="row p-2">
+                {measureList.content?.map(x => (
+                    <div key={x.abbreviation} className="col-4 p-1">
+                        <MeasureCard measure={x} />
+                    </div>
+                ))}
             </div>
         </>
     );

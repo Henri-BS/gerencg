@@ -33,19 +33,20 @@ export function MeasureInfo({ id: measureId }: Props) {
     );
 }
 
-export function MeasureCard({measure}: MeasureProps) {
 
+export function MeasureCard({ measure }: MeasureProps) {
     return (
-        <>
-                <Link to={`/measure/${measure.abbreviation}`} className="measure-details-container">
-                    <div className="measure-details-box ">
-                        <h3>{measure.description}</h3>
-                    </div>
-                </Link>
-            
-        </>
+        <Link to={`/measure/${measure.abbreviation}`} className="text-decoration-none">
+            <abbr title={measure.abbreviation}>
+                <div className="tag-card-container ">
+                    {measure.description}
+                </div>
+            </abbr>
+        </Link>
     );
-
 }
+
+
+
 
 
