@@ -20,11 +20,6 @@ public class CategoryService implements ICategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
-	public CategoryDTO findLastCategory() {
-		List<Category> find = categoryRepository.findAll();
-		return new CategoryDTO(find.get(find.size() -1));
-	}
-
 	public Page<CategoryDTO> findAll(Pageable pageable) {
 		Page<Category> result = categoryRepository.findAll(pageable);
 		return result.map(CategoryDTO::new);

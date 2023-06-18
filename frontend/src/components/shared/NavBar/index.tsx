@@ -54,17 +54,15 @@ function NavBar() {
                             <AiIcons.AiOutlineMenuUnfold /> Categorias
                         </div>
                     </li>
-
-                    <li className="navbar-item">
-                        <Link className="navbar-link" to="/measure/list" onClick={closeMobileMenu}>
-                            <AiIcons.AiOutlineDashboard /> Medidas
-                        </Link>
-                    </li>
-
                     <li className="navbar-item">
                         <div data-bs-toggle="modal" data-bs-target="#saveTagModal" className="navbar-link" onClick={closeMobileMenu}>
                             <AiIcons.AiOutlineTags /> Tags
                         </div>
+                    </li>
+                    <li className="navbar-item">
+                        <Link className="navbar-link" to="/measure/list" onClick={closeMobileMenu}>
+                            <AiIcons.AiOutlineDashboard /> Medidas
+                        </Link>
                     </li>
                 </ul>
             </nav>
@@ -75,7 +73,7 @@ function NavBar() {
                         <div className="modal-header">
 
                             <span data-bs-dismiss="modal ">
-                                <Link to="/product-list" className="form-links"> <MdLibraryBooks /> Lista de Produtos</Link>
+                                <Link to="/product/list" className="form-links"> <MdLibraryBooks /> Lista de Produtos</Link>
                             </span>
 
                             <button className="close" data-bs-dismiss="modal" aria-label="Close">
@@ -105,8 +103,28 @@ function NavBar() {
                         <div className="modal-title" id="orderLabel">Adicionar um novo pedido</div>
 
                         <div className="modal-body"><OrderAddForm /></div>
-                        <hr/>
+                        <hr />
                         <GetLastOrderCard />
+                    </div>
+                </div>
+            </div>
+            <div className="modal fade" role="dialog" id="saveCategoryModal">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header" >
+                            <span data-bs-dismiss="modal">
+                                <Link to="/category/list" className="form-links" > <MdLibraryBooks /> Lista de Categorias</Link>
+                            </span>
+                            <button className="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><MdClose /></span>
+                            </button>
+                        </div>
+                        <div className="modal-title" id="categLabel">Adicionar Categoria</div>
+                        <div className="modal-body">
+                            <CategoryAddForm />
+                            <hr />
+                            <GetLastCategoryCard />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -128,24 +146,26 @@ function NavBar() {
                     </div>
                 </div>
             </div>
-
-            <div className="modal fade" role="dialog" id="saveCategoryModal">
+            <div className="modal fade" role="dialog" id="saveMeasureModal">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header" >
-                            <div className="modal-title" id="categLabel">Adicionar Categoria</div>
+                            <div className="modal-title" id="tagLabel">Adicionar Medida</div>
                             <button className="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><MdClose /></span>
                             </button>
                         </div>
                         <div className="modal-body">
-                            <CategoryAddForm />
+                            <TagAddForm />
                             <hr />
-                            <GetLastCategoryCard />
+                            <TagList />
                         </div>
                     </div>
                 </div>
             </div>
+
+            
+            
         </>
 
     );

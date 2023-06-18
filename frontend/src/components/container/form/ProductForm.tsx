@@ -62,7 +62,7 @@ export function AddProductForm() {
             }
         };
         axios(config).then(response => {
-            navigate("/product-list");
+            navigate("/product/list");
     })
     }
 

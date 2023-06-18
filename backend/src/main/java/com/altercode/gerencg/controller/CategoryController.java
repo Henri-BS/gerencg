@@ -40,12 +40,6 @@ public class CategoryController {
         return ResponseEntity.ok(find);
     }
 
-    @GetMapping("/last")
-    public ResponseEntity<CategoryDTO> findLastCategory() {
-        CategoryDTO find = categoryService.findLastCategory();
-        return ResponseEntity.ok(find);
-    }
-
     @PostMapping("/add")
     public ResponseEntity<CategoryDTO> addCategory(@RequestBody CategoryDTO category) {
     	CategoryDTO newCategory = categoryService.addCategory(category);

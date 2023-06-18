@@ -24,7 +24,8 @@ public class ProductController {
     private SmsService smsService;
 
     @GetMapping("/search")
-    public ResponseEntity<Page<ProductDTO>> findByDescription(Pageable pageable, String description) {
+    public ResponseEntity<Page<ProductDTO>> findByDescription(Pageable pageable, @RequestParam(value = "description", defaultValue = "") String description
+    ) {
         Page<ProductDTO> page = service.findAllByDescription(pageable, description);
         return ResponseEntity.ok(page);
     }
@@ -81,8 +82,8 @@ public class ProductController {
     }
 
     @PutMapping("/edit")
-    public ResponseEntity<ProductDTO> updateProduct(@RequestBody ProductDTO product){
-    ProductDTO updatedProduct = service.updateProduct(product);
+    public ResponseEntity<ProductDTO> updateProduct(@RequestBody ProductDTO product) {
+        ProductDTO updatedProduct = service.updateProduct(product);
         return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
     }
 

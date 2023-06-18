@@ -21,7 +21,7 @@ function PageRoutes() {
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />
 
-                <Route path="/product-list" element={<ProductsList />} />
+                <Route path="/product/list" element={<ProductsList />} />
                 <Route path="/products-stats" element={<ProductDashboard />} />
 
                 <Route path="/find-by-validate" element={<ProductValidateList />} />

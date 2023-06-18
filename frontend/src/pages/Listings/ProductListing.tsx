@@ -65,8 +65,8 @@ export function ProductsList() {
                 </div>
 
                 <div className="row">
-                    {productPage.content?.filter((product) =>
-                        product.description.includes(value))
+                    {productPage.content?.filter((x) =>
+                        x.description.toLowerCase().includes(value))
                         .map((product) => (
                             <div
                                 key={product.id}
