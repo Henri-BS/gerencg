@@ -3,7 +3,6 @@ package com.altercode.gerencg.dto;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import com.altercode.gerencg.entity.ProductHistory;
 import lombok.Getter;
@@ -24,7 +23,7 @@ public class ProductHistoryDTO implements Serializable {
 	private Integer quantity;
 	private LocalDate validate;
 	private Double income;
-	private LocalDate createdDate;
+	private LocalDate dateCreated;
 
 	public ProductHistoryDTO(ProductHistory entity) {
 		id = entity.getId();
@@ -33,6 +32,6 @@ public class ProductHistoryDTO implements Serializable {
 		quantity = entity.getQuantity();
 		validate = entity.getValidate();
 		income = Math.round(entity.getIncome() *100) /100.0;
-		createdDate = entity.getCreatedDate();
+		dateCreated = entity.getDateCreated();
 	}
 }

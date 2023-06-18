@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import com.altercode.gerencg.entity.Category;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,15 +21,15 @@ public class CategoryDTO implements Serializable{
 	private String image;
 	private Integer totalProducts;
 	private Integer totalRegisters;
-	private LocalDateTime createdDate;
-	private LocalDateTime lastModifiedDate;
+	private LocalDateTime dateCreated;
+	private LocalDateTime dateUpdated;
 
 	public CategoryDTO(Category entity) {
 		name = entity.getName();
 		image = entity.getImage();
 		totalProducts = entity.getTotalProducts();
 		totalRegisters = entity.getTotalRegisters();
-		createdDate = entity.getCreatedDate();
-		lastModifiedDate = entity.getLastModifiedDate();
+		dateCreated = entity.getDateCreated();
+		dateUpdated = entity.getDateUpdated();
 	}
 }

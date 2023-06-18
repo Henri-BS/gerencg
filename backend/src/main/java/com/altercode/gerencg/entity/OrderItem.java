@@ -42,7 +42,7 @@ public class OrderItem {
     @ManyToOne(fetch = FetchType.LAZY)
     @Cascade({REFRESH})
     @JoinColumn(name = "code_id")
-    private OrderCode code;
+    private Order code;
 
     @ManyToOne
     @JoinColumn(name = "product_id")

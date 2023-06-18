@@ -22,7 +22,7 @@ public class OrderTag {
 
     @ManyToOne
     @JoinColumn(name = "code_id")
-    private OrderCode code;
+    private Order code;
 
     @ManyToOne
     @JoinColumn(name = "tag_id")

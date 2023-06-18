@@ -9,10 +9,6 @@ import com.altercode.gerencg.entity.Product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-
-import javax.persistence.Column;
 
 @NoArgsConstructor
 @Getter
@@ -29,8 +25,8 @@ public class ProductDTO implements Serializable {
 	private Integer quantity;
 	private Double income;
 	private LocalDate validate;
-	private LocalDateTime createdDate;
-	private LocalDate lastModifiedDate;
+	private LocalDateTime dateCreated;
+	private LocalDate dateUpdated;
 	private Double measureValue;
 
 	private String measure;
@@ -44,8 +40,8 @@ public class ProductDTO implements Serializable {
 		quantity = entity.getQuantity();
 		validate = entity.getValidate();
 		income = entity.getIncome();
-		createdDate = entity.getCreatedDate();
-		lastModifiedDate = entity.getLastModifiedDate();
+		dateCreated = entity.getDateCreated();
+		dateUpdated = entity.getDateUpdated();
 		measureValue = entity.getMeasureValue();
 		measure = entity.getMeasure().getAbbreviation();
 		category = entity.getCategory().getName();

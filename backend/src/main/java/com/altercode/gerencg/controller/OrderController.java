@@ -1,10 +1,10 @@
 package com.altercode.gerencg.controller;
 
-import com.altercode.gerencg.dto.OrderCodeDTO;
+import com.altercode.gerencg.dto.OrderDTO;
 import com.altercode.gerencg.dto.SumCategoryQuantityDTO;
 import com.altercode.gerencg.dto.SumCategoryValueDTO;
 import com.altercode.gerencg.entity.OrderStats;
-import com.altercode.gerencg.service.OrderCodeService;
+import com.altercode.gerencg.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,25 +16,25 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/order")
-public class OrderCodeController {
+public class OrderController {
 
     @Autowired
-    private OrderCodeService codeService;
+    private OrderService codeService;
 
     @GetMapping("/list")
-    public ResponseEntity<Page<OrderCodeDTO>> findItemsByCode(Pageable pageable, String code) {
-        Page<OrderCodeDTO> page = codeService.findItemsByCode(pageable, code);
+    public ResponseEntity<Page<OrderDTO>> findItemsByCode(Pageable pageable, String code) {
+        Page<OrderDTO> page = codeService.findItemsByCode(pageable, code);
         return ResponseEntity.ok(page);
     }
 
     @GetMapping("/{id}")
-    public OrderCodeDTO findCodeById(@PathVariable String id) {
+    public OrderDTO findCodeById(@PathVariable String id) {
         return codeService.findCodeById(id);
     }
 
     @GetMapping("/find-by-stats/{stats}")
-    public ResponseEntity<Page<OrderCodeDTO>> findOrderByStats(Pageable pageable, @PathVariable OrderStats stats) {
-        Page<OrderCodeDTO> list = codeService.findOrdersByStats(pageable, stats);
+    public ResponseEntity<Page<OrderDTO>> findOrderByStats(Pageable pageable, @PathVariable OrderStats stats) {
+        Page<OrderDTO> list = codeService.findOrdersByStats(pageable, stats);
         return ResponseEntity.ok(list);
     }
 
@@ -51,20 +51,20 @@ public class OrderCodeController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<OrderCodeDTO> saveOrderCode(@RequestBody OrderCodeDTO dto) {
-        OrderCodeDTO addCode = codeService.saveOrder(dto);
+    public ResponseEntity<OrderDTO> saveOrderCode(@RequestBody OrderDTO dto) {
+        OrderDTO addCode = codeService.saveOrder(dto);
         return new ResponseEntity<>(addCode, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<OrderCodeDTO> updateOrder(@RequestBody OrderCodeDTO dto) {
-        OrderCodeDTO editCode = codeService.updateOrder(dto);
+    public ResponseEntity<OrderDTO> updateOrder(@RequestBody OrderDTO dto) {
+        OrderDTO editCode = codeService.updateOrder(dto);
         return new ResponseEntity<>(editCode, HttpStatus.OK);
     }
 
     @PutMapping("/sum-item-values/{code}")
-    public ResponseEntity<OrderCodeDTO> orderTotalValues(OrderCodeDTO dto, @PathVariable String code) {
-        OrderCodeDTO update = codeService.orderTotalValues(dto);
+    public ResponseEntity<OrderDTO> orderTotalValues(OrderDTO dto, @PathVariable String code) {
+        OrderDTO update = codeService.orderTotalValues(dto);
         return new ResponseEntity<>(update, HttpStatus.OK);
     }
 

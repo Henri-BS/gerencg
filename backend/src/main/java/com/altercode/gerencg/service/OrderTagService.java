@@ -1,10 +1,10 @@
 package com.altercode.gerencg.service;
 
 import com.altercode.gerencg.dto.OrderTagDTO;
-import com.altercode.gerencg.entity.OrderCode;
+import com.altercode.gerencg.entity.Order;
 import com.altercode.gerencg.entity.OrderTag;
 import com.altercode.gerencg.entity.Tag;
-import com.altercode.gerencg.repository.OrderCodeRepository;
+import com.altercode.gerencg.repository.OrderRepository;
 import com.altercode.gerencg.repository.OrderTagRepository;
 import com.altercode.gerencg.repository.TagRepository;
 import com.altercode.gerencg.service.interf.IOrderTagService;
@@ -25,7 +25,7 @@ public class OrderTagService implements IOrderTagService {
     private OrderTagRepository orderTagRepository;
 
     @Autowired
-    private OrderCodeRepository orderRepository;
+    private OrderRepository orderRepository;
 
     @Autowired
     private TagRepository tagRepository;
@@ -43,8 +43,8 @@ public class OrderTagService implements IOrderTagService {
     }
 
     @Override
-    public List<OrderTagDTO> findAllByCode(OrderCode orderCode) {
-        List<OrderTag> list = orderTagRepository.findAllByCode(orderCode);
+    public List<OrderTagDTO> findAllByCode(Order order) {
+        List<OrderTag> list = orderTagRepository.findAllByCode(order);
         return list.stream().map(OrderTagDTO::new).collect(Collectors.toList());
     }
 
@@ -56,7 +56,7 @@ public class OrderTagService implements IOrderTagService {
 
     @Override
     public OrderTagDTO saveOrderTag(OrderTagDTO dto) {
-        OrderCode code = orderRepository.findById(dto.getCodeId()).orElseThrow();
+        Order code = orderRepository.findById(dto.getCodeId()).orElseThrow();
         Tag tag = tagRepository.findById(dto.getTagId()).orElseThrow();
 
         OrderTag add = new OrderTag();

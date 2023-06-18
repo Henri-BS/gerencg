@@ -53,7 +53,7 @@ public class ProductHistoryService implements IProductHistoryService {
         history.setPrice(product.getPrice());
         history.setQuantity(product.getQuantity());
         history.setValidate(product.getValidate());
-        history.setCreatedDate(history.getCreatedDate());
+        history.setDateCreated(history.getDateCreated());
         historyRepository.saveAndFlush(history);
 
         return new ProductHistoryDTO(history);
@@ -80,7 +80,7 @@ public class ProductHistoryService implements IProductHistoryService {
         edit.setPrice(dto.getPrice());
         edit.setQuantity(dto.getQuantity());
         edit.setValidate(dto.getValidate());
-        edit.setCreatedDate(dto.getCreatedDate());
+        edit.setDateCreated(dto.getDateCreated());
         historyRepository.save(edit);
 
         return new ProductHistoryDTO(edit);

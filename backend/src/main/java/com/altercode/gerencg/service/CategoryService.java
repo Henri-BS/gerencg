@@ -35,7 +35,7 @@ public class CategoryService implements ICategoryService {
 		return new CategoryDTO(category);
 	}
 
-	public CategoryDTO addCategory(CategoryDTO dto) {
+	public CategoryDTO saveCategory(CategoryDTO dto) {
 
 		Category add = new Category();
 		add.setName(dto.getName());

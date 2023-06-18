@@ -17,6 +17,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Table(name = "tb_product_history")
@@ -31,9 +32,9 @@ public class ProductHistory {
 	@Column(name = "history_id")
 	private Long id;
 
-	private Double price;
+	private Double price = 0.0;
 
-	private Integer quantity;
+	private Integer quantity = 0;
 
 	private LocalDate validate;
 
@@ -42,8 +43,9 @@ public class ProductHistory {
 	@Column(name = "removed_products")
 	private Integer removedProducts = 0;
 
-	@Column(name = "created_date")
-	private LocalDate createdDate = LocalDate.now();
+	@CreatedDate
+	@Column(name = "date_created")
+	private LocalDate dateCreated = LocalDate.now();
 
 	@ManyToOne
 	@JoinColumn(name = "product_id")

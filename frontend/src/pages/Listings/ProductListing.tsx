@@ -209,7 +209,7 @@ export function ListHistoryByProduct({ id: productId }: Props) {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/history/product/${productId}?sort=createdDate&size=10`)
+        axios.get(`${BASE_URL}/history/product/${productId}?sort=dateCreated&size=10`)
             .then((response) => {
                 setHistoryPage(response.data);
             });

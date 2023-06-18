@@ -31,7 +31,7 @@ export function GetLastProductCard() {
 
     const [productList, setProductList] = useState<ProductPage>({ content: [], number: 0 });
     useEffect(() => {
-        axios.get(`${BASE_URL}/product/list?size=1&sort=createdDate,desc`)
+        axios.get(`${BASE_URL}/product/list?size=1&sort=dateCreated,desc`)
             .then((response) => {
                 setProductList(response.data);
             });
@@ -73,7 +73,7 @@ export function ProductHistoryCard({ history }: ProductHistoryProps) {
     return (
         <>   <Link to={`/history/${history.id}`}>
             <div className="small-card-container">
-                <h5>Data de Registro: {moment(history.createdDate).format("DD/MM/YYYY")}
+                <h5>Data de Registro: {moment(history.dateCreated).format("DD/MM/YYYY")}
                 </h5>
             </div> </Link>
             <div className="modal fade" role="dialog" id="deleteHistoryModal">
@@ -114,7 +114,7 @@ export function GetHistoryCard({ id: historyId }: Props) {
         <>
             <div className="gerencg-item-card">
                 <div className="gerencg-box border-dark">
-                    <h4>Data de registro: {moment(history?.createdDate).format("DD/MM/YYYY")}</h4>
+                    <h4>Data de registro: {moment(history?.dateCreated).format("DD/MM/YYYY")}</h4>
                 </div>
                 <div className="gerencg-box">
                     Quantidade em estoque: {history?.quantity}

@@ -10,72 +10,55 @@
     margin: 0;
 }
 
-.container::-webkit-scrollbar {
-    border-radius: 0px 8px 8px 0px;
-    background-color: var(--dark-tert);
-    width: 10px;
-    margin: 4px;
-}
-
-.container::-webkit-scrollbar-thumb {
-    background-color: var(--dark-prim);
-    border: 1px solid var(--dark-tert);
-    border-radius: 8px;
-}
-
 .container-menu {
     margin: 0;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
+    justify-content: start;
+    justify-items: start;
+    align-items: start;
+    display: flex;
     min-height: 370px;
     padding: 20px;
+    color: var(--white-prim);
 }
 
 .menu-item {
     padding: 16px;
-    width: 210px;
-    justify-self: center;
-    align-content: center;
-    text-align: center;
+    width: 100%;
+    justify-self: start;
+    align-content: start;
 }
 
-.menu-item:hover {
+.item-card-bar {
+    height: 60px;
+    width: 100%;
     padding: 12px;
-    transition: all 0.3s ease-out;
+    justify-content: space-between;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--dark-prim);
 }
 
 .item-card-image {
+    height: 300px;
     padding: 20px;
-    width: 100%;
     border-radius: 8px 8px 0 0;
     object-fit: cover;
-    border: 10px solid var(--dark-tert);
-    background: rgb(138, 136, 136);
+    border: 4px solid var(--dark-prim);
+    border-radius: 20px;
 }
 
-.item-card-image:hover {
-    background: rgb(197, 195, 195);
-    transition: all 0.4s ease;
-}
-
-.item-card-bottom-container {
+.item-card-container {
     width: 100%;
-    background-color: var(--dark-tert);
+    border: 6px solid var(--blue-prim);
     display: flex;
-    flex-direction: column;
     align-items: center;
+    padding: 12px;
     border-radius: 8px;
-    text-decoration-color: transparent;
     margin-bottom: 5px;
+    text-decoration-color: transparent;
 }
 
-.item-card-bottom-container:hover {
-    background: var(--dark-tert);
-    transition: all 0.3s ease-out;
-}
-
-.item-card-bottom-container h3 {
+.item-card-container h3 {
     text-decoration: underline;
     text-decoration-color: var(--dark-tert);
     text-align: center;

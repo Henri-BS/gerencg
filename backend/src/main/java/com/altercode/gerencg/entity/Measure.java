@@ -7,7 +7,6 @@ import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,17 +30,17 @@ public class Measure {
 	private String description;
 
 	@CreatedDate
-	@Column(name = "created_date")
-	private LocalDateTime createdDate;
+	@Column(name = "date_created")
+	private LocalDateTime dateCreated;
 
 	@LastModifiedDate
-	@Column(name = "last_modified_date")
-	private LocalDateTime lastModifiedDate;
+ 	@Column(name = "date_updated")
+	private LocalDateTime dateUpdated;
 	
 	@OneToMany(mappedBy = "measure", cascade = CascadeType.ALL)
 	private Set<Product> product = new HashSet<>();
 
 	@OneToMany(mappedBy = "packageType", cascade = CascadeType.ALL)
-	private Set<OrderCode> codes = new HashSet<>();
+	private Set<Order> codes = new HashSet<>();
 
 }

@@ -4,9 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -39,6 +42,14 @@ public class OrderStats {
     @Column(name = "amount_items")
     private Integer amountItems = 0;
 
+    @CreatedDate
+    @Column(name = "date_created")
+    private LocalDateTime dateCreated;
+
+    @LastModifiedDate
+    @Column(name = "date_updated")
+    private LocalDateTime dateUpdated = LocalDateTime.now();
+
     @OneToMany(mappedBy = "stats", cascade = CascadeType.ALL)
-    private final Set<OrderCode> codes = new HashSet<>();
+    private final Set<Order> codes = new HashSet<>();
 }

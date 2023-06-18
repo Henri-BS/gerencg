@@ -3,7 +3,6 @@ package com.altercode.gerencg.service;
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.Category;
 import com.altercode.gerencg.entity.Measure;
-import com.altercode.gerencg.entity.OrderItem;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.CategoryRepository;
 import com.altercode.gerencg.repository.MeasureRepository;
@@ -106,7 +105,7 @@ public class ProductService implements IProductService {
         add.setCategory(category);
 
         category.setTotalProducts(category.getProducts().size());
-        category.setLastModifiedDate(LocalDateTime.now());
+        category.setDateUpdated(LocalDateTime.now());
         categoryRepository.save(category);
 
         return new ProductDTO(productRepository.saveAndFlush(add));

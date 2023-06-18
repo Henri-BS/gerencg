@@ -40,12 +40,12 @@ public class Product {
     private Double income = 0.0;
 
     @CreatedDate
-    @Column(name = "created_date")
-    private LocalDateTime createdDate;
+    @Column(name = "date_created")
+    private LocalDateTime dateCreated;
 
     @LastModifiedDate
-    @Column(name = "last_modified_date")
-    private LocalDate lastModifiedDate;
+    @Column(name = "date_updated")
+    private LocalDateTime dateUpdated;
 
     @Column(name = "measure_value")
     private Double measureValue;

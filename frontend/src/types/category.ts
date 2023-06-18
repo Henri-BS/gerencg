@@ -5,8 +5,8 @@ export type Category = {
   image: string;
   totalProducts: number;
   totalRegisters: number;
-  createdDate: string;
-  lastModifiedDate: string;
+  dateCreated: string;
+  dateUpdated: string;
 };
 
 export type CategoryPage = {

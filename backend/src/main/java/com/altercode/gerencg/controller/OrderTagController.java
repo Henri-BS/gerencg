@@ -1,7 +1,7 @@
 package com.altercode.gerencg.controller;
 
 import com.altercode.gerencg.dto.OrderTagDTO;
-import com.altercode.gerencg.entity.OrderCode;
+import com.altercode.gerencg.entity.Order;
 import com.altercode.gerencg.entity.Tag;
 import com.altercode.gerencg.service.OrderTagService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class OrderTagController {
     }
 
     @GetMapping("/find-by-code/{code}")
-    public ResponseEntity<List<OrderTagDTO>> findAllByCode(@PathVariable OrderCode code) {
+    public ResponseEntity<List<OrderTagDTO>> findAllByCode(@PathVariable Order code) {
         List<OrderTagDTO> list = orderTagService.findAllByCode(code);
         return ResponseEntity.ok(list);
     }

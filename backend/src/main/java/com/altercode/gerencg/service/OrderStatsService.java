@@ -4,7 +4,7 @@ import com.altercode.gerencg.dto.OrderStatsDTO;
 import com.altercode.gerencg.dto.OrderStatsTotalValueDTO;
 import com.altercode.gerencg.dto.SumQuantityOrderDTO;
 import com.altercode.gerencg.dto.SumValueOrderDTO;
-import com.altercode.gerencg.entity.OrderCode;
+import com.altercode.gerencg.entity.Order;
 import com.altercode.gerencg.entity.OrderStats;
 import com.altercode.gerencg.repository.OrderStatsRepository;
 import com.altercode.gerencg.service.interf.IOrderStatsService;
@@ -49,7 +49,7 @@ public class OrderStatsService implements IOrderStatsService {
     public OrderStatsDTO updateStatsValues(OrderStatsDTO dto) {
         OrderStats stats = statsRepository.findById(dto.getId()).get();
 
-            for (OrderCode i : stats.getCodes()) {
+            for (Order i : stats.getCodes()) {
                 double sumValues = stats.getTotalValue();
                 int sumItems = stats.getAmountItems();
                 sumValues = sumValues + i.getTotalValue();

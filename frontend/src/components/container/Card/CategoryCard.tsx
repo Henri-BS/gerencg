@@ -15,7 +15,7 @@ export function CategoryCard({ category }: CategoryProps) {
                 <div className="category-card-container">
                     <h3><b>{category?.name}</b></h3>
                     <div className="category-details-container">
-                        <h2>Atualizado em: {moment(category?.lastModifiedDate).format('DD/MM/YYYY, hh:mm')}</h2>
+                        <h2>Atualizado em: {moment(category?.dateUpdated).format('DD/MM/YYYY, hh:mm')}</h2>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@ export function GetLastCategoryCard() {
 
     const [categoryList, setCategoryList] = useState<CategoryPage>({ content: [], number: 0 });
     useEffect(() => {
-        axios.get(`${BASE_URL}/category/list?size=1&sort=createdDate,asc`)
+        axios.get(`${BASE_URL}/category/list?size=1&sort=dateCreated,asc`)
             .then((response) => {
                 setCategoryList(response.data);
             });

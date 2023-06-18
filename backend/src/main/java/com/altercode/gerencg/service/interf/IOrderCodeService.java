@@ -1,6 +1,6 @@
 package com.altercode.gerencg.service.interf;
 
-import com.altercode.gerencg.dto.OrderCodeDTO;
+import com.altercode.gerencg.dto.OrderDTO;
 import com.altercode.gerencg.dto.SumCategoryQuantityDTO;
 import com.altercode.gerencg.dto.SumCategoryValueDTO;
 import com.altercode.gerencg.entity.OrderStats;
@@ -11,19 +11,19 @@ import java.util.List;
 
 
 public interface IOrderCodeService {
-    Page<OrderCodeDTO> findItemsByCode(Pageable pageable, String code);
+    Page<OrderDTO> findItemsByCode(Pageable pageable, String code);
 
-    OrderCodeDTO findCodeById(String id);
+    OrderDTO findCodeById(String id);
 
-    OrderCodeDTO saveOrder(OrderCodeDTO dto);
+    OrderDTO saveOrder(OrderDTO dto);
 
-    OrderCodeDTO updateOrder(OrderCodeDTO dto);
+    OrderDTO updateOrder(OrderDTO dto);
 
     void deleteOrder(String id);
 
-    OrderCodeDTO orderTotalValues(OrderCodeDTO dto);
+    OrderDTO orderTotalValues(OrderDTO dto);
 
-    Page<OrderCodeDTO> findOrdersByStats(Pageable pageable, OrderStats stats);
+    Page<OrderDTO> findOrdersByStats(Pageable pageable, OrderStats stats);
 
     List<SumCategoryValueDTO> getOrderValueGroupByCategory();
 

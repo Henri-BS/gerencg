@@ -34,14 +34,14 @@ public class Category {
 	
 	@Column(name = "total_registers")
 	private Integer totalRegisters = 1;
-
+	
 	@CreatedDate
-	@Column(name = "created_date")
-	private LocalDateTime createdDate;
+	@Column(name = "date_created")
+	private LocalDateTime dateCreated;
 
 	@LastModifiedDate
-	@Column(name = "last_modified_date")
-	private LocalDateTime lastModifiedDate = LocalDateTime.now();
+	@Column(name = "date_updated")
+	private LocalDateTime dateUpdated = LocalDateTime.now();
 
 	@OneToOne(mappedBy = "category")
 	private CategoryStats categoryStats;
@@ -50,6 +50,6 @@ public class Category {
 	private List<Product> products = new ArrayList<>();
 
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-	private List<OrderCode> codes = new ArrayList<>();
+	private List<Order> codes = new ArrayList<>();
 
 }

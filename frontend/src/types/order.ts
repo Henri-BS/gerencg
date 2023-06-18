@@ -10,7 +10,8 @@ export type Code = {
   amountItems: number;
   totalPackage: number;
   packageType: string;
-  lastModifiedDate: string;
+  dateCreated: string;
+  dateUpdated: string;
   statsId: string;
   categoryId: string;
 };

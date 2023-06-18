@@ -2,10 +2,10 @@ package com.altercode.gerencg.service;
 
 import com.altercode.gerencg.dto.OrderItemDTO;
 import com.altercode.gerencg.dto.ProductDTO;
-import com.altercode.gerencg.entity.OrderCode;
+import com.altercode.gerencg.entity.Order;
 import com.altercode.gerencg.entity.OrderItem;
 import com.altercode.gerencg.entity.Product;
-import com.altercode.gerencg.repository.OrderCodeRepository;
+import com.altercode.gerencg.repository.OrderRepository;
 import com.altercode.gerencg.repository.OrderItemRepository;
 import com.altercode.gerencg.repository.ProductRepository;
 import com.altercode.gerencg.service.interf.IOrderItemService;
@@ -28,7 +28,7 @@ public class OrderItemService implements IOrderItemService {
     private OrderItemRepository itemRepository;
 
     @Autowired
-    private OrderCodeRepository codeRepository;
+    private OrderRepository codeRepository;
 
     @Autowired
     private ProductRepository productRepository;
@@ -40,7 +40,7 @@ public class OrderItemService implements IOrderItemService {
     }
 
     @Override
-    public List<OrderItemDTO> findItemsByCode(OrderCode code) {
+    public List<OrderItemDTO> findItemsByCode(Order code) {
         List<OrderItem> result = itemRepository.findItemsByCode(code);
         return result.stream().map(OrderItemDTO::new).collect(Collectors.toList());
     }
@@ -60,7 +60,7 @@ public class OrderItemService implements IOrderItemService {
     @Override
     public OrderItemDTO saveItem(OrderItemDTO dto) {
         Product product = productRepository.findByDescription(dto.getProductDescription());
-        OrderCode code = codeRepository.findById(dto.getOrderCode()).get();
+        Order code = codeRepository.findById(dto.getOrderCode()).get();
 
         OrderItem add = new OrderItem();
         add.setCode(code);
@@ -71,7 +71,7 @@ public class OrderItemService implements IOrderItemService {
         add.setItemValidate(dto.getItemValidate());
         add.setProduct(product);
 
-        code.setLastModifiedDate(LocalDateTime.now());
+        code.setDateUpdated(LocalDateTime.now());
         codeRepository.save(code);
 
         return new OrderItemDTO(itemRepository.saveAndFlush(add));
@@ -110,7 +110,7 @@ public class OrderItemService implements IOrderItemService {
         product.setQuantity(quantity);
         product.setPrice(price);
         product.setValidate(validate);
-        product.setLastModifiedDate(date);
+        product.setDateUpdated(date);
         productRepository.save(product);
 
         return new ProductDTO(product);

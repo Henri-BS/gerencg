@@ -15,7 +15,7 @@ function ProductDataTable() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/history/list?page=${pageNumber}&size=12&sort=createdDate`)
+        axios.get(`${BASE_URL}/history/list?page=${pageNumber}&size=12&sort=dateCreated`)
             .then((response) => {
                 setPage(response.data);
             });
@@ -47,7 +47,7 @@ function ProductDataTable() {
                                 <Link to={`/product/${item.productId}`} className="table-box-title">
                                     <h5>{item.productId}</h5>
                                 </Link>
-                                <td className="table-box">{moment(item.createdDate).format("DD/MM/YYYY")}</td>
+                                <td className="table-box">{moment(item.dateCreated).format("DD/MM/YYYY")}</td>
                                 <td className="table-box">{item.quantity}</td>
                                 <td className="table-box">{item.price}</td>
                                 <td className="table-box">{moment(item.validate).format("DD/MM/YYYY")}</td>

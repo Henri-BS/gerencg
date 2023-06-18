@@ -24,10 +24,10 @@ export function QuantityProductChart({ id: productId }: Props) {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/history/product/${productId}?sort=createdDate`)
+        axios.get(`${BASE_URL}/history/product/${productId}?sort=dateCreated`)
             .then((response) => {
                 const data = response.data as ProductHistoryPage;
-                const myLabels = data.content.map(x => moment(x.createdDate).format("DD/MM/YYYY"))
+                const myLabels = data.content.map(x => moment(x.dateCreated).format("DD/MM/YYYY"))
                 const mySeries = data.content.map(x => x.quantity);
                 setChartData({
                     labels: myLabels,

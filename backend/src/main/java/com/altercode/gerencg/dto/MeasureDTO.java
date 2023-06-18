@@ -19,13 +19,13 @@ public class MeasureDTO implements Serializable {
 	
 	private String description;
 	private String abbreviation;
-	private LocalDateTime createdDate;
-	private LocalDateTime lastModifiedDate;
+	private LocalDateTime dateCreated;
+	private LocalDateTime dateUpdated;
 
 	public MeasureDTO(Measure entity) {
 		description = entity.getDescription();
 		abbreviation = entity.getAbbreviation();
-		createdDate = entity.getCreatedDate();
-		lastModifiedDate = entity.getLastModifiedDate();
+		dateCreated = entity.getDateCreated();
+		dateUpdated = entity.getDateUpdated();
 	}
 }

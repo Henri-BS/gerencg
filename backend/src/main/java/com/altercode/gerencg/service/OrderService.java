@@ -1,6 +1,6 @@
 package com.altercode.gerencg.service;
 
-import com.altercode.gerencg.dto.OrderCodeDTO;
+import com.altercode.gerencg.dto.OrderDTO;
 import com.altercode.gerencg.dto.SumCategoryQuantityDTO;
 import com.altercode.gerencg.dto.SumCategoryValueDTO;
 import com.altercode.gerencg.entity.*;
@@ -16,10 +16,10 @@ import java.util.List;
 
 @Service
 @Transactional
-public class OrderCodeService implements IOrderCodeService {
+public class OrderService implements IOrderCodeService {
 
     @Autowired
-    private OrderCodeRepository codeRepository;
+    private OrderRepository orderRepository;
 
     @Autowired
     private OrderStatsRepository statsRepository;
@@ -28,19 +28,19 @@ public class OrderCodeService implements IOrderCodeService {
     private MeasureRepository measureRepository;
 
     @Override
-    public Page<OrderCodeDTO> findItemsByCode(Pageable pageable, String code) {
-        Page<OrderCode> result = codeRepository.findOrdersByCode(pageable, code);
-        return result.map(OrderCodeDTO::new);
+    public Page<OrderDTO> findItemsByCode(Pageable pageable, String code) {
+        Page<Order> result = orderRepository.findOrdersByCode(pageable, code);
+        return result.map(OrderDTO::new);
     }
 
     @Override
-    public OrderCodeDTO findCodeById(String id) {
-        OrderCode result = codeRepository.findById(id).get();
+    public OrderDTO findCodeById(String id) {
+        Order result = orderRepository.findById(id).get();
         if (result.getStats() == null) {
             String statsId = result.getOrderDate().getMonthValue() + "-" + result.getOrderDate().getYear();
             OrderStats stats = statsRepository.findById(statsId).orElseThrow();
             result.setStats(stats);
-            codeRepository.save(result);
+            orderRepository.save(result);
 
             if(stats.getId() == null){
                 stats = new OrderStats();
@@ -48,21 +48,21 @@ public class OrderCodeService implements IOrderCodeService {
                 statsRepository.saveAndFlush(stats);
             }
         }
-        return new OrderCodeDTO(result);
+        return new OrderDTO(result);
     }
 
     @Override
-    public Page<OrderCodeDTO> findOrdersByStats(Pageable pageable, OrderStats stats) {
-        Page<OrderCode> result = codeRepository.findOrdersByStats(pageable, stats);
-        return result.map(OrderCodeDTO::new);
+    public Page<OrderDTO> findOrdersByStats(Pageable pageable, OrderStats stats) {
+        Page<Order> result = orderRepository.findOrdersByStats(pageable, stats);
+        return result.map(OrderDTO::new);
     }
 
     @Override
-    public OrderCodeDTO saveOrder(OrderCodeDTO dto) {
+    public OrderDTO saveOrder(OrderDTO dto) {
         Measure packageType = measureRepository.findById(dto.getPackageType()).get();
         OrderStats stats = statsRepository.findById(dto.getStatsId()).orElseThrow();
 
-        OrderCode add = new OrderCode();
+        Order add = new Order();
         add.setCode(dto.getCode());
         add.setOrderDate(dto.getOrderDate());
         add.setDistributor(dto.getDistributor());
@@ -76,29 +76,29 @@ public class OrderCodeService implements IOrderCodeService {
             statsRepository.saveAndFlush(stats);
         }
 
-        return new OrderCodeDTO(codeRepository.saveAndFlush(add));
+        return new OrderDTO(orderRepository.saveAndFlush(add));
     }
 
     @Override
-    public OrderCodeDTO updateOrder(OrderCodeDTO dto) {
-        OrderCode edit = codeRepository.findById(dto.getCode()).get();
+    public OrderDTO updateOrder(OrderDTO dto) {
+        Order edit = orderRepository.findById(dto.getCode()).get();
         Measure packageType = measureRepository.findById(dto.getPackageType()).get();
 
         edit.setCode(edit.getCode());
         edit.setOrderDate(dto.getOrderDate());
         edit.setDistributor(dto.getDistributor());
         edit.setPackageType(packageType);
-        return new OrderCodeDTO(codeRepository.save(edit));
+        return new OrderDTO(orderRepository.save(edit));
     }
 
     @Override
     public void deleteOrder(String id) {
-        this.codeRepository.deleteById(id);
+        this.orderRepository.deleteById(id);
     }
 
     @Override
-    public OrderCodeDTO orderTotalValues(OrderCodeDTO dto) {
-        OrderCode code = codeRepository.findById(dto.getCode()).get();
+    public OrderDTO orderTotalValues(OrderDTO dto) {
+        Order code = orderRepository.findById(dto.getCode()).get();
         double sumValues = 0;
         int sumQuantity = 0;
         int sumPackages = 0;
@@ -113,18 +113,18 @@ public class OrderCodeService implements IOrderCodeService {
         code.setTotalQuantity(sumQuantity);
         code.setTotalPackage(sumPackages);
         code.setAmountItems(code.getItems().size());
-        codeRepository.save(code);
+        orderRepository.save(code);
 
-        return new OrderCodeDTO(code);
+        return new OrderDTO(code);
     }
 
     @Override
     public List<SumCategoryValueDTO> getOrderValueGroupByCategory() {
-        return codeRepository.getOrderValueGroupByCategory();
+        return orderRepository.getOrderValueGroupByCategory();
     }
 
     @Override
     public List<SumCategoryQuantityDTO> getOrderQuantityGroupByCategory() {
-        return codeRepository.getOrderQuantityGroupByCategory();
+        return orderRepository.getOrderQuantityGroupByCategory();
     }
 }

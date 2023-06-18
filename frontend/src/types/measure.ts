@@ -1,8 +1,8 @@
 export type Measure = {  
   abbreviation: string;
   description: string;
-  createdDate: string;
-  lastModifiedDate: string;
+  dateCreated: string;
+  dateUpdated: string;
 };
   
 export type MeasurePage = {

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
@@ -13,12 +14,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "tb_order_code")
+@Table(name = "tb_order")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class OrderCode {
+public class Order {
 
     @Id
     @Column(name = "code_id")
@@ -41,9 +42,14 @@ public class OrderCode {
     @Column(name = "total_package")
     private Integer totalPackage = 0;
 
+    @CreatedDate
+    @Column(name = "date_created")
+    private LocalDateTime dateCreated;
+
+
     @LastModifiedDate
-    @Column(name = "last_modified_date")
-    private LocalDateTime lastModifiedDate = LocalDateTime.now();
+    @Column(name = "date_updated")
+    private LocalDateTime dateUpdated = LocalDateTime.now();
 
     @ManyToOne
     @JoinColumn(name = "package_type")

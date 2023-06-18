@@ -323,7 +323,7 @@ export function EditHistoryForm({id: historyId }: Props) {
         const price = (event.target as any).price.value;
         const quantity = (event.target as any).quantity.value;
         const validate = (event.target as any).validate.value;
-        const createdDate = (event.target as any).createdDate.value;
+        const dateCreated = (event.target as any).dateCreated.value;
 
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
@@ -334,7 +334,7 @@ export function EditHistoryForm({id: historyId }: Props) {
                 price: price,
                 quantity: quantity,
                 validate: validate,
-                createdDate: createdDate
+                createdDate: dateCreated
             }
         }
         axios(config).then((response) => {
@@ -358,8 +358,8 @@ export function EditHistoryForm({id: historyId }: Props) {
                     <input type="date" className="form-control" id="validate" defaultValue={history?.validate} />
                 </div>
                 <div className="form-group gerencg-form-group">
-                    <label htmlFor="createdDate">Data de Registro</label>
-                    <input type="date" className="form-control" id="createdDate" defaultValue={history?.createdDate} />
+                    <label htmlFor="dateCreated">Data de Registro</label>
+                    <input type="date" className="form-control" id="dateCreated" defaultValue={history?.dateCreated} />
                 </div>
             </div>
             <div className="modal-footer">

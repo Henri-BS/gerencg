@@ -1,6 +1,5 @@
 package com.altercode.gerencg.controller;
 
-import com.altercode.gerencg.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,8 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.altercode.gerencg.dto.CategoryDTO;
 import com.altercode.gerencg.service.CategoryService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/category")
@@ -42,7 +39,7 @@ public class CategoryController {
 
     @PostMapping("/add")
     public ResponseEntity<CategoryDTO> addCategory(@RequestBody CategoryDTO category) {
-    	CategoryDTO newCategory = categoryService.addCategory(category);
+    	CategoryDTO newCategory = categoryService.saveCategory(category);
     	return new ResponseEntity<>(newCategory , HttpStatus.CREATED);
     }
     

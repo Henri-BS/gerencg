@@ -1,7 +1,7 @@
 package com.altercode.gerencg.service.interf;
 
 import com.altercode.gerencg.dto.OrderTagDTO;
-import com.altercode.gerencg.entity.OrderCode;
+import com.altercode.gerencg.entity.Order;
 import com.altercode.gerencg.entity.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +13,7 @@ public interface IOrderTagService {
 
     List<OrderTagDTO> findAllByTag(Tag tag);
 
-    List<OrderTagDTO> findAllByCode(OrderCode orderCode);
+    List<OrderTagDTO> findAllByCode(Order order);
 
     OrderTagDTO findOrderTagById(Long id);
 

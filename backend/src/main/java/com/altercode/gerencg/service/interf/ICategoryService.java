@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 public interface ICategoryService {
      Page<CategoryDTO> findAll(Pageable pageable);
      CategoryDTO findById(String id);
-     CategoryDTO addCategory(CategoryDTO dto);
+     CategoryDTO saveCategory(CategoryDTO dto);
      CategoryDTO updateCategory(CategoryDTO dto);
      void deleteCategory(String id);
 }

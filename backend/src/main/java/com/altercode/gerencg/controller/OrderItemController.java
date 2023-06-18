@@ -2,7 +2,7 @@ package com.altercode.gerencg.controller;
 
 import com.altercode.gerencg.dto.OrderItemDTO;
 import com.altercode.gerencg.dto.ProductDTO;
-import com.altercode.gerencg.entity.OrderCode;
+import com.altercode.gerencg.entity.Order;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.service.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class OrderItemController {
     }
 
     @GetMapping("/order/{code}")
-    public ResponseEntity<List<OrderItemDTO>> findItemsByCode(@PathVariable OrderCode code) {
+    public ResponseEntity<List<OrderItemDTO>> findItemsByCode(@PathVariable Order code) {
         List<OrderItemDTO> list = itemService.findItemsByCode(code);
         return ResponseEntity.ok(list);
     }

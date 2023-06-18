@@ -35,12 +35,12 @@ export function CategorySideBar({ id: categoryId }: Props) {
                     </div>
                     <div className="column-item-container">
                         <div className="column-icon-container">{categoryIcons.createdDateIcon}</div>
-                        <h3>Data de Criação: {moment(category?.createdDate).format('DD/MM/YYYY')}</h3>
+                        <h3>Data de Criação: {moment(category?.dateCreated).format('DD/MM/YYYY')}</h3>
                     </div>
                 </div>
                 
                 <div className="column-card-bottom">
-                    <h4>Última Alteração: {moment(category?.lastModifiedDate).format('DD/MM/YYYY')} </h4>
+                    <h4>Última Alteração: {moment(category?.dateUpdated).format('DD/MM/YYYY')} </h4>
                 </div>
             </div>
         </>

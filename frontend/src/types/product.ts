@@ -8,8 +8,8 @@ export type Product = {
   price: number;
   quantity: number;
   validate: string;
-  createdDate: string;
-  lastModifiedDate: string;
+  dateCreated: string;
+  dateUpdate: string;
   measureValue: number;
   measure: Measure;
   category: Category;
@@ -43,7 +43,7 @@ export type ProductHistory = {
   quantity: number;
   validate: string;
   income: number;
-  createdDate: string;
+  dateCreated: string;
   productId: number;
 };
 

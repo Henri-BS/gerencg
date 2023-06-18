@@ -1,7 +1,6 @@
 package com.altercode.gerencg.dto;
 
-import com.altercode.gerencg.entity.OrderCode;
-import com.altercode.gerencg.entity.Tag;
+import com.altercode.gerencg.entity.Order;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,13 +9,11 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @NoArgsConstructor
 @Getter
 @Setter
-public class OrderCodeDTO implements Serializable {
+public class OrderDTO implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -31,9 +28,10 @@ public class OrderCodeDTO implements Serializable {
     private Integer amountItems;
     private String statsId;
     private String categoryId;
-    private LocalDateTime lastModifiedDate;
+    private LocalDateTime dateCreated;
+    private LocalDateTime dateUpdated;
 
-    public OrderCodeDTO(OrderCode entity) {
+    public OrderDTO(Order entity) {
         code = entity.getCode();
         orderDate = entity.getOrderDate();
         distributor = entity.getDistributor();
@@ -42,7 +40,8 @@ public class OrderCodeDTO implements Serializable {
         amountItems = entity.getAmountItems();
         totalPackage = entity.getTotalPackage();
         packageType = entity.getPackageType().getAbbreviation();
-        lastModifiedDate = entity.getLastModifiedDate();
+        dateCreated = entity.getDateCreated();
+        dateUpdated = entity.getDateUpdated();
         statsId = entity.getStats().getId();
         categoryId = entity.getCategory().getName();
     }
