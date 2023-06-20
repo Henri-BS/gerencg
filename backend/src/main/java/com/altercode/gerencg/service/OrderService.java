@@ -27,6 +27,9 @@ public class OrderService implements IOrderCodeService {
     @Autowired
     private MeasureRepository measureRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Override
     public Page<OrderDTO> findItemsByCode(Pageable pageable, String code) {
         Page<Order> result = orderRepository.findOrdersByCode(pageable, code);
@@ -60,21 +63,26 @@ public class OrderService implements IOrderCodeService {
     @Override
     public OrderDTO saveOrder(OrderDTO dto) {
         Measure packageType = measureRepository.findById(dto.getPackageType()).get();
-        OrderStats stats = statsRepository.findById(dto.getStatsId()).orElseThrow();
+        Category category = categoryRepository.findById(dto.getCategoryId()).orElseThrow();
+
 
         Order add = new Order();
         add.setCode(dto.getCode());
         add.setOrderDate(dto.getOrderDate());
         add.setDistributor(dto.getDistributor());
         add.setPackageType(packageType);
+        add.setCategory(category);
 
-        String statsId = add.getOrderDate().getMonthValue() + "-" + add.getOrderDate().getYear();
+        String statsId = add.getOrderDate().getMonthValue()+ "-" +add.getOrderDate().getYear();
+        OrderStats stats = statsRepository.findById(statsId).orElseThrow();
 
         if(stats.getId() == null){
             stats = new OrderStats();
             stats.setId(statsId);
             statsRepository.saveAndFlush(stats);
         }
+        add.setStats(stats);
+
 
         return new OrderDTO(orderRepository.saveAndFlush(add));
     }

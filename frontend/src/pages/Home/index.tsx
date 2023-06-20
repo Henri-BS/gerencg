@@ -11,6 +11,7 @@ import { CodePage, OrderStatsPage } from "types/order";
 import { CategoryCard } from "components/container/Card/CategoryCard";
 import { CategoryPage } from "types/category";
 import { OrderStatsCharts } from "components/dashboard/Chart/StatsChart";
+
 function Home() {
 
     const [productPage, setProductPage] = useState<ProductPage>({ content: [], number: 0 });
@@ -63,11 +64,11 @@ function Home() {
                         mantenha a organização através das lista de categorias e
                         consulte os seus pedidos encomendados e veja as atuais estatísticas</p>
 
-                    <hr />     
+                    <hr />
 
                     <div className="item-card-bar ">
                         <div className="menu-item">
-                        <Link to="/product/list" className="home-link"> Lista Completa de Produtos</Link>
+                            <Link to="/product/list" className="home-link"> Lista Completa de Produtos</Link>
                         </div>
                         <div className="menu-item">
                             Total de produtos: {productPage.totalElements}
@@ -82,17 +83,17 @@ function Home() {
                                 <ProductCard product={x} />
                             </div>
                         ))}
-                       
+
                     </div>
                     <hr />
-                    <div className="item-card-bar ">
-                        <div className="menu-item">
-                        <Link to="/order/list" className="home-link"> Lista Completa de Pedidos</Link>
+                    <div className="item-card-bar row">
+                        <div className="menu-item col-12">
+                            <Link to="/order/list" className="home-link"> Lista Completa de Pedidos</Link>
                         </div>
-                        <div className="menu-item">
+                        <div className="menu-item col-12">
                             Total de pedidos: {orderPage.totalElements}
                         </div>
-                        <div className="menu-item">
+                        <div className="menu-item col-12">
                             Total de páginas:{orderPage.totalPages}
                         </div>
                     </div>
@@ -102,13 +103,13 @@ function Home() {
                                 <OrderCard code={x} />
                             </div>
                         ))}
-                       
+
                     </div>
 
                     <hr />
                     <div className="item-card-bar ">
                         <div className="menu-item">
-                        <Link to="/category/list" className="home-link"> Lista Completa de Categorias</Link>
+                            <Link to="/category/list" className="home-link"> Lista Completa de Categorias</Link>
                         </div>
                         <div className="menu-item">
                             Total de categorias: {categoryPage.totalElements}
@@ -128,7 +129,7 @@ function Home() {
                     <hr />
                     <div className="item-card-bar ">
                         <div className="menu-item">
-                        <Link to="/stats" className="home-link"> Página de Estatísticas</Link>
+                            <Link to="/stats" className="home-link"> Página de Estatísticas</Link>
                         </div>
                         <div className="menu-item">
                             Total de registros mensais: {statsPage.totalElements}

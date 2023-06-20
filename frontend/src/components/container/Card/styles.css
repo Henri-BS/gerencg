@@ -3,14 +3,24 @@
 .product-card-container {
     height: 190px;
     width: 400px;
-    background-color: var(--white-seco);
+    padding: 20px;
     border-radius: 30px;
     border: 3px solid #ccc;
-    padding: 20px;
+    background-color: var(--white-seco);
     color: var(--dark-prim);
     align-items: flex-start;
     justify-content: start;
     display: flex;
+}
+
+.white-card {
+    background-color: var(--white-seco);
+    color: var(--dark-prim);
+}
+
+.dark-card {
+    background-color: var(--dark-tert);
+    color: var(--dark-prim);
 }
 
 .product-card-container:hover {

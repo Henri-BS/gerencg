@@ -83,4 +83,8 @@ public class OrderStatsService implements IOrderStatsService {
     public List<SumValueOrderDTO> getOrderStatsValueGroup() {
         return statsRepository.getSumValuesStats();
     }
+
+    public void deleteOrderStats(String id) {
+        this.statsRepository.deleteById(id);
+    }
 }

@@ -61,4 +61,13 @@
     .container {
         width: 100%;
     }
+    .item-card-bar {
+        font-size: large;
+        flex-direction: column;
+        display: block;
+        height: max-content;
+    }
+    .home-link {
+        font-size: x-large
+    }
 }

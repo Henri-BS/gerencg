@@ -46,6 +46,12 @@ public class OrderStatsController {
         return new ResponseEntity<>(edit, HttpStatus.OK);
     }
 
+    @DeleteMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteOrderStats(@PathVariable String id) {
+        this.statsService.deleteOrderStats(id);
+    }
+
     @GetMapping("/total-value")
     public ResponseEntity<OrderStatsTotalValueDTO> getOrderStatsTotalValues() {
         OrderStatsTotalValueDTO getStats = statsService.getOrderStatsTotalValues();

@@ -7,6 +7,7 @@ import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css";
 import { Props } from "types/page";
+import { CategoryPage } from "types/category";
 
 export function OrderAddForm() {
     const navigate = useNavigate();
@@ -20,11 +21,20 @@ export function OrderAddForm() {
             })
     }, [])
 
+    const [categoryList, setCategoryList] = useState<CategoryPage>({ content: [],number: 0 })
+    useEffect(() => {
+        axios.get(`${BASE_URL}/category/list`)
+            .then((response) => {
+                setCategoryList(response.data);
+            })
+    }, [])
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const code = (event.target as any).code.value;
         const orderDate = (event.target as any).orderDate.value;
         const distributor = (event.target as any).distributor.value;
         const packageType = (event.target as any).packageType.value;
+        const categoryId = ( event.target as any).categoryId.value;
 
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
@@ -34,17 +44,16 @@ export function OrderAddForm() {
                 code: code,
                 orderDate: orderDate,
                 distributor: distributor,
-                packageType: packageType
+                packageType: packageType,
+                categoryId: categoryId
             }
         }
         axios(config).then((response) => {
-            navigate("/order-list");
+            navigate("/order/list");
         })
     }
     return (
-
         <>
-
             <form className="form-card-container" onSubmit={handleSubmit}>
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="code">Código do Pedido: </label>
@@ -68,9 +77,18 @@ export function OrderAddForm() {
                         ))}
                     </select>
                 </div>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="packageType">Categoria: </label>
+                    <select className="form-control" id="categoryId">
+                        {categoryList.content?.map(x => (
+                            <option key={x.name}>
+                                {x.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </form>
             <div className="modal-footer">
-                <button className="text-close">cancelar</button>
                 <button type="submit" className="btn-confirm">Adicionar Pedido</button>
             </div>
         </>

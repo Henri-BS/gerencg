@@ -126,7 +126,7 @@ export function AddProductForm() {
 
             
             <div className="modal-footer">
-                <button className="text-close" data-bs-dismiss="modal">cancelar</button>
+                <button type="button" className="text-close" data-bs-dismiss="modal">cancelar</button>
                 <button type="submit" className="btn-confirm">Adicionar Produto</button>
          </div>
         </form>
@@ -251,7 +251,7 @@ export function ProductFormEdit ({id: productId }: Props) {
                 </div>
 
             </div> <div className="modal-footer">
-                <button className="text-close" data-bs-dismiss="modal">cancelar</button>
+                <button type="button" className="text-close" data-bs-dismiss="modal">cancelar</button>
                 <button type="submit" className="btn-confirm">Editar Produto</button>
             </div>
         </form>

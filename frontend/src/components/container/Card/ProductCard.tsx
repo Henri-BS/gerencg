@@ -13,7 +13,7 @@ export function ProductCard({ product }: ProductProps) {
 
     return (
         <Link to={`/product/${product?.id}`}>
-            <div className="product-card-container">
+            <div className={"product-card-container"}>
                 <img className="product-card-image" src={product?.image} alt={product?.description} />
                 <div className="product-info-box">
                     <h3 className="product-info-title">{product?.description} • {product?.measureValue} {product?.measure}</h3>

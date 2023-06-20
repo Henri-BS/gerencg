@@ -66,7 +66,7 @@ export function ProductsList() {
 
                 <div className="row">
                     {productPage.content?.filter((x) =>
-                        x.description.toLowerCase().includes(value))
+                        x.description.includes(value))
                         .map((product) => (
                             <div
                                 key={product.id}
@@ -74,6 +74,8 @@ export function ProductsList() {
                                 <ProductCard product={product} />
                             </div>
                         ))}
+
+                        
                 </div>
             </div>
         </>
