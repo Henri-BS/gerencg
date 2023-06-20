@@ -29,11 +29,9 @@ public class Measure {
 	@Column(name = "measure_description")
 	private String description;
 
-	@CreatedDate
 	@Column(name = "date_created")
 	private LocalDateTime dateCreated;
 
-	@LastModifiedDate
  	@Column(name = "date_updated")
 	private LocalDateTime dateUpdated;
 	

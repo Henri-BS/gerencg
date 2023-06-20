@@ -1,6 +1,6 @@
  
 export const product = {
-    title: 'Produtos',
+    title: 'Últimos Produtos Adicionados',
     path: '/product/list',
     image: "https://cdn2.iconfinder.com/data/icons/shopping-e-commerce-3/512/full-basket-512.png",
     cName: 'menu-link'

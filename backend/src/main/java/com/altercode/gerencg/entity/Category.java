@@ -35,11 +35,9 @@ public class Category {
 	@Column(name = "total_registers")
 	private Integer totalRegisters = 1;
 	
-	@CreatedDate
 	@Column(name = "date_created")
 	private LocalDateTime dateCreated;
 
-	@LastModifiedDate
 	@Column(name = "date_updated")
 	private LocalDateTime dateUpdated = LocalDateTime.now();
 

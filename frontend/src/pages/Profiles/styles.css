@@ -27,7 +27,7 @@
 }
 
 .horizontal-list::-webkit-scrollbar {
-    height: 0;
+    height: 5px;
     width: 0;
 }
 
@@ -35,6 +35,10 @@
     width: max-content;
     text-align: center;
     padding: 2px;
+}
+
+.horizontal-list a {
+    color: #2a323a;
 }
 
 .menu-option {

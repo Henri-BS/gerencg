@@ -42,12 +42,9 @@ public class Order {
     @Column(name = "total_package")
     private Integer totalPackage = 0;
 
-    @CreatedDate
     @Column(name = "date_created")
     private LocalDateTime dateCreated;
 
-
-    @LastModifiedDate
     @Column(name = "date_updated")
     private LocalDateTime dateUpdated = LocalDateTime.now();
 

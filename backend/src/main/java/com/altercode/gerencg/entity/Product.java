@@ -43,7 +43,6 @@ public class Product {
     @Column(name = "date_created")
     private LocalDateTime dateCreated;
 
-    @LastModifiedDate
     @Column(name = "date_updated")
     private LocalDateTime dateUpdated;
 

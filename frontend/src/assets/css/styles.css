@@ -23,23 +23,16 @@
 
 html,
 body {
-    height: 100%;
+    margin: 0;
+    padding: 0;
     font-family: 'Nunito', sans-serif;
     color: var(--dark-seco);
     background-color: var(--dark-tert);
 }
 
-::-webkit-scrollbar {
-    border-radius: 0px 8px 8px 0px;
-    background-color: var(--dark-tert);
-    width: 10px;
-    margin: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: var(--dark-prim);
-    border: 1px solid var(--dark-tert);
-    border-radius: 8px;
+body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 a {
@@ -51,6 +44,19 @@ a {
 abbr {
     position: relative;
     transition: all 0.1s ease-in-out;
+}
+
+::-webkit-scrollbar {
+    border-radius: 0px 8px 8px 0px;
+    background-color: transparent;
+    width: 10px;
+    margin: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--dark-prim);
+    border: 1px solid var(--dark-tert);
+    border-radius: 8px;
 }
 
 .content {

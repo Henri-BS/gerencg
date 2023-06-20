@@ -26,7 +26,7 @@ public class ProductDTO implements Serializable {
 	private Double income;
 	private LocalDate validate;
 	private LocalDateTime dateCreated;
-	private LocalDate dateUpdated;
+	private LocalDateTime dateUpdated;
 	private Double measureValue;
 
 	private String measure;
