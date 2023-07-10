@@ -13,7 +13,7 @@ export function OrderAddForm() {
     const navigate = useNavigate();
 
     //Get MeasureList for the measure type selector        
-    const [measureList, setMeasure] = useState<MeasurePage>({ content: [],number: 0 })
+    const [measureList, setMeasure] = useState<MeasurePage>({ content: [], number: 0 })
     useEffect(() => {
         axios.get(`${BASE_URL}/measure/list`)
             .then((response) => {
@@ -21,7 +21,7 @@ export function OrderAddForm() {
             })
     }, [])
 
-    const [categoryList, setCategoryList] = useState<CategoryPage>({ content: [],number: 0 })
+    const [categoryList, setCategoryList] = useState<CategoryPage>({ content: [], number: 0 })
     useEffect(() => {
         axios.get(`${BASE_URL}/category/list`)
             .then((response) => {
@@ -34,12 +34,12 @@ export function OrderAddForm() {
         const orderDate = (event.target as any).orderDate.value;
         const distributor = (event.target as any).distributor.value;
         const packageType = (event.target as any).packageType.value;
-        const categoryId = ( event.target as any).categoryId.value;
+        const categoryId = (event.target as any).categoryId.value;
 
         const config: AxiosRequestConfig = {
+            method: "POST",
             baseURL: BASE_URL,
             url: "/order/save",
-            method: "POST",
             data: {
                 code: code,
                 orderDate: orderDate,
@@ -87,10 +87,11 @@ export function OrderAddForm() {
                         ))}
                     </select>
                 </div>
+                <div className="modal-footer">
+                    <button type="button" className="text-close" data-bs-dismiss="modal">cancelar</button>
+                    <button type="submit" className="btn-confirm">Adicionar Pedido</button>
+                </div>
             </form>
-            <div className="modal-footer">
-                <button type="submit" className="btn-confirm">Adicionar Pedido</button>
-            </div>
         </>
     );
 }

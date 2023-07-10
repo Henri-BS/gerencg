@@ -66,7 +66,7 @@ export function ProductsList() {
 
                 <div className="row">
                     {productPage.content?.filter((x) =>
-                        x.description.includes(value))
+                        x.description.toUpperCase().includes(value.toLocaleUpperCase()))
                         .map((product) => (
                             <div
                                 key={product.id}

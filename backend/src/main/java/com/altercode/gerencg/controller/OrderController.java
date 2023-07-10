@@ -22,8 +22,8 @@ public class OrderController {
     private OrderService codeService;
 
     @GetMapping("/list")
-    public ResponseEntity<Page<OrderDTO>> findItemsByCode(Pageable pageable, String code) {
-        Page<OrderDTO> page = codeService.findItemsByCode(pageable, code);
+    public ResponseEntity<Page<OrderDTO>> findByCode(Pageable pageable, String code) {
+        Page<OrderDTO> page = codeService.findByCode(pageable, code);
         return ResponseEntity.ok(page);
     }
 

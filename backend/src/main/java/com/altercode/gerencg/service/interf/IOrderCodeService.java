@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public interface IOrderCodeService {
-    Page<OrderDTO> findItemsByCode(Pageable pageable, String code);
+    Page<OrderDTO> findByCode(Pageable pageable, String code);
 
     OrderDTO findCodeById(String id);
 

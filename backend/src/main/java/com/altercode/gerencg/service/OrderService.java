@@ -31,8 +31,8 @@ public class OrderService implements IOrderCodeService {
     private CategoryRepository categoryRepository;
 
     @Override
-    public Page<OrderDTO> findItemsByCode(Pageable pageable, String code) {
-        Page<Order> result = orderRepository.findOrdersByCode(pageable, code);
+    public Page<OrderDTO> findByCode(Pageable pageable, String code) {
+        Page<Order> result = orderRepository.findByCodeLikeIgnoreCase(code, pageable);
         return result.map(OrderDTO::new);
     }
 
@@ -65,7 +65,6 @@ public class OrderService implements IOrderCodeService {
         Measure packageType = measureRepository.findById(dto.getPackageType()).get();
         Category category = categoryRepository.findById(dto.getCategoryId()).orElseThrow();
 
-
         Order add = new Order();
         add.setCode(dto.getCode());
         add.setOrderDate(dto.getOrderDate());
@@ -82,7 +81,6 @@ public class OrderService implements IOrderCodeService {
             statsRepository.saveAndFlush(stats);
         }
         add.setStats(stats);
-
 
         return new OrderDTO(orderRepository.saveAndFlush(add));
     }

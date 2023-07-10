@@ -61,7 +61,7 @@ export function OrderCodeList() {
 
                 <div className="row">
                     {codePage.content?.filter((order) =>
-                        order.code.includes(value))
+                        order.code.toUpperCase().includes(value.toLocaleUpperCase()))
                         .map((x) => (
                             <div key={x.code} className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-3">
                                 <OrderCard code={x} />
