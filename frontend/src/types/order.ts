@@ -1,7 +1,7 @@
 import { Product } from "./product";
 
 
-export type Code = {
+export type Order = {
   code: string;
   orderDate: string;
   distributor: string;
@@ -17,7 +17,7 @@ export type Code = {
 };
 
 export type CodePage = {
-  content: Code[];
+  content: Order[];
   last?: boolean;
   totalElements?: number;
   totalPages?: number;
@@ -29,7 +29,7 @@ export type CodePage = {
 };
 
 export type CodeProps = {
-  code: Code;
+  code: Order;
 };
 
 

@@ -28,5 +28,6 @@ public class OrderTagDTO implements Serializable {
         id = entity.getId();
         codeId = entity.getCode().getCode();
         tagId = entity.getTag().getTagId();
+        
     }
 }

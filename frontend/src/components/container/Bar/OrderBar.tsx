@@ -3,7 +3,7 @@ import IUpdateProduct from "assets/img/update.png"
 import IDeleteProduct from "assets/img/delete-img.png"
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Code, OrderStats, OrderStatsTotalValue } from "types/order";
+import { Order, OrderStats, OrderStatsTotalValue } from "types/order";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 import { MdClose } from "react-icons/md";
@@ -13,7 +13,7 @@ import { Props } from "types/page";
 
 export function OrderMenuBar({ id: codeId }: Props) {
 
-    const [order, setOrder] = useState<Code>();
+    const [order, setOrder] = useState<Order>();
     const navigate = useNavigate();
     const params = useParams();
 

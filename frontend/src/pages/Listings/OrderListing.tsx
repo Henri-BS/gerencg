@@ -52,7 +52,8 @@ export function OrderCodeList() {
                             />
                         </div>
                     </form>
-                </nav><hr /><OrderListByTag /><hr />
+                </nav>
+                <OrderListByTag />
                 <div className="pagination-container-menu">
                     <div className="pagination-item">
                         <Pagination page={codePage} onPageChange={handlePageChange} />

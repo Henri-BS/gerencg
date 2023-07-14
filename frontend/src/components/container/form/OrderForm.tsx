@@ -1,13 +1,14 @@
 import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Code, Item } from "types/order";
+import { Order, Item } from "types/order";
 import { MeasurePage } from "types/measure";
 import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 import "./styles.css";
 import { Props } from "types/page";
 import { CategoryPage } from "types/category";
+import { OrderTag, TagPage } from "types/tag";
 
 export function OrderAddForm() {
     const navigate = useNavigate();
@@ -102,9 +103,7 @@ export function OrderEditForm({ id: codeId }: Props) {
     //Get MeasureList for the measure type selector        
     const [measureList, setMeasure] = useState<MeasurePage>({
         content: [],
-        number: 0,
-        totalElements: 0,
-        totalPages: 0
+        number: 0
     })
     useEffect(() => {
         axios.get(`${BASE_URL}/measure/list`)
@@ -114,7 +113,7 @@ export function OrderEditForm({ id: codeId }: Props) {
     }, [])
 
 
-    const [order, setOrder] = useState<Code>();
+    const [order, setOrder] = useState<Order>();
 
     useEffect(() => {
         axios.get(`/order/${codeId}`)
@@ -176,7 +175,7 @@ export function OrderEditForm({ id: codeId }: Props) {
 export function ItemAddForm({ id: codeId }: Props) {
 
     const navigate = useNavigate();
-    const [order, setOrder] = useState<Code>();
+    const [order, setOrder] = useState<Order>();
     useEffect(() => {
         axios.get(`${BASE_URL}/order/${codeId}`)
             .then((response) => {
@@ -356,10 +355,12 @@ export const ItemEditForm = ({ id: itemId }: Props) => {
 
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="product">Produto: </label>
-                    <input type="text" list="productDescription" value={value} onChange={(e) => setValue(e.target.value)} id="product" className="form-control" placeholder="busque pelo produto..." />
+                    <input type="text" list="productDescription" value={value}
+                        onChange={(e) => setValue(e.target.value)} id="product"
+                        className="form-control" placeholder="busque pelo produto..." />
                     <datalist id="productDescription" >
                         {productPage.content?.filter((product) =>
-                            product.description.toLowerCase().includes(value.toLocaleLowerCase()))
+                            product.description.toUpperCase().includes(value.toLocaleUpperCase()))
                             .map((product) => (
                                 <option id="value" key={product.id} value={product.description}>
                                     {product.description} - {product.measureValue} {product.measure}
@@ -374,4 +375,75 @@ export const ItemEditForm = ({ id: itemId }: Props) => {
             </div>
         </form>
     );
+}
+
+export function OrderTagAddForm({ id: codeId }: Props) {
+    const navigate = useNavigate();
+
+    const [order, setOrder] = useState<Order>();
+    useEffect(() => {
+        axios.get(`${BASE_URL}/order/${codeId}`)
+            .then((response) => {
+                setOrder(response.data);
+            })
+    })
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        const tagId = (event.target as any).tagId.value;
+
+        const config: AxiosRequestConfig = {
+            method: "POST",
+            baseURL: BASE_URL,
+            url: `/order-tag/add`,
+            data: {
+                codeId: codeId,
+                tagId: tagId
+            }
+
+        }
+        axios(config).then((response) => {
+            navigate(`/order/${codeId}`)
+        })
+    }
+    return (
+        <>
+            <form className="form-card-container" onSubmit={handleSubmit}>
+                <TagDataList />
+            <div className="modal-footer">
+                <button type="submit" className="btn-confirm">Adicionar</button>
+            </div>
+            </form>
+        </>
+    );
+}
+
+export function TagDataList() {
+
+    const [value, setValue] = useState("");
+
+    const [tagList, setTagList] = useState<TagPage>({ number: 0 });
+    useEffect(() => {
+        axios.get(`${BASE_URL}/tag/list?tagId=${value}&size=25&sort=tagId,ASC`)
+            .then((response) => {
+                setTagList(response.data);
+            });
+    }, [value]);
+
+
+    return (
+        <div className="form-group gerencg-form-group">
+            <input id="tagId" list="tagList" value={value}
+                onChange={(e) => setValue(e.target.value)} type="text"
+                className="form-control" placeholder="digite o nome da tag..." />
+            <datalist id="tagList">
+                {tagList.content?.filter((x) => (
+                    x.tagId.toUpperCase().includes(value.toLocaleUpperCase()))
+                ).map(x => (
+                    <option id="value" key={x.tagId} value={x.tagId}>
+                        {x.tagId}
+                    </option>
+                ))}
+            </datalist>
+        </div>
+    )
 }

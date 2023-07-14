@@ -20,8 +20,8 @@ public class TagController {
     private TagService tagService;
 
     @GetMapping("/list")
-    public ResponseEntity<Page<TagDTO>> findTagsByTitle(Pageable pageable) {
-        Page<TagDTO> list = tagService.findAllTags(pageable);
+    public ResponseEntity<Page<TagDTO>> findAllTags(@RequestParam(defaultValue = "") String tagId, Pageable pageable) {
+        Page<TagDTO> list = tagService.findAllTags(tagId, pageable);
         return ResponseEntity.ok(list);
     }
 

@@ -15,7 +15,9 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, String> {
 
-    @Query("SELECT obj FROM Order obj WHERE UPPER(obj.code) LIKE UPPER(concat('%', ?1, '%')) ORDER BY (obj.orderDate) DESC")
+    @Query("SELECT obj FROM Order obj WHERE UPPER(obj.code) " +
+            "LIKE UPPER(concat('%', ?1, '%')) " +
+            "ORDER BY (obj.orderDate) DESC")
     Page<Order> findByCodeLikeIgnoreCase(String code, Pageable pageable);
 
     Page<Order> findOrdersByStats(Pageable pageable, OrderStats stats);

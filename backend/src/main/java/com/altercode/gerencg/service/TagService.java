@@ -27,8 +27,8 @@ public class TagService implements ITagService {
     private OrderTagRepository orderTagRepository;
 
     @Override
-    public Page<TagDTO> findAllTags(Pageable pageable) {
-        Page<Tag> list = tagRepository.findAll(pageable);
+    public Page<TagDTO> findAllTags(String tagId, Pageable pageable) {
+        Page<Tag> list = tagRepository.findAllTags(tagId, pageable);
         return list.map(TagDTO::new);
     }
 
