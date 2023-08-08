@@ -9,7 +9,7 @@ import "./styles.css";
 import { Props } from "types/page";
 import { CategoryPage } from "types/category";
 import { OrderTag, TagPage } from "types/tag";
-import { ProductDatalist } from "./DatalistForm";
+import { MeasureDatalist, ProductDatalist } from "./DatalistForm";
 
 export function OrderAddForm() {
     const navigate = useNavigate();
@@ -35,7 +35,7 @@ export function OrderAddForm() {
         const code = (event.target as any).code.value;
         const orderDate = (event.target as any).orderDate.value;
         const distributor = (event.target as any).distributor.value;
-        const packageType = (event.target as any).packageType.value;
+        const measure = (event.target as any).measure.value;
         const categoryId = (event.target as any).categoryId.value;
 
         const config: AxiosRequestConfig = {
@@ -46,7 +46,7 @@ export function OrderAddForm() {
                 code: code,
                 orderDate: orderDate,
                 distributor: distributor,
-                packageType: packageType,
+                measure: measure,
                 categoryId: categoryId
             }
         }
@@ -69,16 +69,7 @@ export function OrderAddForm() {
                     <label htmlFor="distributor">Distribuidora: </label>
                     <input className="form-control" id="distributor" />
                 </div>
-                <div className="form-group gerencg-form-group">
-                    <label htmlFor="packageType">Tipo de Pacote: </label>
-                    <select className="form-control" id="packageType">
-                        {measureList.content?.map(item => (
-                            <option key={item.abbreviation}>
-                                {item.abbreviation}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+                <MeasureDatalist/>
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="packageType">Categoria: </label>
                     <select className="form-control" id="categoryId">

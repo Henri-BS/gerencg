@@ -20,8 +20,8 @@ public class MeasureService implements IMeasureService {
 	private MeasureRepository measureRepository;
 	
 	
-	public Page<MeasureDTO> findAll(Pageable pageable) {
-		Page<Measure> result = measureRepository.findAll(pageable);
+	public Page<MeasureDTO> findMeasures(String abbreviation, Pageable pageable) {
+		Page<Measure> result = measureRepository.findMeasures(abbreviation, pageable);
 		return result.map(MeasureDTO::new);
 	}
 

@@ -108,7 +108,7 @@ export function OrderMenuBar({ id: codeId }: Props) {
                             <div className="bar-item-content"> <b>Quantidade de Items:</b> {order?.amountItems}</div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                            <div className="bar-item-content"> <b>Tipo de Pacote:</b> {order?.packageType} </div>
+                            <div className="bar-item-content"> <b>Tipo de Pacote:</b> {order?.measure} </div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                             <div className="bar-item-content"> <b>Total de Pacotes:</b> {order?.totalPackage} </div>

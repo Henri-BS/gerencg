@@ -24,7 +24,7 @@ public class OrderDTO implements Serializable {
     private Double totalValue;
     private Integer totalQuantity;
     private Integer totalPackage;
-    private String packageType;
+    private String measure;
     private Integer amountItems;
     private String statsId;
     private String categoryId;
@@ -39,7 +39,7 @@ public class OrderDTO implements Serializable {
         totalQuantity = entity.getTotalQuantity();
         amountItems = entity.getAmountItems();
         totalPackage = entity.getTotalPackage();
-        packageType = entity.getPackageType().getAbbreviation();
+        measure = entity.getPackageType().getAbbreviation();
         dateCreated = entity.getDateCreated();
         dateUpdated = entity.getDateUpdated();
         statsId = entity.getStats().getId();

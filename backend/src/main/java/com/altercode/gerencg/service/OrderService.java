@@ -56,7 +56,7 @@ public class OrderService implements IOrderCodeService {
 
     @Override
     public OrderDTO saveOrder(OrderDTO dto) {
-        Measure packageType = measureRepository.findById(dto.getPackageType()).get();
+        Measure packageType = measureRepository.findById(dto.getMeasure()).get();
         Category category = categoryRepository.findById(dto.getCategoryId()).orElseThrow();
 
         Order add = new Order();
@@ -84,7 +84,7 @@ public class OrderService implements IOrderCodeService {
     @Override
     public OrderDTO updateOrder(OrderDTO dto) {
         Order edit = orderRepository.findById(dto.getCode()).get();
-        Measure packageType = measureRepository.findById(dto.getPackageType()).get();
+        Measure packageType = measureRepository.findById(dto.getMeasure()).get();
 
         edit.setCode(edit.getCode());
         edit.setOrderDate(dto.getOrderDate());

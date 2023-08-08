@@ -9,7 +9,7 @@ export type Order = {
   totalQuantity: number;
   amountItems: number;
   totalPackage: number;
-  packageType: string;
+  measure: string;
   dateCreated: string;
   dateUpdated: string;
   statsId: string;
