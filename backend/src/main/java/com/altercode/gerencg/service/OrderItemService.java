@@ -104,7 +104,7 @@ public class OrderItemService implements IOrderItemService {
         int quantity = item.getItemQuantity();
         double price = item.getUnitValue();
         LocalDate validate = item.getItemValidate();
-        LocalDateTime date = LocalDateTime.from(item.getCode().getOrderDate());
+        LocalDateTime date = LocalDateTime.now();
 
         Product product = item.getProduct();
         product.setQuantity(quantity);

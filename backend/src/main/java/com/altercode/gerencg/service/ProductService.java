@@ -36,7 +36,7 @@ public class ProductService implements IProductService {
 
     @Override
     public Page<ProductDTO> findByDescription(Pageable pageable, String description) {
-        Page<Product> result = productRepository.findByDescriptionLikeIgnoreCase( description, pageable);
+        Page<Product> result = productRepository.findAllProducts( description, pageable);
         return result.map(ProductDTO::new);
     }
 

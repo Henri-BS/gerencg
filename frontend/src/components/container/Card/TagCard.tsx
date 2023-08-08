@@ -18,9 +18,11 @@ export function TagCard({ tag }: TagProps) {
 export function OrderTagCard({ orderTag }: OrdersTagProps) {
     return (
         <Link to={`/order-tag/${orderTag.tagId}`} className="text-decoration-none">
-            <div className="tag-card-container">
-                {orderTag.tagId}
-            </div>
+            <abbr title={orderTag.tagId}>
+                <div className="tag-card-container">
+                    {orderTag.tagId}
+                </div>
+            </abbr>
         </Link>
     );
 }

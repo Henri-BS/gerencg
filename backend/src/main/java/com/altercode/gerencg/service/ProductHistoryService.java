@@ -13,6 +13,8 @@ import com.altercode.gerencg.dto.ProductHistoryDTO;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.entity.ProductHistory;
 
+import java.time.LocalDate;
+
 @Service
 @Transactional
 public class ProductHistoryService implements IProductHistoryService {
@@ -53,7 +55,7 @@ public class ProductHistoryService implements IProductHistoryService {
         history.setPrice(product.getPrice());
         history.setQuantity(product.getQuantity());
         history.setValidate(product.getValidate());
-        history.setDateCreated(history.getDateCreated());
+        history.setDateCreated(LocalDate.now());
         historyRepository.saveAndFlush(history);
 
         return new ProductHistoryDTO(history);

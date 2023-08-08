@@ -43,9 +43,8 @@ public class ProductHistory {
 	@Column(name = "removed_products")
 	private Integer removedProducts = 0;
 
-	@CreatedDate
 	@Column(name = "date_created")
-	private LocalDate dateCreated = LocalDate.now();
+	private LocalDate dateCreated;
 
 	@ManyToOne
 	@JoinColumn(name = "product_id")

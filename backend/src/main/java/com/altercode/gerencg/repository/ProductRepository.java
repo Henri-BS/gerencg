@@ -22,9 +22,9 @@ public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpec
     Product findByDescription(String description);
 
     @Query("SELECT obj FROM Product obj WHERE UPPER(obj.description) " +
-            "LIKE UPPER(concat('%', ?1, '%')) " +
+            "LIKE UPPER(CONCAT('%', ?1, '%')) " +
             "ORDER BY (obj.category) ASC")
-    Page<Product> findByDescriptionLikeIgnoreCase(String description, Pageable pageable);
+    Page<Product> findAllProducts(String description, Pageable pageable);
 
     @Query("SELECT obj FROM Product obj WHERE obj.validate BETWEEN :min AND :max ORDER BY obj.validate DESC ")
     Page<Product> findByValidate(LocalDate min, LocalDate max, Pageable pageable);

@@ -44,12 +44,6 @@ public class OrderService implements IOrderCodeService {
             OrderStats stats = statsRepository.findById(statsId).orElseThrow();
             result.setStats(stats);
             orderRepository.save(result);
-
-            if(stats.getId() == null){
-                stats = new OrderStats();
-                stats.setId(statsId);
-                statsRepository.saveAndFlush(stats);
-            }
         }
         return new OrderDTO(result);
     }
@@ -72,15 +66,17 @@ public class OrderService implements IOrderCodeService {
         add.setPackageType(packageType);
         add.setCategory(category);
 
-        String statsId = add.getOrderDate().getMonthValue()+ "-" +add.getOrderDate().getYear();
-        OrderStats stats = statsRepository.findById(statsId).orElseThrow();
+        String statsId = "0" + add.getOrderDate().getMonthValue() + "-" + add.getOrderDate().getYear();
 
-        if(stats.getId() == null){
-            stats = new OrderStats();
+        if(statsRepository.existsById(statsId)) {
+           OrderStats stats = statsRepository.findById(statsId).orElseThrow();
+            add.setStats(stats);
+        } else {
+            OrderStats stats = new OrderStats();
             stats.setId(statsId);
             statsRepository.saveAndFlush(stats);
+            add.setStats(stats);
         }
-        add.setStats(stats);
 
         return new OrderDTO(orderRepository.saveAndFlush(add));
     }

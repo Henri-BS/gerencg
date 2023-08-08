@@ -9,6 +9,7 @@ import "./styles.css";
 import { Props } from "types/page";
 import { CategoryPage } from "types/category";
 import { OrderTag, TagPage } from "types/tag";
+import { ProductDatalist } from "./DatalistForm";
 
 export function OrderAddForm() {
     const navigate = useNavigate();
@@ -183,18 +184,6 @@ export function ItemAddForm({ id: codeId }: Props) {
             });
     }, [codeId]);
 
-    const [productPage, setProductPage] = useState<ProductPage>({
-        content: [],
-        number: 0
-    })
-    const [value, setValue] = useState("");
-    useEffect(() => {
-        axios.get(`${BASE_URL}/product/search?description=${value}`)
-            .then(response => {
-                setProductPage(response.data);
-            });
-    }, [value]);
-
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const quantity = (event.target as any).quantity.value;
         const unitValue = (event.target as any).unitValue.value;
@@ -251,20 +240,7 @@ export function ItemAddForm({ id: codeId }: Props) {
                         <label htmlFor="itemValidate">Validade: </label>
                         <input id="itemValidate" type="date" className="form-control" />
                     </div>
-
-                    <div className="form-group gerencg-form-group">
-                        <label htmlFor="product">Produto: </label>
-                        <input type="text" list="productDescription" value={value} onChange={(e) => setValue(e.target.value)} id="product" className="form-control" placeholder="busque pelo produto..." />
-                        <datalist id="productDescription" >
-                            {productPage.content?.filter((product) =>
-                                product.description.toLowerCase().includes(value.toLocaleUpperCase().toLocaleLowerCase()))
-                                .map((product) => (
-                                    <option id="value" key={product.id} value={product.description}>
-                                        {product.description} - {product.measureValue} {product.measure}
-                                    </option>
-                                ))}
-                        </datalist>
-                    </div>
+<ProductDatalist/>
                 </div>
                 <div className="modal-footer">
                     <button type="submit" className="btn-confirm">Adicionar</button>

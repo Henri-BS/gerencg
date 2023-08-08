@@ -38,7 +38,7 @@ public class MeasureController {
 	@PostMapping("/add")
 	public ResponseEntity<MeasureDTO> saveMeasure(@RequestBody MeasureDTO dto) {
 		MeasureDTO newMeasure = measureService.saveMeasure(dto);
-		return new ResponseEntity<MeasureDTO>(newMeasure, HttpStatus.CREATED);
+		return new ResponseEntity<>(newMeasure, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/edit")
