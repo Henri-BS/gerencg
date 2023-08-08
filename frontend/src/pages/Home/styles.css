@@ -25,22 +25,12 @@
     background-color: var(--dark-tert);
 }
 
-.item-card-container h3 {
-    text-decoration: underline;
-    text-decoration-color: var(--dark-tert);
-    text-align: center;
-    font-size: 23px;
-    font-weight: 500;
-    min-height: 60px;
-    color: #fff;
-}
-
 .item-card-bar {
     height: 100px;
     width: 100%;
     padding: 12px;
     justify-content: space-between;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 800;
     color: var(--dark-prim);
     display: grid;
@@ -57,17 +47,17 @@
     border-radius: 20px;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 650px) {
     .container {
         width: 100%;
     }
     .item-card-bar {
-        font-size: large;
+        font-size: small;
         flex-direction: column;
         display: block;
         height: max-content;
     }
     .home-link {
-        font-size: x-large
+        font-size: medium
     }
 }

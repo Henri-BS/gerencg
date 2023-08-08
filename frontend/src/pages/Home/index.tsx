@@ -11,6 +11,7 @@ import { CodePage, OrderStatsPage } from "types/order";
 import { CategoryCard } from "components/container/Card/CategoryCard";
 import { CategoryPage } from "types/category";
 import { OrderStatsCharts } from "components/dashboard/Chart/StatsChart";
+import { MdLibraryBooks } from "react-icons/md";
 
 function Home() {
 
@@ -67,14 +68,8 @@ function Home() {
                     <hr />
 
                     <div className="item-card-bar ">
-                        <div className="menu-item">
-                            <Link to="/product/list" className="home-link"> Lista Completa de Produtos</Link>
-                        </div>
-                        <div className="menu-item">
-                            Total de produtos: {productPage.totalElements}
-                        </div>
-                        <div className="menu-item">
-                            Total de páginas:{productPage.totalPages}
+                        <div className="home-link">
+                            <Link to="/product/list" > Lista Completa de Produtos <MdLibraryBooks /> </Link>
                         </div>
                     </div>
                     <div className="horizontal-list ">
@@ -88,13 +83,7 @@ function Home() {
                     <hr />
                     <div className="item-card-bar row">
                         <div className="menu-item col-12">
-                            <Link to="/order/list" className="home-link"> Lista Completa de Pedidos</Link>
-                        </div>
-                        <div className="menu-item col-12">
-                            Total de pedidos: {orderPage.totalElements}
-                        </div>
-                        <div className="menu-item col-12">
-                            Total de páginas:{orderPage.totalPages}
+                            <Link to="/order/list" className="home-link"> Lista Completa de Pedidos <MdLibraryBooks /> </Link>
                         </div>
                     </div>
                     <div className="horizontal-list ">
@@ -109,13 +98,7 @@ function Home() {
                     <hr />
                     <div className="item-card-bar ">
                         <div className="menu-item">
-                            <Link to="/category/list" className="home-link"> Lista Completa de Categorias</Link>
-                        </div>
-                        <div className="menu-item">
-                            Total de categorias: {categoryPage.totalElements}
-                        </div>
-                        <div className="menu-item">
-                            Total de páginas:{categoryPage.totalPages}
+                            <Link to="/category/list" className="home-link"> Lista Completa de Categorias <MdLibraryBooks /> </Link>
                         </div>
                     </div>
                     <div className="horizontal-list ">
@@ -129,13 +112,7 @@ function Home() {
                     <hr />
                     <div className="item-card-bar ">
                         <div className="menu-item">
-                            <Link to="/stats" className="home-link"> Página de Estatísticas</Link>
-                        </div>
-                        <div className="menu-item">
-                            Total de registros mensais: {statsPage.totalElements}
-                        </div>
-                        <div className="menu-item">
-                            Total de páginas:{statsPage.totalPages}
+                            <Link to="/stats" className="home-link"> Página de Estatísticas <MdLibraryBooks /> </Link>
                         </div>
                     </div>
                     <OrderStatsCharts />

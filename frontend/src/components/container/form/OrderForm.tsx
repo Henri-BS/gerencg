@@ -9,7 +9,7 @@ import "./styles.css";
 import { Props } from "types/page";
 import { CategoryPage } from "types/category";
 import { OrderTag, TagPage } from "types/tag";
-import { MeasureDatalist, ProductDatalist } from "./DatalistForm";
+import { CategoryDatalist, MeasureDatalist, ProductDatalist } from "./DatalistForm";
 
 export function OrderAddForm() {
     const navigate = useNavigate();
@@ -70,16 +70,7 @@ export function OrderAddForm() {
                     <input className="form-control" id="distributor" />
                 </div>
                 <MeasureDatalist/>
-                <div className="form-group gerencg-form-group">
-                    <label htmlFor="packageType">Categoria: </label>
-                    <select className="form-control" id="categoryId">
-                        {categoryList.content?.map(x => (
-                            <option key={x.name}>
-                                {x.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+                <CategoryDatalist/>
                 <div className="modal-footer">
                     <button type="button" className="text-close" data-bs-dismiss="modal">cancelar</button>
                     <button type="submit" className="btn-confirm">Adicionar Pedido</button>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { CategoryPage } from "types/category";
 import { MeasurePage } from "types/measure";
 import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
@@ -56,6 +57,35 @@ export function MeasureDatalist() {
                     .map((measure) => (
                         <option id="value" key={measure.abbreviation} value={measure.abbreviation}>
                             {measure.description}
+                        </option>
+                    ))}
+            </datalist>
+        </div>
+    );
+}
+
+export function CategoryDatalist() {
+    const [value, setValue] = useState("");
+    const [categoryPage, setCategoryPage] = useState<CategoryPage>({ content: [], number: 0 })
+    useEffect(() => {
+        axios.get(`${BASE_URL}/category/list?name=${value}`)
+            .then((response) => {
+                setCategoryPage(response.data);
+            });
+    }, [value]);
+
+    return (
+        <div className="form-group gerencg-form-group">
+            <label htmlFor="category">Principal Categoria: </label>
+            <input type="text" list="categoryList" value={value}
+                onChange={(e) => setValue(e.target.value)} id="category"
+                className="form-control" placeholder="busque pelo nome da categoria" />
+            <datalist id="categoryList" >
+                {categoryPage.content?.filter((x) =>
+                    x.name.toLowerCase().includes(value.toLocaleUpperCase().toLocaleLowerCase()))
+                    .map((x) => (
+                        <option id="value" key={x.name} value={x.name}>
+                            {x.name}
                         </option>
                     ))}
             </datalist>
