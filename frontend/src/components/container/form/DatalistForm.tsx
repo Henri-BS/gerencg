@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { CategoryPage } from "types/category";
 import { MeasurePage } from "types/measure";
 import { ProductPage } from "types/product";
+import { TagPage } from "types/tag";
 import { BASE_URL } from "utils/requests";
 
 export function ProductDatalist() {
@@ -91,4 +92,35 @@ export function CategoryDatalist() {
             </datalist>
         </div>
     );
+}
+
+export function TagDataList() {
+
+    const [value, setValue] = useState("");
+
+    const [tagList, setTagList] = useState<TagPage>({ number: 0 });
+    useEffect(() => {
+        axios.get(`${BASE_URL}/tag/list?tagId=${value}&size=25&sort=tagId,ASC`)
+            .then((response) => {
+                setTagList(response.data);
+            });
+    }, [value]);
+
+
+    return (
+        <div className="form-group gerencg-form-group">
+            <input id="tagId" list="tagList" value={value}
+                onChange={(e) => setValue(e.target.value)} type="text"
+                className="form-control" placeholder="digite o nome da tag..." />
+            <datalist id="tagList">
+                {tagList.content?.filter((x) => (
+                    x.tagId.toUpperCase().includes(value.toLocaleUpperCase()))
+                ).map(x => (
+                    <option id="value" key={x.tagId} value={x.tagId}>
+                        {x.tagId}
+                    </option>
+                ))}
+            </datalist>
+        </div>
+    )
 }

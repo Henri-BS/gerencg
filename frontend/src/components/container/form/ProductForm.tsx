@@ -6,28 +6,10 @@ import { MeasurePage } from "types/measure";
 import { Props } from "types/page";
 import { Product, ProductHistory } from "types/product";
 import { BASE_URL } from "utils/requests";
+import { CategoryDatalist, MeasureDatalist } from "./DatalistForm";
 
 export function AddProductForm() {
     const navigate = useNavigate();
-
-    //Get MeasueList for the measure type selector        
-    const [measureList, setMeasure] = useState<MeasurePage>({ content: [], number: 0 })
-    useEffect(() => {
-        axios.get(`${BASE_URL}/measure/list`)
-            .then((response) => {
-                setMeasure(response.data);
-            })
-    }, [])
-
-    //Get CategoryList for the category selector    
-    const [categoryList, setCategoryList] = useState<CategoryPage>({ content: [], number: 0 })
-    useEffect(() => {
-        axios.get(`${BASE_URL}/category/list`)
-            .then((response) => {
-                setCategoryList(response.data);
-            })
-    }, [])
-
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const description = (event.target as any).description.value;
@@ -91,27 +73,9 @@ export function AddProductForm() {
                     <input className="form-control" id="measureValue" />
                 </div>
 
-                <div className="form-group gerencg-form-group col-6">
-                    <label htmlFor="measure">Tipo de Medida: </label>
-                    <select className="form-control" id="measure">
-                        {measureList.content?.map(item => (
-                            <option key={item.abbreviation}>
-                                {item.abbreviation}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+                <MeasureDatalist/>
 
-                <div className="form-group gerencg-form-group col-6">
-                    <label htmlFor="category">Categoria: </label>
-                    <select className="form-control" id="category">
-                        {categoryList.content?.map(item => (
-                            <option key={item.name}>
-                                {item.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+                <CategoryDatalist />
 
             
             <div className="modal-footer">
@@ -124,33 +88,6 @@ export function AddProductForm() {
 
 export function ProductFormEdit ({id: productId }: Props) {
 
-    //Get MeasureList for the category selector    
-    const [measureList, setMeasure] = useState<MeasurePage>({
-        content: [],
-        number: 0,
-        totalElements: 0,
-        totalPages: 0
-    })
-    useEffect(() => {
-        axios.get(`${BASE_URL}/measure/list`)
-            .then((response) => {
-                setMeasure(response.data);
-            })
-    }, [])
-
-    //Get CategoryList for the category selector    
-    const [categoryList, setCategoryList] = useState<CategoryPage>({
-        content: [],
-        number: 0
-    })
-    useEffect(() => {
-        axios.get(`${BASE_URL}/category/list?sort=name`)
-            .then((response) => {
-                setCategoryList(response.data);
-            })
-    }, [])
-
-    //Get Product 
     const [product, setProduct] = useState<Product>();
     useEffect(() => {
         axios.get(`${BASE_URL}/product/${productId}`)
@@ -159,7 +96,6 @@ export function ProductFormEdit ({id: productId }: Props) {
             })
     }, [productId])
 
-    //Creating submission event for html form to update the product
     const navigate = useNavigate();
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 
@@ -219,25 +155,9 @@ export function ProductFormEdit ({id: productId }: Props) {
                     <input className="form-control" id="measureValue" defaultValue={product?.measureValue} />
                 </div>
 
-                <div className="form-group gerencg-form-group">
-                    <label htmlFor="measure">Tipo de Medida: ({product?.measure})</label>
-                    <select className="form-control" id="measure">
-                        {measureList.content?.map(x => (
-                            <option key={x.abbreviation} defaultValue={x.abbreviation}>
-                                {x.abbreviation}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+                <MeasureDatalist/>
 
-                <div className="form-group gerencg-form-group">
-                    <label htmlFor="category">Categoria: ({product?.category}) </label>
-                    <select  className="form-control" id="category">
-                        {categoryList.content?.map(x => (
-                            <option key={x.name}  >{x.name}</option>
-                        ))}
-                    </select>
-                </div>
+                <CategoryDatalist/>
 
             </div> <div className="modal-footer">
                 <button type="button" className="text-close" data-bs-dismiss="modal">cancelar</button>

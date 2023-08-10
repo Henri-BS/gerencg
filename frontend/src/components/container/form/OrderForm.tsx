@@ -9,27 +9,10 @@ import "./styles.css";
 import { Props } from "types/page";
 import { CategoryPage } from "types/category";
 import { OrderTag, TagPage } from "types/tag";
-import { CategoryDatalist, MeasureDatalist, ProductDatalist } from "./DatalistForm";
+import { CategoryDatalist, MeasureDatalist, ProductDatalist, TagDataList } from "./DatalistForm";
 
 export function OrderAddForm() {
     const navigate = useNavigate();
-
-    //Get MeasureList for the measure type selector        
-    const [measureList, setMeasure] = useState<MeasurePage>({ content: [], number: 0 })
-    useEffect(() => {
-        axios.get(`${BASE_URL}/measure/list`)
-            .then((response) => {
-                setMeasure(response.data);
-            })
-    }, [])
-
-    const [categoryList, setCategoryList] = useState<CategoryPage>({ content: [], number: 0 })
-    useEffect(() => {
-        axios.get(`${BASE_URL}/category/list`)
-            .then((response) => {
-                setCategoryList(response.data);
-            })
-    }, [])
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const code = (event.target as any).code.value;
@@ -69,8 +52,8 @@ export function OrderAddForm() {
                     <label htmlFor="distributor">Distribuidora: </label>
                     <input className="form-control" id="distributor" />
                 </div>
-                <MeasureDatalist/>
-                <CategoryDatalist/>
+                <MeasureDatalist />
+                <CategoryDatalist />
                 <div className="modal-footer">
                     <button type="button" className="text-close" data-bs-dismiss="modal">cancelar</button>
                     <button type="submit" className="btn-confirm">Adicionar Pedido</button>
@@ -82,19 +65,6 @@ export function OrderAddForm() {
 
 export function OrderEditForm({ id: codeId }: Props) {
     const navigate = useNavigate();
-
-    //Get MeasureList for the measure type selector        
-    const [measureList, setMeasure] = useState<MeasurePage>({
-        content: [],
-        number: 0
-    })
-    useEffect(() => {
-        axios.get(`${BASE_URL}/measure/list`)
-            .then((response) => {
-                setMeasure(response.data);
-            })
-    }, [])
-
 
     const [order, setOrder] = useState<Order>();
 
@@ -109,6 +79,7 @@ export function OrderEditForm({ id: codeId }: Props) {
         const orderDate = (event.target as any).orderDate.value;
         const distributor = (event.target as any).distributor.value;
         const packageType = (event.target as any).packageType.value;
+        const categoryId = (event.target as any).categoryId.value;
 
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
@@ -118,7 +89,8 @@ export function OrderEditForm({ id: codeId }: Props) {
                 code: codeId,
                 orderDate: orderDate,
                 distributor: distributor,
-                packageType: packageType
+                packageType: packageType,
+                categoryId: categoryId
             }
         }
         axios(config).then((response) => {
@@ -137,16 +109,8 @@ export function OrderEditForm({ id: codeId }: Props) {
                     <label htmlFor="distributor">Distribuidora: </label>
                     <input className="form-control" id="distributor" defaultValue={order?.distributor} />
                 </div>
-                <div className="form-group gerencg-form-group">
-                    <label htmlFor="packageType">Tipo de Pacote: </label>
-                    <select className="form-control" id="packageType">
-                        {measureList.content?.map(item => (
-                            <option key={item.abbreviation}>
-                                {item.abbreviation}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+                <MeasureDatalist />
+                <CategoryDatalist />
             </div>
             <div className="modal-footer">
                 <button type="submit" className="btn-confirm">Editar Pedido</button>
@@ -222,7 +186,7 @@ export function ItemAddForm({ id: codeId }: Props) {
                         <label htmlFor="itemValidate">Validade: </label>
                         <input id="itemValidate" type="date" className="form-control" />
                     </div>
-<ProductDatalist/>
+                    <ProductDatalist />
                 </div>
                 <div className="modal-footer">
                     <button type="submit" className="btn-confirm">Adicionar</button>
@@ -311,21 +275,7 @@ export const ItemEditForm = ({ id: itemId }: Props) => {
                     <input id="itemValidate" type="date" className="form-control" defaultValue={item?.itemValidate} />
                 </div>
 
-                <div className="form-group gerencg-form-group">
-                    <label htmlFor="product">Produto: </label>
-                    <input type="text" list="productDescription" value={value}
-                        onChange={(e) => setValue(e.target.value)} id="product"
-                        className="form-control" placeholder="busque pelo produto..." />
-                    <datalist id="productDescription" >
-                        {productPage.content?.filter((product) =>
-                            product.description.toUpperCase().includes(value.toLocaleUpperCase()))
-                            .map((product) => (
-                                <option id="value" key={product.id} value={product.description}>
-                                    {product.description} - {product.measureValue} {product.measure}
-                                </option>
-                            ))}
-                    </datalist>
-                </div>
+                <ProductDatalist />
 
             </div>
             <div className="modal-footer">
@@ -367,41 +317,12 @@ export function OrderTagAddForm({ id: codeId }: Props) {
         <>
             <form className="form-card-container" onSubmit={handleSubmit}>
                 <TagDataList />
-            <div className="modal-footer">
-                <button type="submit" className="btn-confirm">Adicionar</button>
-            </div>
+                <div className="modal-footer">
+                    <button type="submit" className="btn-confirm">Adicionar</button>
+                </div>
             </form>
         </>
     );
 }
 
-export function TagDataList() {
 
-    const [value, setValue] = useState("");
-
-    const [tagList, setTagList] = useState<TagPage>({ number: 0 });
-    useEffect(() => {
-        axios.get(`${BASE_URL}/tag/list?tagId=${value}&size=25&sort=tagId,ASC`)
-            .then((response) => {
-                setTagList(response.data);
-            });
-    }, [value]);
-
-
-    return (
-        <div className="form-group gerencg-form-group">
-            <input id="tagId" list="tagList" value={value}
-                onChange={(e) => setValue(e.target.value)} type="text"
-                className="form-control" placeholder="digite o nome da tag..." />
-            <datalist id="tagList">
-                {tagList.content?.filter((x) => (
-                    x.tagId.toUpperCase().includes(value.toLocaleUpperCase()))
-                ).map(x => (
-                    <option id="value" key={x.tagId} value={x.tagId}>
-                        {x.tagId}
-                    </option>
-                ))}
-            </datalist>
-        </div>
-    )
-}
