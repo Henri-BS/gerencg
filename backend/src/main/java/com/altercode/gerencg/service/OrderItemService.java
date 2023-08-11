@@ -34,8 +34,25 @@ public class OrderItemService implements IOrderItemService {
     private ProductRepository productRepository;
 
     @Override
-    public Page<OrderItemDTO> findAllItems(Pageable pageable) {
+    public Page<OrderItemDTO> findItems(Pageable pageable) {
         Page<OrderItem> result = itemRepository.findAll(pageable);
+
+        double value;
+        for (OrderItem i : result) {
+            if(i.getCostValue() == null) {
+                value = i.getTotalValue() / i.getItemQuantity();
+                i.setCostValue(value);
+            }
+            if(i.getTotalValue() == null) {
+                value = i.getCostValue() * i.getItemQuantity();
+                i.setTotalValue(value);
+            }
+            if(i.getUnitValue() == null) {
+                value = i.getCostValue() * 35 / 100 ;
+                i.setUnitValue(value);
+            }
+        }
+
         return result.map(OrderItemDTO::new);
     }
 

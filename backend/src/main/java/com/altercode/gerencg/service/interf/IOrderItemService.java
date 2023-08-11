@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface IOrderItemService {
 
-    Page<OrderItemDTO> findAllItems(Pageable pageable);
+    Page<OrderItemDTO> findItems(Pageable pageable);
 
     List<OrderItemDTO> findItemsByCode(Order code);
 

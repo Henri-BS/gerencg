@@ -27,6 +27,9 @@ public class OrderItem {
     @Column(name = "quantity")
     private Integer itemQuantity;
 
+    @Column(name = "cost_value")
+    private Double costValue;
+
     @Column(name = "unit_value")
     private Double unitValue;
 
@@ -47,4 +50,6 @@ public class OrderItem {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+
+
 }

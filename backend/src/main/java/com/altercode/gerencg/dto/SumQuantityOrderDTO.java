@@ -1,8 +1,5 @@
 package com.altercode.gerencg.dto;
 
-import java.io.Serial;
-import java.io.Serializable;
-
 public class SumQuantityOrderDTO  {
 
     private String statsId;

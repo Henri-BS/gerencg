@@ -27,10 +27,10 @@ public class CategoryStats {
 	@Column(name = "added_products")
 	private Integer addedProducts;
 
-	private Double income = 0.0;
+	private Double income;
 
 	@Column(name = "max_income")
-	private Double maxIncome = 0.0;
+	private Double maxIncome;
 
 	@LastModifiedDate
 	@Column(name = "last_modified_date")

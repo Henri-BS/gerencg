@@ -8,7 +8,7 @@ public class SumValueOrderDTO {
 
     public SumValueOrderDTO(String statsId, Double value) {
         this.statsId = statsId;
-        this.value = Math.round(value *100)/100.00;
+        this.value = value ;
     }
 
     public String getStatsId() {

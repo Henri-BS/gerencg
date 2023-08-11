@@ -20,6 +20,7 @@ public class OrderItemDTO implements Serializable {
 
     private Long id;
     private String orderCode;
+    private Double costValue;
     private Double unitValue;
     private Double totalValue;
     private Integer quantity;
@@ -34,6 +35,7 @@ public class OrderItemDTO implements Serializable {
     public OrderItemDTO(OrderItem entity) {
         id = entity.getId();
         orderCode = entity.getCode().getCode();
+        costValue = entity.getCostValue();
         unitValue = entity.getUnitValue();
         totalValue = entity.getTotalValue();
         quantity = entity.getItemQuantity();

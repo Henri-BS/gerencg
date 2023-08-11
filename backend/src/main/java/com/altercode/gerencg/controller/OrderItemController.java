@@ -23,7 +23,7 @@ public class OrderItemController {
 
     @GetMapping("/list")
     public ResponseEntity<Page<OrderItemDTO>> findAllItems(Pageable pageable) {
-        Page<OrderItemDTO> page = itemService.findAllItems(pageable);
+        Page<OrderItemDTO> page = itemService.findItems(pageable);
         return ResponseEntity.ok(page);
     }
 
