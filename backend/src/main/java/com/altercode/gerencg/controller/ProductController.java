@@ -24,7 +24,7 @@ public class ProductController {
     private SmsService smsService;
 
     @GetMapping("/search")
-    public ResponseEntity<Page<ProductDTO>> findByDescription(Pageable pageable, @RequestParam(value = "description", defaultValue = "") String description) {
+    public ResponseEntity<Page<ProductDTO>> findByDescription(Pageable pageable, @RequestParam(defaultValue = "") String description) {
         Page<ProductDTO> page = service.findByDescription(pageable, description);
         return ResponseEntity.ok(page);
     }

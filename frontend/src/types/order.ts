@@ -37,6 +37,7 @@ export type CodeProps = {
 export type Item = {
   id: number;
   orderCode: string;
+  costValue: number;
   unitValue: number;
   totalValue: number;
   quantity: number;

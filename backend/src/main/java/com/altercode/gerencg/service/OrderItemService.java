@@ -33,32 +33,33 @@ public class OrderItemService implements IOrderItemService {
     @Autowired
     private ProductRepository productRepository;
 
-    @Override
-    public Page<OrderItemDTO> findItems(Pageable pageable) {
-        Page<OrderItem> result = itemRepository.findAll(pageable);
-
+    public void baseItemValue() {
         double value;
-        for (OrderItem i : result) {
-            if(i.getCostValue() == null) {
+        for (OrderItem i : itemRepository.findAll()) {
+            if (i.getCostValue() == null) {
                 value = i.getTotalValue() / i.getItemQuantity();
                 i.setCostValue(value);
             }
-            if(i.getTotalValue() == null) {
+            if (i.getTotalValue() == null) {
                 value = i.getCostValue() * i.getItemQuantity();
                 i.setTotalValue(value);
             }
-            if(i.getUnitValue() == null) {
-                value = i.getCostValue() * 35 / 100 ;
-                i.setUnitValue(value);
-            }
+            itemRepository.save(i);
         }
 
+    }
+
+    @Override
+    public Page<OrderItemDTO> findItems(Pageable pageable) {
+        Page<OrderItem> result = itemRepository.findAll(pageable);
+        baseItemValue();
         return result.map(OrderItemDTO::new);
     }
 
     @Override
     public List<OrderItemDTO> findItemsByCode(Order code) {
         List<OrderItem> result = itemRepository.findItemsByCode(code);
+        baseItemValue();
         return result.stream().map(OrderItemDTO::new).collect(Collectors.toList());
     }
 
@@ -71,6 +72,7 @@ public class OrderItemService implements IOrderItemService {
     @Override
     public OrderItemDTO findItemById(Long id) {
         OrderItem result = itemRepository.findById(id).get();
+        baseItemValue();
         return new OrderItemDTO(result);
     }
 
@@ -110,11 +112,6 @@ public class OrderItemService implements IOrderItemService {
     }
 
     @Override
-    public void deleteItem(Long id) {
-        this.itemRepository.deleteById(id);
-    }
-
-    @Override
     public ProductDTO updateProductByItem(OrderItemDTO dto) {
 
         OrderItem item = itemRepository.findById(dto.getId()).get();
@@ -132,4 +129,11 @@ public class OrderItemService implements IOrderItemService {
 
         return new ProductDTO(product);
     }
+
+    @Override
+    public void deleteItem(Long id) {
+        this.itemRepository.deleteById(id);
+    }
+
+
 }

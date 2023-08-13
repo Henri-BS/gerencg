@@ -33,24 +33,29 @@ public class ProductService implements IProductService {
     @Autowired
     private MeasureRepository measureRepository;
 
+    public void productBaseValue(){
+        for (Product p : productRepository.findAll()){
+            if(p.getImage() == null) {
+                p.setImage("https://cdn3.iconfinder.com/data/icons/design-thinking-4/64/Product_design_box_packaging-512.png");
+            }
+            productRepository.save(p);
+        }
+    }
 
     @Override
     public Page<ProductDTO> findByDescription(Pageable pageable, String description) {
         Page<Product> result = productRepository.findAllProducts( description, pageable);
+        productBaseValue();
         return result.map(ProductDTO::new);
     }
 
     @Override
     public Page<ProductDTO> findAllProducts(Pageable pageable) {
         Page<Product> result = productRepository.findAll(pageable);
-        for (Product p : result){
-
-            if(p.getImage() == null) {
-                p.setImage("https://cdn3.iconfinder.com/data/icons/design-thinking-4/64/Product_design_box_packaging-512.png");
-            }
-        }
+        productBaseValue();
         return result.map(ProductDTO::new);
     }
+
     @Override
     public Page<ProductDTO> findAllByValidate(String minValidate, String maxValidate, Pageable pageable) {
         LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
