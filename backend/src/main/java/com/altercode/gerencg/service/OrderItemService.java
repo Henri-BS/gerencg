@@ -33,7 +33,7 @@ public class OrderItemService implements IOrderItemService {
     @Autowired
     private ProductRepository productRepository;
 
-    public void baseItemValue() {
+    public void itemBaseValue() {
         double value;
         for (OrderItem i : itemRepository.findAll()) {
             if (i.getCostValue() == null) {
@@ -52,14 +52,14 @@ public class OrderItemService implements IOrderItemService {
     @Override
     public Page<OrderItemDTO> findItems(Pageable pageable) {
         Page<OrderItem> result = itemRepository.findAll(pageable);
-        baseItemValue();
+        itemBaseValue();
         return result.map(OrderItemDTO::new);
     }
 
     @Override
     public List<OrderItemDTO> findItemsByCode(Order code) {
         List<OrderItem> result = itemRepository.findItemsByCode(code);
-        baseItemValue();
+        itemBaseValue();
         return result.stream().map(OrderItemDTO::new).collect(Collectors.toList());
     }
 
@@ -72,7 +72,7 @@ public class OrderItemService implements IOrderItemService {
     @Override
     public OrderItemDTO findItemById(Long id) {
         OrderItem result = itemRepository.findById(id).get();
-        baseItemValue();
+        itemBaseValue();
         return new OrderItemDTO(result);
     }
 
@@ -100,6 +100,7 @@ public class OrderItemService implements IOrderItemService {
     public OrderItemDTO updateItem(OrderItemDTO dto) {
 
         OrderItem edit = itemRepository.findById(dto.getId()).get();
+        Product product = productRepository.findByDescription(dto.getProductDescription());
 
         edit.setId(dto.getId());
         edit.setItemQuantity(dto.getQuantity());
@@ -107,7 +108,7 @@ public class OrderItemService implements IOrderItemService {
         edit.setUnitValue(dto.getUnitValue());
         edit.setTotalValue(dto.getTotalValue());
         edit.setItemValidate(dto.getItemValidate());
-
+edit.setProduct(product);
         return new OrderItemDTO(itemRepository.save(edit));
     }
 
@@ -134,6 +135,4 @@ public class OrderItemService implements IOrderItemService {
     public void deleteItem(Long id) {
         this.itemRepository.deleteById(id);
     }
-
-
 }

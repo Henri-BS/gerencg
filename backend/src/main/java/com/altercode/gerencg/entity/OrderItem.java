@@ -42,14 +42,12 @@ public class OrderItem {
     @Column(name = "package_quantity")
     private Integer packageQuantity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @Cascade({REFRESH})
+    @ManyToOne
     @JoinColumn(name = "code_id")
     private Order code;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
-
 
 }

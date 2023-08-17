@@ -51,11 +51,6 @@ abbr {
     --color: var(--dark-prim);
 }
 
-[data-theme='dark'] {
-    --background: var(--dark-quat);
-    --text-primary: white;
-}
-
 ::-webkit-scrollbar {
     border-radius: 0px 8px 8px 0px;
     background-color: transparent;
@@ -76,6 +71,10 @@ abbr {
 .footer {
     flex-shrink: 0;
     text-align: center;
+}
+
+.row {
+    margin: 0;
 }
 
 .bg-primary {

@@ -32,8 +32,6 @@ export type CodeProps = {
   code: Order;
 };
 
-
-
 export type Item = {
   id: number;
   orderCode: string;

@@ -230,7 +230,7 @@
 
 .order-card {
     min-height: 300px;
-    width: 400px;
+    min-width: 330px;
     display: grid;
     padding: 6px;
     background-color: var(--white-seco);

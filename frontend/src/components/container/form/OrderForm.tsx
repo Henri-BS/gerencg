@@ -207,18 +207,6 @@ export const ItemEditForm = ({ id: itemId }: Props) => {
             })
     }, [itemId])
 
-    const [productPage, setProductPage] = useState<ProductPage>({
-        content: [],
-        number: 0,
-    })
-    const [value, setValue] = useState("");
-    useEffect(() => {
-        axios.get(`${BASE_URL}/product/search?description=${value}`)
-            .then(response => {
-                setProductPage(response.data);
-            });
-    }, [value])
-
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const quantity = (event.target as any).quantity.value;
@@ -274,9 +262,7 @@ export const ItemEditForm = ({ id: itemId }: Props) => {
                     <label htmlFor="itemValidate">Validade: </label>
                     <input id="itemValidate" type="date" className="form-control" defaultValue={item?.itemValidate} />
                 </div>
-
                 <ProductDatalist />
-
             </div>
             <div className="modal-footer">
                 <button type="submit" className="btn-confirm">Editar</button>

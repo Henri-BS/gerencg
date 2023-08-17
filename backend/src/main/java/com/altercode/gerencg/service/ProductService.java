@@ -129,6 +129,7 @@ public class ProductService implements IProductService {
         edit.setMeasureValue(dto.getMeasureValue());
         edit.setMeasure(measure);
         edit.setCategory(category);
+        edit.setDateUpdated(LocalDateTime.now());
 
         return new ProductDTO(productRepository.save(edit));
     }

@@ -40,7 +40,7 @@ public class Product {
     private Double income = 0.0;
 
     @CreatedDate
-    @Column(name = "date_created")
+    @Column(name = "date_created", updatable = false)
     private LocalDateTime dateCreated;
 
     @Column(name = "date_updated")

@@ -61,7 +61,14 @@ public class OrderTagService implements IOrderTagService {
 
         OrderTag add = new OrderTag();
         add.setCode(code);
-        add.setTag(tag);
+        if(tagRepository.existsById(tag.getTagId())){
+            add.setTag(tag);
+        } else {
+            tag = new Tag();
+            tag.setTagId(add.getTag().getTagId());
+            tagRepository.saveAndFlush(tag);
+            add.setTag(tag);
+        }
 
         return new OrderTagDTO(orderTagRepository.saveAndFlush(add));
 

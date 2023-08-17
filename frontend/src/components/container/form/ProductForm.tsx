@@ -38,55 +38,58 @@ export function AddProductForm() {
         };
         axios(config).then(response => {
             navigate("/product/list");
-    })
+        })
     }
 
     return (
-            <form className="form-lg-card-container m-0 row" onSubmit={handleSubmit}>
-                <div className="form-group gerencg-form-group col-6">
-                    <label htmlFor="description">Descrição: </label>
-                    <input type="text" className="form-control" id="description" />
-                </div>
+        <form className="form-lg-card-container m-0 row" onSubmit={handleSubmit}>
+            <div className="form-group gerencg-form-group col-6">
+                <label htmlFor="description">Descrição: </label>
+                <input type="text" className="form-control" id="description" />
+            </div>
 
-                <div className="form-group gerencg-form-group col-6">
-                    <label htmlFor="image">Imagem: </label>
-                    <input type="text" className="form-control" id="image" />
-                </div>
+            <div className="form-group gerencg-form-group col-6">
+                <label htmlFor="image">Imagem: </label>
+                <input type="text" className="form-control" id="image" />
+            </div>
 
-                <div className="form-group gerencg-form-group col-6">
-                    <label htmlFor="price">Preço: </label>
-                    <input className="form-control" id="price" />
-                </div>
+            <div className="form-group gerencg-form-group col-6">
+                <label htmlFor="price">Preço: </label>
+                <input className="form-control" id="price" />
+            </div>
 
-                <div className="form-group gerencg-form-group col-6">
-                    <label htmlFor="quantity">Quantidade: </label>
-                    <input type="text" className="form-control" id="quantity" />
-                </div>
+            <div className="form-group gerencg-form-group col-6">
+                <label htmlFor="quantity">Quantidade: </label>
+                <input type="text" className="form-control" id="quantity" />
+            </div>
 
-                <div className="form-group gerencg-form-group col-6">
-                    <label htmlFor="validate">Validade: </label>
-                    <input type="date" className="form-control" id="validate" />
-                </div>
+            <div className="form-group gerencg-form-group col-6">
+                <label htmlFor="validate">Validade: </label>
+                <input type="date" className="form-control" id="validate" />
+            </div>
 
-                <div className="form-group gerencg-form-group col-6">
-                    <label htmlFor="measureValue">Valor de Medida: </label>
-                    <input className="form-control" id="measureValue" />
-                </div>
-
-                <MeasureDatalist/>
-
-                <CategoryDatalist />
-
+            <div className="form-group gerencg-form-group col-6">
+                <label htmlFor="measureValue">Valor de Medida: </label>
+                <input className="form-control" id="measureValue" />
+            </div>
             
+            <div className="col-6">
+                <MeasureDatalist />
+            </div>
+
+            <div className="col-6">
+                <CategoryDatalist />
+            </div>
+
             <div className="modal-footer">
                 <button type="button" className="text-close" data-bs-dismiss="modal">cancelar</button>
                 <button type="submit" className="btn-confirm">Adicionar Produto</button>
-         </div>
+            </div>
         </form>
     );
 }
 
-export function ProductFormEdit ({id: productId }: Props) {
+export function ProductFormEdit({ id: productId }: Props) {
 
     const [product, setProduct] = useState<Product>();
     useEffect(() => {
@@ -155,9 +158,9 @@ export function ProductFormEdit ({id: productId }: Props) {
                     <input className="form-control" id="measureValue" defaultValue={product?.measureValue} />
                 </div>
 
-                <MeasureDatalist/>
+                <MeasureDatalist />
 
-                <CategoryDatalist/>
+                <CategoryDatalist />
 
             </div> <div className="modal-footer">
                 <button type="button" className="text-close" data-bs-dismiss="modal">cancelar</button>
@@ -167,7 +170,7 @@ export function ProductFormEdit ({id: productId }: Props) {
     );
 }
 
-export function SaveValuesHistory({id: productId }: Props) {
+export function SaveValuesHistory({ id: productId }: Props) {
 
     const [product, setProduct] = useState<Product>();
     useEffect(() => {
@@ -217,7 +220,7 @@ export function SaveValuesHistory({id: productId }: Props) {
     );
 }
 
-export function EditHistoryForm({id: historyId }: Props) {
+export function EditHistoryForm({ id: historyId }: Props) {
 
     const [history, setHistory] = useState<ProductHistory>();
     useEffect(() => {
