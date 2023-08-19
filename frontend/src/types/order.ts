@@ -37,7 +37,8 @@ export type Item = {
   orderCode: string;
   costValue: number;
   unitValue: number;
-  totalValue: number;
+  expense: number;
+  income: number;
   quantity: number;
   packageQuantity: number;
   itemValidate: string;

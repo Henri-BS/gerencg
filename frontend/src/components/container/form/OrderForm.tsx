@@ -255,7 +255,7 @@ export const ItemEditForm = ({ id: itemId }: Props) => {
 
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="totalValue">Valor Total: </label>
-                    <input id="totalValue" type="text" className="form-control" defaultValue={item?.totalValue} />
+                    <input id="totalValue" type="text" className="form-control" defaultValue={item?.expense} />
                 </div>
 
                 <div className="form-group gerencg-form-group">

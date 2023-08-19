@@ -148,7 +148,7 @@ export function OrderItemCard({ id: itemId }: Props) {
                     <h3>Preço de Venda da Unidade: {item?.unitValue.toFixed(2)}</h3>
                 </div>
                 <div className="gerencg-box ">
-                    <h3>Valor Total: {item?.totalValue.toFixed(2)}</h3>
+                    <h3>Valor Total: {item?.expense.toFixed(2)}</h3>
                 </div>
                 <div className="gerencg-box">
                     <h3>Quantidade de Pacotes: {item?.packageQuantity}</h3>

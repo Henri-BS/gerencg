@@ -4,12 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Cascade;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-
-import static org.hibernate.annotations.CascadeType.REFRESH;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tb_order_item")
@@ -27,20 +26,27 @@ public class OrderItem {
     @Column(name = "quantity")
     private Integer itemQuantity;
 
-    @Column(name = "cost_value")
+    @Column(name = "cost_value", precision = 7, scale = 2)
     private Double costValue;
 
-    @Column(name = "unit_value")
+    @Column(name = "expense", precision = 12, scale = 2)
+    private Double expense;
+
+    @Column(name = "unit_value", precision = 7, scale = 2)
     private Double unitValue;
 
-    @Column(name = "total_value")
-    private Double totalValue;
+    @Column(name = "income", precision = 12, scale = 2)
+    private Double income;
 
     @Column(name = "item_validate")
     private LocalDate itemValidate;
 
     @Column(name = "package_quantity")
     private Integer packageQuantity;
+
+    @CreatedDate
+    @Column(name = "date_created", updatable = false)
+    private LocalDateTime dateCreated;
 
     @ManyToOne
     @JoinColumn(name = "code_id")

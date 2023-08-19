@@ -105,7 +105,7 @@ public class OrderService implements IOrderCodeService {
         int sumQuantity = 0;
         int sumPackages = 0;
         for (OrderItem i : code.getItems()) {
-            sumValues = sumValues + i.getTotalValue();
+            sumValues = sumValues + i.getExpense();
             sumQuantity = sumQuantity + i.getItemQuantity();
             sumPackages = sumPackages + i.getPackageQuantity();
         }

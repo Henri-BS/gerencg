@@ -37,16 +37,19 @@ public class OrderItemService implements IOrderItemService {
         double value;
         for (OrderItem i : itemRepository.findAll()) {
             if (i.getCostValue() == null) {
-                value = i.getTotalValue() / i.getItemQuantity();
+                value = i.getExpense() / i.getItemQuantity();
                 i.setCostValue(value);
             }
-            if (i.getTotalValue() == null) {
+            if (i.getExpense() == null) {
                 value = i.getCostValue() * i.getItemQuantity();
-                i.setTotalValue(value);
+                i.setExpense(value);
+            }
+            if(i.getIncome() == null) {
+                value = i.getUnitValue() * i.getItemQuantity();
+                i.setIncome(value);
             }
             itemRepository.save(i);
         }
-
     }
 
     @Override
@@ -86,7 +89,7 @@ public class OrderItemService implements IOrderItemService {
         add.setItemQuantity(dto.getQuantity());
         add.setPackageQuantity(dto.getPackageQuantity());
         add.setUnitValue(dto.getUnitValue());
-        add.setTotalValue(dto.getTotalValue());
+        add.setExpense(dto.getExpense());
         add.setItemValidate(dto.getItemValidate());
         add.setProduct(product);
 
@@ -106,9 +109,9 @@ public class OrderItemService implements IOrderItemService {
         edit.setItemQuantity(dto.getQuantity());
         edit.setPackageQuantity(dto.getPackageQuantity());
         edit.setUnitValue(dto.getUnitValue());
-        edit.setTotalValue(dto.getTotalValue());
+        edit.setExpense(dto.getExpense());
         edit.setItemValidate(dto.getItemValidate());
-edit.setProduct(product);
+        edit.setProduct(product);
         return new OrderItemDTO(itemRepository.save(edit));
     }
 

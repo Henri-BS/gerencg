@@ -110,6 +110,7 @@ public class ProductService implements IProductService {
         add.setCategory(category);
 
         category.setTotalProducts(category.getProducts().size());
+        category.setDateCreated(LocalDateTime.now());
         category.setDateUpdated(LocalDateTime.now());
         categoryRepository.save(category);
 

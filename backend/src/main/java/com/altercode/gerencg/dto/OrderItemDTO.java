@@ -1,7 +1,6 @@
 package com.altercode.gerencg.dto;
 
 import com.altercode.gerencg.entity.OrderItem;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,7 +21,8 @@ public class OrderItemDTO implements Serializable {
     private String orderCode;
     private Double costValue;
     private Double unitValue;
-    private Double totalValue;
+    private Double expense;
+    private Double income;
     private Integer quantity;
     private Integer packageQuantity;
     private LocalDate itemValidate;
@@ -37,7 +37,8 @@ public class OrderItemDTO implements Serializable {
         orderCode = entity.getCode().getCode();
         costValue = entity.getCostValue();
         unitValue = entity.getUnitValue();
-        totalValue = entity.getTotalValue();
+        expense = entity.getExpense();
+        income = entity.getIncome();
         quantity = entity.getItemQuantity();
         packageQuantity = entity.getPackageQuantity();
         itemValidate = entity.getItemValidate();

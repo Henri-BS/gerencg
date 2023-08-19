@@ -43,7 +43,7 @@ function ItemDataTable({ id: codeId }: Props) {
                                 <td className="table-box">{item.quantity}</td>                                
                                 <td className="table-box">{item.packageQuantity}</td>
                                 <td className="table-box">{item.unitValue.toFixed(2)}</td>
-                                <td className="table-box">{item.totalValue.toFixed(2)}</td>
+                                <td className="table-box">{item.expense.toFixed(2)}</td>
                                 <td className="table-box">{moment(item.itemValidate).format("DD/MM/YYYY")}</td>
                                 <td className="table-box">
                                     <Link to={`/item/${item.id}`}className="table-links">
