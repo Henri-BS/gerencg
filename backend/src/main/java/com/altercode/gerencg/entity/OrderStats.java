@@ -30,11 +30,17 @@ public class OrderStats {
     @Column(name = "final_date")
     private LocalDate finalDate;
 
-    @Column(name = "total_value")
-    private Double totalValue = 0.00;
+    @Column(name = "expense", precision = 12, scale = 2)
+    private Double expense = 0.0;
 
-    @Column(name = "average_week")
-    private Double averageWeek = 0.00;
+    @Column(name = "expense_average_week", precision = 12, scale = 2)
+    private Double expenseAverageWeek = 0.0;
+
+    @Column(name = "income", precision = 12, scale = 2)
+    private Double income;
+
+    @Column(name = "income_average_week", precision = 12, scale = 2)
+    private Double incomeAverageWeek = 0.00;
 
     @Column(name = "amount_order")
     private Integer amountOrder = 0;

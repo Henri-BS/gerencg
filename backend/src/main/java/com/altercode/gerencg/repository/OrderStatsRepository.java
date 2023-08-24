@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface OrderStatsRepository extends JpaRepository<OrderStats, String> {
 
-    @Query("SELECT new com.altercode.gerencg.dto.OrderStatsTotalValueDTO (SUM(obj.totalValue), MAX(obj.totalValue), SUM(amountOrder), SUM(amountItems))" +
+    @Query("SELECT new com.altercode.gerencg.dto.OrderStatsTotalValueDTO (SUM(obj.expense), MAX(obj.expense), SUM(amountOrder), SUM(amountItems))" +
             "FROM OrderStats AS obj")
     public OrderStatsTotalValueDTO getOrderStatsTotalValue();
 
@@ -21,7 +21,7 @@ public interface OrderStatsRepository extends JpaRepository<OrderStats, String> 
             "FROM OrderStats AS obj GROUP BY obj.id ORDER BY obj.initialDate DESC")
     public List<SumQuantityOrderDTO> getSumOrderStatsGroup();
 
-    @Query("SELECT new com.altercode.gerencg.dto.SumValueOrderDTO (obj.id, SUM(obj.totalValue))" +
+    @Query("SELECT new com.altercode.gerencg.dto.SumValueOrderDTO (obj.id, SUM(obj.expense))" +
             "FROM OrderStats AS obj GROUP BY obj.id ORDER BY obj.initialDate DESC")
     public List<SumValueOrderDTO> getSumValuesStats();
 }

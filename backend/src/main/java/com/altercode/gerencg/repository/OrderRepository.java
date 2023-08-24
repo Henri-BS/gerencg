@@ -22,8 +22,8 @@ public interface OrderRepository extends JpaRepository<Order, String> {
 
     Page<Order> findOrdersByStats(Pageable pageable, OrderStats stats);
 
-    @Query("SELECT new com.altercode.gerencg.dto.SumCategoryValueDTO(obj.category, SUM(obj.totalValue))" +
-            "FROM Order AS obj GROUP BY obj.category ORDER BY SUM(obj.totalValue) DESC")
+    @Query("SELECT new com.altercode.gerencg.dto.SumCategoryValueDTO(obj.category, SUM(obj.expense))" +
+            "FROM Order AS obj GROUP BY obj.category ORDER BY SUM(obj.expense) DESC")
     List<SumCategoryValueDTO> getOrderValueGroupByCategory();
 
     @Query("SELECT new com.altercode.gerencg.dto.SumCategoryQuantityDTO(obj.category, SUM(obj.amountItems))" +

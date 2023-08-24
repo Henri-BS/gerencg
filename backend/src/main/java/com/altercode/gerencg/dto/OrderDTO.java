@@ -21,7 +21,8 @@ public class OrderDTO implements Serializable {
     private String code;
     private LocalDate orderDate;
     private String distributor;
-    private Double totalValue;
+    private Double expense;
+    private Double income;
     private Integer totalQuantity;
     private Integer totalPackage;
     private String measure;
@@ -35,7 +36,8 @@ public class OrderDTO implements Serializable {
         code = entity.getCode();
         orderDate = entity.getOrderDate();
         distributor = entity.getDistributor();
-        totalValue = entity.getTotalValue();
+        expense = entity.getExpense();
+        income = entity.getIncome();
         totalQuantity = entity.getTotalQuantity();
         amountItems = entity.getAmountItems();
         totalPackage = entity.getTotalPackage();

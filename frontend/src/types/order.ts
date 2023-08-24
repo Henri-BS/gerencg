@@ -5,7 +5,8 @@ export type Order = {
   code: string;
   orderDate: string;
   distributor: string;
-  totalValue: number;
+  expense: number;
+  income: number;
   totalQuantity: number;
   amountItems: number;
   totalPackage: number;
@@ -65,13 +66,14 @@ export type ItemProps = {
 };
 
 
-
 export type OrderStats = {
   id: string;
   initialDate: string;
   finalDate: string;
-  totalValue: number;
-  averageWeek: number;
+  expense: number;
+  income: number;
+  expenseAverageWeek: number;
+  incomeAverageWeek: number;
   amountOrder: number;
   amountItems: number;
 };

@@ -28,8 +28,11 @@ public class Order {
 
     private String distributor;
 
-    @Column(name = "total_value")
-    private Double totalValue = 0.0;
+    @Column(name = "expense")
+    private Double expense = 0.0;
+
+    @Column(name = "income")
+    private Double income;
 
     @Column(name = "total_quantity")
     private Integer totalQuantity = 0;

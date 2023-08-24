@@ -24,17 +24,18 @@ public class OrderStatsService implements IOrderStatsService {
     @Autowired
     OrderStatsRepository statsRepository;
 
-
     @Override
     public Page<OrderStatsDTO> findAllStats(Pageable pageable) {
         Page<OrderStats> result = statsRepository.findAll(pageable);
         return result.map(OrderStatsDTO::new);
     }
+
     @Override
     public OrderStatsDTO findOrderStatsById(String id) {
         OrderStats stats = statsRepository.findById(id).get();
         return new OrderStatsDTO(stats);
     }
+
     @Override
     public OrderStatsDTO saveOrderStats(OrderStatsDTO dto) {
         OrderStats add = new OrderStats();
@@ -49,18 +50,25 @@ public class OrderStatsService implements IOrderStatsService {
     public OrderStatsDTO updateStatsValues(OrderStatsDTO dto) {
         OrderStats stats = statsRepository.findById(dto.getId()).get();
 
-            for (Order i : stats.getCodes()) {
-                double sumValues = stats.getTotalValue();
-                int sumItems = stats.getAmountItems();
-                sumValues = sumValues + i.getTotalValue();
-                sumItems = sumItems + i.getAmountItems();
+        for (Order i : stats.getCodes()) {
+            double sumExpense = stats.getExpense();
+            double sumIncome = stats.getIncome();
+            sumExpense = sumExpense + i.getExpense();
+            sumIncome = sumIncome + i.getIncome();
 
-                double avgWeeks;
-                avgWeeks = sumValues / 4;
-                stats.setAverageWeek(avgWeeks);
-                stats.setAmountItems(sumItems);
-                stats.setTotalValue(sumValues);
-            }
+            int sumItems = stats.getAmountItems();
+            sumItems = sumItems + i.getAmountItems();
+
+            double expenseAverageWeek, incomeAverageWeek;
+            expenseAverageWeek = sumExpense / 4;
+            incomeAverageWeek = sumIncome / 4;
+            stats.setExpenseAverageWeek(expenseAverageWeek);
+            stats.setIncomeAverageWeek(incomeAverageWeek);
+
+            stats.setExpense(sumExpense);
+            stats.setIncome(sumIncome);
+            stats.setAmountItems(sumItems);
+        }
 
         stats.setAmountOrder(stats.getCodes().size());
 
@@ -68,9 +76,8 @@ public class OrderStatsService implements IOrderStatsService {
     }
 
 
-
     @Override
-    public OrderStatsTotalValueDTO getOrderStatsTotalValues(){
+    public OrderStatsTotalValueDTO getOrderStatsTotalValues() {
         return statsRepository.getOrderStatsTotalValue();
     }
 

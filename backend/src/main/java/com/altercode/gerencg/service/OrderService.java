@@ -111,7 +111,7 @@ public class OrderService implements IOrderCodeService {
         }
 
         double sumValuesRound = Math.round(sumValues * 100) / 100.00;
-        code.setTotalValue(sumValuesRound);
+        code.setExpense(sumValuesRound);
         code.setTotalQuantity(sumQuantity);
         code.setTotalPackage(sumPackages);
         code.setAmountItems(code.getItems().size());

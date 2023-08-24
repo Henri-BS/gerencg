@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -20,8 +21,10 @@ public class OrderStatsDTO implements Serializable {
     private String id;
     private LocalDate initialDate;
     private LocalDate finalDate;
-    private Double totalValue;
-    private Double averageWeek;
+    private Double expense;
+    private Double income;
+    private Double expenseAverageWeek;
+    private Double incomeAverageWeek;
     private Integer amountOrder;
     private Integer amountItems;
 
@@ -29,8 +32,10 @@ public class OrderStatsDTO implements Serializable {
         id = entity.getId();
         initialDate = entity.getInitialDate();
         finalDate = entity.getFinalDate();
-        totalValue = entity.getTotalValue();
-        averageWeek = entity.getAverageWeek();
+        expense = entity.getExpense();
+        income = entity.getIncome();
+        expenseAverageWeek = entity.getExpenseAverageWeek();
+        incomeAverageWeek = entity.getIncomeAverageWeek();
         amountOrder = entity.getAmountOrder();
         amountItems = entity.getAmountItems();
     }

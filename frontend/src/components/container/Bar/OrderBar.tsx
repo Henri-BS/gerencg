@@ -164,7 +164,7 @@ export function OrderStatsBar({ id: statsId }: Props) {
                         <div className="bar-item-content"> <b>Total de Items do Mês:</b> {stats?.amountItems}</div>
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
-                        <div className="bar-item-content"> <b>Total de Despesas do Mês:</b> {stats?.totalValue.toFixed(2)}</div>
+                        <div className="bar-item-content"> <b>Total de Despesas do Mês:</b> {stats?.expense.toFixed(2)}</div>
                     </div>
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
                         <div className="bar-item-content"> <b>Média Semanal de Despesas:</b> {stats?.averageWeek.toFixed(2)}</div>
