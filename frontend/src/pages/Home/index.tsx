@@ -49,7 +49,7 @@ function Home() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/order-stats/page?size=12&sort=initialDate,desc`)
+        axios.get(`${BASE_URL}/order-stats/list?size=12&sort=initialDate,desc`)
             .then((response) => {
                 setStatsPage(response.data);
             });

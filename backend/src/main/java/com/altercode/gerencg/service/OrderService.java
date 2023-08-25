@@ -30,9 +30,39 @@ public class OrderService implements IOrderCodeService {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private OrderItemRepository itemRepository;
+
+    public void orderBaseValue() {
+
+        for(Order order : orderRepository.findAll()){
+        double sumExpense = 0 , sumIncome= 0;
+        int sumQuantity = 0, sumPackages = 0;
+        for (OrderItem i : order.getItems()) {
+            sumExpense = sumExpense + i.getExpense();
+            sumIncome = sumIncome + i.getIncome();
+            sumQuantity = sumQuantity + i.getItemQuantity();
+            sumPackages = sumPackages + i.getPackageQuantity();
+        }
+        order.setExpense(sumExpense);
+        order.setIncome(sumIncome);
+        order.setTotalQuantity(sumQuantity);
+        order.setTotalPackage(sumPackages);
+        order.setAmountItems(order.getItems().size());
+        orderRepository.save(order);
+        }
+    }
+
     @Override
     public Page<OrderDTO> findByCode(Pageable pageable, String code) {
         Page<Order> result = orderRepository.findByCodeLikeIgnoreCase(code, pageable);
+
+        return result.map(OrderDTO::new);
+    }
+
+    @Override
+    public Page<OrderDTO> findOrdersByStats(Pageable pageable, OrderStats stats) {
+        Page<Order> result = orderRepository.findOrdersByStats(pageable, stats);
         return result.map(OrderDTO::new);
     }
 
@@ -46,12 +76,6 @@ public class OrderService implements IOrderCodeService {
             orderRepository.save(result);
         }
         return new OrderDTO(result);
-    }
-
-    @Override
-    public Page<OrderDTO> findOrdersByStats(Pageable pageable, OrderStats stats) {
-        Page<Order> result = orderRepository.findOrdersByStats(pageable, stats);
-        return result.map(OrderDTO::new);
     }
 
     @Override
@@ -101,17 +125,17 @@ public class OrderService implements IOrderCodeService {
     @Override
     public OrderDTO orderTotalValues(OrderDTO dto) {
         Order code = orderRepository.findById(dto.getCode()).get();
-        double sumValues = 0;
-        int sumQuantity = 0;
-        int sumPackages = 0;
-        for (OrderItem i : code.getItems()) {
-            sumValues = sumValues + i.getExpense();
-            sumQuantity = sumQuantity + i.getItemQuantity();
-            sumPackages = sumPackages + i.getPackageQuantity();
+        double sumValues = 0, sumIncome = 0;
+        int sumQuantity = 0, sumPackages = 0;
+        for (OrderItem item : code.getItems()) {
+            sumValues = sumValues + item.getExpense();
+            sumIncome = sumIncome + item.getIncome();
+            sumQuantity = sumQuantity + item.getItemQuantity();
+            sumPackages = sumPackages + item.getPackageQuantity();
         }
 
-        double sumValuesRound = Math.round(sumValues * 100) / 100.00;
-        code.setExpense(sumValuesRound);
+        code.setExpense(sumValues);
+        code.setIncome(sumIncome);
         code.setTotalQuantity(sumQuantity);
         code.setTotalPackage(sumPackages);
         code.setAmountItems(code.getItems().size());

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect} from 'react';
 import Chart from 'react-apexcharts'
 import { CategoryValue, CategoryQuantity} from 'types/category';
-import { CodePage, OrderStatsQuantityGroup, OrderStatsValueGroup } from 'types/order';
+import { CodePage, OrderStatsTotalValue } from 'types/order';
 import { Props } from 'types/page';
 
 import { BASE_URL } from 'utils/requests';
@@ -32,9 +32,9 @@ export function OrderStatsCharts() {
     useEffect(() => {
         axios.get(`${BASE_URL}/order-stats/sum-order-value`)
             .then((response) => {
-                const data = response.data as OrderStatsValueGroup[];
+                const data = response.data as OrderStatsTotalValue[];
                 const myLabels = data.map(x => x.statsId);
-                const mySeries = data.map(x => x.value);
+                const mySeries = data.map(x => x.sumExpense);
                 setChartData({ labels: myLabels, series: mySeries });
             });
     }, []);
@@ -47,9 +47,9 @@ export function OrderStatsCharts() {
     useEffect(() => {
         axios.get(`${BASE_URL}/order-stats/sum-order-quantity`)
             .then((response) => {
-                const data = response.data as OrderStatsQuantityGroup[];
+                const data = response.data as OrderStatsTotalValue[];
                 const myLabels = data.map(x => x.statsId);
-                const mySeries = data.map(x => x.sumOrders);
+                const mySeries = data.map(x => x.amountOrders);
                 setQuantityChart({
                     labels: { categories: myLabels },
                     series: [{ name: "Quantidade de Pedidos", data: mySeries }],
@@ -107,11 +107,11 @@ export function OrderStatsChartsByPediod({ id: statsId }: Props) {
     const [proportionChart, setProportionChart] = useState<ProportionChartData>({ labels: [], series: [] });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/order/find-by-stats/${statsId}?size=10&sort=totalValue,desc`)
+        axios.get(`${BASE_URL}/order/find-by-stats/${statsId}?size=10&sort=expense,desc`)
             .then((response) => {
                 const data = response.data as CodePage;
                 const myLabels = data.content?.map(x => x.code);
-                const mySeries = data.content?.map(x => x.totalValue);
+                const mySeries = data.content?.map(x => x.expense);
                 setProportionChart({ labels: myLabels, series: mySeries });
             });
     }, [statsId])

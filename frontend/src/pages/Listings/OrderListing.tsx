@@ -10,13 +10,10 @@ import { OrderListByTag } from "./TagListing";
 import { Props } from "types/page";
 
 export function OrderCodeList() {
+    
     const [value, setValue] = useState("");
     const [pageNumber, setPageNumber] = useState(0);
-    const [codePage, setCodePage] = useState<CodePage>({
-        content: [],
-        number: 0,
-        totalElements: 0,
-    });
+    const [codePage, setCodePage] = useState<CodePage>({ content: [], number: 0});
 
     useEffect(() => {
         axios.get(`${BASE_URL}/order/list?code=${value}&page=${pageNumber}&size=21`)
@@ -78,11 +75,11 @@ export function OrderStatsList() {
     const [statsPage, setStatsPage] = useState<OrderStatsPage>({
         content: [],
         number: 0,
-        totalElements: 0,
+        totalElements: 0
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/order-stats/page?size=12&sort=initialDate,desc`)
+        axios.get(`${BASE_URL}/order-stats/list?size=12&sort=initialDate,desc`)
             .then((response) => {
                 setStatsPage(response.data);
             });

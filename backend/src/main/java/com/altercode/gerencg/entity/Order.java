@@ -28,7 +28,7 @@ public class Order {
 
     private String distributor;
 
-    @Column(name = "expense")
+    @Column(name = "maxExpense")
     private Double expense = 0.0;
 
     @Column(name = "income")

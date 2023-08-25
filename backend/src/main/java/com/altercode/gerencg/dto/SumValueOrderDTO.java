@@ -1,14 +1,19 @@
 package com.altercode.gerencg.dto;
 
-import java.io.Serializable;
+
+//refatorar para adicionar os atributos da classe OrderStats
+// e alterar a função repository
+// para poder chamar a função de atualização na classe findall
+
 
 public class SumValueOrderDTO {
     private String statsId;
-    private Double value;
+    private Double expense;
+
 
     public SumValueOrderDTO(String statsId, Double value) {
         this.statsId = statsId;
-        this.value = value ;
+        this.expense = value ;
     }
 
     public String getStatsId() {
@@ -19,11 +24,11 @@ public class SumValueOrderDTO {
         this.statsId = statsId;
     }
 
-    public Double getValue() {
-        return value;
+    public Double getExpense() {
+        return expense;
     }
 
-    public void setValue(Double value) {
-        this.value = value;
+    public void setExpense(Double expense) {
+        this.expense = expense;
     }
 }

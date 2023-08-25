@@ -1,5 +1,6 @@
 package com.altercode.gerencg.repository;
 
+import com.altercode.gerencg.dto.OrderStatsTotalValueDTO;
 import com.altercode.gerencg.dto.SumCategoryQuantityDTO;
 import com.altercode.gerencg.dto.SumCategoryValueDTO;
 import com.altercode.gerencg.entity.Order;

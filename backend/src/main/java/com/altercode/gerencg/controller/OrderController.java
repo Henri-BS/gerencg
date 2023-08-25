@@ -22,7 +22,7 @@ public class OrderController {
     private OrderService codeService;
 
     @GetMapping("/list")
-    public ResponseEntity<Page<OrderDTO>> findByCode(Pageable pageable, String code) {
+    public ResponseEntity<Page<OrderDTO>> findByCode(Pageable pageable, @RequestParam(defaultValue = "") String code) {
         Page<OrderDTO> page = codeService.findByCode(pageable, code);
         return ResponseEntity.ok(page);
     }

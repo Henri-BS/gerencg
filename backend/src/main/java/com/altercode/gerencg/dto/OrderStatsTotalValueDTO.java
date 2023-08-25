@@ -1,64 +1,44 @@
 package com.altercode.gerencg.dto;
 
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class OrderStatsTotalValueDTO {
     private String statsId;
-    private Double totalValue;
-    private Double maxValue;
+    private Double sumExpense;
+    private Double maxExpense;
+    private Double sumIncome;
+    private Double maxIncome;
     private Long amountOrders;
     private Long amountItems;
 
-    public OrderStatsTotalValueDTO(Double totalValue, Double maxValue) {
-        this.totalValue = totalValue;
-        this.maxValue = maxValue;
-    }
-
-    public OrderStatsTotalValueDTO(Double totalValue, Double maxValue, Long amountOrders, Long amountItems) {
-        this.totalValue = totalValue;
-        this.maxValue = maxValue;
-        this.amountOrders = amountOrders;
-        this.amountItems = amountItems;
-    }
-
-    public String getStatsId() {
-        return statsId;
-    }
-
-    public void setStatsId(String statsId) {
+    public OrderStatsTotalValueDTO(String statsId, Double sumExpense){
         this.statsId = statsId;
+        this.sumExpense = sumExpense;
     }
 
-    public Double getMaxValue() {
-        return maxValue;
-    }
-
-    public void setMaxValue(Double maxValue) {
-        this.maxValue = maxValue;
-    }
-
-    public Long getAmountOrders() {
-        return amountOrders;
-    }
-
-    public void setAmountOrders(Long amountOrders) {
+    public OrderStatsTotalValueDTO(String statsId, Long amountOrders){
+        this.statsId = statsId;
         this.amountOrders = amountOrders;
     }
 
-    public Long getAmountItems() {
-        return amountItems;
+    public OrderStatsTotalValueDTO(Double sumExpense, Double maxExpense) {
+        this.sumExpense = sumExpense;
+        this.maxExpense = maxExpense;
     }
 
-    public void setAmountItems(Long amountItems) {
+    public OrderStatsTotalValueDTO(Double sumExpense, Double maxExpense, Double sumIncome, Double maxIncome, Long amountOrders, Long amountItems) {
+        this.sumExpense = sumExpense;
+        this.maxExpense = maxExpense;
+        this.sumIncome = sumIncome;
+        this.maxIncome = maxIncome;
+        this.amountOrders = amountOrders;
         this.amountItems = amountItems;
     }
-
-    public Double getTotalValue() {
-        return totalValue;
-    }
-
-    public void setTotalValue(Double totalValue) {
-        this.totalValue = totalValue;
-    }
-
 }
 

@@ -22,8 +22,8 @@ public interface IOrderStatsService {
 
   OrderStatsDTO findOrderStatsById(String id);
 
-  List<SumQuantityOrderDTO> getOrderStatsQuantityGroup();
+  List<OrderStatsTotalValueDTO> getOrderStatsQuantityGroup();
 
-  List<SumValueOrderDTO> getOrderStatsValueGroup();
+  List<OrderStatsTotalValueDTO> getOrderStatsValueGroup();
 
 }

@@ -30,7 +30,7 @@ public class OrderStats {
     @Column(name = "final_date")
     private LocalDate finalDate;
 
-    @Column(name = "expense", precision = 12, scale = 2)
+    @Column(name = "maxExpense", precision = 12, scale = 2)
     private Double expense = 0.0;
 
     @Column(name = "expense_average_week", precision = 12, scale = 2)

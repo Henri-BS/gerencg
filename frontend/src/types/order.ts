@@ -95,24 +95,12 @@ export type OrderStatsProps = {
 }
 
 export type OrderStatsTotalValue = {
-  totalValue: number;
-  maxValue:number;
+  statsId: string;
+  sumExpense: number;
+  maxExpense:number;
+  sumIncome: number;
+  maxIncome:number;
   amountOrders: number;
   amountItems: number;
 };
 
-export type OrderStatsQuantityGroup = {
-  statsId: string;
-  sumOrders: number;
-};
-
-export type OrderStatsValueGroup = {
-  statsId: string;
-  value: number;
-};
-
-export type OrderResults = {
-  commissionCode: string;
-  totalQuantity: number;
-  totalValue: number;
-};

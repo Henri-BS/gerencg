@@ -28,7 +28,7 @@ public class OrderStatsController {
         return ResponseEntity.ok(findStats);
     }
 
-    @GetMapping("/page")
+    @GetMapping("/list")
     public ResponseEntity<Page<OrderStatsDTO>> findAllStats(Pageable pageable) {
         Page<OrderStatsDTO> page = statsService.findAllStats(pageable);
         return ResponseEntity.ok(page);
@@ -59,14 +59,14 @@ public class OrderStatsController {
     }
 
     @GetMapping("/sum-order-quantity")
-    public ResponseEntity<List<SumQuantityOrderDTO>> getOrderStatsQuantityGroup() {
-        List<SumQuantityOrderDTO> getStats = statsService.getOrderStatsQuantityGroup();
+    public ResponseEntity<List<OrderStatsTotalValueDTO>> getOrderStatsQuantityGroup() {
+        List<OrderStatsTotalValueDTO> getStats = statsService.getOrderStatsQuantityGroup();
         return ResponseEntity.ok(getStats);
     }
 
     @GetMapping("/sum-order-value")
-    public ResponseEntity<List<SumValueOrderDTO>> getOrderStatsValueGroup() {
-        List<SumValueOrderDTO> getStats = statsService.getOrderStatsValueGroup();
+    public ResponseEntity<List<OrderStatsTotalValueDTO>> getOrderStatsValueGroup() {
+        List<OrderStatsTotalValueDTO> getStats = statsService.getOrderStatsValueGroup();
         return ResponseEntity.ok((getStats));
     }
 }

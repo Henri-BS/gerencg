@@ -29,7 +29,7 @@ public class OrderItem {
     @Column(name = "cost_value", precision = 7, scale = 2)
     private Double costValue;
 
-    @Column(name = "expense", precision = 12, scale = 2)
+    @Column(name = "maxExpense", precision = 12, scale = 2)
     private Double expense;
 
     @Column(name = "unit_value", precision = 7, scale = 2)
