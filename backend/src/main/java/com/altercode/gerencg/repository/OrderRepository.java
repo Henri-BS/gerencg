@@ -1,6 +1,5 @@
 package com.altercode.gerencg.repository;
 
-import com.altercode.gerencg.dto.OrderStatsTotalValueDTO;
 import com.altercode.gerencg.dto.SumCategoryQuantityDTO;
 import com.altercode.gerencg.dto.SumCategoryValueDTO;
 import com.altercode.gerencg.entity.Order;
@@ -17,9 +16,9 @@ import java.util.List;
 public interface OrderRepository extends JpaRepository<Order, String> {
 
     @Query("SELECT obj FROM Order obj WHERE UPPER(obj.code) " +
-            "LIKE UPPER(concat('%', ?1, '%')) " +
+            "LIKE UPPER(CONCAT('%', ?1, '%')) " +
             "ORDER BY (obj.orderDate) DESC")
-    Page<Order> findByCodeLikeIgnoreCase(String code, Pageable pageable);
+    Page<Order> findOrders(String code, Pageable pageable);
 
     Page<Order> findOrdersByStats(Pageable pageable, OrderStats stats);
 

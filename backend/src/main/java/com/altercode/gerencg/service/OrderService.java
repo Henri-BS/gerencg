@@ -54,8 +54,8 @@ public class OrderService implements IOrderCodeService {
     }
 
     @Override
-    public Page<OrderDTO> findByCode(Pageable pageable, String code) {
-        Page<Order> result = orderRepository.findByCodeLikeIgnoreCase(code, pageable);
+    public Page<OrderDTO> findOrders(Pageable pageable, String code) {
+        Page<Order> result = orderRepository.findOrders(code, pageable);
 
         return result.map(OrderDTO::new);
     }

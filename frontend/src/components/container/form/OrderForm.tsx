@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Order, Item } from "types/order";
+import { Order, Item, OrderStats } from "types/order";
 import { MeasurePage } from "types/measure";
 import { ProductPage } from "types/product";
 import { BASE_URL } from "utils/requests";
@@ -35,7 +35,7 @@ export function OrderAddForm() {
         }
         axios(config).then((response) => {
             navigate("/order/list");
-        })
+        });
     }
     return (
         <>
@@ -72,8 +72,8 @@ export function OrderEditForm({ id: codeId }: Props) {
         axios.get(`/order/${codeId}`)
             .then((response) => {
                 setOrder(response.data);
-            })
-    }, [codeId])
+            });
+    }, [codeId]);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const orderDate = (event.target as any).orderDate.value;
@@ -94,7 +94,7 @@ export function OrderEditForm({ id: codeId }: Props) {
             }
         }
         axios(config).then((response) => {
-            navigate(`/order/${codeId}`)
+            navigate(`/order/${codeId}`);
         });
     }
 
@@ -153,7 +153,7 @@ export function ItemAddForm({ id: codeId }: Props) {
             }
         }
         axios(config).then((response) => {
-            navigate(`/order/${codeId}`)
+            navigate(`/order/${codeId}`);
         });
     }
 
@@ -204,8 +204,8 @@ export const ItemEditForm = ({ id: itemId }: Props) => {
         axios.get(`${BASE_URL}/item/${itemId}`)
             .then((response) => {
                 setItem(response.data);
-            })
-    }, [itemId])
+            });
+    }, [itemId]);
 
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -232,7 +232,7 @@ export const ItemEditForm = ({ id: itemId }: Props) => {
         }
         axios(config).then((response) => {
             navigate(`/item/${item}`)
-        })
+        });
     }
     return (
         <form className="form-container" onSubmit={handleSubmit}>
@@ -279,8 +279,8 @@ export function OrderTagAddForm({ id: codeId }: Props) {
         axios.get(`${BASE_URL}/order/${codeId}`)
             .then((response) => {
                 setOrder(response.data);
-            })
-    })
+            });
+    });
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const tagId = (event.target as any).tagId.value;
@@ -297,7 +297,7 @@ export function OrderTagAddForm({ id: codeId }: Props) {
         }
         axios(config).then((response) => {
             navigate(`/order/${codeId}`)
-        })
+        });
     }
     return (
         <>
@@ -311,4 +311,108 @@ export function OrderTagAddForm({ id: codeId }: Props) {
     );
 }
 
+export function OrderStatsAddForm() {
+    const navigate = useNavigate();
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        const id = (event.target as any).id.value;
+        const initialDate = (event.target as any).initialDate.value;
+        const finalDate = (event.target as any).finalDate.value;
 
+        const config: AxiosRequestConfig = {
+            method: "POST",
+            baseURL: BASE_URL,
+            url: "/order-stats/save",
+            data: {
+                id: id,
+                initialDate: initialDate,
+                finalDate: finalDate
+            }
+        }
+        axios(config).then((response) => {
+            navigate(`/order-stats/${id}`);
+        });
+    }
+    return (
+        <>
+
+            <form className="form-card-container" onSubmit={handleSubmit}>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="id">Período: </label>
+                    <input id="id" type="text" className="form-control" placeholder="01-2000" />
+                </div>
+
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="initialDate">Data Inicial: </label>
+                    <input id="initialDate" type="date" className="form-control" />
+                </div>
+
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="finalDate">Data Final: </label>
+                    <input id="finalDate" type="date" className="form-control" />
+                </div>
+
+                <div className="modal-footer">
+                    <button type="submit" className="btn-confirm">Adicionar</button>
+                </div>
+            </form>
+        </>
+    );
+}
+
+export function OrderStatsEditForm({ id: statsId }: Props) {
+    const navigate = useNavigate();
+
+    const [stats, setStats] = useState<OrderStats>();
+    useEffect(() => {
+        axios.get(`${BASE_URL}/order-stats/${statsId}`)
+            .then((response) => {
+                setStats(response.data);
+            });
+    }, [statsId]);
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
+        
+        const initialDate = (event.target as any).initialDate.value;
+        const finalDate = (event.target as any).finalDate.value;
+
+        const config: AxiosRequestConfig = {
+            method: "PUT",
+            baseURL: BASE_URL,
+            url: "/order-stats/update",
+            data: {
+                id: statsId,
+                initialDate: initialDate,
+                finalDate: finalDate
+            }
+        }
+        axios(config).then((response) => {
+            navigate(`/order-stats/${statsId}`);
+        });
+    }
+    return (
+        <>
+
+            <form className="form-card-container" onSubmit={handleSubmit}>
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="id">Período: </label>
+                    <input id="id" type="text" className="form-control" placeholder="01-2000" />
+                </div>
+
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="initialDate">Data Inicial: </label>
+                    <input id="initialDate" type="date" className="form-control" />
+                </div>
+
+                <div className="form-group gerencg-form-group">
+                    <label htmlFor="finalDate">Data Final: </label>
+                    <input id="finalDate" type="date" className="form-control" />
+                </div>
+
+                <div className="modal-footer">
+                    <button type="submit" className="btn-confirm">Adicionar</button>
+                </div>
+            </form>
+        </>
+    );
+}

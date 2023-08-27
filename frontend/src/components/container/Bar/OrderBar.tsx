@@ -7,9 +7,10 @@ import { Order, OrderStats, OrderStatsTotalValue } from "types/order";
 import { BASE_URL } from "utils/requests";
 import "./styles.css"
 import { MdClose } from "react-icons/md";
-import { OrderEditForm } from "../Form/OrderForm";
+import { OrderEditForm, OrderStatsEditForm } from "../Form/OrderForm";
 import moment from "moment";
 import { Props } from "types/page";
+import { OrderStatsList } from "pages/Listings/OrderListing";
 
 export function OrderMenuBar({ id: codeId }: Props) {
 
@@ -46,21 +47,21 @@ export function OrderMenuBar({ id: codeId }: Props) {
                         <h2><b>Pedido de Produtos</b></h2>
                         <p>Infornações sobre produtos solicitados.</p>
                     </span>
-                    <button data-bs-toggle="modal" data-bs-target="#updateCommissionModal" className="menu-bar-option" >
+                    <button data-bs-toggle="modal" data-bs-target="#updateOrderModal" className="menu-bar-option" >
                         <img className="option-card-img" src={IUpdateProduct} alt="update-product" />
                         <h6>Editar</h6>
                     </button>
-                    <button data-bs-toggle="modal" data-bs-target="#deleteCommissionModal" className="menu-bar-option" >
+                    <button data-bs-toggle="modal" data-bs-target="#deleteOrderModal" className="menu-bar-option" >
                         <img className="option-card-img" src={IDeleteProduct} alt="delete-product" />
                         <h6>Deletar</h6>
                     </button>
                 </div>
 
-                <div className="modal fade" role="dialog" id="updateCommissionModal">
+                <div className="modal fade" role="dialog" id="updateOrderModal">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <label className="modal-title" id="orderLabel">Alterar pedido</label>
+                                <label className="modal-title">Alterar pedido</label>
                                 <button className="close" data-bs-dismiss="modal" aria-label="Close">
                                     <span className="text-close" aria-hidden="true"><MdClose /></span>
                                 </button>
@@ -69,12 +70,12 @@ export function OrderMenuBar({ id: codeId }: Props) {
                         </div>
                     </div>
                 </div>
-                <div className="modal fade" role="dialog" id="deleteCommissionModal">
+                <div className="modal fade" role="dialog" id="deleteOrderModal">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
                                 <div className="modal-title" id="orderLabel">Desejar deletar o pedido de produtos ?</div>
-                                <button className="close" data-bs-dismiss="modal" aria-label="commissionModal">
+                                <button className="close" data-bs-dismiss="modal">
                                     <span aria-hidden="true"><MdClose /></span>
                                 </button>
                             </div>
@@ -132,6 +133,9 @@ export function OrderMenuBar({ id: codeId }: Props) {
 
 export function OrderStatsBar({ id: statsId }: Props) {
 
+const navigate = useNavigate();
+const params = useParams();
+
     const [stats, setStats] = useState<OrderStats>();
     useEffect(() => {
         axios.get(`${BASE_URL}/order-stats/${statsId}`)
@@ -145,10 +149,35 @@ export function OrderStatsBar({ id: statsId }: Props) {
             .then((response) => {
                 setStats(response.data);
             });
-    }, [statsId])
+    }, [statsId]);
+
+    const deleteOrderStats = () => {
+        axios.delete(`${BASE_URL}/order-stats/delete/${statsId}`)
+            .then((response) => {
+                navigate("/order-stats/list")
+            });
+    }
 
     return (
         <>
+            <div className="max-bar-container ">
+                <div className="menu-bar-container">
+                    <span>
+                        <h2><b>Estatíticas </b></h2>
+                        <p>Informações mensais relacionadas aos produtos.</p>
+                    </span>
+                    <button data-bs-toggle="modal" data-bs-target="#updateOrderStatsModal" className="menu-bar-option" >
+                        <img className="option-card-img" src={IUpdateProduct} alt="update-product" />
+                        <h6>Editar</h6>
+                    </button>
+                    <button data-bs-toggle="modal" data-bs-target="#deleteOrderStatsModal" className="menu-bar-option" >
+                        <img className="option-card-img" src={IDeleteProduct} alt="delete-product" />
+                        <h6>Deletar</h6>
+                    </button>
+                </div>
+                </div>
+                <div className="m-4"><OrderStatsList /></div>
+
             <div className="max-bar-container">
                 <div className="bar-container row">
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
@@ -169,9 +198,39 @@ export function OrderStatsBar({ id: statsId }: Props) {
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
                         <div className="bar-item-content"> <b>Média Semanal de Despesas:</b> {stats?.expenseAverageWeek.toFixed(2)}</div>
                     </div>
-
                 </div>
             </div>
+
+            <div className="modal fade" role="dialog" id="updateOrderStatsModal">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <label className="modal-title">Alterar periodo</label>
+                                <button className="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span className="text-close" aria-hidden="true"><MdClose /></span>
+                                </button>
+                            </div>
+                            <div className="modal-body"><OrderStatsEditForm id={`${params.statsId}`} /></div>
+                        </div>
+                    </div>
+                </div>
+                <div className="modal fade" role="dialog" id="deleteOrderStatsModal">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <div className="modal-title" id="orderLabel">Desejar deletar este perído de estatísticas ?</div>
+                                <button className="close" data-bs-dismiss="modal">
+                                    <span aria-hidden="true"><MdClose /></span>
+                                </button>
+                            </div>
+                            <div className="modal-footer">
+                                <button className="text-close">cancelar</button>
+                                <button onClick={() => deleteOrderStats()} className="btn-danger" data-bs-dismiss="modal">Deletar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
         </>
     )
 }

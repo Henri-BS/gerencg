@@ -2,8 +2,8 @@ import { OrderMenuBar, OrderStatsBar, OrderStatsTotalValuesBar } from "component
 import ItemDataTable from "components/dashboard/DataTable/OrderDataTable";
 import { useParams } from "react-router-dom";
 import { OrderItemCard } from "components/container/Card/OrderCard";
-import { ItemAddForm, OrderTagAddForm } from "components/container/Form/OrderForm";
-import { MdAdd, MdClose, MdHdrPlus, MdOutline9KPlus, MdPlusOne } from "react-icons/md";
+import { ItemAddForm, OrderTagAddForm, OrderStatsAddForm } from "components/container/Form/OrderForm";
+import { MdAdd, MdClose} from "react-icons/md";
 import { OrderStatsList } from "pages/Listings/OrderListing";
 import { OrderStatsChartsByPediod, OrderStatsCharts, OrderStatsChartByCategory } from "components/dashboard/Chart/StatsChart";
 import { CategoryStatsDashboard } from "./CategoryProfile";
@@ -76,7 +76,11 @@ export function ItemProfile() {
 
 export function OrderStatsDashboard() {
   return (
+    <>
     <div className="container">
+    <h3>Tags <button className="btn link-primary" data-bs-toggle="modal" data-bs-target="#saveOrderStatsModal">
+          <MdAdd/>Adicionar Período
+        </button></h3>
       <div className="m-4"><OrderStatsList /></div>
       <OrderStatsTotalValuesBar />
       <div className="max-container-charts ">
@@ -87,7 +91,22 @@ export function OrderStatsDashboard() {
         <OrderStatsChartByCategory />
         <CategoryStatsDashboard /> </div>
     </div>
+    <div className="modal fade" role="dialog" id="saveOrderStatsModal">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <div className="modal-title">Adicionar novo período de estatísticas</div>
+              <button className="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"><MdClose /></span>
+              </button>
+            </div>
+            <div className="modal-body"><OrderStatsAddForm /></div>
+          </div>
+        </div>
+      </div>
+    </>
   );
+  
 }
 
 export function OrderStatsProfile() {
@@ -95,7 +114,6 @@ export function OrderStatsProfile() {
   return (
     <>
       <div className="container">
-        <div className="m-4"><OrderStatsList /></div>
         <OrderStatsBar id={`${params.statsId}`} />
         <div className="max-container-charts ">
           <OrderStatsChartsByPediod id={`${params.statsId}`} />
