@@ -29,14 +29,14 @@ public class OrderItem {
     @Column(name = "cost_value", precision = 7, scale = 2)
     private Double costValue;
 
-    @Column(name = "maxExpense", precision = 12, scale = 2)
-    private Double expense;
+    @Column(name = "expense", precision = 12, scale = 2)
+    private Double expense = 0.0;
 
     @Column(name = "unit_value", precision = 7, scale = 2)
     private Double unitValue;
 
     @Column(name = "income", precision = 12, scale = 2)
-    private Double income;
+    private Double income = 0.0;
 
     @Column(name = "item_validate")
     private LocalDate itemValidate;

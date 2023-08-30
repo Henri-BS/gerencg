@@ -34,7 +34,7 @@ export function OrderAddForm() {
             }
         }
         axios(config).then((response) => {
-            navigate("/order/list");
+            navigate("/order");
         });
     }
     return (
@@ -133,7 +133,7 @@ export function ItemAddForm({ id: codeId }: Props) {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const quantity = (event.target as any).quantity.value;
         const unitValue = (event.target as any).unitValue.value;
-        const totalValue = (event.target as any).totalValue.value;
+        const expense = (event.target as any).expense.value;
         const itemValidate = (event.target as any).itemValidate.value;
         const packageQuantity = (event.target as any).packageQuantity.value;
         const product = (event.target as any).product.value;
@@ -146,7 +146,7 @@ export function ItemAddForm({ id: codeId }: Props) {
                 orderCode: codeId,
                 quantity: quantity,
                 unitValue: unitValue,
-                totalValue: totalValue,
+                expense: expense,
                 itemValidate: itemValidate,
                 packageQuantity: packageQuantity,
                 productDescription: product
@@ -178,8 +178,8 @@ export function ItemAddForm({ id: codeId }: Props) {
                     </div>
 
                     <div className="form-group gerencg-form-group">
-                        <label htmlFor="totalValue">Valor Total: </label>
-                        <input id="totalValue" type="text" className="form-control" />
+                        <label htmlFor="expense">Valor Total: </label>
+                        <input id="expense" type="text" className="form-control" />
                     </div>
 
                     <div className="form-group gerencg-form-group">
@@ -211,7 +211,7 @@ export const ItemEditForm = ({ id: itemId }: Props) => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const quantity = (event.target as any).quantity.value;
         const unitValue = (event.target as any).unitValue.value;
-        const totalValue = (event.target as any).totalValue.value;
+        const expense = (event.target as any).expense.value;
         const itemValidate = (event.target as any).itemValidate.value;
         const packageQuantity = (event.target as any).packageQuantity.value;
         const product = (event.target as any).product.value;
@@ -224,7 +224,7 @@ export const ItemEditForm = ({ id: itemId }: Props) => {
                 id: itemId,
                 quantity: quantity,
                 unitValue: unitValue,
-                totalValue: totalValue,
+                expense: expense,
                 itemValidate: itemValidate,
                 packageQuantity: packageQuantity,
                 productDescription: product
@@ -254,8 +254,8 @@ export const ItemEditForm = ({ id: itemId }: Props) => {
                 </div>
 
                 <div className="form-group gerencg-form-group">
-                    <label htmlFor="totalValue">Valor Total: </label>
-                    <input id="totalValue" type="text" className="form-control" defaultValue={item?.expense} />
+                    <label htmlFor="expense">Valor Total: </label>
+                    <input id="expense" type="text" className="form-control" defaultValue={item?.expense} />
                 </div>
 
                 <div className="form-group gerencg-form-group">
@@ -336,10 +336,7 @@ export function OrderStatsAddForm() {
         <>
 
             <form className="form-card-container" onSubmit={handleSubmit}>
-                <div className="form-group gerencg-form-group">
-                    <label htmlFor="id">Período: </label>
-                    <input id="id" type="text" className="form-control" placeholder="01-2000" />
-                </div>
+             
 
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="initialDate">Data Inicial: </label>
@@ -410,7 +407,7 @@ export function OrderStatsEditForm({ id: statsId }: Props) {
                 </div>
 
                 <div className="modal-footer">
-                    <button type="submit" className="btn-confirm">Adicionar</button>
+                    <button type="submit" className="btn-confirm">Editar</button>
                 </div>
             </form>
         </>

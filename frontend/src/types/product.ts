@@ -45,6 +45,7 @@ export type ProductHistory = {
   income: number;
   dateCreated: string;
   productId: number;
+  productDescription: string;
 };
 
 export type ProductHistoryPage = {

@@ -2,8 +2,6 @@ package com.altercode.gerencg.service.interf;
 
 import com.altercode.gerencg.dto.OrderStatsDTO;
 import com.altercode.gerencg.dto.OrderStatsTotalValueDTO;
-import com.altercode.gerencg.dto.SumQuantityOrderDTO;
-import com.altercode.gerencg.dto.SumValueOrderDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -16,6 +14,8 @@ public interface IOrderStatsService {
 
     OrderStatsDTO saveOrderStats(OrderStatsDTO dto);
 
+    OrderStatsDTO updateOrderStats(OrderStatsDTO dto);
+
     OrderStatsDTO updateStatsValues(OrderStatsDTO dto);
 
   OrderStatsTotalValueDTO getOrderStatsTotalValues();
@@ -26,4 +26,5 @@ public interface IOrderStatsService {
 
   List<OrderStatsTotalValueDTO> getOrderStatsValueGroup();
 
+  void deleteOrderStats(String id);
 }

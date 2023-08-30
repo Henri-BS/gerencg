@@ -62,7 +62,6 @@ public class OrderItemService implements IOrderItemService {
     @Override
     public List<OrderItemDTO> findItemsByCode(Order code) {
         List<OrderItem> result = itemRepository.findItemsByCode(code);
-        itemBaseValue();
         return result.stream().map(OrderItemDTO::new).collect(Collectors.toList());
     }
 

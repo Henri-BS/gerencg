@@ -69,7 +69,7 @@ function Home() {
 
                     <div className="item-card-bar ">
                         <div className="home-link">
-                            <Link to="/product/list" > Lista Completa de Produtos <MdLibraryBooks /> </Link>
+                            <Link to="/product" > Lista Completa de Produtos <MdLibraryBooks /> </Link>
                         </div>
                     </div>
                     <div className="horizontal-list ">
@@ -83,7 +83,7 @@ function Home() {
                     <hr />
                     <div className="item-card-bar row">
                         <div className="menu-item col-12">
-                            <Link to="/order/list" className="home-link"> Lista Completa de Pedidos <MdLibraryBooks /> </Link>
+                            <Link to="/order" className="home-link"> Lista Completa de Pedidos <MdLibraryBooks /> </Link>
                         </div>
                     </div>
                     <div className="horizontal-list ">
@@ -98,7 +98,7 @@ function Home() {
                     <hr />
                     <div className="item-card-bar ">
                         <div className="menu-item">
-                            <Link to="/category/list" className="home-link"> Lista Completa de Categorias <MdLibraryBooks /> </Link>
+                            <Link to="/category" className="home-link"> Lista Completa de Categorias <MdLibraryBooks /> </Link>
                         </div>
                     </div>
                     <div className="horizontal-list ">

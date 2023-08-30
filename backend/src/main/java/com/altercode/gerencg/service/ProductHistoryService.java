@@ -43,6 +43,10 @@ public class ProductHistoryService implements IProductHistoryService {
     @Override
     public ProductHistoryDTO findHistoryById(Long id) {
         ProductHistory findHistory = historyRepository.findById(id).get();
+        double income;
+        income = findHistory.getPrice() * findHistory.getQuantity();
+        findHistory.setIncome(income);
+        historyRepository.save(findHistory);
         return new ProductHistoryDTO(findHistory);
     }
 
@@ -79,13 +83,13 @@ public class ProductHistoryService implements IProductHistoryService {
     public ProductHistoryDTO updateHistory(ProductHistoryDTO dto) {
         ProductHistory edit = historyRepository.findById(dto.getId()).get();
 
+        edit.setId(edit.getId());
         edit.setPrice(dto.getPrice());
         edit.setQuantity(dto.getQuantity());
         edit.setValidate(dto.getValidate());
         edit.setDateCreated(dto.getDateCreated());
-        historyRepository.save(edit);
 
-        return new ProductHistoryDTO(edit);
+        return new ProductHistoryDTO(historyRepository.save(edit));
     }
 
     @Override

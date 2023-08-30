@@ -50,10 +50,20 @@ public class OrderStatsService implements IOrderStatsService {
     }
 
     @Override
+    public OrderStatsDTO updateOrderStats(OrderStatsDTO dto) {
+        OrderStats edit = statsRepository.findById(dto.getId()).orElseThrow();
+
+        edit.setInitialDate(dto.getInitialDate());
+        edit.setFinalDate(dto.getFinalDate());
+
+        return new OrderStatsDTO(statsRepository.save(edit));
+    }
+
+    @Override
     public OrderStatsDTO updateStatsValues(OrderStatsDTO dto) {
         OrderStats stats = statsRepository.findById(dto.getId()).get();
         double sumExpense = 0;
-               double sumIncome = 0;
+        double sumIncome = 0;
 
         int sumItems = stats.getAmountItems();
         for (Order order : stats.getCodes()) {
@@ -90,7 +100,10 @@ public class OrderStatsService implements IOrderStatsService {
         return statsRepository.sumValuesGroupById();
     }
 
+@Override
     public void deleteOrderStats(String id) {
         this.statsRepository.deleteById(id);
     }
+
+
 }

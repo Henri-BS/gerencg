@@ -116,6 +116,9 @@ export function GetHistoryCard({ id: historyId }: Props) {
                 <div className="gerencg-box border-dark">
                     <h4>Data de registro: {moment(history?.dateCreated).format("DD/MM/YYYY")}</h4>
                 </div>
+                <Link to={`/product/${history?.productId}`} className="gerencg-box">
+                    Produto: {history?.productDescription}
+                </Link>
                 <div className="gerencg-box">
                     Quantidade em estoque: {history?.quantity}
                 </div>

@@ -19,6 +19,7 @@ public class ProductHistoryDTO implements Serializable {
 
 	private Long id;
 	private Long productId;
+	private String productDescription;
 	private Double price;
 	private Integer quantity;
 	private LocalDate validate;
@@ -28,10 +29,11 @@ public class ProductHistoryDTO implements Serializable {
 	public ProductHistoryDTO(ProductHistory entity) {
 		id = entity.getId();
 		productId = entity.getProduct().getId();
+		productDescription = entity.getProduct().getDescription();
 		price = entity.getPrice();
 		quantity = entity.getQuantity();
 		validate = entity.getValidate();
-		income = Math.round(entity.getIncome() *100) /100.0;
+		income = entity.getIncome();
 		dateCreated = entity.getDateCreated();
 	}
 }

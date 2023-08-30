@@ -2,8 +2,6 @@ package com.altercode.gerencg.controller;
 
 import com.altercode.gerencg.dto.OrderStatsDTO;
 import com.altercode.gerencg.dto.OrderStatsTotalValueDTO;
-import com.altercode.gerencg.dto.SumQuantityOrderDTO;
-import com.altercode.gerencg.dto.SumValueOrderDTO;
 import com.altercode.gerencg.service.OrderStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -40,7 +38,13 @@ public class OrderStatsController {
         return new ResponseEntity<>(add, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
+    public ResponseEntity<OrderStatsDTO> updateOrderStats(@RequestBody OrderStatsDTO dto) {
+        OrderStatsDTO edit = statsService.updateOrderStats(dto);
+        return new ResponseEntity<>(edit, HttpStatus.OK);
+    }
+
+    @PutMapping("/update-values/{id}")
     public ResponseEntity<OrderStatsDTO> updateStatsValues(OrderStatsDTO dto, @PathVariable String id) {
         OrderStatsDTO edit = statsService.updateStatsValues(dto);
         return new ResponseEntity<>(edit, HttpStatus.OK);

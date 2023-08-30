@@ -78,7 +78,7 @@ export function OrderStatsDashboard() {
   return (
     <>
     <div className="container">
-    <h3>Tags <button className="btn link-primary" data-bs-toggle="modal" data-bs-target="#saveOrderStatsModal">
+    <h3>Estatísticas<button className="btn link-primary" data-bs-toggle="modal" data-bs-target="#saveOrderStatsModal">
           <MdAdd/>Adicionar Período
         </button></h3>
       <div className="m-4"><OrderStatsList /></div>

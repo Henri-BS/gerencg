@@ -52,7 +52,7 @@ public class CategoryStatsController {
 	@PostMapping("/add")
 	public ResponseEntity<CategoryStatsDTO> saveStats(@RequestBody CategoryStatsDTO categoryStats) {
 		CategoryStatsDTO newStats = statsService.saveStats(categoryStats);
-		return new ResponseEntity<CategoryStatsDTO>( newStats, HttpStatus.CREATED);
+		return new ResponseEntity<>( newStats, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/update")

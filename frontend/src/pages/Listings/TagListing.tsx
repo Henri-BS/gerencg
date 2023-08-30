@@ -99,7 +99,7 @@ export function OrderTagList({ id: tagId }: Props) {
             <div>
                 <div className="container">
                     <nav className=" header-container">
-                        <Link to={`/order/list`} className=" text-decoration-none">
+                        <Link to={`/order`} className=" text-decoration-none">
                             <h4 className="link-primary"> <MdLibraryBooks />Retornar para a lista completa</h4>
                         </Link>
                         <h2 >Lista de Pedidos com a tag: {tagId}</h2>

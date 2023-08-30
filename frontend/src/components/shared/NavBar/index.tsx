@@ -75,7 +75,7 @@ function NavBar() {
                         <div className="modal-header">
 
                             <span data-bs-dismiss="modal ">
-                                <Link to="/product/list" className="form-links"> <MdLibraryBooks /> Lista de Produtos</Link>
+                                <Link to="/product" className="form-links"> <MdLibraryBooks /> Lista de Produtos</Link>
                             </span>
 
                             <button className="close" data-bs-dismiss="modal" aria-label="Close">
@@ -96,7 +96,7 @@ function NavBar() {
                     <div className="modal-content">
                         <div className="modal-header" >
                             <span data-bs-dismiss="modal">
-                                <Link to="/order/list" className="form-links" > <MdLibraryBooks /> Lista de Pedidos</Link>
+                                <Link to="/order" className="form-links" > <MdLibraryBooks /> Lista de Pedidos</Link>
                             </span>
                             <button className="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><MdClose /></span>
@@ -115,7 +115,7 @@ function NavBar() {
                     <div className="modal-content">
                         <div className="modal-header" >
                             <span data-bs-dismiss="modal">
-                                <Link to="/category/list" className="form-links" > <MdLibraryBooks /> Lista de Categorias</Link>
+                                <Link to="/category" className="form-links" > <MdLibraryBooks /> Lista de Categorias</Link>
                             </span>
                             <button className="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><MdClose /></span>

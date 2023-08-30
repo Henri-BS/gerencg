@@ -28,10 +28,10 @@ public class Order {
 
     private String distributor;
 
-    @Column(name = "expense")
+    @Column(name = "expense", precision = 12, scale = 2)
     private Double expense = 0.0;
 
-    @Column(name = "income")
+    @Column(name = "income", precision = 12, scale = 2)
     private Double income;
 
     @Column(name = "total_quantity")

@@ -37,7 +37,7 @@ export function AddProductForm() {
             }
         };
         axios(config).then(response => {
-            navigate("/product/list");
+            navigate("/product");
         })
     }
 
@@ -246,7 +246,7 @@ export function EditHistoryForm({ id: historyId }: Props) {
                 price: price,
                 quantity: quantity,
                 validate: validate,
-                createdDate: dateCreated
+                dateCreated: dateCreated
             }
         }
         axios(config).then((response) => {

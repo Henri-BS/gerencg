@@ -35,7 +35,7 @@ export function OrderMenuBar({ id: codeId }: Props) {
     const deleteOrder = () => {
         axios.delete(`${BASE_URL}/order/delete/${codeId}`)
             .then((response) => {
-                navigate("/order/list")
+                navigate("/order")
             });
     }
 
@@ -118,7 +118,7 @@ export function OrderMenuBar({ id: codeId }: Props) {
                             <div className="bar-item-content"> <b>Total de Unidades:</b> {order?.totalQuantity} </div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                            <div className="bar-item-content"> <b>Valor Total do Pedido:</b> {order?.expense} </div>
+                            <div className="bar-item-content"> <b>Valor Total do Pedido:</b> {order?.expense.toFixed(2)} </div>
                         </div>
                         <div className="bar-item col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                             <div className="bar-item-content"> <b>Categoria:</b> {order?.categoryId} </div>
@@ -145,7 +145,7 @@ const params = useParams();
     }, [statsId])
 
     useEffect(() => {
-        axios.put(`${BASE_URL}/order-stats/update/${statsId}`)
+        axios.put(`${BASE_URL}/order-stats/update-values/${statsId}`)
             .then((response) => {
                 setStats(response.data);
             });
@@ -154,7 +154,7 @@ const params = useParams();
     const deleteOrderStats = () => {
         axios.delete(`${BASE_URL}/order-stats/delete/${statsId}`)
             .then((response) => {
-                navigate("/order-stats/list")
+                navigate("/stats")
             });
     }
 
@@ -230,7 +230,6 @@ const params = useParams();
                         </div>
                     </div>
                 </div>
-
         </>
     )
 }
@@ -261,7 +260,6 @@ export function OrderStatsTotalValuesBar() {
                     <div className="bar-item col-12 col-sm-6 col-xl-3 ">
                         <div className="bar-item-content"> <b>Maior Despesa:</b> {stats?.maxExpense.toFixed(2)}</div>
                     </div>
-
                 </div>
             </div>
         </>

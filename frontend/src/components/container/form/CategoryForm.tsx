@@ -22,7 +22,7 @@ export function CategoryAddForm(){
         }
     }
     axios(config).then((response) => {
-        navigate("/")
+        navigate("/category")
     })
     }
 
@@ -44,7 +44,6 @@ export function AddCategoryStats() {
     const navigate = useNavigate();
     const [msg, setMsg] = useState('')
 
-    //Get CategoryList for the category selector    
     const [categoryList, setCategoryList] = useState<CategoryPage>({
         content: [],
         number: 0
@@ -78,10 +77,7 @@ export function AddCategoryStats() {
             }
         };
         axios(config).then(response => {
-            setMsg("Registro Adcionado")
-            navigate("/category-stats");
-        }).catch(() => {
-            setMsg("Erro")
+            navigate("/category");
         })
     };
 

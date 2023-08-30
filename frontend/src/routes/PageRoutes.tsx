@@ -21,7 +21,7 @@ function PageRoutes() {
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />
 
-                <Route path="/product/list" element={<ProductsList />} />
+                <Route path="/product" element={<ProductsList />} />
                 <Route path="/products-stats" element={<ProductDashboard />} />
 
                 <Route path="/find-by-validate" element={<ProductValidateList />} />
@@ -33,7 +33,7 @@ function PageRoutes() {
                     <Route path=":historyId" element={<ProductHistoryProfile />} />
                 </Route>
 
-                <Route path="/category/list" element={<CategoryList />} />
+                <Route path="/category" element={<CategoryList />} />
                 <Route path="/category-stats" element={<CategoryStatsDashboard />} />
 
                 <Route path="/category">
@@ -45,7 +45,7 @@ function PageRoutes() {
                 </Route>
                 <Route path="/measure/list" element={<MeasureList />} />
 
-                <Route path="/order/list" element={<OrderCodeList />} />
+                <Route path="/order" element={<OrderCodeList />} />
 
                 <Route path="/order">
                     <Route path=":codeId" element={<OrderProfile />} />
