@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.altercode.gerencg.dto.CategoryStatsTotalValueDTO;
-import com.altercode.gerencg.dto.SumCategoryQuantityDTO;
-import com.altercode.gerencg.dto.SumCategoryValueDTO;
 import com.altercode.gerencg.entity.Category;
 import com.altercode.gerencg.entity.Product;
 import com.altercode.gerencg.repository.ProductRepository;
@@ -49,12 +47,12 @@ public class CategoryStatsService implements ICategoryStatsService {
 	}
 
 	@Override
-	public List<SumCategoryValueDTO> productValueGroupByCategory(){
+	public List<CategoryStatsTotalValueDTO> productValueGroupByCategory(){
 		return productRepository.productIncomeGroupByCategory();
 	}
 
 	@Override
-	public List<SumCategoryQuantityDTO> productQuantityGroupByCategory(){
+	public List<CategoryStatsTotalValueDTO> productQuantityGroupByCategory(){
 		return productRepository.productQuantityGroupByCategory();
 	}
 

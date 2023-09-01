@@ -198,6 +198,13 @@ const params = useParams();
                     <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
                         <div className="bar-item-content"> <b>Média Semanal de Despesas:</b> {stats?.expenseAverageWeek.toFixed(2)}</div>
                     </div>
+                    
+                    <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
+                        <div className="bar-item-content"> <b>Expectativa de Renda do Mês:</b> {stats?.income.toFixed(2)}</div>
+                    </div>
+                    <div className="bar-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
+                        <div className="bar-item-content"> <b>Média Semanal da Renda:</b> {stats?.incomeAverageWeek.toFixed(2)}</div>
+                    </div>
                 </div>
             </div>
 
@@ -248,17 +255,24 @@ export function OrderStatsTotalValuesBar() {
         <>
             <div className="max-bar-container">
                 <div className="bar-container row">
-                    <div className="bar-item col-12 col-sm-6 col-xl-3 ">
+                    <div className="bar-item col-12 col-sm-6 col-xl-4 ">
                         <div className="bar-item-content"> <b>Total de Pedidos:</b> {stats?.amountOrders}</div>
                     </div>
-                    <div className="bar-item col-12 col-sm-6 col-xl-3 ">
-                        <div className="bar-item-content"> <b>Total de Items:</b> {stats?.amountItems}</div>
-                    </div>
-                    <div className="bar-item col-12 col-sm-6 col-xl-3 ">
+                
+                    <div className="bar-item col-12 col-sm-6 col-xl-4 ">
                         <div className="bar-item-content"> <b>Total de Despesas:</b> {stats?.sumExpense.toFixed(2)}</div>
                     </div>
-                    <div className="bar-item col-12 col-sm-6 col-xl-3 ">
-                        <div className="bar-item-content"> <b>Maior Despesa:</b> {stats?.maxExpense.toFixed(2)}</div>
+                    <div className="bar-item col-12 col-sm-6 col-xl-4 ">
+                        <div className="bar-item-content"> <b>Maior Despesa Mensal:</b> {stats?.maxExpense.toFixed(2)}</div>
+                    </div>
+                    <div className="bar-item col-12 col-sm-6 col-xl-4 ">
+                        <div className="bar-item-content"> <b>Total de Items:</b> {stats?.amountItems}</div>
+                    </div>
+                    <div className="bar-item col-12 col-sm-6 col-xl-4 ">
+                        <div className="bar-item-content"> <b>Expectativa Total de Renda:</b> {stats?.sumIncome.toFixed(2)}</div>
+                    </div>
+                    <div className="bar-item col-12 col-sm-6 col-xl-4 ">
+                        <div className="bar-item-content"> <b>Maior Renda Mensal:</b> {stats?.maxIncome.toFixed(2)}</div>
                     </div>
                 </div>
             </div>

@@ -1,8 +1,7 @@
 package com.altercode.gerencg.controller;
 
+import com.altercode.gerencg.dto.CategoryStatsTotalValueDTO;
 import com.altercode.gerencg.dto.OrderDTO;
-import com.altercode.gerencg.dto.SumCategoryQuantityDTO;
-import com.altercode.gerencg.dto.SumCategoryValueDTO;
 import com.altercode.gerencg.entity.OrderStats;
 import com.altercode.gerencg.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,14 +38,14 @@ public class OrderController {
     }
 
     @GetMapping("/sum-value-by-category")
-    public ResponseEntity<List<SumCategoryValueDTO>> getOrderValueGroupByCategory() {
-        List<SumCategoryValueDTO> getOrders = codeService.getOrderValueGroupByCategory();
+    public ResponseEntity<List<CategoryStatsTotalValueDTO>> getOrderValueGroupByCategory() {
+        List<CategoryStatsTotalValueDTO> getOrders = codeService.getOrderValueGroupByCategory();
         return ResponseEntity.ok(getOrders);
     }
 
     @GetMapping("/sum-quantity-by-category")
-    public ResponseEntity<List<SumCategoryQuantityDTO>> getOrderQuantityGroupByCategory() {
-        List<SumCategoryQuantityDTO> getOrders = codeService.getOrderQuantityGroupByCategory();
+    public ResponseEntity<List<CategoryStatsTotalValueDTO>> getOrderQuantityGroupByCategory() {
+        List<CategoryStatsTotalValueDTO> getOrders = codeService.getOrderQuantityGroupByCategory();
         return ResponseEntity.ok(getOrders);
     }
 

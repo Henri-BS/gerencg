@@ -1,7 +1,6 @@
 package com.altercode.gerencg.repository;
 
-import com.altercode.gerencg.dto.SumCategoryQuantityDTO;
-import com.altercode.gerencg.dto.SumCategoryValueDTO;
+import com.altercode.gerencg.dto.CategoryStatsTotalValueDTO;
 import com.altercode.gerencg.entity.Order;
 import com.altercode.gerencg.entity.OrderStats;
 import org.springframework.data.domain.Page;
@@ -22,12 +21,12 @@ public interface OrderRepository extends JpaRepository<Order, String> {
 
     Page<Order> findOrdersByStats(Pageable pageable, OrderStats stats);
 
-    @Query("SELECT new com.altercode.gerencg.dto.SumCategoryValueDTO(obj.category, SUM(obj.expense))" +
+    @Query("SELECT new com.altercode.gerencg.dto.CategoryStatsTotalValueDTO(obj.category, SUM(obj.expense))" +
             "FROM Order AS obj GROUP BY obj.category ORDER BY SUM(obj.expense) DESC")
-    List<SumCategoryValueDTO> getOrderValueGroupByCategory();
+    List<CategoryStatsTotalValueDTO> getOrderValueGroupByCategory();
 
-    @Query("SELECT new com.altercode.gerencg.dto.SumCategoryQuantityDTO(obj.category, SUM(obj.amountItems))" +
+    @Query("SELECT new com.altercode.gerencg.dto.CategoryStatsTotalValueDTO(obj.category, SUM(obj.amountItems))" +
             "FROM Order AS obj GROUP BY obj.category ORDER BY SUM(obj.amountItems) DESC")
-    List<SumCategoryQuantityDTO> getOrderQuantityGroupByCategory();
+    List<CategoryStatsTotalValueDTO> getOrderQuantityGroupByCategory();
 
 }

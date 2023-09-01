@@ -1,8 +1,7 @@
 package com.altercode.gerencg.service;
 
+import com.altercode.gerencg.dto.CategoryStatsTotalValueDTO;
 import com.altercode.gerencg.dto.OrderDTO;
-import com.altercode.gerencg.dto.SumCategoryQuantityDTO;
-import com.altercode.gerencg.dto.SumCategoryValueDTO;
 import com.altercode.gerencg.entity.*;
 import com.altercode.gerencg.repository.*;
 import com.altercode.gerencg.service.interf.IOrderCodeService;
@@ -145,12 +144,12 @@ public class OrderService implements IOrderCodeService {
     }
 
     @Override
-    public List<SumCategoryValueDTO> getOrderValueGroupByCategory() {
+    public List<CategoryStatsTotalValueDTO> getOrderValueGroupByCategory() {
         return orderRepository.getOrderValueGroupByCategory();
     }
 
     @Override
-    public List<SumCategoryQuantityDTO> getOrderQuantityGroupByCategory() {
+    public List<CategoryStatsTotalValueDTO> getOrderQuantityGroupByCategory() {
         return orderRepository.getOrderQuantityGroupByCategory();
     }
 }

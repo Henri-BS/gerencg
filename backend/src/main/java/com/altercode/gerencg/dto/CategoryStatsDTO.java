@@ -1,7 +1,6 @@
 package com.altercode.gerencg.dto;
 
 import com.altercode.gerencg.entity.CategoryStats;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

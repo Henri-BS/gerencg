@@ -3,8 +3,7 @@ package com.altercode.gerencg.repository;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.altercode.gerencg.dto.SumCategoryQuantityDTO;
-import com.altercode.gerencg.dto.SumCategoryValueDTO;
+import com.altercode.gerencg.dto.CategoryStatsTotalValueDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -33,11 +32,11 @@ public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpec
 
     Page<Product> findByMeasure(Pageable pageable, Measure measure);
 
-    @Query("SELECT new com.altercode.gerencg.dto.SumCategoryValueDTO (obj.category, SUM(obj.quantity * obj.price))" +
+    @Query("SELECT new com.altercode.gerencg.dto.CategoryStatsTotalValueDTO (obj.category, SUM(obj.quantity * obj.price))" +
             "FROM Product AS obj GROUP BY obj.category ORDER BY SUM(obj.quantity * obj.price) DESC")
-    List<SumCategoryValueDTO> productIncomeGroupByCategory();
+    List<CategoryStatsTotalValueDTO> productIncomeGroupByCategory();
 
-    @Query("SELECT new com.altercode.gerencg.dto.SumCategoryQuantityDTO (obj.category, SUM(obj.quantity))" +
+    @Query("SELECT new com.altercode.gerencg.dto.CategoryStatsTotalValueDTO (obj.category, SUM(obj.quantity))" +
             "FROM Product AS obj GROUP BY obj.category ORDER BY SUM(obj.quantity) DESC")
-    List<SumCategoryQuantityDTO> productQuantityGroupByCategory();
+    List<CategoryStatsTotalValueDTO> productQuantityGroupByCategory();
 }

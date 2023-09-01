@@ -25,8 +25,6 @@ export type CategoryProps = {
   category: Category
 }
 
-
-
 export type CategoryStats = {
   id: number; 
   registrationDate: string;
@@ -47,17 +45,11 @@ export type CategoryStatsPage = {
   empty?: boolean;
 };
 
-export type CategoryValue = {
-  categoryName: string;
-  value: number;
-};
 
-export type CategoryQuantity = {
-  categoryName: string;
-  quantity: number;
-};
 
 export type CategoryStatsValue = {
+  categoryName: string;
+  quantity: number;
   maxValue: number;
   totalValue: number;
 };
