@@ -1,8 +1,8 @@
-import { CategorySideBar } from "components/container/Bar/CategoryBar";
-import { CategoryStatsChart } from "components/dashboard/Chart/StatsChart";
-import { ProductCategoryList } from "pages/Listings/CategoryListing";
+import { CategorySideBar } from "components/bar/CategoryBar";
+import { CategoryStatsChart } from "components/chart/StatsChart";
+import { CategoryMockSideBar } from "mock/MockBar";
+import { ProductCategoryList } from "pages/lists/CategoryListing";
 import { useParams } from "react-router-dom";
-import "./styles.css";
 
 export function CategoryProfile() {
 
@@ -12,6 +12,7 @@ export function CategoryProfile() {
       <div className="profile row">
         <div className="col-12 col-sm-12 col-md-6 col-lg-4 p-0">
           <CategorySideBar id={`${params.categoryId}`} />
+          <CategoryMockSideBar id={`${params.categoryId}`} />
         </div>
         <div className="col-12 col-sm-12 col-md-6 col-lg-8">
           <ProductCategoryList id={`${params.categoryId}`} />

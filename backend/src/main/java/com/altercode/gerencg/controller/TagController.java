@@ -1,7 +1,7 @@
 package com.altercode.gerencg.controller;
 
 import com.altercode.gerencg.dto.TagDTO;
-import com.altercode.gerencg.service.TagService;
+import com.altercode.gerencg.service.interf.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -38,6 +38,6 @@ public class TagController {
         for (TagDTO title : dto) {
             titles.add(title.getTagId());
         }
-        return (List<TagDTO>) tagService.getAllTags(titles);
+        return tagService.getAllTags(titles);
     }
 }

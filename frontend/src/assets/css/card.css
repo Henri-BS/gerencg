@@ -1,0 +1,328 @@
+
+.product-card-container {
+    height: 190px;
+    width: 400px;
+    padding: 20px;
+    border-radius: 30px;
+    border: 3px solid #ccc;
+    background-color: var(--white-seco);
+    color: var(--dark-prim);
+    align-items: flex-start;
+    justify-content: start;
+    display: flex;
+}
+
+.white-card {
+    background-color: var(--white-seco);
+    color: var(--dark-prim);
+}
+
+.dark-card {
+    background-color: var(--dark-tert);
+    color: var(--dark-prim);
+}
+
+.product-card-container:hover {
+    border: 3px solid var(--blue-quat);
+    transition: all 0.7s ease-out;
+}
+
+.product-card-container h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.product-card-container h2 {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.product-card-image {
+    width: 150px;
+    border-radius: 20px;
+}
+
+.product-info-box {
+    width: 100%;
+    height: 100%;
+    background-color: var(--white-seco);
+    justify-content: space-between;
+    align-items: center;
+    text-decoration-color: transparent;
+    padding: 10px;
+    display: grid;
+    border-left: 2px solid var(--dark-prim);
+    margin-left: 2px;
+}
+
+.product-info-title {
+    color: var(--dark-prim);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-info-item {
+    height: 24px;
+    text-align: center;
+    background-color: var(--white-seco);
+}
+
+.small-card-container {
+    border-radius: 12px;
+    background-color: var(--white-seco);
+    min-height: 50px;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--white-tert);
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+}
+
+.small-card-container h5 {
+    text-align: center;
+    margin: 0;
+    padding: 8px;
+}
+
+.small-card-container:hover {
+    border-color: var(--blue-prim);
+}
+
+.history-icon-container {
+    height: 100%;
+    align-items: center;
+    margin-left: 10px;
+    color: var(--blue-prim);
+    font-size: 24px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.history-icon-container:hover {
+    color: var(--blue-seco);
+}
+
+.gerencg-box {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    padding: 20px 8px;
+    border-bottom: 1px solid #ccc;
+}
+
+.gerencg-box h3 {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 650px) {
+    .product-card-image {
+        width: 100px;
+    }
+    .product-card-container h3 {
+        font-size: 14px;
+    }
+    .product-card-container h2 {
+        font-size: 16px;
+    }
+    .product-card-container {
+        height: 160px;
+    }
+}
+
+.category-display-card {
+    height: 190px;
+    min-width: 400px;
+    background-color: var(--white-seco);
+    border-radius: 30px;
+    border: 3px solid #ccc;
+    padding: 20px;
+    text-decoration: underline;
+    text-decoration-color: var(--white-seco);
+    color: var(--dark-prim);
+    align-items: flex-start;
+    justify-content: start;
+    display: flex;
+    transition: all 0.2ms ease-out;
+}
+
+.category-display-card:hover {
+    border: 3px solid var(--blue-quat);
+}
+
+.category-display-card h3 {
+    padding: 6px;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.category-display-card h2 {
+    padding: 6px;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.category-card-image {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+}
+
+.category-card-container {
+    height: 160px;
+    align-items: center;
+    border-radius: 30px;
+    text-decoration-color: transparent;
+    padding: 8px;
+    display: grid;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.category-details-container {
+    height: 70px;
+    background-color: var(--white-seco);
+}
+
+@media screen and (max-width: 450px) {
+    .category-display-card {
+        height: 350px;
+        display: grid;
+    }
+}
+
+.measure-details-container {
+    text-decoration: none;
+    width: 300px;
+    align-items: center;
+    justify-items: center;
+    display: grid;
+    border: 3px solid transparent;
+    border-radius: 8px;
+    transition: all 0.3s ease-out;
+    background-color: var(--white-seco);
+    color: var(--dark-prim);
+}
+
+.measure-details-container:hover {
+    color: var(--blue-prim);
+    border-color: var(--blue-prim);
+}
+
+.measure-details-container h3 {
+    font-weight: 900;
+}
+
+.measure-details-box {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+    font-size: 16px;
+}
+
+.order-card {
+    min-height: 300px;
+    min-width: 330px;
+    display: grid;
+    padding: 6px;
+    background-color: var(--white-seco);
+    border: 3px solid #ccc;
+    border-radius: 12px;
+    transition: all 0.2s ease-out;
+    justify-content: center;
+    align-items: center;
+    text-decoration: underline;
+    text-decoration-color: var(--white-seco);
+    color: var(--dark-prim);
+}
+
+.order-card:hover {
+    border: 3px solid var(--blue-prim);
+}
+
+.order-box {
+    display: flex;
+    width: 100%;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.order-box h2 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.order-box h3 {
+    font-size: 20px;
+}
+
+.gerencg-item-card {
+    margin: 16px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.gerencg-item-bar {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.stats-card-container {
+    background-color: var(--dark-quat);
+    padding: 8px;
+    height: 40px;
+    width: 90px;
+    color: var(--white-seco);
+    border: solid 2px var(--blue-prim);
+    text-align: center;
+    border-radius: 12px;
+    transition: all 0.2s ease-out;
+}
+
+.stats-card-container:hover {
+    border: solid 2px var(--blue-seco);
+    background-color: var(--dark-prim);
+}
+
+.stats-card-container:focus {
+    border: solid 2px var(--blue-seco);
+    background-color: var(--dark-prim);
+}
+
+.tag-card-container {
+    height: 40px;
+    border-radius: 12px;
+    background-color: var(--dark-quat);
+    border: solid 2px var(--blue-prim);
+    color: var(--white-seco);
+    width: 100px;
+    padding: 8px;
+    text-align: center;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tag-card-container:hover {
+    border: solid 2px var(--blue-seco);
+    background-color: var(--dark-prim);
+}
+
+.tag-card-container:focus {
+    border: solid 2px var(--blue-seco);
+    background-color: var(--dark-prim);
+}

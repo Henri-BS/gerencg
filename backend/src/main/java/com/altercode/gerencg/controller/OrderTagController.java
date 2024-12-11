@@ -3,7 +3,7 @@ package com.altercode.gerencg.controller;
 import com.altercode.gerencg.dto.OrderTagDTO;
 import com.altercode.gerencg.entity.Order;
 import com.altercode.gerencg.entity.Tag;
-import com.altercode.gerencg.service.OrderTagService;
+import com.altercode.gerencg.service.interf.OrderTagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,14 +27,14 @@ public class OrderTagController {
     }
 
     @GetMapping("/find-by-tag/{tag}")
-    public ResponseEntity<List<OrderTagDTO>> findAllOrdersByTag(@PathVariable Tag tag) {
-        List<OrderTagDTO> list = orderTagService.findAllByTag(tag);
+    public ResponseEntity<List<OrderTagDTO>> findByTag(@PathVariable Tag tag) {
+        List<OrderTagDTO> list = orderTagService.findByTag(tag);
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/find-by-code/{code}")
-    public ResponseEntity<List<OrderTagDTO>> findAllByCode(@PathVariable Order code) {
-        List<OrderTagDTO> list = orderTagService.findAllByCode(code);
+    @GetMapping("/find-by-order/{order}")
+    public ResponseEntity<List<OrderTagDTO>> findByOrder(@PathVariable Order order) {
+        List<OrderTagDTO> list = orderTagService.findByOrder(order);
         return ResponseEntity.ok(list);
     }
 

@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.altercode.gerencg.dto.MeasureDTO;
-import com.altercode.gerencg.service.MeasureService;
+import com.altercode.gerencg.service.interf.MeasureService;
 
 @RestController
 @RequestMapping("/measure")

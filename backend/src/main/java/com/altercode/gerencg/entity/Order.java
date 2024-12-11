@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -28,11 +28,9 @@ public class Order {
 
     private String distributor;
 
-    @Column(name = "expense", precision = 12, scale = 2)
     private Double expense = 0.0;
 
-    @Column(name = "income", precision = 12, scale = 2)
-    private Double income;
+    private Double income = 0.0;
 
     @Column(name = "total_quantity")
     private Integer totalQuantity = 0;
@@ -50,8 +48,8 @@ public class Order {
     private LocalDateTime dateUpdated = LocalDateTime.now();
 
     @ManyToOne
-    @JoinColumn(name = "package_type")
-    private Measure packageType;
+    @JoinColumn(name = "measuere")
+    private Measure measure;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -61,9 +59,9 @@ public class Order {
     @JoinColumn(name = "stats_id")
     private OrderStats stats;
 
-    @OneToMany(mappedBy = "code", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private final Set<OrderItem> items = new HashSet<>();
 
-    @OneToMany( mappedBy = "code", cascade = CascadeType.ALL)
+    @OneToMany( mappedBy = "order", cascade = CascadeType.ALL)
     private Set<OrderTag> orderTags = new HashSet<>();
 }

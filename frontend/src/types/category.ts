@@ -1,5 +1,3 @@
-
-
 export type Category = {
   name: string;
   image: string;
@@ -10,7 +8,7 @@ export type Category = {
 };
 
 export type CategoryPage = {
-  content: Category[];
+  content: Category[] ;
   last?: boolean;
   totalElements?: number;
   totalPages?: number;
@@ -44,8 +42,6 @@ export type CategoryStatsPage = {
   numberOfElements?: number;
   empty?: boolean;
 };
-
-
 
 export type CategoryStatsValue = {
   categoryName: string;

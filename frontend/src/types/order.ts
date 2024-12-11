@@ -17,7 +17,7 @@ export type Order = {
   categoryId: string;
 };
 
-export type CodePage = {
+export type OrderPage = {
   content: Order[];
   last?: boolean;
   totalElements?: number;
@@ -29,8 +29,8 @@ export type CodePage = {
   empty?: boolean;
 };
 
-export type CodeProps = {
-  code: Order;
+export type OrderProps = {
+  order: Order;
 };
 
 export type Item = {

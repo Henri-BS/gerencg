@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.altercode.gerencg.dto.CategoryStatsDTO;
-import com.altercode.gerencg.service.CategoryStatsService;
+import com.altercode.gerencg.service.interf.CategoryStatsService;
 
 @RestController
 @RequestMapping(value = "/category-stats")

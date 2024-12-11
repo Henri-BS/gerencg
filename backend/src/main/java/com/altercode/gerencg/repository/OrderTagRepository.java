@@ -10,9 +10,8 @@ import java.util.List;
 
 @Repository
 public interface OrderTagRepository extends JpaRepository<OrderTag, Long> {
-    List<OrderTag> findAllByTag(Tag tag);
+    List<OrderTag> findByTag(Tag tag);
 
-    List<OrderTag> findAllByCode(Order code);
+    List<OrderTag> findByOrder(Order order);
 
-    void deleteTagByCode(Long id);
 }

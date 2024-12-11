@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
-import "./styles.css"
-import { ListHistoryByProduct } from "pages/Listings/ProductListing";
-import { MeasureInfo } from "components/container/Card/MeasureCard";
-import { SaveValuesHistory } from "components/container/Form/ProductForm";
-import { QuantityProductChart } from "components/dashboard/Chart/ProductCharts";
-import { ProductMeasureList } from "pages/Listings/MeasureListing";
-import { HistoryMenuBar, ProductMenuBar, ProductSideBar } from "components/container/Bar/ProductBar";
-import ProductDataTable from "components/dashboard/DataTable/ProductDataTable";
+import { ListHistoryByProduct } from "pages/lists/ProductListing";
+import { MeasureInfo } from "components/card/MeasureCard";
+import { SaveValuesHistory } from "components/form/ProductForm";
+import { QuantityProductChart } from "components/chart/ProductCharts";
+import { ProductMeasureList } from "pages/lists/MeasureListing";
+import { HistoryMenuBar, ProductMenuBar, ProductSideBar } from "components/bar/ProductBar";
+import ProductDataTable from "components/dataTable/ProductDataTable";
 import { MdClose } from "react-icons/md";
-import { GetHistoryCard as LargeHistoryCard } from "components/container/Card/ProductCard";
-import { OrderItemListByProduct } from "pages/Listings/OrderListing";
+import { GetHistoryCard as LargeHistoryCard } from "components/card/ProductCard";
+import { OrderItemListByProduct } from "pages/lists/OrderListing";
+import { ProductMockSideBar } from "mock/MockBar";
 
 export function ProductProfile() {
   const params = useParams();
@@ -18,7 +18,9 @@ export function ProductProfile() {
     <>
       <div className="profile row">
         <div className="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-4 p-0">
-          < ProductSideBar id={`${params.productId}`} />
+
+          <ProductSideBar id={`${params.productId}`} /> 
+          <ProductMockSideBar id={`${params.productId}`} />
         </div>
         <div className="col-12 col-md-6 col-lg-7 col-xl-8  p-4">
           <ProductMenuBar id={`${params.productId}`} />

@@ -1,13 +1,13 @@
-import { OrderMenuBar, OrderStatsBar, OrderStatsTotalValuesBar } from "components/container/Bar/OrderBar";
-import ItemDataTable from "components/dashboard/DataTable/OrderDataTable";
+import { OrderMenuBar, OrderStatsBar, OrderStatsTotalValuesBar } from "components/bar/OrderBar";
+import ItemDataTable from "components/dataTable/OrderDataTable";
 import { useParams } from "react-router-dom";
-import { OrderItemCard } from "components/container/Card/OrderCard";
-import { ItemAddForm, OrderTagAddForm, OrderStatsAddForm } from "components/container/Form/OrderForm";
+import { OrderItemCard } from "components/card/OrderCard";
+import { ItemAddForm, OrderTagAddForm, OrderStatsAddForm } from "components/form/OrderForm";
 import { MdAdd, MdClose} from "react-icons/md";
-import { OrderStatsList } from "pages/Listings/OrderListing";
-import { OrderStatsChartsByPediod, OrderStatsCharts, OrderStatsChartByCategory } from "components/dashboard/Chart/StatsChart";
+import { OrderStatsList } from "pages/lists/OrderListing";
+import { OrderStatsChartsByPediod, OrderStatsCharts, OrderStatsChartByCategory } from "components/chart/StatsChart";
 import { CategoryStatsDashboard } from "./CategoryProfile";
-import { OrderTagList, TagListByOrder } from "pages/Listings/TagListing";
+import { OrderTagList, TagListByOrder } from "pages/lists/TagListing";
 
 export function OrderProfile() {
   const params = useParams();
@@ -85,7 +85,6 @@ export function OrderStatsDashboard() {
       <OrderStatsTotalValuesBar />
       <div className="max-container-charts ">
         <OrderStatsCharts />
-
 
         <h1 className=" py-4">Estatísticas por Categoria</h1>
         <OrderStatsChartByCategory />

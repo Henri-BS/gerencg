@@ -1,10 +1,12 @@
 package com.altercode.gerencg.dto;
 
 import com.altercode.gerencg.entity.Tag;
+import lombok.Getter;
 
 import java.io.Serial;
 import java.io.Serializable;
 
+@Getter
 public class TagDTO implements Serializable {
 
     @Serial
@@ -24,21 +26,5 @@ public class TagDTO implements Serializable {
     public TagDTO(Tag entity) {
        tagId = entity.getTagId();
        description = entity.getDescription();
-    }
-
-    public String getTagId() {
-        return tagId;
-    }
-
-    public void setTagId(String tagId) {
-        this.tagId = tagId;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }

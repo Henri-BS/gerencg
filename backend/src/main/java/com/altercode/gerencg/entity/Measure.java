@@ -4,14 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tb_measure")
@@ -38,7 +36,7 @@ public class Measure {
 	@OneToMany(mappedBy = "measure", cascade = CascadeType.ALL)
 	private Set<Product> product = new HashSet<>();
 
-	@OneToMany(mappedBy = "packageType", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "measure", cascade = CascadeType.ALL)
 	private Set<Order> codes = new HashSet<>();
 
 }

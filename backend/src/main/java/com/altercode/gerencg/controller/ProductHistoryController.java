@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.altercode.gerencg.dto.ProductHistoryDTO;
 import com.altercode.gerencg.entity.Product;
-import com.altercode.gerencg.service.ProductHistoryService;
+import com.altercode.gerencg.service.interf.ProductHistoryService;
 
 
 @RestController

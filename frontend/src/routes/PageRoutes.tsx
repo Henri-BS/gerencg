@@ -1,18 +1,16 @@
-import Home from "pages/Home";
-import { ProductsList, ProductValidateList } from "pages/Listings/ProductListing";
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { ProductProfile, MeasureProfile, ProductDashboard, ProductHistoryProfile } from "pages/Profiles/ProductProfile";
-import { CategoryList } from "pages/Listings/CategoryListing";
-import { MeasureList } from "pages/Listings/MeasureListing";
-import { OrderCodeList } from "pages/Listings/OrderListing";
-import { OrderProfile , ItemProfile, OrderStatsDashboard, OrderStatsProfile, OrderTagProfile } from "pages/Profiles/OrderProfile";
-import { CategoryProfile, CategoryStatsDashboard } from "pages/Profiles/CategoryProfile";
-import NavBar from "components/shared/NavBar";
+import Home from "pages/main/Home";
+import NavBar from "components/shared/Navbar";
 import Footer from "components/shared/Footer";
-
+import { ProductsList, ProductValidateList } from "pages/lists/ProductListing";
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { ProductProfile, MeasureProfile, ProductDashboard, ProductHistoryProfile } from "pages/profiles/ProductProfile";
+import { CategoryList } from "pages/lists/CategoryListing";
+import { MeasureList } from "pages/lists/MeasureListing";
+import { OrderCodeList } from "pages/lists/OrderListing";
+import { CategoryProfile, CategoryStatsDashboard } from "pages/profiles/CategoryProfile";
+import { OrderProfile , ItemProfile, OrderStatsDashboard, OrderStatsProfile, OrderTagProfile } from "pages/profiles/OrderProfile";
 
 function PageRoutes() {
-
 
     return (
         <BrowserRouter>

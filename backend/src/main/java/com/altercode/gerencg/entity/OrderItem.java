@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -26,16 +26,14 @@ public class OrderItem {
     @Column(name = "quantity")
     private Integer itemQuantity;
 
-    @Column(name = "cost_value", precision = 7, scale = 2)
+    @Column(name = "cost_value")
     private Double costValue;
 
-    @Column(name = "expense", precision = 12, scale = 2)
     private Double expense = 0.0;
 
-    @Column(name = "unit_value", precision = 7, scale = 2)
+    @Column(name = "unit_value")
     private Double unitValue;
 
-    @Column(name = "income", precision = 12, scale = 2)
     private Double income = 0.0;
 
     @Column(name = "item_validate")
@@ -49,8 +47,8 @@ public class OrderItem {
     private LocalDateTime dateCreated;
 
     @ManyToOne
-    @JoinColumn(name = "code_id")
-    private Order code;
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     @ManyToOne
     @JoinColumn(name = "product_id")

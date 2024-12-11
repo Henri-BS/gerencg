@@ -18,7 +18,7 @@ public class OrderItemDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
-    private String orderCode;
+    private String orderId;
     private Double costValue;
     private Double unitValue;
     private Double expense;
@@ -34,7 +34,7 @@ public class OrderItemDTO implements Serializable {
 
     public OrderItemDTO(OrderItem entity) {
         id = entity.getId();
-        orderCode = entity.getCode().getCode();
+        orderId = entity.getOrder().getCode();
         costValue = entity.getCostValue();
         unitValue = entity.getUnitValue();
         expense = entity.getExpense();

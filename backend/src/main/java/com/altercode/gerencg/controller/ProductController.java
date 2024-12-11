@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.Category;
 import com.altercode.gerencg.entity.Measure;
-import com.altercode.gerencg.service.ProductService;
-import com.altercode.gerencg.service.SmsService;
+import com.altercode.gerencg.service.interf.ProductService;
 
 @RestController
 @RequestMapping("/product")
@@ -20,18 +19,11 @@ public class ProductController {
     @Autowired
     private ProductService service;
 
-    @Autowired
-    private SmsService smsService;
+
 
     @GetMapping("/search")
     public ResponseEntity<Page<ProductDTO>> findByDescription(Pageable pageable, @RequestParam(defaultValue = "") String description) {
         Page<ProductDTO> page = service.findByDescription(pageable, description);
-        return ResponseEntity.ok(page);
-    }
-
-    @GetMapping("/list")
-    public ResponseEntity<Page<ProductDTO>> findAllProducts(Pageable pageable) {
-        Page<ProductDTO> page = service.findAllProducts(pageable);
         return ResponseEntity.ok(page);
     }
 
@@ -67,11 +59,6 @@ public class ProductController {
     public ResponseEntity<ProductDTO> findByDescription(@PathVariable String description) {
         ProductDTO findProduct = service.findByDescription(description);
         return ResponseEntity.ok(findProduct);
-    }
-
-    @GetMapping("/{id}/notification")
-    public void notifySms(@PathVariable Long id) {
-        smsService.sendSms(id);
     }
 
     @PostMapping("/add")

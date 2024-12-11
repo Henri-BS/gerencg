@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tb_order_tag")
@@ -22,7 +22,7 @@ public class OrderTag {
 
     @ManyToOne
     @JoinColumn(name = "code_id")
-    private Order code;
+    private Order order;
 
     @ManyToOne
     @JoinColumn(name = "tag_id")

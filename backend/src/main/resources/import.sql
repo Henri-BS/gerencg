@@ -1,14 +1,14 @@
 
-INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Alimentícios', 'https://cdn-0.imagensemoldes.com.br/wp-content/uploads/2020/06/Ilustra%C3%A7%C3%A3o-de-Panela-PNG.png', now()); 
-INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Brinquedos', 'https://image.freepik.com/vecteurs-libre/illustration-vectorielle-dans-vaisseau-spatial-fusee-style-plat-flamme-turbine_501907-347.jpg', now());
-INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Cosméticos e Higiene', 'https://www.onuki.tv/wp-content/uploads/2020/05/70a01cfb3113a6b27c88548295fbe250.png', now());
-INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Cozinha', 'https://cdn3.iconfinder.com/data/icons/food-set-2-1/91/Food_C162-512.png', now());
-INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Eletrônicos', 'https://static.vecteezy.com/system/resources/previews/000/355/193/original/vector-bulb-icon.jpg', now());
-INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Ferramentas', 'https://media.istockphoto.com/vectors/screwdriver-and-hammer-icon-vector-id481293820?k=6&m=481293820&s=170667a&w=0&h=cLTroYQVvkzjyHNNG6qQJp4J3E1qKx3JuGV_I2pxTe0=', now());
-INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Limpeza', 'https://img.freepik.com/vector-gratis/fregona-ilustracion-icono-cubo-concepto-icono-herramienta-limpieza-aislado-estilo-plano-dibujos-animados_138676-1336.jpg?size=338&ext=jpg', now());
-INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Papelaria e Escolar', 'https://www.945enet.com.tw/945enet/img/pic02.jpg', now());
-INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Vestuário e Acessórios', 'https://item.itembox.design/item/images/index/icon-cat-hab-yousai.png', now());
-INSERT INTO tb_category(category_name, category_image, last_modified_date) VALUES ('Variados', 'https://www.teccuro.com/wp-content/uploads/2021/01/Special-Projects-2.jpg', now());
+INSERT INTO tb_category(category_name, last_modified_date, category_image) VALUES ('Alimentícios',           now(), 'https://cdn-0.imagensemoldes.com.br/wp-content/uploads/2020/06/Ilustra%C3%A7%C3%A3o-de-Panela-PNG.png');
+INSERT INTO tb_category(category_name, last_modified_date, category_image) VALUES ('Brinquedos',             now(), 'https://image.freepik.com/vecteurs-libre/illustration-vectorielle-dans-vaisseau-spatial-fusee-style-plat-flamme-turbine_501907-347.jpg');
+INSERT INTO tb_category(category_name, last_modified_date, category_image) VALUES ('Cosméticos e Higiene',   now(), 'https://www.onuki.tv/wp-content/uploads/2020/05/70a01cfb3113a6b27c88548295fbe250.png');
+INSERT INTO tb_category(category_name, last_modified_date, category_image) VALUES ('Cozinha',                now(), 'https://cdn3.iconfinder.com/data/icons/food-set-2-1/91/Food_C162-512.png');
+INSERT INTO tb_category(category_name, last_modified_date, category_image) VALUES ('Eletrônicos',            now(), 'https://static.vecteezy.com/system/resources/previews/000/355/193/original/vector-bulb-icon.jpg');
+INSERT INTO tb_category(category_name, last_modified_date, category_image) VALUES ('Ferramentas',            now(), 'https://media.istockphoto.com/vectors/screwdriver-and-hammer-icon-vector-id481293820?k=6&m=481293820&s=170667a&w=0&h=cLTroYQVvkzjyHNNG6qQJp4J3E1qKx3JuGV_I2pxTe0=');
+INSERT INTO tb_category(category_name, last_modified_date, category_image) VALUES ('Limpeza',                now(), 'https://img.freepik.com/vector-gratis/fregona-ilustracion-icono-cubo-concepto-icono-herramienta-limpieza-aislado-estilo-plano-dibujos-animados_138676-1336.jpg?size=338&ext=jpg');
+INSERT INTO tb_category(category_name, last_modified_date, category_image) VALUES ('Papelaria e Escolar',    now(), 'https://www.945enet.com.tw/945enet/img/pic02.jpg');
+INSERT INTO tb_category(category_name, last_modified_date, category_image) VALUES ('Vestuário e Acessórios', now(), 'https://item.itembox.design/item/images/index/icon-cat-hab-yousai.png');
+INSERT INTO tb_category(category_name, last_modified_date, category_image) VALUES ('Variados',               now(), 'https://www.teccuro.com/wp-content/uploads/2021/01/Special-Projects-2.jpg');
 
 
 

@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;

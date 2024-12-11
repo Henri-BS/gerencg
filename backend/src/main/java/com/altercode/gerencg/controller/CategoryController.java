@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.altercode.gerencg.dto.CategoryDTO;
-import com.altercode.gerencg.service.CategoryService;
+import com.altercode.gerencg.service.interf.CategoryService;
 
 @RestController
 @RequestMapping("/category")

@@ -4,7 +4,7 @@ import com.altercode.gerencg.dto.OrderItemDTO;
 import com.altercode.gerencg.dto.ProductDTO;
 import com.altercode.gerencg.entity.Order;
 import com.altercode.gerencg.entity.Product;
-import com.altercode.gerencg.service.OrderItemService;
+import com.altercode.gerencg.service.interf.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

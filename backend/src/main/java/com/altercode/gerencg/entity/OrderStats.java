@@ -7,7 +7,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -30,16 +30,14 @@ public class OrderStats {
     @Column(name = "final_date")
     private LocalDate finalDate;
 
-    @Column(name = "expense", precision = 12, scale = 2)
     private Double expense = 0.0;
 
-    @Column(name = "expense_average_week", precision = 12, scale = 2)
+    @Column(name = "expense_average_week")
     private Double expenseAverageWeek = 0.0;
 
-    @Column(name = "income", precision = 12, scale = 2)
     private Double income;
 
-    @Column(name = "income_average_week", precision = 12, scale = 2)
+    @Column(name = "income_average_week")
     private Double incomeAverageWeek = 0.00;
 
     @Column(name = "amount_order")

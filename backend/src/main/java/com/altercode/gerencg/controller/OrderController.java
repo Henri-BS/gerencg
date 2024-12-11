@@ -3,7 +3,7 @@ package com.altercode.gerencg.controller;
 import com.altercode.gerencg.dto.CategoryStatsTotalValueDTO;
 import com.altercode.gerencg.dto.OrderDTO;
 import com.altercode.gerencg.entity.OrderStats;
-import com.altercode.gerencg.service.OrderService;
+import com.altercode.gerencg.service.interf.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,58 +18,58 @@ import java.util.List;
 public class OrderController {
 
     @Autowired
-    private OrderService codeService;
+    private OrderService orderService;
 
     @GetMapping("/list")
-    public ResponseEntity<Page<OrderDTO>> findOrders(Pageable pageable, @RequestParam(defaultValue = "") String code) {
-        Page<OrderDTO> page = codeService.findOrders(pageable, code);
+    public ResponseEntity<Page<OrderDTO>> findOrders(Pageable pageable, @RequestParam(defaultValue = "") String order) {
+        Page<OrderDTO> page = orderService.findOrders(pageable, order);
         return ResponseEntity.ok(page);
     }
 
     @GetMapping("/{id}")
     public OrderDTO findCodeById(@PathVariable String id) {
-        return codeService.findCodeById(id);
+        return orderService.findCodeById(id);
     }
 
     @GetMapping("/find-by-stats/{stats}")
     public ResponseEntity<Page<OrderDTO>> findOrderByStats(Pageable pageable, @PathVariable OrderStats stats) {
-        Page<OrderDTO> list = codeService.findOrdersByStats(pageable, stats);
+        Page<OrderDTO> list = orderService.findOrdersByStats(pageable, stats);
         return ResponseEntity.ok(list);
     }
 
     @GetMapping("/sum-value-by-category")
     public ResponseEntity<List<CategoryStatsTotalValueDTO>> getOrderValueGroupByCategory() {
-        List<CategoryStatsTotalValueDTO> getOrders = codeService.getOrderValueGroupByCategory();
+        List<CategoryStatsTotalValueDTO> getOrders = orderService.getOrderValueGroupByCategory();
         return ResponseEntity.ok(getOrders);
     }
 
     @GetMapping("/sum-quantity-by-category")
     public ResponseEntity<List<CategoryStatsTotalValueDTO>> getOrderQuantityGroupByCategory() {
-        List<CategoryStatsTotalValueDTO> getOrders = codeService.getOrderQuantityGroupByCategory();
+        List<CategoryStatsTotalValueDTO> getOrders = orderService.getOrderQuantityGroupByCategory();
         return ResponseEntity.ok(getOrders);
     }
 
     @PostMapping("/save")
     public ResponseEntity<OrderDTO> saveOrderCode(@RequestBody OrderDTO dto) {
-        OrderDTO addCode = codeService.saveOrder(dto);
+        OrderDTO addCode = orderService.saveOrder(dto);
         return new ResponseEntity<>(addCode, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
     public ResponseEntity<OrderDTO> updateOrder(@RequestBody OrderDTO dto) {
-        OrderDTO editCode = codeService.updateOrder(dto);
+        OrderDTO editCode = orderService.updateOrder(dto);
         return new ResponseEntity<>(editCode, HttpStatus.OK);
     }
 
     @PutMapping("/sum-item-values/{code}")
     public ResponseEntity<OrderDTO> orderTotalValues(OrderDTO dto, @PathVariable String code) {
-        OrderDTO update = codeService.orderTotalValues(dto);
+        OrderDTO update = orderService.orderTotalValues(dto);
         return new ResponseEntity<>(update, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteOrder(@PathVariable String id){
-        this.codeService.deleteOrder(id);
+        this.orderService.deleteOrder(id);
     }
 }
