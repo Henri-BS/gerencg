@@ -1,6 +1,6 @@
 import axios from "axios";
 import { CategoryCard } from "components/card/CategoryCard";
-import { CategoryMockCard } from "mock/MockCard";
+import { CategoryMockList } from "mock/MockList";
 import { ProductCard } from "components/card/ProductCard";
 import Pagination from "components/shared/Pagination";
 import { useEffect, useState } from "react";
@@ -39,7 +39,9 @@ export function CategoryList() {
                         </div>
                     ))}
                 </div>
-                <CategoryMockCard/>
+                {categoryPage.content?.length !== 0 ? "" :
+                    <CategoryMockList />
+                }
             </div>
         </>
     );

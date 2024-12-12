@@ -1,9 +1,8 @@
-import { categoryMockdata, orderMockdata, productMockdata } from "mock/MockData";
+import { categoryMockdata, measureMockdata, orderMockdata, productMockdata, tagMockdata } from "mock/MockData";
 import moment, { now } from "moment";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export function CategoryMockCard() {
+export function CategoryMockList() {
 
     return (
         <div className="row">
@@ -23,13 +22,12 @@ export function CategoryMockCard() {
                         </Link>
                     </div>
                 )
-            })
-            }
+            })}
         </div>
     );
 }
 
-export function CategoryMockHomeCard() {
+export function CategoryMockHomeList() {
 
     return (
         <div className="horizontal-list">
@@ -50,13 +48,12 @@ export function CategoryMockHomeCard() {
                         </Link>
                     </div>
                 )
-            })
-            }
+            })}
         </div>
     );
 }
 
-export function ProductMockCard() {
+export function ProductMockList() {
 
     return (
         <>
@@ -79,14 +76,13 @@ export function ProductMockCard() {
                             </Link>
                         </div>
                     )
-                })
-                }
+                })}
             </div>
         </>
     );
 }
 
-export function ProductMockHomeCard() {
+export function ProductMockHomeList() {
 
     return (
         <div className="horizontal-list">
@@ -108,14 +104,12 @@ export function ProductMockHomeCard() {
                         </Link>
                     </div>
                 )
-            })
-            }
+            })}
         </div>
     );
 }
 
-
-export function OrderMockCard() {
+export function OrderMockList() {
 
     return (
         <>
@@ -141,15 +135,13 @@ export function OrderMockCard() {
                             </Link>
                         </div>
                     )
-                })
-                }
+                })}
             </div>
         </>
     );
 }
 
-export function OrderMockHomeCard() {
-
+export function OrderMockHomeList() {
     return (
         <div className="horizontal-list">
             {orderMockdata.map((order, index) => {
@@ -157,25 +149,64 @@ export function OrderMockHomeCard() {
                 return (
                     <div key={index} className="list-item">
                         <Link to={`/order/${order.code}`}>
-                                <div className="order-card ">
-                                    <div className="order-box border-dark">
-                                        <h2>Código do Pedido: <p>{order.code}</p></h2>
-                                    </div>
-                                    <div className="order-box ">
-                                        <h3>Data do Pedido: {moment(order.orderDate).format("DD/MM/YYYY")}</h3>
-                                    </div>
-                                    <div className="order-box ">
-                                        <h3>Distribuidora: {order.distributor}</h3>
-                                    </div>
-                                    <div className="order-box border-0">
-                                        <h3>Categoria: {order.categoryId}</h3>
-                                    </div>
+                            <div className="order-card ">
+                                <div className="order-box border-dark">
+                                    <h2>Código do Pedido: <p>{order.code}</p></h2>
                                 </div>
-                            </Link>
+                                <div className="order-box ">
+                                    <h3>Data do Pedido: {moment(order.orderDate).format("DD/MM/YYYY")}</h3>
+                                </div>
+                                <div className="order-box ">
+                                    <h3>Distribuidora: {order.distributor}</h3>
+                                </div>
+                                <div className="order-box border-0">
+                                    <h3>Categoria: {order.categoryId}</h3>
+                                </div>
+                            </div>
+                        </Link>
                     </div>
                 )
-            })
-            }
+            })}
+        </div>
+    );
+}
+
+export function MeasureMockList() {
+    return (
+        <div className="row p-2">
+            {measureMockdata.map((measure, index) => {
+                return (
+                    <div key={index} className="col-4 p-1">
+                        <Link to={`/measure/${measure.description}`} className="text-decoration-none">
+                            <abbr title={measure.abbreviation}>
+                                <div className="tag-card-container ">
+                                    {measure.description}
+                                </div>
+                            </abbr>
+                        </Link>
+                    </div>
+                )
+            })}
+        </div>
+    );
+}
+
+export function TagMockList() {
+    return (
+        <div className="row p-2">
+            {tagMockdata.map((tag, index) => {
+                return (
+                    <div key={index} className="col-4 p-1">
+                        <Link to={`/order-tag/${tag.tagId}`} className="text-decoration-none">
+                            <abbr title={tag.tagId}>
+                                <div className="tag-card-container ">
+                                    {tag.tagId}
+                                </div>
+                            </abbr>
+                        </Link>
+                    </div>
+                )
+            })}
         </div>
     );
 }

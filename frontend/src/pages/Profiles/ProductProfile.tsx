@@ -9,7 +9,7 @@ import ProductDataTable from "components/dataTable/ProductDataTable";
 import { MdClose } from "react-icons/md";
 import { GetHistoryCard as LargeHistoryCard } from "components/card/ProductCard";
 import { OrderItemListByProduct } from "pages/lists/OrderListing";
-import { ProductMockSideBar } from "mock/MockBar";
+import { QuantityProductMockChart } from "mock/MockChart";
 
 export function ProductProfile() {
   const params = useParams();
@@ -20,7 +20,6 @@ export function ProductProfile() {
         <div className="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-4 p-0">
 
           <ProductSideBar id={`${params.productId}`} /> 
-          <ProductMockSideBar id={`${params.productId}`} />
         </div>
         <div className="col-12 col-md-6 col-lg-7 col-xl-8  p-4">
           <ProductMenuBar id={`${params.productId}`} />
@@ -36,7 +35,10 @@ export function ProductProfile() {
           <div className="chart-box">
             <div className="container-chart">
               <h5 className="text-center">Quantidade do Produto por Data</h5>
+              
               <QuantityProductChart id={`${params.productId}`} />
+              
+              <QuantityProductMockChart />
             </div>
           </div>
           <h4>Registro de Pedidos do Produto</h4>

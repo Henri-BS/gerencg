@@ -13,7 +13,7 @@ description: string;
 }
 
 export type TagPage = {
-    content?: Tag[];
+    content: Tag[];
     size?: number;
     pageNumber?: number;
     numberOfElements?: number;

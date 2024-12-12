@@ -41,26 +41,29 @@ export function QuantityProductChart({ id: productId }: Props) {
 
     const opitions = {
         plotOptions: {
-
             bar: { horizontal: true }
         },
     }
 
     return (
-        <Chart
-            options={{
-                ...opitions,
-                labels: chartData.labels,
-                theme: { mode: "dark" },
-                colors: ["#1a6"],
-                chart: { background: "#2a323a" },
-                grid: { borderColor: "#139acf" },
-            }}
-            labels={chartData.labels}
-            series={chartData.series}
-            type="line"
-            height="300"
-        />
+        <>
+            {chartData.labels.length === 0 ? "" :
+                <Chart
+                    options={{
+                        ...opitions,
+                        labels: chartData.labels,
+                        theme: { mode: "dark" },
+                        colors: ["#1a6"],
+                        chart: { background: "#2a323a" },
+                        grid: { borderColor: "#139acf" },
+                    }}
+                    labels={chartData.labels}
+                    series={chartData.series}
+                    type="line"
+                    height="300"
+                />
+            }
+        </>
     );
 }
 

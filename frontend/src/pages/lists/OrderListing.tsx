@@ -7,7 +7,7 @@ import Pagination from "components/shared/Pagination";
 import { OrderCard, OrderStatsCard, SmallItemCard } from "components/card/OrderCard";
 import { OrderListByTag } from "./TagListing";
 import { Props } from "types/page";
-import { OrderMockCard } from "mock/MockCard";
+import { OrderMockList } from "mock/MockList";
 
 export function OrderCodeList() {
 
@@ -29,47 +29,50 @@ export function OrderCodeList() {
     return (
         <>
             <div className="container">
-                <nav className="row header-container">
-                    <h2 className="col-12 col-sm-4 col-md-4 col-xl-4">Lista de Pedidos</h2>
-                    <nav className="option-item col-12 col-sm-4 col-md-4 col-xl-4">
-                        <h5><b>Total:</b> {orderPage.totalElements} Pedidos</h5>
-                    </nav>
-                    <form className="col-12 col-sm-4 col-md-4 col-xl-4 search-container">
-                        <label>
-                            <h5><FaIcons.FaSearch /></h5>
-                        </label>
-                        <div className="form-group search-form-group">
-                            <input
-                                type="text"
-                                value={value}
-                                onChange={(e) => setValue(e.target.value)}
-                                className="form-control"
-                                id="value"
-                                placeholder="Buscar pelo código do pedido..."
-                            />
-                        </div>
-                    </form>
-                </nav>
-                <OrderListByTag />
-                <div className="pagination-container-menu">
-                    <div className="pagination-item">
-                        <Pagination page={orderPage} onPageChange={handlePageChange} />
-                    </div>
-                </div>
-
-                <div className="row">
-                    {orderPage.content?.filter((order) =>
-                        order.code.toUpperCase().includes(value.toLocaleUpperCase()))
-                        .map((x) => (
-                            <div key={x.code} className="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4 mb-3">
-                                <OrderCard order={x} />
+                {orderPage.content?.length === 0 ?  <OrderMockList /> :
+                    <div>
+                        <nav className="row header-container">
+                            <h2 className="col-12 col-sm-4 col-md-4 col-xl-4">Lista de Pedidos</h2>
+                            <nav className="option-item col-12 col-sm-4 col-md-4 col-xl-4">
+                                <h5><b>Total:</b> {orderPage.totalElements} Pedidos</h5>
+                            </nav>
+                            <form className="col-12 col-sm-4 col-md-4 col-xl-4 search-container">
+                                <label>
+                                    <h5><FaIcons.FaSearch /></h5>
+                                </label>
+                                <div className="form-group search-form-group">
+                                    <input
+                                        type="text"
+                                        value={value}
+                                        onChange={(e) => setValue(e.target.value)}
+                                        className="form-control"
+                                        id="value"
+                                        placeholder="Buscar pelo código do pedido..."
+                                    />
+                                </div>
+                            </form>
+                        </nav>
+                        <OrderListByTag />
+                        <div className="pagination-container-menu">
+                            <div className="pagination-item">
+                                <Pagination page={orderPage} onPageChange={handlePageChange} />
                             </div>
-                        ))}
-                    {orderPage.content?.length !== 0 ? "" :
-                        <OrderMockCard />
-                    }
-                </div>
+                        </div>
+
+                        <div className="row">
+                            {orderPage.content?.filter((order) =>
+                                order.code.toUpperCase().includes(value.toLocaleUpperCase()))
+                                .map((x) => (
+                                    <div key={x.code} className="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4 mb-3">
+                                        <OrderCard order={x} />
+                                    </div>
+                                ))}
+
+                        </div>
+                    </div>
+                }
             </div>
+
         </>
     );
 }

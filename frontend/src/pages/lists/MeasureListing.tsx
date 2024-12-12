@@ -2,6 +2,7 @@ import axios from "axios";
 import { MeasureCard } from "components/card/MeasureCard";
 import { ProductCard } from "components/card/ProductCard";
 import Pagination from "components/shared/Pagination";
+import { MeasureMockList } from "mock/MockList";
 import { useEffect, useState } from "react";
 import { MeasurePage } from "types/measure";
 import { Props } from "types/page";
@@ -12,11 +13,11 @@ export function MeasureList() {
 
     const [pageNumber, setPageNumber] = useState(0);
 
-    const [measureList, setTagList] = useState<MeasurePage>({ content: [], number: 0 });
+    const [measureList, setMeasureList] = useState<MeasurePage>({ content: [], number: 0 });
     useEffect(() => {
         axios.get(`${BASE_URL}/measure/list?page=${pageNumber}&size=15&sort=abbreviation,ASC`)
             .then((response) => {
-                setTagList(response.data);
+                setMeasureList(response.data);
             });
     }, [pageNumber]);
 
@@ -26,14 +27,18 @@ export function MeasureList() {
 
     return (
         <>
-            <Pagination page={measureList} onPageChange={handlePage} />
-            <div className="row p-2">
-                {measureList.content?.map(x => (
-                    <div key={x.abbreviation} className="col-4 p-1">
-                        <MeasureCard measure={x} />
+            {measureList.content.length === 0 ?  <MeasureMockList /> :
+                <div>
+                    <Pagination page={measureList} onPageChange={handlePage} />
+                    <div className="row p-2">
+                        {measureList.content?.map(x => (
+                            <div key={x.abbreviation} className="col-4 p-1">
+                                <MeasureCard measure={x} />
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
+                </div>
+            }
         </>
     );
 }
@@ -60,7 +65,7 @@ export function ProductMeasureList({ id: measureId }: Props) {
                     <h2>Produtos Medidos por: {measureId}</h2>
                 </div>
                 <div className="pagination-container-menu">
-                        <Pagination page={productPage} onPageChange={handlePageChange} />
+                    <Pagination page={productPage} onPageChange={handlePageChange} />
                 </div>
                 <div className="row">
                     {productPage.content?.map(product => (

@@ -98,7 +98,7 @@ export function TagDataList() {
 
     const [value, setValue] = useState("");
 
-    const [tagList, setTagList] = useState<TagPage>({ number: 0 });
+    const [tagList, setTagList] = useState<TagPage>({content: [], number: 0 });
     useEffect(() => {
         axios.get(`${BASE_URL}/tag/list?tagId=${value}&size=25&sort=tagId,ASC`)
             .then((response) => {

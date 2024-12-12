@@ -1,7 +1,7 @@
 
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import {Product} from 'types/product';
+import { Product } from 'types/product';
 import { Props } from 'types/page';
 import axios from 'axios';
 import { BASE_URL } from 'utils/requests';
@@ -9,11 +9,13 @@ import moment from "moment";
 import { productIcons } from "components/shared/MenuIcons";
 import IUpdateProduct from "assets/img/update.png";
 import IDeleteProduct from "assets/img/delete-img.png";
-import INotifications from "assets/img/notifications.png";
 import { MdClose } from "react-icons/md";
 import { EditHistoryForm, ProductFormEdit } from '../form/ProductForm';
+import { ProductMockSideBar } from 'mock/MockBar';
 
 export function ProductSideBar({ id: productId }: Props) {
+
+const params = useParams();
 
     const [product, setProduct] = useState<Product>();
 
@@ -26,40 +28,41 @@ export function ProductSideBar({ id: productId }: Props) {
 
     return (
         <>
-        {product == null ? "" :
-            <div className="max-sidebar-container">
-                <div className="column-container">
-                    <div className="column-image-container">
-                        <img className="column-card-image" src={product?.image} alt={product?.description} />
-                    </div>
-                    <h1>{product?.description}</h1>
+            {product == null ? <ProductMockSideBar id={`${params.productId}`}/> :
+                <div className="max-sidebar-container">
+                    <div className="sidebar-container">
+                        <div className="sidebar-image-container">
+                            <img className="sidebar-card-image" src={product?.image} alt={product?.description} />
+                        </div>
+                        <h1>{product?.description}</h1>
 
-                    <div className="column-item-container">
-                        <div className="column-icon-container"> {productIcons.priceIcon} </div>
-                        <h3>Preço: {product?.price.toFixed(2) } R$</h3>
+                        <div className="sidebar-item-container">
+                            <div className="sidebar-icon-container"> {productIcons.priceIcon} </div>
+                            <h3>Preço: {product?.price.toFixed(2)} R$</h3>
+                        </div>
+                        <Link to={`/measure/${product?.measure}`} className="sidebar-item-container">
+                            <div className="sidebar-icon-container">{productIcons.measureIcon}</div>
+                            <h3>Medida: {product?.measureValue} {product?.measure}</h3>
+                        </Link>
+                        <div className="sidebar-item-container">
+                            <div className="sidebar-icon-container">{productIcons.quantityIcon}</div>
+                            <h3>Quantidade: {product?.quantity}</h3>
+                        </div>
+                        <Link to={`/find-by-validate`} className="sidebar-item-container">
+                            <div className="sidebar-icon-container">{productIcons.validateIcon}</div>
+                            <h3>Validade: {moment(product?.validate).format('DD/MM/YYYY') ?? "Indefinido"} </h3>
+                        </Link>
+                        <Link to={`/category/${product?.category}`} className="sidebar-item-container">
+                            <div className="sidebar-icon-container">{productIcons.categoryIcon}</div>
+                            <h3>Category: {product?.category} </h3>
+                        </Link>
                     </div>
-                    <Link to={`/measure/${product?.measure}`} className="column-item-container">
-                        <div className="column-icon-container">{productIcons.measureIcon}</div>
-                        <h3>Medida: {product?.measureValue} {product?.measure}</h3>
-                    </Link>
-                    <div className="column-item-container">
-                        <div className="column-icon-container">{productIcons.quantityIcon}</div>
-                        <h3>Quantidade: {product?.quantity}</h3>
+                    <div className="sidebar-card-bottom">
+                        <h4>Última Atualização: {moment(product?.dateUpdate).format('DD/MM/YYYY')}</h4>
                     </div>
-                    <Link to={`/find-by-validate`} className="column-item-container">
-                        <div className="column-icon-container">{productIcons.validateIcon}</div>
-                        <h3>Validade: {moment(product?.validate).format('DD/MM/YYYY') ?? "Indefinido"} </h3>
-                    </Link>
-                    <Link to={`/category/${product?.category}`} className="column-item-container">
-                        <div className="column-icon-container">{productIcons.categoryIcon}</div>
-                        <h3>Category: {product?.category} </h3>
-                    </Link>
                 </div>
-                <div className="column-card-bottom">
-                    <h4>Última Atualização: {moment(product?.dateUpdate).format('DD/MM/YYYY')}</h4>
-                </div>
-            </div>
-}
+            }
+ 
         </>
     );
 }
@@ -86,13 +89,12 @@ export function ProductMenuBar({ id: productId }: Props) {
 
     return (
         <>
-            <div className="menu-bar-container">
-
-                <button data-bs-toggle="modal" data-bs-target="#updateProductModal" className="menu-bar-option">
+            <div className="menu-bar-container row">
+                <button data-bs-toggle="modal" data-bs-target="#updateProductModal" className="menu-bar-option col-6">
                     <img className="option-card-img" src={IUpdateProduct} alt="update-product" />
                     Editar
                 </button>
-                <button data-bs-toggle="modal" data-bs-target="#deleteProductModal" className="menu-bar-option">
+                <button data-bs-toggle="modal" data-bs-target="#deleteProductModal" className="menu-bar-option col-6">
                     <img className="option-card-img" src={IDeleteProduct} alt="delete-product" />
                     Deletar
                 </button>
@@ -130,9 +132,9 @@ export function ProductMenuBar({ id: productId }: Props) {
     );
 }
 
-export function HistoryMenuBar({id: historyId}: Props) {
+export function HistoryMenuBar({ id: historyId }: Props) {
 
-const params = useParams();
+    const params = useParams();
     const navigate = useNavigate();
     const deleteHistory = () => {
         axios.delete(`${BASE_URL}/history/delete/${historyId}`)
@@ -168,7 +170,7 @@ const params = useParams();
                             </button>
                         </div>
                         <div className="modal-body">
-                            <EditHistoryForm id={`${params.historyId}`}/>
+                            <EditHistoryForm id={`${params.historyId}`} />
                         </div>
                     </div>
                 </div>

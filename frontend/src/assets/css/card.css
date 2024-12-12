@@ -146,7 +146,7 @@
     align-items: flex-start;
     justify-content: start;
     display: flex;
-    transition: all 0.2ms ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .category-display-card:hover {

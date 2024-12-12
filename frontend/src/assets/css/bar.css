@@ -7,12 +7,12 @@
     align-content: space-between;
 }
 
-.column-container {
+.sidebar-container {
     text-align: center;
     color: var(--white-prim);
 }
 
-.column-item-container {
+.sidebar-item-container {
     display: flex;
     text-align: center;
     border-left: 6px solid var(--blue-prim);
@@ -23,12 +23,12 @@
     text-decoration: none;
 }
 
-.column-item-container:hover {
+.sidebar-item-container:hover {
     border-left: 6px solid var(--blue-seco);
     background-color: rgba(97, 96, 96, 0.603);
 }
 
-.column-icon-container {
+.sidebar-icon-container {
     align-self: center;
     text-align: center;
     font-size: 30px;
@@ -37,7 +37,7 @@
     color: var(--white-prim);
 }
 
-.column-item-container h1 {
+.sidebar-item-container h1 {
     justify-content: center;
     width: 100%;
     display: flex;
@@ -45,7 +45,7 @@
     font-weight: 700;
 }
 
-.column-item-container h3 {
+.sidebar-item-container h3 {
     justify-content: center;
     display: flex;
     padding: 5px;
@@ -54,7 +54,7 @@
     color: var(--white-prim);
 }
 
-.column-image-container {
+.sidebar-image-container {
     max-height: 300px;
     display: flex;
     margin: 0;
@@ -63,14 +63,14 @@
     align-items: center;
 }
 
-.column-card-image {
+.sidebar-card-image {
     width: 200px;
     height: 200px;
     border: 1px solid #fff;
     border-radius: 10px;
 }
 
-.column-card-bottom {
+.sidebar-card-bottom {
     text-align: center;
     font-weight: 800;
     color: var(--white-prim);
@@ -90,21 +90,17 @@
 
 .menu-bar-container {
     height: 280px;
-    justify-content: center;
-    justify-items: center;
+    display: flex;
+    justify-content: space-evenly;
     align-items: center;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     text-decoration: none;
 }
 
 .menu-bar-option {
     display: flexbox;
-    background-color: transparent;
-    height: 100px;
+    min-height: 100px;
     width: 124px;
-    justify-content: space-around;
-    align-items: center;
+    background: transparent;
     border-radius: 8px;
     transition: all 0.3s ease-in;
     border: solid transparent;

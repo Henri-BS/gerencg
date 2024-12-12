@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { OrderStatsByCategoryMockCharts, OrderStatsMockCharts } from 'mock/MockChart';
 import { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts'
 import { CategoryStatsValue as CategoryStatsTotalValue } from 'types/category';
@@ -53,7 +54,6 @@ export function OrderStatsCharts() {
                 setQuantityChart({
                     labels: { categories: myLabels },
                     series: [{ name: "Quantidade de Pedidos", data: mySeries }],
-
                 });
             });
     }, []);
@@ -63,43 +63,47 @@ export function OrderStatsCharts() {
     }
 
     return (
-        <div className="row ">
-            <div className="chart-box col-lg-6">
-                <div className="container-chart">
-                    <h5 className="text-center">Custo Total de Pedidos por Mês</h5>
-                    <Chart
-                        options={{
-                            ...options,
-                            labels: proportionChart.labels,
-                            theme: { mode: "dark" },
-                            chart: { background: "#2a323a" }
-                        }}
-                        series={proportionChart.series}
-                        type="pie"
-                        height="300"
-                    />
+        <>
+            {proportionChart.labels.length === 0 ? <OrderStatsMockCharts /> :
+                <div className="row ">
+                    <div className="chart-box col-lg-6">
+                        <div className="container-chart">
+                            <h5 className="text-center">Custo Total de Pedidos por Mês</h5>
+                            <Chart
+                                options={{
+                                    ...options,
+                                    labels: proportionChart.labels,
+                                    theme: { mode: "dark" },
+                                    chart: { background: "#2a323a" }
+                                }}
+                                series={proportionChart.series}
+                                type="pie"
+                                height="300"
+                            />
+                        </div>
+                    </div>
+                    <div className="chart-box col-lg-6">
+                        <div className="container-chart">
+                            <h5 className="text-center">Quantidade de Pedidos por Mês</h5>
+                            <Chart
+                                options={{
+                                    ...options,
+                                    xaxis: quantityChart.labels,
+                                    theme: { mode: "dark" },
+                                    colors: ["#1a6"],
+                                    chart: { background: "#2a323a" },
+                                    grid: { borderColor: "#139acf" },
+                                }}
+                                labels={quantityChart.labels}
+                                series={quantityChart.series}
+                                type="bar"
+                                height="300"
+                            />
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div className="chart-box col-lg-6">
-                <div className="container-chart">
-                    <h5 className="text-center">Quantidade de Pedidos por Mês</h5>
-                    <Chart
-                        options={{
-                            ...options,
-                            xaxis: quantityChart.labels,
-                            theme: { mode: "dark" },
-                            colors: ["#1a6"],
-                            chart: { background: "#2a323a" },
-                            grid: { borderColor: "#139acf" },
-                        }}
-                        labels={quantityChart.labels}
-                        series={quantityChart.series}
-                        type="bar"
-                        height="300"
-                    />
-                </div>
-            </div>
-        </div>
+            }
+        </>
     );
 }
 
@@ -142,42 +146,47 @@ export function OrderStatsChartsByPediod({ id: statsId }: Props) {
     }
 
     return (
-        <div className="row ">
-            <div className="chart-box col-lg-6">
-                <div className="container-chart">
-                    <h5 className="text-center">Pedidos com maior custo</h5>
-                    <Chart
-                        options={{
-                            ...options,
-                            labels: proportionChart.labels,
-                            theme: { mode: "dark" },
-                            chart: { background: "#2a323a" }
-                        }}
-                        series={proportionChart.series}
-                        type="pie"
-                        height="300"
-                    />
-                </div>
-            </div>
-            <div className="chart-box col-lg-6">
-                <div className="container-chart">
-                    <h5 className="text-center">Pedidos com maior quantidade de items</h5>
-                    <Chart
-                        options={{
-                            ...options,
-                            xaxis: quantityChart.labels,
-                            theme: { mode: "dark" },
-                            colors: ["#1a6"],
-                            chart: { background: "#2a323a" }
-                        }}
-                        labels={quantityChart.labels}
-                        series={quantityChart.series}
-                        type="bar"
-                        height="300"
-                    />
-                </div>
-            </div>
-        </div>
+        <>
+            {
+                proportionChart.labels.length === 0 ? "" :
+                    <div className="row ">
+                        <div className="chart-box col-lg-6">
+                            <div className="container-chart">
+                                <h5 className="text-center">Pedidos com maior custo</h5>
+                                <Chart
+                                    options={{
+                                        ...options,
+                                        labels: proportionChart.labels,
+                                        theme: { mode: "dark" },
+                                        chart: { background: "#2a323a" }
+                                    }}
+                                    series={proportionChart.series}
+                                    type="pie"
+                                    height="300"
+                                />
+                            </div>
+                        </div>
+                        <div className="chart-box col-lg-6">
+                            <div className="container-chart">
+                                <h5 className="text-center">Pedidos com maior quantidade de items</h5>
+                                <Chart
+                                    options={{
+                                        ...options,
+                                        xaxis: quantityChart.labels,
+                                        theme: { mode: "dark" },
+                                        colors: ["#1a6"],
+                                        chart: { background: "#2a323a" }
+                                    }}
+                                    labels={quantityChart.labels}
+                                    series={quantityChart.series}
+                                    type="bar"
+                                    height="300"
+                                />
+                            </div>
+                        </div>
+                    </div>
+            }
+        </>
     );
 }
 
@@ -217,43 +226,47 @@ export function OrderStatsChartByCategory() {
     }
 
     return (
-        <div className="row ">
-            <div className="chart-box col-lg-6">
-                <div className="container-chart">
-                    <h5 className="text-center">Despesas por Categoria</h5>
-                    <Chart
-                        options={{
-                            ...options,
-                            labels: proportionChart.labels,
-                            theme: { mode: "dark" },
-                            chart: { background: "#2a323a" }
-                        }}
-                        series={proportionChart.series}
-                        type="donut"
-                        height="300"
-                    />
-                </div>
-            </div>
-            <div className="chart-box col-lg-6">
-                <div className="container-chart">
-                    <h5 className="text-center">Quantidade de Items por Categoria</h5>
-                    <Chart
-                        options={{
-                            ...options,
-                            xaxis: quantityChart.labels,
-                            theme: { mode: "dark" },
-                            chart: { background: "#2a323a" },
-                            grid: { borderColor: "#139acf" }
+        <>
+            {proportionChart.labels.length === 0 ? <OrderStatsByCategoryMockCharts /> :
+                <div className="row ">
+                    <div className="chart-box col-lg-6">
+                        <div className="container-chart">
+                            <h5 className="text-center">Despesas por Categoria</h5>
+                            <Chart
+                                options={{
+                                    ...options,
+                                    labels: proportionChart.labels,
+                                    theme: { mode: "dark" },
+                                    chart: { background: "#2a323a" }
+                                }}
+                                series={proportionChart.series}
+                                type="donut"
+                                height="300"
+                            />
+                        </div>
+                    </div>
+                    <div className="chart-box col-lg-6">
+                        <div className="container-chart">
+                            <h5 className="text-center">Quantidade de Items por Categoria</h5>
+                            <Chart
+                                options={{
+                                    ...options,
+                                    xaxis: quantityChart.labels,
+                                    theme: { mode: "dark" },
+                                    chart: { background: "#2a323a" },
+                                    grid: { borderColor: "#139acf" }
 
-                        }}
-                        labels={quantityChart.labels}
-                        series={quantityChart.series}
-                        type="bar"
-                        height="300"
-                    />
+                                }}
+                                labels={quantityChart.labels}
+                                series={quantityChart.series}
+                                type="bar"
+                                height="300"
+                            />
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            }
+        </>
     );
 }
 
@@ -292,43 +305,47 @@ export function CategoryStatsChart() {
     }
 
     return (
-        <div className="row ">
-            <div className="chart-box col-lg-6">
-                <div className="container-chart">
-                    <h5 className="text-center">Expectativa de Renda Por Categoria</h5>
-                    <Chart
-                        options={{
-                            ...opitions,
-                            labels: proportionChart.labels,
-                            theme: { mode: "dark" },
-                            chart: { background: "#2a323a" },
-                            grid: { borderColor: "#139acf" },
-                        }}
-                        series={proportionChart.series}
-                        type="donut"
-                        height="300"
-                    />
+        <>
+            {proportionChart.labels.length === 0 ? <OrderStatsByCategoryMockCharts /> :
+                <div className="row ">
+                    <div className="chart-box col-lg-6">
+                        <div className="container-chart">
+                            <h5 className="text-center">Expectativa de Renda Por Categoria</h5>
+                            <Chart
+                                options={{
+                                    ...opitions,
+                                    labels: proportionChart.labels,
+                                    theme: { mode: "dark" },
+                                    chart: { background: "#2a323a" },
+                                    grid: { borderColor: "#139acf" },
+                                }}
+                                series={proportionChart.series}
+                                type="donut"
+                                height="300"
+                            />
+                        </div>
+                    </div>
+                    <div className="chart-box col-lg-6">
+                        <div className="container-chart">
+                            <h5 className="text-center">Unidades de Produtos Por Categoria</h5>
+                            <Chart
+                                options={{
+                                    ...opitions,
+                                    xaxis: quantityChart.labels,
+                                    theme: { mode: "dark" },
+                                    chart: { background: "#2a323a" },
+                                    grid: { borderColor: "#139acf" },
+                                }}
+                                labels={quantityChart.labels}
+                                series={quantityChart.series}
+                                type="bar"
+                                height="300"
+                            />
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div className="chart-box col-lg-6">
-                <div className="container-chart">
-                    <h5 className="text-center">Unidades de Produtos Por Categoria</h5>
-                    <Chart
-                        options={{
-                            ...opitions,
-                            xaxis: quantityChart.labels,
-                            theme: { mode: "dark" },
-                            chart: { background: "#2a323a" },
-                            grid: { borderColor: "#139acf" },
-                        }}
-                        labels={quantityChart.labels}
-                        series={quantityChart.series}
-                        type="bar"
-                        height="300"
-                    />
-                </div>
-            </div>
-        </div>
+            }
+        </>
     );
 }
 

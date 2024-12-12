@@ -2,6 +2,7 @@ import axios from "axios";
 import { OrderCardByTag } from "components/card/OrderCard";
 import { OrderTagCard, TagCard } from "components/card/TagCard";
 import Pagination from "components/shared/Pagination";
+import { TagMockList } from "mock/MockList";
 import { useEffect, useState } from "react";
 import { MdLibraryBooks } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -13,7 +14,7 @@ export function TagList() {
 
     const [pageNumber, setPageNumber] = useState(0);
 
-    const [tagList, setTagList] = useState<TagPage>({ number: 0 });
+    const [tagList, setTagList] = useState<TagPage>({ content: [], number: 0 });
     useEffect(() => {
         axios.get(`${BASE_URL}/tag/list?page=${pageNumber}&size=15&sort=tagId,ASC`)
             .then((response) => {
@@ -27,14 +28,18 @@ export function TagList() {
 
     return (
         <>
-            <Pagination page={tagList} onPageChange={handlePage} />
-            <div className="row p-2">
-                {tagList.content?.map(x => (
-                    <div key={x.tagId} className="col-4 p-1">
-                        <TagCard tag={x} />
+            {tagList.content.length === 0 ?  <TagMockList /> :
+                <div>
+                    <Pagination page={tagList} onPageChange={handlePage} />
+                    <div className="row p-2">
+                        {tagList.content?.map(x => (
+                            <div key={x.tagId} className="col-4 p-1">
+                                <TagCard tag={x} />
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
+                </div>
+            }
         </>
     );
 }

@@ -9,7 +9,7 @@ import * as FaIcons from 'react-icons/fa';
 import "react-datepicker/dist/react-datepicker.css";
 import ReactDatePicker from "react-datepicker";
 import { Props } from "types/page";
-import { ProductMockCard } from "mock/MockCard";
+import { ProductMockList } from "mock/MockList";
 
 export function ProductsList() {
     const [value, setValue] = useState("");
@@ -57,7 +57,7 @@ export function ProductsList() {
                     </nav>
                 }
 
-                {productPage.content?.length === 0 ? "" :
+                {productPage.content.length === 0 ? "" :
                     <div className="pagination-container-menu">
                         <div className="pagination-item">
                             <Pagination page={productPage}
@@ -78,7 +78,7 @@ export function ProductsList() {
                         ))}
                 </div>
                 {productPage.content?.length !== 0 ? "" :
-                    <ProductMockCard />
+                    <ProductMockList />
                 }
             </div>
         </>

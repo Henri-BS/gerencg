@@ -16,7 +16,7 @@ export type Product = {
 };
 
 export type ProductPage = {
-  content?: Product[];
+  content: Product[];
   size?: number;
   pageNumber?: number;
   numberOfElements?: number;

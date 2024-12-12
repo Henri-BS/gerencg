@@ -12,7 +12,6 @@ export function CategoryProfile() {
       <div className="profile row">
         <div className="col-12 col-sm-12 col-md-6 col-lg-4 p-0">
           <CategorySideBar id={`${params.categoryId}`} />
-          <CategoryMockSideBar id={`${params.categoryId}`} />
         </div>
         <div className="col-12 col-sm-12 col-md-6 col-lg-8">
           <ProductCategoryList id={`${params.categoryId}`} />
