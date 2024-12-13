@@ -28,7 +28,7 @@ export function ProductDatalist() {
                     product.description.toLowerCase().includes(value.toLocaleUpperCase().toLocaleLowerCase()))
                     .map((product) => (
                         <option id="value" key={product.id} value={product.description}>
-                            {product.description} - {product.measureValue} {product.measure}
+                            {product.description} - {product.measureValue} {product.measure.abbreviation}
                         </option>
                     ))}
             </datalist>

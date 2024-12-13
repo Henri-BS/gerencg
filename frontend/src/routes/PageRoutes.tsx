@@ -1,13 +1,14 @@
 import Footer from "components/shared/Footer";
 import NavBar from "components/shared/Navbar";
-import { CategoryList } from "page/lists/CategoryListing";
-import { MeasureList } from "page/lists/MeasureListing";
-import { OrderCodeList } from "page/lists/OrderListing";
-import { ProductsList, ProductValidateList } from "page/lists/ProductListing";
-import Home from "page/main/Home";
-import { CategoryStatsDashboard, CategoryProfile } from "page/profiles/CategoryProfile";
-import { OrderProfile, ItemProfile, OrderStatsDashboard, OrderStatsProfile, OrderTagProfile } from "page/profiles/OrderProfile";
-import { ProductDashboard, ProductProfile, ProductHistoryProfile, MeasureProfile } from "page/profiles/ProductProfile";
+import { CategoryList } from "pages/lists/CategoryListing";
+import { MeasureList } from "pages/lists/MeasureListing";
+import { OrderCodeList } from "pages/lists/OrderListing";
+import { ProductsList, ProductValidateList } from "pages/lists/ProductListing";
+import Home from "pages/main/Home";
+import { CategoryStatsDashboard, CategoryProfile } from "pages/profiles/CategoryProfile";
+import { OrderProfile, ItemProfile, OrderStatsDashboard, OrderStatsProfile, OrderTagProfile } from "pages/profiles/OrderProfile";
+import { ProductDashboard, ProductProfile, ProductHistoryProfile, MeasureProfile } from "pages/profiles/ProductProfile";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function PageRoutes() {

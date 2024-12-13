@@ -35,6 +35,7 @@ export function OrderStatsMockCharts() {
                         <div className="container-chart">
                             <h5 className="text-center">Quantidade de Pedidos por Mês</h5>
                             <Chart
+                            
                                 options={{
                                     ...options,
                                     xaxis: orderChart.quantityLabels,

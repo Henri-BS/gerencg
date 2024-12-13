@@ -86,7 +86,7 @@ export const categoryMockdata = [
 export const categoryChartMockdata = [
   {
     quantityLabels: { categories: ["Alimentícios", "Brinquedos", "Cosméticos e Higiene", "Cozinha", "Eletrônicos", "Ferramentas", "Limpeza", "Papelaria e Escolar", "Vestuário e Acessórios"] },
-    qunatitySeries: [{ name: "Pedidos com Maior Quantidade de Items", data: ["121", "32", "53", "43", "54", "23", "52", "31", "24", "12"] }],
+    qunatitySeries: [{ name: "Pedidos com Maior Quantidade de Items", data: [121, 32, 53, 43, 54, 23, 52, 31, 24, 12] }],
     proportionLabels: ["Alimentícios", "Brinquedos", "Cosméticos e Higiene", "Cozinha", "Eletrônicos", "Ferramentas", "Limpeza", "Papelaria e Escolar", "Vestuário e Acessórios"], 
     proportionSeries: [408.72, 590.25, 336.50, 767.59, 138.75, 408.72, 590.25, 336.50, 767.59, 138.75]
   },
@@ -557,7 +557,7 @@ export const productMockdata = [
 export const productChartMockdata = [
   {
     labels: ["03/03/2023", "06/02/2023", "04/03/2023", "10/04/2023", "02/05/2023"],
-    series: [{ name: "Quantidade de Unidades", data: ["31", "40", "21", "30", "46"] }]
+    series: [{ name: "Quantidade de Unidades", data: [31, 40, 21, 30, 46] }]
 
   },
 ];
@@ -722,7 +722,7 @@ export const orderChartMockdata = [
     proportionLabels: ["01-2023", "02-2023", "03-2023", "04-2023", "05-2023"],
     proportionSeries: [408.72, 590.25, 336.50, 767.59, 138.75],
     quantityLabels: { categories: ["01-2023", "02-2023", "03-2023", "04-2023", "05-2023"] },
-    quantitySeries: [{ name: "Quantidade de Pedidos", data: ["2", "2", "3", "2", "1"] }]
+    quantitySeries: [{ name: "Quantidade de Pedidos", data: [2, 2, 3, 2, 1] }]
   },
 ];
 

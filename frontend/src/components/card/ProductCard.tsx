@@ -15,7 +15,7 @@ export function ProductCard({ product }: ProductProps) {
             <div className={"product-card-container"}>
                 <img className="product-card-image" src={product?.image} alt={product?.description} />
                 <div className="product-info-box">
-                    <h3 className="product-info-title">{product?.description} • {product?.measureValue} {product?.measure}</h3>
+                    <h3 className="product-info-title">{product?.description} • {product?.measureValue} {product?.measure.abbreviation}</h3>
 
                     <div className="product-info-item">
                         <h6>Preço: {product?.price.toFixed(2)} R$</h6>
@@ -58,7 +58,7 @@ export function ProductValidateCard({ product }: ProductProps) {
                     <h3>{product?.description}</h3>
 
                     <div className="product-info-item">
-                        <h2>Valido até: {moment(product?.validate).format("dd/MM/yyyy")}</h2>
+                        <h2>Valido até: {moment(product?.validate).format("DD/MM/yyyy")}</h2>
                     </div>
                 </div>
             </div>

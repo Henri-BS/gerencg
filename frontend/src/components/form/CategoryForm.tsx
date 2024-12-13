@@ -4,34 +4,34 @@ import { useNavigate } from "react-router-dom";
 import { CategoryPage } from "types/category";
 import { BASE_URL } from "utils/requests";
 
-export function CategoryAddForm(){
+export function CategoryAddForm() {
     const navigate = useNavigate();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const name = (event.target as any).name.value;
         const image = (event.target as any).image.value;
-        
+
         const config: AxiosRequestConfig = {
-        method: "POST",
-        baseURL: BASE_URL,
-        url: "/category/add",
-        data: {
-            name: name,
-            image: image
+            method: "POST",
+            baseURL: BASE_URL,
+            url: "/category/add",
+            data: {
+                name: name,
+                image: image
+            }
         }
-    }
-    axios(config).then((response) => {
-        navigate("/category")
-    })
+        axios(config).then((response) => {
+            navigate("/category")
+        })
     }
 
-    return(
+    return (
         <form onSubmit={handleSubmit} className="form-card-container">
             <div className="form-group gerencg-form-group">
-                <input id="name" className="form-control" placeholder="nome da categoria"/>
+                <input id="name" className="form-control" placeholder="nome da categoria" />
             </div>
             <div className="form-group gerencg-form-group">
-                <input id="image" type="text" className="form-control" placeholder="imagem"/>
+                <input id="image" type="text" className="form-control" placeholder="imagem" />
             </div>
             <button type="submit" className="btn btn-confirm m-2 p-2">Adicionar</button>
         </form>
@@ -41,7 +41,6 @@ export function CategoryAddForm(){
 export function AddCategoryStats() {
 
     const navigate = useNavigate();
-    const [msg, setMsg] = useState('')
 
     const [categoryList, setCategoryList] = useState<CategoryPage>({
         content: [],
@@ -122,13 +121,11 @@ export function AddCategoryStats() {
                 </div>
             </div>
             <div className="modal-footer">
-<button className="text-close" data-bs-dismiss="modal">cancelar</button>
+                <button className="text-close" data-bs-dismiss="modal">cancelar</button>
                 <button type="submit" className="gerencg-btn" >Adicionar Registro</button>
 
             </div>
-            <div className="msg-container">
-                <h3>{msg}</h3>
-            </div>
+
         </form>
     );
 }

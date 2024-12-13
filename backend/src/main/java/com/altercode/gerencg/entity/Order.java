@@ -48,7 +48,7 @@ public class Order {
     private LocalDateTime dateUpdated = LocalDateTime.now();
 
     @ManyToOne
-    @JoinColumn(name = "measuere")
+    @JoinColumn(name = "measure")
     private Measure measure;
 
     @ManyToOne

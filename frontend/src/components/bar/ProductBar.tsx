@@ -42,7 +42,7 @@ const params = useParams();
                         </div>
                         <Link to={`/measure/${product?.measure}`} className="sidebar-item-container">
                             <div className="sidebar-icon-container">{productIcons.measureIcon}</div>
-                            <h3>Medida: {product?.measureValue} {product?.measure}</h3>
+                            <h3>Medida: {product?.measureValue} {product?.measure.abbreviation}</h3>
                         </Link>
                         <div className="sidebar-item-container">
                             <div className="sidebar-icon-container">{productIcons.quantityIcon}</div>
@@ -54,7 +54,7 @@ const params = useParams();
                         </Link>
                         <Link to={`/category/${product?.category}`} className="sidebar-item-container">
                             <div className="sidebar-icon-container">{productIcons.categoryIcon}</div>
-                            <h3>Category: {product?.category} </h3>
+                            <h3>Category: {product?.category.name} </h3>
                         </Link>
                     </div>
                     <div className="sidebar-card-bottom">

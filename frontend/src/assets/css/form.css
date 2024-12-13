@@ -90,15 +90,3 @@ form {
     border-radius: 5px;
     border: 2.5px solid var(--white-prim);
 }
-
-.msg-container {
-    text-align: center;
-    padding: 10px;
-    border-radius: 10px;
-    color: rgba(255, 255, 255, 0.692);
-    left: 20%;
-}
-
-.msg-container:active {
-    left: 0;
-}

@@ -177,7 +177,7 @@ export function MeasureMockList() {
             {measureMockdata.map((measure, index) => {
                 return (
                     <div key={index} className="col-4 p-1">
-                        <Link to={`/measure/${measure.description}`} className="text-decoration-none">
+                        <Link to={`/measure/${measure.abbreviation}`} className="text-decoration-none">
                             <abbr title={measure.abbreviation}>
                                 <div className="tag-card-container ">
                                     {measure.description}

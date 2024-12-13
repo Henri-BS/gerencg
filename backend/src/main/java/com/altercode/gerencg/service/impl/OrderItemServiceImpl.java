@@ -60,13 +60,13 @@ public class OrderItemServiceImpl implements com.altercode.gerencg.service.inter
 
     @Override
     public List<OrderItemDTO> findItemsByCode(Order code) {
-        List<OrderItem> result = itemRepository.findItemsByCode(code);
+        List<OrderItem> result = itemRepository.findItemsByOrder(code);
         return result.stream().map(OrderItemDTO::new).collect(Collectors.toList());
     }
 
     @Override
     public List<OrderItemDTO> findItemByProduct(Product product) {
-        List<OrderItem> result = itemRepository.findItemByProduct(product);
+        List<OrderItem> result = itemRepository.findItemsByProduct(product);
         return result.stream().map(OrderItemDTO::new).collect(Collectors.toList());
     }
 

@@ -297,6 +297,7 @@ export function OrderTagAddForm({ id: codeId }: Props) {
     return (
         <>
             <form className="form-card-container" onSubmit={handleSubmit}>
+                <label htmlFor="">Pedido: {order?.code}</label>
                 <TagDataList />
                 <div className="modal-footer">
                     <button type="submit" className="btn-confirm">Adicionar</button>
@@ -388,7 +389,7 @@ export function OrderStatsEditForm({ id: statsId }: Props) {
             <form className="form-card-container" onSubmit={handleSubmit}>
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="id">Período: </label>
-                    <input id="id" type="text" className="form-control" placeholder="01-2000" />
+                    <input id="id" type="text" className="form-control" placeholder="01-2000" defaultValue={stats?.id}/>
                 </div>
 
                 <div className="form-group gerencg-form-group">
