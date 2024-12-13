@@ -1,5 +1,6 @@
 import { CategorySideBar } from "components/bar/CategoryBar";
 import { CategoryStatsChart } from "components/chart/StatsChart";
+import { CategoryMockSideBar } from "mock/MockBar";
 import { ProductCategoryList } from "pages/lists/CategoryListing";
 import { useParams } from "react-router-dom";
 

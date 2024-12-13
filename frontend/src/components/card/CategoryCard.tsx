@@ -1,4 +1,4 @@
-import moment from "moment";
+import moment, { now } from "moment";
 import { Link } from "react-router-dom";
 import { CategoryPage, CategoryProps } from "types/category";
 import { useEffect, useState } from "react";
@@ -10,17 +10,17 @@ export function CategoryCard({ category }: CategoryProps) {
 
     return (
         <>
-            <Link to={`/category/${category?.name}`}>
-                <div className="category-display-card">
-                    <img className="category-card-image" src={category?.image} alt={category?.name} />
-                    <div className="category-card-container">
-                        <h3><b>{category?.name}</b></h3>
-                        <div className="category-details-container">
-                            <h2>Atualizado em: {moment(category?.dateUpdated).format('DD/MM/YYYY, hh:mm')}</h2>
+                    <Link to={`/category/${category?.name}`}>
+                        <div className="category-display-card">
+                            <img className="category-card-image" src={category?.image} alt={category?.name} />
+                            <div className="category-card-container">
+                                <h3><b>{category?.name}</b></h3>
+                                <div className="category-details-container">
+                                    <h2>Atualizado em: {moment(category?.dateUpdated).format('DD/MM/YYYY, hh:mm')}</h2>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </Link>
+                    </Link>
         </>
     );
 }
