@@ -3,12 +3,12 @@ import NavBar from "components/shared/Navbar";
 import Footer from "components/shared/Footer";
 import { ProductsList, ProductValidateList } from "pages/lists/ProductListing";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { ProductProfile, MeasureProfile, ProductDashboard, ProductHistoryProfile } from "pages/profiles/ProductProfile";
 import { CategoryList } from "pages/lists/CategoryListing";
 import { MeasureList } from "pages/lists/MeasureListing";
 import { OrderCodeList } from "pages/lists/OrderListing";
 import { CategoryProfile, CategoryStatsDashboard } from "pages/profiles/CategoryProfile";
 import { OrderProfile , ItemProfile, OrderStatsDashboard, OrderStatsProfile, OrderTagProfile } from "pages/profiles/OrderProfile";
-import { ProductDashboard, ProductProfile, ProductHistoryProfile, MeasureProfile } from "pages/profiles/ProductProfile";
 
 function PageRoutes() {
 
@@ -66,6 +66,8 @@ function PageRoutes() {
             </Routes>
             <Footer />
         </BrowserRouter>
+
+
     );
 }
 
