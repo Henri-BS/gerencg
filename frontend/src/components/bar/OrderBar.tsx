@@ -9,7 +9,7 @@ import { MdClose } from "react-icons/md";
 import { OrderEditForm, OrderStatsEditForm } from "../form/OrderForm";
 import moment from "moment";
 import { Props } from "types/page";
-import { OrderStatsList } from "pages/lists/OrderListing";
+import { OrderStatsList } from "page/lists/OrderListing";
 import { OrderMockMenuBar, OrderStatsTotalValuesMockBar } from "mock/MockBar";
 
 export function OrderMenuBar({ id: codeId }: Props) {
