@@ -61,8 +61,8 @@ public class OrderController {
         return new ResponseEntity<>(editCode, HttpStatus.OK);
     }
 
-    @PutMapping("/sum-item-values/{code}")
-    public ResponseEntity<OrderDTO> orderTotalValues(OrderDTO dto, @PathVariable String code) {
+    @PutMapping("/sum-item-values/{order}")
+    public ResponseEntity<OrderDTO> orderTotalValues(OrderDTO dto, @PathVariable String order) {
         OrderDTO update = orderService.orderTotalValues(dto);
         return new ResponseEntity<>(update, HttpStatus.OK);
     }

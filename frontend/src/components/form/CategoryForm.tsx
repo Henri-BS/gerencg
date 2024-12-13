@@ -41,7 +41,6 @@ export function CategoryAddForm(){
 export function AddCategoryStats() {
 
     const navigate = useNavigate();
-    const [msg, setMsg] = useState('')
 
     const [categoryList, setCategoryList] = useState<CategoryPage>({
         content: [],
@@ -125,9 +124,6 @@ export function AddCategoryStats() {
 <button className="text-close" data-bs-dismiss="modal">cancelar</button>
                 <button type="submit" className="gerencg-btn" >Adicionar Registro</button>
 
-            </div>
-            <div className="msg-container">
-                <h3>{msg}</h3>
             </div>
         </form>
     );

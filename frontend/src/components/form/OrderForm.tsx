@@ -266,16 +266,16 @@ export const ItemEditForm = ({ id: itemId }: Props) => {
     );
 }
 
-export function OrderTagAddForm({ id: codeId }: Props) {
+export function OrderTagAddForm({ id: orderId }: Props) {
     const navigate = useNavigate();
 
     const [order, setOrder] = useState<Order>();
     useEffect(() => {
-        axios.get(`${BASE_URL}/order/${codeId}`)
+        axios.get(`${BASE_URL}/order/${orderId}`)
             .then((response) => {
                 setOrder(response.data);
             });
-    });
+    }, [orderId]);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const tagId = (event.target as any).tagId.value;
@@ -285,18 +285,19 @@ export function OrderTagAddForm({ id: codeId }: Props) {
             baseURL: BASE_URL,
             url: `/order-tag/add`,
             data: {
-                codeId: codeId,
+                codeId: orderId,
                 tagId: tagId
             }
 
         }
         axios(config).then((response) => {
-            navigate(`/order/${codeId}`)
+            navigate(`/order/${orderId}`)
         });
     }
     return (
         <>
             <form className="form-card-container" onSubmit={handleSubmit}>
+                <span>Pedido: {order?.code}</span>
                 <TagDataList />
                 <div className="modal-footer">
                     <button type="submit" className="btn-confirm">Adicionar</button>
@@ -331,7 +332,7 @@ export function OrderStatsAddForm() {
         <>
 
             <form className="form-card-container" onSubmit={handleSubmit}>
-             
+
 
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="initialDate">Data Inicial: </label>
@@ -364,7 +365,7 @@ export function OrderStatsEditForm({ id: statsId }: Props) {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 
-        
+
         const initialDate = (event.target as any).initialDate.value;
         const finalDate = (event.target as any).finalDate.value;
 
@@ -388,7 +389,7 @@ export function OrderStatsEditForm({ id: statsId }: Props) {
             <form className="form-card-container" onSubmit={handleSubmit}>
                 <div className="form-group gerencg-form-group">
                     <label htmlFor="id">Período: </label>
-                    <input id="id" type="text" className="form-control" placeholder="01-2000" />
+                    <input id="id" type="text" className="form-control" placeholder="01-2000" defaultValue={stats?.id} />
                 </div>
 
                 <div className="form-group gerencg-form-group">
