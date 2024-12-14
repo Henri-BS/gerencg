@@ -53,7 +53,7 @@ export function ProductCategoryList({ id: categoryId }: Props) {
     const [productPage, setProductPage] = useState<ProductPage>({ content: [], number: 0 });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/product/category/${categoryId}/?page=${pageNumber}&size=6`)
+        axios.get(`${BASE_URL}/product/category/${categoryId}?page=${pageNumber}&size=6`)
             .then(response => {
                 setProductPage(response.data);
             });
@@ -77,7 +77,7 @@ export function ProductCategoryList({ id: categoryId }: Props) {
                 </div>
                 <div className="row">
                     {productPage.content?.map(product => (
-                        <div key={product.category.name} className="col-sm-12 col-lg-6 col-xl-6 mb-3">
+                        <div key={product.category} className="col-sm-12 col-lg-6 col-xl-6 mb-3">
                             <ProductCard product={product} />
                         </div>
                     ))}

@@ -2,14 +2,16 @@
     align-items: flex-start;
     display: grid;
     height: 100%;
-    min-width: 430px;
+    min-width: 200px;
     background-color: var(--dark-tert);
     align-content: space-between;
 }
 
 .sidebar-container {
     text-align: center;
-    color: var(--white-prim);
+    color: var(--white-prim);    
+    min-width: 200px;
+
 }
 
 .sidebar-item-container {

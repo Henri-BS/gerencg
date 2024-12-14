@@ -44,15 +44,15 @@ export function TagList() {
     );
 }
 
-export function TagListByOrder({ id: codeId }: Props) {
+export function TagListByOrder({ id: orderId }: Props) {
     const [tagList, setTagList] = useState<OrderTag[]>();
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/order-tag/find-by-order/${codeId}`)
+        axios.get(`${BASE_URL}/order-tag/find-by-order/${orderId}`)
             .then((response) => {
                 setTagList(response.data)
             });
-    }, [codeId]);
+    }, [orderId]);
 
     return (
         <div className="horizontal-list">
@@ -116,7 +116,7 @@ export function OrderTagList({ id: tagId }: Props) {
 
                     <div className="row">
                         {orderList?.map((order) => (
-                            <div key={order.codeId} className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-3">
+                            <div key={order.orderId} className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-3">
                                 <OrderCardByTag orderTag={order} />
                             </div>
                         ))}

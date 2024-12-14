@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { MdClose } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 import { ProductHistory, ProductHistoryProps, ProductPage, ProductProps } from "types/product";
-import { Props} from "types/page";
+import { Props } from "types/page";
 import { BASE_URL } from "utils/requests";
 
 
@@ -15,7 +15,7 @@ export function ProductCard({ product }: ProductProps) {
             <div className={"product-card-container"}>
                 <img className="product-card-image" src={product?.image} alt={product?.description} />
                 <div className="product-info-box">
-                    <h3 className="product-info-title">{product?.description} • {product?.measureValue} {product?.measure.abbreviation}</h3>
+                    <h3 className="product-info-title">{product?.description} • {product?.measureValue} {product?.measure}</h3>
 
                     <div className="product-info-item">
                         <h6>Preço: {product?.price.toFixed(2)} R$</h6>
@@ -38,12 +38,16 @@ export function GetLastProductCard() {
 
 
     return (
-        <div>
+        <>
             Último Produto Adcionado:
-            {productList.content?.map(x => (
-                <ProductCard product={x} />
-            ))}
-        </div>
+            <div >
+                {productList.content?.map(x => (
+                    <div key={x.id} className="d-flex justify-content-center">
+                    <ProductCard product={x} />
+                    </div>
+                ))}
+            </div>
+        </>
     );
 }
 

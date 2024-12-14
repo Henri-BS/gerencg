@@ -1,6 +1,6 @@
 export type OrderTag = {
   id: number;
-  codeId: string;
+  orderId: string;
   orderDate: string;
   distributor: string;
   category: string;

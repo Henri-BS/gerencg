@@ -1,24 +1,25 @@
-.border-table {
+.table{
     border: 1px solid;
     border-left: 5px solid var(--blue-prim);
 }
+
+.table th {
+    background-color: var(--white-seco);
+    font-weight: 900;
+}
+
 
 .table-box {
     height: 100%;
     color: var(--dark-seco);
     font-size: 18px;
-    font-weight: 600;
     border: 1px solid var(--dark-seco);
     text-align: center;
 }
 
-.table-box h5 {
-    color: #fff;
-    font-size: large;
-    text-align: center;
-}
 
 .table-box-title {
+    background-color: var(---white-prim);
     font-size: 16px;
     font-weight: 900;
     display: grid;
@@ -29,9 +30,6 @@
     text-decoration: none;
 }
 
-.table-box-title h5 {
-    font-weight: 700;
-}
 
 .table-box-title:hover {
     background: var(--dark-quat);

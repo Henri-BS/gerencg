@@ -11,8 +11,8 @@ export type Product = {
   dateCreated: string;
   dateUpdate: string;
   measureValue: number;
-  measure: Measure;
-  category: Category;
+  measure: string;
+  category: string;
 };
 
 export type ProductPage = {

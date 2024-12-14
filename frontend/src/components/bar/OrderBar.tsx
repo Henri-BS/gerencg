@@ -12,28 +12,28 @@ import { Props } from "types/page";
 import { OrderStatsList } from "pages/lists/OrderListing";
 import { OrderMockMenuBar, OrderStatsTotalValuesMockBar } from "mock/MockBar";
 
-export function OrderMenuBar({ id: codeId }: Props) {
+export function OrderMenuBar({ id: orderId }: Props) {
 
     const [order, setOrder] = useState<Order>();
     const navigate = useNavigate();
     const params = useParams();
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/order/${codeId}`)
+        axios.get(`${BASE_URL}/order/${orderId}`)
             .then((response) => {
                 setOrder(response.data);
             });
-    }, [codeId]);
+    }, [orderId]);
 
     useEffect(() => {
-        axios.put(`${BASE_URL}/order/sum-item-values/${codeId}`)
+        axios.put(`${BASE_URL}/order/sum-item-values/${orderId}`)
             .then((response) => {
                 setOrder(response.data);
             });
-    }, [codeId]);
+    }, [orderId]);
 
     const deleteOrder = () => {
-        axios.delete(`${BASE_URL}/order/delete/${codeId}`)
+        axios.delete(`${BASE_URL}/order/delete/${orderId}`)
             .then((response) => {
                 navigate(0)
             });
@@ -58,7 +58,7 @@ export function OrderMenuBar({ id: codeId }: Props) {
                     </button>
                 </div>
 
-                {order == null ? <OrderMockMenuBar id={`${params.codeId}`} /> :
+                {order == null ? <OrderMockMenuBar id={`${params.orderId}`} /> :
                     <div>
                         <div className="bar-container">
                             <h2>Informações de Identificação</h2>
@@ -111,7 +111,7 @@ export function OrderMenuBar({ id: codeId }: Props) {
                                 <span className="text-close" aria-hidden="true"><MdClose /></span>
                             </button>
                         </div>
-                        <div className="modal-body"><OrderEditForm id={`${params.codeId}`} /></div>
+                        <div className="modal-body"><OrderEditForm id={`${params.orderId}`} /></div>
                     </div>
                 </div>
             </div>

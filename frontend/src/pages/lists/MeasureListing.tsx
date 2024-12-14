@@ -69,7 +69,7 @@ export function ProductMeasureList({ id: measureId }: Props) {
                 </div>
                 <div className="row">
                     {productPage.content?.map(product => (
-                        <div key={product.measure.abbreviation} className="col-sm-12 col-lg-6 col-xl-6 mb-3">
+                        <div key={product.measure} className="col-sm-12 col-lg-6 col-xl-6 mb-3">
                             <ProductCard product={product} />
                         </div>
                     ))}

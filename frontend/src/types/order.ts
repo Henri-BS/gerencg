@@ -35,7 +35,7 @@ export type OrderProps = {
 
 export type Item = {
   id: number;
-  orderCode: string;
+  orderId: string;
   costValue: number;
   unitValue: number;
   expense: number;

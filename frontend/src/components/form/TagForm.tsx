@@ -26,10 +26,12 @@ export function TagAddForm() {
     return (
         <form className="form-card-container" onSubmit={handleSubmit}>
             <div className="form-group gerencg-form-group">
-                <input id="tagId" className="form-control" type="text" placeholder="nome da tag" />
+                <label htmlFor="">Nome da tag:</label>
+                <input id="tagId" className="form-control" type="text" />
             </div>
             <div className="form-group gerencg-form-group">
-                <input id="description" className="form-control" type="text" placeholder="descrição (opcional)" />
+                <label htmlFor="">Descrição (opcional):</label>
+                <input id="description" className="form-control" type="text"/>
             </div>
             <button type="submit" className="btn btn-confirm m-2 p-2">Adicionar</button>
         </form>

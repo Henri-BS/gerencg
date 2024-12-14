@@ -61,10 +61,10 @@ export function GetLastOrderCard() {
 export function OrderCardByTag({ orderTag }: OrdersTagProps) {
 
     return (
-        <Link to={`/order/${orderTag.codeId}`}>
+        <Link to={`/order/${orderTag.orderId}`}>
             <div className="order-card ">
                 <div className="order-box  border-dark">
-                    <h2>Código do Pedido: <p>{orderTag.codeId}</p></h2>
+                    <h2>Código do Pedido: <p>{orderTag.orderId}</p></h2>
                 </div>
                 <div className="order-box ">
                     <h3>Data do Pedido: {moment(orderTag.orderDate).format("DD/MM/YYYY")}</h3>
@@ -106,7 +106,7 @@ export function OrderItemCard({ id: itemId }: Props) {
     const deleteItem = () => {
         axios.delete(`${BASE_URL}/item/delete/${itemId}`)
             .then((response) => {
-                navigate(`/order/${item?.orderCode}`)
+                navigate(`/order/${item?.orderId}`)
                 console.log(response.status);
             })
     }
@@ -128,7 +128,7 @@ export function OrderItemCard({ id: itemId }: Props) {
             </div>
             <div className="gerencg-item-card">
                 <div className="gerencg-box  border-dark">
-                    <h2>Código do Pedido: {item?.orderCode} <Link to={`/order/${item?.orderCode}`} className="link-primary"> <MdLink /></Link></h2>
+                    <h2>Código do Pedido: {item?.orderId} <Link to={`/order/${item?.orderId}`} className="link-primary"> <MdLink /></Link></h2>
                 </div>
                 <div className="gerencg-box">
                    <Link to={`/product/${item?.productId}`}> <h4>Descrição: {item?.productDescription}</h4></Link>
@@ -229,7 +229,7 @@ export function SmallItemCard({ item }: ItemProps) {
     return (  
     <Link to={`/item/${item.id}`}>
         <div className="small-card-container">
-            <h5>Código do Pedido: {item.orderCode}            
+            <h5>Código do Pedido: {item.orderId}            
             </h5>
         </div>    
         </Link>

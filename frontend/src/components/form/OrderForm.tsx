@@ -58,17 +58,17 @@ export function OrderAddForm() {
     );
 }
 
-export function OrderEditForm({ id: codeId }: Props) {
+export function OrderEditForm({ id: orderId }: Props) {
     const navigate = useNavigate();
 
     const [order, setOrder] = useState<Order>();
 
     useEffect(() => {
-        axios.get(`/order/${codeId}`)
+        axios.get(`/order/${orderId}`)
             .then((response) => {
                 setOrder(response.data);
             });
-    }, [codeId]);
+    }, [orderId]);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const orderDate = (event.target as any).orderDate.value;
@@ -81,7 +81,7 @@ export function OrderEditForm({ id: codeId }: Props) {
             url: "/order/update",
             method: "PUT",
             data: {
-                code: codeId,
+                code: orderId,
                 orderDate: orderDate,
                 distributor: distributor,
                 packageType: packageType,
@@ -89,7 +89,7 @@ export function OrderEditForm({ id: codeId }: Props) {
             }
         }
         axios(config).then((response) => {
-            navigate(`/order/${codeId}`);
+            navigate(`/order/${orderId}`);
         });
     }
 
@@ -114,16 +114,16 @@ export function OrderEditForm({ id: codeId }: Props) {
     );
 }
 
-export function ItemAddForm({ id: codeId }: Props) {
+export function ItemAddForm({ id: orderId }: Props) {
 
     const navigate = useNavigate();
     const [order, setOrder] = useState<Order>();
     useEffect(() => {
-        axios.get(`${BASE_URL}/order/${codeId}`)
+        axios.get(`${BASE_URL}/order/${orderId}`)
             .then((response) => {
                 setOrder(response.data);
             });
-    }, [codeId]);
+    }, [orderId]);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const quantity = (event.target as any).quantity.value;
@@ -138,7 +138,7 @@ export function ItemAddForm({ id: codeId }: Props) {
             url: "/item/add",
             method: "POST",
             data: {
-                orderCode: codeId,
+                orderCode: orderId,
                 quantity: quantity,
                 unitValue: unitValue,
                 expense: expense,
@@ -148,7 +148,7 @@ export function ItemAddForm({ id: codeId }: Props) {
             }
         }
         axios(config).then((response) => {
-            navigate(`/order/${codeId}`);
+            navigate(`/order/${orderId}`);
         });
     }
 
@@ -266,12 +266,12 @@ export const ItemEditForm = ({ id: itemId }: Props) => {
     );
 }
 
-export function OrderTagAddForm({ id: codeId }: Props) {
+export function OrderTagAddForm({ id: orderId }: Props) {
     const navigate = useNavigate();
 
     const [order, setOrder] = useState<Order>();
     useEffect(() => {
-        axios.get(`${BASE_URL}/order/${codeId}`)
+        axios.get(`${BASE_URL}/order/${orderId}`)
             .then((response) => {
                 setOrder(response.data);
             });
@@ -285,13 +285,13 @@ export function OrderTagAddForm({ id: codeId }: Props) {
             baseURL: BASE_URL,
             url: `/order-tag/add`,
             data: {
-                codeId: codeId,
+                orderId: orderId,
                 tagId: tagId
             }
 
         }
         axios(config).then((response) => {
-            navigate(`/order/${codeId}`)
+            navigate(`/order/${orderId}`)
         });
     }
     return (

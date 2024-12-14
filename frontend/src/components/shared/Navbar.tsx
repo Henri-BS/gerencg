@@ -13,7 +13,7 @@ import { GetLastProductCard } from "components/card/ProductCard";
 import { GetLastOrderCard } from "components/card/OrderCard";
 import { MeasureList } from "pages/lists/MeasureListing";
 import { MeasureAddForm } from "components/form/MeasureForm";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 
 function NavBar() {
     const [click, setClick] = useState(false);

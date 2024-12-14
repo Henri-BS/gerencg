@@ -6,30 +6,30 @@ import { Item } from "types/order";
 import { BASE_URL } from "utils/requests";
 import { Props } from "types/page";
 
-function ItemTable({ id: codeId }: Props) {
+function ItemTable({ id: orderId }: Props) {
 
     const [pageItem, setPageItem] = useState<Item[]>();
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/item/order/${codeId}`)
+        axios.get(`${BASE_URL}/item/order/${orderId}`)
             .then((response) => {
                 setPageItem(response.data);
             });
-    }, [codeId]);
+    }, [orderId]);
 
     return (
         <>
             <div className="table-responsive">
-                <table className="table border-table">
-                    <thead className="bg-primary text-primary">
+                <table className="table">
+                    <thead>
                         <tr>
-                            <th className="table-box"><h5>Descrição do Produto</h5></th>
-                            <th className="table-box"><h5>Unidades</h5></th>
-                            <th className="table-box"><h5>Pacotes</h5></th>
-                            <th className="table-box"><h5>Valor Unitário</h5></th>
-                            <th className="table-box"><h5>Valor Total</h5></th>
-                            <th className="table-box"><h5>Validade</h5></th>
-                            <th className="table-box"><h5>Detalhes</h5></th>
+                            <th className="table-box">Descrição do Produto</th>
+                            <th className="table-box">Unidades</th>
+                            <th className="table-box">Pacotes</th>
+                            <th className="table-box">Valor Unitário</th>
+                            <th className="table-box">Valor Total</th>
+                            <th className="table-box">Validade</th>
+                            <th className="table-box">Detalhes</th>
                         </tr>
                     </thead>
 

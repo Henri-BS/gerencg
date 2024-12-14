@@ -15,11 +15,11 @@ export function OrderProfile() {
   return (
     <>
       <div className="container">
-        <OrderMenuBar id={`${params.codeId}`} />
+        <OrderMenuBar id={`${params.orderId}`} />
         <h3>Tags <button className="btn link-primary" data-bs-toggle="modal" data-bs-target="#saveOrderTagModal">
           <MdAdd/>Adicionar Tag
         </button></h3>
-        <TagListByOrder id={`${params.codeId}`} />
+        <TagListByOrder id={`${params.orderId}`} />
         
         <div className="menu-option row">
           <h2 className="col-7 col-md-10">Lista de Produtos Solicitados </h2>
@@ -29,7 +29,7 @@ export function OrderProfile() {
             </button>
           </div>
         </div>
-        <ItemTable id={`${params.codeId}`} />
+        <ItemTable id={`${params.orderId}`} />
       </div>
 
       <div className="modal fade" role="dialog" id="saveItemModal">
@@ -41,7 +41,7 @@ export function OrderProfile() {
                 <span aria-hidden="true"><MdClose /></span>
               </button>
             </div>
-            <div className="modal-body"><ItemAddForm id={`${params.codeId}`} /></div>
+            <div className="modal-body"><ItemAddForm id={`${params.orderId}`} /></div>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@ export function OrderProfile() {
                 <span aria-hidden="true"><MdClose /></span>
               </button>
             </div>
-            <div className="modal-body"><OrderTagAddForm id={`${params.codeId}`} /></div>
+            <div className="modal-body"><OrderTagAddForm id={`${params.orderId}`} /></div>
           </div>
         </div>
       </div>

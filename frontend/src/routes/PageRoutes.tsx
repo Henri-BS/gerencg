@@ -47,7 +47,7 @@ function PageRoutes() {
                 <Route path="/order" element={<OrderCodeList />} />
 
                 <Route path="/order">
-                    <Route path=":codeId" element={<OrderProfile />} />
+                    <Route path=":orderId" element={<OrderProfile />} />
                 </Route>
 
                 <Route path="/item">
