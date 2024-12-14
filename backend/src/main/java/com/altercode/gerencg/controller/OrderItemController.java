@@ -27,9 +27,9 @@ public class OrderItemController {
         return ResponseEntity.ok(page);
     }
 
-    @GetMapping("/order/{code}")
-    public ResponseEntity<List<OrderItemDTO>> findItemsByCode(@PathVariable Order code) {
-        List<OrderItemDTO> list = itemService.findItemsByCode(code);
+    @GetMapping("/order/{order}")
+    public ResponseEntity<List<OrderItemDTO>> findItemsByOrder(@PathVariable Order order) {
+        List<OrderItemDTO> list = itemService.findItemsByOrder(order);
         return ResponseEntity.ok(list);
     }
 

@@ -60,7 +60,7 @@ public class OrderStatsServiceImpl implements com.altercode.gerencg.service.inte
         double sumIncome = 0;
 
         int sumItems = stats.getAmountItems();
-        for (Order order : stats.getCodes()) {
+        for (Order order : stats.getOrders()) {
             sumExpense = sumExpense + order.getExpense();
             sumIncome = sumIncome + order.getIncome();
             sumItems = sumItems + order.getAmountItems();
@@ -74,7 +74,7 @@ public class OrderStatsServiceImpl implements com.altercode.gerencg.service.inte
         stats.setExpense(sumExpense);
         stats.setIncome(sumIncome);
         stats.setAmountItems(sumItems);
-        stats.setAmountOrder(stats.getCodes().size());
+        stats.setAmountOrder(stats.getOrders().size());
 
         return new OrderStatsDTO(statsRepository.save(stats));
     }

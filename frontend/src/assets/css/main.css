@@ -121,7 +121,13 @@ abbr {
     color: var(--white-prim);
 }
 
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .modal-title {
+    
     width: 100%;
     text-align: center;
     font-size: larger;
@@ -351,7 +357,7 @@ abbr {
         flex-direction: column;
         width: 100%;
         position: absolute;
-        top: 76px;
+        top: 80px;
         left: -100%;
         opacity: 1;
         transition: all 0.9s ease;
@@ -366,14 +372,18 @@ abbr {
         list-style: none;
     }
     .menu-icon {
+        color: var(--blue-prim);
+        font-size: 2.4rem;
+        height: 100%;
+        align-items: center;
         padding: 6px;
-        display: block;
+        display: flex;
         position: absolute;
         top: 0;
         right: 0;
-        transform: translate(-100%, 35%);
-        font-size: 1rem;
         cursor: pointer;
+        margin-bottom: 12px;
+
     }
     .fa-times {
         color: var(--blue-prim);

@@ -12,7 +12,7 @@ import java.util.List;
 public interface OrderService {
     Page<OrderDTO> findOrders(Pageable pageable, String code);
 
-    OrderDTO findCodeById(String id);
+    OrderDTO findOrderById(String id);
 
     OrderDTO saveOrder(OrderDTO dto);
 

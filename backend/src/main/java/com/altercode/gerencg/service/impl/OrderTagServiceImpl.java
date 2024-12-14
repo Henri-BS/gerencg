@@ -55,7 +55,7 @@ public class OrderTagServiceImpl implements com.altercode.gerencg.service.interf
 
     @Override
     public OrderTagDTO saveOrderTag(OrderTagDTO dto) {
-        Order code = orderRepository.findById(dto.getCodeId()).orElseThrow();
+        Order code = orderRepository.findById(dto.getOrderId()).orElseThrow();
         Tag tag = tagRepository.findById(dto.getTagId()).orElseThrow();
 
         OrderTag add = new OrderTag();

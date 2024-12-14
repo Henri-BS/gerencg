@@ -27,7 +27,7 @@ public class CategoryServiceImpl implements com.altercode.gerencg.service.interf
 
 		Category category = categoryRepository.findById(id).get();
 		category.setTotalProducts(category.getProducts().size());
-		category.setTotalRegisters(category.getCodes().size());
+		category.setTotalRegisters(category.getOrders().size());
 		category = categoryRepository.save(category);
 
 		return new CategoryDTO(category);

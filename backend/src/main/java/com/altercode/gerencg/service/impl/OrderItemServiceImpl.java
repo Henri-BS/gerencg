@@ -27,7 +27,7 @@ public class OrderItemServiceImpl implements com.altercode.gerencg.service.inter
     private OrderItemRepository itemRepository;
 
     @Autowired
-    private OrderRepository codeRepository;
+    private OrderRepository orderRepository;
 
     @Autowired
     private ProductRepository productRepository;
@@ -59,7 +59,7 @@ public class OrderItemServiceImpl implements com.altercode.gerencg.service.inter
     }
 
     @Override
-    public List<OrderItemDTO> findItemsByCode(Order code) {
+    public List<OrderItemDTO> findItemsByOrder(Order code) {
         List<OrderItem> result = itemRepository.findItemsByOrder(code);
         return result.stream().map(OrderItemDTO::new).collect(Collectors.toList());
     }
@@ -80,7 +80,7 @@ public class OrderItemServiceImpl implements com.altercode.gerencg.service.inter
     @Override
     public OrderItemDTO saveItem(OrderItemDTO dto) {
         Product product = productRepository.findByDescription(dto.getProductDescription());
-        Order code = codeRepository.findById(dto.getOrderId()).get();
+        Order code = orderRepository.findById(dto.getOrderId()).get();
 
         OrderItem add = new OrderItem();
         add.setOrder(code);
@@ -92,7 +92,7 @@ public class OrderItemServiceImpl implements com.altercode.gerencg.service.inter
         add.setProduct(product);
 
         code.setDateUpdated(LocalDateTime.now());
-        codeRepository.save(code);
+        orderRepository.save(code);
 
         return new OrderItemDTO(itemRepository.saveAndFlush(add));
     }

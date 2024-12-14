@@ -27,8 +27,8 @@ public class OrderController {
     }
 
     @GetMapping("/{id}")
-    public OrderDTO findCodeById(@PathVariable String id) {
-        return orderService.findCodeById(id);
+    public OrderDTO findOrderById(@PathVariable String id) {
+        return orderService.findOrderById(id);
     }
 
     @GetMapping("/find-by-stats/{stats}")
@@ -50,7 +50,7 @@ public class OrderController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<OrderDTO> saveOrderCode(@RequestBody OrderDTO dto) {
+    public ResponseEntity<OrderDTO> saveOrder(@RequestBody OrderDTO dto) {
         OrderDTO addCode = orderService.saveOrder(dto);
         return new ResponseEntity<>(addCode, HttpStatus.CREATED);
     }
@@ -61,8 +61,8 @@ public class OrderController {
         return new ResponseEntity<>(editCode, HttpStatus.OK);
     }
 
-    @PutMapping("/sum-item-values/{code}")
-    public ResponseEntity<OrderDTO> orderTotalValues(OrderDTO dto, @PathVariable String code) {
+    @PutMapping("/sum-item-values/{id}")
+    public ResponseEntity<OrderDTO> orderTotalValues(OrderDTO dto, @PathVariable String id) {
         OrderDTO update = orderService.orderTotalValues(dto);
         return new ResponseEntity<>(update, HttpStatus.OK);
     }

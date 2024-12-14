@@ -55,5 +55,5 @@ public class OrderStats {
     private LocalDateTime dateUpdated = LocalDateTime.now();
 
     @OneToMany(mappedBy = "stats", cascade = CascadeType.ALL)
-    private final Set<Order> codes = new HashSet<>();
+    private final Set<Order> orders = new HashSet<>();
 }

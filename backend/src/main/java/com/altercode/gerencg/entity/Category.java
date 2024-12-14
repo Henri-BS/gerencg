@@ -46,6 +46,6 @@ public class Category {
 	private List<Product> products = new ArrayList<>();
 
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-	private List<Order> codes = new ArrayList<>();
+	private List<Order> orders = new ArrayList<>();
 
 }

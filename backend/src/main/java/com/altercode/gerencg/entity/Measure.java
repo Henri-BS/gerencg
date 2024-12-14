@@ -37,6 +37,6 @@ public class Measure {
 	private Set<Product> product = new HashSet<>();
 
 	@OneToMany(mappedBy = "measure", cascade = CascadeType.ALL)
-	private Set<Order> codes = new HashSet<>();
+	private Set<Order> orders = new HashSet<>();
 
 }

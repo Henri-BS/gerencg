@@ -41,7 +41,7 @@ public class OrderServiceImpl implements com.altercode.gerencg.service.interf.Or
     }
 
     @Override
-    public OrderDTO findCodeById(String id) {
+    public OrderDTO findOrderById(String id) {
         Order result = orderRepository.findById(id).get();
         if (result.getStats() == null) {
             String statsId = result.getOrderDate().getMonthValue() + "-" + result.getOrderDate().getYear();
@@ -98,24 +98,24 @@ public class OrderServiceImpl implements com.altercode.gerencg.service.interf.Or
 
     @Override
     public OrderDTO orderTotalValues(OrderDTO dto) {
-        Order code = orderRepository.findById(dto.getCode()).get();
+        Order order = orderRepository.findById(dto.getCode()).get();
         double sumValues = 0, sumIncome = 0;
         int sumQuantity = 0, sumPackages = 0;
-        for (OrderItem item : code.getItems()) {
+        for (OrderItem item : order.getItems()) {
             sumValues = sumValues + item.getExpense();
             sumIncome = sumIncome + item.getIncome();
             sumQuantity = sumQuantity + item.getItemQuantity();
             sumPackages = sumPackages + item.getPackageQuantity();
         }
 
-        code.setExpense(sumValues);
-        code.setIncome(sumIncome);
-        code.setTotalQuantity(sumQuantity);
-        code.setTotalPackage(sumPackages);
-        code.setAmountItems(code.getItems().size());
-        orderRepository.save(code);
+        order.setExpense(sumValues);
+        order.setIncome(sumIncome);
+        order.setTotalQuantity(sumQuantity);
+        order.setTotalPackage(sumPackages);
+        order.setAmountItems(order.getItems().size());
+        orderRepository.save(order);
 
-        return new OrderDTO(code);
+        return new OrderDTO(order);
     }
 
     @Override

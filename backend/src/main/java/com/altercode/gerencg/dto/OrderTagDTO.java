@@ -18,7 +18,7 @@ public class OrderTagDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
-    private String codeId;
+    private String orderId;
     private String tagId;
     private LocalDate orderDate;
     private String distributor;
@@ -26,8 +26,7 @@ public class OrderTagDTO implements Serializable {
 
     public OrderTagDTO(OrderTag entity) {
         id = entity.getId();
-        codeId = entity.getOrder().getCode();
+        orderId = entity.getOrder().getCode();
         tagId = entity.getTag().getTagId();
-        
     }
 }

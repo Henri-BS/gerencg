@@ -14,7 +14,7 @@ public interface OrderItemService {
 
     Page<OrderItemDTO> findItems(Pageable pageable);
 
-    List<OrderItemDTO> findItemsByCode(Order code);
+    List<OrderItemDTO> findItemsByOrder(Order code);
 
     List<OrderItemDTO> findItemByProduct(Product product);
 

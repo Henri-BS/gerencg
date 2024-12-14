@@ -13,11 +13,13 @@ import { GetLastProductCard } from "components/card/ProductCard";
 import { GetLastOrderCard } from "components/card/OrderCard";
 import { MeasureList } from "pages/lists/MeasureListing";
 import { MeasureAddForm } from "components/form/MeasureForm";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 function NavBar() {
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
+
 
     return (
         <>
@@ -28,7 +30,7 @@ function NavBar() {
                 </Link>
 
                 <div className="menu-icon" onClick={handleClick}>
-                    <i className={click ? "fa fa-times" : "fas fa-list"} />
+                     <FaBars/> 
                 </div>
 
                 <ul className={click ? "navbar-menu active" : "navbar-menu"}>
@@ -73,7 +75,7 @@ function NavBar() {
                     <div className="modal-content">
                         <div className="modal-header">
 
-                            <span data-bs-dismiss="modal ">
+                            <span data-bs-dismiss="modal">
                                 <Link to="/product" className="form-links"> <MdLibraryBooks /> Lista de Produtos</Link>
                             </span>
 
