@@ -1,5 +1,4 @@
 import { OrderMenuBar, OrderStatsBar, OrderStatsTotalValuesBar } from "components/bar/OrderBar";
-import ItemDataTable from "components/datatable/OrderDataTable";
 import { useParams } from "react-router-dom";
 import { OrderItemCard } from "components/card/OrderCard";
 import { ItemAddForm, OrderTagAddForm, OrderStatsAddForm } from "components/form/OrderForm";
@@ -8,6 +7,7 @@ import { OrderStatsList } from "pages/lists/OrderListing";
 import { OrderStatsChartsByPediod, OrderStatsCharts, OrderStatsChartByCategory } from "components/chart/StatsChart";
 import { CategoryStatsDashboard } from "./CategoryProfile";
 import { OrderTagList, TagListByOrder } from "pages/lists/TagListing";
+import ItemTable from "components/table/OrderTable";
 
 export function OrderProfile() {
   const params = useParams();
@@ -29,7 +29,7 @@ export function OrderProfile() {
             </button>
           </div>
         </div>
-        <ItemDataTable id={`${params.codeId}`} />
+        <ItemTable id={`${params.codeId}`} />
       </div>
 
       <div className="modal fade" role="dialog" id="saveItemModal">

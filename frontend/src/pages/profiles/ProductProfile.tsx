@@ -5,11 +5,11 @@ import { SaveValuesHistory } from "components/form/ProductForm";
 import { QuantityProductChart } from "components/chart/ProductCharts";
 import { ProductMeasureList } from "pages/lists/MeasureListing";
 import { HistoryMenuBar, ProductMenuBar, ProductSideBar } from "components/bar/ProductBar";
-import ProductDataTable from "components/datatable/ProductDataTable";
 import { MdClose } from "react-icons/md";
 import { GetHistoryCard as LargeHistoryCard } from "components/card/ProductCard";
 import { OrderItemListByProduct } from "pages/lists/OrderListing";
 import { QuantityProductMockChart } from "mock/MockChart";
+import ProductTable from "components/table/ProductTable";
 
 export function ProductProfile() {
   const params = useParams();
@@ -98,7 +98,7 @@ export function ProductDashboard() {
     <>
       <div className="container">
         <h1 className=" py-4">Registros de Alterações dos Produtos</h1>
-        <ProductDataTable />
+        <ProductTable />
       </div>
     </>
   );

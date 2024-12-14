@@ -6,7 +6,7 @@ import { Item } from "types/order";
 import { BASE_URL } from "utils/requests";
 import { Props } from "types/page";
 
-function ItemDataTable({ id: codeId }: Props) {
+function ItemTable({ id: codeId }: Props) {
 
     const [pageItem, setPageItem] = useState<Item[]>();
 
@@ -59,5 +59,5 @@ function ItemDataTable({ id: codeId }: Props) {
     );
 }
 
-export default ItemDataTable;
+export default ItemTable;
 

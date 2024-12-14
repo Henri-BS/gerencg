@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { ProductHistoryPage } from "types/product";
 import { BASE_URL } from "utils/requests";
 
-function ProductDataTable() {
+function ProductTable() {
     const [pageNumber, setPageNumber] = useState(0);
     const [page, setPage] = useState<ProductHistoryPage>({
         content: [],
@@ -60,4 +60,4 @@ function ProductDataTable() {
     );
 }
 
-export default ProductDataTable;
+export default ProductTable;
