@@ -1,8 +1,8 @@
 # Gerencg
 
-O projeto Gerencg é um sistema para o gerenciamento de comercial destinado controlar fluxos de mercadorias,
-entradas, saídas, despesas e rendimento. O Sistema dispõe de de uma estrutura organizacional baseada em categorias, onde
-cada produto catalogado oferece suas informações de forma individual, assim como os traz estatistíticas gerais através das categorias.
+O projeto Gerencg é um sistema para o gerenciamento de estoque destinado controlar fluxos de mercadorias,
+entradas, saídas, despesas e rendimento. O sistema dispõe de uma estrutura organizacional baseada em categorias, onde
+cada produto catalogado oferece suas informações individuais, assim como, entrega estatistíticas gerais através das categorias e dos pedidos de produtos.
 
 ---
 ### Produtos
